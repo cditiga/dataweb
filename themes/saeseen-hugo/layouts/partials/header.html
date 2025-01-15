@@ -1,0 +1,26 @@
+<input type="checkbox" id="menuToggle">
+<div class="tab-menu-container">
+    <div class="container-menu">
+    <div class="logo">
+        <img src="{{ .Site.Params.logo }}" alt="Logo" height="40" loading="lazy">
+    </div>
+    <div class="mobile-menu">
+        <label for="menuToggle" class="menu-icon">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-xmark"></i>
+        </label>
+    </div>
+    <div class="tab-menu">
+        {{ range .Site.Params.menu_items }}
+            <a href="{{ .url }}">{{ .title }}</a>
+        {{ end }}
+    </div>
+    </div>
+</div>
+{{ if $.IsHome }}
+<header>
+    <div class="container">
+        <h1>{{ .Site.Params.header.title }} <span class="highlight">{{ .Site.Params.header.highlight }}</span></h1>
+    </div>
+</header>
+{{ end }}

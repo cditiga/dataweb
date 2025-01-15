@@ -1,0 +1,472 @@
+{{ with .Get "table" }}
+  {{ if eq . "table1" }}
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Jenis Bata</th>
+          <th>Harga per pcs (Rp)</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{ range $.Site.Params.batamerah }}
+        <tr>
+          <td>{{ .name }}</td>
+          <td>{{ .price }}</td>
+        </tr>
+        {{ end }}
+      </tbody>
+    </table>
+
+  {{ else if eq . "table2" }}
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Jenis Batu</th>
+          <th>Harga per m³ (Rp)</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{ range $.Site.Params.batupondasi }}
+        <tr>
+          <td>{{ .name }}</td>
+          <td>{{ .price }}</td>
+        </tr>
+        {{ end }}
+      </tbody>
+    </table>
+
+  {{ else if eq . "table3" }}
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Jenis Batu</th>
+        <th>Harga per m³ (Rp)</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{ range $.Site.Params.batusplit }}
+      <tr>
+        <td>{{ .name }}</td>
+        <td>{{ .price }}</td>
+      </tr>
+      {{ end }}
+    </tbody>
+  </table>
+
+  {{ else if eq . "table4" }}
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Layanan Cor</th>
+        <th>Harga per m³ (Rp)</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{ range $.Site.Params.jasacor }}
+      <tr>
+        <td>{{ .name }}</td>
+        <td>{{ .price }}</td>
+      </tr>
+      {{ end }}
+    </tbody>
+  </table>
+
+  {{ else if eq . "table5" }}
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Jenis Material</th>
+        <th>Harga per m³ (Rp)</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{ range $.Site.Params.limestone }}
+      <tr>
+        <td>{{ .name }}</td>
+        <td>{{ .price }}</td>
+      </tr>
+      {{ end }}
+    </tbody>
+  </table>
+
+  {{ else if eq . "table6" }}
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Jenis Material</th>
+        <th>Harga per m³ (Rp)</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{ range $.Site.Params.makadambeskos }}
+      <tr>
+        <td>{{ .name }}</td>
+        <td>{{ .price }}</td>
+      </tr>
+      {{ end }}
+    </tbody>
+  </table>
+
+  {{ else if eq . "table7" }}
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Jenis Material</th>
+        <th>Harga per m³ (Rp)</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{ range $.Site.Params.sirtubrangkal }}
+      <tr>
+        <td>{{ .name }}</td>
+        <td>{{ .price }}</td>
+      </tr>
+      {{ end }}
+    </tbody>
+  </table>
+
+  {{ else if eq . "table8" }}
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Jenis Material</th>
+        <th>Harga per m³ (Rp)</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{ range $.Site.Params.pasir }}
+      <tr>
+        <td>{{ .name }}</td>
+        <td>{{ .price }}</td>
+      </tr>
+      {{ end }}
+    </tbody>
+  </table>
+
+  {{ else if eq . "table9" }}
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Jenis Material</th>
+        <th>Harga per m³ (Rp)</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{ range $.Site.Params.tanahmerah }}
+      <tr>
+        <td>{{ .name }}</td>
+        <td>{{ .price }}</td>
+      </tr>
+      {{ end }}
+    </tbody>
+  </table>
+  
+  {{ else if eq . "table10" }}
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Jenis Box Culvert</th>
+        <th>Harga per unit (Rp)</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{ range $.Site.Params.boxculvert }}
+      <tr>
+        <td>{{ .name }}</td>
+        <td>{{ .price }}</td>
+      </tr>
+      {{ end }}
+    </tbody>
+  </table>
+  
+  {{ else if eq . "table11" }}
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Jenis/Tipe Alat</th>
+        <th>Harga per jam (Rp)</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{ range $.Site.Params.bulldozer }}
+      <tr>
+        <td>{{ .name }}</td>
+        <td>{{ .price }}</td>
+      </tr>
+      {{ end }}
+    </tbody>
+  </table>
+  
+  {{ else if eq . "table12" }}
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Jenis/Tipe Alat</th>
+        <th>Harga per jam (Rp)</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{ range $.Site.Params.crane }}
+      <tr>
+        <td>{{ .name }}</td>
+        <td>{{ .price }}</td>
+      </tr>
+      {{ end }}
+    </tbody>
+  </table>
+  
+  {{ else if eq . "table13" }}
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Jenis Dak Panel</th>
+        <th>Harga per lembar (Rp)</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{ range $.Site.Params.dakpanel }}
+      <tr>
+        <td>{{ .name }}</td>
+        <td>{{ .price }}</td>
+      </tr>
+      {{ end }}
+    </tbody>
+  </table>
+  
+  {{ else if eq . "table14" }}
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Jenis/Tipe Alat</th>
+        <th>Harga per jam (Rp)</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{ range $.Site.Params.excavator }}
+      <tr>
+        <td>{{ .name }}</td>
+        <td>{{ .price }}</td>
+      </tr>
+      {{ end }}
+    </tbody>
+  </table>
+  
+  {{ else if eq . "table15" }}
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Jenis P Panel</th>
+        <th>Harga per lembar (Rp)</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{ range $.Site.Params.pagarpanel }}
+      <tr>
+        <td>{{ .name }}</td>
+        <td>{{ .price }}</td>
+      </tr>
+      {{ end }}
+    </tbody>
+  </table>
+  
+  {{ else if eq . "table16" }}
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Jenis T Pancang</th>
+        <th>Harga per unit (Rp)</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{ range $.Site.Params.tiangpancang }}
+      <tr>
+        <td>{{ .name }}</td>
+        <td>{{ .price }}</td>
+      </tr>
+      {{ end }}
+    </tbody>
+  </table>
+  
+  {{ else if eq . "table17" }}
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Jenis Uditc/Buis</th>
+        <th>Harga per unit (Rp)</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{ range $.Site.Params.uditchbuis }}
+      <tr>
+        <td>{{ .name }}</td>
+        <td>{{ .price }}</td>
+      </tr>
+      {{ end }}
+    </tbody>
+  </table>
+
+  {{ else if eq . "table18" }}
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Proyek Hotmix</th>
+        <th>Harga per m (Rp)</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{ range $.Site.Params.hotmix }}
+      <tr>
+        <td>{{ .name }}</td>
+        <td>{{ .price }}</td>
+      </tr>
+      {{ end }}
+    </tbody>
+  </table>
+
+  {{ else if eq . "table19" }}
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Jenis Kayu</th>
+        <th>Harga per m³ (Rp)</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{ range $.Site.Params.kayu }}
+      <tr>
+        <td>{{ .name }}</td>
+        <td>{{ .price }}</td>
+      </tr>
+      {{ end }}
+    </tbody>
+  </table>
+  
+  {{ else if eq . "table20" }}
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Jenis Jasa</th>
+        <th>Harga per m (Rp)</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{ range $.Site.Params.jasataman }}
+      <tr>
+        <td>{{ .name }}</td>
+        <td>{{ .price }}</td>
+      </tr>
+      {{ end }}
+    </tbody>
+  </table>
+  
+  {{ else if eq . "table21" }}
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Jenis Meja</th>
+        <th>Harga per m (Rp)</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{ range $.Site.Params.meja }}
+      <tr>
+        <td>{{ .name }}</td>
+        <td>{{ .price }}</td>
+      </tr>
+      {{ end }}
+    </tbody>
+  </table>
+  
+  {{ else if eq . "table22" }}
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Jenis Lemari</th>
+        <th>Harga per m (Rp)</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{ range $.Site.Params.lemari }}
+      <tr>
+        <td>{{ .name }}</td>
+        <td>{{ .price }}</td>
+      </tr>
+      {{ end }}
+    </tbody>
+  </table>
+  
+  {{ else if eq . "table23" }}
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Jenis Bahan</th>
+        <th>Harga per m (Rp)</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{ range $.Site.Params.kitchenset }}
+      <tr>
+        <td>{{ .name }}</td>
+        <td>{{ .price }}</td>
+      </tr>
+      {{ end }}
+    </tbody>
+  </table>
+  
+  {{ else if eq . "table24" }}
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Jenis Dipan</th>
+        <th>Harga per m (Rp)</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{ range $.Site.Params.dipan }}
+      <tr>
+        <td>{{ .name }}</td>
+        <td>{{ .price }}</td>
+      </tr>
+      {{ end }}
+    </tbody>
+  </table>
+  
+  {{ else if eq . "table25" }}
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Jenis Batako</th>
+        <th>Harga per pcs (Rp)</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{ range $.Site.Params.batakopress }}
+      <tr>
+        <td>{{ .name }}</td>
+        <td>{{ .price }}</td>
+      </tr>
+      {{ end }}
+    </tbody>
+  </table>
+  
+  {{ else if eq . "table26" }}
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Jenis Hebel</th>
+        <th>Harga per m3 (Rp)</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{ range $.Site.Params.hebel }}
+      <tr>
+        <td>{{ .name }}</td>
+        <td>{{ .price }}</td>
+      </tr>
+      {{ end }}
+    </tbody>
+  </table>
+  {{ else }}
+    <p>Invalid table selection.</p>
+  {{ end }}
+{{ end }}

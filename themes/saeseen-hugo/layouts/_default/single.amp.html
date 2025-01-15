@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html ⚡ lang="id">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="{{ .Site.Params.favicon | relURL }}">
+  <link rel="canonical" href="{{ .Permalink | replaceRE "/amp/index.html$" "" }}">
+  <link rel="alternate" href="{{ .Permalink | replaceRE "/amp/index.html$" "/amp/" }}" media="only screen and (max-width: 640px)">
+  <script async src="https://cdn.ampproject.org/v0.js"></script>
+  <script async custom-element="amp-sidebar" src="https://cdn.ampproject.org/v0/amp-sidebar-0.1.js"></script>
+  <script async custom-element="amp-bind" src="https://cdn.ampproject.org/v0/amp-bind-0.1.js"></script>
+  <script async custom-element="amp-youtube" src="https://cdn.ampproject.org/v0/amp-youtube-0.1.js"></script>
+  <script async custom-element="amp-social-share" src="https://cdn.ampproject.org/v0/amp-social-share-0.1.js"></script>
+  <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+  <title>{{ printf "%s - %d" .Title (now.Year) }}</title>
+  <meta name="description" content="{{ .Summary | plainify | truncate 160 }}">
+  {{- $ogTitle := printf "%s - %d" .Title (now.Year) -}}
+  {{- $ogDescription := .Summary | plainify | truncate 160 -}}
+  {{- $removeWords := "^(Jual|Sewa|Harga|Biaya|Tukang) " -}}
+  {{- $titleKeywords := replaceRE $removeWords "" .Title | lower -}}
+  {{- $allKeywords := delimit (slice $titleKeywords) ", " -}}
+  <meta name="keywords" content="{{ $allKeywords }}">
+  {{ if .IsPage }}
+  {{ if eq .Params.type "service" }}
+    <meta property="og:type" content="service">
+  {{ else if eq .Params.type "product" }}
+    <meta property="og:type" content="product">
+  {{ else }}
+    <meta property="og:type" content="localbusiness">
+  {{ end }}
+  {{ end }}
+  <meta property="og:url" content="{{ .Permalink }}">
+  <meta property="og:title" content="{{ $ogTitle }}">
+  <meta property="og:description" content="{{ $ogDescription }}">
+  {{- $featuredImage := "" }}
+  {{- if .Params.featured_image }}
+  {{- $featuredImage = .Params.featured_image | absURL }}
+  {{- else }}
+  {{- $images := findRE "<img.*?src=\"(.*?)\".*?>" .Content }}
+  {{- if gt (len $images) 0 }}
+    {{- $featuredImage = (index $images 0 | replaceRE "<img.*?src=\"(.*?)\".*?>" "$1") | absURL }}
+  {{- else }}
+    {{- $featuredImage = "/images/admin/featured-image.png" | absURL }}
+  {{- end }}
+  {{- end }}
+  <meta property="og:image" content="{{ $featuredImage }}">
+  <meta name="twitter:image" content="{{ $featuredImage }}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="{{ .Permalink }}">
+  <meta name="twitter:title" content="{{ $ogTitle }}">
+  <meta name="twitter:description" content="{{ $ogDescription }}">
+  {{- if .IsPage }}
+  {{ if eq .Params.type "product" }}
+  {{- $rating := add 4 (div (math.Mod (mul (now.Unix) 11) 10) 10) -}}
+  {{- $ratingCount := add 50 (math.Mod (mul (now.Unix) 13) 951) -}}
+  {{- $basePrice := .Site.Params.base_price -}}
+  {{- $priceRange := .Site.Params.price_range -}}
+  {{- $ := $basePrice -}}
+  {{- $maxPrice := add $basePrice $priceRange -}}
+  {{- $minPrice := sub $basePrice $priceRange -}}
+  {{- $currentCategory := "" -}}
+  {{- if .Params.categories -}}
+  {{- $currentCategory = index .Params.categories 0 -}}
+  {{- end -}}
+  {{- $material := $currentCategory -}}
+  {{- $randomPayment := index .Site.Params.payment_methods (mod (now.Unix) (len .Site.Params.payment_methods)) -}}
+  {{- $sku := printf "SKU-%d" (add 1000 (math.Mod (now.Unix) 9000)) -}}
+  {{- $freeShipping := .Site.Params.free_shipping -}}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "{{ .Title }}",
+    "description": "{{ .Summary | plainify | truncate 160 }}",
+    "image": "{{ .Params.featured_image | absURL }}",
+    "brand": {
+      "@type": "Brand",
+      "name": "{{ .Site.Title }}"
+    },
+    "sku": "{{ $sku }}",
+    "offers": {
+      "@type": "AggregateOffer",
+      "priceCurrency": "IDR",
+      "lowPrice": "{{ printf "%.2f" (div $minPrice 1.0) }}",
+      "highPrice": "{{ printf "%.2f" (div $maxPrice 1.0) }}",
+      "offerCount": "2",
+      "url": "{{ .Permalink }}",
+      "availability": "https://schema.org/InStock",
+      "itemCondition": "https://schema.org/NewCondition",
+      "acceptedPaymentMethod": {
+        "@type": "PaymentMethod",
+        "name": "{{ $randomPayment }}"
+      },
+      "seller": {
+        "@type": "Organization",
+        "name": "{{ .Site.Title }}"
+      }
+      {{- if $freeShipping -}}
+      ,
+      "shippingDetails": {
+        "@type": "OfferShippingDetails",
+        "shippingRate": {
+          "@type": "MonetaryAmount",
+          "value": "0",
+          "currency": "IDR"
+        },
+        "shippingDestination": {
+          "@type": "DefinedRegion",
+          "addressCountry": "ID"
+        },
+        "deliveryTime": {
+          "@type": "ShippingDeliveryTime",
+          "handlingTime": {
+            "@type": "QuantitativeValue",
+            "minValue": "0",
+            "maxValue": "1",
+            "unitCode": "DAY"
+          },
+          "transitTime": {
+            "@type": "QuantitativeValue",
+            "minValue": "1",
+            "maxValue": "5",
+            "unitCode": "DAY"
+          }
+        }
+      }
+      {{- end -}},
+      "hasMerchantReturnPolicy": {
+        "@type": "MerchantReturnPolicy",
+        "returnPolicyCategory": "https://schema.org/Refundable",
+        "merchantReturnDays": "1",
+        "returnMethod": "https://schema.org/ReturnInStore",
+       "returnFees": "https://schema.org/FreeReturn",
+        "description": "{{ index .Site.Params.return_policies (mod (now.Unix) (len .Site.Params.return_policies)) }}"
+      }
+    },
+    "material": "{{ $material }}",
+    "category": "{{ $currentCategory }}",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "{{ $rating }}",
+      "ratingCount": "{{ $ratingCount }}",
+      "bestRating": "5",
+      "worstRating": "1"
+    }
+  }
+  </script>
+{{ else if eq .Params.type "service" }}
+{{- $rating := add 4 (div (math.Mod (mul (now.Unix) 11) 10) 10) -}}
+{{- $ratingCount := add 50 (math.Mod (mul (now.Unix) 13) 951) -}}
+{{- $basePrice := .Site.Params.base_price -}}
+{{- $priceRange := .Site.Params.price_range -}}
+{{- $ := $basePrice -}}
+{{- $maxPrice := add $basePrice $priceRange -}}
+{{- $minPrice := sub $basePrice $priceRange -}}
+{{- $serviceCategory := "" -}}
+{{- if .Params.categories -}}
+{{- $serviceCategory = index .Params.categories 0 -}}
+{{- end -}}
+{{- $serviceType := $serviceCategory -}}
+{{- $randomPayment := index .Site.Params.payment_methods (mod (now.Unix) (len .Site.Params.payment_methods)) -}}
+{{- $freeConsultation := .Site.Params.free_consultation -}}
+{{- $titleWithoutTag := replaceRE "\\s*\\[.*?\\]\\s*$" "" .Title -}}
+{{- $titleParts := split $titleWithoutTag " di " -}}
+{{- $locationParts := split (index $titleParts 1) " " -}}
+{{- $city := index $locationParts (sub (len $locationParts) 1) -}}
+{{- $district := "" -}}
+{{- if gt (len $locationParts) 1 -}}
+{{- $district = delimit (first (sub (len $locationParts) 1) $locationParts) " " -}}
+{{- else -}}
+{{- $district = $city -}}
+{{- $city = "" -}}
+{{- end -}}
+{{- $region := $city -}}
+{{- if eq $region "" -}}
+{{- $region = "Indonesia" -}}
+{{- end -}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "{{ .Title }}",
+  "description": "{{ .Summary | plainify | truncate 160 }}",
+  "image": "{{ .Params.featured_image | absURL }}",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "{{ $district }}",
+    "addressRegion": "{{ $region }}",
+    "addressCountry": "ID"
+  },
+  "offers": {
+    "@type": "AggregateOffer",
+    "priceCurrency": "IDR",
+    "lowPrice": "{{ printf "%.2f" (div $minPrice 1.0) }}",
+    "highPrice": "{{ printf "%.2f" (div $maxPrice 1.0) }}",
+    "offerCount": "2",
+    "url": "{{ .Permalink }}",
+    "availability": "https://schema.org/InStock",
+    "acceptedPaymentMethod": {
+      "@type": "PaymentMethod",
+      "name": "{{ $randomPayment }}"
+    },
+    "seller": {
+      "@type": "Organization",
+      "name": "{{ .Site.Title }}"
+    }
+    {{- if $freeConsultation -}}
+    ,
+    "additionalProperty": {
+      "@type": "PropertyValue",
+      "name": "FreeConsultation",
+      "value": "Available"
+    }
+    {{- end -}}
+  },
+  "areaServed": [
+    {{ range $index, $area := .Site.Params.area_served }}
+      {{ if $index }},{{ end }}{
+        "@type": "Country",
+        "name": "{{ $area }}"
+      }
+    {{ end }}
+  ],
+  "serviceType": "{{ $serviceType }}",
+  "category": "{{ $serviceCategory }}",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "{{ $rating }}",
+    "ratingCount": "{{ $ratingCount }}",
+    "bestRating": "5",
+    "worstRating": "1"
+  },
+  "review": {
+    "@type": "Review",
+    "reviewRating": {
+      "@type": "Rating",
+      "ratingValue": "{{ $rating }}",
+      "bestRating": "5",
+      "worstRating": "1"
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "{{ .Site.Title }}"
+    }
+  },
+  "termsOfService": "{{ .Site.BaseURL }}terms-of-service",
+  "serviceOutput": {
+    "@type": "Thing",
+    "name": "Hasil",
+    "description": "{{ .Site.Params.service_output }}"
+  }
+}
+</script>
+{{- end }}
+{{- end }}
+<style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+<style amp-custom>
+:root {
+  --primary-color: #91008a;
+  --secondary-color: #1c1c1c;
+  --accent-color: #7d3c98;
+  --text-color: #333333;
+  --bg-color: #F5F5F5;
+  --white: #FFFFFF;
+  --light-gray: #E0E0E0;
+  --success-color: #2E8B57;
+  --warning-color: #ffaa00;
+  --error-color: #DC3545;
+  --whatsapp: #e5ddd5;
+  --chatheader: #075e54;
+  --green: #e6ffda;
+  --text-blur: #a7a1a1;
+}
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  color: var(--text-color);
+  background-color: var(--white);
+}
+.container {
+  width: 90%;
+  max-width: 1100px;
+  margin: auto;
+  overflow: hidden;
+  padding: 0 1rem;
+}
+.footer-container {
+  width: 90%;
+  max-width: 1100px;
+  margin: auto;
+  overflow: hidden;
+  padding: 0 1rem;
+}
+header {
+  padding: 2rem 0;
+  background: var(--secondary-color);
+  color: var(--white);
+  text-align: center;
+}
+header h1 {
+  margin: 0;
+  font-size: 2.5rem;
+}
+a {
+  color: var(--accent-color);
+  text-decoration: none;
+}
+a: hover {
+  color: var(--text-color);
+  text-decoration: none;
+}
+p a {
+  color: var(--accent-color);
+  text-decoration: none;
+  font-style: italic;
+}
+p a: hover {
+  color: var(--text-blur);
+  text-decoration: none;
+}
+h2 {
+  text-align: center;
+  font-size: 1.9rem;
+  color: #222;
+  margin-bottom: 2rem;
+  position: relative;
+  padding-bottom: 15px;
+}
+h3 {
+  font-size: 1.6em;
+  text-align: center;
+  color: var(--text-color);
+  margin-bottom: 2rem;
+  position: relative;
+}
+h4 {
+  font-size: 1.2em;
+  text-align: center;
+  color: var(--text-color);
+  margin-bottom: 2rem;
+  position: relative;
+}
+.header-wrapper {
+  position: relative;
+}
+.tab-menu-container {
+  width: 100%;
+}
+.container-menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  max-width: 1100px;
+  margin: auto;
+  overflow: hidden;
+  padding: 0.6rem 0;
+}
+.logo {
+  flex: 0 0 auto;
+}
+.mobile-menu {
+  display: none;
+  cursor: pointer;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 1;
+}
+.mobile-menu span {
+  display: inline-block;
+  padding: 5px;
+}
+.tab-menu {
+  display: flex;
+}
+.tab-menu a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: var(--primary-color);
+  font-weight: bold;
+}
+@media (max-width: 768px) {
+  .mobile-menu {
+    display: block;
+  }
+  .tab-menu {
+    display: none;
+  }
+}
+amp-sidebar {
+  width: 250px;
+  padding: 10px;
+}
+amp-sidebar .tab-menu {
+  display: flex;
+  flex-direction: column;
+}
+amp-sidebar .tab-menu a {
+  padding: 10px 0;
+  color: var(--secondary-color);
+  font-weight: bold;
+}
+.breadcrumb {
+  font-size: 1.1rem;
+  color: var(--text-blur);
+  text-align: center;
+  font-style: italic;
+}
+.breadcrumb a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+.breadcrumb time {
+  color: var(--text-color);
+}
+
+@media (max-width: 768px) {
+  .breadcrumb {
+  font-size: 1rem;
+  }
+}
+footer {
+  background: var(--secondary-color);
+  color: var(--white);
+  padding: 2rem 0;
+}
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  text-align: left;
+}
+.footer-section {
+  flex: 1 1 200px;
+  margin: 1.5rem;
+}
+.footer-section h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--white);
+}
+.footer-section p,
+.footer-section ul {
+  font-size: 1rem;
+  margin: 0.5rem 0;
+}
+.footer-section ul {
+  list-style-type: none;
+  padding: 0;
+}
+.footer-section ul li {
+  margin: 0.5rem 0;
+}
+.footer-section ul li a {
+  color: var(--white);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+.footer-section ul li a:hover {
+  color: var(--primary-color);
+}
+.footer-section ul li i {
+  margin-right: 0.5rem;
+}
+.footer-bottom {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  text-align: center;
+}
+.footer-section.contact ul {
+  list-style-type: none;
+  padding: 0;
+}
+.footer-section.contact li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.footer-section.contact svg {
+  margin-right: 10px;
+  fill: currentColor;
+}
+.footer-logo {
+  max-width: 250px;
+  height: auto;
+  margin-bottom: 1rem;
+}
+.single-post {
+  padding: 2rem 1rem;
+  max-width: 900px;
+  margin: 0 auto;
+  background-color: var(--white);
+  line-height: 1.6;
+}
+.single-post .post-header {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+.post-footer {
+  margin-top: 2rem;
+}
+.profile-container {
+  width: 90%;
+  max-width: 1100px;
+  margin: auto;
+  overflow: hidden;
+  padding: 0 1rem;
+}
+.about-us {
+  margin-bottom: 40px;
+}
+.contact-section {
+  display: flex;
+  justify-content: space-between;
+}
+.contact-info, .contact-form {
+  flex-basis: 48%;
+  text-align: left;
+}
+.contact-info ul {
+  list-style-type: none;
+  padding: 0;
+}
+.contact-info li {
+  margin-bottom: 10px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+input, textarea {
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+/* Responsif */
+@media (max-width: 768px) {
+  .contact-section {
+    flex-direction: column;
+  }
+  
+  .contact-info, .contact-form {
+    flex-basis: 100%;
+    margin-bottom: 20px;
+  }
+}
+.single-post ul {
+  list-style-type: none;
+  padding: 0;
+}
+.single-post li {
+  display: inline-block;
+  margin-right: 1rem;
+}
+#TableOfContents {
+  background-color: var(--bg-color);
+  padding: 10px;
+  max-width: 100%;
+  margin: 0 auto;
+}
+#TableOfContents ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  max-width: 600px;
+  counter-reset: section;
+}
+#TableOfContents ul li > a {
+  position: relative;
+  padding-left: 50px;
+  display: inline-block;
+}
+
+#TableOfContents ul li > a::before {
+  position: absolute;
+  left: 0;
+  color: var(--primary-color);
+  font-weight: bold;
+  content: counters(section, ".") " - ";
+  counter-increment: section;
+}
+#TableOfContents ul ul {
+  padding-left: 20px;
+  counter-reset: subsection;
+}
+#TableOfContents ul ul li > a::before {
+  content: counters(section, ".") "." counters(subsection, ".") " - ";
+  counter-increment: subsection;
+}
+#TableOfContents ul ul ul {
+  padding-left: 20px;
+  counter-reset: subsubsection;
+}
+#TableOfContents ul ul ul li > a {
+  position: relative;
+  padding-left: 60px;
+  display: inline-block;
+}
+#TableOfContents ul ul ul li > a::before {
+  content: counters(section, ".") "." counters(subsection, ".") "." counters(subsubsection, ".") " - ";
+  counter-increment: subsubsection;
+}
+#TableOfContents ul li a {
+  text-decoration: none;
+  color: var(--text-color);
+  font-size: 17px;
+  font-weight: 500;
+}
+#TableOfContents ul li a:hover {
+  color: var(--primary-color);
+}
+.inline-related-post {
+  margin: 1em 0;
+  padding: 0.5em;
+  background-color: var(--white);
+  border-left: 3px solid var(--primary-color);
+  font-size: 1.2em;
+  font-weight: 700;
+}
+.inline-related-post a {
+  font-style: italic;
+}
+.inline-related-post a {
+  font-weight: 600;
+  color: var(--accent-color);
+}
+.post-header h1 {
+  margin: 20px;
+  font-size: 2rem;
+  color: var(--primary-color);
+}
+.post-meta {
+  font-size: 1.1rem;
+  color: var(--text-blur);
+  margin-bottom: 10px;
+  text-align: center;
+  font-style: italic;
+}
+.post-content {
+  line-height: 1.6;
+  color: var(--text-color);
+}
+.post-content p {
+  font-size: 1.15rem;
+}
+.post-content img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  max-width: 900px;
+  height: auto;
+}
+.post-footer {
+  padding-top: 20px;
+  margin-top: 20px;
+  color: var(--accent-color);
+  background: var(--white);
+}
+@media (max-width: 768px) {
+  .post-content img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  }
+  .post-meta {
+  font-size: 0.9rem;
+  }
+}
+.social-share {
+  text-align: center;
+  padding-bottom: 20px;
+}
+.social-share h3 {
+  margin-bottom: 10px;
+}
+.social-share amp-social-share {
+  margin: 0 10px;
+  display: inline-block;
+}
+.mobile-only {
+  display: none;
+}
+@media (max-width: 768px) {
+  .mobile-only {
+    display: block;
+  }
+}
+.desktop-tablet-only {
+  display: none;
+}
+@media (min-width: 768px) {
+  .desktop-tablet-only {
+    display: block;
+  }
+}
+.salam-chat-top {
+  position: fixed;
+  right: 0;
+  width: 50%;
+  height: 70px;
+  z-index: 99999;
+  text-align: center;
+  background: #ddd;
+  line-height: 70px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  bottom: 0;
+}
+.salam-chat-top svg {
+   font-size: inherit;
+  line-height: inherit;
+  fill: var(--white);
+  width: 1em;
+  height: 1em;
+  vertical-align: middle;
+  margin-right: 5px;
+}
+.salam-chat-top a {
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+.salam-chat-bottom {
+  position: fixed;
+  left: 0;
+  width: 50%;
+  height: 70px;
+  z-index: 99999;
+  text-align: center;
+  background: #ddd;
+  line-height: 70px;
+  bottom: 0;
+}
+.salam-chat-bottom svg {
+  font-size: inherit;
+  line-height: inherit;
+  fill: var(--white);
+  width: 1em;
+  height: 1em;
+  vertical-align: middle;
+  margin-right: 5px;
+}
+.salam-chat-bottom a {
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+.salam-chat-top-button {
+  margin: 10px;
+  width: auto;
+  height: auto;
+  z-index: 99999;
+  text-align: center;
+  background: #08c65b;
+  line-height: 50px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+   font-size: 24px;
+}
+.salam-chat-top-button-2 {
+  margin: 10px;
+  width: auto;
+  height: auto;
+  z-index: 99999;
+  text-align: center;
+  background: var(--primary-color);
+  line-height: 50px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  font-size: 24px;
+}
+.salam-chat-top-desktop {
+  position: fixed;
+  left: 30px;
+  width: 70px;
+  height: 70px;
+  font-size: 35px;
+  color: #fff;
+  z-index: 99999;
+  text-align: center;
+  border-radius: 100%;
+  border-style: solid;
+  border-color: #08c65b;
+  border-width: 4px;
+  background: #f1f1f1;
+  line-height: 65px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  bottom: 60px;
+}
+.salam-chat-top-desktop a {
+  color: #08c65b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+.salam-chat-top-desktop svg {
+  font-size: inherit;
+  line-height: inherit;
+  fill: #08c65b;
+  width: 1em;
+  height: 1em;
+}
+.salam-chat-top-kiri {
+  position: fixed;
+  left: 30px;
+  width: 70px;
+  height: 70px;
+  font-size: 27px;
+  color: var(--primary-color);
+  z-index: 99999;
+  text-align: center;
+  border-radius: 100%;
+  background: #f1f1f1;
+  line-height: 65px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  bottom: 150px;
+  border-style: solid;
+  border-color: var(--primary-color);
+  border-width: 4px;
+}
+.salam-chat-top-kiri svg {
+  font-size: inherit;
+  line-height: inherit;
+  fill: var(--primary-color);
+  width: 1em;
+  height: 1em;
+}
+  
+/* Additional styles for SVG icons */
+svg {
+  display: inline-block;
+  vertical-align: middle;
+}
+.toc {
+  margin-top: 20px;
+}
+.toc ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+.toc li {
+  margin-bottom: 10px;
+}
+.toc a {
+  text-decoration: none;
+  color: var(--primary-color);
+}
+.toc a:hover {
+  text-decoration: underline;
+}
+@media (max-width: 768px) {
+  footer {
+  background: var(--secondary-color);
+  color: var(--white);
+  padding: 2rem 0;
+  }
+  .footer-content {
+  flex-direction: column;
+  }
+
+  .footer-section {
+  margin: 0.5rem 0;
+  }
+}
+.scroll-to-top {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  background-color: var(--primary-color);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  text-decoration: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s, transform 0.3s;
+}
+.scroll-to-top:hover {
+  background-color: var(--primary-color);
+  transform: scale(1.1);
+}
+.scroll-to-top:focus {
+  outline: none;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 16px;
+  background-color: var(--bg-color);
+}
+th, td {
+  padding: 12px;
+  border: 1px solid #ccc;
+}
+th {
+  background-color: var(--accent-color);
+  color: #fff;
+}
+tr:nth-child(even) {
+  background-color: var(--text-blur);
+}
+caption {
+  font-size: 1.5em;
+  margin: 10px 0;
+}
+.price-info {
+  font-size: 14px;
+  color: #333;
+  margin-top: 20px;
+  background-color: var(--light-gray);
+  padding: 10px;
+  border-left: 5px solid #007bff;
+  font-style: italic;
+}
+</style>
+</head>
+<body>
+<div class="header-wrapper">
+  <amp-state id="menuState">
+  <script type="application/json">
+    {
+    "expanded": false
+    }
+  </script>
+  </amp-state>
+  <div class="tab-menu-container">
+    <div class="container-menu">
+      <div class="logo">
+        <amp-img src="{{ .Site.Params.logo_amp }}" width="40" height="40" layout="fixed" alt="Logo"></amp-img>
+      </div>     
+      <div class="mobile-menu" role="button" tabindex="0" on="tap:sidebar.toggle">
+        <span [text]="sidebarOpen ? '✕' : '☰'">☰</span>
+      </div>     
+      <nav class="tab-menu">
+        {{ range .Site.Params.menu_items }}
+          <a href="{{ .url }}">{{ .title }}</a>
+        {{ end }}
+      </nav>
+    </div>
+  </div>
+  <amp-sidebar id="sidebar" layout="nodisplay" side="right">
+    <nav class="tab-menu">
+      {{ range .Site.Params.menu_items }}
+        <a href="{{ .url }}">{{ .title }}</a>
+      {{ end }}
+    </nav>
+  </amp-sidebar>
+  <amp-state id="sidebarState">
+  <script type="application/json">
+    {
+      "open": false,
+      "sidebarOpen": false
+    }
+  </script>
+</amp-state>
+<header>
+  <div class="container">
+  <h1>{{ .Title }}</h1>
+  </div>
+</header>
+<main role="main">
+  <div class="section single-post">
+  <div class="post-header">
+    <nav class="breadcrumb">
+    <a href="{{ .Site.BaseURL }}">Home</a> / 
+    {{ if .IsPage }}
+    {{ $section := .Section }}
+    {{ if $section }}
+      <a href="{{ .Site.BaseURL }}{{ $section }}">{{ $section | title }}</a> /
+    {{ end }}
+    {{ end }}
+    <span>{{ .Title }}</span>
+    </nav>
+    <p class="post-meta">Dibuat pada {{ .Date.Format "2 January 2006" }} Oleh {{ .Site.Params.author }}</p>
+    {{ if and (.Params.toc) (gt .WordCount .Site.Params.tocMinWordCount) }}
+    {{ .TableOfContents }}
+    {{ end }}
+  </div>
+  <div class="post-content">
+      {{ $related := .Site.RegularPages.Related . | first 5 }}
+      {{ $shuffledRelated := shuffle $related }}
+      {{ $content := .Content }}
+      {{ $content = replaceRE "<img src=\"([^\"]+)\".*?alt=\"([^\"]*)\".*?>" "<amp-img src=\"$1\" alt=\"$2\" layout=\"responsive\" width=\"600\" height=\"400\"></amp-img>" $content }}
+      {{ $content = replaceRE "<iframe.*?src=\"https://www.youtube.com/embed/([^\"]+)\".*?</iframe>" "<amp-youtube data-videoid=\"$1\" layout=\"responsive\" width=\"600\" height=\"400\"></amp-youtube>" $content }}
+      {{ $paragraphs := split $content "<p>" }}
+      {{ $newContent := "" }}
+      {{ $count := 0 }}
+      {{ $relatedCount := 0 }}
+      {{ range $index, $paragraph := $paragraphs }}
+      {{ if eq $index 0 }} 
+        {{ $newContent = $paragraph }} 
+      {{ else }} 
+        {{ $newContent = printf "%s<p>%s" $newContent $paragraph }} 
+      {{ end }}
+      {{ $count = add $count 1 }}
+      {{ if and (gt $count 3) (lt $relatedCount 3) }}
+        {{ $randomRelated := index $shuffledRelated $relatedCount }}
+        {{ $newContent = printf "%s<div class='inline-related-post'>Lainnya: <a href='%s'>%s</a></div>" $newContent $randomRelated.RelPermalink $randomRelated.Title }}
+        {{ $relatedCount = add $relatedCount 1 }}
+        {{ $count = 0 }}
+      {{ end }}
+      {{ end }}
+      {{ $newContent | safeHTML }}
+    </div>
+  <div class="post-footer">
+    <div class="social-share">
+    <h3>Share artikel ini:</h3>
+      <amp-social-share type="facebook" width="40" height="40"></amp-social-share>
+      <amp-social-share type="twitter" width="40" height="40"></amp-social-share>
+      <amp-social-share type="linkedin" width="40" height="40"></amp-social-share>
+      <amp-social-share type="whatsapp" width="40" height="40"></amp-social-share>
+      <amp-social-share type="email" width="40" height="40"></amp-social-share>
+    </div>
+  </div>
+  </div>
+</main>
+<footer>
+   <div class="footer-container">
+    <div class="footer-content">
+      <div class="footer-section about">
+        <h3>{{ .Site.Params.footer_about_title }}</h3>
+        <p>{{ .Site.Params.footer_about_description }}</p>
+      </div>
+      <div class="footer-section links">
+        <h3>{{ .Site.Params.footer_services_title }}</h3>
+        <ul>
+          {{ range .Site.Params.footer_services }}
+          <li>{{ .text }}</li>
+          {{ end }}
+        </ul>
+      </div>
+      <div class="footer-section contact">
+    <h3>{{ .Site.Params.footer_contact_title }}</h3>
+    <ul>
+      {{ range .Site.Params.footer_contact }}
+      <li>
+        {{ if eq .icon "fas fa-map-marker-alt" }}
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" width="16" height="16">
+          <path d="M172.268 501.67C26.97 291.031 0 269.413 0 192 0 85.961 85.961 0 192 0s192 85.961 192 192c0 77.413-26.97 99.031-172.268 309.67-9.535 13.774-29.93 13.773-39.464 0zM192 272c44.183 0 80-35.817 80-80s-35.817-80-80-80-80 35.817-80 80 35.817 80 80 80z"/>
+        </svg>
+        {{ else if eq .icon "fas fa-phone-alt" }}
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="16" height="16">
+          <path d="M497.39 361.8l-112-48a24 24 0 0 0-28 6.9l-49.6 60.6A370.66 370.66 0 0 1 130.6 204.11l60.6-49.6a23.94 23.94 0 0 0 6.9-28l-48-112A24.16 24.16 0 0 0 122.6.61l-104 24A24 24 0 0 0 0 48c0 256.5 207.9 464 464 464a24 24 0 0 0 23.4-18.6l24-104a24.29 24.29 0 0 0-14.01-27.6z"/>
+        </svg>
+        {{ else if eq .icon "fas fa-envelope" }}
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="16" height="16">
+          <path d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z"/>
+        </svg>
+        {{ end }}
+        {{ .text }}
+      </li>
+      {{ end }}
+    </ul>
+    <amp-img src="{{ .Site.Params.footer_logo }}" alt="{{ .Site.Title }} Logo" class="footer-logo" width="150" height="50" layout="responsive"></amp-img>
+  </div>
+    </div>
+    <div class="footer-bottom">
+      <p>{{ .Site.Params.footer_bottom_text }}</p>
+    </div>
+  </div>
+</footer>
+<div class="main-content">
+  {{ if or .Site.Params.enableWhatApps .Site.Params.enableTelepon }}
+  <div class="mobile-only">
+  <div class="salam-chat-top">
+    <div class="salam-chat-top-button">
+      <a href="https:{{ .Site.Params.whatsapp }}">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="16" height="16">
+          <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+        </svg>
+        whatsapp
+      </a>
+    </div>
+  </div>
+  <div class="salam-chat-bottom">
+    <div class="salam-chat-top-button-2">
+      <a href="tel:{{ .Site.Params.telepon }}">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="16" height="16">
+        <circle cx="256" cy="256" r="240" fill="none" stroke="#fff" stroke-width="24"/>
+        <path d="M391.36 320.65c-13.94 0-27.63-2.16-40.96-6.4-14.72-4.8-29.09-1.15-40.53 9.71l-27.15 25.87c-52.84-28.8-95.81-71.76-124.6-124.6l25.79-27.1c11.2-11.2 14.83-26.37 9.63-41.18-4.23-13.37-6.39-27.06-6.39-40.95C187.15 120 172.8 104.64 154.56 104.64H120.61C102.27 104.64 88 118.91 88 137.25c0 131.84 106.91 238.75 238.75 238.75 18.34 0 32.61-14.27 32.61-32.61V357.44c0-18.24-15.36-32.6-33.61-32.6z" fill="#fff"/>
+        </svg>
+        telepon
+      </a>
+    </div>
+  </div>
+</div>
+<div class="desktop-tablet-only">
+  <div class="salam-chat-top-desktop">
+    <a href="https:{{ .Site.Params.whatsapp }}">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="16" height="16">
+        <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+      </svg>
+    </a>
+  </div>
+  <div class="salam-chat-top-kiri">
+    <a href="tel:{{ .Site.Params.telepon }}">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="16" height="16">
+        <path d="M497.39 361.8l-112-48a24 24 0 0 0-28 6.9l-49.6 60.6A370.66 370.66 0 0 1 130.6 204.11l60.6-49.6a23.94 23.94 0 0 0 6.9-28l-48-112A24.16 24.16 0 0 0 122.6.61l-104 24A24 24 0 0 0 0 48c0 256.5 207.9 464 464 464a24 24 0 0 0 23.4-18.6l24-104a24.29 24.29 0 0 0-14.01-27.6z"/>
+      </svg>
+    </a>
+  </div>
+</div>
+  {{ end }}
+</div>
+{{ block "scripts" . }}{{ end }}
+<a href="#" class="scroll-to-top">↑</a>
+</body>
+</html>

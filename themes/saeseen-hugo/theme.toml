@@ -1,0 +1,12 @@
+name = "Saiseen Theme"
+license = "MIT"
+licenselink = "https://github.com/"
+description = "Hugo blogger news theme"
+homepage = "https://saiseenews.com"
+tags = ["blog","responsive","personal","portfolio","bootstrap","font awesome","projects","creative","landing page","product","white"]
+features = ["blog","responsive","personal","portfolio","bootstrap","font awesome","projects","creative","landing page","product","white"]
+min_version = "0.68.3"
+
+[author]
+  name = "K. Yaman"
+  homepage = "https://saiseenews.com"

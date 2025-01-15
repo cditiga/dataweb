@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+{{- partial "head.html" . -}}
+</head>
+<body>
+    {{- partial "header.html" . -}}
+    {{- block "main" . }}{{- end }}
+    {{- partial "footer.html" . -}}
+    <div class="main-content">
+    {{- if or .Site.Params.enableWhatApps .Site.Params.enableTelepon -}}
+        {{- partial "salam-chat.html" . -}}
+    {{- end -}}
+    </div>
+    {{- block "scripts" . }}{{- end }}
+    <button id="back-to-top" title="Back to Top">↑</button>
+    <script src="{{ "js/back-to-top.js" | relURL }}" defer></script>
+</body>
+</html>

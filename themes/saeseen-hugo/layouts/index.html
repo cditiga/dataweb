@@ -1,0 +1,70 @@
+{{ define "main" }}
+<main>
+  <section class="home">
+    <div class="container">
+      <div class="hero">
+        <div class="hero-content">
+          <h1>{{ .Site.Params.hero_title }}</h1>
+          <p>{{ .Site.Params.hero_description }}</p>
+          <a href="#services" class="cta-button">{{ .Site.Params.hero_cta_text }}</a>
+        </div>
+        <div class="hero-image">
+          <img src="{{ .Site.Params.hero_image }}" alt="{{ .Site.Params.hero_title }}" width="500" height="300" loading="lazy">
+        </div>
+      </div>
+      <section class="section-container">
+        <h2>{{ .Site.Params.advant_title }}</h2>
+        <div class="advant-grid">
+          {{ range .Site.Params.advantages }}
+          <article class="advant-item">
+            <img src="{{ .image }}" alt="{{ .title }}" loading="lazy">
+            <h3>{{ .title }}</h3>
+            <p>{{ .description }}</p>
+          </article>
+          {{ end }}
+        </div>
+      </section>
+      <section id="services" class="section-container">
+        <h2>{{ .Site.Params.services_title }}</h2>
+        <div class="advant-grid">
+          {{ range .Site.Params.services }}
+          <article class="advant-item">
+            <img src="{{ .image }}" alt="{{ .title }}" loading="lazy">
+            <h3>{{ .title }}</h3>
+            <p>{{ .description }}</p>
+            <a href="{{ .link }}" class="read-more">{{ .cta_text }}</a>
+          </article>
+          {{ end }}
+        </div>
+      </section>
+      <section class="section-container">
+      <h2>{{ .Site.Params.articles_title }}</h2>
+      <div class="archive-grid">
+        {{ $paginator := .Paginate .Pages 6 }}
+        {{ range $paginator.Pages }}
+          {{ $featuredImage := "" }}
+          {{ if .Params.featured_image }}
+            {{ $featuredImage = .Params.featured_image }}
+          {{ else }}
+            {{ $images := findRE "<img src=\"([^\"]+)\"" .Content }}
+            {{ if gt (len $images) 0 }}
+              {{ $featuredImage = index $images 0 | replaceRE "<img src=\"([^\"]+)\"" "$1" }}
+            {{ end }}
+          {{ end }}
+          <article class="archive-item">
+            <img src="{{ if $featuredImage }}{{ $featuredImage }}{{ else }}/images/admin/featured-image.png{{ end }}" alt="{{ .Title }}" width="300" height="200" loading="lazy">
+            <h2>{{ .Title }}</h2>
+            <p>{{ .Summary | truncate 300 "..." }}</p>
+            <a href="{{ .Permalink }}" class="read-more">Baca Selengkapnya</a>
+          </article>
+        {{ end }}
+      </div>
+      </section>
+      <div class="archive-button">
+        <a href="/daftar-harga/" class="cta-button">{{ .Site.Params.services_cta_text }}</a>
+      </div>
+      {{ partial "testimonial.html" . }}
+    </div>
+  </section>
+</main>
+{{ end }}

@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+Disallow: /categories/*/page/
+Noindex: /categories/*/page/
+Disallow: /tags/*/page/
+Noindex: /tags/*/page/
+Disallow: /page/
+Noindex: /page/
+
+Sitemap: https://www.creativedesigninterior.com/sitemap.xml
+Sitemap: https://www.creativedesigninterior.com/sitemap.xml.gz

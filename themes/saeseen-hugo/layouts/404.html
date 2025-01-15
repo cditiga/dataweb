@@ -1,0 +1,25 @@
+{{ define "main" }}
+<section class="not-found">
+   <div class="container">
+      <header class="not-found-header">
+         <h1>404</h1>
+         <h2>Page Not Found</h2>
+      </header>
+      <div class="not-found-content">
+         <p>Sorry, the page you are looking for could not be found. It might have been moved or deleted.</p>
+         <p>You will be redirected to the homepage shortly.</p>
+         <p><a href="/" class="cta-button">Return to Homepage</a></p>
+      </div>
+   </div>
+</section>
+<!-- Load redirects.js to handle redirects -->
+<script src="/redirects.js"></script>
+<script>
+   // Backup redirect to homepage if no match is found in redirects.js
+   setTimeout(function () {
+       if (!window.redirectHandled) {
+           window.location.href = "/";
+       }
+   }, 5000); // Delay in milliseconds
+</script>
+{{ end }}

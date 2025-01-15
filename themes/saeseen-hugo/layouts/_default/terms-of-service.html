@@ -1,0 +1,62 @@
+{{ define "main" }}
+</main>
+<header>
+  <div class="container">
+    <h1>{{ .Title }}</h1>
+  </div>
+</header>
+<section class="single-post">
+    <article>
+      <div class="post-header">
+        <nav class="breadcrumb">
+            <a href="{{ .Site.BaseURL }}">Home</a> /
+            {{ if .IsPage }}
+            {{ $section := .Section }}
+            {{ if $section }}
+             <a href="{{ .Site.BaseURL }}{{ $section }}">{{ $section | title }}</a> /
+            {{ end }}
+            {{ end }}
+            <span>{{ .Title }}</span>
+        </nav>
+          {{ if and (.Params.toc) (gt .WordCount .Site.Params.tocMinWordCount ) }}
+          {{ .TableOfContents }}
+          {{ end }}
+        <div class="post-content">
+         {{ .Content | safeHTML }}
+        </div>
+      <div class="post-footer">
+        <div class="social-share">
+          <h3>Share artikel ini:</h3>
+          <ul class="social-share-list">
+            <li>
+              <a href="https://www.facebook.com/sharer/sharer.php?u={{ .Permalink }}" target="_blank" rel="noopener noreferrer" class="social-icon facebook">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+            </li>
+            <li>
+              <a href="https://x.com/intent/tweet?url={{ .Permalink }}&text={{ .Title }}" target="_blank" rel="noopener noreferrer" class="social-icon twitter">
+                <i class="fa-brands fa-x-twitter"></i>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ .Permalink }}&title={{ .Title }}" target="_blank" rel="noopener noreferrer" class="social-icon linkedin">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+            </li>
+            <li>
+              <a href="https://api.whatsapp.com/send?text={{ .Title }} {{ .Permalink }}" target="_blank" rel="noopener noreferrer" class="social-icon whatsapp">
+                <i class="fab fa-whatsapp"></i>
+              </a>
+            </li>
+            <li>
+              <a href="https://t.me/share/url?url={{ .Permalink }}&text={{ .Title }}" target="_blank" rel="noopener noreferrer" class="social-icon telegram">
+                <i class="fab fa-telegram-plane"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </article>
+</section>
+</main>
+{{ end }}

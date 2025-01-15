@@ -1,0 +1,63 @@
+{{ define "main" }}
+<header>
+  <div class="container">
+    <h1>{{ .Title }}</h1>
+  </div>
+</header>
+<section class="archive">
+   <div class="archive-container">
+    <div class="archive-grid">
+      <div id="sidebar">
+        {{ range .Site.Params.products }}
+        <div class="menu-item" data-product="{{ .name }}">{{ .name }}</div>
+        {{ end }}
+      </div>
+      <div id="content">
+        {{ range .Site.Params.products }}
+        <div class="price-table" id="{{ .name }}" style="display: none;">
+          <h2>{{ .name }}</h2>
+          <table>
+            <tr>
+              <th>Produk</th>
+              <th>Harga</th>
+            </tr>
+            {{ range .items }}
+            <tr>
+              <td>{{ .item }}</td>
+              <td>{{ .price }}</td>
+            </tr>
+            {{ end }}
+          </table>
+        </div>
+        {{ end }}
+      </div>
+    </div>
+   </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const menuItems = document.querySelectorAll('.menu-item');
+    const priceTables = document.querySelectorAll('.price-table');
+    menuItems.forEach(item => {
+      item.addEventListener('click', function() {
+        const product = this.getAttribute('data-product');
+        
+        menuItems.forEach(mi => mi.classList.remove('active'));
+        this.classList.add('active');
+        priceTables.forEach(table => {
+          if (table.id === product) {
+            table.style.display = 'block';
+          } else {
+            table.style.display = 'none';
+          }
+        });
+      });
+    });
+    // Activate the first menu item by default
+    if (menuItems.length > 0) {
+      menuItems[0].click();
+    }
+  });
+</script>
+{{ end }}

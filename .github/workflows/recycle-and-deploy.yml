@@ -1,0 +1,84 @@
+name: Recycle Posts and Deploy
+on:
+  schedule:
+    - cron: '0 0 * * *'
+  push:
+    branches: [ master ]
+  workflow_dispatch:
+
+jobs:
+  recycle-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Setup Hugo
+      uses: peaceiris/actions-hugo@v3
+      with:
+        hugo-version: '0.124.0'
+        extended: true
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20.14.0'
+        cache: 'npm'
+
+    - name: Install Dependencies
+      run: |
+        npm ci  # Install dependencies dengan clean slate
+        npm install  # Pastikan semua dependencies terinstall
+
+    - name: Debug - List Directory Structure
+      run: |
+        echo "Current directory:"
+        pwd
+        echo "Directory contents:"
+        ls -R content
+
+    - name: Verify Installations
+      run: |
+        node --version
+        npm --version
+        hugo version
+
+    - name: Run Recycle and Build
+      run: |
+        npm run build:recycle  # Jalankan script recycle
+        hugo --minify           # Build Hugo site dengan minifikasi
+
+    - name: Configure Git
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+
+    - name: Commit Changes
+      run: |
+        git add .
+        git diff --quiet && git diff --staged --quiet || git commit -m "Auto-recycle posts and rebuild"
+
+    - name: Push Changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Prepare GitHub Pages
+      run: |
+        mkdir -p public
+        echo "creativedesigninterior.com" > public/CNAME
+
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v4  # Update ke versi terbaru
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./public
+        publish_branch: gh-pages
+        full_commit_message: ${{ github.event.head_commit.message }}
+
+    - name: Verify Deployment
+      run: |
+        echo "Deployment completed successfully!"
+        ls -l public

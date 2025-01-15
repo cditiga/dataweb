@@ -1,0 +1,45 @@
+{{ define "main" }}
+<main>
+<header>
+  <div class="container">
+    <h1>Daftar {{ .Title }}</h1>
+  </div>
+</header>
+<section class="archive">
+   <div class="archive-container">
+    <div class="archive-grid">
+     {{ $paginator := .Paginate .Pages 6 }}
+      {{ range $paginator.Pages }}
+        {{ $featuredImage := "" }}
+        {{ if .Params.featured_image }}
+          {{ $featuredImage = .Params.featured_image }}
+        {{ else }}
+          {{ $images := findRE "<img.*?src=\"(.*?)\".*?>" .Content }}
+          {{ if gt (len $images) 0 }}
+            {{ $featuredImage = index $images 0 | replaceRE "<img.*?src=\"(.*?)\".*?>" "$1" }}
+          {{ end }}
+        {{ end }}
+     <div class="archive-item">
+          <img src="{{ if $featuredImage }}{{ $featuredImage }}{{ else }}/images/admin/featured-image.png{{ end }}" alt="{{ .Title }}" loading="lazy">
+          <h3>{{ .Title }}</h3>
+          <p>{{ .Summary | truncate 300 "..." }}</p>
+          <a href="{{ .Permalink }}" class="read-more">Baca Selengkapnya</a>
+        </div>
+      {{ end }}
+    </div>
+    <div class="pagination">
+     {{ if $paginator.HasPrev }}
+     <a href="{{ $paginator.Prev.URL }}" class="prev-page">
+      <i class="fas fa-chevron-left"></i> Previous
+     </a>
+     {{ end }}
+     {{ if $paginator.HasNext }}
+     <a href="{{ $paginator.Next.URL }}" class="next-page">
+       Next <i class="fas fa-chevron-right"></i>
+     </a>
+     {{ end }}
+    </div>
+   </div>
+</section>
+<main>
+{{ end }}

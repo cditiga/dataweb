@@ -1,0 +1,30 @@
+{{ $current := . }}
+{{ $related := where (where .Site.RegularPages "Section" .Section) "Permalink" "!=" $current.Permalink }}
+{{ $related := $related | shuffle | first 2 }}
+{{ if $related }}
+<div class="related-posts">
+  <h2>Artikel Terkait</h2>
+  <div class="related-container">
+  <div class="related-grid">
+    {{ range $related }}
+      {{ $featuredImage := "" }}
+        {{ if .Params.featured_image }}
+          {{ $featuredImage = .Params.featured_image }}
+        {{ else }}
+          {{ $images := findRE "<img.*?src=\"(.*?)\".*?>" .Content }}
+          {{ if gt (len $images) 0 }}
+            {{ $featuredImage = index $images 0 | replaceRE "<img.*?src=\"(.*?)\".*?>" "$1" }}
+          {{ end }}
+        {{ end }}
+      <div class="related-item">
+        <a href="{{ .Permalink }}">
+          <img src="{{ if $featuredImage }}{{ $featuredImage }}{{ else if .Params.featured_image }}{{ .Params.featured_image }}{{ else }}/images/featured-image.png{{ end }}" alt="{{ .Title }}" class="related-post-image" loading="lazy">
+          <h4>{{ .Title }}</h4>
+        </a>
+        <p>{{ .Summary | truncate 300 "..." }}</p>
+      </div>
+    {{ end }}
+  </div>
+  </div>
+</div>
+{{ end }}

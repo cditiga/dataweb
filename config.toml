@@ -1,0 +1,875 @@
+baseURL = "https://www.creativedesigninterior.com/"
+languageCode = "id"
+title = "Creative Design Interior | Jasa Kitchen Set dan Jasa Pembuatan Funiture Interior lainnya, Jasa Pengecoran, Jasa Bangun Rumah, juga Menjual Bahan bangunan"
+theme = "saeseen-hugo"
+summaryLength = 25
+paginate = 6
+
+[permalinks]
+  post = "/:slug/"
+  page = "/:slug/"
+  category = "/:slug/"
+
+[params]
+  # Site-wide settings
+  meta_description = "Kami Jasa Kitchen Set dan Jasa Pembuatan Funiture Interior lainnya, Jasa Pengecoran, Jasa Bangun Rumah, juga Menjual Bahan bangunan, sperti Pasir, Split, Batu Belah, Bata Merah, Batako, Hebel, Urugan Sirtu, Sirdam, Makadam, Brangkal, Basecose, limestone"
+  viewport = "width=device-width, initial-scale=1.0"
+  fontawesome = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+  logo = "/images/logo/logo-CDI.png"
+  logo_amp = "/images/logo/logo-cdi-512-512.png"
+  footer_logo = "/images/logo/logo-CDI-putih.png"
+  favicon = "/images/logo/Logo-CDI-favicon.jpg"
+  featured_image = "/images/admin/featured-image.png"
+  author = "Ibnu Koesnady"
+  telepon = "//+6285776786091"
+  whatsapp = "//api.whatsapp.com/send?phone=6285776786091&text=*Halo creativedesigninterior.com*%20%3A"
+  enableWhatApps = true
+  enableTelepon = true
+  tocMinWordCount = 300
+  tableOfContent = "Daftar Isi:"
+  geo_latitude = -6.595038
+  geo_longitude = 106.817787
+  opening_hours = "Mo-Sa 08:00-17:00"
+  
+  # Informasi Perusahaan
+  companyName = "creativedesigninterior.com"
+  aboutUs = "Kami adalah Perusahaan Jasa Kitchen Set dan Jasa Pembuatan Funiture Interior lainnya, Jasa Pengecoran, Jasa Bangun Rumah, juga Menjual Bahan bangunan, sperti; Pasir, Split, Batu Belah, Bata Merah, Batako, Hebel"
+
+  # Informasi Kontak
+  phone = "0857-7678-6091"
+  email = "customercdi@gmail.com"
+  address = "Jl. Sersan Muhtar Dramaga, Bogor – Jabar"
+  whatsappNumber = "6285776786091"
+
+  # Schema settings
+  base_price = 850000
+  price_range = 3000000
+  payment_methods = ["COD (Cash On Delivery)", "Transfer Bank", "Bayar DP 50%", "Transfer Setelah Terkirim", "Bayar Bertahap", "Transfer Setelah Selesai"]
+  area_served = ["Jakarta", "Bogor", "Depok", "Tangerang", "Bekasi", "Cikarang", "Karawang", "Bandung", "Serang", "Purwakarta", "Cilegon", "Cikampek", "Subang", "Rangkas Bitung"]
+  free_shipping = true
+
+return_policies = [
+  "Produk dapat dikembalikan dan ditukar jika tidak sesuai spesifikasi sebelum dipakai atau dibongkar dalam 1 hari.",
+  "Pengembalian dikenakan biaya 50% dari total harga produk jika telah dipakai atau dibongkar di lokasi.",
+  "Pembayaran tidak dapat dikembalikan jika produk telah terkirim dan dipakai atau dibongkar di lokasi."
+  ]
+
+cancellation_policies = [
+  "Pesanan dan layanan jasa dapat dibatalkan sebelum pengerjaan dimulai.",
+  "Biaya jasa tidak dapat dikembalikan jika pembatalan dilakukan setelah pengerjaan mencapai 20%.",
+  "Pengembalian DP hanya berlaku untuk jasa yang belum dikerjakan."
+  ]
+  service_output = "Produk dan jasa diberikan sesuai dengan spesifikasi dan kesepakatan yang telah disetujui."
+
+  # Hero Section
+  hero_image = "/images/admin/bg_creative_design.png"
+  hero_title = "Solusi Interior dan Furniture Custom Berkualitas"
+  hero_description = "Kami menyediakan layanan desain interior dan pembuatan furniture custom, mulai dari kitchen set, lemari, meja, material bangunan dan jasa pengecoran. Solusi lengkap untuk kebutuhan interior dan material bangunan Anda."
+  hero_cta_text = "Lihat Produk Kami"
+  services_cta_text = "Cek Daftar Harga"
+
+  # Footer Section
+  footer_about_title = "Tentang Kami"
+  footer_about_description = "Kami adalah Perusahaan Jasa Kitchen Set dan Jasa Pembuatan Funiture Interior lainnya, Jasa Pengecoran, Jasa Bangun Rumah, juga Menjual Bahan bangunan, sperti: Pasir, Split, Batu Belah, Bata Merah, Batako Hebel dengan jangkauan oprasional seluruh wil di JABODETABEK: jakarta, bogor, depok, tangerang, bekasi, Cikarang, Karawang, Lemah abang, Cikampek, Purwakarta, Sukabumi, Cianjur, Garut, Tasik, Bandung dan Banten."
+
+  footer_services_title = "Kenapa Pilih Kami"
+  footer_contact_title = "Kontak Kami"
+  footer_bottom_text = "@2024 CDI. Semua Hak Dilindungi."
+
+  # Testimonials Section
+  testimonials_title = "Apa Kata Klien Kami"
+  
+  advant_title = "Keunggulan"
+  services_title = "Produk dan Jasa Kami"
+  articles_title = "Tips & Informasi"
+
+  [[params.advantages]]
+    title = "BERPENGALAMAN"
+    description = "Kami berpengalaman lebih dari 10 tahun sebagai Jasa Kitchen Set dan Pengadaan Material Bangunan"
+    image = "/images/page/berpengalaman.png"
+
+  [[params.advantages]]
+    title = "HARGA SESUAI BUDGET"
+    description = "Biaya Jasa dan Material Bangunan all in one sudah termasuk biayaharga material, pengiriman juga bongkar muat."
+    image = "/images/page/murah.png"
+
+  [[params.advantages]]
+    title = "SISTEM KERJA MODERN"
+    description = "Kami memiliki sistem kerja modern dan profesional sehinga proses pembuatan tepat waktu dan kualitas terjaga."
+    image = "/images/page/uptodate.png"
+
+  [[params.advantages]]
+    title = "PROFESIONAL"
+    description = "Tim Kerja Kami yang sudah terlatih bertahun-tahun sehingga sudah tidak dapat diragukan lagi kualitas pelayanannya."
+    image = "/images/page/terpercaya.png"
+
+  [[params.services]]
+    title = "FURNITURE/ MEBEL"
+    description = "Jasa Pembuatan Furniture Interior yang kami layani seperti; Kitchen Set/ Lemari Dapur, Lemari Pakaian, Meja Belajar, Meja Tamu, Meja Makan, Tempat Tidur/Dipan, Credenza, Tempat tidur Bayi dll"
+    image = "/images/page/furniture.png"
+    link = "/product/"
+    cta_text = "Selengkapnya"
+
+  [[params.services]]
+    title = "BAHAN BANGUNAN"
+    description = "Material yang kami jual seperti; Pasir Beton, Pasir Plester Bangka /Lampung, Pasir Pasang, Pasir Cimangkok, Pasir Jawilan, Pasir Jebrod, Pasir Mundu, Pasir Rangkas, Batu Kali /Belah, Split, Sirtu, Sirdam, Limestone, BaseCourse, Abu Batu, Makadam dll."
+    image = "/images/page/material.png"
+    link = "/product/"
+    cta_text = "Selengkapnya"
+
+  [[params.services]]
+    title = "JASA PENGECORAN"
+    description = "Jasa Pengecoran yang kami sediakan untuk mendukung proyek pembangunan anda, seperti; Jasa Cor Jalan, Cor Lantai Rumah, Cor Parkiran, Cor Lapangan, Cor Jembatan, Cor Pondasi, Cor Selup, Cor Kolom. Cor Kolam dll."
+    image = "/images/page/jasa-pengecoran.png"
+    link = "/product/"
+    cta_text = "Selengkapnya"
+
+  [[params.services]]
+    title = "SEWA/RENTAL ALAT"
+    description = "Jenis Alat yang kami sewakan untuk mendukung proses pengecoran seperti; Concrete Pump Mini, Concrete Pump Standar, C. Pump Long Boom, C. Pump Super LB, C. Pump Master LB, C. Pump Kodok, Vibrator, Stamper dll."
+    image = "/images/page/sewa-alat.png"
+    link = "/product/"
+    cta_text = "Selengkapnya"
+
+  [[params.footer_services]]
+  text = "Kami berpengalaman lebih dari 10 tahun sebagai Jasa Kitchen Set dan Pembuatan Furniture Interior, Lemari, Meja, Dipan, Jasa Bangunan Rumah, Gedung Pabrik dan Sebagai Supplier Bahan Bangunan, baik material alam, besi atau material lainnya. Sehingga pengalaman kami akan membawa anda mendapatkan layanan terbaik saat ini."
+
+  [[params.footer_contact]]
+    icon = "fas fa-map-marker-alt"
+    text = "Jl. Sersan Muhtar Dramaga, Bogor – Jabar"
+  [[params.footer_contact]]
+    icon = "fas fa-map-marker-alt"
+    text = "Kp. Cijantra Jatake, Tangerang – Banten"
+  [[params.footer_contact]]
+    icon = "fas fa-map-marker-alt"
+    text = "Jl. Raya Cikarang Cibarusah, Bekasi – Jabar"
+  [[params.footer_contact]]
+    icon = "fas fa-map-marker-alt"
+    text = "Jl. Maritim Raya, Pelabuhan Sunda kelapa, Penjaringan – Jakarta Utara."
+  [[params.footer_contact]]
+    icon = "fas fa-phone-alt"
+    text = "+62 857-7678-6091"
+  [[params.footer_contact]]
+    icon = "fas fa-envelope"
+    text = "customercdi@gmail.com"
+
+[[params.testimonials]]
+  avatar = "/images/admin/avatar1.png"
+  name = "{Agus|Dani|Rahmat|Yusuf|Toni|Rian|Farhan|Fadli|Ilham|Reza}"
+  message = "{Saya memesan furniture dari creativedesigninterior.com untuk {ruang tamu|ruang kerja|dapur}. Prosesnya {mudah|cepat|teratur} dan kualitasnya {luar biasa|memuaskan|terbaik}.|Furniture dari creativedesigninterior.com sangat {membantu|bermanfaat} untuk proyek interior saya. {Pengiriman|Layanan} tepat waktu dan kualitasnya {baik|memuaskan|sesuai harapan}.}"
+  response = "{Terima kasih atas kepercayaan Anda! Kami {senang|bangga} dapat mendukung proyek interior Anda dengan produk berkualitas.|Kami sangat menghargai ulasan Anda. Terima kasih telah mempercayakan kebutuhan furniture Anda kepada kami!}"
+  rating = 5
+
+[[params.testimonials]]
+  avatar = "/images/admin/avatar2.png"
+  name = "{Lina|Rara|Tina|Maya|Sinta|Fina|Reni|Aulia|Dina|Ari}"
+  message = "{Creativedesigninterior.com sangat {membantu|memuaskan} dalam proyek {rumah|kantor|kafe} saya. Layanan mereka {profesional|ramah|terpercaya}, dan kualitas furniture sesuai dengan kebutuhan.|Saya puas dengan layanan creativedesigninterior.com yang {profesional|efisien|ramah}. Produk yang saya beli {berkualitas tinggi|sangat sesuai} untuk proyek saya.}"
+  response = "{Kami sangat menghargai ulasan Anda. Senang mendengar bahwa Anda puas dengan produk dan layanan kami.|Terima kasih atas kepercayaannya. Kami akan terus memberikan pelayanan terbaik!}"
+  rating = 5
+
+[[params.testimonials]]
+  avatar = "/images/admin/avatar3.png"
+  name = "{Farhan|Toni|Agus|Reza|Ilham|Rian|Fadli|Rahmat|Dani|Yusuf}"
+  message = "{Layanan penjualan furniture dari creativedesigninterior.com sangat {memuaskan|terpercaya|profesional} untuk proyek {rumah|kantor|kafe} saya. Timnya {cepat tanggap|ramah|profesional} dan pengirimannya {cepat|tepat waktu|teratur}.|Saya memesan furniture untuk proyek {rumah|kafe} saya, dan layanannya {baik|profesional|memuaskan}. Pengirimannya {tepat waktu|rapi|cepat}.}"
+  response = "{Terima kasih! Kami berkomitmen untuk memberikan layanan terbaik bagi setiap proyek, termasuk proyek Anda.|Senang dapat melayani proyek Anda. Terima kasih atas kepercayaannya!}"
+  rating = 4
+
+[[params.testimonials]]
+  avatar = "/images/admin/avatar4.png"
+  name = "{Rian|Farhan|Toni|Agus|Reza|Ilham|Rahmat|Dani|Yusuf|Fadli}"
+  message = "{Saya sangat puas dengan layanan furniture dari creativedesigninterior.com. Prosesnya {efisien|lancar|mudah} dan {sangat membantu|mempercepat} pengerjaan proyek saya.|Produk dari creativedesigninterior.com {berkualitas|luar biasa|terbaik}, dan layanannya {cepat|efisien|ramah}. Sangat mendukung proyek saya.}"
+  response = "{Senang mendengar Anda puas dengan hasilnya. Terima kasih atas kepercayaannya dalam menggunakan layanan kami.|Terima kasih atas ulasannya. Kami sangat menghargai kepercayaan Anda pada layanan kami.}"
+  rating = 5
+
+[[params.testimonials]]
+  avatar = "/images/admin/avatar5.png"
+  name = "{Rara|Lina|Sinta|Dina|Aulia|Maya|Tina|Reni|Fina|Ari}"
+  message = "{Pelayanan creativedesigninterior.com sangat {membantu|bermanfaat|memudahkan} untuk proyek {rumah|kafe|kantor} saya. Solusi yang diberikan {tepat|efektif|memuaskan} dan produknya {berkualitas|bagus|terbaik}.|creativedesigninterior.com memberikan {solusi tepat|produk berkualitas} untuk proyek saya. Produk yang saya beli {berkualitas tinggi|bagus|terbaik}, dan layanannya {ramah|profesional|efisien}.}"
+  response = "{Terima kasih! Kami senang dapat membantu mewujudkan proyek Anda dengan produk interior terbaik.|Kami menghargai ulasan Anda. Terima kasih telah memilih creativedesigninterior.com untuk proyek Anda!}"
+  rating = 5
+
+[[params.testimonials]]
+  avatar = "/images/admin/avatar6.png"
+  name = "{Rahmat|Farhan|Agus|Toni|Ilham|Rian|Dani|Yusuf|Reza|Fadli}"
+  message = "{Saya memesan furniture untuk {ruang tamu|kantor|proyek bangunan}, dan hasilnya {sangat memuaskan|terbaik|luar biasa}. Layanan creativedesigninterior.com {sangat profesional|aman|terpercaya}.|creativedesigninterior.com {memberikan layanan profesional|berkualitas tinggi|sangat membantu} untuk proyek saya. Produk yang disediakan {berkualitas|bagus|sesuai harapan}, dan layanannya {memuaskan|profesional|terpercaya}.}"
+  response = "{Kami senang mendengar bahwa Anda puas dengan layanan kami. Terima kasih atas ulasannya!|Terima kasih atas ulasan positifnya. Kami akan terus memberikan layanan terbaik untuk setiap proyek Anda.}"
+  rating = 5
+
+[[params.products]]
+  name = "Pasir"
+[[params.products.items]]
+  item = "Pasir Cor"
+  price = "280.000 per m³"
+[[params.products.items]]
+  item = "Pasir Pasang"
+  price = "240.000 per m³"
+[[params.products.items]]
+  item = "Pasir Jalupang"
+  price = "280.000 per m³"
+[[params.products.items]]
+  item = "Pasir Cuci"
+  price = "270.000 per m³"
+[[params.products.items]]
+  item = "Pasir Rangkas"
+  price = "275.000 per m³"
+[[params.products.items]]
+  item = "Abu Batu /Pasir Abu"
+  price = "230.000 per m³"
+[[params.products.items]]
+  item = "Pasir Urug"
+  price = "190.000 per m³"
+
+[[params.products]]
+  name = "Batu"
+[[params.products.items]]
+  item = "Batu Split"
+  price = "250.000 per m³"
+[[params.products.items]]
+  item = "Batu Kali"
+  price = "231.000 per m³"
+[[params.products.items]]
+  item = "Urugan Sirtu - Berangkal"
+  price = "225.000 per m³"
+[[params.products.items]]
+  item = "Limestone - Batu Kapur"
+  price = "225.000 per m³"
+[[params.products.items]]
+  item = "Makadam - Basecose - Sirdam"
+  price = "250.000 per m³"
+
+[[params.products]]
+  name = "Bata dan Batako"
+[[params.products.items]]
+  item = "Batu Bata Standar"
+  price = "480 per buah"
+[[params.products.items]]
+  item = "Batu Bata Semi Jumbo"
+  price = "600 per buah"
+[[params.products.items]]
+  item = "Batu Bata Jumbo"
+  price = "760 per buah"
+[[params.products.items]]
+  item = "Batako Press 2 Lubang"
+  price = "2.600 per buah"
+[[params.products.items]]
+  item = "Batako Press 3 Lubang"
+  price = "2.800 per buah"
+[[params.products.items]]
+  item = "Hebel Putih SNI"
+  price = "580.000 per m³"
+
+[[params.products]]
+  name = "Beton Readymix"
+[[params.products.items]]
+  item = "Beton Readymix K225"
+  price = "840.000 per m³"
+[[params.products.items]]
+  item = "Beton Readymix K250"
+  price = "870.000 per m³"
+[[params.products.items]]
+  item = "Beton Readymix K300"
+  price = "900.000 per m³"
+[[params.products.items]]
+  item = "Beton Readymix K350"
+  price = "940.000 per m³"
+[[params.products.items]]
+  item = "Beton Readymix K400"
+  price = "1.090.000 per m³"
+
+[[params.products]]
+  name = "Aspal"
+[[params.products.items]]
+  item = "Aspal Hotmix"
+  price = "89.000 per m²"
+
+[[params.products]]
+  name = "Kitchen Set"
+[[params.products.items]]
+  item = "Kitchen set minimalis"
+  price = "1.900.000"
+
+[[params.products]]
+  name = "Lemari"
+[[params.products.items]]
+  item = "Lemari custom dan built-in"
+  price = "1.700.000"
+
+[[params.products]]
+  name = "Meja"
+[[params.products.items]]
+  item = "Meja kerja"
+  price = "1.200.000"
+[[params.products.items]]
+  item = "Meja makan"
+  price = "4.000.000"
+
+[[params.products]]
+  name = "Kursi dan Sofa"
+[[params.products.items]]
+  item = "Kursi custom"
+  price = "700.000"
+[[params.products.items]]
+  item = "Sofa custom"
+  price = "1.000.000"
+
+[[params.products]]
+  name = "Rak dan Kabinet"
+[[params.products.items]]
+  item = "Rak buku"
+  price = "1.700.000"
+[[params.products.items]]
+  item = "Kabinet custom"
+  price = "1.700.000"
+
+[[params.products]]
+  name = "Sewa Alat"
+[[params.products.items]]
+  item = "Truk Pasir"
+  price = "1.700.000 per hari"
+[[params.products.items]]
+  item = "Concrete Mixer"
+  price = "300.000 per hari"
+[[params.products.items]]
+  item = "Alat Pemotong Besi"
+  price = "250.000 per hari"
+[[params.products.items]]
+  item = "Mesin Las"
+  price = "170.000 per hari"
+[[params.products.items]]
+  item = "Excavator Mini"
+  price = "2.000.000 per hari"
+[[params.products.items]]
+  item = "Pompa Beton Standar/Mini 18m"
+  price = "3.500.000 per hari"
+[[params.products.items]]
+  item = "Pompa Beton Long Boom 23m"
+  price = "4.500.000 per hari"
+[[params.products.items]]
+  item = "Pompa Beton Super Long 28m"
+  price = "7.500.000 per hari"
+[[params.products.items]]
+  item = "Pompa Beton Master Long 50m"
+  price = "13.000.000 per hari"
+[[params.products.items]]
+  item = "Pompa Beton Kodok - Portable"
+  price = "7.500.000 per hari"
+[[params.products.items]]
+  item = "Crawler Dozer (6.5 m³)"
+  price = "75.000 per jam"
+[[params.products.items]]
+  item = "Wheel Dozer (5.8 m³)"
+  price = "70.000 per jam"
+[[params.products.items]]
+  item = "Mini Dozer (3.2 m³)"
+  price = "60.000 per jam"
+[[params.products.items]]
+  item = "Hydraulic Crane (3.5ton 20m)"
+  price = "100.000 per jam"
+[[params.products.items]]
+  item = "Carry Deck Cranes (5ton 25m)"
+  price = "1.200.000 per jam"
+[[params.products.items]]
+  item = "Mobile Crane (6.5ton 30m)"
+  price = "150.000 per jam"
+[[params.products.items]]
+  item = "Tower Crane (10ton 40m)"
+  price = "200.000 per jam"
+[[params.products.items]]
+  item = "Crawler Crane (20ton 50m)"
+  price = "300.000 per jam"
+[[params.products.items]]
+  item = "Rough Terrain (25ton 60m)"
+  price = "350.000 per jam"
+[[params.products.items]]
+  item = "Mini Crane (35ton 70m)"
+  price = "400.000 per jam"
+[[params.products.items]]
+  item = "Mini Crane (45ton 80m)"
+  price = "450.000 per jam"
+[[params.products.items]]
+  item = "Mini Crane (50ton 90m)"
+  price = "500.000 per jam"
+
+[[params.products]]
+  name = "Uditch - Buis Beton"
+[[params.products.items]]
+  item = "Uditch - Buis Beton Mutu K225 (30cm x 15cm x 25cm)"
+  price = "100.000 per unit"
+[[params.products.items]]
+  item = "Uditch - Buis Beton Mutu K250 (40cm x 20cm x 30cm)"
+  price = "150.000 per unit"
+[[params.products.items]]
+  item = "Uditch - Buis Beton Mutu K300 (50cm x 25cm x 35cm)"
+  price = "200.000 per unit"
+[[params.products.items]]
+  item = "Uditch - Buis Beton Mutu K350 (60cm x 30cm x 40cm)"
+  price = "250.000 per unit"
+
+[[params.products]]
+  name = "Box Culvert"
+[[params.products.items]]
+  item = "Box Culvert Mutu K225 (100cm x 50cm)"
+  price = "500.000 per unit"
+[[params.products.items]]
+  item = "Box Culvert Mutu K250 (150cm x 75cm)"
+  price = "750.000 per unit"
+[[params.products.items]]
+  item = "Box Culvert Mutu K300 (200cm x 100cm)"
+  price = "1.000.000 per unit"
+[[params.products.items]]
+  item = "Box Culvert Mutu K350 (250cm x 125cm)"
+  price = "1.250.000 per unit"
+
+[[params.products]]
+  name = "Pagar Panel"
+[[params.products.items]]
+  item = "Pagar Panel Mutu K225 (3m x 60cm)"
+  price = "150.000 per lembar"
+[[params.products.items]]
+  item = "Pagar Panel Mutu K250 (3m x 60cm)"
+  price = "160.000 per lembar"
+[[params.products.items]]
+  item = "Pagar Panel Mutu K300 (3m x 60cm)"
+  price = "170.000 per lembar"
+[[params.products.items]]
+  item = "Pagar Panel Mutu K350 (3m x 60cm)"
+  price = "180.000 per lembar"
+
+[[params.products]]
+  name = "Dak Panel"
+[[params.products.items]]
+  item = "Dak Panel Mutu K225 (300 x 60 x 10cm)"
+  price = "500.000 per lembar"
+[[params.products.items]]
+  item = "Dak Panel Mutu K250 (300 x 60 x 10cm)"
+  price = "550.000 per lembar"
+[[params.products.items]]
+  item = "Dak Panel Mutu K300 (300 x 60 x 10cm)"
+  price = "600.000 per lembar"
+[[params.products.items]]
+  item = "Dak Panel Mutu K350 (300 x 60 x 10cm)"
+  price = "650.000 per lembar"
+
+[[params.products]]
+  name = "Tiang Pancang"
+[[params.products.items]]
+  item = "Mutu K300 (10cm x 10cm x 350cm)"
+  price = "500.000"
+[[params.products.items]]
+  item = "Mutu K350 (12.5cm x 12.5cm x 350cm)"
+  price = "550.000"
+[[params.products.items]]
+  item = "Mutu K400 (15cm x 15cm x 400cm)"
+  price = "600.000"
+[[params.products.items]]
+  item = "Mutu K450 (17.5cm x 17.5cm x 450cm)"
+  price = "650.000"
+[[params.products.items]]
+  item = "Mutu K500 (20cm x 20cm x 500cm)"
+  price = "700.000"
+
+[[params.pasir]]
+  name = "Pasir Cor"
+  price = "280.000"
+[[params.pasir]]
+  name = "Pasir Pasang"
+  price = "240.000"
+[[params.pasir]]
+  name = "Pasir Jalupang"
+  price = "280.000"
+[[params.pasir]]
+  name = "Pasir Cuci"
+  price = "270.000"
+[[params.pasir]]
+  name = "Pasir Rangkas"
+  price = "275.000"
+[[params.pasir]]
+  name = "Abu Batu Pasir Abu"
+  price = "230.000"
+[[params.pasir]]
+  name = "Pasir Urug"
+  price = "190.000"
+
+[[params.batusplit]]
+  name = "Batu Split 1-2cm"
+  price = "250.000"
+[[params.batusplit]]
+  name = "Batu Split 2-3cm"
+  price = "250.000"
+[[params.batusplit]]
+  name = "Batu Split 3-5cm"
+  price = "250.000"
+
+[[params.batupondasi]]
+  name = "Batu Kali Bulat"
+  price = "281.000"
+[[params.batupondasi]]
+  name = "Batu Kali Belah"
+  price = "231.000"
+[[params.batupondasi]]
+  name = "Batu Gunung Belah"
+  price = "231.000"
+
+[[params.sirtubrangkal]]
+  name = "Urugan Sirtu Kali"
+  price = "225.000"
+[[params.sirtubrangkal]]
+  name = "Urugan Sirtu Gunung"
+  price = "235.000"
+[[params.sirtubrangkal]]
+  name = "Urugan Berangkal"
+  price = "225.000"
+
+[[params.limestone]]
+  name = "Limestone Grade A"
+  price = "235.000"
+[[params.limestone]]
+  name = "Limestone Grade B"
+  price = "225.000"
+
+[[params.makadambeskos]]
+  name = "Makadam 57"
+  price = "250.000"
+[[params.makadambeskos]]
+  name = "Basecose"
+  price = "250.000"
+[[params.makadambeskos]]
+  name = "Sirdam"
+  price = "245.000"
+
+[[params.tanahmerah]]
+  name = "Tanah Merah Grade A"
+  price = "155.000"
+[[params.tanahmerah]]
+  name = "Tanah Merah Grade B"
+  price = "145.000"
+
+[[params.batamerah]]
+  name = "Batu Bata Standar"
+  price = "480"
+[[params.batamerah]]
+  name = "Batu Bata Semi Jumbo"
+  price = "600"
+[[params.batamerah]]
+  name = "Batu Bata Jumbo"
+  price = "760"
+
+[[params.batakopress]]
+  name = "Batako Press 2 Lubang 7x17x30cm"
+  price = "2.600"
+[[params.batakopress]]
+  name = "Batako Press 3 Lubang 7x17x36cm"
+  price = "2.800"
+[[params.batakopress]]
+  name = "Batako Semen 3 Lubang 10x20x40cm"
+  price = "12.800"
+
+[[params.hebel]]
+  name = "Hebel Putih AAC 7.5x20x60cm"
+  price = "580.000"
+[[params.hebel]]
+  name = "Hebel Putih AAC 10x20x60cm"
+  price = "580.000"
+
+[[params.jasacor]]
+  name = "Beton Readymix K225"
+  price = "840.000"
+[[params.jasacor]]
+  name = "Beton Readymix K250"
+  price = "870.000"
+[[params.jasacor]]
+  name = "Beton Readymix K300"
+  price = "900.000"
+[[params.jasacor]]
+  name = "Beton Readymix K350"
+  price = "940.000"
+[[params.jasacor]]
+  name = "Beton Readymix K400"
+  price = "1.090.000"
+
+[[params.hotmix]]
+  name = "Hotmix Jalan Baru"
+  price = "89.000"
+[[params.hotmix]]
+  name = "Hotmix Lapis Jalan Aspal"
+  price = "69.000"
+
+[[params.uditchbuis]]
+  name = "Mutu K225 (30cm x 15cm x 25cm)"
+  price = "100.000"
+[[params.uditchbuis]]
+  name = "Mutu K250 (40cm x 20cm x 30cm)"
+  price = "150.000"
+[[params.uditchbuis]]
+  name = "Mutu K300 (50cm x 25cm x 35cm)"
+  price = "200.000"
+[[params.uditchbuis]]
+  name = "Mutu K350 (60cm x 30cm x 40cm)"
+  price = "250.000"
+
+[[params.boxculvert]]
+  name = "Mutu K225 (100cm x 50cm)"
+  price = "500.000"
+[[params.boxculvert]]
+  name = "Mutu K250 (150cm x 75cm)"
+  price = "750.000"
+[[params.boxculvert]]
+  name = "Mutu K300 (200cm x 100cm)"
+  price = "1.000.000"
+[[params.boxculvert]]
+  name = "Mutu K350 (250cm x 125cm)"
+  price = "1.250.000"
+
+[[params.bulldozer]]
+  name = "Crawler Dozer (6.5 m³)"
+  price = "75.000"
+[[params.bulldozer]]
+  name = "Wheel Dozer (5.8 m³)"
+  price = "70.000"
+[[params.bulldozer]]
+  name = "Mini Dozer (3.2 m³)"
+  price = "60.000"
+
+[[params.crane]]
+  name = "Hydraulic Crane (3.5ton)"
+  price = "100.000"
+[[params.crane]]
+  name = "Carry Deck Cranes (5ton)"
+  price = "120.000"
+[[params.crane]]
+  name = "Mobile Crane (6.5ton)"
+  price = "150.000"
+[[params.crane]]
+  name = "Tower Crane (10ton)"
+  price = "200.000"
+[[params.crane]]
+  name = "Crawler Crane (20ton)"
+  price = "300.000"
+[[params.crane]]
+  name = "Rough Terrain (25ton)"
+  price = "350.000"
+[[params.crane]]
+  name = "Mini Crane (35ton)"
+  price = "400.000"
+[[params.crane]]
+  name = "Mini Crane (45ton)"
+  price = "450.000"
+[[params.crane]]
+  name = "Mini Crane (50ton)"
+  price = "500.000"
+
+[[params.pagarpanel]]
+  name = "Mutu K225 (3m x 60cm x 5cm)"
+  price = "150.000"
+[[params.pagarpanel]]
+  name = "Mutu K250 (3m x 60cm x 5cm)"
+  price = "160.000"
+[[params.pagarpanel]]
+  name = "Mutu K300 (3m x 60cm x 5cm)"
+  price = "170.000"
+[[params.pagarpanel]]
+  name = "Mutu K350 (3m x 60cm x 5cm)"
+  price = "180.000"
+
+[[params.dakpanel]]
+  name = "Mutu K225 (300 x 60 x 10cm)"
+  price = "500.000"
+
+[[params.dakpanel]]
+  name = "Mutu K250 (300 x 60 x 10cm)"
+  price = "550.000"
+[[params.dakpanel]]
+  name = "Mutu K300 (300 x 60 x 10cm)"
+  price = "600.000"
+[[params.dakpanel]]
+  name = "Mutu K350 (300 x 60 x 10cm)"
+  price = "650.000"
+
+[[params.excavator]]
+  name = "Crawler Excavator (0.5-1.2 m3)"
+  price = "55.000"
+[[params.excavator]]
+  name = "Hydraulic Excavator (1.2-2.0 m3)"
+  price = "60.000"
+[[params.excavator]]
+  name = "Wheeled Excavator (2.0-3.0 m3)"
+  price = "70.000"
+[[params.excavator]]
+  name = "Long Reach Excavator (3.0-4.5 m3)"
+  price = "80.000"
+[[params.excavator]]
+  name = "Skid Steer Excavator (4.5-6.0 m3)"
+  price = "90.000"
+[[params.excavator]]
+  name = "Dragline Excavator (Above 6.0 m3)"
+  price = "100.000"
+
+[[params.tiangpancang]]
+  name = "Mutu K300 (10cm x 10cm x 350cm)"
+  price = "500.000"
+[[params.tiangpancang]]
+  name = "Mutu K350 (12.5cm x 12.5cm x 350cm)"
+  price = "550.000"
+[[params.tiangpancang]]
+  name = "Mutu K400 (15cm x 15cm x 400cm)"
+  price = "600.000"
+[[params.tiangpancang]]
+  name = "Mutu K450 (17.5cm x 17.5cm x 450cm)"
+  price = "650.000"
+[[params.tiangpancang]]
+  name = "Mutu K500 (20cm x 20cm x 500cm)"
+  price = "700.000"
+
+[[params.kayu]]
+  name= "Kaso Kayu Duren 4/6"
+price = "2.500.000"
+[[params.kayu]]
+  name= "Kaso Kayu Duren 5/7"
+price = "2.500.000"
+[[params.kayu]]
+  name= "Balok Kayu Duren 6/12"
+price = "2.700.000"
+[[params.kayu]]
+  name= "Papan Kayu Duren 2/20"
+price = "2.700.000"
+[[params.kayu]]
+  name= "Kaso Merah campur 4/6"
+price = "2.300.000"
+[[params.kayu]]
+  name= "Kaso Merah campur 5/7"
+price = "2.300.000"
+[[params.kayu]]
+  name= "Balok Merah campur 6/12"
+price = "2.400.000"
+[[params.kayu]]
+  name= "Papan Merah campur 2/20"
+price = "2.400.000"
+[[params.kayu]]
+  name= "Kaso Kayu Putih Keras 4/6"
+price = "2.050.000"
+[[params.kayu]]
+  name= "Kaso Kayu Putih Keras 5/7"
+price = "2.050.000"
+[[params.kayu]]
+  name= "Balok Kayu Putih Keras 6/12"
+price = "2.200.000"
+[[params.kayu]]
+  name= "Papan Kayu Putih Keras 2/20"
+price = "2.300.000"
+[[params.kayu]]
+  name= "Kaso Kayu Ikatan KW1 4/6"
+price = "1.600.000"
+[[params.kayu]]
+  name= "Kaso Kayu Ikatan KW1 5/7"
+price = "1.600.000"
+[[params.kayu]]
+  name= "Kaso Kayu Ikatan KW2 4/6"
+price = "1.400.000"
+[[params.kayu]]
+  name= "Kaso Kayu Ikatan KW2 5/7"
+price = "1.400.000"
+[[params.kayu]]
+  name= "Dolken Karanghantu 4/6"
+price = "2.700.000"
+[[params.kayu]]
+  name= "Dolken Karanghantu 5/7"
+price = "3.100.000"
+
+[[params.jasataman]]
+  name = "Taman Minimalis Sederhana"
+  price = "350.000"
+[[params.jasataman]]
+  name = "Taman Minimalis Kompleks"
+  price = "500.000"
+[[params.jasataman]]
+  name = "Perawatan Taman Bulanan"
+  price = "50.000"
+[[params.jasataman]]
+  name = "Renovasi Taman"
+  price = "300.000"
+
+[[params.meja]]
+  name = "Meja Kantor Custom Design"
+  price = "1.800.000"
+[[params.meja]]
+  name = "Meja Belajar Custom Design"
+  price = "1.300.000"
+[[params.meja]]
+  name = "Meja Makan Custom Design"
+  price = "2.000.000"
+[[params.meja]]
+  name = "Meja Rias Custom Design"
+  price = "1.600.000"
+
+[[params.lemari]]
+  name = "Lemari Pakaian Custom Design"
+  price = "180.0000"
+[[params.lemari]]
+  name = "Lemari Bawah Tangga Custom Design"
+  price = "200.0000"
+
+[[params.kitchenset]]
+  name = "Finishing HPL Lokal Melaminto"
+  price = "185.0000"
+[[params.kitchenset]]
+  name = "Finishing Cat Duco"
+  price = "250.0000"
+[[params.kitchenset]]
+  name = "Finishing Decosite"
+  price = "180.0000"
+
+[[params.dipan]]
+  name = "Dipan Anak Custom Design"
+  price = "180.0000"
+[[params.dipan]]
+  name = "Dipan Dewasa Custom Design"
+  price = "200.0000"
+
+  # Menu Section
+  [[params.menu_items]]
+    title = "Beranda"
+    url = "/"
+  [[params.menu_items]]
+    title = "Profile"
+    url = "/profile/"
+  [[params.menu_items]]
+    title = "Daftar Harga"
+    url = "/daftar-harga/"
+  [[params.menu_items]]
+    title = "TOS"
+    url = "/terms-of-service/"
+
+[params.header]
+   title = "Creative Design Interior - Jasa Kitchen Set & Bahan Bangunan | "
+   highlight = "CDI"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+  [markup.tableOfContents]
+    startLevel = 1
+    endLevel = 3
+
+[related]
+  threshold = 80
+  includeNewer = true
+  toLower = false
+
+[[related.indices]]
+  name = "categories"
+  weight = 100
+
+[outputs]
+  home = ["HTML", "RSS"]
+  page = ["HTML", "AMP"]
+
+[outputFormats]
+  [outputFormats.AMP]
+    mediaType = "text/html"
+    baseName = "amp/index"
+    path = ""
+    isPlainText = false
+    permalinkable = true
+    rel = "amphtml"

@@ -1,0 +1,345 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="{{ .Site.Params.viewport }}">
+<title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ printf "%s - %d" .Title (now.Year) }}{{ end }}</title>
+<meta name="description" content="{{ if .IsHome }}{{ .Site.Params.meta_description }}{{ else }}{{ .Summary | plainify | truncate 160 }}{{ end }}">
+<link rel="icon" type="image/png" href="{{ .Site.Params.favicon | relURL }}">
+<link rel="stylesheet" href="{{ "css/styles.css" | relURL }}">
+<script src="{{ "js/menu-toggle.js" | relURL }}" defer></script>
+<script src="{{ "js/spintax.js" | relURL }}"></script>
+<link rel="stylesheet" href="{{ .Site.Params.fontawesome }}" media="print" onload="this.media='all'">
+<link rel="canonical" href="{{ .Permalink }}">
+{{ if and (not .IsHome) (ne .Kind "page") (not .IsSection) }}
+  <link rel="amphtml" href="{{ .Permalink | replaceRE "/$" "" }}/amp/">
+{{ end }}
+{{- $ogTitle := cond .IsHome .Site.Title (printf "%s - %d" .Title (now.Year)) -}}
+{{- $ogDescription := cond .IsHome .Site.Params.meta_description (.Summary | plainify | truncate 160) -}}
+{{- $removeWords := "^(Jual|Sewa|Harga|Biaya|Tukang) " -}}
+{{- $titleKeywords := replaceRE $removeWords "" .Title | lower -}}
+{{- $allKeywords := delimit (slice $titleKeywords) ", " -}}
+<meta name="keywords" content="{{ $allKeywords }}">
+{{ if .IsPage }}
+  {{ if eq .Params.type "service" }}
+    <meta property="og:type" content="service">
+  {{ else if eq .Params.type "product" }}
+    <meta property="og:type" content="product">
+  {{ else }}
+    <meta property="og:type" content="localbusiness">
+  {{ end }}
+{{ end }}
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:title" content="{{ $ogTitle }}">
+<meta property="og:description" content="{{ $ogDescription }}">
+{{- $featuredImage := "" }}
+{{- if .Params.featured_image }}
+  {{- $featuredImage = .Params.featured_image | absURL }}
+{{- else }}
+  {{- $images := findRE "<img.*?src=\"(.*?)\".*?>" .Content }}
+  {{- if gt (len $images) 0 }}
+    {{- $featuredImage = (index $images 0 | replaceRE "<img.*?src=\"(.*?)\".*?>" "$1") | absURL }}
+  {{- else }}
+    {{- $featuredImage = "/images/admin/featured-image.png" | absURL }}
+  {{- end }}
+{{- end }}
+<meta property="og:image" content="{{ $featuredImage }}">
+<meta name="twitter:image" content="{{ $featuredImage }}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="{{ .Permalink }}">
+<meta name="twitter:title" content="{{ $ogTitle }}">
+<meta name="twitter:description" content="{{ $ogDescription }}">
+{{- if .IsHome }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "{{ .Site.Params.hero_title }}",
+  "image": "{{ .Site.Params.featured_image }}",
+  "description": "{{ .Site.Params.meta_description }}",
+  "url": "{{ .Permalink }}",
+  "telephone": "{{ .Site.Params.telepon | safeURL }}",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "{{ (index .Site.Params.footer_contact 0).text }}",
+    "addressLocality": "{{ (trim (index (split (index .Site.Params.footer_contact 0).text ",") 1) " ") }}",
+    "addressRegion": "{{ (trim (index (split (index .Site.Params.footer_contact 0).text ",") 2) " ") }}",
+    "postalCode": "16600",
+    "addressCountry": "ID"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "{{ .Site.Params.geo_latitude }}",
+    "longitude": "{{ .Site.Params.geo_longitude }}"
+  },
+  "areaServed": [
+  {{ range $index, $area := .Site.Params.area_served }}
+    {{ if $index }}, {{ end }}"{{ $area }}"
+  {{ end }}
+  ],
+  "openingHours": "{{ .Site.Params.opening_hours }}",
+  "priceRange": "Rp {{ .Site.Params.base_price }} - Rp {{ .Site.Params.price_range }}",
+  "makesOffer": [
+    {{ range $index, $materials := .Site.Params.materials }}
+      {{ if $index }},{{ end }}
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "{{ $materials }}"
+        }
+      }
+    {{ end }}
+  ],
+  "additionalType": "https://schema.org/Service",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "Customer Service",
+    "telephone": "{{ .Site.Params.telepon | safeURL }}",
+    "areaServed": "ID"
+  },
+  "acceptedPaymentMethod": [
+    {{ range $index, $method := .Site.Params.payment_methods }}
+      {{ if $index }},{{ end }}"{{ $method }}"
+    {{ end }}
+  ],
+  "hasMerchantReturnPolicy": {
+    "@type": "MerchantReturnPolicy",
+    "returnPolicyCategory": "https://schema.org/Refundable",
+    "merchantReturnDays": "30",
+    "returnMethod": "https://schema.org/ReturnInStore",
+    "returnFees": "https://schema.org/FreeReturn",
+    "description": "{{ (index .Site.Params.return_policies 0) }}"
+  }
+}
+</script>
+{{- end }}
+{{ if .IsPage }}
+{{ $page := . }}
+  {{ if eq .Params.type "product" }}
+  {{- $rating := add 4 (div (math.Mod (mul (now.Unix) 11) 10) 10) -}}
+  {{- $ratingCount := add 50 (math.Mod (mul (now.Unix) 13) 951) -}}
+  {{- $basePrice := .Site.Params.base_price -}}
+  {{- $priceRange := .Site.Params.price_range -}}
+  {{- $ := $basePrice -}}
+  {{- $maxPrice := add $basePrice $priceRange -}}
+  {{- $minPrice := sub $basePrice $priceRange -}}
+  {{- $currentCategory := "" -}}
+  {{- if .Params.categories -}}
+  {{- $currentCategory = index .Params.categories 0 -}}
+  {{- end -}}
+  {{- $material := $currentCategory -}}
+  {{- $randomPayment := index .Site.Params.payment_methods (mod (now.Unix) (len .Site.Params.payment_methods)) -}}
+  {{- $randomReturnPolicy := index .Site.Params.return_policies (mod (now.Unix) (len .Site.Params.return_policies)) -}}
+  {{- $sku := printf "SKU-%d" (add 1000 (math.Mod (now.Unix) 9000)) -}}
+  {{- $freeShipping := .Site.Params.free_shipping -}}
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "{{ .Title }}",
+  "description": "{{ .Summary | plainify | truncate 160 }}",
+  "image": "{{ .Params.featured_image | absURL }}",
+  "brand": {
+    "@type": "Brand",
+    "name": "{{ .Site.Title }}"
+  },
+  "sku": "{{ $sku }}",
+  "offers": {
+    "@type": "AggregateOffer",
+    "priceCurrency": "IDR",
+    "lowPrice": "{{ printf "%.2f" (div $minPrice 1.0) }}",
+    "highPrice": "{{ printf "%.2f" (div $maxPrice 1.0) }}",
+    "offerCount": "2",
+    "url": "{{ .Permalink }}",
+    "availability": "https://schema.org/InStock",
+    "itemCondition": "https://schema.org/NewCondition",
+    "acceptedPaymentMethod": {
+        "@type": "PaymentMethod",
+        "name": "{{ $randomPayment }}"
+      },
+    "seller": {
+      "@type": "Organization",
+      "name": "{{ .Site.Title }}"
+    }
+    {{- if $freeShipping -}}
+    ,
+    "shippingDetails": {
+      "@type": "OfferShippingDetails",
+      "shippingRate": {
+        "@type": "MonetaryAmount",
+        "value": "0",
+        "currency": "IDR"
+      },
+      "shippingDestination": {
+        "@type": "DefinedRegion",
+        "addressCountry": "ID"
+      },
+      "deliveryTime": {
+        "@type": "ShippingDeliveryTime",
+        "handlingTime": {
+          "@type": "QuantitativeValue",
+          "minValue": "0",
+          "maxValue": "1",
+          "unitCode": "DAY"
+        },
+        "transitTime": {
+          "@type": "QuantitativeValue",
+          "minValue": "1",
+          "maxValue": "5",
+          "unitCode": "DAY"
+        }
+      }
+    }
+    {{- end -}},
+    "hasMerchantReturnPolicy": {
+      "@type": "MerchantReturnPolicy",
+      "returnPolicyCategory": "https://schema.org/Refundable",
+      "merchantReturnDays": "1",
+      "returnMethod": "https://schema.org/ReturnInStore",
+      "returnFees": "https://schema.org/FreeReturn",
+      "description": "{{ $randomReturnPolicy }}"
+    }
+  },
+  "material": "{{ $material }}",
+  "category": "{{ $currentCategory }}",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "{{ $rating }}",
+    "ratingCount": "{{ $ratingCount }}",
+    "bestRating": "5",
+    "worstRating": "1"
+  },
+  "review": [
+    {{ range $index, $testimonial := .Site.Data.testimonials.testimonials }}
+    {{- if $index }},{{ end }}
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "{{ $testimonial.name }}"
+      },
+      "datePublished": "{{ now.AddDate 0 (int (sub 0 (mul (add $index 1) 3))) 0 | time.Format "2006-01-02" }}",
+      "reviewBody": "{{ $testimonial.message }}",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "{{ $testimonial.rating }}",
+        "bestRating": "5",
+        "worstRating": "1"
+      }
+    }
+    {{ end }}
+  ]
+}
+</script>
+ {{ else if eq .Params.type "service" }}
+ {{- $rating := add 4 (div (math.Mod (mul (now.Unix) 11) 10) 10) -}}
+ {{- $ratingCount := add 50 (math.Mod (mul (now.Unix) 13) 951) -}}
+ {{- $basePrice := .Site.Params.base_price -}}
+ {{- $priceRange := .Site.Params.price_range -}}
+ {{- $ := $basePrice -}}
+ {{- $maxPrice := add $basePrice $priceRange -}}
+ {{- $minPrice := sub $basePrice $priceRange -}}
+ {{- $serviceCategory := "" -}}
+ {{- if .Params.categories -}}
+ {{- $serviceCategory = index .Params.categories 0 -}}
+ {{- end -}}
+ {{- $serviceType := $serviceCategory -}}
+ {{- $randomPayment := index .Site.Params.payment_methods (mod (now.Unix) (len .Site.Params.payment_methods)) -}}
+ {{- $randomCancellationPolicy := index .Site.Params.cancellation_policies (mod (now.Unix) (len .Site.Params.cancellation_policies)) -}}
+ {{- $freeConsultation := .Site.Params.free_consultation -}}
+ <script type="application/ld+json">
+ {
+   "@context": "https://schema.org",
+   "@type": ["Service", "Product"],
+   "name": "{{ .Title }}",
+   "description": "{{ .Summary | plainify | truncate 160 }}",
+   "image": "{{ .Params.featured_image | absURL }}",
+   "provider": {
+     "@type": "LocalBusiness",
+     "@id": "{{ .Site.BaseURL }}",
+     "name": "{{ .Site.Params.hero_title }}",
+     "image": "{{ .Site.Params.featured_image }}",
+     "telephone": "{{ .Site.Params.telepon | safeURL }}",
+     "address": {
+       "@type": "PostalAddress",
+       "streetAddress": "{{ (index .Site.Params.footer_contact 0).text }}",
+       "addressLocality": "{{ (trim (index (split (index .Site.Params.footer_contact 0).text ",") 1) " ") }}",
+       "addressRegion": "{{ (trim (index (split (index .Site.Params.footer_contact 0).text ",") 2) " ") }}",
+       "postalCode": "16600",
+       "addressCountry": "ID"
+     },
+     "priceRange": "Rp {{ .Site.Params.base_price }} - Rp {{ .Site.Params.price_range }}"
+   },
+   "serviceType": "{{ $serviceType }}",
+   "offers": {
+     "@type": "AggregateOffer",
+     "priceCurrency": "IDR",
+     "lowPrice": "{{ printf "%.2f" (div $minPrice 1.0) }}",
+     "highPrice": "{{ printf "%.2f" (div $maxPrice 1.0) }}",
+     "offerCount": "2",
+     "url": "{{ .Permalink }}",
+     "availability": "https://schema.org/InStock",
+     "acceptedPaymentMethod": {
+       "@type": "PaymentMethod",
+       "name": "{{ $randomPayment }}"
+     },
+     "seller": {
+       "@type": "Organization",
+       "name": "{{ .Site.Title }}"
+     }
+     {{- if $freeConsultation -}}
+     ,
+     "addOn": {
+       "@type": "Offer",
+       "name": "Free Consultation",
+       "price": "0",
+       "priceCurrency": "IDR"
+     }
+     {{- end -}}
+   },
+   "review": [
+   {{ range $index, $testimonial := .Site.Data.testimonials.testimonials }}
+   {{- if $index }},{{ end }}
+   {
+     "@type": "Review",
+     "itemReviewed": {
+       "@type": "Service",
+       "name": "{{ .Title }}"
+     },
+     "author": {
+       "@type": "Person",
+       "name": "{{ $testimonial.name }}"
+     },
+     "reviewRating": {
+       "@type": "Rating",
+       "ratingValue": "{{ $testimonial.rating }}",
+       "bestRating": "5",
+       "worstRating": "1"
+     }
+   }
+   {{ end }}
+   ],
+   "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": "{{ $rating }}",
+     "ratingCount": "{{ $ratingCount }}",
+     "bestRating": "5",
+     "worstRating": "1"
+   },
+   "areaServed": [
+     {{ range $index, $area := .Site.Params.area_served }}
+       {{ if $index }},{{ end }}{
+         "@type": "Country",
+         "name": "{{ $area }}"
+       }
+     {{ end }}
+   ],
+   "category": "{{ $serviceCategory }}",
+   "termsOfService": "{{ .Site.BaseURL }}terms-of-service",
+   "serviceOutput": {
+     "@type": "Thing",
+     "name": "Hasil",
+     "description": "{{ .Site.Params.service_output }}"
+   }
+ }
+ </script>
+{{- end }}
+{{- end }}

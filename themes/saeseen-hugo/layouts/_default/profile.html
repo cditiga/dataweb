@@ -1,0 +1,47 @@
+{{ define "main" }}
+<header>
+  <div class="container">
+    <h1>{{ .Title }}</h1>
+  </div>
+</header>
+<section class="archive">
+   <div class="profile-container">
+    <div class="about-us">
+      <h2>Tentang Kami</h2>
+      <p>{{ .Site.Params.aboutUs }}</p>
+    </div>
+    <div class="contact-section">
+      <div class="contact-info">
+        <h2>Kontak Kami</h2>
+        <ul>
+          <li><strong>Nama:</strong> {{ .Site.Params.companyName }}</li>
+          <li><strong>Telepon:</strong> {{ .Site.Params.phone }}</li>
+          <li><strong>Email:</strong> {{ .Site.Params.email }}</li>
+          <li><strong>Alamat:</strong> {{ .Site.Params.address }}</li>
+        </ul>
+      </div>
+      <div class="contact-form">
+        <h2>Kirim Pesan</h2>
+        <form id="whatsapp-form">
+          <input type="text" id="name" placeholder="Nama" required>
+          <input type="email" id="email" placeholder="Email" required>
+          <textarea id="message" placeholder="Pesan" required></textarea>
+          <button class="cta-button" type="submit">Kirim ke WhatsApp</button>
+        </form>
+      </div>
+    </div>
+   </div>
+</section>
+
+<script>
+document.getElementById('whatsapp-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  var name = document.getElementById('name').value;
+  var email = document.getElementById('email').value;
+  var message = document.getElementById('message').value;
+  var whatsappMessage = "Nama: " + name + "%0AEmail: " + email + "%0APesan: " + message;
+  var whatsappUrl = "https://wa.me/{{ .Site.Params.whatsappNumber }}?text=" + whatsappMessage;
+  window.open(whatsappUrl, '_blank');
+});
+</script>
+{{ end }}

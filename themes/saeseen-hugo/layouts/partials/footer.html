@@ -1,0 +1,30 @@
+<footer>
+   <div class="footer-container">
+        <div class="footer-content">
+            <div class="footer-section about">
+                <h3>{{ .Site.Params.footer_about_title }}</h3>
+                <p>{{ .Site.Params.footer_about_description }}</p>
+            </div>
+            <div class="footer-section links">
+                <h3>{{ .Site.Params.footer_services_title }}</h3>
+                <ul>
+                    {{ range .Site.Params.footer_services }}
+                    <li>{{ .text }}</li>
+                    {{ end }}
+                </ul>
+            </div>
+            <div class="footer-section contact">
+            <h3>{{ .Site.Params.footer_contact_title }}</h3>
+            <ul>
+                {{ range .Site.Params.footer_contact }}
+                <li><i class="{{ .icon }}"></i> {{ .text }}</li>
+                {{ end }}
+            </ul>
+            <img src="{{ .Site.Params.footer_logo }}" alt="{{ .Site.Title }} Logo" class="footer-logo" loading="lazy">
+        </div>
+        </div>
+        <div class="footer-bottom">
+            <p>{{ .Site.Params.footer_bottom_text }}</p>
+        </div>
+    </div>
+</footer>

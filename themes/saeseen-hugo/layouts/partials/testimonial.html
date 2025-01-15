@@ -1,0 +1,29 @@
+<section class="testimonial">
+  <h2>{{ .Site.Params.testimonials_title }}</h2>
+  <div class="testimonial-slider">
+    {{ range .Site.Data.testimonials.testimonials }}
+    <div class="whatsapp-chat" data-rating="{{ .rating }}">
+      <div class="chat-header">
+        <img src="/images/admin/back-icon.png" class="back-icon" alt="Back">
+        <img src="{{ .avatar }}" alt="{{ .name }} Avatar" class="avatar">
+        <div class="chat-info">
+          <h3>{{ .name }}</h3>
+          <p>Online</p>
+        </div>
+        <img src="/images/admin/whatsapp-header-icon.png" alt="header icon" class="header-icon">
+      </div>
+      <div class="chat-body">
+        <div class="message">
+          <p>{{ .message }}</p>
+        </div>
+        <div class="respond">
+          <p>{{ .response }}</p>
+        </div>
+        <div class="rating">
+          <span class="stars"></span>
+        </div>
+      </div>
+    </div>
+    {{ end }}
+  </div>
+</section>
