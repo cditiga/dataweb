@@ -1,54 +1,53 @@
 testimonials:
   - avatar: /images/admin/avatar1.png
-    name: Reza
+    name: Ilham
     message: >-
-      Saya memesan furniture dari creativedesigninterior.com untuk dapur.
-      Prosesnya mudah dan kualitasnya memuaskan.
+      Saya memesan furniture dari creativedesigninterior.com untuk ruang kerja.
+      Prosesnya cepat dan kualitasnya luar biasa.
     response: >-
-      Terima kasih atas kepercayaan Anda! Kami senang dapat mendukung proyek
-      interior Anda dengan produk berkualitas.
+      Kami sangat menghargai ulasan Anda. Terima kasih telah mempercayakan
+      kebutuhan furniture Anda kepada kami!
     rating: 5
   - avatar: /images/admin/avatar2.png
-    name: Rara
+    name: Reni
     message: >-
-      Saya puas dengan layanan creativedesigninterior.com yang profesional.
-      Produk yang saya beli berkualitas tinggi untuk proyek saya.
+      Saya puas dengan layanan creativedesigninterior.com yang efisien. Produk
+      yang saya beli berkualitas tinggi untuk proyek saya.
     response: >-
-      Kami sangat menghargai ulasan Anda. Senang mendengar bahwa Anda puas
-      dengan produk dan layanan kami.
+      Terima kasih atas kepercayaannya. Kami akan terus memberikan pelayanan
+      terbaik!
     rating: 5
   - avatar: /images/admin/avatar3.png
     name: Agus
     message: >-
-      Saya memesan furniture untuk proyek rumah saya, dan layanannya baik.
-      Pengirimannya tepat waktu.
-    response: >-
-      Terima kasih! Kami berkomitmen untuk memberikan layanan terbaik bagi
-      setiap proyek, termasuk proyek Anda.
+      Layanan penjualan furniture dari creativedesigninterior.com sangat
+      terpercaya untuk proyek rumah saya. Timnya cepat tanggap dan pengirimannya
+      teratur.
+    response: Senang dapat melayani proyek Anda. Terima kasih atas kepercayaannya!
     rating: 4
   - avatar: /images/admin/avatar4.png
-    name: Dani
+    name: Agus
     message: >-
-      Produk dari creativedesigninterior.com berkualitas, dan layanannya cepat.
+      Produk dari creativedesigninterior.com terbaik, dan layanannya cepat.
       Sangat mendukung proyek saya.
     response: >-
-      Terima kasih atas ulasannya. Kami sangat menghargai kepercayaan Anda pada
-      layanan kami.
+      Senang mendengar Anda puas dengan hasilnya. Terima kasih atas
+      kepercayaannya dalam menggunakan layanan kami.
     rating: 5
   - avatar: /images/admin/avatar5.png
-    name: Reni
+    name: Aulia
     message: >-
       creativedesigninterior.com memberikan produk berkualitas untuk proyek
-      saya. Produk yang saya beli terbaik, dan layanannya profesional.
+      saya. Produk yang saya beli terbaik, dan layanannya efisien.
     response: >-
       Kami menghargai ulasan Anda. Terima kasih telah memilih
       creativedesigninterior.com untuk proyek Anda!
     rating: 5
   - avatar: /images/admin/avatar6.png
-    name: Agus
+    name: Dani
     message: >-
       creativedesigninterior.com sangat membantu untuk proyek saya. Produk yang
-      disediakan sesuai harapan, dan layanannya memuaskan.
+      disediakan bagus, dan layanannya profesional.
     response: >-
       Kami senang mendengar bahwa Anda puas dengan layanan kami. Terima kasih
       atas ulasannya!
