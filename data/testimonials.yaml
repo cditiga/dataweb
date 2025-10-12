@@ -1,9 +1,9 @@
 testimonials:
   - avatar: /images/admin/avatar1.png
-    name: Toni
+    name: Ilham
     message: >-
-      Furniture dari creativedesigninterior.com sangat bermanfaat untuk proyek
-      interior saya. Layanan tepat waktu dan kualitasnya sesuai harapan.
+      Saya memesan furniture dari creativedesigninterior.com untuk ruang kerja.
+      Prosesnya mudah dan kualitasnya luar biasa.
     response: >-
       Kami sangat menghargai ulasan Anda. Terima kasih telah mempercayakan
       kebutuhan furniture Anda kepada kami!
@@ -11,42 +11,43 @@ testimonials:
   - avatar: /images/admin/avatar2.png
     name: Fina
     message: >-
-      Saya puas dengan layanan creativedesigninterior.com yang profesional.
-      Produk yang saya beli berkualitas tinggi untuk proyek saya.
+      Creativedesigninterior.com sangat membantu dalam proyek rumah saya.
+      Layanan mereka profesional, dan kualitas furniture sesuai dengan
+      kebutuhan.
     response: >-
-      Kami sangat menghargai ulasan Anda. Senang mendengar bahwa Anda puas
-      dengan produk dan layanan kami.
+      Terima kasih atas kepercayaannya. Kami akan terus memberikan pelayanan
+      terbaik!
     rating: 5
   - avatar: /images/admin/avatar3.png
-    name: Rian
+    name: Rahmat
     message: >-
       Saya memesan furniture untuk proyek rumah saya, dan layanannya baik.
-      Pengirimannya rapi.
+      Pengirimannya cepat.
     response: Senang dapat melayani proyek Anda. Terima kasih atas kepercayaannya!
     rating: 4
   - avatar: /images/admin/avatar4.png
-    name: Reza
+    name: Agus
     message: >-
       Saya sangat puas dengan layanan furniture dari creativedesigninterior.com.
-      Prosesnya efisien dan mempercepat pengerjaan proyek saya.
+      Prosesnya mudah dan mempercepat pengerjaan proyek saya.
     response: >-
       Terima kasih atas ulasannya. Kami sangat menghargai kepercayaan Anda pada
       layanan kami.
     rating: 5
   - avatar: /images/admin/avatar5.png
-    name: Maya
+    name: Tina
     message: >-
-      Pelayanan creativedesigninterior.com sangat membantu untuk proyek kafe
-      saya. Solusi yang diberikan tepat dan produknya terbaik.
+      Pelayanan creativedesigninterior.com sangat memudahkan untuk proyek kafe
+      saya. Solusi yang diberikan efektif dan produknya bagus.
     response: >-
       Kami menghargai ulasan Anda. Terima kasih telah memilih
       creativedesigninterior.com untuk proyek Anda!
     rating: 5
   - avatar: /images/admin/avatar6.png
-    name: Toni
+    name: Farhan
     message: >-
-      Saya memesan furniture untuk ruang tamu, dan hasilnya luar biasa. Layanan
-      creativedesigninterior.com terpercaya.
+      Saya memesan furniture untuk proyek bangunan, dan hasilnya sangat
+      memuaskan. Layanan creativedesigninterior.com terpercaya.
     response: >-
       Kami senang mendengar bahwa Anda puas dengan layanan kami. Terima kasih
       atas ulasannya!
