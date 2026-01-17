@@ -10,10 +10,25 @@ jobs:
   recycle-and-deploy:
     runs-on: ubuntu-latest
     steps:
+    - name: Cleanup Disk Space (Runner System)
+      run: |
+        echo "Checking disk space before cleanup..."
+        df -h
+        
+        # Remove unnecessary items to free up space
+        sudo rm -rf /usr/local/lib/android
+        sudo rm -rf /usr/share/dotnet
+        sudo rm -rf /opt/ghc
+        sudo rm -rf /opt/hostedtoolcache
+        
+        echo "Disk space after cleanup..."
+        df -h
+
     - name: Checkout Repository
       uses: actions/checkout@v4
       with:
-        fetch-depth: 0
+        fetch-depth: 1
+        fetch-tags: false
 
     - name: Setup Hugo
       uses: peaceiris/actions-hugo@v3
@@ -28,9 +43,7 @@ jobs:
         cache: 'npm'
 
     - name: Install Dependencies
-      run: |
-        npm ci  # Install dependencies dengan clean slate
-        npm install  # Pastikan semua dependencies terinstall
+      run: npm ci
 
     - name: Debug - List Directory Structure
       run: |
@@ -47,8 +60,8 @@ jobs:
 
     - name: Run Recycle and Build
       run: |
-        npm run build:recycle  # Jalankan script recycle
-        hugo --minify           # Build Hugo site dengan minifikasi
+        npm run build:recycle
+        hugo --minify
 
     - name: Configure Git
       run: |
@@ -65,13 +78,24 @@ jobs:
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
 
+    # ✅ IMPORTANT: Cleanup node_modules AFTER push, not before!
+    - name: Cleanup After Push
+      if: always()
+      run: |
+        echo "Cleaning up node_modules to free disk space..."
+        rm -rf node_modules
+        rm -rf .npm
+        npm cache clean --force
+        echo "Disk space after cleanup..."
+        df -h
+
     - name: Prepare GitHub Pages
       run: |
         mkdir -p public
         echo "creativedesigninterior.com" > public/CNAME
 
     - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v4  # Update ke versi terbaru
+      uses: peaceiris/actions-gh-pages@v4
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./public
