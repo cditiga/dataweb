@@ -1,7 +1,8 @@
 name: Recycle Posts and Deploy
+
 on:
   schedule:
-    - cron: '0 0 * * *'
+    - cron: '0 0 */2 * *'
   push:
     branches: [ master ]
   workflow_dispatch:
@@ -9,100 +10,90 @@ on:
 jobs:
   recycle-and-deploy:
     runs-on: ubuntu-latest
+
     steps:
-    - name: Cleanup Disk Space (Runner System)
-      run: |
-        echo "Checking disk space before cleanup..."
-        df -h
-        
-        # Remove unnecessary items to free up space
-        sudo rm -rf /usr/local/lib/android
-        sudo rm -rf /usr/share/dotnet
-        sudo rm -rf /opt/ghc
-        sudo rm -rf /opt/hostedtoolcache
-        
-        echo "Disk space after cleanup..."
-        df -h
+      - name: Cleanup Disk Space
+        run: |
+          echo "Disk space sebelum cleanup:"
+          df -h
+          sudo rm -rf /usr/local/lib/android
+          sudo rm -rf /usr/share/dotnet
+          sudo rm -rf /opt/ghc
+          sudo rm -rf /opt/hostedtoolcache
+          echo "Disk space sesudah cleanup:"
+          df -h
 
-    - name: Checkout Repository
-      uses: actions/checkout@v4
-      with:
-        fetch-depth: 1
-        fetch-tags: false
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          fetch-tags: false
 
-    - name: Setup Hugo
-      uses: peaceiris/actions-hugo@v3
-      with:
-        hugo-version: '0.124.0'
-        extended: true
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: '0.124.0'
+          extended: true
 
-    - name: Setup Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '20.14.0'
-        cache: 'npm'
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.14.0'
+          cache: 'npm'
 
-    - name: Install Dependencies
-      run: npm ci
+      - name: Install Dependencies
+        run: npm ci
 
-    - name: Debug - List Directory Structure
-      run: |
-        echo "Current directory:"
-        pwd
-        echo "Directory contents:"
-        ls -R content
+      - name: Verify Installations
+        run: |
+          node --version
+          npm --version
+          hugo version
 
-    - name: Verify Installations
-      run: |
-        node --version
-        npm --version
-        hugo version
+      - name: Debug - List Content Directory
+        run: find content -name "*.md" | sort | head -20
 
-    - name: Run Recycle and Build
-      run: |
-        npm run build:recycle
-        hugo --minify
+      - name: Run Recycle and Build
+        run: npm run build:recycle
 
-    - name: Configure Git
-      run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
+      - name: Prepare GitHub Pages
+        run: |
+          mkdir -p public
+          echo "creativedesigninterior.com" > public/CNAME
 
-    - name: Commit Changes
-      run: |
-        git add .
-        git diff --quiet && git diff --staged --quiet || git commit -m "Auto-recycle posts and rebuild"
+      - name: Configure Git
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
 
-    - name: Push Changes
-      uses: ad-m/github-push-action@master
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Commit Changes
+        run: |
+          git add content/ data/
+          git diff --quiet && git diff --staged --quiet \
+            || git commit -m "Auto-recycle posts and rebuild [skip ci]"
 
-    # ✅ IMPORTANT: Cleanup node_modules AFTER push, not before!
-    - name: Cleanup After Push
-      if: always()
-      run: |
-        echo "Cleaning up node_modules to free disk space..."
-        rm -rf node_modules
-        rm -rf .npm
-        npm cache clean --force
-        echo "Disk space after cleanup..."
-        df -h
+      - name: Push Changes
+        run: git push origin master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Prepare GitHub Pages
-      run: |
-        mkdir -p public
-        echo "creativedesigninterior.com" > public/CNAME
+      - name: Cleanup node_modules
+        if: always()
+        run: |
+          rm -rf node_modules .npm
+          npm cache clean --force
+          echo "Disk space setelah cleanup node_modules:"
+          df -h
 
-    - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v4
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./public
-        publish_branch: gh-pages
-        full_commit_message: ${{ github.event.head_commit.message }}
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+          publish_branch: gh-pages
+          full_commit_message: ${{ github.event.head_commit.message }}
 
-    - name: Verify Deployment
-      run: |
-        echo "Deployment completed successfully!"
-        ls -l public
+      - name: Verify Deployment
+        run: |
+          echo "Deployment selesai!"
+          ls -l public
