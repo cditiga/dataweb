@@ -268,54 +268,72 @@ function detectCategories(keyword) {
 async function generateArticle(keyword) {
   const type = detectType(keyword);
 
-  const prompt = `Kamu adalah penulis artikel SEO profesional berbahasa Indonesia untuk website "${CONFIG.SITE_NAME}" yang bergerak di bidang jasa interior, furniture, material bangunan, dan jasa pengecoran.
+  const prompt = `Kamu adalah penulis konten blog untuk website "${CONFIG.SITE_NAME}" — perusahaan jasa desain interior, furniture custom, material bangunan, dan jasa pengecoran di wilayah Jabodetabek.
 
-Tulis artikel SEO-friendly dalam bahasa Indonesia dengan ketentuan:
+Kamu menulis dengan GAYA KHAS blog ini:
+- Sapaan audiens: "Mitra CDI" (bukan "Anda" atau "kamu") di awal artikel dan di beberapa paragraf
+- Penulis menyebut diri sebagai "Kami" (bukan "Saya" atau "Saya pribadi")
+- Gaya bahasa: hangat, akrab, conversational — seperti teman yang ahli di bidangnya
+- Boleh pakai kata-kata informal sesekali: "gimana", "yuk", "nah", "lho", "nih"
+- Paragraf pembuka WAJIB dimulai dengan: "**${keyword.split(' ').map(w=>w.charAt(0).toUpperCase()+w.slice(1)).join(' ')}** - Mitra CDI dimana saja berada,"
+
+KETENTUAN ARTIKEL:
 - Keyword utama: "${keyword}"
-- Type konten: ${type === 'service' ? 'jasa/layanan' : 'produk/informasi'}
-- Panjang: 900–1200 kata
-- Struktur: paragraf pembuka → 3-4 bagian H2 → penutup + CTA
-- Setiap H2 harus mengandung variasi keyword atau kata kunci turunan
-- Paragraf pertama wajib mengandung keyword utama
-- CTA di akhir: ajak hubungi via WhatsApp ke 0857-7678-6091
-- Gaya: informatif, tidak kaku, hindari pengulangan kata berlebihan
+- Panjang: 900–1100 kata
+- Struktur: pembuka conversational → 3-4 H2 (masing-masing ada 2-3 paragraf) → penutup
+- Setiap H2 mengandung variasi keyword atau kata kunci turunan
+- Sisipkan 1 gambar inline di tengah artikel dengan format: ![deskripsi gambar](IMAGE_PLACEHOLDER)
+  (IMAGE_PLACEHOLDER akan diganti otomatis oleh sistem)
+- CTA di akhir: JANGAN tulis nomor telepon. Cukup tulis:
+  "Silakan hubungi kami melalui tombol **Telepon** atau **WhatsApp** yang tersedia di bawah halaman ini."
 
-Output HARUS dalam format berikut (tanpa penjelasan tambahan):
-JUDUL: [judul artikel, tanpa tanda #]
-DESCRIPTION: [meta description 120–155 karakter, mengandung keyword]
-CATEGORIES: [kategori, pisah koma]
+Output HARUS dalam format berikut (tanpa teks tambahan apapun):
+JUDUL: [judul artikel menarik, mengandung keyword, tanpa tanda #]
+DESCRIPTION: [meta description 120–155 karakter, mengandung keyword, diawali keyword]
 TAGS: [3–5 tag relevan, pisah koma]
 ARTIKEL_MULAI
 [isi artikel dalam Markdown, gunakan ## H2 dan ### H3]`;
 
   if (IS_DRY_RUN) {
     console.log(`   🧪 DRY-RUN: Simulasi generate artikel untuk "${keyword}"...`);
-    // Return konten dummy yang realistis
-    return `JUDUL: ${keyword.split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')} - Panduan Lengkap
-DESCRIPTION: Temukan informasi lengkap tentang ${keyword}. Dapatkan tips, harga, dan layanan terbaik dari ${CONFIG.SITE_NAME}.
-CATEGORIES: ${detectCategories(keyword).join(', ')}
-TAGS: ${keyword.split(' ').slice(0, 3).join(', ')}, jasa bogor, harga terbaik
+    const kwTitle = keyword.split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+    return `JUDUL: ${kwTitle} - Panduan Lengkap dari ${CONFIG.SITE_NAME}
+DESCRIPTION: ${keyword.charAt(0).toUpperCase() + keyword.slice(1)} terbaik untuk hunian dan proyek konstruksi Anda. Temukan tips, harga, dan solusi dari ${CONFIG.SITE_NAME}.
+TAGS: ${keyword.split(' ').slice(0, 3).join(', ')}, jasa interior bogor, CDI
 ARTIKEL_MULAI
-## Apa itu ${keyword}?
+**${kwTitle}** - Mitra CDI dimana saja berada, salah satu pertanyaan yang sering kami terima adalah seputar ${keyword}. Nah, di artikel ini kami akan membahas tuntas hal tersebut buat Mitra semua. Yuk simak sampai selesai ya!
 
-${keyword.charAt(0).toUpperCase() + keyword.slice(1)} adalah salah satu kebutuhan penting dalam dunia konstruksi dan interior modern. Di ${CONFIG.SITE_NAME}, kami menyediakan solusi terbaik untuk kebutuhan ${keyword} Anda dengan kualitas terjamin.
+![${kwTitle}](IMAGE_PLACEHOLDER)
 
-## Keunggulan Layanan Kami
+## Apa Itu ${kwTitle}?
 
-Kami telah berpengalaman lebih dari 10 tahun dalam bidang ini. Berikut keunggulan yang kami tawarkan:
+Mitra CDI perlu tahu bahwa ${keyword} adalah salah satu elemen penting dalam dunia konstruksi dan desain interior modern. Di ${CONFIG.SITE_NAME}, kami sudah menangani ratusan proyek yang berkaitan dengan ${keyword} dan hasilnya selalu memuaskan klien kami.
 
-- **Kualitas terjamin** dengan bahan pilihan
-- **Harga kompetitif** sesuai budget Anda  
-- **Pengerjaan tepat waktu** oleh tim profesional
-- **Garansi pekerjaan** untuk kepuasan Anda
+Gimana caranya kami bisa memberikan hasil terbaik? Jawabannya ada pada pengalaman dan dedikasi tim kami yang sudah lebih dari 10 tahun berkecimpung di bidang ini.
 
-## Harga ${keyword}
+## Keunggulan Layanan ${kwTitle} dari Kami
 
-Harga layanan kami sangat kompetitif dan transparan. Tidak ada biaya tersembunyi. Hubungi kami untuk mendapatkan penawaran terbaik sesuai kebutuhan proyek Anda.
+Nah, ini yang sering Mitra CDI tanyakan — apa bedanya layanan kami dengan yang lain? Berikut beberapa keunggulan yang bisa kami tawarkan:
 
-## Cara Pesan
+- **Kualitas material terjamin** — kami hanya menggunakan bahan pilihan terbaik
+- **Harga transparan** — tidak ada biaya tersembunyi, semua sudah termasuk dalam penawaran
+- **Pengerjaan tepat waktu** — kami menghargai waktu Mitra sama seperti menghargai waktu kami sendiri
+- **Garansi hasil pekerjaan** — kami berdiri di belakang setiap pekerjaan yang kami lakukan
 
-Hubungi kami sekarang via WhatsApp di **0857-7678-6091** untuk konsultasi gratis dan dapatkan penawaran terbaik untuk ${keyword} di wilayah Jabodetabek.
+## Tips Memilih Layanan ${kwTitle} yang Tepat
+
+Mitra CDI harus cermat dalam memilih penyedia layanan ${keyword}. Berikut beberapa tips dari kami yang bisa membantu Mitra dalam mengambil keputusan yang tepat:
+
+1. Pastikan penyedia jasa memiliki portofolio yang jelas dan bisa diverifikasi
+2. Tanyakan tentang material yang digunakan — kualitas material sangat menentukan hasil akhir
+3. Minta estimasi biaya tertulis agar tidak ada kesalahpahaman di kemudian hari
+4. Cek ulasan dari pelanggan sebelumnya
+
+## Penutup
+
+Demikian pembahasan kami seputar ${keyword}. Kami berharap artikel ini bermanfaat buat Mitra CDI semua dalam mengambil keputusan terbaik untuk proyek hunian maupun konstruksi Mitra.
+
+Kalau Mitra masih ada pertanyaan atau ingin konsultasi lebih lanjut, silakan hubungi kami melalui tombol **Telepon** atau **WhatsApp** yang tersedia di bawah halaman ini. Kami siap membantu!
 `;
   }
 
@@ -351,40 +369,55 @@ Hubungi kami sekarang via WhatsApp di **0857-7678-6091** untuk konsultasi gratis
 
 // ─── Parse output AI → simpan .md dengan front matter SEO lengkap ─────────────
 function parseAndSave(raw, keyword, slug, imagePath) {
-  // Parse baris-baris header
   const lines  = raw.split('\n');
   let title    = keyword.split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
   let desc     = '';
-  let cats     = detectCategories(keyword);
   let tags     = [keyword];
   let body     = '';
   let inBody   = false;
 
   for (const line of lines) {
     const t = line.trim();
-    if (t.startsWith('JUDUL:'))        { title   = t.replace('JUDUL:', '').trim(); continue; }
-    if (t.startsWith('DESCRIPTION:'))  { desc    = t.replace('DESCRIPTION:', '').trim(); continue; }
-    if (t.startsWith('CATEGORIES:'))   { cats    = t.replace('CATEGORIES:', '').trim().split(',').map(c => c.trim()); continue; }
-    if (t.startsWith('TAGS:'))         { tags    = t.replace('TAGS:', '').trim().split(',').map(t => t.trim()); continue; }
-    if (t === 'ARTIKEL_MULAI')         { inBody  = true; continue; }
+    if (t.startsWith('JUDUL:'))        { title = t.replace('JUDUL:', '').trim(); continue; }
+    if (t.startsWith('DESCRIPTION:'))  { desc  = t.replace('DESCRIPTION:', '').trim(); continue; }
+    if (t.startsWith('CATEGORIES:'))   { /* diabaikan — selalu "blog" */ continue; }
+    if (t.startsWith('TAGS:'))         { tags  = t.replace('TAGS:', '').trim().split(',').map(t => t.trim()); continue; }
+    if (t === 'ARTIKEL_MULAI')         { inBody = true; continue; }
     if (inBody) body += line + '\n';
   }
 
-  if (!body.trim()) body = raw; // fallback jika format AI tidak tepat
+  if (!body.trim()) body = raw;
 
-  const today    = new Date().toISOString().split('T')[0];
-  const type     = detectType(keyword);
-  const catToml  = cats.map(c => `"${c}"`).join(', ');
-  const tagToml  = tags.map(t => `"${t}"`).join(', ');
+  // Ganti IMAGE_PLACEHOLDER dengan path gambar yang sudah dipilih
+  body = body.replace(/IMAGE_PLACEHOLDER/g, imagePath);
 
-  // Front matter lengkap sesuai head.html theme saeseen-hugo
+  // Pastikan ada gambar inline di body — jika AI tidak menyertakan, sisipkan setelah paragraf pertama
+  if (!body.includes('![')) {
+    const paraEnd = body.indexOf('\n\n');
+    if (paraEnd !== -1) {
+      const imgMarkdown = `\n\n![${title}](${imagePath})\n`;
+      body = body.slice(0, paraEnd) + imgMarkdown + body.slice(paraEnd);
+    }
+  }
+
+  const today   = new Date().toISOString().split('T')[0];
+  const type    = detectType(keyword);
+  const tagToml = tags.map(t => `"${t}"`).join(', ');
+
+  // Front matter sesuai artikel manual CDI:
+  // - categories selalu ["blog"] sesuai artikel manual
+  // - type: service (default untuk CDI)
+  // - description diambil dari output AI
+  const safeTitle = title.replace(/"/g, "'");
+  const safeDesc  = desc.replace(/"/g, "'");
   const frontMatter = `---
-title: "${title.replace(/"/g, "'")}"
+title: "${safeTitle}"
 date: "${today}"
+categories:
+ - "blog"
 type: "${type}"
-description: "${desc.replace(/"/g, "'")}"
+description: "${safeDesc}"
 featured_image: "${imagePath}"
-categories: [${catToml}]
 tags: [${tagToml}]
 keywords: "${keyword}"
 author: "${CONFIG.AUTHOR}"
@@ -397,10 +430,9 @@ draft: false
   const filePath = path.join(CONFIG.CONTENT_DIR, `${slug}.md`);
 
   if (IS_DRY_RUN) {
-    // Dry-run: cetak ke console saja, tidak tulis file asli
     const previewPath = path.join(__dirname, `DRY-RUN-${slug}.md`);
     fs.writeFileSync(previewPath, frontMatter + body.trim() + '\n');
-    console.log(`   📄 DRY-RUN: Preview disimpan di: ${previewPath}`);
+    console.log(`   📄 DRY-RUN: Preview → ${previewPath}`);
     return previewPath;
   }
 
