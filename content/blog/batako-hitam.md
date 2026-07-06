@@ -71,5 +71,3 @@ Tidak semua batako hitam dibuat dengan standar yang sama. Untuk mendapatkan hasi
 Nah, sekarang Mitra CDI sudah tahu, kan, kenapa batako hitam jadi salah satu material bangunan yang patut dipertimbangkan? Selain kokoh dan tahan lama, material ini juga memberikan nilai estetika yang unik pada hunian atau bangunan Anda.  
 
 Kalau Mitra CDI tertarik untuk menggunakan batako hitam dalam proyek berikutnya, atau ingin berkonsultasi tentang desain interior, furniture custom, hingga material bangunan lainnya, silakan hubungi kami melalui tombol **Telepon** atau **WhatsApp** yang tersedia di bawah halaman ini. Kami siap membantu mewujudkan hunian impian Mitra CDI!  
-
-ARTIKEL_SELESAI
