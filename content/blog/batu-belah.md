@@ -81,4 +81,4 @@ Mitra CDI, jika Anda ingin membangun sesuatu yang kokoh dan tahan lama, batu bel
 Nah, setelah tahu keunggulan dan manfaat batu belah, saatnya Anda mengambil langkah nyata untuk menghadirkan material ini ke rumah atau proyek Anda. Kami di Creative Design Interior menyediakan berbagai layanan, dari desain interior hingga penyediaan material konstruksi berkualitas seperti batu belah.  
 
 Silakan hubungi kami melalui tombol **Telepon** atau **WhatsApp** yang tersedia di bawah halaman ini.  
-ARTIKEL_SELESAI
+
