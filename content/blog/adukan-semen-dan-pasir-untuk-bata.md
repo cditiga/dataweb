@@ -79,5 +79,3 @@ Jika bekerja di luar ruangan, hindari mencampur adukan saat hujan atau di bawah 
 Nah, Mitra CDI, itulah tadi panduan lengkap mengenai **adukan semen dan pasir untuk bata** yang bisa Mitra CDI praktikkan di rumah atau proyek bangunan. Intinya, kunci utama adalah memastikan komposisi semen dan pasir seimbang, kualitas bahan terbaik, serta proses pencampuran yang tepat. Dengan begitu, dinding yang dihasilkan akan lebih kokoh, tahan lama, dan pastinya memuaskan.  
 
 Jika Mitra CDI memiliki proyek bangunan atau renovasi yang membutuhkan bantuan profesional, jangan ragu untuk menghubungi kami. Silakan hubungi kami melalui tombol **Telepon** atau **WhatsApp** yang tersedia di bawah halaman ini.  
-
-ARTIKEL_SELESAI
