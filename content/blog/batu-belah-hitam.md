@@ -61,4 +61,3 @@ Batu belah hitam bisa dilapisi dengan sealant khusus agar tampilannya semakin me
 Nah, Mitra CDI, setelah membaca artikel ini, apakah sudah kebayang seperti apa keindahan dan fungsi batu belah hitam untuk rumah Anda? Dari dinding interior, eksterior, hingga taman, batu ini benar-benar fleksibel untuk berbagai kebutuhan desain.  
 
 Kalau Mitra CDI butuh bantuan lebih lanjut soal desain atau pemasangan batu belah hitam, kami di Creative Design Interior siap membantu. Silakan hubungi kami melalui tombol **Telepon** atau **WhatsApp** yang tersedia di bawah halaman ini. Yuk, wujudkan rumah impian Anda bersama kami!  
-ARTIKEL_SELESAI
