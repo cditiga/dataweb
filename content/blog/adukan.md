@@ -69,5 +69,3 @@ Mitra CDI, memang seru sih belajar bikin adukan sendiri, tapi kalau proyeknya be
 Kami juga menyediakan jasa pengecoran, material bangunan, hingga furniture custom untuk melengkapi kebutuhan desain interior Mitra CDI. Jadi, nggak perlu repot-repot lagi, deh!  
 
 Silakan hubungi kami melalui tombol **Telepon** atau **WhatsApp** yang tersedia di bawah halaman ini.  
-
-ARTIKEL_SELESAI
