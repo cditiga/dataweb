@@ -80,6 +80,4 @@ Kalau masih ragu, jangan segan untuk konsultasi dengan ahli konstruksi seperti k
 
 Batu cor pondasi memang nggak bisa dipandang sebelah mata, Mitra CDI. Material ini adalah salah satu elemen penting yang menentukan kokohnya bangunan. Dengan memilih batu cor berkualitas dan mengikuti tips yang kami bagikan, hasil konstruksi nggak hanya kuat tapi juga tahan lama.  
 
-Silakan hubungi kami melalui tombol **Telepon** atau **WhatsApp** yang tersedia di bawah halaman ini. Kami siap membantu Mitra CDI mewujudkan bangunan impian!  
-
-ARTIKEL_SELESAI
+Silakan hubungi kami melalui tombol **Telepon** atau **WhatsApp** yang tersedia di bawah halaman ini. Kami siap membantu Mitra CDI mewujudkan bangunan impian!

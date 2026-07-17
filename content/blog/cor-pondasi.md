@@ -77,6 +77,4 @@ Mitra CDI, meski proses cor pondasi tampak sederhana, namun kenyataannya memerlu
 
 Daripada pusing sendiri, yuk serahkan pekerjaan ini kepada ahlinya! Tim Creative Design Interior siap membantu mewujudkan pondasi bangunan yang kokoh dan tahan lama. Dengan pengalaman kami di bidang konstruksi, desain interior, dan material bangunan, Mitra CDI tentu bisa lebih tenang dan fokus pada hal-hal lainnya.  
 
-Semoga informasi ini bermanfaat ya, Mitra CDI. Jika ada yang perlu ditanyakan atau ingin berkonsultasi lebih lanjut, silakan hubungi kami melalui tombol **Telepon** atau **WhatsApp** yang tersedia di bawah halaman ini.  
-
-ARTIKEL_SELESAI
+Semoga informasi ini bermanfaat ya, Mitra CDI. Jika ada yang perlu ditanyakan atau ingin berkonsultasi lebih lanjut, silakan hubungi kami melalui tombol **Telepon** atau **WhatsApp** yang tersedia di bawah halaman ini.

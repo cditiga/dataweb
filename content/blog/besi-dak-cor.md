@@ -67,6 +67,4 @@ Terakhir, jangan lupa untuk menghitung kebutuhan besi dak cor dengan cermat. Pas
 
 Nah, Mitra CDI, sekarang sudah tahu kan pentingnya memilih besi dak cor yang tepat? Kalau masih bingung atau butuh bantuan untuk memilih material yang pas, jangan ragu untuk menghubungi kami.  
 
-Sebagai perusahaan yang berpengalaman di bidang desain interior, material bangunan, dan konstruksi, kami siap membantu Mitra CDI mewujudkan proyek impian. Silakan hubungi kami melalui tombol **Telepon** atau **WhatsApp** yang tersedia di bawah halaman ini.  
-
-ARTIKEL_SELESAI
+Sebagai perusahaan yang berpengalaman di bidang desain interior, material bangunan, dan konstruksi, kami siap membantu Mitra CDI mewujudkan proyek impian. Silakan hubungi kami melalui tombol **Telepon** atau **WhatsApp** yang tersedia di bawah halaman ini.

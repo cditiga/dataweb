@@ -63,5 +63,4 @@ Walaupun tangga beton sangat kuat, tetap hindari menaruh beban yang terlalu bera
 
 Mitra CDI, tangga beton bisa jadi investasi jangka panjang yang menguntungkan. Dengan kekuatan, estetika, dan fleksibilitas desainnya, tangga ini cocok banget untuk berbagai jenis hunian atau proyek.  
 
-Kalau Mitra CDI butuh bantuan untuk mendesain atau membangun tangga beton yang sesuai dengan gaya dan kebutuhan Anda, kami di Creative Design Interior siap membantu. Silakan hubungi kami melalui tombol **Telepon** atau **WhatsApp** yang tersedia di bawah halaman ini. Kami tunggu kabar baik dari Anda!  
-ARTIKEL_SELESAI
+Kalau Mitra CDI butuh bantuan untuk mendesain atau membangun tangga beton yang sesuai dengan gaya dan kebutuhan Anda, kami di Creative Design Interior siap membantu. Silakan hubungi kami melalui tombol **Telepon** atau **WhatsApp** yang tersedia di bawah halaman ini. Kami tunggu kabar baik dari Anda!

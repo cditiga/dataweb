@@ -43,7 +43,7 @@ Sekarang kita masuk ke pembahasan utama nih, Mitra CDI! Jadi, cor dak lantai 2 p
 3. **Besi Wiremesh**  
    Selain besi tulangan, wiremesh juga bisa jadi pilihan praktis untuk memperkuat dak beton. Wiremesh biasanya digunakan sebagai tulangan bawah dan atas, dengan ukuran M6 hingga M10 tergantung kebutuhan.
 
-![Besaran besi untuk cor dak lantai 2](/images/blog/meja-besi-minimalis.jpg)
+![Besaran besi untuk cor dak lantai 2](/images/cor/cor-readymix-01.jpg)
 
 ### Peran Jarak Tulangan dalam Konstruksi
 

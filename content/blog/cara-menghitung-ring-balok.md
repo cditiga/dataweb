@@ -76,6 +76,4 @@ Mitra CDI, ada beberapa tips penting untuk memastikan ring balok yang kokoh dan 
 
 Nah, Mitra CDI, itulah tadi panduan lengkap tentang cara menghitung ring balok. Sekarang sudah lebih paham, kan, bagaimana cara menghitungnya dengan mudah dan akurat? Dengan perhitungan yang tepat, bangunan Mitra CDI dijamin akan lebih kokoh, aman, dan tahan lama.  
 
-Kalau masih ada yang bikin bingung atau butuh bantuan lebih lanjut, silakan hubungi kami melalui tombol **Telepon** atau **WhatsApp** yang tersedia di bawah halaman ini. Kami siap membantu Mitra CDI mewujudkan bangunan impian!  
-
-ARTIKEL_SELESAI
+Kalau masih ada yang bikin bingung atau butuh bantuan lebih lanjut, silakan hubungi kami melalui tombol **Telepon** atau **WhatsApp** yang tersedia di bawah halaman ini. Kami siap membantu Mitra CDI mewujudkan bangunan impian!

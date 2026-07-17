@@ -58,5 +58,4 @@ Selain itu, batako putih juga cocok untuk dijadikan latar belakang furniture den
 ## Penutup  
 Mitra CDI, batako putih bukan hanya sekadar material bangunan, tapi juga bagian penting dari estetika dan kenyamanan hunian. Dengan memilih batako putih yang berkualitas dan memadukannya dengan desain interior yang tepat, rumah impian Mitra CDI bisa terwujud dengan sempurna.  
 
-Kalau Mitra CDI butuh bantuan lebih lanjut soal desain interior, furniture custom, atau material bangunan, kami di Creative Design Interior siap membantu. Silakan hubungi kami melalui tombol **Telepon** atau **WhatsApp** yang tersedia di bawah halaman ini.  
-ARTIKEL_SELESAI
+Kalau Mitra CDI butuh bantuan lebih lanjut soal desain interior, furniture custom, atau material bangunan, kami di Creative Design Interior siap membantu. Silakan hubungi kami melalui tombol **Telepon** atau **WhatsApp** yang tersedia di bawah halaman ini.
