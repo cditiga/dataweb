@@ -65,7 +65,7 @@ const CONFIG = {
 // ─────────────────────────────────────────────────────────────────────────────
 
 // ─── Helper: HTTP request ─────────────────────────────────────────────────────
-function httpRequest(hostname, path, options, body = null) {
+function httpRequest(hostname, path, options, body = null, timeoutMs = 60000) {
   return new Promise((resolve, reject) => {
     const opts = { hostname, path, ...options };
     const req  = https.request(opts, res => {
@@ -74,11 +74,19 @@ function httpRequest(hostname, path, options, body = null) {
       res.on('end', () => {
         if (res.statusCode >= 200 && res.statusCode < 300) {
           try { resolve(JSON.parse(data)); } catch { resolve(data); }
+        } else if (res.statusCode === 429) {
+          const err = new Error(`Rate limited (429) ${hostname}${path}: ${data.slice(0, 200)}`);
+          err.isRateLimit = true;
+          err.retryAfterSec = res.headers['retry-after'] ? parseInt(res.headers['retry-after'], 10) : null;
+          reject(err);
         } else {
           reject(new Error(`HTTP ${res.statusCode} ${hostname}${path}: ${data.slice(0, 200)}`));
         }
       });
     });
+    // ⏱ Tanpa ini, 1 request yang macet bikin SELURUH proses (termasuk cron harian)
+    // menggantung tanpa batas waktu dan tanpa pesan error apapun.
+    req.setTimeout(timeoutMs, () => req.destroy(new Error(`Timeout setelah ${timeoutMs/1000}d tanpa respons dari ${hostname}`)));
     req.on('error', reject);
     if (body) req.write(typeof body === 'string' ? body : JSON.stringify(body));
     req.end();
@@ -292,7 +300,11 @@ JUDUL: [judul artikel menarik, mengandung keyword, tanpa tanda #]
 DESCRIPTION: [meta description 120–155 karakter, mengandung keyword, diawali keyword]
 TAGS: [3–5 tag relevan, pisah koma]
 ARTIKEL_MULAI
-[isi artikel dalam Markdown, gunakan ## H2 dan ### H3]`;
+[isi artikel dalam Markdown, gunakan ## H2 dan ### H3]
+
+PENTING: JANGAN tambahkan penanda, kata, atau baris apapun setelah artikel selesai
+(misalnya jangan tulis "ARTIKEL_SELESAI", "SELESAI", "[END]", "---", atau sejenisnya).
+Artikel berakhir begitu saja setelah kalimat penutup/CTA, tanpa penanda tambahan.`;
 
   if (IS_DRY_RUN) {
     console.log(`   🧪 DRY-RUN: Simulasi generate artikel untuk "${keyword}"...`);
@@ -347,23 +359,71 @@ Kalau Mitra masih ada pertanyaan atau ingin konsultasi lebih lanjut, silakan hub
     max_tokens : 2800,
   });
 
-  const result = await httpRequest(
-    CONFIG.MODELS_API_HOST,
-    CONFIG.MODELS_API_PATH,
-    {
-      method : 'POST',
-      headers: {
-        'Authorization'       : `Bearer ${CONFIG.GITHUB_TOKEN}`,
-        'Content-Type'        : 'application/json',
-        'Accept'              : 'application/vnd.github+json',
-        'X-GitHub-Api-Version': CONFIG.API_VERSION,
-        'Content-Length'      : Buffer.byteLength(body),
-      },
-    },
-    body
-  );
+  let result;
+  const maxRetries = 3;
+  for (let attempt = 1; attempt <= maxRetries; attempt++) {
+    try {
+      result = await httpRequest(
+        CONFIG.MODELS_API_HOST,
+        CONFIG.MODELS_API_PATH,
+        {
+          method : 'POST',
+          headers: {
+            'Authorization'       : `Bearer ${CONFIG.GITHUB_TOKEN}`,
+            'Content-Type'        : 'application/json',
+            'Accept'              : 'application/vnd.github+json',
+            'X-GitHub-Api-Version': CONFIG.API_VERSION,
+            'Content-Length'      : Buffer.byteLength(body),
+          },
+        },
+        body
+      );
+      break;
+    } catch (err) {
+      if (err.isRateLimit) {
+        if (err.retryAfterSec && err.retryAfterSec <= 90 && attempt < maxRetries) {
+          console.log(`   ⏳ Rate limit, menunggu ${err.retryAfterSec}d...`);
+          await new Promise(r => setTimeout(r, err.retryAfterSec * 1000 + 500));
+          continue;
+        }
+        throw err;
+      }
+      if (attempt === maxRetries) throw err;
+      const waitMs = attempt * 3000;
+      console.log(`   ⚠️  Gagal (percobaan ${attempt}/${maxRetries}): ${err.message}. Coba lagi ${waitMs/1000}d...`);
+      await new Promise(r => setTimeout(r, waitMs));
+    }
+  }
 
   return result.choices?.[0]?.message?.content || '';
+}
+// ─────────────────────────────────────────────────────────────────────────────
+
+// ─── Escape string untuk dimasukkan ke YAML double-quoted ────────────────────
+function yamlEscape(str) {
+  return String(str).replace(/\\/g, '\\\\').replace(/"/g, '\\"');
+}
+// ─────────────────────────────────────────────────────────────────────────────
+
+// ─── Buang penanda "penutup" yang kadang tetap ditambahkan AI meski dilarang ──
+// Prompt sudah eksplisit melarang ini, tapi LLM tidak selalu patuh 100% — jadi
+// ini jaring pengaman di kode, bukan cuma mengandalkan instruksi prompt.
+function stripTrailingMarkers(text) {
+  const markerPatterns = [
+    /^ARTIKEL[_\s]?SELESAI$/i,
+    /^SELESAI$/i,
+    /^\[?END\]?$/i,
+    /^TAMAT$/i,
+    /^---+$/,
+    /^===+$/,
+  ];
+  const lines = text.split('\n');
+  while (lines.length && lines[lines.length - 1].trim() === '') lines.pop();
+  while (lines.length && markerPatterns.some(p => p.test(lines[lines.length - 1].trim()))) {
+    lines.pop();
+    while (lines.length && lines[lines.length - 1].trim() === '') lines.pop();
+  }
+  return lines.join('\n');
 }
 // ─────────────────────────────────────────────────────────────────────────────
 
@@ -387,6 +447,7 @@ function parseAndSave(raw, keyword, slug, imagePath) {
   }
 
   if (!body.trim()) body = raw;
+  body = stripTrailingMarkers(body);
 
   // Ganti IMAGE_PLACEHOLDER dengan path gambar yang sudah dipilih
   body = body.replace(/IMAGE_PLACEHOLDER/g, imagePath);
@@ -408,8 +469,8 @@ function parseAndSave(raw, keyword, slug, imagePath) {
   // - categories selalu ["blog"] sesuai artikel manual
   // - type: service (default untuk CDI)
   // - description diambil dari output AI
-  const safeTitle = title.replace(/"/g, "'");
-  const safeDesc  = desc.replace(/"/g, "'");
+  const safeTitle = yamlEscape(title);
+  const safeDesc  = yamlEscape(desc);
   const frontMatter = `---
 title: "${safeTitle}"
 date: "${today}"
