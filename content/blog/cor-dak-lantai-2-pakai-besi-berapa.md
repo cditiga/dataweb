@@ -5,7 +5,7 @@ categories:
  - "blog"
 type: "service"
 description: "Cor dak lantai 2 pakai besi berapa? Temukan panduan lengkapnya, mulai dari ukuran besi hingga tips pengerjaan yang tepat untuk hasil maksimal."
-featured_image: "/images/blog/cor-readymix-01.jpg"
+featured_image: "/images/cor/cor-readymix-01.jpg"
 tags: ["cor dak lantai 2", "ukuran besi dak lantai 2", "jasa pengecoran Jabodetabek", "desain interior", "material bangunan"]
 keywords: "cor dak lantai 2 pakai besi berapa"
 author: "Ibnu Koesnady"
