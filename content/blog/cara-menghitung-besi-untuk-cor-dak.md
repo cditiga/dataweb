@@ -68,6 +68,4 @@ Perhitungan besi bisa berbeda-beda tergantung jenis dak, seperti dak lantai ruma
 
 Mitra CDI, memahami cara menghitung besi untuk cor dak memang penting agar proyek pembangunan berjalan lancar tanpa kendala. Dengan perhitungan yang tepat, dak beton Anda akan kokoh, tahan lama, dan tetap ramah anggaran.  
 
-Jika Anda membutuhkan bantuan lebih lanjut, tim kami di Creative Design Interior siap jadi partner terbaik untuk proyek Anda. Silakan hubungi kami melalui tombol **Telepon** atau **WhatsApp** yang tersedia di bawah halaman ini.  
-
-ARTIKEL_SELESAI
+Jika Anda membutuhkan bantuan lebih lanjut, tim kami di Creative Design Interior siap jadi partner terbaik untuk proyek Anda. Silakan hubungi kami melalui tombol **Telepon** atau **WhatsApp** yang tersedia di bawah halaman ini.

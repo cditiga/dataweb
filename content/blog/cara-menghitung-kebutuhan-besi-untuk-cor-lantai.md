@@ -87,5 +87,4 @@ Mitra CDI, itulah panduan lengkap cara menghitung kebutuhan besi untuk cor lanta
 
 Jika Mitra CDI membutuhkan bantuan untuk perencanaan konstruksi, desain interior, atau kebutuhan furniture custom, kami siap membantu. Silakan hubungi kami melalui tombol **Telepon** atau **WhatsApp** yang tersedia di bawah halaman ini.  
 
-Semoga artikel ini bermanfaat, dan sukses selalu untuk proyek yang sedang Mitra CDI kerjakan!  
-ARTIKEL_SELESAI
+Semoga artikel ini bermanfaat, dan sukses selalu untuk proyek yang sedang Mitra CDI kerjakan!
