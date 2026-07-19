@@ -203,7 +203,8 @@ const EXCLUDED_KEYWORDS_FILE = path.join(__dirname, '.excluded-keywords.json');
 // pendek, skor bigram lebih "adil") butuh threshold lebih tinggi; keyword-vs-title
 // (dibanding kalimat panjang) secara alami skornya lebih rendah meski topik sama,
 // jadi thresholdnya perlu lebih longgar.
-const SIMILARITY_THRESHOLD_KEYWORD = 0.65;
+const SIMILARITY_THRESHOLD_KEYWORD = 0.6;  // diturunkan dari 0.65 — bukti nyata "campuran semen untuk pondasi"
+                                            // vs "campuran pondasi rumah" (topik sama) cuma dapat skor 0.62
 const SIMILARITY_THRESHOLD_TITLE   = 0.45;
 
 function bigrams(str) {
@@ -368,17 +369,54 @@ function detectCategories(keyword) {
 // ─────────────────────────────────────────────────────────────────────────────
 
 // ─── Generate artikel via GitHub Models API ───────────────────────────────────
+// ─── Variasi gaya pembuka & penutup — dipilih SECARA MEKANIS (bukan diserahkan
+// ke AI), supaya benar-benar bervariasi antar artikel. Sebelumnya prompt secara
+// LITERAL mewajibkan 1 formula pembuka yang sama persis setiap kali — itu akar
+// masalah kenapa 19/19 artikel nyata berbunyi "...Mitra CDI dimana saja berada,
+// pernah nggak sih...". Sekarang dipilih acak dari beberapa gaya berbeda. ─────
+const OPENING_STYLES = [
+  `Mulai dengan pertanyaan retoris singkat (bukan "pernah nggak sih" atau "pernahkah") yang langsung berhubungan dengan masalah di keyword ini.`,
+  `Mulai LANGSUNG dengan menjawab inti pertanyaan di keyword dalam 1-2 kalimat singkat dan tegas, baru kembangkan penjelasannya setelah itu. Jangan basa-basi di awal.`,
+  `Mulai dengan menyebutkan situasi/skenario nyata yang sering dialami terkait topik ini (2-3 kalimat cerita singkat), baru masuk ke pembahasan.`,
+  `Mulai dengan 1 fakta atau angka menarik terkait topik ini, baru jelaskan kenapa itu penting untuk pembaca.`,
+  `Mulai dengan menyebutkan kesalahan umum yang sering terjadi terkait topik ini, tanpa memakai kalimat tanya sama sekali.`,
+  `Mulai dengan kalimat pendek dan langsung (maksimal 8 kata) sebagai pembuka paragraf pertama, baru diikuti kalimat yang lebih panjang untuk menjelaskan.`,
+];
+
+const CLOSING_STYLES = [
+  `Ada pertanyaan lain seputar topik ini? Tombol **Telepon** dan **WhatsApp** di bawah halaman ini siap Kami jawab.`,
+  `Butuh bantuan langsung untuk kebutuhan proyek Anda? Klik tombol **WhatsApp** atau **Telepon** di bawah untuk konsultasi dengan tim Kami.`,
+  `Kalau masih ada yang mau ditanyakan, jangan sungkan hubungi Kami lewat tombol **WhatsApp** atau **Telepon** di halaman ini.`,
+  `Tim Kami siap bantu wujudkan proyek Anda — hubungi lewat tombol **Telepon** atau **WhatsApp** yang tersedia di bawah.`,
+  `Mau konsultasi lebih lanjut soal ini? Tombol **Telepon** dan **WhatsApp** di bawah halaman ini bisa langsung dipakai untuk menghubungi Kami.`,
+];
+
+function pickRandom(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+// ─────────────────────────────────────────────────────────────────────────────
+
 async function generateArticle(keyword) {
   const type = detectType(keyword);
+  const openingStyle = pickRandom(OPENING_STYLES);
+  const closingStyle = pickRandom(CLOSING_STYLES);
 
   const prompt = `Kamu adalah penulis konten blog untuk website "${CONFIG.SITE_NAME}" — perusahaan jasa desain interior, furniture custom, material bangunan, dan jasa pengecoran di wilayah Jabodetabek.
 
 Kamu menulis dengan GAYA KHAS blog ini:
-- Sapaan audiens: "Mitra CDI" (bukan "Anda" atau "kamu") di awal artikel dan di beberapa paragraf
+- Sapaan audiens: "Mitra CDI" (bukan "Anda" atau "kamu") — dipakai SEWAJARNYA, tidak harus di kalimat pertama
 - Penulis menyebut diri sebagai "Kami" (bukan "Saya" atau "Saya pribadi")
 - Gaya bahasa: hangat, akrab, conversational — seperti teman yang ahli di bidangnya
-- Boleh pakai kata-kata informal sesekali: "gimana", "yuk", "nah", "lho", "nih"
-- Paragraf pembuka WAJIB dimulai dengan: "**${keyword.split(' ').map(w=>w.charAt(0).toUpperCase()+w.slice(1)).join(' ')}** - Mitra CDI dimana saja berada,"
+- Boleh pakai kata informal sesekali ("gimana", "yuk", "nah", "lho", "nih") TAPI JANGAN BERLEBIHAN —
+  maksimal 2x pemakaian kata "Nah," di seluruh artikel, dan JANGAN buka lebih dari 1 paragraf dengan "Nah,"
+
+GAYA PEMBUKA untuk artikel ini (WAJIB ikuti gaya spesifik ini, JANGAN pakai formula lain):
+${openingStyle}
+Sisipkan judul artikel dalam format tebal di awal paragraf pertama, tapi susunan kalimat setelahnya HARUS mengikuti gaya di atas — jangan pakai "Mitra CDI dimana saja berada" atau frasa pembuka baku lain.
+
+GAYA PENUTUP/CTA untuk artikel ini (WAJIB pakai kalimat ini persis, di paragraf terakhir):
+"${closingStyle}"
+
+JANGAN tulis nomor telepon dalam bentuk digit apapun di mana pun dalam artikel — cukup arahkan ke
+tombol Telepon/WhatsApp seperti instruksi CTA di atas.
 
 KETENTUAN ARTIKEL:
 - Keyword utama: "${keyword}"
@@ -387,17 +425,21 @@ KETENTUAN ARTIKEL:
 - Setiap H2 mengandung variasi keyword atau kata kunci turunan
 - Sisipkan 1 gambar inline di tengah artikel dengan format: ![deskripsi gambar](IMAGE_PLACEHOLDER)
   (IMAGE_PLACEHOLDER akan diganti otomatis oleh sistem)
-- CTA di akhir: JANGAN tulis nomor telepon. Cukup tulis:
-  "Silakan hubungi kami melalui tombol **Telepon** atau **WhatsApp** yang tersedia di bawah halaman ini."
+
+WAJIB SUBSTANTIF — bukan cuma basa-basi umum. Sertakan MINIMAL SATU dari ini yang relevan dengan topik:
+- Angka/ukuran/standar konkret (contoh: rasio campuran, diameter, ketebalan, mutu beton K-xxx, SNI)
+- Contoh perhitungan nyata dengan angka (bukan cuma rumus tanpa contoh)
+- Rentang harga atau estimasi biaya yang realistis
+- Perbandingan konkret antar-pilihan (bukan cuma daftar kelebihan/kekurangan generik)
+Kalau keyword-nya tidak memungkinkan angka teknis (misal topik desain/inspirasi), ganti dengan detail
+konkret lain: nama material spesifik, dimensi umum, atau contoh kasus nyata.
 
 VARIASIKAN PANJANG KALIMAT — campur kalimat pendek (5-8 kata) dengan kalimat panjang, jangan seragam
 sedang-panjang terus-menerus. Ini penting supaya ritme baca terasa manusiawi, bukan seperti draft AI.
 
-PERTAHANKAN detail konkret kalau relevan (harga, ukuran, nama material spesifik) — itu yang bikin
-tulisan terasa nyata, bukan generik.
-
-CONTOH GAYA BAHASA ASLI CDI (jadikan acuan nada/rasa tulisan, JANGAN disalin isinya):
-"**Jual Material Batu Pondasi di Abadijaya Depok Gratis Ongkir** - Hai Mitra CDI! Gimana kabar kalian semua? kami dari penjual Batu Pondasi yang berlokasi di Abadijaya Depok ingin memperkenalkan usaha kepada anda. kami ialah supplier bahan bangunan berkualitas tinggi yang siap mendukung anda dalam proyek-proyek bangunan di Abadijaya Depok."
+VARIASIKAN HEADING H2 — jangan selalu pakai judul heading generik seperti "Kesimpulan", "Penutup",
+"Faktor yang Mempengaruhi..." kalau artikel lain kemungkinan besar pakai judul H2 yang sama. Buat
+heading yang spesifik ke topik ini.
 
 Output HARUS dalam format berikut (tanpa teks tambahan apapun):
 JUDUL: [judul artikel menarik, mengandung keyword, tanpa tanda #]
@@ -608,6 +650,38 @@ draft: false
 // ─────────────────────────────────────────────────────────────────────────────
 
 // ─── Validasi front matter hasil artikel ──────────────────────────────────────
+// ─── Cek variasi pembuka — bandingkan dengan beberapa artikel terakhir ───────
+// (bukti nyata bahwa rotasi gaya pembuka benar-benar menghasilkan variasi,
+// bukan cuma percaya begitu saja)
+const RECENT_OPENINGS_FILE = path.join(__dirname, '.recent-openings.json');
+const OPENING_SIMILARITY_WARN = 0.6;
+
+function loadRecentOpenings() {
+  if (!fs.existsSync(RECENT_OPENINGS_FILE)) return [];
+  try { return JSON.parse(fs.readFileSync(RECENT_OPENINGS_FILE, 'utf8')); } catch { return []; }
+}
+function saveRecentOpenings(list) {
+  fs.writeFileSync(RECENT_OPENINGS_FILE, JSON.stringify(list.slice(-10))); // simpan 10 terakhir saja
+}
+function getOpeningWords(body, n = 15) {
+  return body.trim().split(/\s+/).slice(0, n).join(' ');
+}
+function checkOpeningVariety(body) {
+  const opening = getOpeningWords(body);
+  const recent = loadRecentOpenings();
+  const issues = [];
+  for (const prev of recent) {
+    const score = diceCoefficient(opening, prev);
+    if (score >= OPENING_SIMILARITY_WARN) {
+      issues.push(`⚠️  Pembuka mirip (${(score*100).toFixed(0)}%) dengan artikel sebelumnya: "${prev.slice(0, 60)}..."`);
+    }
+  }
+  recent.push(opening);
+  saveRecentOpenings(recent);
+  return issues;
+}
+// ─────────────────────────────────────────────────────────────────────────────
+
 function validateArticle(filePath) {
   const content = fs.readFileSync(filePath, 'utf8');
   const issues  = [];
@@ -621,8 +695,13 @@ function validateArticle(filePath) {
   if (!content.includes('keywords:'))       issues.push('❌ keywords tidak ada');
   if (!content.includes('toc: true'))       issues.push('⚠️  toc tidak aktif');
 
-  const wordCount = content.replace(/---[\s\S]*?---/, '').split(/\s+/).length;
+  const bodyOnly = content.replace(/---[\s\S]*?---/, '').trim();
+  const wordCount = bodyOnly.split(/\s+/).length;
   if (wordCount < 300) issues.push(`⚠️  Konten terlalu pendek: ${wordCount} kata`);
+
+  // Cek variasi pembuka terhadap riwayat artikel terakhir (soft warning, tidak menggagalkan)
+  const openingIssues = checkOpeningVariety(bodyOnly);
+  issues.push(...openingIssues);
 
   if (issues.length === 0) {
     console.log(`   ✅ Validasi OK — ${wordCount} kata`);
