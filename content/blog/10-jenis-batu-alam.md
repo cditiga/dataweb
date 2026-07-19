@@ -5,7 +5,7 @@ categories:
  - "blog"
 type: "product"
 description: "10 jenis batu alam untuk desain rumah. Temukan pilihan batu terbaik untuk mempercantik interior dan eksterior hunian Anda."
-featured_image: "/images/urugan/batu-makadam-basecose-40.jpg"
+featured_image: "/images/blog/hiasan-batu-koral.jpg"
 tags: ["batu alam", "desain interior", "eksterior rumah", "material bangunan"]
 keywords: "10 jenis batu alam"
 author: "Ibnu Koesnady"
@@ -51,7 +51,7 @@ Batu slate, atau sering disebut batu sabak, memiliki keindahan yang sangat khas.
 
 Selain itu, batu slate juga tahan terhadap air, sehingga bisa digunakan di area outdoor seperti taman atau kolam.  
 
-![Batu alam menghiasi dinding rumah](/images/urugan/batu-makadam-basecose-40.jpg)  
+![Batu alam menghiasi dinding rumah](/images/blog/hiasan-batu-koral.jpg)  
 
 ## Batu Alam untuk Taman dan Lanskap  
 

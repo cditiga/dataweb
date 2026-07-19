@@ -5,7 +5,7 @@ categories:
  - "blog"
 type: "service"
 description: "Cara menghitung besi untuk cor dak dengan langkah praktis. Simak panduan lengkap agar dak yang Anda bangun kokoh dan tahan lama."
-featured_image: "/images/blog/harga-besi.jpg"
+featured_image: "/images/blog/cor-dak-rumah.jpg"
 tags: ["cara menghitung besi", "cor dak beton", "desain interior bangunan"]
 keywords: "cara menghitung besi untuk cor dak"
 author: "Ibnu Koesnady"
@@ -49,7 +49,7 @@ Setelah itu, pilih diameter besi yang sesuai, misalnya 10 mm. Kemudian, tentukan
 
 Gunakan rumus yang sudah kami sebutkan di atas untuk menghitung jumlah besi yang dibutuhkan. Jangan lupa untuk menambahkan cadangan sekitar 10–15% untuk mengantisipasi kebutuhan tambahan.  
 
-![Ilustrasi cara menghitung besi untuk cor dak](/images/blog/harga-besi.jpg)  
+![Ilustrasi cara menghitung besi untuk cor dak](/images/blog/cor-dak-rumah.jpg)  
 
 ## Tips Agar Perhitungan Besi Lebih Akurat  
 

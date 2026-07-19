@@ -5,7 +5,7 @@ categories:
  - "blog"
 type: "product"
 description: "Cara menghitung ring balok agar hasil bangunan kokoh dan presisi. Simak langkah-langkah mudah menghitung ring balok di sini."
-featured_image: "/images/blog/rak-piring-002.jpg"
+featured_image: "/images/dak-panel/dak-panel-04.jpg"
 tags: ["cara menghitung ring balok", "ring balok bangunan", "konstruksi bangunan", "desain interior", "material bangunan"]
 keywords: "cara menghitung ring balok"
 author: "Ibnu Koesnady"
@@ -57,7 +57,7 @@ Supaya lebih jelas, yuk kita coba hitung kebutuhan material ring balok untuk seb
 3. **Kebutuhan Besi Tulangan:**  
    Asumsikan kita menggunakan besi Ø10 dengan panjang total 40 meter, maka kebutuhan total besi tergantung pada jarak antar cincin tulangan (biasanya 15-20 cm). Untuk perhitungan detailnya, silakan konsultasikan kepada tim ahli material bangunan kami.  
 
-![Gambar ilustrasi ring balok](/images/blog/rak-piring-002.jpg)  
+![Gambar ilustrasi ring balok](/images/dak-panel/dak-panel-04.jpg)  
 
 ## Tips Agar Ring Balok Lebih Kokoh  
 

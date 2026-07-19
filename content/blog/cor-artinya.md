@@ -5,7 +5,7 @@ categories:
  - "blog"
 type: "service"
 description: "Cor artinya proses pengecoran untuk konstruksi. Yuk kenali jenis cor, cara aplikasinya, dan manfaatnya untuk desain interior rumah."
-featured_image: "/images/urugan/batu-makadam-basecose-38.jpg"
+featured_image: "/images/cor/cor-readymix-02.jpg"
 tags: ["cor artinya", "teknik cor", "desain interior", "konstruksi rumah", "furniture custom"]
 keywords: "cor artinya"
 author: "Ibnu Koesnady"
@@ -34,7 +34,7 @@ Mungkin Mitra CDI bertanya-tanya, "Emang bisa ya teknik cor dipakai buat interio
 ### Lantai Beton Ekspos  
 Salah satu tren yang sedang digemari adalah lantai beton ekspos. Selain memberikan kesan modern dan industrial, lantai ini juga dikenal tahan lama dan mudah perawatannya. Mitra CDI bisa pilih finishing matte untuk kesan alami atau glossy untuk tampilan yang lebih elegan.  
 
-![Lantai beton ekspos untuk rumah modern](/images/urugan/batu-makadam-basecose-38.jpg)  
+![Lantai beton ekspos untuk rumah modern](/images/dak-panel/dak-panel-06.jpg)  
 
 ### Furniture Custom dari Beton  
 Siapa bilang furniture harus selalu dari kayu atau logam? Beton juga bisa jadi pilihan yang unik dan stylish. Meja, rak, hingga kursi bisa dibuat dengan teknik cor dari beton. Selain kuat, furniture beton juga punya daya tarik visual yang beda, lho.  
