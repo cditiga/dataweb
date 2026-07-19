@@ -165,6 +165,7 @@ async function fetchKeywordsFromGSC() {
 
   const filtered = result.rows
     .filter(r => r.impressions >= CONFIG.MIN_IMPRESSIONS && r.position <= CONFIG.MAX_POSITION)
+    .filter(r => r.keys[0].trim().split(/\s+/).length >= 3) // minimal 3 kata — keyword pendek terlalu generik/rawan tumpang tindih
     .map(r => ({ keyword: r.keys[0], impressions: r.impressions, clicks: r.clicks, ctr: r.ctr, position: r.position }));
 
   console.log(`✅ ${filtered.length} keyword potensial dari ${result.rows.length} total.`);
@@ -194,6 +195,101 @@ function getExistingSlugs() {
 }
 // ─────────────────────────────────────────────────────────────────────────────
 
+// ─── Deteksi keyword baru yang mirip artikel blog yang sudah ada ─────────────
+// (bukan cuma cek slug identik — ini nangkep kasus keyword beda kata tapi topiknya sama,
+// supaya tidak ada artikel blog yang isinya tumpang tindih satu sama lain)
+const EXCLUDED_KEYWORDS_FILE = path.join(__dirname, '.excluded-keywords.json');
+// Threshold beda untuk 2 jenis perbandingan: keyword-vs-keyword (sama-sama frasa
+// pendek, skor bigram lebih "adil") butuh threshold lebih tinggi; keyword-vs-title
+// (dibanding kalimat panjang) secara alami skornya lebih rendah meski topik sama,
+// jadi thresholdnya perlu lebih longgar.
+const SIMILARITY_THRESHOLD_KEYWORD = 0.65;
+const SIMILARITY_THRESHOLD_TITLE   = 0.45;
+
+function bigrams(str) {
+  const s = str.toLowerCase().replace(/[^a-z0-9\s]/g, '').replace(/\s+/g, ' ').trim();
+  const g = [];
+  for (let i = 0; i < s.length - 1; i++) g.push(s.substring(i, i + 2));
+  return g;
+}
+function diceCoefficient(a, b) {
+  const ga = bigrams(a), gb = bigrams(b);
+  if (!ga.length || !gb.length) return 0;
+  const mapA = new Map(); ga.forEach(g => mapA.set(g, (mapA.get(g) || 0) + 1));
+  const mapB = new Map(); gb.forEach(g => mapB.set(g, (mapB.get(g) || 0) + 1));
+  let inter = 0;
+  for (const [g, c] of mapA) if (mapB.has(g)) inter += Math.min(c, mapB.get(g));
+  return (2 * inter) / (ga.length + gb.length);
+}
+
+function getExistingArticleTexts() {
+  const items = [];
+  if (!fs.existsSync(CONFIG.CONTENT_DIR)) return items;
+  function scan(dir) {
+    fs.readdirSync(dir, { withFileTypes: true }).forEach(e => {
+      const full = path.join(dir, e.name);
+      if (e.isDirectory()) { scan(full); return; }
+      if (!e.name.endsWith('.md')) return;
+      try {
+        const raw = fs.readFileSync(full, 'utf8');
+        const titleMatch = raw.match(/^title:\s*"((?:[^"\\]|\\.)*)"/m);
+        const kwMatch     = raw.match(/^keywords:\s*"((?:[^"\\]|\\.)*)"/m);
+        if (titleMatch) items.push({ file: full, title: titleMatch[1], keyword: kwMatch ? kwMatch[1] : '' });
+      } catch {}
+    });
+  }
+  scan(CONFIG.CONTENT_DIR);
+  return items;
+}
+
+function loadExcludedKeywords() {
+  if (!fs.existsSync(EXCLUDED_KEYWORDS_FILE)) return {};
+  try { return JSON.parse(fs.readFileSync(EXCLUDED_KEYWORDS_FILE, 'utf8')); } catch { return {}; }
+}
+function saveExcludedKeywords(obj) {
+  fs.writeFileSync(EXCLUDED_KEYWORDS_FILE, JSON.stringify(obj, null, 2));
+}
+
+// Cek 1 keyword terhadap artikel yang sudah ada. Return artikel yang mirip (atau null).
+function findSimilarExisting(keyword, existingItems) {
+  for (const item of existingItems) {
+    // Prioritas: bandingkan ke field keywords (sama-sama frasa pendek, lebih akurat)
+    if (item.keyword && diceCoefficient(keyword, item.keyword) >= SIMILARITY_THRESHOLD_KEYWORD) return item;
+    // Fallback: bandingkan ke title (kalimat panjang, threshold lebih longgar)
+    if (diceCoefficient(keyword, item.title) >= SIMILARITY_THRESHOLD_TITLE) return item;
+  }
+  return null;
+}
+
+// Saring keyword: buang yang sudah ditandai excluded sebelumnya, ATAU yang baru
+// terdeteksi mirip artikel yang ada sekarang (langsung ditandai supaya tidak
+// dicek ulang tiap hari).
+function filterOutSimilarKeywords(keywords) {
+  const excluded = loadExcludedKeywords();
+  const existingItems = getExistingArticleTexts();
+  const kept = [];
+  let newlyExcluded = 0;
+
+  for (const item of keywords) {
+    const key = item.keyword.toLowerCase().trim();
+    if (excluded[key]) continue; // sudah pernah ditandai, lewati tanpa cek ulang
+
+    const similar = findSimilarExisting(item.keyword, existingItems);
+    if (similar) {
+      excluded[key] = { reason: 'mirip artikel yang sudah ada', matchedFile: path.basename(similar.file), matchedTitle: similar.title, taggedAt: new Date().toISOString() };
+      newlyExcluded++;
+      console.log(`   ⏭️  Lewati "${item.keyword}" — mirip artikel yang sudah ada: "${similar.title}"`);
+      continue;
+    }
+    kept.push(item);
+  }
+
+  if (newlyExcluded > 0) saveExcludedKeywords(excluded);
+  console.log(`   🔎 ${newlyExcluded} keyword baru ditandai excluded (mirip artikel existing), ${Object.keys(excluded).length} total excluded sepanjang waktu.`);
+  return kept;
+}
+// ─────────────────────────────────────────────────────────────────────────────
+
 // ─── Pilih gambar: cocokkan minimal 2 kata keyword dengan nama file ───────────
 function pickImage(keyword) {
   const imgDir = CONFIG.IMAGES_DIR;
@@ -215,18 +311,23 @@ function pickImage(keyword) {
   const allImages = getImages(imgDir);
   if (!allImages.length) return '/images/admin/featured-image.png';
 
-  // Ambil kata bermakna (panjang > 3 karakter)
+  // Ambil kata bermakna — panjang > 2 (BUKAN > 3), supaya kata pendek tapi penting
+  // seperti "cor", "cat", "gas" tetap ikut dicocokkan. Sebelumnya kata seperti "cor"
+  // (3 huruf) selalu terbuang, jadi query "besi cor" cuma tersisa kata "besi" —
+  // itu sebabnya gambar "kursi besi" ikut ketangkap meski salah topik.
   const stopWords = new Set(['yang', 'untuk', 'dari', 'dengan', 'pada', 'dalam', 'atau', 'juga', 'adalah', 'cara', 'harga', 'ukuran', 'jenis']);
-  const words = keyword.toLowerCase().split(/\s+/).filter(w => w.length > 3 && !stopWords.has(w));
+  const words = keyword.toLowerCase().split(/\s+/).filter(w => w.length > 2 && !stopWords.has(w));
 
-  // Score tiap gambar: hitung berapa kata keyword cocok dengan nama file
+  // Score tiap gambar: hitung berapa kata keyword cocok dengan nama file (urutan tidak masalah)
   const scored = allImages.map(img => {
     const name = path.basename(img).toLowerCase().replace(/[-_]/g, ' ');
     const matchCount = words.filter(w => name.includes(w)).length;
     return { img, matchCount };
   });
 
-  // Filter minimal 2 kata cocok
+  // WAJIB minimal 2 kata cocok — TIDAK ada fallback ke 1 kata (itu sumber salah tangkap
+  // sebelumnya). Kalau tidak ada yang capai 2 kata, lebih aman pakai gambar generik
+  // daripada gambar spesifik yang salah topik.
   const good = scored.filter(s => s.matchCount >= 2);
 
   let chosen;
@@ -237,16 +338,10 @@ function pickImage(keyword) {
     chosen = best[Math.floor(Math.random() * best.length)].img;
     console.log(`   🖼️  Gambar cocok (${maxMatch} kata): ${path.basename(chosen)}`);
   } else {
-    // Fallback: minimal 1 kata cocok
-    const ok = scored.filter(s => s.matchCount >= 1);
-    if (ok.length > 0) {
-      chosen = ok[Math.floor(Math.random() * ok.length)].img;
-      console.log(`   🖼️  Gambar fallback (1 kata): ${path.basename(chosen)}`);
-    } else {
-      // Total fallback: gambar acak
-      chosen = allImages[Math.floor(Math.random() * allImages.length)];
-      console.log(`   🖼️  Gambar acak (tidak ada yang cocok): ${path.basename(chosen)}`);
-    }
+    // Tidak ada yang capai 2 kata cocok → pakai gambar generik, JANGAN tebak-tebak
+    // dengan 1 kata (itu yang menyebabkan "besi cor" salah dapat gambar "kursi besi").
+    console.log(`   🖼️  Tidak ada gambar dengan ≥2 kata cocok untuk "${keyword}" → pakai gambar generik.`);
+    return '/images/admin/featured-image.png';
   }
 
   return chosen.replace(path.join(__dirname, 'static'), '').replace(/\\/g, '/');
@@ -294,6 +389,15 @@ KETENTUAN ARTIKEL:
   (IMAGE_PLACEHOLDER akan diganti otomatis oleh sistem)
 - CTA di akhir: JANGAN tulis nomor telepon. Cukup tulis:
   "Silakan hubungi kami melalui tombol **Telepon** atau **WhatsApp** yang tersedia di bawah halaman ini."
+
+VARIASIKAN PANJANG KALIMAT — campur kalimat pendek (5-8 kata) dengan kalimat panjang, jangan seragam
+sedang-panjang terus-menerus. Ini penting supaya ritme baca terasa manusiawi, bukan seperti draft AI.
+
+PERTAHANKAN detail konkret kalau relevan (harga, ukuran, nama material spesifik) — itu yang bikin
+tulisan terasa nyata, bukan generik.
+
+CONTOH GAYA BAHASA ASLI CDI (jadikan acuan nada/rasa tulisan, JANGAN disalin isinya):
+"**Jual Material Batu Pondasi di Abadijaya Depok Gratis Ongkir** - Hai Mitra CDI! Gimana kabar kalian semua? kami dari penjual Batu Pondasi yang berlokasi di Abadijaya Depok ingin memperkenalkan usaha kepada anda. kami ialah supplier bahan bangunan berkualitas tinggi yang siap mendukung anda dalam proyek-proyek bangunan di Abadijaya Depok."
 
 Output HARUS dalam format berikut (tanpa teks tambahan apapun):
 JUDUL: [judul artikel menarik, mengandung keyword, tanpa tanda #]
@@ -549,10 +653,14 @@ async function main() {
   const newKeywords = keywords.filter(k => !existingSlugs.has(toSlug(k.keyword)));
   if (!newKeywords.length) { console.log('✅ Semua keyword sudah punya artikel.'); return; }
 
-  // Prioritas: impressi tinggi × CTR rendah
-  newKeywords.sort((a, b) => (b.impressions * (1 - b.ctr)) - (a.impressions * (1 - a.ctr)));
+  console.log(`\n🔎 Cek kemiripan ${newKeywords.length} keyword terhadap artikel yang sudah ada...`);
+  const uniqueKeywords = filterOutSimilarKeywords(newKeywords);
+  if (!uniqueKeywords.length) { console.log('✅ Semua keyword baru mirip artikel yang sudah ada. Tidak ada yang perlu digenerate.'); return; }
 
-  const toProcess = newKeywords.slice(0, IS_DRY_RUN ? newKeywords.length : CONFIG.MAX_ARTICLES);
+  // Prioritas: impressi tinggi × CTR rendah
+  uniqueKeywords.sort((a, b) => (b.impressions * (1 - b.ctr)) - (a.impressions * (1 - a.ctr)));
+
+  const toProcess = uniqueKeywords.slice(0, IS_DRY_RUN ? uniqueKeywords.length : CONFIG.MAX_ARTICLES);
   console.log(`\n📝 Akan generate ${toProcess.length} artikel:\n`);
 
   const results = [];

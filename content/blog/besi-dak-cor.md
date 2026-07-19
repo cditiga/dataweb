@@ -5,7 +5,7 @@ categories:
  - "blog"
 type: "service"
 description: "Besi dak cor - Elemen wajib untuk konstruksi kokoh. Kenali jenis, fungsi, dan tips memilih besi dak cor terbaik di artikel ini!"
-featured_image: "/images/blog/desain-kursi-besi-minimalis.jpg"
+featured_image: "/images/blog/pasang-bondek.jpg"
 tags: ["besi dak cor", "konstruksi bangunan", "desain interior", "material bangunan", "Jabodetabek"]
 keywords: "besi dak cor"
 author: "Ibnu Koesnady"
@@ -45,7 +45,7 @@ Nah, kalau besi beton ulir, ini nih jagoannya untuk konstruksi yang lebih komple
 
 Jenis ini biasanya dipakai untuk bangunan bertingkat atau konstruksi yang harus menahan beban berat dalam jangka panjang. Meski harganya lebih mahal dibandingkan besi beton polos, kualitasnya tentu sebanding dengan harga.  
 
-![Besi beton ulir untuk dak cor](/images/blog/desain-kursi-besi-minimalis.jpg)  
+![Besi beton ulir untuk dak cor](/images/blog/pasang-bondek.jpg)  
 
 ## Tips Memilih Besi Dak Cor yang Tepat  
 

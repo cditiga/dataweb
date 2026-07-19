@@ -195,7 +195,12 @@ function buildPrompt(title, location, category, protectedContent) {
    - Penulis menyebut diri "Kami" (bukan "Saya")
    - Gaya hangat, akrab, conversational — boleh pakai kata informal sesekali ("gimana", "yuk", "nah", "lho", "nih")
    - Kalau artikel asli dibuka dengan pola "**[Judul]** - Hai Mitra CDI!" atau serupa, pertahankan pola sapaan itu (boleh diparafrase kalimatnya, tapi jangan hilangkan sapaan "Mitra CDI"-nya)
-9. Kalau ada ajakan menghubungi (CTA), JANGAN tulis nomor telepon dalam bentuk digit apapun — cukup arahkan ke tombol Telepon/WhatsApp yang ada di halaman (persis seperti gaya CTA asli CDI, jangan tulis ulang angka telepon meski ada di artikel asli).`
+9. Kalau ada ajakan menghubungi (CTA), JANGAN tulis nomor telepon dalam bentuk digit apapun — cukup arahkan ke tombol Telepon/WhatsApp yang ada di halaman (persis seperti gaya CTA asli CDI, jangan tulis ulang angka telepon meski ada di artikel asli).
+10. VARIASIKAN PANJANG KALIMAT dengan sengaja — campur kalimat pendek (5-8 kata, kadang cuma satu klausa) dengan kalimat panjang, jangan seragam sedang-panjang terus-menerus seperti draft AI pada umumnya. Ini penting supaya ritme baca terasa manusiawi, bukan mesin.
+11. Kalau ada detail konkret di artikel asli (harga, ukuran, nama material spesifik, jenis produk), PERTAHANKAN detail spesifik itu — itu yang bikin tulisan terasa nyata, bukan generik.
+
+CONTOH GAYA BAHASA ASLI CDI (jadikan acuan nada/rasa tulisan, JANGAN disalin isinya):
+"**Jual Material Batu Pondasi di Abadijaya Depok Gratis Ongkir** - Hai Mitra CDI! Gimana kabar kalian semua? kami dari penjual Batu Pondasi yang berlokasi di Abadijaya Depok ingin memperkenalkan usaha kepada anda. kami ialah supplier bahan bangunan berkualitas tinggi yang siap mendukung anda dalam proyek-proyek bangunan di Abadijaya Depok."`
     },
     {
       role: 'user',
@@ -282,7 +287,7 @@ async function main() {
   log(`${'─'.repeat(60)}\n`);
 
   if (!fs.existsSync(CANDIDATES_FILE)) {
-    throw new Error(`${CANDIDATES_FILE} tidak ditemukan. Jalankan dulu: node dedup-lapis1.js`);
+    throw new Error(`${CANDIDATES_FILE} tidak ditemukan. Jalankan dulu: node dedup-lapis1.js (dan pastikan candidates.json ikut ter-upload/ter-commit ke repo).`);
   }
   if (APPLY && !CONFIG.GITHUB_TOKEN) {
     throw new Error('GITHUB_TOKEN tidak ditemukan.');

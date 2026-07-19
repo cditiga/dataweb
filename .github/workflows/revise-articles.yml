@@ -28,6 +28,9 @@ jobs:
       - name: Install Dependencies
         run: npm install gray-matter
 
+      - name: Analisa Kandidat Duplikat (Lapis 1 — cepat, offline, hasil TIDAK di-commit)
+        run: node dedup-lapis1.js
+
       - name: Revisi Artikel (bertahap, maks 20/hari)
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -42,7 +45,7 @@ jobs:
         run: |
           git add content/ .revise-progress.json revised-articles.log
           git diff --quiet && git diff --staged --quiet \
-            || git commit -m "Revisi: kurangi kemiripan konten lintas-kota"
+            || git commit -m "Revisi otomatis: kurangi kemiripan konten lintas-kota"
           git push origin master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
