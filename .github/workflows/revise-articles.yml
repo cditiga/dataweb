@@ -45,7 +45,7 @@ jobs:
         run: |
           git add content/ .revise-progress.json revised-articles.log
           git diff --quiet && git diff --staged --quiet \
-            || git commit -m "Revisi otomatis: kurangi kemiripan konten lintas-kota"
+            || git commit -m "Revisi: kurangi kemiripan konten"
           git push origin master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
