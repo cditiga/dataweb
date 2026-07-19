@@ -1,10 +1,13 @@
 ---
-title: "Kebijakan Pengembalian dan Penukaran Barang"
-date: "2021-09-30"
+title: Kebijakan Pengembalian dan Penukaran Barang
+date: '2026-07-19'
 categories:
- - "kebijakan"
-type: "page"
-description: "Kebijakan Pengembalian dan Penukaran Barang Creative Design Interior (CDI). Kami tidak menerima pengembalian maupun penukaran barang, namun kami menjamin ku..."
+  - kebijakan
+type: page
+description: >-
+  Kebijakan Pengembalian dan Penukaran Barang Creative Design Interior (CDI).
+  Kami tidak menerima pengembalian maupun penukaran barang, namun kami menjamin
+  ku...
 ---
 
 **Kebijakan Pengembalian dan Penukaran Barang** - Creative Design Interior (CDI). Kepuasan dan kepercayaan Mitra adalah prioritas utama kami dalam setiap transaksi, baik untuk pembelian material bangunan (pasir, batu, urugan, cor readymix, dll) maupun jasa pembuatan furniture custom (kitchen set, lemari, dipan, meja, dan lainnya). Agar tidak terjadi kesalahpahaman di kemudian hari, berikut kami jelaskan kebijakan pengembalian dan penukaran barang yang berlaku di seluruh produk dan jasa yang kami sediakan.
