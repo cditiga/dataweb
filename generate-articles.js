@@ -198,29 +198,41 @@ function getExistingSlugs() {
 // ─── Deteksi keyword baru yang mirip artikel blog yang sudah ada ─────────────
 // (bukan cuma cek slug identik — ini nangkep kasus keyword beda kata tapi topiknya sama,
 // supaya tidak ada artikel blog yang isinya tumpang tindih satu sama lain)
+//
+// CATATAN PENTING (bug yang diperbaiki): versi sebelumnya pakai character-bigram
+// Dice coefficient, yang KELIRU menganggap keyword mirip hanya karena berbagi 1 kata
+// umum (misal sama-sama ada kata "pasir" atau "cor"), meski topiknya jelas beda
+// ("pasir plester" vs "pasir cor", "besi cor dak" vs "pengertian cor beton").
+// Sekarang pakai overlap kata-signifikan, dan WAJIB minimal 2 kata sama —
+// bukan cuma rasio — supaya tidak ada lagi false-positive dari 1 kata kebetulan sama.
 const EXCLUDED_KEYWORDS_FILE = path.join(__dirname, '.excluded-keywords.json');
-// Threshold beda untuk 2 jenis perbandingan: keyword-vs-keyword (sama-sama frasa
-// pendek, skor bigram lebih "adil") butuh threshold lebih tinggi; keyword-vs-title
-// (dibanding kalimat panjang) secara alami skornya lebih rendah meski topik sama,
-// jadi thresholdnya perlu lebih longgar.
-const SIMILARITY_THRESHOLD_KEYWORD = 0.6;  // diturunkan dari 0.65 — bukti nyata "campuran semen untuk pondasi"
-                                            // vs "campuran pondasi rumah" (topik sama) cuma dapat skor 0.62
-const SIMILARITY_THRESHOLD_TITLE   = 0.45;
+const MIN_SHARED_SIGNIFICANT_WORDS = 2;   // wajib minimal 2 kata signifikan yang sama
+const SIMILARITY_OVERLAP_THRESHOLD = 0.5; // dari kata yang lebih pendek, minimal 50% harus match
 
-function bigrams(str) {
-  const s = str.toLowerCase().replace(/[^a-z0-9\s]/g, '').replace(/\s+/g, ' ').trim();
-  const g = [];
-  for (let i = 0; i < s.length - 1; i++) g.push(s.substring(i, i + 2));
-  return g;
+const SIMILARITY_STOPWORDS = new Set([
+  'jual', 'jasa', 'harga', 'sewa', 'beli', 'biaya', 'tukang', 'pasang',
+  'di', 'ke', 'dari', 'untuk', 'dan', 'yang', 'dengan', 'atau', 'per', 'apa', 'itu', 'ini',
+  'terbaik', 'berkualitas', 'gratis', 'ongkir', 'murah', 'terpercaya', 'terdekat', 'bagus',
+  'professional', 'profesional', 'area', 'lokasi', 'wilayah', 'daerah', 'kota', 'kabupaten',
+  'kecamatan', 'jabodetabek', 'anda', 'kami', 'material', 'konstruksi', 'desain', 'interior',
+  'bangunan', 'apakah', 'pengertian', 'alternatif', 'panduan', 'lengkap', 'cara', 'tips',
+  'mengenal', 'kenali', 'memilih', 'adalah', 'dalam', 'pada', 'juga', 'akan', 'bisa', 'dapat',
+  'kuat', 'awet', 'tahan', 'lama', 'baik', 'jenis', 'macam',
+]);
+
+function significantWordsForSimilarity(text) {
+  return text.toLowerCase().replace(/[^a-z0-9\s]/g, '').split(/\s+/)
+    .filter(w => w.length > 2 && !SIMILARITY_STOPWORDS.has(w)); // panjang > 2 (bukan > 3) supaya kata pendek
+                                                                  // tapi penting seperti "cor", "dak" tetap ikut
 }
-function diceCoefficient(a, b) {
-  const ga = bigrams(a), gb = bigrams(b);
-  if (!ga.length || !gb.length) return 0;
-  const mapA = new Map(); ga.forEach(g => mapA.set(g, (mapA.get(g) || 0) + 1));
-  const mapB = new Map(); gb.forEach(g => mapB.set(g, (mapB.get(g) || 0) + 1));
-  let inter = 0;
-  for (const [g, c] of mapA) if (mapB.has(g)) inter += Math.min(c, mapB.get(g));
-  return (2 * inter) / (ga.length + gb.length);
+
+// Overlap: berapa kata signifikan yang sama PERSIS, dan rasionya terhadap frasa yang lebih pendek
+function overlapSimilarity(a, b) {
+  const wa = new Set(significantWordsForSimilarity(a));
+  const wb = new Set(significantWordsForSimilarity(b));
+  if (!wa.size || !wb.size) return { sharedCount: 0, ratio: 0 };
+  const shared = [...wa].filter(w => wb.has(w));
+  return { sharedCount: shared.length, ratio: shared.length / Math.min(wa.size, wb.size) };
 }
 
 function getExistingArticleTexts() {
@@ -251,13 +263,43 @@ function saveExcludedKeywords(obj) {
   fs.writeFileSync(EXCLUDED_KEYWORDS_FILE, JSON.stringify(obj, null, 2));
 }
 
+// ─── Fallback manual: keywords.txt (1 keyword per baris) ──────────────────────
+// Dipakai kalau GSC tidak menyediakan keyword baru sama sekali (habis/kosong).
+// Tetap dicek similarity-nya seperti keyword dari GSC — supaya tidak ada
+// duplikat meski sumbernya manual.
+const KEYWORDS_FILE = path.join(__dirname, 'keywords.txt');
+
+function getKeywordsFromFile() {
+  if (!fs.existsSync(KEYWORDS_FILE)) return [];
+  return fs.readFileSync(KEYWORDS_FILE, 'utf8').split('\n')
+    .map(l => l.trim()).filter(Boolean)
+    .map(kw => ({ keyword: kw, impressions: 0, clicks: 0, ctr: 0, position: 0 }));
+}
+
+// Buang baris yang sudah diproses (berhasil ATAU dilewati karena mirip/sudah ada)
+// supaya keywords.txt tidak terus-menerus dicek ulang setiap run.
+function removeProcessedKeywordsFromFile(processedKeywords) {
+  if (!fs.existsSync(KEYWORDS_FILE) || !processedKeywords.length) return;
+  const usedSet = new Set(processedKeywords.map(k => k.toLowerCase().trim()));
+  const remaining = fs.readFileSync(KEYWORDS_FILE, 'utf8').split('\n')
+    .map(l => l.trim())
+    .filter(l => l && !usedSet.has(l.toLowerCase()));
+  fs.writeFileSync(KEYWORDS_FILE, remaining.join('\n') + (remaining.length ? '\n' : ''));
+}
+// ─────────────────────────────────────────────────────────────────────────────
+
 // Cek 1 keyword terhadap artikel yang sudah ada. Return artikel yang mirip (atau null).
+// WAJIB minimal 2 kata signifikan sama DAN rasio overlap >= 0.5 — dua-duanya harus
+// terpenuhi, supaya 1 kata kebetulan sama (mis. sama-sama ada "pasir") tidak lagi cukup
+// untuk dianggap duplikat.
 function findSimilarExisting(keyword, existingItems) {
   for (const item of existingItems) {
-    // Prioritas: bandingkan ke field keywords (sama-sama frasa pendek, lebih akurat)
-    if (item.keyword && diceCoefficient(keyword, item.keyword) >= SIMILARITY_THRESHOLD_KEYWORD) return item;
-    // Fallback: bandingkan ke title (kalimat panjang, threshold lebih longgar)
-    if (diceCoefficient(keyword, item.title) >= SIMILARITY_THRESHOLD_TITLE) return item;
+    if (item.keyword) {
+      const { sharedCount, ratio } = overlapSimilarity(keyword, item.keyword);
+      if (sharedCount >= MIN_SHARED_SIGNIFICANT_WORDS && ratio >= SIMILARITY_OVERLAP_THRESHOLD) return item;
+    }
+    const { sharedCount, ratio } = overlapSimilarity(keyword, item.title);
+    if (sharedCount >= MIN_SHARED_SIGNIFICANT_WORDS && ratio >= SIMILARITY_OVERLAP_THRESHOLD) return item;
   }
   return null;
 }
@@ -384,11 +426,18 @@ const OPENING_STYLES = [
 ];
 
 const CLOSING_STYLES = [
-  `Ada pertanyaan lain seputar topik ini? Tombol **Telepon** dan **WhatsApp** di bawah halaman ini siap Kami jawab.`,
-  `Butuh bantuan langsung untuk kebutuhan proyek Anda? Klik tombol **WhatsApp** atau **Telepon** di bawah untuk konsultasi dengan tim Kami.`,
-  `Kalau masih ada yang mau ditanyakan, jangan sungkan hubungi Kami lewat tombol **WhatsApp** atau **Telepon** di halaman ini.`,
-  `Tim Kami siap bantu wujudkan proyek Anda — hubungi lewat tombol **Telepon** atau **WhatsApp** yang tersedia di bawah.`,
-  `Mau konsultasi lebih lanjut soal ini? Tombol **Telepon** dan **WhatsApp** di bawah halaman ini bisa langsung dipakai untuk menghubungi Kami.`,
+  `Apabila terdapat pertanyaan lain seputar topik ini, tombol **Telepon** dan **WhatsApp** di bawah halaman ini siap Kami jawab.`,
+  `Membutuhkan bantuan langsung untuk kebutuhan proyek {ADDR}? Silakan klik tombol **WhatsApp** atau **Telepon** di bawah untuk berkonsultasi dengan tim Kami.`,
+  `Apabila masih terdapat hal yang ingin ditanyakan, jangan ragu menghubungi Kami melalui tombol **WhatsApp** atau **Telepon** pada halaman ini.`,
+  `Tim Kami siap membantu mewujudkan proyek {ADDR} — silakan hubungi melalui tombol **Telepon** atau **WhatsApp** yang tersedia di bawah.`,
+  `Untuk konsultasi lebih lanjut, tombol **Telepon** dan **WhatsApp** di bawah halaman ini dapat langsung digunakan untuk menghubungi Kami.`,
+];
+
+// Sapaan audiens — dirotasi, TIDAK selalu "Mitra CDI". Dipilih mekanis (bukan
+// diserahkan ke AI) supaya benar-benar bervariasi antar artikel.
+const ADDRESS_STYLES = [
+  { name: 'Mitra CDI', instruction: 'Gunakan sapaan "Mitra CDI" secara konsisten di seluruh artikel ini (bukan "Anda").' },
+  { name: 'Anda',      instruction: 'Gunakan sapaan "Anda" secara konsisten di seluruh artikel ini (JANGAN pakai "Mitra CDI" sama sekali di artikel ini).' },
 ];
 
 function pickRandom(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
@@ -397,16 +446,19 @@ function pickRandom(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
 async function generateArticle(keyword) {
   const type = detectType(keyword);
   const openingStyle = pickRandom(OPENING_STYLES);
-  const closingStyle = pickRandom(CLOSING_STYLES);
+  const addressStyle  = pickRandom(ADDRESS_STYLES);
+  const closingStyle = pickRandom(CLOSING_STYLES).replace('{ADDR}', addressStyle.name);
 
   const prompt = `Kamu adalah penulis konten blog untuk website "${CONFIG.SITE_NAME}" — perusahaan jasa desain interior, furniture custom, material bangunan, dan jasa pengecoran di wilayah Jabodetabek.
 
 Kamu menulis dengan GAYA KHAS blog ini:
-- Sapaan audiens: "Mitra CDI" (bukan "Anda" atau "kamu") — dipakai SEWAJARNYA, tidak harus di kalimat pertama
+- Sapaan audiens untuk artikel ini: ${addressStyle.instruction}
 - Penulis menyebut diri sebagai "Kami" (bukan "Saya" atau "Saya pribadi")
-- Gaya bahasa: hangat, akrab, conversational — seperti teman yang ahli di bidangnya
-- Boleh pakai kata informal sesekali ("gimana", "yuk", "nah", "lho", "nih") TAPI JANGAN BERLEBIHAN —
-  maksimal 2x pemakaian kata "Nah," di seluruh artikel, dan JANGAN buka lebih dari 1 paragraf dengan "Nah,"
+- Gaya bahasa: BAKU dan formal, tapi tetap hangat dan tidak kaku — seperti konsultan profesional yang ramah.
+- JANGAN gunakan kata tidak baku/gaul seperti "nggak", "gimana", "yuk", "nah", "lho", "nih", "banget",
+  "kayak", "gitu", "aja". Gunakan padanan baku: "tidak", "bagaimana", "mari", "cukup"/"sangat", dst.
+- Kalimat boleh tetap mengalir natural dan tidak monoton, tapi struktur dan pilihan katanya harus
+  mengikuti kaidah Bahasa Indonesia baku (setara artikel di media berita atau majalah profesional).
 
 GAYA PEMBUKA untuk artikel ini (WAJIB ikuti gaya spesifik ini, JANGAN pakai formula lain):
 ${openingStyle}
@@ -459,33 +511,33 @@ Artikel berakhir begitu saja setelah kalimat penutup/CTA, tanpa penanda tambahan
 DESCRIPTION: ${keyword.charAt(0).toUpperCase() + keyword.slice(1)} terbaik untuk hunian dan proyek konstruksi Anda. Temukan tips, harga, dan solusi dari ${CONFIG.SITE_NAME}.
 TAGS: ${keyword.split(' ').slice(0, 3).join(', ')}, jasa interior bogor, CDI
 ARTIKEL_MULAI
-**${kwTitle}** - Mitra CDI dimana saja berada, salah satu pertanyaan yang sering kami terima adalah seputar ${keyword}. Nah, di artikel ini kami akan membahas tuntas hal tersebut buat Mitra semua. Yuk simak sampai selesai ya!
+**${kwTitle}** - Salah satu pertanyaan yang sering Kami terima adalah seputar ${keyword}. Artikel ini akan membahas tuntas hal tersebut.
 
 ![${kwTitle}](IMAGE_PLACEHOLDER)
 
 ## Apa Itu ${kwTitle}?
 
-Mitra CDI perlu tahu bahwa ${keyword} adalah salah satu elemen penting dalam dunia konstruksi dan desain interior modern. Di ${CONFIG.SITE_NAME}, kami sudah menangani ratusan proyek yang berkaitan dengan ${keyword} dan hasilnya selalu memuaskan klien kami.
+${keyword.charAt(0).toUpperCase() + keyword.slice(1)} merupakan salah satu elemen penting dalam dunia konstruksi dan desain interior modern. Di ${CONFIG.SITE_NAME}, Kami telah menangani ratusan proyek yang berkaitan dengan ${keyword} dengan hasil yang memuaskan klien.
 
-Gimana caranya kami bisa memberikan hasil terbaik? Jawabannya ada pada pengalaman dan dedikasi tim kami yang sudah lebih dari 10 tahun berkecimpung di bidang ini.
+Kualitas hasil kerja ditentukan oleh pengalaman dan dedikasi tim yang telah lebih dari 10 tahun berkecimpung di bidang ini.
 
 ## Keunggulan Layanan ${kwTitle} dari Kami
 
-Nah, ini yang sering Mitra CDI tanyakan — apa bedanya layanan kami dengan yang lain? Berikut beberapa keunggulan yang bisa kami tawarkan:
+Berikut beberapa keunggulan yang dapat Kami tawarkan:
 
-- **Kualitas material terjamin** — kami hanya menggunakan bahan pilihan terbaik
+- **Kualitas material terjamin** — Kami hanya menggunakan bahan pilihan terbaik
 - **Harga transparan** — tidak ada biaya tersembunyi, semua sudah termasuk dalam penawaran
-- **Pengerjaan tepat waktu** — kami menghargai waktu Mitra sama seperti menghargai waktu kami sendiri
-- **Garansi hasil pekerjaan** — kami berdiri di belakang setiap pekerjaan yang kami lakukan
+- **Pengerjaan tepat waktu** — Kami menghargai waktu Anda sama seperti menghargai waktu Kami sendiri
+- **Garansi hasil pekerjaan** — Kami berdiri di belakang setiap pekerjaan yang dilakukan
 
 ## Tips Memilih Layanan ${kwTitle} yang Tepat
 
-Mitra CDI harus cermat dalam memilih penyedia layanan ${keyword}. Berikut beberapa tips dari kami yang bisa membantu Mitra dalam mengambil keputusan yang tepat:
+Ketelitian diperlukan dalam memilih penyedia layanan ${keyword}. Berikut beberapa tips yang dapat membantu dalam mengambil keputusan yang tepat:
 
-1. Pastikan penyedia jasa memiliki portofolio yang jelas dan bisa diverifikasi
+1. Pastikan penyedia jasa memiliki portofolio yang jelas dan dapat diverifikasi
 2. Tanyakan tentang material yang digunakan — kualitas material sangat menentukan hasil akhir
 3. Minta estimasi biaya tertulis agar tidak ada kesalahpahaman di kemudian hari
-4. Cek ulasan dari pelanggan sebelumnya
+4. Periksa ulasan dari pelanggan sebelumnya
 
 ## Penutup
 
@@ -666,12 +718,32 @@ function saveRecentOpenings(list) {
 function getOpeningWords(body, n = 15) {
   return body.trim().split(/\s+/).slice(0, n).join(' ');
 }
+
+// Similarity khusus untuk membandingkan kalimat pembuka (bukan keyword pendek),
+// jadi tetap pakai character-bigram di sini — cocok untuk deteksi kemiripan
+// frasa panjang/kalimat utuh, beda kebutuhan dengan cek kemiripan topik keyword.
+function openingBigramSimilarity(a, b) {
+  function bigrams(str) {
+    const s = str.toLowerCase().replace(/[^a-z0-9\s]/g, '').replace(/\s+/g, ' ').trim();
+    const g = [];
+    for (let i = 0; i < s.length - 1; i++) g.push(s.substring(i, i + 2));
+    return g;
+  }
+  const ga = bigrams(a), gb = bigrams(b);
+  if (!ga.length || !gb.length) return 0;
+  const mapA = new Map(); ga.forEach(g => mapA.set(g, (mapA.get(g) || 0) + 1));
+  const mapB = new Map(); gb.forEach(g => mapB.set(g, (mapB.get(g) || 0) + 1));
+  let inter = 0;
+  for (const [g, c] of mapA) if (mapB.has(g)) inter += Math.min(c, mapB.get(g));
+  return (2 * inter) / (ga.length + gb.length);
+}
+
 function checkOpeningVariety(body) {
   const opening = getOpeningWords(body);
   const recent = loadRecentOpenings();
   const issues = [];
   for (const prev of recent) {
-    const score = diceCoefficient(opening, prev);
+    const score = openingBigramSimilarity(opening, prev);
     if (score >= OPENING_SIMILARITY_WARN) {
       issues.push(`⚠️  Pembuka mirip (${(score*100).toFixed(0)}%) dengan artikel sebelumnya: "${prev.slice(0, 60)}..."`);
     }
@@ -703,6 +775,14 @@ function validateArticle(filePath) {
   const openingIssues = checkOpeningVariety(bodyOnly);
   issues.push(...openingIssues);
 
+  // Jaring pengaman: prompt sudah melarang kata tidak baku, tapi AI tidak selalu patuh 100%
+  // (pelajaran yang sama dari bug ARTIKEL_SELESAI) — jadi tetap dicek di kode.
+  // Pakai word-boundary regex, BUKAN .includes(), supaya tidak salah tangkap substring
+  // di dalam kata lain (mis. "ngga" di dalam "pelanggan").
+  const INFORMAL_WORDS = ['nggak', 'ngga', 'gimana', 'yuk', 'nah', 'lho', 'nih', 'banget', 'kayak', 'gitu', 'aja'];
+  const foundInformal = INFORMAL_WORDS.filter(w => new RegExp(`\\b${w}\\b`, 'i').test(bodyOnly));
+  if (foundInformal.length) issues.push(`⚠️  Kata tidak baku terdeteksi: ${foundInformal.join(', ')}`);
+
   if (issues.length === 0) {
     console.log(`   ✅ Validasi OK — ${wordCount} kata`);
   } else {
@@ -723,24 +803,55 @@ async function main() {
     if (!CONFIG.GSC_CREDENTIALS.client_email) throw new Error('GSC_CREDENTIALS tidak valid.');
   }
 
-  const keywords     = await fetchKeywordsFromGSC();
-  if (!keywords.length) { console.log('⚠️  Tidak ada keyword. Selesai.'); return; }
+  const keywords = await fetchKeywordsFromGSC();
 
   const existingSlugs = getExistingSlugs();
   console.log(`\n📁 ${existingSlugs.size} artikel sudah ada di content/blog/`);
 
-  const newKeywords = keywords.filter(k => !existingSlugs.has(toSlug(k.keyword)));
-  if (!newKeywords.length) { console.log('✅ Semua keyword sudah punya artikel.'); return; }
+  // Helper: saring 1 sumber keyword (slug bentrok + similarity), dengan label buat log
+  function selectFromSource(rawKeywords, label) {
+    if (!rawKeywords.length) return [];
+    const newKws = rawKeywords.filter(k => !existingSlugs.has(toSlug(k.keyword)));
+    if (!newKws.length) {
+      console.log(`   (${label}) Semua keyword sudah punya artikel (slug bentrok).`);
+      return [];
+    }
+    console.log(`\n🔎 (${label}) Cek kemiripan ${newKws.length} keyword terhadap artikel yang sudah ada...`);
+    return filterOutSimilarKeywords(newKws);
+  }
 
-  console.log(`\n🔎 Cek kemiripan ${newKeywords.length} keyword terhadap artikel yang sudah ada...`);
-  const uniqueKeywords = filterOutSimilarKeywords(newKeywords);
-  if (!uniqueKeywords.length) { console.log('✅ Semua keyword baru mirip artikel yang sudah ada. Tidak ada yang perlu digenerate.'); return; }
+  let uniqueKeywords = [];
+  let usingFallback  = false;
 
-  // Prioritas: impressi tinggi × CTR rendah
+  if (keywords.length) {
+    uniqueKeywords = selectFromSource(keywords, 'GSC');
+  } else {
+    console.log('⚠️  Tidak ada keyword dari GSC (kosong/habis).');
+  }
+
+  if (!uniqueKeywords.length) {
+    console.log(`\n📄 Tidak ada keyword baru dari GSC — coba fallback ke keywords.txt...`);
+    const fileKeywords = getKeywordsFromFile();
+    if (!fileKeywords.length) {
+      console.log('   keywords.txt tidak ditemukan atau kosong. Selesai — tidak ada yang bisa digenerate.');
+      return;
+    }
+    console.log(`   📄 ${fileKeywords.length} keyword ditemukan di keywords.txt.`);
+    uniqueKeywords = selectFromSource(fileKeywords, 'keywords.txt');
+    usingFallback = true;
+    if (!uniqueKeywords.length) {
+      console.log('   Semua keyword di keywords.txt sudah punya artikel atau mirip artikel yang ada. Selesai.');
+      return;
+    }
+  }
+
+  // Prioritas: impressi tinggi × CTR rendah (keyword manual impresinya 0, jadi otomatis di urutan
+  // terakhir kalau tercampur dengan keyword GSC — meski dalam praktiknya keduanya tidak pernah tercampur
+  // dalam 1 run karena fallback cuma jalan kalau GSC benar-benar tidak menghasilkan apa-apa)
   uniqueKeywords.sort((a, b) => (b.impressions * (1 - b.ctr)) - (a.impressions * (1 - a.ctr)));
 
   const toProcess = uniqueKeywords.slice(0, IS_DRY_RUN ? uniqueKeywords.length : CONFIG.MAX_ARTICLES);
-  console.log(`\n📝 Akan generate ${toProcess.length} artikel:\n`);
+  console.log(`\n📝 Akan generate ${toProcess.length} artikel${usingFallback ? ' (dari keywords.txt)' : ''}:\n`);
 
   const results = [];
 
@@ -771,6 +882,13 @@ async function main() {
     const status = r.issues.length === 0 ? '✅' : '⚠️ ';
     console.log(`  ${status} ${r.filePath}`);
   });
+
+  // Kalau sumbernya keywords.txt, buang baris yang sudah diproses (berhasil ATAU gagal)
+  // supaya tidak dicoba ulang terus-menerus di run berikutnya.
+  if (usingFallback) {
+    removeProcessedKeywordsFromFile(toProcess.map(k => k.keyword));
+    console.log(`\n📄 ${toProcess.length} keyword sudah dibuang dari keywords.txt (sudah diproses).`);
+  }
 
   if (!IS_DRY_RUN) {
     const logPath = path.join(__dirname, 'generated-articles.log');
