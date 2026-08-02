@@ -13,7 +13,7 @@ toc: true
 draft: false
 ---
 
-**10 Jenis Batu Alam** - Mitra CDI dimana saja berada, sudah tahu belum kalau batu alam bisa bikin rumah makin cantik sekaligus berkelas? Batu alam memang jadi favorit banyak orang untuk mempercantik interior maupun eksterior hunian. Nah, kali ini kami akan membahas 10 jenis batu alam yang bisa jadi pilihan buat Anda. Yuk, simak!  
+**10 Jenis Batu Alam** - Mitra CDI yang kami hormati, sudah tahu belum kalau batu alam bisa bikin rumah makin cantik sekaligus berkelas? Batu alam memang jadi favorit banyak orang untuk mempercantik interior maupun eksterior hunian. Nah, kali ini kami akan membahas 10 jenis batu alam yang bisa jadi pilihan buat Anda. Yuk, simak!  
 
 ## Jenis Batu Alam untuk Interior Rumah  
 

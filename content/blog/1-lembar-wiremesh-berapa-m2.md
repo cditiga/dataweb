@@ -5,7 +5,7 @@ categories:
  - "blog"
 type: "product"
 description: "1 lembar wiremesh berapa m2? Temukan ukuran, jenis, dan cara menghitung kebutuhan wiremesh untuk proyek konstruksi Anda di sini."
-featured_image: "/images/admin/featured-image.png"
+featured_image: "/images/images/distributor-wiremesh.jpg"
 tags: ["wiremesh", "ukuran wiremesh", "konstruksi", "material bangunan", "pengecoran"]
 keywords: "1 lembar wiremesh berapa m2"
 author: "Ibnu Koesnady"
@@ -13,7 +13,7 @@ toc: true
 draft: false
 ---
 
-**1 lembar wiremesh berapa m2?** Jawaban atas pertanyaan ini bergantung pada ukuran lembaran wiremesh yang Anda gunakan. Secara umum, wiremesh standar di Indonesia memiliki ukuran 2,1 meter x 5,4 meter, sehingga luas per lembar adalah sekitar 11,34 m². 
+**1 lembar wiremesh berapa m2?** Mitra CDI yang berbahagia, sebenarnya jawaban atas pertanyaan ini bergantung pada ukuran lembaran wiremesh yang Anda gunakan. Secara umum, wiremesh standar di Indonesia memiliki ukuran 2,1 meter x 5,4 meter, sehingga luas per lembar adalah sekitar 11,34 m². 
 
 Namun, ukuran ini bisa bervariasi, tergantung pada jenis dan spesifikasi wiremesh yang Anda pilih. Untuk informasi yang lebih mendalam, mari kami bantu menjelaskan lebih lanjut.  
 
@@ -53,7 +53,7 @@ Wiremesh tersedia dalam berbagai jenis, tergantung pada diameter kawat dan ukura
 
 Harga wiremesh bervariasi tergantung pada jenisnya. Sebagai gambaran, harga wiremesh M4 biasanya mulai dari Rp 150.000 per lembar, sedangkan wiremesh M12 bisa mencapai Rp 500.000 per lembar atau lebih. Harga ini dapat berbeda-beda tergantung pada lokasi dan distributor.  
 
-![Gambar wiremesh untuk proyek konstruksi](/images/admin/featured-image.png)  
+![Gambar wiremesh untuk proyek konstruksi](/images/images/distributor-wiremesh.jpg)  
 
 ## Tips Memilih Wiremesh yang Tepat  
 

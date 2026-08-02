@@ -5,7 +5,7 @@ categories:
  - "blog"
 type: "product"
 description: "1 kubik berapa kilo? Temukan jawabannya di artikel ini beserta cara menghitung berat material bangunan secara akurat."
-featured_image: "/images/admin/featured-image.png"
+featured_image: "/images/box-culvert/box-culvert-19.jpg"
 tags: ["berat material", "kubik ke kilo", "panduan bangunan"]
 keywords: "1 kubik berapa kilo"
 author: "Ibnu Koesnady"
@@ -13,7 +13,7 @@ toc: true
 draft: false
 ---
 
-Ketika Mitra CDI sedang merencanakan proyek konstruksi atau interior, sering kali muncul pertanyaan: **1 kubik berapa kilo?** Pertanyaan ini sangat penting, terutama saat menghitung kebutuhan material seperti pasir, beton, atau kayu. Mengukur berat material secara akurat membantu menghindari kekurangan atau kelebihan stok, sekaligus memastikan anggaran tetap terkendali. Dalam artikel ini, Kami akan membahas cara menghitung berat material berdasarkan volume kubik, serta memberikan contoh perhitungan yang praktis.  
+**1 Kubik Berapa Kilo?** MItra, ketika Mitra CDI sedang merencanakan proyek konstruksi atau interior, sering kali muncul pertanyaan: **1 kubik berapa kilo?** Pertanyaan ini sangat penting, terutama saat menghitung kebutuhan material seperti pasir, beton, atau kayu. Mengukur berat material secara akurat membantu menghindari kekurangan atau kelebihan stok, sekaligus memastikan anggaran tetap terkendali. Dalam artikel ini, Kami akan membahas cara menghitung berat material berdasarkan volume kubik, serta memberikan contoh perhitungan yang praktis.  
 
 ## Pengertian Kubik dan Berat Material  
 
@@ -41,7 +41,7 @@ Dengan demikian, kebutuhan pasir Mitra CDI adalah 4.500 kilogram untuk proyek te
 Hal serupa juga berlaku untuk material lain. Beton, misalnya, memiliki massa jenis yang lebih tinggi dibandingkan pasir. Untuk volume 2 kubik beton, beratnya dapat dihitung sebagai berikut:  
 **Berat beton = 2 m³ × 2.400 kg/m³ = 4.800 kg**  
 
-![Ilustrasi pengukuran material kubik](/images/admin/featured-image.png)  
+![Ilustrasi pengukuran material kubik](/images/box-culvert/box-culvert-19.jpg)  
 
 ## Faktor yang Mempengaruhi Berat Material  
 

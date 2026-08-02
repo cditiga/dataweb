@@ -5,7 +5,7 @@ categories:
  - "blog"
 type: "product"
 description: "Adhimix Casablanca adalah material beton berkualitas tinggi untuk konstruksi di Jabodetabek. Ketahui kegunaan dan spesifikasinya di artikel ini."
-featured_image: "/images/admin/featured-image.png"
+featured_image: "/images/blog/Lokasi-Plant-Ready-Mix-Beton.jpg"
 tags: ["adhimix casablanca", "beton adhimix", "konstruksi beton"]
 keywords: "adhimix casablanca"
 author: "Ibnu Koesnady"
@@ -13,7 +13,7 @@ toc: true
 draft: false
 ---
 
-**Adhimix Casablanca** adalah salah satu pilihan terbaik untuk kebutuhan konstruksi berkualitas. Beton ini dikenal memiliki mutu yang unggul dan spesifikasi yang sesuai dengan standar industri konstruksi di Indonesia. Dalam artikel ini, Kami akan membahas lebih dalam mengenai Adhimix Casablanca, mulai dari spesifikasinya hingga manfaat penggunaannya dalam berbagai proyek bangunan.  
+MItra CDI, perlu Anda tahu bahwa **Adhimix Casablanca** adalah salah satu pilihan terbaik untuk kebutuhan konstruksi berkualitas. Beton ini dikenal memiliki mutu yang unggul dan spesifikasi yang sesuai dengan standar industri konstruksi di Indonesia. Dalam artikel ini, Kami akan membahas lebih dalam mengenai Adhimix Casablanca, mulai dari spesifikasinya hingga manfaat penggunaannya dalam berbagai proyek bangunan.  
 
 ## Apa Itu Adhimix Casablanca?  
 
@@ -34,7 +34,7 @@ Beton Adhimix Casablanca hadir dengan berbagai spesifikasi teknis yang menjadika
 3. **Kesesuaian Standar**  
    Adhimix Casablanca telah memenuhi persyaratan Standar Nasional Indonesia (SNI), sehingga dapat digunakan dengan aman untuk berbagai proyek konstruksi di wilayah Indonesia.  
 
-![Ilustrasi pengecoran menggunakan Adhimix Casablanca](/images/admin/featured-image.png)  
+![Ilustrasi pengecoran menggunakan Adhimix Casablanca](/images/blog/Lokasi-Plant-Ready-Mix-Beton.jpg)  
 
 ## Manfaat Penggunaan Beton Adhimix Casablanca  
 

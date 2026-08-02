@@ -5,7 +5,7 @@ categories:
  - "blog"
 type: "product"
 description: "1 molen manual berapa m3? Ketahui kapasitas beton mixer manual, cara hitung, dan tips efisien untuk kebutuhan konstruksi."
-featured_image: "/images/admin/featured-image.png"
+featured_image: "/images/cor/cor-readymix-39.jpg"
 tags: ["molen manual", "kapasitas beton", "konstruksi", "pengecoran", "proyek bangunan"]
 keywords: "1 molen manual berapa m3"
 author: "Ibnu Koesnady"
@@ -13,7 +13,7 @@ toc: true
 draft: false
 ---
 
-Pernahkah Mitra CDI bertanya-tanya, **1 molen manual berapa m3**? Kapasitas molen manual sering menjadi pertimbangan penting dalam proyek konstruksi, terutama ketika harus menghitung jumlah bahan bangunan yang dibutuhkan secara presisi. Penggunaan beton mixer manual tidak hanya praktis tetapi juga membantu dalam mencapai hasil pengecoran yang optimal. Namun, memahami kapasitas dan cara menghitungnya secara akurat adalah kunci agar proses konstruksi berjalan lancar.  
+**1 molen manual berapa m3 ?** Mitra CDI, perlu diketahui bahwa kapasitas molen manual sering menjadi pertimbangan penting dalam proyek konstruksi, terutama ketika harus menghitung jumlah bahan bangunan yang dibutuhkan secara presisi. Penggunaan beton mixer manual tidak hanya praktis tetapi juga membantu dalam mencapai hasil pengecoran yang optimal. Namun, memahami kapasitas dan cara menghitungnya secara akurat adalah kunci agar proses konstruksi berjalan lancar.  
 
 Pada artikel ini, Kami akan menjelaskan kapasitas molen manual, cara menghitung volume beton, hingga tips memilih alat yang sesuai dengan kebutuhan proyek Mitra CDI.  
 
@@ -28,7 +28,7 @@ Sebagai gambaran, untuk membuat beton dengan mutu K-225—yang sering digunakan 
 
 Dengan kapasitas molen manual sebesar 0,1 m³, Mitra CDI biasanya dapat menggunakan satu sak semen dalam satu kali adukan. Ini akan menghasilkan beton yang cukup untuk area kecil seperti lantai atau kolom pembatas.  
 
-![Molen manual untuk beton](/images/admin/featured-image.png)  
+![Molen manual untuk beton](/images/cor/cor-readymix-39.jpg)  
 
 ## Cara Menghitung Kebutuhan Beton dengan Molen Manual  
 Menghitung kebutuhan beton untuk proyek Mitra CDI bisa dimulai dengan mengetahui total volume area yang akan dicor. Misalnya, jika Mitra CDI ingin mengecor lantai dengan ukuran 3 meter x 4 meter dan ketebalan 0,1 meter, maka perhitungannya sebagai berikut:  

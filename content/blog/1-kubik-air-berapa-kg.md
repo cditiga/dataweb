@@ -5,7 +5,7 @@ categories:
  - "blog"
 type: "product"
 description: "1 kubik air berapa kg? 1 m³ air setara dengan 1.000 kg. Simak penjelasan rinci dan perhitungan praktis di artikel ini."
-featured_image: "/images/admin/featured-image.png"
+featured_image: "/images/page/murah.png"
 tags: ["kubik air", "berat air", "perhitungan berat air"]
 keywords: "1 kubik air berapa kg"
 author: "Ibnu Koesnady"
@@ -13,7 +13,7 @@ toc: true
 draft: false
 ---
 
-**1 kubik air berapa kg?** Pertanyaan ini memiliki jawaban sederhana: 1 kubik air setara dengan 1.000 kilogram, atau 1 ton. Hal ini didasarkan pada sifat dasar air dengan massa jenis rata-rata 1.000 kg/m³ pada suhu standar. Namun, ada beberapa faktor tambahan yang perlu Mitra CDI pahami untuk mendapatkan perhitungan yang lebih akurat.  
+**1 kubik air berapa kg?** Mitra CDI, pertanyaan ini memiliki jawaban sederhana: 1 kubik air setara dengan 1.000 kilogram, atau 1 ton. Hal ini didasarkan pada sifat dasar air dengan massa jenis rata-rata 1.000 kg/m³ pada suhu standar. Namun, ada beberapa faktor tambahan yang perlu Mitra CDI pahami untuk mendapatkan perhitungan yang lebih akurat.  
 
 Air adalah salah satu bahan paling umum dalam kehidupan sehari-hari dan sering digunakan dalam berbagai proyek konstruksi, termasuk pengecoran dan pembuatan material bangunan. Dalam artikel ini, Kami akan menjelaskan lebih dalam tentang berat 1 kubik air, pengaruh suhu terhadap massa jenis, serta bagaimana perhitungan ini relevan dalam dunia desain interior dan konstruksi.  
 
@@ -46,7 +46,7 @@ Tidak semua air memiliki massa jenis yang identik. Air yang mengandung banyak mi
 ### Biaya dan Ketersediaan  
 Di wilayah Jabodetabek, harga air untuk kebutuhan konstruksi biasanya dihitung berdasarkan volume (m³) atau berat (kg). Harga rata-rata per kubik air berkisar antara Rp50.000 hingga Rp100.000, tergantung pada sumber air dan lokasi pengiriman. Untuk proyek besar, Kami merekomendasikan Mitra CDI untuk mengalokasikan anggaran secara terencana agar biaya tetap terkendali.  
 
-![Ilustrasi kubik air dalam konstruksi](/images/admin/featured-image.png)  
+![Ilustrasi kubik air dalam konstruksi](/images/page/murah.png)  
 
 ## Kesimpulan  
 Berat 1 kubik air adalah 1.000 kg, atau setara dengan 1 ton, berdasarkan massa jenis air pada suhu standar. Perhitungan ini sangat penting dalam berbagai aplikasi konstruksi, seperti pencampuran beton, di mana jumlah air memengaruhi kualitas hasil akhir. Selain itu, faktor seperti suhu, kualitas air, dan biaya juga perlu diperhatikan untuk memastikan proyek berjalan lancar.  
