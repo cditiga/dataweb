@@ -33,6 +33,7 @@ jobs:
           GSC_CREDENTIALS: ${{ secrets.GSC_CREDENTIALS }}
           GSC_SITE_URL: ${{ secrets.GSC_SITE_URL }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: node generate-articles.js
 
       - name: Configure Git
@@ -42,11 +43,12 @@ jobs:
 
       - name: Commit and Push Articles
         run: |
-          git add content/blog/ generated-articles.log
+          git add content/blog/ generated-articles.log static/images/blog/
+          [ -f keywords.txt ] && git add keywords.txt
+          [ -f .excluded-keywords.json ] && git add .excluded-keywords.json
+          [ -f .recent-openings.json ] && git add .recent-openings.json
           git diff --quiet && git diff --staged --quiet \
             || git commit -m "Generate articles from GSC keywords"
-          # Tanpa [skip ci] agar recycle-and-deploy.yml otomatis trigger
-          # dan Hugo build + deploy berjalan setelah artikel baru di-push
           git push origin master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

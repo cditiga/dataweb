@@ -11,6 +11,7 @@ const fs     = require('fs');
 const path   = require('path');
 const https  = require('https');
 const crypto = require('crypto');
+const sharp  = require('sharp');
 
 // ─── Mode ────────────────────────────────────────────────────────────────────
 const IS_DRY_RUN   = process.argv.includes('--dry-run');
@@ -24,15 +25,26 @@ const CONFIG = {
   GSC_SITE_URL    : process.env.GSC_SITE_URL || 'https://www.creativedesigninterior.com/',
   GITHUB_TOKEN    : process.env.GITHUB_TOKEN || '',
 
-  // Endpoint lama (models.inference.ai.azure.com) resmi dimatikan GitHub
-  // sejak 17 Oktober 2025. Endpoint aktif sekarang: models.github.ai
   MODELS_API_HOST : 'models.github.ai',
   MODELS_API_PATH : '/inference/chat/completions',
   API_VERSION     : '2022-11-28',
-  AI_MODEL        : 'openai/gpt-4o', // format wajib "vendor/nama-model" di endpoint baru
+  AI_MODEL        : 'openai/gpt-4o',
 
   CONTENT_DIR     : path.join(__dirname, 'content', 'blog'),
   IMAGES_DIR      : path.join(__dirname, 'static', 'images'),
+  BLOG_IMAGES_DIR : path.join(__dirname, 'static', 'images', 'blog'),
+
+  GEMINI_API_KEY   : process.env.GEMINI_API_KEY || '',
+  GEMINI_API_HOST  : 'generativelanguage.googleapis.com',
+  GEMINI_API_PATH  : '/v1beta/interactions',
+  GEMINI_IMAGE_MODEL: 'gemini-3.1-flash-lite-image',
+
+  // Ukuran WAJIB gambar hasil AI + watermark
+  AI_IMAGE_WIDTH   : 600,
+  AI_IMAGE_HEIGHT  : 400,
+  WATERMARK_PATH   : path.join(__dirname, 'static', 'images', 'logo', 'watermark-cdi.png'),
+  WATERMARK_OPACITY: 0.4,
+  WATERMARK_WIDTH_RATIO: 0.42,
 
   // Filter GSC
   MIN_IMPRESSIONS : 5,
@@ -62,9 +74,7 @@ const CONFIG = {
     { keyword: 'ukuran balok beton standar',  impressions: 32, clicks: 0, ctr: 0.0,   position: 6.1  },
   ],
 };
-// ─────────────────────────────────────────────────────────────────────────────
 
-// ─── Helper: HTTP request ─────────────────────────────────────────────────────
 function httpRequest(hostname, path, options, body = null, timeoutMs = 60000) {
   return new Promise((resolve, reject) => {
     const opts = { hostname, path, ...options };
@@ -84,17 +94,14 @@ function httpRequest(hostname, path, options, body = null, timeoutMs = 60000) {
         }
       });
     });
-    // ⏱ Tanpa ini, 1 request yang macet bikin SELURUH proses (termasuk cron harian)
-    // menggantung tanpa batas waktu dan tanpa pesan error apapun.
+
     req.setTimeout(timeoutMs, () => req.destroy(new Error(`Timeout setelah ${timeoutMs/1000}d tanpa respons dari ${hostname}`)));
     req.on('error', reject);
     if (body) req.write(typeof body === 'string' ? body : JSON.stringify(body));
     req.end();
   });
 }
-// ─────────────────────────────────────────────────────────────────────────────
 
-// ─── GSC: Access Token via Service Account JWT ───────────────────────────────
 async function getGSCAccessToken() {
   const creds = CONFIG.GSC_CREDENTIALS;
   if (!creds.client_email || !creds.private_key) {
@@ -120,9 +127,7 @@ async function getGSCAccessToken() {
   }, body);
   return res.access_token;
 }
-// ─────────────────────────────────────────────────────────────────────────────
 
-// ─── Fetch keyword dari GSC ───────────────────────────────────────────────────
 async function fetchKeywordsFromGSC() {
   if (IS_DRY_RUN) {
     const kws = CUSTOM_KW
@@ -171,9 +176,7 @@ async function fetchKeywordsFromGSC() {
   console.log(`✅ ${filtered.length} keyword potensial dari ${result.rows.length} total.`);
   return filtered;
 }
-// ─────────────────────────────────────────────────────────────────────────────
 
-// ─── Slug & existing articles ─────────────────────────────────────────────────
 function toSlug(kw) {
   return kw.toLowerCase().replace(/[^a-z0-9\s-]/g, '').trim().replace(/\s+/g, '-').replace(/-+/g, '-');
 }
@@ -193,21 +196,10 @@ function getExistingSlugs() {
   scan(CONFIG.CONTENT_DIR);
   return slugs;
 }
-// ─────────────────────────────────────────────────────────────────────────────
 
-// ─── Deteksi keyword baru yang mirip artikel blog yang sudah ada ─────────────
-// (bukan cuma cek slug identik — ini nangkep kasus keyword beda kata tapi topiknya sama,
-// supaya tidak ada artikel blog yang isinya tumpang tindih satu sama lain)
-//
-// CATATAN PENTING (bug yang diperbaiki): versi sebelumnya pakai character-bigram
-// Dice coefficient, yang KELIRU menganggap keyword mirip hanya karena berbagi 1 kata
-// umum (misal sama-sama ada kata "pasir" atau "cor"), meski topiknya jelas beda
-// ("pasir plester" vs "pasir cor", "besi cor dak" vs "pengertian cor beton").
-// Sekarang pakai overlap kata-signifikan, dan WAJIB minimal 2 kata sama —
-// bukan cuma rasio — supaya tidak ada lagi false-positive dari 1 kata kebetulan sama.
 const EXCLUDED_KEYWORDS_FILE = path.join(__dirname, '.excluded-keywords.json');
-const MIN_SHARED_SIGNIFICANT_WORDS = 2;   // wajib minimal 2 kata signifikan yang sama
-const SIMILARITY_OVERLAP_THRESHOLD = 0.5; // dari kata yang lebih pendek, minimal 50% harus match
+
+const SIMILARITY_ALGO_VERSION = 2;
 
 const SIMILARITY_STOPWORDS = new Set([
   'jual', 'jasa', 'harga', 'sewa', 'beli', 'biaya', 'tukang', 'pasang',
@@ -218,6 +210,7 @@ const SIMILARITY_STOPWORDS = new Set([
   'bangunan', 'apakah', 'pengertian', 'alternatif', 'panduan', 'lengkap', 'cara', 'tips',
   'mengenal', 'kenali', 'memilih', 'adalah', 'dalam', 'pada', 'juga', 'akan', 'bisa', 'dapat',
   'kuat', 'awet', 'tahan', 'lama', 'baik', 'jenis', 'macam',
+  'model', 'membuat', 'minimalis', 'terbaru', 'contoh', 'proses', 'sederhana',
 ]);
 
 function significantWordsForSimilarity(text) {
@@ -226,13 +219,38 @@ function significantWordsForSimilarity(text) {
                                                                   // tapi penting seperti "cor", "dak" tetap ikut
 }
 
-// Overlap: berapa kata signifikan yang sama PERSIS, dan rasionya terhadap frasa yang lebih pendek
 function overlapSimilarity(a, b) {
   const wa = new Set(significantWordsForSimilarity(a));
   const wb = new Set(significantWordsForSimilarity(b));
-  if (!wa.size || !wb.size) return { sharedCount: 0, ratio: 0 };
+  if (!wa.size || !wb.size) return { sharedCount: 0, jaccard: 0, minWords: 0 };
   const shared = [...wa].filter(w => wb.has(w));
-  return { sharedCount: shared.length, ratio: shared.length / Math.min(wa.size, wb.size) };
+  const union  = wa.size + wb.size - shared.length;
+  return { sharedCount: shared.length, jaccard: shared.length / union, minWords: Math.min(wa.size, wb.size) };
+}
+
+function isSimilarPair(sharedCount, jaccard, minWords) {
+  if (minWords === 0) return false;
+  if (minWords <= 2) return sharedCount >= minWords && jaccard >= 0.55;
+  return sharedCount >= 3 && jaccard >= 0.42;
+}
+
+const INTENT_PATTERNS = [
+  ['harga',       /\b(harga|biaya|ongkos|tarif|upah|borongan)\b/i],
+  ['definisi',    /\b(apa\s*itu|apakah|pengertian|maksud\s+dari|arti\s+dari)\b/i],
+  ['hitung',      /\b(menghitung|hitungan|cara\s+hitung|rumus|kalkulasi)\b/i],
+  ['carabuat',    /\b(cara\s+(membuat|memasang|mengatasi|memperbaiki|merawat|menyambung)|pemasangan|pembuatan)\b/i],
+  ['jenis',       /\b(jenis|macam|tipe|ragam|perbedaan|dibanding(kan)?|vs)\b/i],
+  ['ukuran',      /\b(ukuran|dimensi|kapasitas)\b/i],
+  ['masalah',     /\b(penyebab|bocor|retak|rusak|solusi)\b/i],
+  ['rekomendasi', /\b(terbaik|rekomendasi|pilihan|cara\s+memilih)\b/i],
+];
+
+function detectIntent(text) {
+  const tl = text.toLowerCase();
+  for (const [name, pattern] of INTENT_PATTERNS) {
+    if (pattern.test(tl)) return name;
+  }
+  return null;
 }
 
 function getExistingArticleTexts() {
@@ -257,16 +275,24 @@ function getExistingArticleTexts() {
 
 function loadExcludedKeywords() {
   if (!fs.existsSync(EXCLUDED_KEYWORDS_FILE)) return {};
-  try { return JSON.parse(fs.readFileSync(EXCLUDED_KEYWORDS_FILE, 'utf8')); } catch { return {}; }
+  let raw;
+  try { raw = JSON.parse(fs.readFileSync(EXCLUDED_KEYWORDS_FILE, 'utf8')); } catch { return {}; }
+
+  const active = {};
+  let released = 0;
+  for (const [key, entry] of Object.entries(raw)) {
+    if (entry && entry.algoVersion === SIMILARITY_ALGO_VERSION) active[key] = entry;
+    else released++;
+  }
+  if (released > 0) {
+    console.log(`   ♻️  ${released} keyword lama dilepas dari cache exclude (algoritma kemiripan diperbarui ke v${SIMILARITY_ALGO_VERSION}) — akan dicek ulang.`);
+  }
+  return active;
 }
 function saveExcludedKeywords(obj) {
   fs.writeFileSync(EXCLUDED_KEYWORDS_FILE, JSON.stringify(obj, null, 2));
 }
 
-// ─── Fallback manual: keywords.txt (1 keyword per baris) ──────────────────────
-// Dipakai kalau GSC tidak menyediakan keyword baru sama sekali (habis/kosong).
-// Tetap dicek similarity-nya seperti keyword dari GSC — supaya tidak ada
-// duplikat meski sumbernya manual.
 const KEYWORDS_FILE = path.join(__dirname, 'keywords.txt');
 
 function getKeywordsFromFile() {
@@ -276,8 +302,6 @@ function getKeywordsFromFile() {
     .map(kw => ({ keyword: kw, impressions: 0, clicks: 0, ctr: 0, position: 0 }));
 }
 
-// Buang baris yang sudah diproses (berhasil ATAU dilewati karena mirip/sudah ada)
-// supaya keywords.txt tidak terus-menerus dicek ulang setiap run.
 function removeProcessedKeywordsFromFile(processedKeywords) {
   if (!fs.existsSync(KEYWORDS_FILE) || !processedKeywords.length) return;
   const usedSet = new Set(processedKeywords.map(k => k.toLowerCase().trim()));
@@ -286,27 +310,24 @@ function removeProcessedKeywordsFromFile(processedKeywords) {
     .filter(l => l && !usedSet.has(l.toLowerCase()));
   fs.writeFileSync(KEYWORDS_FILE, remaining.join('\n') + (remaining.length ? '\n' : ''));
 }
-// ─────────────────────────────────────────────────────────────────────────────
 
-// Cek 1 keyword terhadap artikel yang sudah ada. Return artikel yang mirip (atau null).
-// WAJIB minimal 2 kata signifikan sama DAN rasio overlap >= 0.5 — dua-duanya harus
-// terpenuhi, supaya 1 kata kebetulan sama (mis. sama-sama ada "pasir") tidak lagi cukup
-// untuk dianggap duplikat.
 function findSimilarExisting(keyword, existingItems) {
+  const kwIntent = detectIntent(keyword);
   for (const item of existingItems) {
-    if (item.keyword) {
-      const { sharedCount, ratio } = overlapSimilarity(keyword, item.keyword);
-      if (sharedCount >= MIN_SHARED_SIGNIFICANT_WORDS && ratio >= SIMILARITY_OVERLAP_THRESHOLD) return item;
+    const itemIntent = detectIntent(item.keyword || '') || detectIntent(item.title || '');
+    const candidates = [item.keyword, item.title].filter(Boolean);
+    for (const candidate of candidates) {
+      const { sharedCount, jaccard, minWords } = overlapSimilarity(keyword, candidate);
+      if (!isSimilarPair(sharedCount, jaccard, minWords)) continue;
+
+      if (kwIntent && itemIntent && kwIntent !== itemIntent) continue;
+
+      return item;
     }
-    const { sharedCount, ratio } = overlapSimilarity(keyword, item.title);
-    if (sharedCount >= MIN_SHARED_SIGNIFICANT_WORDS && ratio >= SIMILARITY_OVERLAP_THRESHOLD) return item;
   }
   return null;
 }
 
-// Saring keyword: buang yang sudah ditandai excluded sebelumnya, ATAU yang baru
-// terdeteksi mirip artikel yang ada sekarang (langsung ditandai supaya tidak
-// dicek ulang tiap hari).
 function filterOutSimilarKeywords(keywords) {
   const excluded = loadExcludedKeywords();
   const existingItems = getExistingArticleTexts();
@@ -315,11 +336,17 @@ function filterOutSimilarKeywords(keywords) {
 
   for (const item of keywords) {
     const key = item.keyword.toLowerCase().trim();
-    if (excluded[key]) continue; // sudah pernah ditandai, lewati tanpa cek ulang
+    if (excluded[key]) continue;
 
     const similar = findSimilarExisting(item.keyword, existingItems);
     if (similar) {
-      excluded[key] = { reason: 'mirip artikel yang sudah ada', matchedFile: path.basename(similar.file), matchedTitle: similar.title, taggedAt: new Date().toISOString() };
+      excluded[key] = {
+        reason: 'mirip artikel yang sudah ada',
+        matchedFile: path.basename(similar.file),
+        matchedTitle: similar.title,
+        taggedAt: new Date().toISOString(),
+        algoVersion: SIMILARITY_ALGO_VERSION,
+      };
       newlyExcluded++;
       console.log(`   ⏭️  Lewati "${item.keyword}" — mirip artikel yang sudah ada: "${similar.title}"`);
       continue;
@@ -331,14 +358,11 @@ function filterOutSimilarKeywords(keywords) {
   console.log(`   🔎 ${newlyExcluded} keyword baru ditandai excluded (mirip artikel existing), ${Object.keys(excluded).length} total excluded sepanjang waktu.`);
   return kept;
 }
-// ─────────────────────────────────────────────────────────────────────────────
 
-// ─── Pilih gambar: cocokkan minimal 2 kata keyword dengan nama file ───────────
-function pickImage(keyword) {
+async function pickImage(keyword, slug) {
   const imgDir = CONFIG.IMAGES_DIR;
-  if (!fs.existsSync(imgDir)) return '/images/admin/featured-image.png';
+  if (!fs.existsSync(imgDir)) return useGenericOrAIImage(keyword, slug);
 
-  // Kumpulkan semua file gambar rekursif
   function getImages(dir) {
     let res = [];
     try {
@@ -352,53 +376,160 @@ function pickImage(keyword) {
   }
 
   const allImages = getImages(imgDir);
-  if (!allImages.length) return '/images/admin/featured-image.png';
+  if (!allImages.length) return useGenericOrAIImage(keyword, slug);
 
-  // Ambil kata bermakna — panjang > 2 (BUKAN > 3), supaya kata pendek tapi penting
-  // seperti "cor", "cat", "gas" tetap ikut dicocokkan. Sebelumnya kata seperti "cor"
-  // (3 huruf) selalu terbuang, jadi query "besi cor" cuma tersisa kata "besi" —
-  // itu sebabnya gambar "kursi besi" ikut ketangkap meski salah topik.
   const stopWords = new Set(['yang', 'untuk', 'dari', 'dengan', 'pada', 'dalam', 'atau', 'juga', 'adalah', 'cara', 'harga', 'ukuran', 'jenis']);
   const words = keyword.toLowerCase().split(/\s+/).filter(w => w.length > 2 && !stopWords.has(w));
 
-  // Score tiap gambar: hitung berapa kata keyword cocok dengan nama file (urutan tidak masalah)
   const scored = allImages.map(img => {
     const name = path.basename(img).toLowerCase().replace(/[-_]/g, ' ');
     const matchCount = words.filter(w => name.includes(w)).length;
     return { img, matchCount };
   });
 
-  // WAJIB minimal 2 kata cocok — TIDAK ada fallback ke 1 kata (itu sumber salah tangkap
-  // sebelumnya). Kalau tidak ada yang capai 2 kata, lebih aman pakai gambar generik
-  // daripada gambar spesifik yang salah topik.
   const good = scored.filter(s => s.matchCount >= 2);
 
-  let chosen;
   if (good.length > 0) {
-    // Pilih yang paling banyak cocok, jika seri ambil acak
+
     const maxMatch = Math.max(...good.map(s => s.matchCount));
     const best = good.filter(s => s.matchCount === maxMatch);
-    chosen = best[Math.floor(Math.random() * best.length)].img;
+    const chosen = best[Math.floor(Math.random() * best.length)].img;
     console.log(`   🖼️  Gambar cocok (${maxMatch} kata): ${path.basename(chosen)}`);
-  } else {
-    // Tidak ada yang capai 2 kata cocok → pakai gambar generik, JANGAN tebak-tebak
-    // dengan 1 kata (itu yang menyebabkan "besi cor" salah dapat gambar "kursi besi").
-    console.log(`   🖼️  Tidak ada gambar dengan ≥2 kata cocok untuk "${keyword}" → pakai gambar generik.`);
-    return '/images/admin/featured-image.png';
+    return chosen.replace(path.join(__dirname, 'static'), '').replace(/\\/g, '/');
   }
 
-  return chosen.replace(path.join(__dirname, 'static'), '').replace(/\\/g, '/');
+  console.log(`   🖼️  Tidak ada gambar dengan ≥2 kata cocok untuk "${keyword}" → coba generate gambar AI...`);
+  return useGenericOrAIImage(keyword, slug);
 }
-// ─────────────────────────────────────────────────────────────────────────────
 
-// ─── Tentukan type artikel dari keyword ───────────────────────────────────────
+async function useGenericOrAIImage(keyword, slug) {
+  const GENERIC = '/images/admin/featured-image.png';
+  if (!CONFIG.GEMINI_API_KEY) {
+    console.log(`   🖼️  GEMINI_API_KEY belum diset → pakai gambar generik.`);
+    return GENERIC;
+  }
+  try {
+    const aiPath = await generateAIImage(keyword, slug);
+    if (aiPath) {
+      console.log(`   🖼️  Gambar AI berhasil dibuat & disimpan: ${aiPath}`);
+      return aiPath;
+    }
+  } catch (err) {
+    console.log(`   ⚠️  Gagal generate gambar AI (${err.message}) → pakai gambar generik.`);
+  }
+  return GENERIC;
+}
+
+function buildImagePrompt(keyword) {
+  return `A photorealistic, high-resolution professional stock photograph illustrating the ` +
+    `concept: "${keyword}" — an Indonesian construction materials / concrete-casting / home ` +
+    `interior term, for a company called ${CONFIG.SITE_NAME}. Clean commercial product/site ` +
+    `photography style, natural lighting, realistic textures and materials, shot on a ` +
+    `construction site or in a well-lit interior/product setting as fits the subject. ` +
+    `No text, no logos, no watermarks, no close-up human faces. Aspect ratio 3:2.`;
+}
+
+async function callGeminiImageAPI(prompt) {
+  const body = JSON.stringify({
+    model: CONFIG.GEMINI_IMAGE_MODEL,
+    input: [{ type: 'text', text: prompt }],
+    response_format: { type: 'image', mime_type: 'image/jpeg', aspect_ratio: '3:2' },
+  });
+
+  let result;
+  const maxRetries = 2;
+  for (let attempt = 1; attempt <= maxRetries; attempt++) {
+    try {
+      result = await httpRequest(
+        CONFIG.GEMINI_API_HOST,
+        CONFIG.GEMINI_API_PATH,
+        {
+          method : 'POST',
+          headers: {
+            'x-goog-api-key': CONFIG.GEMINI_API_KEY,
+            'Content-Type'  : 'application/json',
+            'Content-Length': Buffer.byteLength(body),
+          },
+        },
+        body,
+        90000 // generate gambar
+      );
+      break;
+    } catch (err) {
+      if (attempt === maxRetries) throw err;
+      const waitMs = attempt * 3000;
+      console.log(`   ⚠️  Gemini image API gagal (percobaan ${attempt}/${maxRetries}): ${err.message}. Coba lagi ${waitMs/1000}d...`);
+      await new Promise(r => setTimeout(r, waitMs));
+    }
+  }
+
+  if (result?.output_image?.data) {
+    return { data: result.output_image.data, mimeType: result.output_image.mime_type || 'image/jpeg' };
+  }
+  for (const step of result?.steps || []) {
+    if (step.type !== 'model_output') continue;
+    for (const block of step.content || []) {
+      if (block.type === 'image' && block.data) {
+        return { data: block.data, mimeType: block.mime_type || 'image/jpeg' };
+      }
+    }
+  }
+  throw new Error('Response Gemini tidak mengandung gambar (cek quota/nama model/API key).');
+}
+
+async function resizeAndWatermark(imageBuffer) {
+  const resized = await sharp(imageBuffer)
+    .resize(CONFIG.AI_IMAGE_WIDTH, CONFIG.AI_IMAGE_HEIGHT, { fit: 'cover', position: 'centre' })
+    .toBuffer();
+
+  if (!fs.existsSync(CONFIG.WATERMARK_PATH)) {
+    console.log(`   ⚠️  Watermark tidak ditemukan di ${CONFIG.WATERMARK_PATH} → gambar disimpan tanpa watermark.`);
+    return sharp(resized).jpeg({ quality: 85 }).toBuffer();
+  }
+
+  const watermarkWidth = Math.round(CONFIG.AI_IMAGE_WIDTH * CONFIG.WATERMARK_WIDTH_RATIO);
+  const watermarkResized = await sharp(CONFIG.WATERMARK_PATH)
+    .resize({ width: watermarkWidth })
+    .ensureAlpha()
+    .toBuffer();
+
+  const alphaMultiplier = Math.round(255 * CONFIG.WATERMARK_OPACITY);
+  const watermarkTransparent = await sharp(watermarkResized)
+    .composite([{
+      input: Buffer.from([255, 255, 255, alphaMultiplier]),
+      raw  : { width: 1, height: 1, channels: 4 },
+      tile : true,
+      blend: 'dest-in',
+    }])
+    .png()
+    .toBuffer();
+
+  return sharp(resized)
+    .composite([{ input: watermarkTransparent, gravity: 'centre' }])
+    .jpeg({ quality: 85 })
+    .toBuffer();
+}
+
+async function generateAIImage(keyword, slug) {
+  console.log(`   🤖 Generate gambar AI (Gemini) untuk "${keyword}"...`);
+  const prompt = buildImagePrompt(keyword);
+  const { data } = await callGeminiImageAPI(prompt);
+  const rawBuffer = Buffer.from(data, 'base64');
+  const finalBuffer = await resizeAndWatermark(rawBuffer);
+
+  if (!fs.existsSync(CONFIG.BLOG_IMAGES_DIR)) fs.mkdirSync(CONFIG.BLOG_IMAGES_DIR, { recursive: true });
+  const fileName = `${slug}.jpg`;
+  fs.writeFileSync(path.join(CONFIG.BLOG_IMAGES_DIR, fileName), finalBuffer);
+
+  return `/images/blog/${fileName}`;
+}
+
 function detectType(keyword) {
   const kl = keyword.toLowerCase();
   const serviceWords = ['jasa', 'layanan', 'sewa', 'rental', 'pasang', 'instalasi', 'bangun', 'renovasi', 'cor'];
   return serviceWords.some(w => kl.includes(w)) ? 'service' : 'product';
 }
 
-// ─── Tentukan categories dari keyword ─────────────────────────────────────────
 function detectCategories(keyword) {
   const kl = keyword.toLowerCase();
   if (/kitchen|dapur|lemari|furniture|mebel|meja|kursi|tempat tidur/.test(kl)) return ['Furniture', 'Interior'];
@@ -408,14 +539,17 @@ function detectCategories(keyword) {
   if (/desain|interior|ruang|kamar/.test(kl)) return ['Desain Interior'];
   return ['Tips & Informasi'];
 }
-// ─────────────────────────────────────────────────────────────────────────────
 
-// ─── Generate artikel via GitHub Models API ───────────────────────────────────
-// ─── Variasi gaya pembuka & penutup — dipilih SECARA MEKANIS (bukan diserahkan
-// ke AI), supaya benar-benar bervariasi antar artikel. Sebelumnya prompt secara
-// LITERAL mewajibkan 1 formula pembuka yang sama persis setiap kali — itu akar
-// masalah kenapa 19/19 artikel nyata berbunyi "...Mitra CDI dimana saja berada,
-// pernah nggak sih...". Sekarang dipilih acak dari beberapa gaya berbeda. ─────
+const GREETING_STYLES = [
+  'Mitra CDI dimana saja berada',
+  'Mitra CDI yang kami hormati',
+  'Mitra CDI yang berbahagia',
+  'Mitra CDI yang terhormat',
+  'Mitra CDI yang budiman',
+  'Mitra CDI di mana pun berada',
+  'Mitra CDI',
+];
+
 const OPENING_STYLES = [
   `Mulai dengan pertanyaan retoris singkat (bukan "pernah nggak sih" atau "pernahkah") yang langsung berhubungan dengan masalah di keyword ini.`,
   `Mulai LANGSUNG dengan menjawab inti pertanyaan di keyword dalam 1-2 kalimat singkat dan tegas, baru kembangkan penjelasannya setelah itu. Jangan basa-basi di awal.`,
@@ -433,11 +567,9 @@ const CLOSING_STYLES = [
   `Untuk konsultasi lebih lanjut, tombol **Telepon** dan **WhatsApp** di bawah halaman ini dapat langsung digunakan untuk menghubungi Kami.`,
 ];
 
-// Sapaan audiens — dirotasi, TIDAK selalu "Mitra CDI". Dipilih mekanis (bukan
-// diserahkan ke AI) supaya benar-benar bervariasi antar artikel.
 const ADDRESS_STYLES = [
-  { name: 'Mitra CDI', instruction: 'Gunakan sapaan "Mitra CDI" secara konsisten di seluruh artikel ini (bukan "Anda").' },
-  { name: 'Anda',      instruction: 'Gunakan sapaan "Anda" secara konsisten di seluruh artikel ini (JANGAN pakai "Mitra CDI" sama sekali di artikel ini).' },
+  { name: 'Mitra CDI', instruction: 'Setelah kalimat pembuka, lanjutkan memakai sapaan "Mitra CDI" secara konsisten di seluruh isi artikel (bukan "Anda").' },
+  { name: 'Anda',      instruction: 'Setelah kalimat pembuka (yang tetap wajib memakai "Mitra CDI"), lanjutkan SISA artikel memakai sapaan "Anda" secara konsisten (JANGAN pakai "Mitra CDI" lagi setelah kalimat pembuka).' },
 ];
 
 function pickRandom(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
@@ -447,6 +579,7 @@ async function generateArticle(keyword) {
   const type = detectType(keyword);
   const openingStyle = pickRandom(OPENING_STYLES);
   const addressStyle  = pickRandom(ADDRESS_STYLES);
+  const greeting      = pickRandom(GREETING_STYLES);
   const closingStyle = pickRandom(CLOSING_STYLES).replace('{ADDR}', addressStyle.name);
 
   const prompt = `Kamu adalah penulis konten blog untuk website "${CONFIG.SITE_NAME}" — perusahaan jasa desain interior, furniture custom, material bangunan, dan jasa pengecoran di wilayah Jabodetabek.
@@ -460,9 +593,14 @@ Kamu menulis dengan GAYA KHAS blog ini:
 - Kalimat boleh tetap mengalir natural dan tidak monoton, tapi struktur dan pilihan katanya harus
   mengikuti kaidah Bahasa Indonesia baku (setara artikel di media berita atau majalah profesional).
 
-GAYA PEMBUKA untuk artikel ini (WAJIB ikuti gaya spesifik ini, JANGAN pakai formula lain):
+FORMAT PEMBUKA — WAJIB, ini ciri khas/identitas tetap ${CONFIG.SITE_NAME} di setiap artikel:
+Kalimat PERTAMA artikel ini WAJIB persis berpola:
+"**[Judul Artikel]** - ${greeting}, [lanjutan kalimat pembuka]"
+(judul artikel dalam format tebal, lalu tanda hubung " - ", lalu salam "${greeting}", lalu koma,
+baru lanjutan kalimat). JANGAN ubah, singkat, atau hilangkan bagian "${greeting}" ini.
+
+Setelah salam pembuka wajib itu, lanjutan kalimat & paragraf pertama mengikuti gaya berikut:
 ${openingStyle}
-Sisipkan judul artikel dalam format tebal di awal paragraf pertama, tapi susunan kalimat setelahnya HARUS mengikuti gaya di atas — jangan pakai "Mitra CDI dimana saja berada" atau frasa pembuka baku lain.
 
 GAYA PENUTUP/CTA untuk artikel ini (WAJIB pakai kalimat ini persis, di paragraf terakhir):
 "${closingStyle}"
@@ -507,11 +645,11 @@ Artikel berakhir begitu saja setelah kalimat penutup/CTA, tanpa penanda tambahan
   if (IS_DRY_RUN) {
     console.log(`   🧪 DRY-RUN: Simulasi generate artikel untuk "${keyword}"...`);
     const kwTitle = keyword.split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
-    return `JUDUL: ${kwTitle} - Panduan Lengkap dari ${CONFIG.SITE_NAME}
+    const raw = `JUDUL: ${kwTitle} - Panduan Lengkap dari ${CONFIG.SITE_NAME}
 DESCRIPTION: ${keyword.charAt(0).toUpperCase() + keyword.slice(1)} terbaik untuk hunian dan proyek konstruksi Anda. Temukan tips, harga, dan solusi dari ${CONFIG.SITE_NAME}.
 TAGS: ${keyword.split(' ').slice(0, 3).join(', ')}, jasa interior bogor, CDI
 ARTIKEL_MULAI
-**${kwTitle}** - Salah satu pertanyaan yang sering Kami terima adalah seputar ${keyword}. Artikel ini akan membahas tuntas hal tersebut.
+**${kwTitle}** - ${greeting}, salah satu pertanyaan yang sering Kami terima adalah seputar ${keyword}. Artikel ini akan membahas tuntas hal tersebut.
 
 ![${kwTitle}](IMAGE_PLACEHOLDER)
 
@@ -545,6 +683,7 @@ Demikian pembahasan kami seputar ${keyword}. Kami berharap artikel ini bermanfaa
 
 Kalau Mitra masih ada pertanyaan atau ingin konsultasi lebih lanjut, silakan hubungi kami melalui tombol **Telepon** atau **WhatsApp** yang tersedia di bawah halaman ini. Kami siap membantu!
 `;
+    return { raw, greeting };
   }
 
   const body = JSON.stringify({
@@ -593,19 +732,13 @@ Kalau Mitra masih ada pertanyaan atau ingin konsultasi lebih lanjut, silakan hub
     }
   }
 
-  return result.choices?.[0]?.message?.content || '';
+  return { raw: result.choices?.[0]?.message?.content || '', greeting };
 }
-// ─────────────────────────────────────────────────────────────────────────────
 
-// ─── Escape string untuk dimasukkan ke YAML double-quoted ────────────────────
 function yamlEscape(str) {
   return String(str).replace(/\\/g, '\\\\').replace(/"/g, '\\"');
 }
-// ─────────────────────────────────────────────────────────────────────────────
 
-// ─── Buang penanda "penutup" yang kadang tetap ditambahkan AI meski dilarang ──
-// Prompt sudah eksplisit melarang ini, tapi LLM tidak selalu patuh 100% — jadi
-// ini jaring pengaman di kode, bukan cuma mengandalkan instruksi prompt.
 function stripTrailingMarkers(text) {
   const markerPatterns = [
     /^ARTIKEL[_\s]?SELESAI$/i,
@@ -623,10 +756,26 @@ function stripTrailingMarkers(text) {
   }
   return lines.join('\n');
 }
-// ─────────────────────────────────────────────────────────────────────────────
 
-// ─── Parse output AI → simpan .md dengan front matter SEO lengkap ─────────────
-function parseAndSave(raw, keyword, slug, imagePath) {
+function ensureCdiOpening(body, title, greeting) {
+  const trimmed = body.replace(/^\s+/, '');
+
+  if (/^\*\*[^*]+\*\*\s*[-–—]\s*Mitra\s*CDI/i.test(trimmed)) return body;
+
+  const boldStart = trimmed.match(/^\*\*[^*]+\*\*/);
+  if (boldStart) {
+    const afterBold = trimmed.slice(boldStart[0].length).replace(/^\s+/, '');
+    const firstChar = afterBold.charAt(0);
+    const rest = /[A-Z]/.test(firstChar) ? firstChar.toLowerCase() + afterBold.slice(1) : afterBold;
+    return `${boldStart[0]} - ${greeting}, ${rest}`;
+  }
+
+  const firstChar = trimmed.charAt(0);
+  const rest = /[A-Z]/.test(firstChar) ? firstChar.toLowerCase() + trimmed.slice(1) : trimmed;
+  return `**${title}** - ${greeting}, ${rest}`;
+}
+
+function parseAndSave(raw, keyword, slug, imagePath, greeting) {
   const lines  = raw.split('\n');
   let title    = keyword.split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
   let desc     = '';
@@ -646,11 +795,10 @@ function parseAndSave(raw, keyword, slug, imagePath) {
 
   if (!body.trim()) body = raw;
   body = stripTrailingMarkers(body);
+  body = ensureCdiOpening(body, title, greeting);
 
-  // Ganti IMAGE_PLACEHOLDER dengan path gambar yang sudah dipilih
   body = body.replace(/IMAGE_PLACEHOLDER/g, imagePath);
 
-  // Pastikan ada gambar inline di body — jika AI tidak menyertakan, sisipkan setelah paragraf pertama
   if (!body.includes('![')) {
     const paraEnd = body.indexOf('\n\n');
     if (paraEnd !== -1) {
@@ -663,10 +811,6 @@ function parseAndSave(raw, keyword, slug, imagePath) {
   const type    = detectType(keyword);
   const tagToml = tags.map(t => `"${t}"`).join(', ');
 
-  // Front matter sesuai artikel manual CDI:
-  // - categories selalu ["blog"] sesuai artikel manual
-  // - type: service (default untuk CDI)
-  // - description diambil dari output AI
   const safeTitle = yamlEscape(title);
   const safeDesc  = yamlEscape(desc);
   const frontMatter = `---
@@ -699,12 +843,7 @@ draft: false
   console.log(`   💾 Artikel disimpan: ${filePath}`);
   return filePath;
 }
-// ─────────────────────────────────────────────────────────────────────────────
 
-// ─── Validasi front matter hasil artikel ──────────────────────────────────────
-// ─── Cek variasi pembuka — bandingkan dengan beberapa artikel terakhir ───────
-// (bukti nyata bahwa rotasi gaya pembuka benar-benar menghasilkan variasi,
-// bukan cuma percaya begitu saja)
 const RECENT_OPENINGS_FILE = path.join(__dirname, '.recent-openings.json');
 const OPENING_SIMILARITY_WARN = 0.6;
 
@@ -719,9 +858,6 @@ function getOpeningWords(body, n = 15) {
   return body.trim().split(/\s+/).slice(0, n).join(' ');
 }
 
-// Similarity khusus untuk membandingkan kalimat pembuka (bukan keyword pendek),
-// jadi tetap pakai character-bigram di sini — cocok untuk deteksi kemiripan
-// frasa panjang/kalimat utuh, beda kebutuhan dengan cek kemiripan topik keyword.
 function openingBigramSimilarity(a, b) {
   function bigrams(str) {
     const s = str.toLowerCase().replace(/[^a-z0-9\s]/g, '').replace(/\s+/g, ' ').trim();
@@ -771,14 +907,9 @@ function validateArticle(filePath) {
   const wordCount = bodyOnly.split(/\s+/).length;
   if (wordCount < 300) issues.push(`⚠️  Konten terlalu pendek: ${wordCount} kata`);
 
-  // Cek variasi pembuka terhadap riwayat artikel terakhir (soft warning, tidak menggagalkan)
   const openingIssues = checkOpeningVariety(bodyOnly);
   issues.push(...openingIssues);
 
-  // Jaring pengaman: prompt sudah melarang kata tidak baku, tapi AI tidak selalu patuh 100%
-  // (pelajaran yang sama dari bug ARTIKEL_SELESAI) — jadi tetap dicek di kode.
-  // Pakai word-boundary regex, BUKAN .includes(), supaya tidak salah tangkap substring
-  // di dalam kata lain (mis. "ngga" di dalam "pelanggan").
   const INFORMAL_WORDS = ['nggak', 'ngga', 'gimana', 'yuk', 'nah', 'lho', 'nih', 'banget', 'kayak', 'gitu', 'aja'];
   const foundInformal = INFORMAL_WORDS.filter(w => new RegExp(`\\b${w}\\b`, 'i').test(bodyOnly));
   if (foundInformal.length) issues.push(`⚠️  Kata tidak baku terdeteksi: ${foundInformal.join(', ')}`);
@@ -808,7 +939,6 @@ async function main() {
   const existingSlugs = getExistingSlugs();
   console.log(`\n📁 ${existingSlugs.size} artikel sudah ada di content/blog/`);
 
-  // Helper: saring 1 sumber keyword (slug bentrok + similarity), dengan label buat log
   function selectFromSource(rawKeywords, label) {
     if (!rawKeywords.length) return [];
     const newKws = rawKeywords.filter(k => !existingSlugs.has(toSlug(k.keyword)));
@@ -845,9 +975,6 @@ async function main() {
     }
   }
 
-  // Prioritas: impressi tinggi × CTR rendah (keyword manual impresinya 0, jadi otomatis di urutan
-  // terakhir kalau tercampur dengan keyword GSC — meski dalam praktiknya keduanya tidak pernah tercampur
-  // dalam 1 run karena fallback cuma jalan kalau GSC benar-benar tidak menghasilkan apa-apa)
   uniqueKeywords.sort((a, b) => (b.impressions * (1 - b.ctr)) - (a.impressions * (1 - a.ctr)));
 
   const toProcess = uniqueKeywords.slice(0, IS_DRY_RUN ? uniqueKeywords.length : CONFIG.MAX_ARTICLES);
@@ -862,9 +989,9 @@ async function main() {
     console.log(`   🔑 Slug: ${slug} | Type: ${detectType(item.keyword)}`);
 
     try {
-      const imgPath  = pickImage(item.keyword);
-      const raw      = await generateArticle(item.keyword);
-      const filePath = parseAndSave(raw, item.keyword, slug, imgPath);
+      const imgPath  = await pickImage(item.keyword, slug);
+      const { raw, greeting } = await generateArticle(item.keyword);
+      const filePath = parseAndSave(raw, item.keyword, slug, imgPath, greeting);
       const issues   = validateArticle(filePath);
       results.push({ keyword: item.keyword, slug, filePath, imgPath, issues });
     } catch (err) {
@@ -883,8 +1010,6 @@ async function main() {
     console.log(`  ${status} ${r.filePath}`);
   });
 
-  // Kalau sumbernya keywords.txt, buang baris yang sudah diproses (berhasil ATAU gagal)
-  // supaya tidak dicoba ulang terus-menerus di run berikutnya.
   if (usingFallback) {
     removeProcessedKeywordsFromFile(toProcess.map(k => k.keyword));
     console.log(`\n📄 ${toProcess.length} keyword sudah dibuang dari keywords.txt (sudah diproses).`);
