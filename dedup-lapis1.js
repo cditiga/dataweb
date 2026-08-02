@@ -30,12 +30,29 @@ const DIR_ARG = (ARGS.find(a => a.startsWith('--dir=')) || '--dir=content').repl
 const CONTENT_DIR = path.join(process.cwd(), DIR_ARG);
 const CANDIDATES_FILE = path.join(process.cwd(), 'candidates.json');
 
+// Diselaraskan dengan generate-articles.js (v2, lihat SIMILARITY_ALGO_VERSION di sana):
+// - Panjang kata > 2 (BUKAN > 3) supaya kata pendek tapi penting di niche ini seperti
+//   "cor", "dak", "cat" tetap ikut masuk index kandidat — sebelumnya kata-kata itu
+//   selalu terbuang dari word-index, jadi 2 artikel yang beda HANYA karena kata pendek
+//   itu (mis. "Cor Dak X" vs "Cor Dak Y") bisa gagal ke-index dengan baik.
+// - Daftar stopword diperluas biar sinkron dengan generate-articles.js — mengurangi
+//   kandidat "berisik" dari kata generik (cara, jenis, pengertian, model, minimalis,
+//   terbaru, dst) yang cuma menambah beban embedding di Lapis 2 tanpa menambah sinyal
+//   topik yang sebenarnya.
+const DEDUP_ALGO_VERSION = 2; // naikkan tiap kali logika filtering di bawah berubah —
+// supaya signature (lihat computeSignature) ikut berubah dan Lapis 2 TIDAK salah reuse
+// keputusan lama yang dihitung dari candidatePairs versi algoritma sebelumnya.
+
 const STOPWORDS = new Set([
   'jual', 'jasa', 'harga', 'sewa', 'beli', 'biaya', 'tukang', 'pasang',
-  'di', 'ke', 'dari', 'untuk', 'dan', 'yang', 'dengan', 'atau', 'per',
-  'terbaik', 'berkualitas', 'gratis', 'ongkir', 'murah', 'terpercaya',
-  'terdekat', 'professional', 'profesional', 'area', 'lokasi', 'wilayah',
-  'daerah', 'kota', 'kabupaten', 'kecamatan', 'jabodetabek', 'anda', 'kami',
+  'di', 'ke', 'dari', 'untuk', 'dan', 'yang', 'dengan', 'atau', 'per', 'apa', 'itu', 'ini',
+  'terbaik', 'berkualitas', 'gratis', 'ongkir', 'murah', 'terpercaya', 'terdekat', 'bagus',
+  'professional', 'profesional', 'area', 'lokasi', 'wilayah', 'daerah', 'kota', 'kabupaten',
+  'kecamatan', 'jabodetabek', 'anda', 'kami', 'material', 'konstruksi', 'desain', 'interior',
+  'bangunan', 'apakah', 'pengertian', 'alternatif', 'panduan', 'lengkap', 'cara', 'tips',
+  'mengenal', 'kenali', 'memilih', 'adalah', 'dalam', 'pada', 'juga', 'akan', 'bisa', 'dapat',
+  'kuat', 'awet', 'tahan', 'lama', 'baik', 'jenis', 'macam',
+  'model', 'membuat', 'minimalis', 'terbaru', 'contoh', 'proses', 'sederhana',
 ]);
 
 function fmtDuration(ms) {
@@ -79,7 +96,8 @@ function diceCoefficient(a, b) {
 }
 function significantWords(title) {
   return title.toLowerCase().replace(/[^a-z0-9\s]/g, '').split(/\s+/)
-    .filter(w => w.length > 3 && !STOPWORDS.has(w));
+    .filter(w => w.length > 2 && !STOPWORDS.has(w)); // > 2 (bukan > 3) — lihat komentar
+                                                        // di dekat STOPWORDS soal alasannya
 }
 
 function computeSignature(allMeta) {
@@ -87,6 +105,11 @@ function computeSignature(allMeta) {
   const sorted = allMeta.map(a => `${a.url}|${a.title}|${a.date || ''}`).sort();
   sorted.forEach(s => h.update(s + '\n'));
   h.update(`cand=${CAND_THRESHOLD}`);
+  // Sertakan versi algoritma filtering — supaya kalau STOPWORDS/panjang-kata berubah
+  // lagi nanti, signature ikut berubah dan Lapis 2 tidak salah reuse .dedup-decisions.json
+  // lama yang dihitung dari candidatePairs versi algoritma sebelumnya (lihat komentar di
+  // DEDUP_ALGO_VERSION di atas).
+  h.update(`algo=${DEDUP_ALGO_VERSION}`);
   return h.digest('hex');
 }
 

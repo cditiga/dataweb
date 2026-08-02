@@ -70,10 +70,25 @@ jobs:
         run: |
           git add content/ data/
           git diff --quiet && git diff --staged --quiet \
-            || git commit -m "Auto-recycle posts and rebuild [skip ci]"
+            || git commit -m "Recycle posts and rebuild [skip ci]"
 
       - name: Push Changes
-        run: git push origin master
+        run: |
+          for i in 1 2 3 4 5; do
+            if git push origin master; then
+              echo "✅ Push berhasil (percobaan $i)."
+              exit 0
+            fi
+            if [ "$i" -eq 5 ]; then
+              echo "❌ Push tetap gagal setelah 5 percobaan — kemungkinan ada conflict nyata, cek manual." >&2
+              exit 1
+            fi
+            wait_s=$(( (RANDOM % 10) + 5 ))
+            echo "⏳ Push ditolak (kemungkinan race dengan workflow lain), rebase & coba lagi dalam ${wait_s}d... (percobaan $i/5)"
+            sleep "$wait_s"
+            git fetch origin master
+            git rebase origin/master
+          done
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

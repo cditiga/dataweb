@@ -5,7 +5,7 @@ categories:
  - "blog"
 type: "product"
 description: "1 lembar wiremesh berapa m2? Temukan ukuran, jenis, dan cara menghitung kebutuhan wiremesh untuk proyek konstruksi Anda di sini."
-featured_image: "/images/images/distributor-wiremesh.jpg"
+featured_image: "/images/blog/distributor-wiremesh.jpg"
 tags: ["wiremesh", "ukuran wiremesh", "konstruksi", "material bangunan", "pengecoran"]
 keywords: "1 lembar wiremesh berapa m2"
 author: "Ibnu Koesnady"
@@ -53,7 +53,7 @@ Wiremesh tersedia dalam berbagai jenis, tergantung pada diameter kawat dan ukura
 
 Harga wiremesh bervariasi tergantung pada jenisnya. Sebagai gambaran, harga wiremesh M4 biasanya mulai dari Rp 150.000 per lembar, sedangkan wiremesh M12 bisa mencapai Rp 500.000 per lembar atau lebih. Harga ini dapat berbeda-beda tergantung pada lokasi dan distributor.  
 
-![Gambar wiremesh untuk proyek konstruksi](/images/images/distributor-wiremesh.jpg)  
+![Gambar wiremesh untuk proyek konstruksi](/images/blog/distributor-wiremesh.jpg)  
 
 ## Tips Memilih Wiremesh yang Tepat  
 

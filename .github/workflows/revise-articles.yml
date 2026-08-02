@@ -2,8 +2,8 @@ name: Revise Duplicate Articles (AI)
 
 on:
   schedule:
-    - cron: '0 3 * * *'   # tiap hari jam 3 pagi — sesuaikan sesuai kebutuhan
-  workflow_dispatch:        # bisa dipicu manual dari tab Actions
+    - cron: '0 3 * * *'
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -45,7 +45,22 @@ jobs:
         run: |
           git add content/ .revise-progress.json revised-articles.log
           git diff --quiet && git diff --staged --quiet \
-            || git commit -m "Revisi: kurangi kemiripan konten"
-          git push origin master
+            || git commit -m "Revisi otomatis"
+
+          for i in 1 2 3 4 5; do
+            if git push origin master; then
+              echo "✅ Push berhasil (percobaan $i)."
+              exit 0
+            fi
+            if [ "$i" -eq 5 ]; then
+              echo "❌ Push tetap gagal setelah 5 percobaan — kemungkinan ada conflict nyata, cek manual." >&2
+              exit 1
+            fi
+            wait_s=$(( (RANDOM % 10) + 5 ))
+            echo "⏳ Push ditolak (kemungkinan race dengan workflow lain), rebase & coba lagi dalam ${wait_s}d... (percobaan $i/5)"
+            sleep "$wait_s"
+            git fetch origin master
+            git rebase origin/master
+          done
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
