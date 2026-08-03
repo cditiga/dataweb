@@ -28,10 +28,10 @@ jobs:
       - name: Install Dependencies
         run: npm install gray-matter
 
-      - name: Analisa Kandidat Duplikat (Lapis 1 — cepat, offline, hasil TIDAK di-commit)
+      - name: Analyze Duplicate Candidates (Layer 1 — fast, offline, results NOT committed)
         run: node dedup-lapis1.js
 
-      - name: Revisi Artikel (bertahap, maks 20/hari)
+      - name: Revise Articles (staged, max 20/day)
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: node revise-articles.js --apply --limit=20
@@ -45,19 +45,19 @@ jobs:
         run: |
           git add content/ .revise-progress.json revised-articles.log
           git diff --quiet && git diff --staged --quiet \
-            || git commit -m "Revisi otomatis"
+            || git commit -m "Automatic revision"
 
           for i in 1 2 3 4 5; do
             if git push origin master; then
-              echo "✅ Push berhasil (percobaan $i)."
+              echo "✅ Push succeeded (attempt $i)."
               exit 0
             fi
             if [ "$i" -eq 5 ]; then
-              echo "❌ Push tetap gagal setelah 5 percobaan — kemungkinan ada conflict nyata, cek manual." >&2
+              echo "❌ Push still failed after 5 attempts — possible real conflict, check manually." >&2
               exit 1
             fi
             wait_s=$(( (RANDOM % 10) + 5 ))
-            echo "⏳ Push ditolak (kemungkinan race dengan workflow lain), rebase & coba lagi dalam ${wait_s}d... (percobaan $i/5)"
+            echo "⏳ Push rejected (possible race with another workflow), rebase & retry in ${wait_s}d... (attempt $i/5)"
             sleep "$wait_s"
             git fetch origin master
             git rebase origin/master

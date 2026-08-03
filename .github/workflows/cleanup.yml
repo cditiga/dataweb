@@ -2,7 +2,7 @@ name: Clean up workflow runs
 
 on:
   schedule:
-    - cron: '0 0 * * *'  # Menjadwalkan setiap hari pada jam 00:00
+    - cron: '0 0 * * *'
 
 jobs:
   cleanup:

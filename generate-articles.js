@@ -2,8 +2,8 @@
  * generate-articles.js
  *
  * Mode:
- *   node generate-articles.js            → production (butuh GSC_CREDENTIALS + GITHUB_TOKEN)
- *   node generate-articles.js --dry-run  → test lokal (gunakan keyword dummy, skip API calls)
+ *   node generate-articles.js            → production (requires GSC_CREDENTIALS + GITHUB_TOKEN)
+ *   node generate-articles.js --dry-run  → local test (use dummy keywords, skip API calls)
  *   node generate-articles.js --dry-run --keyword="harga kitchen set minimalis"
  */
 
@@ -13,11 +13,11 @@ const https  = require('https');
 const crypto = require('crypto');
 const sharp  = require('sharp');
 
-// ─── Mode ────────────────────────────────────────────────────────────────────
+// ─── Mode ────────────────────────────────────────────────────────────
 const IS_DRY_RUN   = process.argv.includes('--dry-run');
 const CUSTOM_KW    = (process.argv.find(a => a.startsWith('--keyword=')) || '').replace('--keyword=', '');
 
-// ─── Konfigurasi ─────────────────────────────────────────────────────────────
+// ─── Configuration ───────────────────────────────────────────────────
 const CONFIG = {
   GSC_CREDENTIALS : (() => {
     try { return JSON.parse(process.env.GSC_CREDENTIALS || '{}'); } catch { return {}; }
@@ -39,26 +39,26 @@ const CONFIG = {
   GEMINI_API_PATH  : '/v1beta/interactions',
   GEMINI_IMAGE_MODEL: 'gemini-3.1-flash-lite-image',
 
-  // Ukuran WAJIB gambar hasil AI + watermark
+  // REQUIRED size for AI-generated images + watermark
   AI_IMAGE_WIDTH   : 600,
   AI_IMAGE_HEIGHT  : 400,
   WATERMARK_PATH   : path.join(__dirname, 'static', 'images', 'logo', 'watermark-cdi.png'),
   WATERMARK_OPACITY: 0.4,
   WATERMARK_WIDTH_RATIO: 0.42,
 
-  // Filter GSC
+  // GSC filters
   MIN_IMPRESSIONS : 5,
   MAX_POSITION    : 20,
   MAX_ARTICLES    : 3,
   DATE_RANGE_DAYS : 90,
 
-  // Site info — sesuai config.toml
+  // Site info — matching config.toml
   SITE_NAME       : 'Creative Design Interior',
   SITE_URL        : 'https://www.creativedesigninterior.com/',
   AUTHOR          : 'Ibnu Koesnady',
   SITE_TITLE      : 'Creative Design Interior | Jasa Kitchen Set dan Furniture Interior',
 
-  // Schema defaults dari config.toml
+  // Schema defaults from config.toml
   BASE_PRICE      : 850000,
   PRICE_MAX       : 3850000,
   SITE_RATING     : '4.8',
@@ -67,7 +67,7 @@ const CONFIG = {
   PHONE           : '0857-7678-6091',
   ADDRESS         : 'Jl. Sersan Muhtar Dramaga, Bogor – Jabar',
 
-  // Keyword dummy untuk dry-run
+  // Dummy keywords for dry-run
   DRY_RUN_KEYWORDS: [
     { keyword: 'harga kitchen set minimalis', impressions: 68, clicks: 2, ctr: 0.029, position: 8.3  },
     { keyword: 'jasa pasang keramik lantai',  impressions: 45, clicks: 1, ctr: 0.022, position: 11.5 },
@@ -95,7 +95,7 @@ function httpRequest(hostname, path, options, body = null, timeoutMs = 60000) {
       });
     });
 
-    req.setTimeout(timeoutMs, () => req.destroy(new Error(`Timeout setelah ${timeoutMs/1000}d tanpa respons dari ${hostname}`)));
+    req.setTimeout(timeoutMs, () => req.destroy(new Error(`Timeout after ${timeoutMs/1000}s without response from ${hostname}`)));
     req.on('error', reject);
     if (body) req.write(typeof body === 'string' ? body : JSON.stringify(body));
     req.end();
@@ -105,7 +105,7 @@ function httpRequest(hostname, path, options, body = null, timeoutMs = 60000) {
 async function getGSCAccessToken() {
   const creds = CONFIG.GSC_CREDENTIALS;
   if (!creds.client_email || !creds.private_key) {
-    throw new Error('GSC_CREDENTIALS tidak valid.');
+    throw new Error('Invalid GSC_CREDENTIALS.');
   }
   const now     = Math.floor(Date.now() / 1000);
   const header  = Buffer.from(JSON.stringify({ alg: 'RS256', typ: 'JWT' })).toString('base64url');
@@ -133,11 +133,11 @@ async function fetchKeywordsFromGSC() {
     const kws = CUSTOM_KW
       ? [{ keyword: CUSTOM_KW, impressions: 50, clicks: 1, ctr: 0.02, position: 9 }]
       : CONFIG.DRY_RUN_KEYWORDS;
-    console.log(`🧪 DRY-RUN: Menggunakan ${kws.length} keyword dummy.`);
+    console.log(`🧪 DRY-RUN: Using ${kws.length} dummy keywords.`);
     return kws;
   }
 
-  console.log('📊 Mengambil keyword dari Google Search Console...');
+  console.log('📊 Fetching keywords from Google Search Console...');
   const token   = await getGSCAccessToken();
   const endDate = new Date();
   const startDate = new Date();
@@ -166,14 +166,14 @@ async function fetchKeywordsFromGSC() {
     body
   );
 
-  if (!result.rows?.length) { console.log('⚠️  Tidak ada data keyword.'); return []; }
+  if (!result.rows?.length) { console.log('⚠️  No keyword data.'); return []; }
 
   const filtered = result.rows
     .filter(r => r.impressions >= CONFIG.MIN_IMPRESSIONS && r.position <= CONFIG.MAX_POSITION)
-    .filter(r => r.keys[0].trim().split(/\s+/).length >= 3) // minimal 3 kata — keyword pendek terlalu generik/rawan tumpang tindih
+    .filter(r => r.keys[0].trim().split(/\s+/).length >= 3) // at least 3 words — very short keywords are too generic/prone to overlap
     .map(r => ({ keyword: r.keys[0], impressions: r.impressions, clicks: r.clicks, ctr: r.ctr, position: r.position }));
 
-  console.log(`✅ ${filtered.length} keyword potensial dari ${result.rows.length} total.`);
+  console.log(`✅ ${filtered.length} potential keywords from ${result.rows.length} total.`);
   return filtered;
 }
 
@@ -215,8 +215,7 @@ const SIMILARITY_STOPWORDS = new Set([
 
 function significantWordsForSimilarity(text) {
   return text.toLowerCase().replace(/[^a-z0-9\s]/g, '').split(/\s+/)
-    .filter(w => w.length > 2 && !SIMILARITY_STOPWORDS.has(w)); // panjang > 2 (bukan > 3) supaya kata pendek
-                                                                  // tapi penting seperti "cor", "dak" tetap ikut
+    .filter(w => w.length > 2 && !SIMILARITY_STOPWORDS.has(w)); // length > 2 so short but important niche words like "cor" remain
 }
 
 function overlapSimilarity(a, b) {
@@ -285,7 +284,7 @@ function loadExcludedKeywords() {
     else released++;
   }
   if (released > 0) {
-    console.log(`   ♻️  ${released} keyword lama dilepas dari cache exclude (algoritma kemiripan diperbarui ke v${SIMILARITY_ALGO_VERSION}) — akan dicek ulang.`);
+    console.log(`   ♻️  ${released} old keywords released from the exclude cache (similarity algorithm updated to v${SIMILARITY_ALGO_VERSION}) — they will be re-evaluated.`);
   }
   return active;
 }
@@ -341,21 +340,21 @@ function filterOutSimilarKeywords(keywords) {
     const similar = findSimilarExisting(item.keyword, existingItems);
     if (similar) {
       excluded[key] = {
-        reason: 'mirip artikel yang sudah ada',
+        reason: 'similar to existing article',
         matchedFile: path.basename(similar.file),
         matchedTitle: similar.title,
         taggedAt: new Date().toISOString(),
         algoVersion: SIMILARITY_ALGO_VERSION,
       };
       newlyExcluded++;
-      console.log(`   ⏭️  Lewati "${item.keyword}" — mirip artikel yang sudah ada: "${similar.title}"`);
+      console.log(`   ⏭️  Skipping "${item.keyword}" — similar to existing article: "${similar.title}"`);
       continue;
     }
     kept.push(item);
   }
 
   if (newlyExcluded > 0) saveExcludedKeywords(excluded);
-  console.log(`   🔎 ${newlyExcluded} keyword baru ditandai excluded (mirip artikel existing), ${Object.keys(excluded).length} total excluded sepanjang waktu.`);
+  console.log(`   🔎 ${newlyExcluded} new keywords marked excluded (similar to existing articles), ${Object.keys(excluded).length} total excluded so far.`);
   return kept;
 }
 
@@ -394,28 +393,28 @@ async function pickImage(keyword, slug) {
     const maxMatch = Math.max(...good.map(s => s.matchCount));
     const best = good.filter(s => s.matchCount === maxMatch);
     const chosen = best[Math.floor(Math.random() * best.length)].img;
-    console.log(`   🖼️  Gambar cocok (${maxMatch} kata): ${path.basename(chosen)}`);
+    console.log(`   🖼️  Matching image (${maxMatch} words): ${path.basename(chosen)}`);
     return chosen.replace(path.join(__dirname, 'static'), '').replace(/\\/g, '/');
   }
 
-  console.log(`   🖼️  Tidak ada gambar dengan ≥2 kata cocok untuk "${keyword}" → coba generate gambar AI...`);
+  console.log(`   🖼️  No image with ≥2 matching words for "${keyword}" → attempting AI image generation...`);
   return useGenericOrAIImage(keyword, slug);
 }
 
 async function useGenericOrAIImage(keyword, slug) {
   const GENERIC = '/images/admin/featured-image.png';
   if (!CONFIG.GEMINI_API_KEY) {
-    console.log(`   🖼️  GEMINI_API_KEY belum diset → pakai gambar generik.`);
+    console.log(`   🖼️  GEMINI_API_KEY not set → using generic image.`);
     return GENERIC;
   }
   try {
     const aiPath = await generateAIImage(keyword, slug);
     if (aiPath) {
-      console.log(`   🖼️  Gambar AI berhasil dibuat & disimpan: ${aiPath}`);
+      console.log(`   🖼️  AI image generated & saved: ${aiPath}`);
       return aiPath;
     }
   } catch (err) {
-    console.log(`   ⚠️  Gagal generate gambar AI (${err.message}) → pakai gambar generik.`);
+    console.log(`   ⚠️  Failed to generate AI image (${err.message}) → using generic image.`);
   }
   return GENERIC;
 }
@@ -452,13 +451,13 @@ async function callGeminiImageAPI(prompt) {
           },
         },
         body,
-        90000 // generate gambar
+        90000 // image generation timeout
       );
       break;
     } catch (err) {
       if (attempt === maxRetries) throw err;
       const waitMs = attempt * 3000;
-      console.log(`   ⚠️  Gemini image API gagal (percobaan ${attempt}/${maxRetries}): ${err.message}. Coba lagi ${waitMs/1000}d...`);
+      console.log(`   ⚠️  Gemini image API failed (attempt ${attempt}/${maxRetries}): ${err.message}. Retrying in ${waitMs/1000}s...`);
       await new Promise(r => setTimeout(r, waitMs));
     }
   }
@@ -474,7 +473,7 @@ async function callGeminiImageAPI(prompt) {
       }
     }
   }
-  throw new Error('Response Gemini tidak mengandung gambar (cek quota/nama model/API key).');
+  throw new Error('Gemini response did not contain an image (check quota/model/API key).');
 }
 
 async function resizeAndWatermark(imageBuffer) {
@@ -483,7 +482,7 @@ async function resizeAndWatermark(imageBuffer) {
     .toBuffer();
 
   if (!fs.existsSync(CONFIG.WATERMARK_PATH)) {
-    console.log(`   ⚠️  Watermark tidak ditemukan di ${CONFIG.WATERMARK_PATH} → gambar disimpan tanpa watermark.`);
+    console.log(`   ⚠️  Watermark not found at ${CONFIG.WATERMARK_PATH} → saving image without watermark.`);
     return sharp(resized).jpeg({ quality: 85 }).toBuffer();
   }
 
@@ -511,7 +510,7 @@ async function resizeAndWatermark(imageBuffer) {
 }
 
 async function generateAIImage(keyword, slug) {
-  console.log(`   🤖 Generate gambar AI (Gemini) untuk "${keyword}"...`);
+  console.log(`   🤖 Generating AI image (Gemini) for "${keyword}"...`);
   const prompt = buildImagePrompt(keyword);
   const { data } = await callGeminiImageAPI(prompt);
   const rawBuffer = Buffer.from(data, 'base64');
@@ -573,7 +572,7 @@ const ADDRESS_STYLES = [
 ];
 
 function pickRandom(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
-// ─────────────────────────────────────────────────────────────────────────────
+// ─────────────────────────────────────────────────────────────────
 
 async function generateArticle(keyword) {
   const type = detectType(keyword);
@@ -643,7 +642,7 @@ PENTING: JANGAN tambahkan penanda, kata, atau baris apapun setelah artikel seles
 Artikel berakhir begitu saja setelah kalimat penutup/CTA, tanpa penanda tambahan.`;
 
   if (IS_DRY_RUN) {
-    console.log(`   🧪 DRY-RUN: Simulasi generate artikel untuk "${keyword}"...`);
+    console.log(`   🧪 DRY-RUN: Simulating article generation for "${keyword}"...`);
     const kwTitle = keyword.split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
     const raw = `JUDUL: ${kwTitle} - Panduan Lengkap dari ${CONFIG.SITE_NAME}
 DESCRIPTION: ${keyword.charAt(0).toUpperCase() + keyword.slice(1)} terbaik untuk hunian dan proyek konstruksi Anda. Temukan tips, harga, dan solusi dari ${CONFIG.SITE_NAME}.
@@ -719,7 +718,7 @@ Kalau Mitra masih ada pertanyaan atau ingin konsultasi lebih lanjut, silakan hub
     } catch (err) {
       if (err.isRateLimit) {
         if (err.retryAfterSec && err.retryAfterSec <= 90 && attempt < maxRetries) {
-          console.log(`   ⏳ Rate limit, menunggu ${err.retryAfterSec}d...`);
+          console.log(`   ⏳ Rate limit, waiting ${err.retryAfterSec}s...`);
           await new Promise(r => setTimeout(r, err.retryAfterSec * 1000 + 500));
           continue;
         }
@@ -727,7 +726,7 @@ Kalau Mitra masih ada pertanyaan atau ingin konsultasi lebih lanjut, silakan hub
       }
       if (attempt === maxRetries) throw err;
       const waitMs = attempt * 3000;
-      console.log(`   ⚠️  Gagal (percobaan ${attempt}/${maxRetries}): ${err.message}. Coba lagi ${waitMs/1000}d...`);
+      console.log(`   ⚠️  Failed (attempt ${attempt}/${maxRetries}): ${err.message}. Retrying in ${waitMs/1000}s...`);
       await new Promise(r => setTimeout(r, waitMs));
     }
   }
@@ -787,7 +786,7 @@ function parseAndSave(raw, keyword, slug, imagePath, greeting) {
     const t = line.trim();
     if (t.startsWith('JUDUL:'))        { title = t.replace('JUDUL:', '').trim(); continue; }
     if (t.startsWith('DESCRIPTION:'))  { desc  = t.replace('DESCRIPTION:', '').trim(); continue; }
-    if (t.startsWith('CATEGORIES:'))   { /* diabaikan — selalu "blog" */ continue; }
+    if (t.startsWith('CATEGORIES:'))   { /* ignored — always "blog" */ continue; }
     if (t.startsWith('TAGS:'))         { tags  = t.replace('TAGS:', '').trim().split(',').map(t => t.trim()); continue; }
     if (t === 'ARTIKEL_MULAI')         { inBody = true; continue; }
     if (inBody) body += line + '\n';
@@ -840,7 +839,7 @@ draft: false
   }
 
   fs.writeFileSync(filePath, frontMatter + body.trim() + '\n');
-  console.log(`   💾 Artikel disimpan: ${filePath}`);
+  console.log(`   💾 Article saved: ${filePath}`);
   return filePath;
 }
 
@@ -852,7 +851,7 @@ function loadRecentOpenings() {
   try { return JSON.parse(fs.readFileSync(RECENT_OPENINGS_FILE, 'utf8')); } catch { return []; }
 }
 function saveRecentOpenings(list) {
-  fs.writeFileSync(RECENT_OPENINGS_FILE, JSON.stringify(list.slice(-10))); // simpan 10 terakhir saja
+  fs.writeFileSync(RECENT_OPENINGS_FILE, JSON.stringify(list.slice(-10))); // save last 10 only
 }
 function getOpeningWords(body, n = 15) {
   return body.trim().split(/\s+/).slice(0, n).join(' ');
@@ -881,7 +880,7 @@ function checkOpeningVariety(body) {
   for (const prev of recent) {
     const score = openingBigramSimilarity(opening, prev);
     if (score >= OPENING_SIMILARITY_WARN) {
-      issues.push(`⚠️  Pembuka mirip (${(score*100).toFixed(0)}%) dengan artikel sebelumnya: "${prev.slice(0, 60)}..."`);
+      issues.push(`⚠️  Opening is similar (${(score*100).toFixed(0)}%) to a previous article: "${prev.slice(0, 60)}..."`);
     }
   }
   recent.push(opening);
@@ -930,23 +929,23 @@ async function main() {
   console.log(`${'─'.repeat(55)}\n`);
 
   if (!IS_DRY_RUN) {
-    if (!CONFIG.GITHUB_TOKEN) throw new Error('GITHUB_TOKEN tidak ditemukan.');
-    if (!CONFIG.GSC_CREDENTIALS.client_email) throw new Error('GSC_CREDENTIALS tidak valid.');
+    if (!CONFIG.GITHUB_TOKEN) throw new Error('GITHUB_TOKEN not found.');
+    if (!CONFIG.GSC_CREDENTIALS.client_email) throw new Error('Invalid GSC_CREDENTIALS.');
   }
 
   const keywords = await fetchKeywordsFromGSC();
 
   const existingSlugs = getExistingSlugs();
-  console.log(`\n📁 ${existingSlugs.size} artikel sudah ada di content/blog/`);
+  console.log(`\n📁 ${existingSlugs.size} articles already exist in content/blog/`);
 
   function selectFromSource(rawKeywords, label) {
     if (!rawKeywords.length) return [];
     const newKws = rawKeywords.filter(k => !existingSlugs.has(toSlug(k.keyword)));
     if (!newKws.length) {
-      console.log(`   (${label}) Semua keyword sudah punya artikel (slug bentrok).`);
+      console.log(`   (${label}) All keywords already have articles (slug conflict).`);
       return [];
     }
-    console.log(`\n🔎 (${label}) Cek kemiripan ${newKws.length} keyword terhadap artikel yang sudah ada...`);
+    console.log(`\n🔎 (${label}) Checking similarity of ${newKws.length} keywords against existing articles...`);
     return filterOutSimilarKeywords(newKws);
   }
 
@@ -956,21 +955,21 @@ async function main() {
   if (keywords.length) {
     uniqueKeywords = selectFromSource(keywords, 'GSC');
   } else {
-    console.log('⚠️  Tidak ada keyword dari GSC (kosong/habis).');
+    console.log('⚠️  No keywords from GSC (empty/exhausted).');
   }
 
   if (!uniqueKeywords.length) {
-    console.log(`\n📄 Tidak ada keyword baru dari GSC — coba fallback ke keywords.txt...`);
+    console.log(`\n📄 No new keywords from GSC — falling back to keywords.txt...`);
     const fileKeywords = getKeywordsFromFile();
     if (!fileKeywords.length) {
-      console.log('   keywords.txt tidak ditemukan atau kosong. Selesai — tidak ada yang bisa digenerate.');
+      console.log('   keywords.txt not found or empty. Done — nothing to generate.');
       return;
     }
-    console.log(`   📄 ${fileKeywords.length} keyword ditemukan di keywords.txt.`);
+    console.log(`   📄 ${fileKeywords.length} keywords found in keywords.txt.`);
     uniqueKeywords = selectFromSource(fileKeywords, 'keywords.txt');
     usingFallback = true;
     if (!uniqueKeywords.length) {
-      console.log('   Semua keyword di keywords.txt sudah punya artikel atau mirip artikel yang ada. Selesai.');
+      console.log('   All keywords in keywords.txt already have articles or are similar to existing ones. Done.');
       return;
     }
   }
@@ -978,14 +977,14 @@ async function main() {
   uniqueKeywords.sort((a, b) => (b.impressions * (1 - b.ctr)) - (a.impressions * (1 - a.ctr)));
 
   const toProcess = uniqueKeywords.slice(0, IS_DRY_RUN ? uniqueKeywords.length : CONFIG.MAX_ARTICLES);
-  console.log(`\n📝 Akan generate ${toProcess.length} artikel${usingFallback ? ' (dari keywords.txt)' : ''}:\n`);
+  console.log(`\n📝 Will generate ${toProcess.length} articles${usingFallback ? ' (from keywords.txt)' : ''}:\n`);
 
   const results = [];
 
   for (const item of toProcess) {
     const slug = toSlug(item.keyword);
     console.log(`\n[${toProcess.indexOf(item) + 1}/${toProcess.length}] "${item.keyword}"`);
-    console.log(`   📊 Impresi: ${item.impressions} | Posisi: ${item.position.toFixed(1)} | CTR: ${(item.ctr*100).toFixed(1)}%`);
+    console.log(`   📊 Impressions: ${item.impressions} | Position: ${item.position.toFixed(1)} | CTR: ${(item.ctr*100).toFixed(1)}%`);
     console.log(`   🔑 Slug: ${slug} | Type: ${detectType(item.keyword)}`);
 
     try {
@@ -995,7 +994,7 @@ async function main() {
       const issues   = validateArticle(filePath);
       results.push({ keyword: item.keyword, slug, filePath, imgPath, issues });
     } catch (err) {
-      console.error(`   ❌ Gagal: ${err.message}`);
+      console.error(`   ❌ Failed: ${err.message}`);
     }
 
     if (!IS_DRY_RUN && toProcess.indexOf(item) < toProcess.length - 1) {
@@ -1004,7 +1003,7 @@ async function main() {
   }
 
   console.log(`\n${'─'.repeat(55)}`);
-  console.log(`✅ Selesai: ${results.length} artikel di-generate\n`);
+  console.log(`✅ Done: ${results.length} articles generated\n`);
   results.forEach(r => {
     const status = r.issues.length === 0 ? '✅' : '⚠️ ';
     console.log(`  ${status} ${r.filePath}`);
@@ -1012,7 +1011,7 @@ async function main() {
 
   if (usingFallback) {
     removeProcessedKeywordsFromFile(toProcess.map(k => k.keyword));
-    console.log(`\n📄 ${toProcess.length} keyword sudah dibuang dari keywords.txt (sudah diproses).`);
+    console.log(`\n📄 ${toProcess.length} keywords removed from keywords.txt (processed).`);
   }
 
   if (!IS_DRY_RUN) {
@@ -1025,6 +1024,6 @@ async function main() {
 }
 
 main().catch(err => {
-  console.error('\n💥 Error fatal:', err.message);
+  console.error('\n💥 Fatal error:', err.message);
   process.exit(1);
 });

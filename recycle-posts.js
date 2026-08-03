@@ -7,7 +7,6 @@ const axios = require('axios');
 const contentDir = path.join(__dirname, 'content');
 const now = new Date();
 
-// Daftar layanan ping
 const pingServices = [
   'http://ping.googleapis.com/ping?sitemap=',
   'http://www.bing.com/ping?sitemap=',
@@ -18,19 +17,17 @@ const pingServices = [
 ];
 
 
-// Fungsi untuk melakukan ping
 async function pingSearchEngines(sitemapUrl) {
   for (const service of pingServices) {
     try {
       await axios.get(`${service}${sitemapUrl}`);
-      console.log(`Berhasil melakukan ping ke ${service}`);
+      console.log(`Successfully pinged to ${service}`);
     } catch (error) {
-      console.error(`Gagal melakukan ping ke ${service}:`, error.message);
+      console.error(`Failed to ping to ${service}:`, error.message);
     }
   }
 }
 
-// Fungsi untuk memeriksa dan memperbarui artikel
 function recyclePost(filePath) {
   const fileContent = fs.readFileSync(filePath, 'utf8');
   const { data, content } = matter(fileContent);
@@ -48,7 +45,6 @@ function recyclePost(filePath) {
   return false;
 }
 
-// Memeriksa semua artikel
 let updatedCount = 0;
 fs.readdirSync(contentDir).forEach(file => {
   if (file.endsWith('.md')) {
@@ -60,13 +56,12 @@ fs.readdirSync(contentDir).forEach(file => {
 });
 
 if (updatedCount > 0) {
-  console.log(`${updatedCount} artikel telah diperbarui.`);
+  console.log(`${updatedCount} The article has been updated.`);
   // Rebuild situs Hugo
   execSync('hugo', { stdio: 'inherit' });
   
-  // Lakukan ping ke mesin pencari
   const sitemapUrl = 'https://www.creativedesigninterior.com/sitemap.xml';
   pingSearchEngines(sitemapUrl);
 } else {
-  console.log('Tidak ada artikel yang perlu diperbarui.');
+  console.log('There are no articles that need to be updated.');
 }

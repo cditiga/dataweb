@@ -14,13 +14,13 @@ jobs:
     steps:
       - name: Cleanup Disk Space
         run: |
-          echo "Disk space sebelum cleanup:"
+          echo "Disk space before cleanup:"
           df -h
           sudo rm -rf /usr/local/lib/android
           sudo rm -rf /usr/share/dotnet
           sudo rm -rf /opt/ghc
           sudo rm -rf /opt/hostedtoolcache
-          echo "Disk space sesudah cleanup:"
+          echo "Disk space after cleanup:"
           df -h
 
       - name: Checkout Repository
@@ -76,15 +76,15 @@ jobs:
         run: |
           for i in 1 2 3 4 5; do
             if git push origin master; then
-              echo "✅ Push berhasil (percobaan $i)."
+              echo "✅ Push succeeded (attempt $i)."
               exit 0
             fi
             if [ "$i" -eq 5 ]; then
-              echo "❌ Push tetap gagal setelah 5 percobaan — kemungkinan ada conflict nyata, cek manual." >&2
+              echo "❌ Push still failed after 5 attempts — likely a real conflict, check manually." >&2
               exit 1
             fi
             wait_s=$(( (RANDOM % 10) + 5 ))
-            echo "⏳ Push ditolak (kemungkinan race dengan workflow lain), rebase & coba lagi dalam ${wait_s}d... (percobaan $i/5)"
+            echo "⏳ Push rejected (possible race with another workflow), rebase & try again in ${wait_s} seconds... (attempt $i/5)"
             sleep "$wait_s"
             git fetch origin master
             git rebase origin/master
@@ -97,7 +97,7 @@ jobs:
         run: |
           rm -rf node_modules .npm
           npm cache clean --force
-          echo "Disk space setelah cleanup node_modules:"
+          echo "Disk space after cleaning up node_modules:"
           df -h
 
       - name: Deploy to GitHub Pages
@@ -110,5 +110,5 @@ jobs:
 
       - name: Verify Deployment
         run: |
-          echo "Deployment selesai!"
+          echo "Deployment completed!"
           ls -l public

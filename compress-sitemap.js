@@ -3,20 +3,17 @@ const zlib = require('zlib');
 const path = require('path');
 const toml = require('toml');
 
-// Path ke config.toml
 const configPath = path.join(__dirname, 'config.toml');
 const sitemapPath = path.join(__dirname, 'public', 'sitemap.xml');
 const sitemapGzipPath = path.join(__dirname, 'public', 'sitemap.xml.gz');
 const robotsPath = path.join(__dirname, 'public', 'robots.txt');
 
-// Membaca baseURL dari config.toml
 function getBaseUrl() {
   const configContent = fs.readFileSync(configPath, 'utf-8');
   const config = toml.parse(configContent);
   return config.baseURL.endsWith('/') ? config.baseURL.slice(0, -1) : config.baseURL;
 }
 
-// Membuat robots.txt jika belum ada, dan tambahkan noindex untuk halaman arsip
 function ensureRobotsTxt() {
   const baseUrl = getBaseUrl();
   
@@ -36,7 +33,7 @@ Sitemap: ${baseUrl}/sitemap.xml.gz
   `;
   
   fs.writeFileSync(robotsPath, robotsContent.trim());
-  console.log('robots.txt berhasil dibuat atau diperbarui.');
+  console.log('robots.txt was created or updated successfully.');
 }
 
 // Mengompres sitemap.xml menjadi sitemap.xml.gz
@@ -46,9 +43,9 @@ function compressSitemap() {
   const destination = fs.createWriteStream(sitemapGzipPath);
 
   source.pipe(gzip).pipe(destination).on('finish', () => {
-    console.log('sitemap.xml berhasil dikompres menjadi sitemap.xml.gz');
+    console.log('sitemap.xml successfully compressed into sitemap.xml.gz');
   }).on('error', (err) => {
-    console.error('Error saat mengompresi sitemap:', err);
+    console.error('Error while compressing sitemap:', err);
   });
 }
 

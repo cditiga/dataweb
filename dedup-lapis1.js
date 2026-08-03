@@ -1,22 +1,21 @@
 /**
  * dedup-lapis1.js
  *
- * LAPIS 1 SAJA — cari kandidat pasangan judul mirip pakai bigram (offline,
- * tidak butuh internet/API/token sama sekali). Hasilnya disimpan ke
- * `candidates.json`, dipakai oleh `dedup-lapis2.js` di langkah berikutnya.
+ * LAYER 1 ONLY — find candidate pairs of similar titles using bigram (offline,
+ * does not require internet/API/token). Results are stored in `candidates.json`,
+ * to be used by `dedup-lapis2.js` in the next step.
  *
- * Kenapa dipisah dari Lapis 2: supaya bisa dijalankan sekali (~1 menit),
- * hasilnya PERMANEN tersimpan di file, dan Lapis 2 (yang butuh AI + rentan
- * timeout/rate-limit) bisa dijalankan berkali-kali secara bertahap tanpa
- * pernah mengulang Lapis 1.
+ * Why separate from Layer 2: run once (~1 minute), result is PERMANENTLY stored
+ * in a file, and Layer 2 (which needs AI + is rate-limit prone) can be run
+ * repeatedly without redoing Layer 1.
  *
- * PAKAI:
+ * USAGE:
  *   node dedup-lapis1.js
  *   node dedup-lapis1.js --candidate-threshold=0.55
  *   node dedup-lapis1.js --dir=content/blog
  *
- * Jalankan ulang KAPAN SAJA setelah ada artikel baru/berubah — akan generate
- * ulang candidates.json dari kondisi content/ terkini.
+ * Re-run ANYTIME after new/changed articles — it will regenerate candidates.json
+ * from current content/.
  */
 
 const fs     = require('fs');
@@ -30,18 +29,13 @@ const DIR_ARG = (ARGS.find(a => a.startsWith('--dir=')) || '--dir=content').repl
 const CONTENT_DIR = path.join(process.cwd(), DIR_ARG);
 const CANDIDATES_FILE = path.join(process.cwd(), 'candidates.json');
 
-// Diselaraskan dengan generate-articles.js (v2, lihat SIMILARITY_ALGO_VERSION di sana):
-// - Panjang kata > 2 (BUKAN > 3) supaya kata pendek tapi penting di niche ini seperti
-//   "cor", "dak", "cat" tetap ikut masuk index kandidat — sebelumnya kata-kata itu
-//   selalu terbuang dari word-index, jadi 2 artikel yang beda HANYA karena kata pendek
-//   itu (mis. "Cor Dak X" vs "Cor Dak Y") bisa gagal ke-index dengan baik.
-// - Daftar stopword diperluas biar sinkron dengan generate-articles.js — mengurangi
-//   kandidat "berisik" dari kata generik (cara, jenis, pengertian, model, minimalis,
-//   terbaru, dst) yang cuma menambah beban embedding di Lapis 2 tanpa menambah sinyal
-//   topik yang sebenarnya.
-const DEDUP_ALGO_VERSION = 2; // naikkan tiap kali logika filtering di bawah berubah —
-// supaya signature (lihat computeSignature) ikut berubah dan Lapis 2 TIDAK salah reuse
-// keputusan lama yang dihitung dari candidatePairs versi algoritma sebelumnya.
+// Aligned with generate-articles.js (v2, see SIMILARITY_ALGO_VERSION there):
+// - Word length > 2 (NOT > 3) so short but important niche words like
+//   "cor", "dak", "cat" remain in the index — previously these words were
+//   dropped and two articles differing only by such short tokens could be missed.
+// - The STOPWORDS list is expanded to sync with generate-articles.js — reducing
+//   noisy candidates from generic words (cara, jenis, pengertian, model, minimalis, etc).
+const DEDUP_ALGO_VERSION = 2; // bump when filtering logic changes — so computeSignature changes too
 
 const STOPWORDS = new Set([
   'jual', 'jasa', 'harga', 'sewa', 'beli', 'biaya', 'tukang', 'pasang',
@@ -57,8 +51,8 @@ const STOPWORDS = new Set([
 
 function fmtDuration(ms) {
   const s = Math.round(ms / 1000);
-  if (s < 60) return `${s}d`;
-  return `${Math.floor(s / 60)}m${s % 60}d`;
+  if (s < 60) return `${s}s`;
+  return `${Math.floor(s / 60)}m${s % 60}s`;
 }
 
 function walk(dir) {
@@ -96,8 +90,7 @@ function diceCoefficient(a, b) {
 }
 function significantWords(title) {
   return title.toLowerCase().replace(/[^a-z0-9\s]/g, '').split(/\s+/)
-    .filter(w => w.length > 2 && !STOPWORDS.has(w)); // > 2 (bukan > 3) — lihat komentar
-                                                        // di dekat STOPWORDS soal alasannya
+    .filter(w => w.length > 2 && !STOPWORDS.has(w)); // >2 (not >3) — see comment near STOPWORDS
 }
 
 function computeSignature(allMeta) {
@@ -105,18 +98,15 @@ function computeSignature(allMeta) {
   const sorted = allMeta.map(a => `${a.url}|${a.title}|${a.date || ''}`).sort();
   sorted.forEach(s => h.update(s + '\n'));
   h.update(`cand=${CAND_THRESHOLD}`);
-  // Sertakan versi algoritma filtering — supaya kalau STOPWORDS/panjang-kata berubah
-  // lagi nanti, signature ikut berubah dan Lapis 2 tidak salah reuse .dedup-decisions.json
-  // lama yang dihitung dari candidatePairs versi algoritma sebelumnya (lihat komentar di
-  // DEDUP_ALGO_VERSION di atas).
+  // Include deduping algorithm version in signature so older decisions are not reused when algo changes.
   h.update(`algo=${DEDUP_ALGO_VERSION}`);
   return h.digest('hex');
 }
 
 function main() {
   const t0 = Date.now();
-  console.log(`\n🔍 LAPIS 1 — cari kandidat judul mirip (offline, tanpa AI)`);
-  console.log(`   Direktori   : ${CONTENT_DIR}`);
+  console.log(`\n🔍 LAYER 1 — find candidate similar titles (offline, no AI)`);
+  console.log(`   Directory   : ${CONTENT_DIR}`);
   console.log(`   Threshold   : ${(CAND_THRESHOLD * 100).toFixed(0)}%`);
   console.log(`${'─'.repeat(60)}\n`);
 
@@ -126,7 +116,7 @@ function main() {
   for (const f of files) {
     let parsed;
     try { parsed = matter(fs.readFileSync(f, 'utf8')); }
-    catch { console.warn(`⚠️  Lewati (gagal parse): ${f}`); continue; }
+    catch { console.warn(`⚠️  Skipping (parse failed): ${f}`); continue; }
     const title = (parsed.data.title || '').toString().trim();
     if (!title) continue;
     const date = parsed.data.date ? new Date(parsed.data.date).toISOString() : null;
@@ -135,15 +125,15 @@ function main() {
     if (parsed.data.draft === true) continue;
     articles.push({ url, title, date, section: toSection(f), wordCount: (parsed.content || '').trim().split(/\s+/).length });
   }
-  console.log(`📁 ${articles.length} artikel non-draft (dari total ${allMeta.length} file).\n`);
-  if (articles.length < 2) { console.log('Tidak cukup artikel. Selesai.'); return; }
+  console.log(`📁 ${articles.length} non-draft articles (from total ${allMeta.length} files).\n`);
+  if (articles.length < 2) { console.log('Not enough articles. Done.'); return; }
 
   const bySection = new Map();
   articles.forEach((art, i) => {
     if (!bySection.has(art.section)) bySection.set(art.section, []);
     bySection.get(art.section).push(i);
   });
-  console.log(`📂 ${bySection.size} section terdeteksi.\n`);
+  console.log(`📂 ${bySection.size} sections detected.\n`);
 
   const candidatePairs = [];
   let processed = 0;
@@ -170,11 +160,11 @@ function main() {
         });
       });
     }
-    process.stdout.write(`\r   ${processed}/${bySection.size} section diproses, ${candidatePairs.length} kandidat...   `);
+    process.stdout.write(`\r   ${processed}/${bySection.size} sections processed, ${candidatePairs.length} candidates...   `);
   }
-  console.log(`\n\n🔗 Selesai dalam ${fmtDuration(Date.now() - t0)}: ${candidatePairs.length} pasangan kandidat.\n`);
+  console.log(`\n\n🔗 Completed in ${fmtDuration(Date.now() - t0)}: ${candidatePairs.length} candidate pairs.\n`);
 
-  // Cuma simpan judul yang benar-benar dipakai (hemat ukuran file + hemat kerja Lapis 2)
+  // Only save titles that are actually needed (reduce file size & Layer 2 work)
   const neededUrls = new Set(candidatePairs.flatMap(p => [p.aUrl, p.bUrl]));
   const titleMap = {};
   articles.forEach(a => { if (neededUrls.has(a.url)) titleMap[a.url] = { title: a.title, date: a.date, wordCount: a.wordCount }; });
@@ -188,9 +178,9 @@ function main() {
   };
   fs.writeFileSync(CANDIDATES_FILE, JSON.stringify(out));
 
-  console.log(`💾 Tersimpan ke ${CANDIDATES_FILE}`);
-  console.log(`   Judul unik yang perlu di-embed di Lapis 2 : ${neededUrls.size}`);
-  console.log(`\n➡️  Lanjut jalankan: node dedup-lapis2.js --apply --limit=200`);
+  console.log(`💾 Saved to ${CANDIDATES_FILE}`);
+  console.log(`   Unique titles to embed in Layer 2 : ${neededUrls.size}`);
+  console.log(`\n➡️  Next: run: node dedup-lapis2.js --apply --limit=200`);
 }
 
 main();

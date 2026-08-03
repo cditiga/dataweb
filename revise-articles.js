@@ -1,33 +1,32 @@
 /**
  * revise-articles.js
  *
- * Revisi ISI (body) artikel yang templat/mirip lintas-kota, SATU PER SATU,
- * secara bertahap (cron), tanpa menyentuh frontmatter atau gambar.
+ * Revise ARTICLE BODY that are templated/similar across cities, ONE BY ONE,
+ * gradually (cron), without touching frontmatter or images.
  *
- * DIJAGA KETAT — TIDAK PERNAH DIUBAH:
- *   - title, categories, type, featured_image, author (dan seluruh frontmatter lain)
- *   - Semua baris gambar markdown ![...](...) di body
- *   - Shortcode Hugo {{< toc >}} dan {{< table-tables table="..." >}} (termasuk parameternya)
+ * STRICTLY PRESERVED — NEVER CHANGED:
+ *   - title, categories, type, featured_image, author (and any other frontmatter)
+ *   - All image markdown lines ![...](...) in the body
+ *   - Hugo shortcodes {{< toc >}} and {{< table-tables table="..." >}} (including params)
  *
- * DIJAMIN ADA DI HASIL REVISI:
- *   - Nama lokasi (diekstrak dari title, mis. "Abadijaya Depok") tetap disebut
- *     minimal beberapa kali secara alami di body hasil revisi.
+ * GUARANTEED IN THE REVISION RESULT:
+ *   - The location name (extracted from title, e.g. "Abadijaya Depok") must still
+ *     be mentioned naturally several times in the revised body.
  *
- * CARA KERJA:
- *   1. Ambil daftar artikel yang perlu direvisi dari candidates.json (hasil dedup-lapis1.js)
- *      — ini daftar artikel yang templat/mirip dengan artikel lain.
- *   2. Proses maksimal MAX_PER_RUN artikel per eksekusi (progress disimpan,
- *      lanjut otomatis di run berikutnya — sama seperti dedup-lapis2.js).
- *   3. Untuk tiap artikel: extract gambar & shortcode jadi placeholder, kirim ke AI
- *      buat ditulis ulang BAGIAN PROSA-nya saja, lalu pasang kembali placeholder,
- *      validasi (gambar/shortcode/kota masih ada), baru simpan.
+ * WORKFLOW:
+ *   1. Read list of articles to revise from candidates.json (output of dedup-lapis1.js)
+ *      — these are articles that appear templated/similar to others.
+ *   2. Process up to MAX_PER_RUN articles per execution (progress saved,
+ *      will continue in the next run).
+ *   3. For each article: extract images & shortcodes into placeholders, send to AI
+ *      to rewrite only the PROSE PART, restore placeholders, validate (images/shortcodes/location present),
+ *      then save.
  *
- * PAKAI:
- *   node revise-articles.js --dry-run                  → lihat dulu tanpa ubah file
- *   node revise-articles.js --apply --limit=20          → revisi maks 20 artikel sesi ini
- *   node revise-articles.js --apply --limit=20          → jalankan lagi, lanjut batch berikutnya
+ * USAGE:
+ *   node revise-articles.js --dry-run                  → preview without modifying files
+ *   node revise-articles.js --apply --limit=20        → revise up to 20 articles this session
  *
- * BUTUH: GITHUB_TOKEN (permission "models: read"), candidates.json, npm install gray-matter
+ * REQUIRES: GITHUB_TOKEN (permission "models: read"), candidates.json, npm install gray-matter
  */
 
 const fs     = require('fs');
@@ -59,11 +58,11 @@ const CONFIG = {
 function log(msg) { console.log(msg); }
 function fmtDuration(ms) {
   const s = Math.round(ms / 1000);
-  if (s < 60) return `${s}d`;
-  return `${Math.floor(s / 60)}m${s % 60}d`;
+  if (s < 60) return `${s}s`;
+  return `${Math.floor(s / 60)}m${s % 60}s`;
 }
 
-// ─── HTTP helper (timeout + retry + rate-limit, pola sama seperti dedup-lapis2.js) ──
+// ─── HTTP helper (timeout + retry + rate-limit, same pattern as dedup-lapis2.js) ──
 function httpRequest(hostname, reqPath, options, body, timeoutMs = CONFIG.TIMEOUT_MS) {
   return new Promise((resolve, reject) => {
     const req = https.request({ hostname, path: reqPath, ...options }, res => {
@@ -84,7 +83,7 @@ function httpRequest(hostname, reqPath, options, body, timeoutMs = CONFIG.TIMEOU
         }
       });
     });
-    req.setTimeout(timeoutMs, () => req.destroy(new Error(`Timeout setelah ${timeoutMs/1000}d`)));
+    req.setTimeout(timeoutMs, () => req.destroy(new Error(`Timeout after ${timeoutMs/1000}s`)));
     req.on('error', reject);
     req.write(body);
     req.end();
@@ -109,7 +108,7 @@ async function callAI(messages, retries = 3) {
     } catch (err) {
       if (err.isRateLimit) {
         if (err.retryAfterSec && err.retryAfterSec <= 90 && attempt < retries) {
-          log(`   ⏳ Rate limit, menunggu ${err.retryAfterSec}d...`);
+          log(`   ⏳ Rate limit, waiting ${err.retryAfterSec}s...`);
           await new Promise(r => setTimeout(r, err.retryAfterSec * 1000 + 500));
           continue;
         }
@@ -117,13 +116,13 @@ async function callAI(messages, retries = 3) {
       }
       if (attempt === retries) throw err;
       const waitMs = attempt * 3000;
-      log(`   ⚠️  Gagal (percobaan ${attempt}/${retries}): ${err.message}. Coba lagi ${waitMs/1000}d...`);
+      log(`   ⚠️  Failed (attempt ${attempt}/${retries}): ${err.message}. Retrying in ${waitMs/1000}s...`);
       await new Promise(r => setTimeout(r, waitMs));
     }
   }
 }
 
-// ─── Ekstraksi lokasi dari title (dipakai buat validasi hasil revisi) ─────
+// ─── Extract location from title (used to validate revisions) ─────
 function extractLocation(title) {
   const m = title.match(/\bdi\b/i);
   if (!m) return null;
@@ -140,18 +139,18 @@ function extractLocation(title) {
   return loc;
 }
 
-// ─── Placeholder utk gambar & shortcode — supaya AI TIDAK MUNGKIN mengubahnya ──
+// ─── Placeholders for images & shortcodes — to ensure AI cannot change them ──
 function protectStructure(content) {
   const placeholders = [];
   let protectedContent = content;
 
-  // Gambar markdown ![...](...)
+  // Image markdown ![...](...)
   protectedContent = protectedContent.replace(/!\[.*?\]\(.*?\)/g, (match) => {
     const idx = placeholders.length;
     placeholders.push(match);
     return `[[[PLACEHOLDER_${idx}]]]`;
   });
-  // Shortcode Hugo {{< ... >}}
+  // Hugo shortcodes {{< ... >}}
   protectedContent = protectedContent.replace(/\{\{<.*?>\}\}/g, (match) => {
     const idx = placeholders.length;
     placeholders.push(match);
@@ -165,9 +164,7 @@ function restoreStructure(content, placeholders) {
   return content.replace(/\[\[\[PLACEHOLDER_(\d+)\]\]\]/g, (_, idx) => placeholders[parseInt(idx, 10)] || '');
 }
 
-// 🛡 Jaring pengaman: AI kadang menambahkan penanda "selesai" sendiri di baris
-// terakhir meski sudah dilarang di prompt (ditemukan sebagai bug di generate-articles.js —
-// selalu muncul "ARTIKEL_SELESAI" di artikel ke-3). Terapkan pembersihan yang sama di sini.
+// Safety net: AI sometimes appends a trailing "finished" marker despite prohibition
 function stripTrailingMarker(content) {
   const trailingMarkerPattern = /^(ARTIKEL[_\s]?SELESAI|SELESAI|\[?END\]?|TAMAT)\.?$/i;
   const lines = content.split('\n');
@@ -177,7 +174,7 @@ function stripTrailingMarker(content) {
   return lines.join('\n');
 }
 
-// ─── Prompt ────────────────────────────────────────────────────────────────
+// ─── Prompt ────────────────────────────────────────────────────────────
 function buildPrompt(title, location, category, protectedContent) {
   return [
     {
@@ -215,25 +212,23 @@ ${protectedContent}`
   ];
 }
 
-// ─── Buang basa-basi AI (pembuka/penutup) — jaring pengaman kode, jangan cuma
-// andalkan larangan di prompt (pelajaran dari bug ARTIKEL_SELESAI di generate-articles.js:
-// AI tidak selalu patuh 100% meski sudah dilarang eksplisit) ────────────────────
+// ─── Remove AI preamble/closing chatter — safety-cleaning, don't rely only on prompt rules ────────────────────
 function cleanupAIChatter(text) {
   let lines = text.split('\n');
 
-  // Buang baris pembuka basa-basi umum (biasanya 1-2 baris pertama sebelum konten asli)
+  // Remove common preamble lines (usually 1-2 lines before real content)
   const preamblePatterns = [
     /^berikut(lah)? (adalah )?(artikel|hasil|versi)/i,
     /^tentu[,.]?\s*(berikut|ini)/i,
     /^ini (adalah )?(artikel|hasil|versi) yang (sudah|telah) (direvisi|ditulis ulang)/i,
-    /^\*\*.*\*\*\s*$/, // baris cuma bold pendek tanpa isi (kadang AI taruh judul ulang)
+    /^\*\*.*\*\*\s*$/, // line that is just a short bold (AI sometimes repeats the title)
   ];
   while (lines.length && preamblePatterns.some(p => p.test(lines[0].trim())) ) {
     lines.shift();
     while (lines.length && lines[0].trim() === '') lines.shift();
   }
 
-  // Buang baris penutup/penanda di akhir
+  // Remove trailing markers/closing lines
   const closingPatterns = [
     /^ARTIKEL[_\s]?SELESAI$/i,
     /^SELESAI$/i,
@@ -252,13 +247,13 @@ function cleanupAIChatter(text) {
   return lines.join('\n');
 }
 
-// ─── Validasi hasil revisi sebelum disimpan ────────────────────────────────
+// ─── Validate revised output before saving ────────────────────────────────
 function validatePlaceholders(revisedProtected, placeholders) {
   const issues = [];
   for (let i = 0; i < placeholders.length; i++) {
     const token = `[[[PLACEHOLDER_${i}]]]`;
     const count = (revisedProtected.match(new RegExp(token.replace(/[[\]]/g, '\\$&'), 'g')) || []).length;
-    if (count !== 1) issues.push(`Placeholder ${i} muncul ${count}x di output AI (harusnya 1x)`);
+    if (count !== 1) issues.push(`Placeholder ${i} appears ${count}x in AI output (should appear exactly 1x)`);
   }
   return issues;
 }
@@ -266,45 +261,44 @@ function validatePlaceholders(revisedProtected, placeholders) {
 function validateFinalContent(original, revisedContent, location) {
   const issues = [];
   if (location && !revisedContent.toLowerCase().includes(location.toLowerCase())) {
-    issues.push(`Nama lokasi "${location}" tidak ditemukan di hasil revisi`);
+    issues.push(`Location name "${location}" not found in revised output`);
   }
   if (revisedContent.length < original.length * 0.5) {
-    issues.push(`Hasil revisi terlalu pendek (${revisedContent.length} vs asli ${original.length} karakter)`);
+    issues.push(`Revised content too short (${revisedContent.length} vs original ${original.length} characters)`);
   }
-  // Kalau artikel asli pakai sapaan "Mitra CDI", hasil revisi juga wajib pakai —
-  // ini gaya khas brand, jangan sampai hilang saat diparafrase.
+  // If original used the "Mitra CDI" salutation, the revised content must keep it.
   if (/mitra cdi/i.test(original) && !/mitra cdi/i.test(revisedContent)) {
-    issues.push('Sapaan "Mitra CDI" (gaya khas brand) hilang di hasil revisi');
+    issues.push('The "Mitra CDI" salutation (brand voice) is missing in the revised output');
   }
   return issues;
 }
 
-// ─── Main ───────────────────────────────────────────────────────────────
+// ─── Main ────────────────────────────────────────────────────────────
 async function main() {
   const t0 = Date.now();
-  log(`\n✍️  REVISI ARTIKEL — mengurangi kemiripan konten lintas-kota`);
-  log(`   Mode  : ${APPLY ? 'APPLY' : 'DRY-RUN'}  (limit ${LIMIT} per sesi)`);
+  log(`\n✍️  ARTICLE REVISION — reducing cross-city templated similarity`);
+  log(`   Mode  : ${APPLY ? 'APPLY' : 'DRY-RUN'}  (limit ${LIMIT} per session)`);
   log(`${'─'.repeat(60)}\n`);
 
   if (!fs.existsSync(CANDIDATES_FILE)) {
-    throw new Error(`${CANDIDATES_FILE} tidak ditemukan. Jalankan dulu: node dedup-lapis1.js (dan pastikan candidates.json ikut ter-upload/ter-commit ke repo).`);
+    throw new Error(`${CANDIDATES_FILE} not found. Run first: node dedup-lapis1.js (and ensure candidates.json is committed to the repo).`);
   }
   if (APPLY && !CONFIG.GITHUB_TOKEN) {
-    throw new Error('GITHUB_TOKEN tidak ditemukan.');
+    throw new Error('GITHUB_TOKEN not found.');
   }
 
   const candData = JSON.parse(fs.readFileSync(CANDIDATES_FILE, 'utf8'));
   const allUrls = Object.keys(candData.titles);
-  log(`📄 ${allUrls.length} artikel terindikasi templat/mirip (dari candidates.json).\n`);
+  log(`📄 ${allUrls.length} articles flagged as templated/similar (from candidates.json).\n`);
 
   const progress = fs.existsSync(PROGRESS_FILE)
     ? JSON.parse(fs.readFileSync(PROGRESS_FILE, 'utf8'))
     : { revised: [], failed: {} };
 
   const todo = allUrls.filter(u => !progress.revised.includes(u) && (progress.failed[u] || 0) < CONFIG.MAX_RETRIES_PER_ARTICLE);
-  log(`   Sudah direvisi sebelumnya : ${progress.revised.length}`);
-  log(`   Menunggu revisi           : ${todo.length}`);
-  log(`   Diproses sesi ini (maks)  : ${Math.min(LIMIT, todo.length)}\n`);
+  log(`   Already revised before : ${progress.revised.length}`);
+  log(`   Awaiting revision      : ${todo.length}`);
+  log(`   Will process this run  : ${Math.min(LIMIT, todo.length)}\n`);
 
   let processed = 0, success = 0, failedThisSession = 0;
   const logLines = [];
@@ -315,8 +309,8 @@ async function main() {
 
     const filePath = path.join(CONTENT_DIR, url.slice(1, -1) + '.md');
     if (!fs.existsSync(filePath)) {
-      log(`⚠️  Lewati (file tidak ada): ${url}`);
-      progress.revised.push(url); // anggap selesai, tidak perlu diulang
+      log(`⚠️  Skipping (file not found): ${url}`);
+      progress.revised.push(url); // treat as done
       continue;
     }
 
@@ -332,16 +326,16 @@ async function main() {
     const tArticle = Date.now();
 
     try {
-      const messages = buildPrompt(title, location || '(tidak terdeteksi)', category, protectedContent);
-      let revisedProtected = await callAI(messages); // selalu panggil AI, termasuk saat dry-run, supaya bisa preview hasilnya
+      const messages = buildPrompt(title, location || '(not detected)', category, protectedContent);
+      let revisedProtected = await callAI(messages); // always call AI, including dry-run, to preview
       revisedProtected = cleanupAIChatter(revisedProtected);
 
       const placeholderIssues = validatePlaceholders(revisedProtected, placeholders);
       if (placeholderIssues.length > 0) {
-        log(`   ❌ Ditolak (placeholder rusak): ${placeholderIssues.join('; ')}`);
+        log(`   ❌ Rejected (broken placeholders): ${placeholderIssues.join('; ')}`);
         progress.failed[url] = (progress.failed[url] || 0) + 1;
         failedThisSession++;
-        logLines.push(`GAGAL,${url},"${placeholderIssues.join(' | ')}"`);
+        logLines.push(`FAILED,${url},"${placeholderIssues.join(' | ')}"`);
         continue;
       }
 
@@ -349,29 +343,28 @@ async function main() {
       const issues = validateFinalContent(parsed.content, revisedContent, location);
 
       if (issues.length > 0) {
-        log(`   ❌ Ditolak (validasi gagal): ${issues.join('; ')}`);
+        log(`   ❌ Rejected (validation failed): ${issues.join('; ')}`);
         progress.failed[url] = (progress.failed[url] || 0) + 1;
         failedThisSession++;
-        logLines.push(`GAGAL,${url},"${issues.join(' | ')}"`);
+        logLines.push(`FAILED,${url},"${issues.join(' | ')}"`);
         continue;
       }
 
-      log(`   ✅ Valid (${fmtDuration(Date.now() - tArticle)}) — lokasi "${location}" ✓, ${placeholders.length} placeholder aman ✓`);
+      log(`   ✅ Valid (${fmtDuration(Date.now() - tArticle)}) — location "${location}" ✓, ${placeholders.length} placeholders intact ✓`);
 
       if (APPLY) {
-        // Susun ulang PAKAI TEKS FRONTMATTER ASLI (byte-identik), bukan re-serialize,
-        // supaya tidak ada reformat gaya YAML (kutip hilang, list format beda, dll)
-        // yang bikin git diff berantakan padahal nilainya sama persis.
+        // Reassemble using the ORIGINAL FRONTMATTER TEXT (byte-identical), not re-serializing,
+        // to avoid YAML style diffs that look noisy in git despite identical values.
         const newFileContent = `---${parsed.matter}\n---\n${revisedContent}`;
         fs.writeFileSync(filePath, newFileContent);
         progress.revised.push(url);
         success++;
-        logLines.push(`SUKSES,${url},"direvisi"`);
+        logLines.push(`SUCCESS,${url},"revised"`);
       }
     } catch (err) {
       if (err.isRateLimit) {
-        log(`\n🛑 Kena rate limit. Progress aman tersimpan (${success} berhasil sesi ini).`);
-        log(`   Jalankan lagi nanti/besok untuk lanjut.`);
+        log(`\n🛑 Rate limited. Progress safely saved (${success} successful this session).`);
+        log(`   Run again later/tomorrow to continue.`);
         break;
       }
       log(`   ❌ Error: ${err.message}`);
@@ -389,15 +382,15 @@ async function main() {
 
   const stillTodo = allUrls.filter(u => !progress.revised.includes(u) && (progress.failed[u] || 0) < CONFIG.MAX_RETRIES_PER_ARTICLE).length;
   log(`\n${'─'.repeat(60)}`);
-  log(APPLY ? '✅ SELESAI (APPLY)' : '🧪 DRY-RUN SELESAI (tidak ada file diubah)');
-  log(`   Berhasil direvisi sesi ini : ${success}`);
-  log(`   Gagal/dilewati sesi ini    : ${failedThisSession}`);
-  log(`   Sisa menunggu              : ${stillTodo}`);
-  log(`   Total waktu                : ${fmtDuration(Date.now() - t0)}`);
-  log(`   Log detail                 : ${LOG_FILE}`);
+  log(APPLY ? '✅ DONE (APPLY)' : '🧪 DRY-RUN COMPLETE (no files changed)');
+  log(`   Successfully revised this session : ${success}`);
+  log(`   Failed/skipped this session       : ${failedThisSession}`);
+  log(`   Remaining to process               : ${stillTodo}`);
+  log(`   Total time                         : ${fmtDuration(Date.now() - t0)}`);
+  log(`   Detail log                          : ${LOG_FILE}`);
 }
 
 main().catch(err => {
-  console.error('\n💥 Error fatal:', err.message);
+  console.error('\n💥 Fatal error:', err.message);
   process.exit(1);
 });
