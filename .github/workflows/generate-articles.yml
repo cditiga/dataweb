@@ -51,15 +51,15 @@ jobs:
             || git commit -m "Generate articles from GSC keywords"
           for i in 1 2 3 4 5; do
             if git push origin master; then
-              echo "✅ Push berhasil (percobaan $i)."
+              echo "✅ Push succeeded (attempt $i)."
               exit 0
             fi
             if [ "$i" -eq 5 ]; then
-              echo "❌ Push tetap gagal setelah 5 percobaan — kemungkinan ada conflict nyata, cek manual." >&2
+              echo "❌ Push still failed after 5 attempts — there may be a real conflict; check manually." >&2
               exit 1
             fi
             wait_s=$(( (RANDOM % 10) + 5 ))
-            echo "⏳ Push ditolak (kemungkinan race dengan workflow lain), rebase & coba lagi dalam ${wait_s}d... (percobaan $i/5)"
+            echo "⏳ Push rejected (possible race with another workflow), rebasing & trying again in ${wait_s}s... (attempt $i/5)"
             sleep "$wait_s"
             git fetch origin master
             git rebase origin/master
