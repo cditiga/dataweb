@@ -11,7 +11,20 @@ const fs     = require('fs');
 const path   = require('path');
 const https  = require('https');
 const crypto = require('crypto');
-const sharp  = require('sharp');
+
+// `sharp` is only required lazily inside resizeAndWatermark() — see getSharp() below.
+// It used to be require()'d here at the top, which meant a missing/not-yet-installed
+// `sharp` package crashed the ENTIRE script before anything ran — including keyword
+// fetching and article generation, which don't need image processing at all. Now a
+// missing `sharp` only disables the AI-image step (which already has its own
+// try/catch fallback to the generic image); everything else keeps working normally.
+function getSharp() {
+  try {
+    return require('sharp');
+  } catch (err) {
+    throw new Error(`'sharp' package not installed — run "npm install sharp" and commit the updated package.json/package-lock.json. (${err.message})`);
+  }
+}
 
 // ─── Mode ────────────────────────────────────────────────────────────
 const IS_DRY_RUN   = process.argv.includes('--dry-run');
@@ -477,6 +490,8 @@ async function callGeminiImageAPI(prompt) {
 }
 
 async function resizeAndWatermark(imageBuffer) {
+  const sharp = getSharp();
+
   const resized = await sharp(imageBuffer)
     .resize(CONFIG.AI_IMAGE_WIDTH, CONFIG.AI_IMAGE_HEIGHT, { fit: 'cover', position: 'centre' })
     .toBuffer();
