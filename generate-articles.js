@@ -48,10 +48,12 @@ const CONFIG = {
   IMAGES_DIR      : path.join(__dirname, 'static', 'images'),
   BLOG_IMAGES_DIR : path.join(__dirname, 'static', 'images', 'blog'),
 
-  GEMINI_API_KEY   : process.env.GEMINI_API_KEY || '',
-  GEMINI_API_HOST  : 'generativelanguage.googleapis.com',
-  GEMINI_API_PATH  : '/v1beta/interactions',
-  GEMINI_IMAGE_MODEL: 'gemini-3.1-flash-lite-image',
+  // Image generation now via Cloudflare Workers AI (FLUX.2 [klein] 9B) — replaced Gemini
+  // (Gemini kept hitting rate limits / quota issues). Uses CF_ACCOUNT_ID + CF_API_TOKEN,
+  // same credentials already used for the text model.
+  CF_IMAGE_MODEL     : '@cf/black-forest-labs/flux-2-klein-9b',
+  AI_IMAGE_GEN_WIDTH : 1024,
+  AI_IMAGE_GEN_HEIGHT: 683, // ~3:2, matches final crop aspect ratio below
 
   // REQUIRED size for AI-generated images + watermark
   AI_IMAGE_WIDTH   : 600,
@@ -95,6 +97,29 @@ function buildModelsApiPath() {
   return `/client/v4/accounts/${CONFIG.CF_ACCOUNT_ID}/ai/v1/chat/completions`;
 }
 
+// Cloudflare Workers AI native "run" path for the image model (multipart, not OpenAI-compatible).
+function buildImageApiPath() {
+  if (!CONFIG.CF_ACCOUNT_ID) throw new Error('CLOUDFLARE_ACCOUNT_ID not found.');
+  return `/client/v4/accounts/${CONFIG.CF_ACCOUNT_ID}/ai/run/${CONFIG.CF_IMAGE_MODEL}`;
+}
+
+// FLUX.2 [klein] 9B on Workers AI requires multipart/form-data even for text-only fields.
+// Builds a minimal multipart body from a flat { field: value } object.
+function buildMultipartFormData(fields) {
+  const boundary = `----cdiFormBoundary${crypto.randomBytes(16).toString('hex')}`;
+  const parts = [];
+  for (const [key, value] of Object.entries(fields)) {
+    if (value === undefined || value === null) continue;
+    parts.push(
+      `--${boundary}\r\n` +
+      `Content-Disposition: form-data; name="${key}"\r\n\r\n` +
+      `${value}\r\n`
+    );
+  }
+  parts.push(`--${boundary}--\r\n`);
+  return { body: Buffer.from(parts.join(''), 'utf8'), contentType: `multipart/form-data; boundary=${boundary}` };
+}
+
 function httpRequest(hostname, path, options, body = null, timeoutMs = 60000) {
   return new Promise((resolve, reject) => {
     const opts = { hostname, path, ...options };
@@ -117,7 +142,7 @@ function httpRequest(hostname, path, options, body = null, timeoutMs = 60000) {
 
     req.setTimeout(timeoutMs, () => req.destroy(new Error(`Timeout after ${timeoutMs/1000}s without response from ${hostname}`)));
     req.on('error', reject);
-    if (body) req.write(typeof body === 'string' ? body : JSON.stringify(body));
+    if (body) req.write(Buffer.isBuffer(body) ? body : (typeof body === 'string' ? body : JSON.stringify(body)));
     req.end();
   });
 }
@@ -423,8 +448,8 @@ async function pickImage(keyword, slug) {
 
 async function useGenericOrAIImage(keyword, slug) {
   const GENERIC = '/images/admin/featured-image.png';
-  if (!CONFIG.GEMINI_API_KEY) {
-    console.log(`   🖼️  GEMINI_API_KEY not set → using generic image.`);
+  if (!CONFIG.CF_API_TOKEN || !CONFIG.CF_ACCOUNT_ID) {
+    console.log(`   🖼️  CLOUDFLARE_API_TOKEN/CLOUDFLARE_ACCOUNT_ID not set → using generic image.`);
     return GENERIC;
   }
   try {
@@ -448,11 +473,11 @@ function buildImagePrompt(keyword) {
     `No text, no logos, no watermarks, no close-up human faces. Aspect ratio 3:2.`;
 }
 
-async function callGeminiImageAPI(prompt) {
-  const body = JSON.stringify({
-    model: CONFIG.GEMINI_IMAGE_MODEL,
-    input: [{ type: 'text', text: prompt }],
-    response_format: { type: 'image', mime_type: 'image/jpeg', aspect_ratio: '3:2' },
+async function callCloudflareImageAPI(prompt) {
+  const { body, contentType } = buildMultipartFormData({
+    prompt,
+    width : CONFIG.AI_IMAGE_GEN_WIDTH,
+    height: CONFIG.AI_IMAGE_GEN_HEIGHT,
   });
 
   let result;
@@ -460,14 +485,14 @@ async function callGeminiImageAPI(prompt) {
   for (let attempt = 1; attempt <= maxRetries; attempt++) {
     try {
       result = await httpRequest(
-        CONFIG.GEMINI_API_HOST,
-        CONFIG.GEMINI_API_PATH,
+        CONFIG.MODELS_API_HOST,
+        buildImageApiPath(),
         {
           method : 'POST',
           headers: {
-            'x-goog-api-key': CONFIG.GEMINI_API_KEY,
-            'Content-Type'  : 'application/json',
-            'Content-Length': Buffer.byteLength(body),
+            'Authorization' : `Bearer ${CONFIG.CF_API_TOKEN}`,
+            'Content-Type'  : contentType,
+            'Content-Length': body.length,
           },
         },
         body,
@@ -477,23 +502,16 @@ async function callGeminiImageAPI(prompt) {
     } catch (err) {
       if (attempt === maxRetries) throw err;
       const waitMs = attempt * 3000;
-      console.log(`   ⚠️  Gemini image API failed (attempt ${attempt}/${maxRetries}): ${err.message}. Retrying in ${waitMs/1000}s...`);
+      console.log(`   ⚠️  Cloudflare image API failed (attempt ${attempt}/${maxRetries}): ${err.message}. Retrying in ${waitMs/1000}s...`);
       await new Promise(r => setTimeout(r, waitMs));
     }
   }
 
-  if (result?.output_image?.data) {
-    return { data: result.output_image.data, mimeType: result.output_image.mime_type || 'image/jpeg' };
+  const imageB64 = result?.result?.image;
+  if (!imageB64) {
+    throw new Error(`Cloudflare image response did not contain an image: ${JSON.stringify(result).slice(0, 300)}`);
   }
-  for (const step of result?.steps || []) {
-    if (step.type !== 'model_output') continue;
-    for (const block of step.content || []) {
-      if (block.type === 'image' && block.data) {
-        return { data: block.data, mimeType: block.mime_type || 'image/jpeg' };
-      }
-    }
-  }
-  throw new Error('Gemini response did not contain an image (check quota/model/API key).');
+  return { data: imageB64, mimeType: 'image/jpeg' };
 }
 
 async function resizeAndWatermark(imageBuffer) {
@@ -532,9 +550,9 @@ async function resizeAndWatermark(imageBuffer) {
 }
 
 async function generateAIImage(keyword, slug) {
-  console.log(`   🤖 Generating AI image (Gemini) for "${keyword}"...`);
+  console.log(`   🤖 Generating AI image (Cloudflare FLUX.2) for "${keyword}"...`);
   const prompt = buildImagePrompt(keyword);
-  const { data } = await callGeminiImageAPI(prompt);
+  const { data } = await callCloudflareImageAPI(prompt);
   const rawBuffer = Buffer.from(data, 'base64');
   const finalBuffer = await resizeAndWatermark(rawBuffer);
 
