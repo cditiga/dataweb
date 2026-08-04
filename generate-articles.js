@@ -2,7 +2,7 @@
  * generate-articles.js
  *
  * Mode:
- *   node generate-articles.js            → production (requires GSC_CREDENTIALS + GITHUB_TOKEN)
+ *   node generate-articles.js            → production (requires GSC_CREDENTIALS + CLOUDFLARE_ACCOUNT_ID + CLOUDFLARE_API_TOKEN)
  *   node generate-articles.js --dry-run  → local test (use dummy keywords, skip API calls)
  *   node generate-articles.js --dry-run --keyword="harga kitchen set minimalis"
  */
@@ -36,12 +36,13 @@ const CONFIG = {
     try { return JSON.parse(process.env.GSC_CREDENTIALS || '{}'); } catch { return {}; }
   })(),
   GSC_SITE_URL    : process.env.GSC_SITE_URL || 'https://www.creativedesigninterior.com/',
-  GITHUB_TOKEN    : process.env.GITHUB_TOKEN || '',
-
-  MODELS_API_HOST : 'models.github.ai',
-  MODELS_API_PATH : '/inference/chat/completions',
-  API_VERSION     : '2022-11-28',
-  AI_MODEL        : 'openai/gpt-4o',
+  // GitHub Models was fully retired on 2026-07-30 — replaced with Cloudflare Workers AI
+  // (OpenAI-compatible endpoint). Requires CLOUDFLARE_ACCOUNT_ID + CLOUDFLARE_API_TOKEN.
+  CF_ACCOUNT_ID   : process.env.CLOUDFLARE_ACCOUNT_ID || '',
+  CF_API_TOKEN    : process.env.CLOUDFLARE_API_TOKEN || '',
+  MODELS_API_HOST : 'api.cloudflare.com',
+  MODELS_API_PATH : '', // built at runtime from CF_ACCOUNT_ID, see buildModelsApiPath()
+  AI_MODEL        : '@cf/openai/gpt-oss-120b',
 
   CONTENT_DIR     : path.join(__dirname, 'content', 'blog'),
   IMAGES_DIR      : path.join(__dirname, 'static', 'images'),
@@ -87,6 +88,12 @@ const CONFIG = {
     { keyword: 'ukuran balok beton standar',  impressions: 32, clicks: 0, ctr: 0.0,   position: 6.1  },
   ],
 };
+
+// Cloudflare Workers AI OpenAI-compatible chat completions path (account-scoped).
+function buildModelsApiPath() {
+  if (!CONFIG.CF_ACCOUNT_ID) throw new Error('CLOUDFLARE_ACCOUNT_ID not found.');
+  return `/client/v4/accounts/${CONFIG.CF_ACCOUNT_ID}/ai/v1/chat/completions`;
+}
 
 function httpRequest(hostname, path, options, body = null, timeoutMs = 60000) {
   return new Promise((resolve, reject) => {
@@ -716,15 +723,13 @@ Kalau Mitra masih ada pertanyaan atau ingin konsultasi lebih lanjut, silakan hub
     try {
       result = await httpRequest(
         CONFIG.MODELS_API_HOST,
-        CONFIG.MODELS_API_PATH,
+        buildModelsApiPath(),
         {
           method : 'POST',
           headers: {
-            'Authorization'       : `Bearer ${CONFIG.GITHUB_TOKEN}`,
-            'Content-Type'        : 'application/json',
-            'Accept'              : 'application/vnd.github+json',
-            'X-GitHub-Api-Version': CONFIG.API_VERSION,
-            'Content-Length'      : Buffer.byteLength(body),
+            'Authorization'  : `Bearer ${CONFIG.CF_API_TOKEN}`,
+            'Content-Type'   : 'application/json',
+            'Content-Length' : Buffer.byteLength(body),
           },
         },
         body
@@ -944,7 +949,8 @@ async function main() {
   console.log(`${'─'.repeat(55)}\n`);
 
   if (!IS_DRY_RUN) {
-    if (!CONFIG.GITHUB_TOKEN) throw new Error('GITHUB_TOKEN not found.');
+    if (!CONFIG.CF_API_TOKEN) throw new Error('CLOUDFLARE_API_TOKEN not found.');
+    if (!CONFIG.CF_ACCOUNT_ID) throw new Error('CLOUDFLARE_ACCOUNT_ID not found.');
     if (!CONFIG.GSC_CREDENTIALS.client_email) throw new Error('Invalid GSC_CREDENTIALS.');
   }
 

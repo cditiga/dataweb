@@ -26,7 +26,7 @@
  *   node revise-articles.js --dry-run                  → preview without modifying files
  *   node revise-articles.js --apply --limit=20        → revise up to 20 articles this session
  *
- * REQUIRES: GITHUB_TOKEN (permission "models: read"), candidates.json, npm install gray-matter
+ * REQUIRES: CLOUDFLARE_ACCOUNT_ID + CLOUDFLARE_API_TOKEN (Workers AI), candidates.json, npm install gray-matter
  */
 
 const fs     = require('fs');
@@ -45,12 +45,14 @@ const CANDIDATES_FILE = path.join(process.cwd(), 'candidates.json');
 const PROGRESS_FILE   = path.join(process.cwd(), '.revise-progress.json');
 const LOG_FILE        = path.join(process.cwd(), 'revised-articles.log');
 
+// GitHub Models was fully retired on 2026-07-30 — replaced with Cloudflare Workers AI
+// (OpenAI-compatible endpoint). Requires CLOUDFLARE_ACCOUNT_ID + CLOUDFLARE_API_TOKEN.
 const CONFIG = {
-  GITHUB_TOKEN: process.env.GITHUB_TOKEN || '',
-  HOST        : 'models.github.ai',
-  PATH        : '/inference/chat/completions',
-  MODEL       : 'openai/gpt-4o',
-  API_VERSION : '2022-11-28',
+  CF_ACCOUNT_ID: process.env.CLOUDFLARE_ACCOUNT_ID || '',
+  CF_API_TOKEN : process.env.CLOUDFLARE_API_TOKEN || '',
+  HOST        : 'api.cloudflare.com',
+  get PATH()  { return `/client/v4/accounts/${this.CF_ACCOUNT_ID}/ai/v1/chat/completions`; },
+  MODEL       : '@cf/openai/gpt-oss-120b',
   TIMEOUT_MS  : 60000,
   MAX_RETRIES_PER_ARTICLE: 2,
 };
@@ -97,11 +99,9 @@ async function callAI(messages, retries = 3) {
       const result = await httpRequest(CONFIG.HOST, CONFIG.PATH, {
         method: 'POST',
         headers: {
-          'Authorization'       : `Bearer ${CONFIG.GITHUB_TOKEN}`,
-          'Content-Type'        : 'application/json',
-          'Accept'              : 'application/vnd.github+json',
-          'X-GitHub-Api-Version': CONFIG.API_VERSION,
-          'Content-Length'      : Buffer.byteLength(body),
+          'Authorization'  : `Bearer ${CONFIG.CF_API_TOKEN}`,
+          'Content-Type'   : 'application/json',
+          'Content-Length' : Buffer.byteLength(body),
         },
       }, body);
       return result.choices[0].message.content;
@@ -283,8 +283,11 @@ async function main() {
   if (!fs.existsSync(CANDIDATES_FILE)) {
     throw new Error(`${CANDIDATES_FILE} not found. Run first: node dedup-lapis1.js (and ensure candidates.json is committed to the repo).`);
   }
-  if (APPLY && !CONFIG.GITHUB_TOKEN) {
-    throw new Error('GITHUB_TOKEN not found.');
+  if (APPLY && !CONFIG.CF_API_TOKEN) {
+    throw new Error('CLOUDFLARE_API_TOKEN not found.');
+  }
+  if (APPLY && !CONFIG.CF_ACCOUNT_ID) {
+    throw new Error('CLOUDFLARE_ACCOUNT_ID not found.');
   }
 
   const candData = JSON.parse(fs.readFileSync(CANDIDATES_FILE, 'utf8'));
