@@ -52,7 +52,7 @@ const CONFIG = {
   CF_API_TOKEN : process.env.CLOUDFLARE_API_TOKEN || '',
   HOST        : 'api.cloudflare.com',
   get PATH()  { return `/client/v4/accounts/${this.CF_ACCOUNT_ID}/ai/v1/chat/completions`; },
-  MODEL       : '@cf/openai/gpt-oss-120b',
+  MODEL       : '@cf/meta/llama-3.3-70b-instruct-fp8-fast',
   TIMEOUT_MS  : 60000,
   MAX_RETRIES_PER_ARTICLE: 2,
 };
@@ -104,7 +104,11 @@ async function callAI(messages, retries = 3) {
           'Content-Length' : Buffer.byteLength(body),
         },
       }, body);
-      return result.choices[0].message.content;
+      const content = result?.choices?.[0]?.message?.content;
+      if (!content) {
+        throw new Error(`AI returned empty content. Raw response: ${JSON.stringify(result).slice(0, 300)}`);
+      }
+      return content;
     } catch (err) {
       if (err.isRateLimit) {
         if (err.retryAfterSec && err.retryAfterSec <= 90 && attempt < retries) {

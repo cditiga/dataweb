@@ -42,7 +42,7 @@ const CONFIG = {
   CF_API_TOKEN    : process.env.CLOUDFLARE_API_TOKEN || '',
   MODELS_API_HOST : 'api.cloudflare.com',
   MODELS_API_PATH : '', // built at runtime from CF_ACCOUNT_ID, see buildModelsApiPath()
-  AI_MODEL        : '@cf/openai/gpt-oss-120b',
+  AI_MODEL        : '@cf/meta/llama-3.3-70b-instruct-fp8-fast',
 
   CONTENT_DIR     : path.join(__dirname, 'content', 'blog'),
   IMAGES_DIR      : path.join(__dirname, 'static', 'images'),
@@ -751,7 +751,11 @@ Kalau Mitra masih ada pertanyaan atau ingin konsultasi lebih lanjut, silakan hub
     }
   }
 
-  return { raw: result.choices?.[0]?.message?.content || '', greeting };
+  const content = result.choices?.[0]?.message?.content;
+  if (!content) {
+    throw new Error(`AI returned empty content. Raw response: ${JSON.stringify(result).slice(0, 300)}`);
+  }
+  return { raw: content, greeting };
 }
 
 function yamlEscape(str) {
