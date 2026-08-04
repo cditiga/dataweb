@@ -1,8 +1,5 @@
 1 engkel berapa kubik
 1 kubik cor berapa meter persegi
-1 kubik cor beton berapa meter
-1 kubik jayamix berapa meter
-1 kubik kerikil berapa kg
 1 lembar wiremesh berapa m2
 1 m3 beton berapa m2 bekisting
 1 m3 pasir beton berapa kg
