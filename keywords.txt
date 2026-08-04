@@ -3,13 +3,10 @@
 1 lembar wiremesh berapa m2
 1 m3 pasir beton berapa kg
 1 molen manual berapa m3
-1 sak beton instan berapa m3
 1 truk molen berapa kubik
 10mm berapa m
 1m3 pasir beton berapa kg
-adhimix beton
 adhimix casablanca
-adhimix cibitung
 adhimix karawang
 adhimix lenteng agung
 adhimix plant bandung
