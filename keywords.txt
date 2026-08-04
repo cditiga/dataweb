@@ -1,10 +1,7 @@
 1 engkel berapa kubik
 1 kubik cor berapa meter persegi
 1 lembar wiremesh berapa m2
-1 m3 beton berapa m2 bekisting
 1 m3 pasir beton berapa kg
-1 meter kubik pasir berapa kg
-1 mobil molen berapa kubik
 1 molen manual berapa m3
 1 sak beton instan berapa m3
 1 truk molen berapa kubik
