@@ -5,7 +5,7 @@ categories:
  - "blog"
 type: "product"
 description: "1 m3 beton berapa m2 bekisting? Temukan cara menghitung luas bekisting, faktor yang memengaruhi, dan contoh perhitungan praktis untuk proyek Anda."
-featured_image: "/images/admin/featured-image.png"
+featured_image: "/images/cor/cor-readymix-20.jpg"
 tags: ["beton", "bekisting", "perhitungan beton", "konstruksi", "estimasi biaya"]
 keywords: "1 m3 beton berapa m2 bekisting"
 author: "Ibnu Koesnady"
@@ -51,7 +51,7 @@ Beton mengalami penyusutan (shrinkage) selama proses pengerasan, biasanya berkis
 
 Jika bekisting melibatkan elemen vertikal seperti dinding atau kolom, maka perhitungan tidak lagi sekadar membagi volume dengan ketebalan. Pada dinding dengan tinggi 3 m dan tebal 0,15 m, luas permukaan yang harus dibekisting adalah 3 m × panjang dinding. Volume beton yang dibutuhkan akan menjadi luas × ketebalan, sehingga konversi 1 m³ menjadi luas bekisting menjadi spesifik pada setiap elemen.
 
-![Ilustrasi perhitungan volume beton dan luas bekisting pada proyek rumah tinggal](/images/admin/featured-image.png)
+![Ilustrasi perhitungan volume beton dan luas bekisting pada proyek rumah tinggal](/images/cor/cor-readymix-20.jpg)
 
 ## Pilihan Material Bekisting dan Dampaknya pada Estimasi Biaya
 

@@ -5,7 +5,7 @@ categories:
  - "blog"
 type: "product"
 description: "1 mobil molen berapa kubik? Simak cara menghitung volume, kapasitas standar, dan estimasi biaya penggunaan molen di proyek Anda."
-featured_image: "/images/admin/featured-image.png"
+featured_image: "/images/product/jasa-pengecoran-12.jpg"
 tags: ["molen", "kapasitas beton", "estimasi biaya konstruksi", "beton ready mix", "SNI"]
 keywords: "1 mobil molen berapa kubik"
 author: "Ibnu Koesnady"
@@ -23,7 +23,7 @@ Mobil molen (mixer truck) umumnya tersedia dalam tiga kelas kapasitas: kecil (3�
 
 Sebagai contoh, satu unit molen berkapasitas 7,5 m³ berarti dapat menampung 7.500 liter beton. Karena 1 m³ setara dengan 1.000 liter, maka 7,5 m³ = 7,5 kubik. Ini merupakan nilai maksimum yang dapat diangkut dalam satu kali putar drum, dengan asumsi drum terisi penuh hingga batas atas yang ditetapkan oleh pabrikan.  
 
-![Ilustrasi mobil molen berkapasitas besar](/images/admin/featured-image.png)
+![Ilustrasi mobil molen berkapasitas besar](/images/product/jasa-pengecoran-12.jpg)
 
 ## Cara Menghitung Volume Beton dari 1 Mobil Molen
 

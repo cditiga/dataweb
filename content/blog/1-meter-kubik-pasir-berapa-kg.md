@@ -5,7 +5,7 @@ categories:
  - "blog"
 type: "product"
 description: "1 meter kubik pasir berapa kg? Ketahui konversi berat, faktor kepadatan, dan estimasi biaya untuk proyek konstruksi interior Anda."
-featured_image: "/images/admin/featured-image.png"
+featured_image: "/images/product/pasir-rangkas.jpg"
 tags: ["pasir", "konversi berat", "kepadatan material", "estimasi biaya konstruksi", "interior design"]
 keywords: "1 meter kubik pasir berapa kg"
 author: "Ibnu Koesnady"
@@ -100,7 +100,7 @@ Jika memilih pasir silika (harga Rp 215.000 per m³), biaya naik menjadi:
 
 Peningkatan biaya sebesar 26,5 % harus dibenarkan dengan kebutuhan estetika atau spesifikasi teknis khusus. Kami selalu menyarankan evaluasi kebutuhan fungsional terlebih dahulu sebelum menentukan jenis pasir.
 
-![Ilustrasi pengukuran volume pasir pada lokasi proyek](/images/admin/featured-image.png)
+![Ilustrasi pengukuran volume pasir pada lokasi proyek](/images/product/pasir-rangkas.jpg)
 
 ## Tips Memilih Pasir yang Sesuai untuk Proyek Interior dan Pengecoran
 
