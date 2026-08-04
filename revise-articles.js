@@ -52,7 +52,7 @@ const CONFIG = {
   CF_API_TOKEN : process.env.CLOUDFLARE_API_TOKEN || '',
   HOST        : 'api.cloudflare.com',
   get PATH()  { return `/client/v4/accounts/${this.CF_ACCOUNT_ID}/ai/v1/chat/completions`; },
-  MODEL       : '@cf/meta/llama-3.3-70b-instruct-fp8-fast',
+  MODEL       : '@cf/aisingapore/gemma-sea-lion-v4-27b-it',
   TIMEOUT_MS  : 60000,
   MAX_RETRIES_PER_ARTICLE: 2,
 };
@@ -93,7 +93,7 @@ function httpRequest(hostname, reqPath, options, body, timeoutMs = CONFIG.TIMEOU
 }
 
 async function callAI(messages, retries = 3) {
-  const body = JSON.stringify({ model: CONFIG.MODEL, messages, temperature: 0.9 });
+  const body = JSON.stringify({ model: CONFIG.MODEL, messages, temperature: 0.9, max_tokens: 4096 });
   for (let attempt = 1; attempt <= retries; attempt++) {
     try {
       const result = await httpRequest(CONFIG.HOST, CONFIG.PATH, {
@@ -104,9 +104,13 @@ async function callAI(messages, retries = 3) {
           'Content-Length' : Buffer.byteLength(body),
         },
       }, body);
-      const content = result?.choices?.[0]?.message?.content;
+      const choice = result?.choices?.[0];
+      const content = choice?.message?.content;
       if (!content) {
         throw new Error(`AI returned empty content. Raw response: ${JSON.stringify(result).slice(0, 300)}`);
+      }
+      if (choice.finish_reason === 'length') {
+        throw new Error('AI output truncated (finish_reason=length) — increase max_tokens.');
       }
       return content;
     } catch (err) {

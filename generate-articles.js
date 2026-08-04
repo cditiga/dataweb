@@ -42,7 +42,7 @@ const CONFIG = {
   CF_API_TOKEN    : process.env.CLOUDFLARE_API_TOKEN || '',
   MODELS_API_HOST : 'api.cloudflare.com',
   MODELS_API_PATH : '', // built at runtime from CF_ACCOUNT_ID, see buildModelsApiPath()
-  AI_MODEL        : '@cf/meta/llama-3.3-70b-instruct-fp8-fast',
+  AI_MODEL        : '@cf/aisingapore/gemma-sea-lion-v4-27b-it',
 
   CONTENT_DIR     : path.join(__dirname, 'content', 'blog'),
   IMAGES_DIR      : path.join(__dirname, 'static', 'images'),
@@ -751,9 +751,13 @@ Kalau Mitra masih ada pertanyaan atau ingin konsultasi lebih lanjut, silakan hub
     }
   }
 
-  const content = result.choices?.[0]?.message?.content;
+  const choice = result.choices?.[0];
+  const content = choice?.message?.content;
   if (!content) {
     throw new Error(`AI returned empty content. Raw response: ${JSON.stringify(result).slice(0, 300)}`);
+  }
+  if (choice.finish_reason === 'length') {
+    throw new Error('AI output truncated (finish_reason=length) — increase max_tokens.');
   }
   return { raw: content, greeting };
 }
