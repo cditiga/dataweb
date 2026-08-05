@@ -5,7 +5,7 @@ categories:
  - "blog"
 type: "product"
 description: ""
-featured_image: "/images/admin/featured-image.png"
+featured_image: "/images/blog/beton-normal.jpg"
 tags: ["1 sak beton instan berapa m3"]
 keywords: "1 sak beton instan berapa m3"
 author: "Ibnu Koesnady"
@@ -15,7 +15,7 @@ draft: false
 
 **1 Sak Beton Instan Berapa M3: Panduan Lengkap untuk Kebutuhan Konstruksi Anda** - Mitra CDI yang budiman, pernahkah Mitra CDI mempertimbangkan volume beton instan yang tepat saat merencanakan proyek konstruksi? Mengetahui konversi yang akurat antara satuan sak dan meter kubik sangat krusial untuk menghindari pemborosan material dan memastikan efisiensi anggaran.
 
-![1 Sak Beton Instan Berapa M3](/images/admin/featured-image.png)
+![1 Sak Beton Instan Berapa M3](/images/blog/beton-normal.jpg)
 
 
 Sebagai penyedia jasa desain interior, furniture custom, material bangunan, dan jasa pengecoran terpercaya di Jabodetabek, Kami memahami betul pentingnya perencanaan yang matang dalam setiap proyek. Artikel ini akan membahas secara detail mengenai konversi 1 sak beton instan ke m3, beserta faktor-faktor yang mempengaruhinya, serta tips menghitung kebutuhan beton instan secara akurat.

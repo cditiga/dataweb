@@ -5,7 +5,7 @@ categories:
  - "blog"
 type: "product"
 description: "Adhimix Cibitung menawarkan solusi beton siap pakai berkualitas tinggi untuk berbagai proyek konstruksi di Jabodetabek. Dapatkan penawaran terbaik dan layanan pengiriman cepat."
-featured_image: "/images/admin/featured-image.png"
+featured_image: "/images/cor/cor-jalan-readymix-74.jpg"
 tags: ["adhimix cibitung", "beton siap pakai", "harga adhimix", "supplier adhimix", "jasa cor"]
 keywords: "adhimix cibitung"
 author: "Ibnu Koesnady"
@@ -29,7 +29,7 @@ Asumsikan Mitra CDI membutuhkan 10 m³ beton mutu K-300.
 
 Meskipun harga per m³ adhimix sedikit lebih tinggi, Mitra CDI tidak perlu mengeluarkan biaya tambahan untuk tenaga kerja, peralatan, dan potensi pemborosan material. Selain itu, adhimix juga menjamin kualitas beton yang lebih baik, mengurangi risiko kegagalan struktur dan biaya perbaikan di kemudian hari.
 
-![Pengecoran menggunakan adhimix Cibitung di lokasi proyek](/images/admin/featured-image.png)
+![Pengecoran menggunakan adhimix Cibitung di lokasi proyek](/images/cor/cor-jalan-readymix-74.jpg)
 
 ### Memastikan Kualitas Adhimix: Standar SNI dan Pengujian di Laboratorium
 Kualitas adhimix Cibitung yang Kami sediakan telah teruji dan memenuhi standar SNI (Standar Nasional Indonesia). Kami bekerja sama dengan laboratorium independen untuk melakukan pengujian mutu beton secara berkala, meliputi uji kuat tekan, uji slump, dan uji kadar air. Hal ini memastikan bahwa adhimix yang Kami kirimkan memiliki kekuatan dan konsistensi yang sesuai dengan spesifikasi yang dipersyaratkan.

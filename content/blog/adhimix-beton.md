@@ -5,7 +5,7 @@ categories:
  - "blog"
 type: "product"
 description: "Adhimix beton adalah solusi konstruksi modern yang semakin populer di Jabodetabek. Pelajari keunggulan, aplikasi, hingga estimasi biaya penggunaan adhimix beton di artikel ini."
-featured_image: "/images/admin/featured-image.png"
+featured_image: "/images/cor/cor-jalan-readymix-73.jpg"
 tags: ["adhimix beton", "beton instan", "mutu beton", "konstruksi jabodetabek", "material bangunan"]
 keywords: "adhimix beton"
 author: "Ibnu Koesnady"
@@ -27,7 +27,7 @@ Penggunaan adhimix beton menawarkan sejumlah keunggulan signifikan dibandingkan 
 
 Kedua, kualitas beton yang lebih terjamin. Formulasi yang presisi dan kontrol kualitas yang ketat selama proses produksi memastikan mutu beton yang dihasilkan konsisten dan sesuai dengan standar SNI. Ketiga, kemudahan penggunaan. Cukup tambahkan air bersih sesuai takaran yang dianjurkan, aduk hingga merata, dan beton siap digunakan. Keempat, minimnya limbah material. Karena adhimix beton dikemas dalam kemasan tertutup, risiko kehilangan material akibat tumpahan atau pencurian dapat diminimalisir.
 
-![Pekerja konstruksi sedang mencampur adhimix beton dengan mesin molen kecil](/images/admin/featured-image.png)
+![Pekerja konstruksi sedang mencampur adhimix beton dengan mesin molen kecil](/images/cor/cor-jalan-readymix-73.jpg)
 
 ### Perbedaan Adhimix Beton dengan Jenis Beton Lainnya
 
