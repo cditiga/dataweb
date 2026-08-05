@@ -38,7 +38,7 @@ paginate = 6
   # Informasi Kontak
   phone = "0857-7678-6091"
   email = "customercdi@gmail.com"
-  address = "Jl. Sersan Muhtar Dramaga, Bogor – Jabar"
+  address = "Jl. Raya Cikarang Cibarusah, Bekasi"
   whatsappNumber = "6285776786091"
 
   # Schema settings
@@ -134,9 +134,6 @@ cancellation_policies = [
   [[params.footer_services]]
   text = "Kami berpengalaman lebih dari 10 tahun sebagai Jasa Kitchen Set dan Pembuatan Furniture Interior, Lemari, Meja, Dipan, Jasa Bangunan Rumah, Gedung Pabrik dan Sebagai Supplier Bahan Bangunan, baik material alam, besi atau material lainnya. Sehingga pengalaman kami akan membawa anda mendapatkan layanan terbaik saat ini."
 
-  [[params.footer_contact]]
-    icon = "fas fa-map-marker-alt"
-    text = "Jl. Sersan Muhtar Dramaga, Bogor – Jabar"
   [[params.footer_contact]]
     icon = "fas fa-map-marker-alt"
     text = "Kp. Cijantra Jatake, Tangerang – Banten"
