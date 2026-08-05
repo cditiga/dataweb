@@ -60,7 +60,7 @@ const CONFIG = {
   AI_IMAGE_HEIGHT  : 400,
   WATERMARK_PATH   : path.join(__dirname, 'static', 'images', 'logo', 'watermark-cdi.png'),
   WATERMARK_OPACITY: 0.4,
-  WATERMARK_WIDTH_RATIO: 0.42,
+  WATERMARK_WIDTH_RATIO: 0.30,
 
   // GSC filters
   MIN_IMPRESSIONS : 5,
@@ -464,13 +464,96 @@ async function useGenericOrAIImage(keyword, slug) {
   return GENERIC;
 }
 
-function buildImagePrompt(keyword) {
-  return `A photorealistic, high-resolution professional stock photograph illustrating the ` +
-    `concept: "${keyword}" — an Indonesian construction materials / concrete-casting / home ` +
-    `interior term, for a company called ${CONFIG.SITE_NAME}. Clean commercial product/site ` +
-    `photography style, natural lighting, realistic textures and materials, shot on a ` +
-    `construction site or in a well-lit interior/product setting as fits the subject. ` +
-    `No text, no logos, no watermarks, no close-up human faces. Aspect ratio 3:2.`;
+// Asks the text model to translate a raw Indonesian keyword into an accurate, specific
+// English photo-prompt. Deliberately NOT hardcoded to specific categories/rules — CDI spans
+// many niches (building materials, ready-mix concrete/mixer trucks, scaffolding, heavy-
+// equipment rental, interior/furniture, etc.), and new niches or brands would silently fall
+// through hardcoded if/else rules. Instead we give the model context about CDI's business and
+// let it use its own knowledge of the actual keyword to decide what the image should show.
+async function generateImagePromptViaAI(keyword) {
+  const systemPrompt =
+    `You are an experienced art director for ${CONFIG.SITE_NAME}, an Indonesian company ` +
+    'operating across many construction & interior niches — e.g. building materials (pasir, ' +
+    'batu split, bata, batako, hebel, semen), ready-mix concrete & mixer trucks (Adhimix, ' +
+    'Jayamix, Holcim, molen, etc.), scaffolding rental, heavy-equipment rental (sewa alat ' +
+    'berat), and interior/furniture (kitchen set, lemari, meja, desain interior) — among ' +
+    'others. This list is illustrative, not exhaustive: the keyword you receive could be from ' +
+    'any niche the company touches, including ones not listed here. Given a short Indonesian ' +
+    'keyword — a raw material, a brand/product name, a service, a furniture/interior item, or ' +
+    'anything else from the construction & interior industry — use your own knowledge to work ' +
+    'out precisely and literally what that keyword refers to, then write ONE precise English ' +
+    'prompt (2-3 sentences, under 55 words) for a photorealistic AI image generator, describing ' +
+    'a stock photo that accurately depicts THAT specific thing in a real-world Indonesian ' +
+    'construction/interior setting. Never default to a generic or unrelated scene (e.g. an ' +
+    'empty room) just because the exact term is unfamiliar — reason about what it most likely ' +
+    'means first. Output ONLY the image prompt itself in English — no preamble, no quotes, no ' +
+    'explanation.';
+
+  const body = JSON.stringify({
+    model      : CONFIG.AI_MODEL,
+    messages   : [
+      { role: 'system', content: systemPrompt },
+      { role: 'user',   content: `Keyword: "${keyword}"` },
+    ],
+    temperature: 0.4,
+    max_tokens : 200,
+  });
+
+  const result = await httpRequest(
+    CONFIG.MODELS_API_HOST,
+    buildModelsApiPath(),
+    {
+      method : 'POST',
+      headers: {
+        'Authorization'  : `Bearer ${CONFIG.CF_API_TOKEN}`,
+        'Content-Type'   : 'application/json',
+        'Content-Length' : Buffer.byteLength(body),
+      },
+    },
+    body,
+    30000
+  );
+
+  const text = result?.choices?.[0]?.message?.content?.trim();
+  if (!text) throw new Error('Empty image-prompt response from AI');
+  return text;
+}
+
+// Rule-based fallback used ONLY if the AI prompt-generation call itself fails (network/API
+// error) — a last-resort safety net, not the primary logic. Broadened to cover CDI's main
+// niches so the fallback doesn't collapse everything into one generic bucket.
+function buildFallbackImagePrompt(keyword) {
+  const kl = keyword.toLowerCase();
+  let sceneHint;
+  if (/adhimix|readymix|ready\s?mix|jayamix|holcim|\bscg\b|molen|mixer/.test(kl)) {
+    sceneHint = 'a concrete mixer truck ("truk molen") pouring or delivering ready-mix concrete at an active construction site';
+  } else if (/scaffolding|steger|perancah/.test(kl)) {
+    sceneHint = 'stacked or assembled steel scaffolding at a construction site';
+  } else if (/sewa|rental|alat berat|excavator|crane|forklift|pompa|pump/.test(kl)) {
+    sceneHint = 'heavy construction equipment on an active job site';
+  } else if (/kitchen|dapur|lemari|furniture|mebel|meja|kursi|tempat tidur|interior|desain/.test(kl)) {
+    sceneHint = 'a modern, well-lit interior or furniture product setting';
+  } else if (/cor|pengecoran|beton|pondasi|lantai/.test(kl)) {
+    sceneHint = 'workers actively pouring or finishing concrete at a construction site';
+  } else {
+    sceneHint = 'the construction material itself, neatly arranged in a stockyard or construction-site setting';
+  }
+  return `A photorealistic, high-resolution professional stock photograph depicting ${sceneHint}, ` +
+    `related to the term "${keyword}" for a company called ${CONFIG.SITE_NAME}. Clean commercial ` +
+    `photography style, natural lighting, realistic textures and materials. No text, no logos, ` +
+    `no watermarks, no close-up human faces. Aspect ratio 3:2.`;
+}
+
+async function buildImagePrompt(keyword) {
+  try {
+    const aiPrompt = await generateImagePromptViaAI(keyword);
+    return `${aiPrompt} Photorealistic, high-resolution, professional commercial stock ` +
+      `photography style, natural lighting, realistic textures. No text, no logos, no ` +
+      `watermarks, no close-up human faces.`;
+  } catch (err) {
+    console.log(`   ⚠️  AI image-prompt generation failed (${err.message}) → using fallback template.`);
+    return buildFallbackImagePrompt(keyword);
+  }
 }
 
 async function callCloudflareImageAPI(prompt) {
@@ -551,7 +634,8 @@ async function resizeAndWatermark(imageBuffer) {
 
 async function generateAIImage(keyword, slug) {
   console.log(`   🤖 Generating AI image (Cloudflare FLUX.2) for "${keyword}"...`);
-  const prompt = buildImagePrompt(keyword);
+  const prompt = await buildImagePrompt(keyword);
+  console.log(`   📝 Image prompt: ${prompt.slice(0, 160)}${prompt.length > 160 ? '…' : ''}`);
   const { data } = await callCloudflareImageAPI(prompt);
   const rawBuffer = Buffer.from(data, 'base64');
   const finalBuffer = await resizeAndWatermark(rawBuffer);

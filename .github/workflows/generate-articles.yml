@@ -46,8 +46,13 @@ jobs:
           [ -f keywords.txt ] && git add keywords.txt
           [ -f .excluded-keywords.json ] && git add .excluded-keywords.json
           [ -f .recent-openings.json ] && git add .recent-openings.json
-          git diff --quiet && git diff --staged --quiet \
-            || git commit -m "Generate articles from GSC keywords"
+
+          if git diff --staged --quiet; then
+            echo "ℹ️  Nothing to commit (0 articles generated this session) — done."
+            exit 0
+          fi
+
+          git commit -m "Generate articles from GSC keywords"
           for i in 1 2 3 4 5; do
             if git push origin master; then
               echo "✅ Push succeeded (attempt $i)."

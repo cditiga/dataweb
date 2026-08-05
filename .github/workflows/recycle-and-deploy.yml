@@ -69,22 +69,27 @@ jobs:
       - name: Commit Changes
         run: |
           git add content/ data/
-          git diff --quiet && git diff --staged --quiet \
-            || git commit -m "Recycle posts and rebuild [skip ci]"
+
+          if git diff --staged --quiet; then
+            echo "ℹ️  No changes to commit — done."
+            exit 0
+          fi
+
+          git commit -m "Recycle posts and rebuild [skip ci]"
 
       - name: Push Changes
         run: |
           for i in 1 2 3 4 5; do
             if git push origin master; then
-              echo "✅ Push succeeded (attempt $i)."
+              echo "✅ Push successful (attempt $i)."
               exit 0
             fi
             if [ "$i" -eq 5 ]; then
-              echo "❌ Push still failed after 5 attempts — likely a real conflict, check manually." >&2
+              echo "❌ Push still failing after 5 attempts — likely a genuine conflict; check manually.." >&2
               exit 1
             fi
             wait_s=$(( (RANDOM % 10) + 5 ))
-            echo "⏳ Push rejected (possible race with another workflow), rebase & try again in ${wait_s} seconds... (attempt $i/5)"
+            echo "⏳ Push rejected (possible race with another workflow), rebase & try again in ${wait_s}d... (percobaan $i/5)"
             sleep "$wait_s"
             git fetch origin master
             git rebase origin/master
@@ -97,7 +102,7 @@ jobs:
         run: |
           rm -rf node_modules .npm
           npm cache clean --force
-          echo "Disk space after cleaning up node_modules:"
+          echo "Disk space after cleanup node_modules:"
           df -h
 
       - name: Deploy to GitHub Pages
@@ -106,9 +111,9 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
           publish_branch: gh-pages
-          full_commit_message: ${{ github.event.head_commit.message }}
+          full_commit_message: ${{ github.event.head_commit.message || format('Recycle & deploy — {0}', github.run_id) }}
 
       - name: Verify Deployment
         run: |
-          echo "Deployment completed!"
+          echo "Deployment done!"
           ls -l public
