@@ -36,29 +36,29 @@ Dengan memperhitungkan faktor‑faktor di atas, kami dapat menyusun jadwal kerja
 
 Berat (kg) dapat dihitung dengan rumus sederhana:
 
-\[
+\\[
 Berat\ (kg) = Volume\ (m³) \times Kepadatan\ (kg/m³)
-\]
+\\]
 
 Berikut contoh perhitungan nyata:
 
 - **Data**: Volume pasir = 1 m³, kepadatan pasir kering standar = 1.560 kg/m³ (rata‑rata antara 1.500 – 1.600 kg/m³).  
 - **Perhitungan**:  
-  \[
+  \\[
   Berat = 1\ m³ \times 1.560\ kg/m³ = 1.560\ kg
-  \]
+  \\]
 
 Jika proyek memerlukan 3,5 m³ pasir, maka:
 
-\[
+\\[
 Berat = 3,5\ m³ \times 1.560\ kg/m³ = 5.460\ kg
-\]
+\\]
 
 Angka tersebut dapat kami konversi menjadi perkiraan biaya pengiriman. Misalnya tarif truk berkapasitas 2.500 kg adalah Rp 1.200.000, maka untuk 5.460 kg diperlukan tiga kali pengiriman (2,5 t + 2,5 t + 460 kg). Total biaya transportasi menjadi:
 
-\[
+\\[
 3 \times Rp\ 1.200.000 = Rp\ 3.600.000
-\]
+\\]
 
 Contoh ini menunjukkan betapa pentingnya konversi berat yang tepat untuk menghindari biaya tambahan yang tidak terduga.
 
@@ -76,27 +76,27 @@ Kepadatan yang lebih tinggi biasanya menandakan kadar air yang rendah dan partik
 
 Sebagai contoh, proyek pengecoran dinding partisi 20 m² dengan ketebalan 10 cm memerlukan volume pasir:
 
-\[
+\\[
 Volume = Panjang \times Lebar \times Tinggi = 20\ m² \times 0,10\ m = 2\ m³
-\]
+\\]
 
 Jika menggunakan pasir kering standar (1.560 kg/m³), berat total pasir adalah:
 
-\[
+\\[
 2\ m³ \times 1.560\ kg/m³ = 3.120\ kg
-\]
+\\]
 
 Biaya material (asumsi Rp 170.000 per m³) menjadi:
 
-\[
+\\[
 2\ m³ \times Rp\ 170.000 = Rp\ 340.000
-\]
+\\]
 
 Jika memilih pasir silika (harga Rp 215.000 per m³), biaya naik menjadi:
 
-\[
+\\[
 2\ m³ \times Rp\ 215.000 = Rp\ 430.000
-\]
+\\]
 
 Peningkatan biaya sebesar 26,5 % harus dibenarkan dengan kebutuhan estetika atau spesifikasi teknis khusus. Kami selalu menyarankan evaluasi kebutuhan fungsional terlebih dahulu sebelum menentukan jenis pasir.
 

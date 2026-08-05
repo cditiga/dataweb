@@ -19,21 +19,21 @@ draft: false
 
 Untuk memperoleh nilai luas bekisting yang dapat ditutupi oleh 1 m³ beton, langkah pertama yang harus dilakukan adalah menentukan ketebalan lapisan beton yang akan dituangkan. Pada umumnya, ketebalan standar untuk lantai rumah tinggal berkisar antara 10 cm hingga 15 cm. Menggunakan rumus sederhana:
 
-\[
+\\[
 \text{Luas (m²)} = \frac{\text{Volume (m³)}}{\text{Ketebalan (m)}}
-\]
+\\]
 
 Jika ketebalan dipilih 12 cm (0,12 m), maka:
 
-\[
+\\[
 \text{Luas} = \frac{1}{0,12} \approx 8,33 \text{ m²}
-\]
+\\]
 
 Artinya, satu meter kubik beton dapat menutupi sekitar 8,33 m² lantai dengan ketebalan 12 cm. Namun, bila ketebalan berubah menjadi 15 cm (0,15 m), luas yang dapat dicapai menjadi:
 
-\[
+\\[
 \text{Luas} = \frac{1}{0,15} \approx 6,67 \text{ m²}
-\]
+\\]
 
 Perbedaan ketebalan inilah yang membuat perhitungan “1 m³ beton berapa m�� bekisting” bersifat dinamis. Oleh karena itu, sebelum melakukan pemesanan material, pastikan Anda telah menetapkan spesifikasi ketebalan yang tepat sesuai kebutuhan struktural dan estetika.
 
@@ -81,30 +81,30 @@ Misalkan Anda merencanakan pembangunan lantai dua rumah tinggal dengan spesifika
 - Harga beton (termasuk transportasi): Rp 1.050.000 per m³
 
 ### Langkah 1: Hitung Volume Beton yang Diperlukan
-\[
+\\[
 \text{Volume} = \text{Luas} \times \text{Ketebalan} = 40 \times 0,12 = 4,8 \text{ m³}
-\]
+\\]
 
 ### Langkah 2: Tambahkan Faktor Shrinkage (0,1 %)
-\[
+\\[
 \text{Volume akhir} = 4,8 \times (1 + 0,001) \approx 4,805 \text{ m³}
-\]
+\\]
 
 ### Langkah 3: Estimasi Biaya Beton
-\[
+\\[
 \text{Biaya beton} = 4,805 \times Rp 1.050.000 \approx Rp 5.045.250
-\]
+\\]
 
 ### Langkah 4: Hitung Kebutuhan Bekisting
 Jika menggunakan kayu dengan biaya rata‑rata Rp 100.000 per m²:
-\[
+\\[
 \text{Biaya bekisting} = 40 \times Rp 100.000 = Rp 4.000.000
-\]
+\\]
 
 ### Total Estimasi Biaya Material
-\[
+\\[
 \text{Total} = Rp 5.045.250 + Rp 4.000.000 = Rp 9.045.250
-\]
+\\]
 
 Dari contoh di atas, terlihat bahwa 1 m³ beton dapat menutupi sekitar 8,33 m² lantai dengan ketebalan 12 cm, sehingga kebutuhan material dapat diprediksi secara akurat sebelum pekerjaan dimulai. Pendekatan ini membantu mengurangi pemborosan serta memastikan bahwa anggaran proyek tetap terkendali.
 
