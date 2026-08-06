@@ -838,5 +838,19 @@
     "matchedTitle": "1 Mobil Molen Berapa Kubik: Menghitung Kapasitas dan Estimasi Biaya",
     "taggedAt": "2026-08-04T14:55:56.379Z",
     "algoVersion": 2
+  },
+  "adhimix precast karawang": {
+    "reason": "similar to existing article",
+    "matchedFile": "adhimix-karawang.md",
+    "matchedTitle": "Adhimix Karawang: Solusi Beton Instan untuk Proyek Konstruksi Anda",
+    "taggedAt": "2026-08-06T05:44:32.154Z",
+    "algoVersion": 2
+  },
+  "plant adhimix": {
+    "reason": "similar to existing article",
+    "matchedFile": "adhimix-plant-bandung.md",
+    "matchedTitle": "Adhimix Plant Bandung: Solusi Praktis dan Efisien untuk Kebutuhan Beton Precast",
+    "taggedAt": "2026-08-06T05:44:33.328Z",
+    "algoVersion": 2
   }
 }
