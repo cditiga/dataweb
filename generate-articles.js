@@ -38,8 +38,13 @@ const CONFIG = {
   GSC_SITE_URL    : process.env.GSC_SITE_URL || 'https://www.creativedesigninterior.com/',
   // GitHub Models was fully retired on 2026-07-30 — replaced with Cloudflare Workers AI
   // (OpenAI-compatible endpoint). Requires CLOUDFLARE_ACCOUNT_ID + CLOUDFLARE_API_TOKEN.
+  //
+  // CLOUDFLARE_API_TOKEN can hold MULTIPLE tokens — one per line, or comma-separated — to
+  // enable key rotation. When one token gets rate-limited, the script automatically rotates
+  // to the next one instead of stopping. Useful if you have several Cloudflare accounts/API
+  // tokens and want to pool their free-tier quotas together.
   CF_ACCOUNT_ID   : process.env.CLOUDFLARE_ACCOUNT_ID || '',
-  CF_API_TOKEN    : process.env.CLOUDFLARE_API_TOKEN || '',
+  CF_API_TOKENS   : (process.env.CLOUDFLARE_API_TOKEN || '').split(/[\n,]+/).map(s => s.trim()).filter(Boolean),
   MODELS_API_HOST : 'api.cloudflare.com',
   MODELS_API_PATH : '', // built at runtime from CF_ACCOUNT_ID, see buildModelsApiPath()
   AI_MODEL        : '@cf/aisingapore/gemma-sea-lion-v4-27b-it',
@@ -67,6 +72,8 @@ const CONFIG = {
   MAX_POSITION    : 20,
   MAX_ARTICLES    : 3,
   DATE_RANGE_DAYS : 90,
+  GSC_PAGE_SIZE   : 5000,  // rows per GSC API call (API max is 25,000)
+  GSC_MAX_PAGES   : 5,     // safety cap → up to 25,000 queries total
 
   // Site info — matching config.toml
   SITE_NAME       : 'Creative Design Interior',
@@ -90,6 +97,10 @@ const CONFIG = {
     { keyword: 'ukuran balok beton standar',  impressions: 32, clicks: 0, ctr: 0.0,   position: 6.1  },
   ],
 };
+
+let cfTokenIdx = 0;
+function currentCfToken() { return CONFIG.CF_API_TOKENS[cfTokenIdx] || ''; }
+function rotateCfToken() { cfTokenIdx = (cfTokenIdx + 1) % CONFIG.CF_API_TOKENS.length; }
 
 // Cloudflare Workers AI OpenAI-compatible chat completions path (account-scoped).
 function buildModelsApiPath() {
@@ -173,6 +184,59 @@ async function getGSCAccessToken() {
   return res.access_token;
 }
 
+async function fetchAllGSCRows(token, startDate, endDate) {
+  const siteEnc = encodeURIComponent(CONFIG.GSC_SITE_URL);
+  const rows = [];
+  let startRow = 0;
+  for (let page = 0; page < CONFIG.GSC_MAX_PAGES; page++) {
+    const body = JSON.stringify({
+      startDate, endDate,
+      dimensions: ['query'],
+      rowLimit  : CONFIG.GSC_PAGE_SIZE,
+      startRow,
+    });
+    const result = await httpRequest(
+      'searchconsole.googleapis.com',
+      `/webmasters/v3/sites/${siteEnc}/searchAnalytics/query`,
+      {
+        method : 'POST',
+        headers: {
+          'Authorization' : `Bearer ${token}`,
+          'Content-Type'  : 'application/json',
+          'Content-Length': Buffer.byteLength(body),
+        },
+      },
+      body
+    );
+    const pageRows = result.rows || [];
+    rows.push(...pageRows);
+    if (pageRows.length < CONFIG.GSC_PAGE_SIZE) break; // last page reached
+    startRow += CONFIG.GSC_PAGE_SIZE;
+  }
+  return rows;
+}
+
+// Tracks the date each GSC keyword was first observed by this script (GSC's API itself
+// has no "first seen" field — it only reports aggregate performance over a date range).
+// Persisted to disk so "oldest keyword first" ordering is stable across daily runs.
+const KEYWORD_FIRST_SEEN_FILE = path.join(__dirname, '.gsc-keyword-first-seen.json');
+
+function loadFirstSeenMap() {
+  try { return JSON.parse(fs.readFileSync(KEYWORD_FIRST_SEEN_FILE, 'utf8')); } catch { return {}; }
+}
+
+function updateFirstSeenMap(keywordItems) {
+  const map = loadFirstSeenMap();
+  const today = new Date().toISOString().split('T')[0];
+  let changed = false;
+  for (const item of keywordItems) {
+    const key = item.keyword.toLowerCase().trim();
+    if (!map[key]) { map[key] = today; changed = true; }
+  }
+  if (changed) fs.writeFileSync(KEYWORD_FIRST_SEEN_FILE, JSON.stringify(map, null, 2));
+  return map;
+}
+
 async function fetchKeywordsFromGSC() {
   if (IS_DRY_RUN) {
     const kws = CUSTOM_KW
@@ -189,36 +253,20 @@ async function fetchKeywordsFromGSC() {
   startDate.setDate(startDate.getDate() - CONFIG.DATE_RANGE_DAYS);
   const fmt = d => d.toISOString().split('T')[0];
 
-  const body = JSON.stringify({
-    startDate : fmt(startDate),
-    endDate   : fmt(endDate),
-    dimensions: ['query'],
-    rowLimit  : 200,
-  });
+  const rows = await fetchAllGSCRows(token, fmt(startDate), fmt(endDate));
 
-  const siteEnc = encodeURIComponent(CONFIG.GSC_SITE_URL);
-  const result  = await httpRequest(
-    'searchconsole.googleapis.com',
-    `/webmasters/v3/sites/${siteEnc}/searchAnalytics/query`,
-    {
-      method : 'POST',
-      headers: {
-        'Authorization': `Bearer ${token}`,
-        'Content-Type' : 'application/json',
-        'Content-Length': Buffer.byteLength(body),
-      },
-    },
-    body
-  );
+  if (!rows.length) { console.log('⚠️  No keyword data.'); return []; }
 
-  if (!result.rows?.length) { console.log('⚠️  No keyword data.'); return []; }
-
-  const filtered = result.rows
+  const filtered = rows
     .filter(r => r.impressions >= CONFIG.MIN_IMPRESSIONS && r.position <= CONFIG.MAX_POSITION)
     .filter(r => r.keys[0].trim().split(/\s+/).length >= 3) // at least 3 words — very short keywords are too generic/prone to overlap
     .map(r => ({ keyword: r.keys[0], impressions: r.impressions, clicks: r.clicks, ctr: r.ctr, position: r.position }));
 
-  console.log(`✅ ${filtered.length} potential keywords from ${result.rows.length} total.`);
+  // Record first-seen dates for anything new, so "oldest keyword first" ordering below
+  // (in main()) has data to work with even for keywords discovered just now.
+  updateFirstSeenMap(filtered);
+
+  console.log(`✅ ${filtered.length} potential keywords from ${rows.length} total.`);
   return filtered;
 }
 
@@ -448,7 +496,7 @@ async function pickImage(keyword, slug) {
 
 async function useGenericOrAIImage(keyword, slug) {
   const GENERIC = '/images/admin/featured-image.png';
-  if (!CONFIG.CF_API_TOKEN || !CONFIG.CF_ACCOUNT_ID) {
+  if (CONFIG.CF_API_TOKENS.length === 0 || !CONFIG.CF_ACCOUNT_ID) {
     console.log(`   🖼️  CLOUDFLARE_API_TOKEN/CLOUDFLARE_ACCOUNT_ID not set → using generic image.`);
     return GENERIC;
   }
@@ -499,24 +547,38 @@ async function generateImagePromptViaAI(keyword) {
     max_tokens : 200,
   });
 
-  const result = await httpRequest(
-    CONFIG.MODELS_API_HOST,
-    buildModelsApiPath(),
-    {
-      method : 'POST',
-      headers: {
-        'Authorization'  : `Bearer ${CONFIG.CF_API_TOKEN}`,
-        'Content-Type'   : 'application/json',
-        'Content-Length' : Buffer.byteLength(body),
-      },
-    },
-    body,
-    30000
-  );
-
-  const text = result?.choices?.[0]?.message?.content?.trim();
-  if (!text) throw new Error('Empty image-prompt response from AI');
-  return text;
+  const maxAttempts = Math.max(1, CONFIG.CF_API_TOKENS.length);
+  let lastErr;
+  for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+    try {
+      const result = await httpRequest(
+        CONFIG.MODELS_API_HOST,
+        buildModelsApiPath(),
+        {
+          method : 'POST',
+          headers: {
+            'Authorization'  : `Bearer ${currentCfToken()}`,
+            'Content-Type'   : 'application/json',
+            'Content-Length' : Buffer.byteLength(body),
+          },
+        },
+        body,
+        30000
+      );
+      const text = result?.choices?.[0]?.message?.content?.trim();
+      if (!text) throw new Error('Empty image-prompt response from AI');
+      return text;
+    } catch (err) {
+      lastErr = err;
+      if (err.isRateLimit && attempt < maxAttempts) {
+        console.log(`   🔁 Key #${cfTokenIdx + 1} rate-limited (image prompt) — rotating to next key...`);
+        rotateCfToken();
+        continue;
+      }
+      throw err;
+    }
+  }
+  throw lastErr;
 }
 
 // Rule-based fallback used ONLY if the AI prompt-generation call itself fails (network/API
@@ -564,7 +626,7 @@ async function callCloudflareImageAPI(prompt) {
   });
 
   let result;
-  const maxRetries = 2;
+  const maxRetries = Math.max(2, CONFIG.CF_API_TOKENS.length);
   for (let attempt = 1; attempt <= maxRetries; attempt++) {
     try {
       result = await httpRequest(
@@ -573,7 +635,7 @@ async function callCloudflareImageAPI(prompt) {
         {
           method : 'POST',
           headers: {
-            'Authorization' : `Bearer ${CONFIG.CF_API_TOKEN}`,
+            'Authorization' : `Bearer ${currentCfToken()}`,
             'Content-Type'  : contentType,
             'Content-Length': body.length,
           },
@@ -583,6 +645,11 @@ async function callCloudflareImageAPI(prompt) {
       );
       break;
     } catch (err) {
+      if (err.isRateLimit && CONFIG.CF_API_TOKENS.length > 1 && attempt < maxRetries) {
+        console.log(`   🔁 Key #${cfTokenIdx + 1} rate-limited (image gen) — rotating to next key...`);
+        rotateCfToken();
+        continue;
+      }
       if (attempt === maxRetries) throw err;
       const waitMs = attempt * 3000;
       console.log(`   ⚠️  Cloudflare image API failed (attempt ${attempt}/${maxRetries}): ${err.message}. Retrying in ${waitMs/1000}s...`);
@@ -820,7 +887,8 @@ Kalau Mitra masih ada pertanyaan atau ingin konsultasi lebih lanjut, silakan hub
   });
 
   let result;
-  const maxRetries = 3;
+  const maxRetries = Math.max(3, CONFIG.CF_API_TOKENS.length);
+  let keysTriedThisCall = 0;
   for (let attempt = 1; attempt <= maxRetries; attempt++) {
     try {
       result = await httpRequest(
@@ -829,7 +897,7 @@ Kalau Mitra masih ada pertanyaan atau ingin konsultasi lebih lanjut, silakan hub
         {
           method : 'POST',
           headers: {
-            'Authorization'  : `Bearer ${CONFIG.CF_API_TOKEN}`,
+            'Authorization'  : `Bearer ${currentCfToken()}`,
             'Content-Type'   : 'application/json',
             'Content-Length' : Buffer.byteLength(body),
           },
@@ -839,6 +907,13 @@ Kalau Mitra masih ada pertanyaan atau ingin konsultasi lebih lanjut, silakan hub
       break;
     } catch (err) {
       if (err.isRateLimit) {
+        if (CONFIG.CF_API_TOKENS.length > 1 && keysTriedThisCall < CONFIG.CF_API_TOKENS.length - 1) {
+          keysTriedThisCall++;
+          console.log(`   🔁 Key #${cfTokenIdx + 1} rate-limited — rotating to next key...`);
+          rotateCfToken();
+          attempt--; // don't burn a retry budget on a key rotation
+          continue;
+        }
         if (err.retryAfterSec && err.retryAfterSec <= 90 && attempt < maxRetries) {
           console.log(`   ⏳ Rate limit, waiting ${err.retryAfterSec}s...`);
           await new Promise(r => setTimeout(r, err.retryAfterSec * 1000 + 500));
@@ -1059,9 +1134,12 @@ async function main() {
   console.log(`${'─'.repeat(55)}\n`);
 
   if (!IS_DRY_RUN) {
-    if (!CONFIG.CF_API_TOKEN) throw new Error('CLOUDFLARE_API_TOKEN not found.');
+    if (CONFIG.CF_API_TOKENS.length === 0) throw new Error('CLOUDFLARE_API_TOKEN not found.');
     if (!CONFIG.CF_ACCOUNT_ID) throw new Error('CLOUDFLARE_ACCOUNT_ID not found.');
     if (!CONFIG.GSC_CREDENTIALS.client_email) throw new Error('Invalid GSC_CREDENTIALS.');
+    if (CONFIG.CF_API_TOKENS.length > 1) {
+      console.log(`🔑 ${CONFIG.CF_API_TOKENS.length} Cloudflare API keys loaded (rolling on rate limit)\n`);
+    }
   }
 
   const keywords = await fetchKeywordsFromGSC();
@@ -1105,7 +1183,23 @@ async function main() {
     }
   }
 
-  uniqueKeywords.sort((a, b) => (b.impressions * (1 - b.ctr)) - (a.impressions * (1 - a.ctr)));
+  // Process OLDEST keywords first, not highest-impression first — there are far more
+  // keywords sitting in the backlog than MAX_ARTICLES processes per run, so always picking
+  // by impression score means low-traffic/long-tail keywords could wait indefinitely.
+  if (usingFallback) {
+    // keywords.txt is a plain list; getKeywordsFromFile() already returns it top-to-bottom,
+    // and Array.filter()/sort() preserve that order for entries with no distinguishing
+    // score (all keywords.txt items carry impressions:0). So the first line in the file —
+    // i.e. the oldest-added keyword — is naturally processed first. No re-sort needed.
+  } else {
+    const firstSeenMap = loadFirstSeenMap();
+    uniqueKeywords.sort((a, b) => {
+      const aDate = firstSeenMap[a.keyword.toLowerCase().trim()] || '9999-99-99';
+      const bDate = firstSeenMap[b.keyword.toLowerCase().trim()] || '9999-99-99';
+      if (aDate !== bDate) return aDate < bDate ? -1 : 1; // oldest first
+      return (b.impressions * (1 - b.ctr)) - (a.impressions * (1 - a.ctr)); // tie-break: opportunity score
+    });
+  }
 
   const toProcess = uniqueKeywords.slice(0, IS_DRY_RUN ? uniqueKeywords.length : CONFIG.MAX_ARTICLES);
   console.log(`\n📝 Will generate ${toProcess.length} articles${usingFallback ? ' (from keywords.txt)' : ''}:\n`);

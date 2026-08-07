@@ -47,15 +47,28 @@ const LOG_FILE        = path.join(process.cwd(), 'revised-articles.log');
 
 // GitHub Models was fully retired on 2026-07-30 — replaced with Cloudflare Workers AI
 // (OpenAI-compatible endpoint). Requires CLOUDFLARE_ACCOUNT_ID + CLOUDFLARE_API_TOKEN.
+//
+// CLOUDFLARE_API_TOKEN can hold MULTIPLE tokens — one per line, or comma-separated — to
+// enable key rotation. When one token gets rate-limited, the script automatically rotates
+// to the next one instead of stopping. Useful if you have several Cloudflare accounts/API
+// tokens and want to pool their free-tier quotas together.
+function parseTokens(raw) {
+  return (raw || '').split(/[\n,]+/).map(s => s.trim()).filter(Boolean);
+}
+
 const CONFIG = {
   CF_ACCOUNT_ID: process.env.CLOUDFLARE_ACCOUNT_ID || '',
-  CF_API_TOKEN : process.env.CLOUDFLARE_API_TOKEN || '',
+  CF_API_TOKENS: parseTokens(process.env.CLOUDFLARE_API_TOKEN),
   HOST        : 'api.cloudflare.com',
   get PATH()  { return `/client/v4/accounts/${this.CF_ACCOUNT_ID}/ai/v1/chat/completions`; },
   MODEL       : '@cf/aisingapore/gemma-sea-lion-v4-27b-it',
   TIMEOUT_MS  : 60000,
   MAX_RETRIES_PER_ARTICLE: 2,
 };
+
+let tokenIdx = 0;
+function currentToken() { return CONFIG.CF_API_TOKENS[tokenIdx] || ''; }
+function rotateToken() { tokenIdx = (tokenIdx + 1) % CONFIG.CF_API_TOKENS.length; }
 
 function log(msg) { console.log(msg); }
 function fmtDuration(ms) {
@@ -94,12 +107,13 @@ function httpRequest(hostname, reqPath, options, body, timeoutMs = CONFIG.TIMEOU
 
 async function callAI(messages, retries = 3) {
   const body = JSON.stringify({ model: CONFIG.MODEL, messages, temperature: 0.9, max_tokens: 4096 });
+  let keysTriedThisCall = 0;
   for (let attempt = 1; attempt <= retries; attempt++) {
     try {
       const result = await httpRequest(CONFIG.HOST, CONFIG.PATH, {
         method: 'POST',
         headers: {
-          'Authorization'  : `Bearer ${CONFIG.CF_API_TOKEN}`,
+          'Authorization'  : `Bearer ${currentToken()}`,
           'Content-Type'   : 'application/json',
           'Content-Length' : Buffer.byteLength(body),
         },
@@ -115,6 +129,15 @@ async function callAI(messages, retries = 3) {
       return content;
     } catch (err) {
       if (err.isRateLimit) {
+        // Rolling key: if we have other tokens we haven't tried yet this call, rotate and
+        // retry immediately (no wait — a different token has its own separate quota).
+        if (CONFIG.CF_API_TOKENS.length > 1 && keysTriedThisCall < CONFIG.CF_API_TOKENS.length - 1) {
+          keysTriedThisCall++;
+          log(`   🔁 Key #${tokenIdx + 1} rate-limited — rotating to key #${((tokenIdx + 1) % CONFIG.CF_API_TOKENS.length) + 1}/${CONFIG.CF_API_TOKENS.length}...`);
+          rotateToken();
+          attempt--; // don't burn a retry budget on a key rotation
+          continue;
+        }
         if (err.retryAfterSec && err.retryAfterSec <= 90 && attempt < retries) {
           log(`   ⏳ Rate limit, waiting ${err.retryAfterSec}s...`);
           await new Promise(r => setTimeout(r, err.retryAfterSec * 1000 + 500));
@@ -291,11 +314,14 @@ async function main() {
   if (!fs.existsSync(CANDIDATES_FILE)) {
     throw new Error(`${CANDIDATES_FILE} not found. Run first: node dedup-lapis1.js (and ensure candidates.json is committed to the repo).`);
   }
-  if (APPLY && !CONFIG.CF_API_TOKEN) {
+  if (APPLY && CONFIG.CF_API_TOKENS.length === 0) {
     throw new Error('CLOUDFLARE_API_TOKEN not found.');
   }
   if (APPLY && !CONFIG.CF_ACCOUNT_ID) {
     throw new Error('CLOUDFLARE_ACCOUNT_ID not found.');
+  }
+  if (APPLY && CONFIG.CF_API_TOKENS.length > 1) {
+    log(`   🔑 ${CONFIG.CF_API_TOKENS.length} Cloudflare API keys loaded (rolling on rate limit)\n`);
   }
 
   const candData = JSON.parse(fs.readFileSync(CANDIDATES_FILE, 'utf8'));
@@ -374,7 +400,8 @@ async function main() {
       }
     } catch (err) {
       if (err.isRateLimit) {
-        log(`\n🛑 Rate limited. Progress safely saved (${success} successful this session).`);
+        const keyNote = CONFIG.CF_API_TOKENS.length > 1 ? ` (all ${CONFIG.CF_API_TOKENS.length} keys exhausted)` : '';
+        log(`\n🛑 Rate limited${keyNote}. Progress safely saved (${success} successful this session).`);
         log(`   Run again later/tomorrow to continue.`);
         break;
       }

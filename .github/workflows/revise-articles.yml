@@ -2,8 +2,15 @@ name: Revise Duplicate Articles (AI)
 
 on:
   schedule:
-    - cron: '0 3 * * *'
+    # 18:00 UTC = 01:00 WIB (early morning of the following day, "past midnight"). Deliberately
+    # far from generate-articles.yml's 06:00 UTC (13:00 WIB siang) — a ~12h gap.
+    - cron: '0 18 * * *'
   workflow_dispatch:
+
+# Serialize with generate-articles.yml and recycle-and-deploy.yml — see comment there.
+concurrency:
+  group: dataweb-repo-write
+  cancel-in-progress: false
 
 permissions:
   contents: write
@@ -17,6 +24,24 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+
+      # Idempotent — see same step in generate-articles.yml for context. Included here too
+      # since this workflow can run before generate-articles.yml on a given day.
+      - name: Untrack node_modules (one-time, idempotent)
+        run: |
+          if [ -n "$(git ls-files node_modules/ | head -n1)" ]; then
+            echo "📦 node_modules is tracked in git — untracking it now..."
+            git config --local user.email "action@github.com"
+            git config --local user.name "GitHub Action"
+            grep -qxF 'node_modules/' .gitignore 2>/dev/null || echo "node_modules/" >> .gitignore
+            git rm -r --cached node_modules >/dev/null
+            git add .gitignore
+            git commit -m "chore: untrack node_modules [skip ci]"
+            git push origin master
+            echo "✅ node_modules untracked and pushed."
+          else
+            echo "✅ node_modules already untracked — nothing to do."
+          fi
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -62,10 +87,14 @@ jobs:
               exit 1
             fi
             wait_s=$(( (RANDOM % 10) + 5 ))
-            echo "⏳ Push rejected (possible race with another workflow), rebase & retry in ${wait_s}d... (attempt $i/5)"
+            echo "⏳ Push rejected (possible race with another workflow), rebase & retry in ${wait_s}s... (attempt $i/5)"
             sleep "$wait_s"
             git fetch origin master
+            # Stash any incidental working-tree noise (e.g. package-lock.json drift from
+            # npm install) so it can't block the rebase below with "unstaged changes" errors.
+            git stash push -u -m "pre-rebase-autostash" || true
             git rebase origin/master
+            git stash drop || true
           done
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -2,8 +2,19 @@ name: Generate Articles from GSC Keywords
 
 on:
   schedule:
-    - cron: '0 2 * * *'
+    # 06:00 UTC = 13:00 WIB (siang hari). Deliberately far from revise-articles.yml's
+    # 18:00 UTC (01:00 WIB dini hari) — a ~12h gap so their (variable, sometimes 30-90min)
+    # runtimes don't overlap even on a bad day.
+    - cron: '0 6 * * *'
   workflow_dispatch:
+
+# Serialize with revise-articles.yml and recycle-and-deploy.yml — they all commit/push to
+# the same `master` branch, and running in parallel causes push-rejected races (git rebase
+# can even fail outright if the working tree isn't clean). Same group name across all three
+# workflow files makes GitHub Actions queue them instead of racing.
+concurrency:
+  group: dataweb-repo-write
+  cancel-in-progress: false
 
 permissions:
   contents: write
@@ -17,6 +28,26 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+
+      # One-time, self-healing repo cleanup: node_modules got committed to git at some point,
+      # which makes every `npm ci`/`npm install` produce spurious "modified" noise (minor
+      # dependency-resolution drift) that was breaking the commit/rebase steps below. Safe to
+      # run every time — it's a no-op once node_modules is untracked (checked via git ls-files).
+      - name: Untrack node_modules (one-time, idempotent)
+        run: |
+          if [ -n "$(git ls-files node_modules/ | head -n1)" ]; then
+            echo "📦 node_modules is tracked in git — untracking it now..."
+            git config --local user.email "action@github.com"
+            git config --local user.name "GitHub Action"
+            grep -qxF 'node_modules/' .gitignore 2>/dev/null || echo "node_modules/" >> .gitignore
+            git rm -r --cached node_modules >/dev/null
+            git add .gitignore
+            git commit -m "chore: untrack node_modules [skip ci]"
+            git push origin master
+            echo "✅ node_modules untracked and pushed."
+          else
+            echo "✅ node_modules already untracked — nothing to do."
+          fi
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -46,6 +77,7 @@ jobs:
           [ -f keywords.txt ] && git add keywords.txt
           [ -f .excluded-keywords.json ] && git add .excluded-keywords.json
           [ -f .recent-openings.json ] && git add .recent-openings.json
+          [ -f .gsc-keyword-first-seen.json ] && git add .gsc-keyword-first-seen.json
 
           if git diff --staged --quiet; then
             echo "ℹ️  Nothing to commit (0 articles generated this session) — done."
@@ -66,7 +98,11 @@ jobs:
             echo "⏳ Push rejected (possible race with another workflow), rebasing & trying again in ${wait_s}s... (attempt $i/5)"
             sleep "$wait_s"
             git fetch origin master
+            # Stash any incidental working-tree noise (e.g. package-lock.json drift from
+            # npm ci) so it can't block the rebase below with "unstaged changes" errors.
+            git stash push -u -m "pre-rebase-autostash" || true
             git rebase origin/master
+            git stash drop || true
           done
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
