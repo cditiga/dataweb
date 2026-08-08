@@ -814,6 +814,26 @@ WAJIB SUBSTANTIF — bukan cuma basa-basi umum. Sertakan MINIMAL SATU dari ini y
 Kalau keyword-nya tidak memungkinkan angka teknis (misal topik desain/inspirasi), ganti dengan detail
 konkret lain: nama material spesifik, dimensi umum, atau contoh kasus nyata.
 
+ATURAN HARGA/BIAYA — WAJIB DIIKUTI kalau artikel menyebut rentang harga atau contoh perhitungan biaya
+(Rp berapa pun, termasuk contoh kalkulasi seperti "10 titik x 5 meter x Rp 400.000 = Rp 20.000.000"):
+- Boleh pakai rentang harga umum/estimasi yang masuk akal (tidak perlu presisi ke rupiah terdekat).
+- WAJIB sertakan kalimat disclaimer eksplisit persis di dekat penyebutan harga tersebut, contoh:
+  "Harga ini bersifat estimasi dan dapat berubah sewaktu-waktu — hubungi Kami untuk penawaran
+  terbaru dan paling akurat sesuai kebutuhan proyek Mitra CDI." (boleh diparafrase, tapi maknanya
+  harus tetap: ini estimasi, bisa berubah, arahkan ke kontak untuk angka pasti).
+- JANGAN tulis rentang harga atau contoh biaya di lebih dari satu bagian artikel tanpa disclaimer.
+
+ATURAN KONSISTENSI ANGKA — WAJIB DIIKUTI untuk contoh perhitungan teknis (diameter, ukuran, rasio,
+kekuatan, dll): kalau artikel menyebutkan rentang/nilai tipikal untuk suatu ukuran di satu bagian
+(misal "diameter tiang pondasi berkisar 30–60 cm"), maka SEMUA contoh perhitungan lain di artikel yang
+sama TIDAK BOLEH menghasilkan angka yang bertentangan dengan rentang itu (misal jangan sampai contoh
+perhitungan menghasilkan diameter 3,57 meter kalau di bagian lain sudah bilang tipikalnya 30–60 cm).
+Sebelum menulis contoh perhitungan, pastikan angka input yang dipakai (beban, luas, dst.) akan
+menghasilkan output yang REALISTIS dan konsisten dengan angka tipikal yang sudah/akan disebutkan di
+artikel yang sama. Kalau tidak yakin bisa membuat contoh yang konsisten dan masuk akal secara teknik,
+lebih baik pakai perbandingan konkret antar-pilihan sebagai pengganti (opsi ketiga di daftar atas)
+daripada memaksakan contoh perhitungan yang berisiko keliru.
+
 VARIASIKAN PANJANG KALIMAT — campur kalimat pendek (5-8 kata) dengan kalimat panjang, jangan seragam
 sedang-panjang terus-menerus. Ini penting supaya ritme baca terasa manusiawi, bukan seperti draft AI.
 
@@ -989,7 +1009,10 @@ function parseAndSave(raw, keyword, slug, imagePath, greeting) {
 
   for (const line of lines) {
     const t = line.trim();
-    if (t.startsWith('JUDUL:'))        { title = t.replace('JUDUL:', '').trim(); continue; }
+    // Strip stray markdown (**bold**, leading #) — the AI sometimes carries the body's
+    // "**Judul** - ..." bold-lead-in habit into this JUDUL: line too, which would otherwise
+    // land literal asterisks in the YAML title (breaks <title>, meta tags, breadcrumbs).
+    if (t.startsWith('JUDUL:'))        { title = t.replace('JUDUL:', '').replace(/\*\*/g, '').replace(/^#+\s*/, '').trim(); continue; }
     if (t.startsWith('DESCRIPTION:'))  { desc  = t.replace('DESCRIPTION:', '').trim(); continue; }
     if (t.startsWith('CATEGORIES:'))   { /* ignored — always "blog" */ continue; }
     if (t.startsWith('TAGS:'))         { tags  = t.replace('TAGS:', '').trim().split(',').map(t => t.trim()); continue; }
@@ -1117,6 +1140,13 @@ function validateArticle(filePath) {
   const INFORMAL_WORDS = ['nggak', 'ngga', 'gimana', 'yuk', 'nah', 'lho', 'nih', 'banget', 'kayak', 'gitu', 'aja'];
   const foundInformal = INFORMAL_WORDS.filter(w => new RegExp(`\\b${w}\\b`, 'i').test(bodyOnly));
   if (foundInformal.length) issues.push(`⚠️  Kata tidak baku terdeteksi: ${foundInformal.join(', ')}`);
+
+  // Price-disclaimer policy check (soft warning, not a hard reject — human review can confirm).
+  const mentionsPrice = /Rp\s?\d[\d.,]*/.test(bodyOnly);
+  const hasDisclaimer = /(estimasi|dapat berubah|bisa berubah|sewaktu-waktu)/i.test(bodyOnly);
+  if (mentionsPrice && !hasDisclaimer) {
+    issues.push('⚠️  Artikel menyebut harga (Rp) tapi tidak ada kalimat disclaimer estimasi — cek manual.');
+  }
 
   if (issues.length === 0) {
     console.log(`   ✅ Validasi OK — ${wordCount} kata`);
