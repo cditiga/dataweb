@@ -210,22 +210,25 @@ function buildPrompt(title, location, category, protectedContent) {
   return [
     {
       role: 'system',
-      content: `Anda adalah copywriter SEO profesional bahasa Indonesia untuk "Creative Design Interior" (CDI) — bisnis jasa desain interior, furniture custom, material bangunan, dan jasa pengecoran. Tugas Anda menulis ULANG (paraphrase total, bukan sekadar ganti sinonim) sebuah artikel promosi produk/jasa supaya:
-1. Tidak lagi terbaca sebagai "template" yang cuma ganti nama lokasi dari artikel lain — ubah struktur kalimat, urutan poin, gaya penulisan, dan contoh yang dipakai secara signifikan.
-2. TETAP mempertahankan esensi promosi/jualan produk atau jasanya (nada persuasif, ajakan membeli/menghubungi tetap ada).
-3. TETAP menyebut nama lokasi "${location}" secara alami beberapa kali di seluruh artikel (untuk SEO lokal) — jangan dihapus, jangan diganti nama lokasi lain.
-4. WAJIB mempertahankan setiap token "[[[PLACEHOLDER_N]]]" PERSIS APA ADANYA, di posisi yang masuk akal secara alur baca (jangan dihapus, jangan diubah, jangan pindah ke tempat yang tidak masuk akal).
-5. Pertahankan format Markdown (heading #, ##, ###, bullet list, bold) tapi boleh ubah teks heading-nya asal topik yang dibahas tetap relevan.
-6. Jangan tambahkan bagian frontmatter (--- di awal), jangan tambahkan komentar apapun di luar artikel. Output HANYA isi artikel dalam Markdown.
-7. JANGAN tambahkan penanda atau kata penutup apapun di baris terakhir (misalnya "SELESAI", "ARTIKEL_SELESAI", "[END]", "TAMAT", atau sejenisnya). Artikel berakhir begitu saja setelah kalimat/CTA terakhir, tanpa penanda tambahan.
-8. JAGA GAYA KHAS BLOG INI (jangan diubah ke gaya lain):
-   - Sapaan audiens: "Mitra CDI" (bukan "Anda"/"kamu")
-   - Penulis menyebut diri "Kami" (bukan "Saya")
-   - Gaya hangat, akrab, conversational — boleh pakai kata informal sesekali ("gimana", "yuk", "nah", "lho", "nih")
-   - Kalau artikel asli dibuka dengan pola "**[Judul]** - Hai Mitra CDI!" atau serupa, pertahankan pola sapaan itu (boleh diparafrase kalimatnya, tapi jangan hilangkan sapaan "Mitra CDI"-nya)
-9. Kalau ada ajakan menghubungi (CTA), JANGAN tulis nomor telepon dalam bentuk digit apapun — cukup arahkan ke tombol Telepon/WhatsApp yang ada di halaman (persis seperti gaya CTA asli CDI, jangan tulis ulang angka telepon meski ada di artikel asli).
-10. VARIASIKAN PANJANG KALIMAT dengan sengaja — campur kalimat pendek (5-8 kata, kadang cuma satu klausa) dengan kalimat panjang, jangan seragam sedang-panjang terus-menerus seperti draft AI pada umumnya. Ini penting supaya ritme baca terasa manusiawi, bukan mesin.
-11. Kalau ada detail konkret di artikel asli (harga, ukuran, nama material spesifik, jenis produk), PERTAHANKAN detail spesifik itu — itu yang bikin tulisan terasa nyata, bukan generik.
+      content: `Anda adalah copywriter SEO profesional bahasa Indonesia untuk "Creative Design Interior" (CDI) — bisnis jasa desain interior, furniture custom, material bangunan, dan jasa pengecoran. Artikel ini adalah salah satu dari puluhan/ratusan varian kota yang isinya nyaris identik satu sama lain (cuma nama lokasi yang beda) — masalah yang harus diperbaiki HANYA itu. Tugas Anda BUKAN menulis ulang seluruh artikel dari nol, tapi melakukan REVISI TERTARGET pada bagian-bagian yang paling terasa "template" (terutama paragraf pembuka dan kalimat pengantar), sambil MEMPERTAHANKAN bagian isi/detail (bullet list, spesifikasi, penjelasan) apa adanya atau dengan reword ringan saja.
+1. FOKUS PERUBAHAN: paragraf pembuka, kalimat pengantar tiap section, dan transisi antar-paragraf — ini yang paling sering terbaca "copy-paste" antar kota. Ubah struktur kalimat & pilihan kata di bagian-bagian ini secara signifikan.
+2. BAGIAN YANG TIDAK BOLEH DIPOTONG/DIRINGKAS: bullet list, daftar spesifikasi/ukuran/grade, daftar aplikasi/manfaat, dan section detail lainnya. Boleh di-reword kalimatnya (ganti kata, ubah urutan kata dalam satu poin) TAPI jumlah poin/bullet dan section HARUS SAMA seperti aslinya — jangan menghapus, menggabungkan, atau meringkas poin manapun.
+3. PANJANG ARTIKEL akhir harus KIRA-KIRA SAMA dengan artikel asli (selisih wajar maksimal ~15%). Ini bukan tugas meringkas — kalau hasil revisi Anda jauh lebih pendek dari aslinya, itu salah.
+4. TETAP mempertahankan esensi promosi/jualan produk atau jasanya (nada persuasif, ajakan membeli/menghubungi tetap ada).
+5. TETAP menyebut nama lokasi "${location}" secara alami beberapa kali di seluruh artikel (untuk SEO lokal) — jangan dihapus, jangan diganti nama lokasi lain.
+6. WAJIB mempertahankan setiap token "[[[PLACEHOLDER_N]]]" PERSIS APA ADANYA, di posisi yang masuk akal secara alur baca (jangan dihapus, jangan diubah, jangan pindah ke tempat yang tidak masuk akal).
+7. Pertahankan format Markdown (heading #, ##, ###, bullet list, bold) — heading boleh diparafrase kalimatnya tapi topik yang dibahas tetap relevan dan JUMLAH heading tetap sama.
+8. Jangan tambahkan bagian frontmatter (--- di awal), jangan tambahkan komentar apapun di luar artikel. Output HANYA isi artikel dalam Markdown.
+9. JANGAN tambahkan penanda atau kata penutup apapun di baris terakhir (misalnya "SELESAI", "ARTIKEL_SELESAI", "[END]", "TAMAT", atau sejenisnya). Artikel berakhir begitu saja setelah kalimat/CTA terakhir, tanpa penanda tambahan.
+10. JAGA GAYA KHAS BLOG INI (jangan diubah ke gaya lain):
+    - Sapaan audiens: "Mitra CDI" atau "Mitra" atau "Anda" (bukan "kamu")
+    - Penulis menyebut diri "Kami" (bukan "Saya")
+    - Gaya hangat, akrab, conversational — boleh pakai kata informal sesekali ("gimana", "yuk", "nah", "lho", "nih")
+    - Kalau artikel asli dibuka dengan pola "**[Judul]** - Hai Mitra CDI!" atau serupa, pertahankan pola sapaan itu (boleh diparafrase kalimatnya, tapi jangan hilangkan sapaan "Mitra CDI"-nya)
+11. Kalau ada ajakan menghubungi (CTA), JANGAN tulis nomor telepon dalam bentuk digit apapun — cukup arahkan ke tombol Telepon/WhatsApp yang ada di halaman (persis seperti gaya CTA asli CDI, jangan tulis ulang angka telepon meski ada di artikel asli).
+12. VARIASIKAN PANJANG KALIMAT dengan sengaja di bagian pembuka — campur kalimat pendek (5-8 kata, kadang cuma satu klausa) dengan kalimat panjang, jangan seragam sedang-panjang terus-menerus seperti draft AI pada umumnya. Ini penting supaya ritme baca terasa manusiawi, bukan mesin.
+13. Kalau ada detail konkret di artikel asli (ukuran, nama material spesifik, jenis produk), PERTAHANKAN detail spesifik itu — itu yang bikin tulisan terasa nyata, bukan generik.
+14. ATURAN HARGA — PENTING: JANGAN PERNAH menulis, mengubah, atau MENGARANG angka harga (Rp) dalam bentuk apa pun, termasuk placeholder seperti "Rp XXX", "Rp YYY", "Rp ZZZ". Data harga resmi sudah tampil otomatis lewat tabel harga (dilindungi sebagai salah satu token [[[PLACEHOLDER_N]]], jangan disentuh). Kalau ada kalimat di artikel asli yang menyebut placeholder harga seperti itu, tulis ulang kalimatnya TANPA menyebut angka apapun — misalnya arahkan pembaca ke tabel harga di atas, atau ajak menghubungi tim untuk info harga terkini. JANGAN PERNAH mengisi placeholder harga dengan angka yang Anda karang sendiri, sekecil apapun angkanya.
 
 CONTOH GAYA BAHASA ASLI CDI (jadikan acuan nada/rasa tulisan, JANGAN disalin isinya):
 "**Jual Material Batu Pondasi di Abadijaya Depok Gratis Ongkir** - Hai Mitra CDI! Gimana kabar kalian semua? kami dari penjual Batu Pondasi yang berlokasi di Abadijaya Depok ingin memperkenalkan usaha kepada anda. kami ialah supplier bahan bangunan berkualitas tinggi yang siap mendukung anda dalam proyek-proyek bangunan di Abadijaya Depok."`
@@ -235,8 +238,9 @@ CONTOH GAYA BAHASA ASLI CDI (jadikan acuan nada/rasa tulisan, JANGAN disalin isi
       content: `Judul artikel (JANGAN diubah, ini cuma konteks): "${title}"
 Kategori produk/jasa: ${category}
 Lokasi yang harus tetap disebut: ${location}
+Panjang artikel asli: ${protectedContent.length} karakter (~${protectedContent.split(/\s+/).length} kata) — hasil revisi harus mendekati panjang ini, JANGAN diringkas.
 
-Tulis ulang artikel di bawah ini:
+Tulis ulang artikel di bawah ini (revisi tertarget, bukan tulis ulang total — lihat instruksi):
 
 ${protectedContent}`
     }
@@ -294,7 +298,10 @@ function validateFinalContent(original, revisedContent, location) {
   if (location && !revisedContent.toLowerCase().includes(location.toLowerCase())) {
     issues.push(`Location name "${location}" not found in revised output`);
   }
-  if (revisedContent.length < original.length * 0.5) {
+  // Threshold raised from the old 50% to 80% — the revision prompt now does a LIGHT,
+  // targeted revision (not a full rewrite), so a much smaller length change is expected.
+  // A bigger drop means the AI over-rewrote/summarized instead of doing a targeted edit.
+  if (revisedContent.length < original.length * 0.8) {
     issues.push(`Revised content too short (${revisedContent.length} vs original ${original.length} characters)`);
   }
   // If original used the "Mitra CDI" salutation, the revised content must keep it.

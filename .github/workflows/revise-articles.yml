@@ -75,7 +75,7 @@ jobs:
             exit 0
           fi
 
-          git commit -m "Automatic revision"
+          git commit -m "Revisi: kurangi kemiripan konten"
 
           for i in 1 2 3 4 5; do
             if git push origin master; then
