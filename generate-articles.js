@@ -758,7 +758,7 @@ const CLOSING_STYLES = [
 ];
 
 const ADDRESS_STYLES = [
-  { name: 'Mitra CDI', instruction: 'Setelah kalimat pembuka, lanjutkan memakai sapaan "Mitra CDI" secara konsisten di seluruh isi artikel (bukan "Anda").' },
+  { name: 'Mitra CDI', instruction: 'Setelah kalimat pembuka, lanjutkan memakai sapaan "Mitra CDI" atau "Mitra" secara konsisten di seluruh isi artikel (bukan "Anda").' },
   { name: 'Anda',      instruction: 'Setelah kalimat pembuka (yang tetap wajib memakai "Mitra CDI"), lanjutkan SISA artikel memakai sapaan "Anda" secara konsisten (JANGAN pakai "Mitra CDI" lagi setelah kalimat pembuka).' },
 ];
 
