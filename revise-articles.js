@@ -71,6 +71,23 @@ function currentToken() { return CONFIG.CF_API_TOKENS[tokenIdx] || ''; }
 function rotateToken() { tokenIdx = (tokenIdx + 1) % CONFIG.CF_API_TOKENS.length; }
 
 function log(msg) { console.log(msg); }
+
+// Surgically insert/update a `lastmod:` field within the RAW frontmatter text (the string
+// between the --- delimiters, as returned by gray-matter's .matter property) — never a full
+// YAML re-serialize, which would reformat quote styles/key order/array layout on every field
+// and cause noisy, unrelated-looking git diffs. `date:` (original publish date) is left
+// untouched; `lastmod:` is Hugo's standard "last modified" field, used for sitemap <lastmod>
+// and freshness signals without misrepresenting the true original publish date.
+function setLastmod(rawMatter, newDate) {
+  const line = `lastmod: "${newDate}"`;
+  if (/^lastmod:\s*.*$/m.test(rawMatter)) {
+    return rawMatter.replace(/^lastmod:\s*.*$/m, line);
+  }
+  if (/^date:\s*.*$/m.test(rawMatter)) {
+    return rawMatter.replace(/^(date:\s*.*)$/m, `$1\n${line}`);
+  }
+  return `${rawMatter}\n${line}`;
+}
 function fmtDuration(ms) {
   const s = Math.round(ms / 1000);
   if (s < 60) return `${s}s`;
@@ -397,9 +414,12 @@ async function main() {
       log(`   ✅ Valid (${fmtDuration(Date.now() - tArticle)}) — location "${location}" ✓, ${placeholders.length} placeholders intact ✓`);
 
       if (APPLY) {
-        // Reassemble using the ORIGINAL FRONTMATTER TEXT (byte-identical), not re-serializing,
-        // to avoid YAML style diffs that look noisy in git despite identical values.
-        const newFileContent = `---${parsed.matter}\n---\n${revisedContent}`;
+        // Reassemble using the ORIGINAL FRONTMATTER TEXT (byte-identical apart from lastmod),
+        // not re-serializing, to avoid YAML style diffs that look noisy in git despite
+        // identical values. lastmod records when this article was last revised, without
+        // touching the original `date:` (publish date).
+        const newRawMatter = setLastmod(parsed.matter, new Date().toISOString().split('T')[0]);
+        const newFileContent = `---${newRawMatter}\n---\n${revisedContent}`;
         fs.writeFileSync(filePath, newFileContent);
         progress.revised.push(url);
         success++;

@@ -771,6 +771,7 @@ async function generateArticle(keyword) {
   const addressStyle  = pickRandom(ADDRESS_STYLES);
   const greeting      = pickRandom(GREETING_STYLES);
   const closingStyle = pickRandom(CLOSING_STYLES).replace('{ADDR}', addressStyle.name);
+  const currentYear   = new Date().getFullYear();
 
   const prompt = `Kamu adalah penulis konten blog untuk website "${CONFIG.SITE_NAME}" — perusahaan jasa desain interior, furniture custom, material bangunan, dan jasa pengecoran di wilayah Jabodetabek.
 
@@ -833,6 +834,16 @@ menghasilkan output yang REALISTIS dan konsisten dengan angka tipikal yang sudah
 artikel yang sama. Kalau tidak yakin bisa membuat contoh yang konsisten dan masuk akal secara teknik,
 lebih baik pakai perbandingan konkret antar-pilihan sebagai pengganti (opsi ketiga di daftar atas)
 daripada memaksakan contoh perhitungan yang berisiko keliru.
+
+ATURAN TAHUN — WAJIB DIIKUTI: artikel ini ditulis dan dipublikasikan pada tahun ${currentYear}.
+JANGAN sebutkan tahun spesifik yang lebih tua dari ${currentYear} di isi artikel (contoh yang DILARANG:
+"harga tahun 2018", "update 2020", "per 2022/2023", tabel/daftar harga multi-tahun seperti
+"2018: Rp X, 2019: Rp Y, 2020: Rp Z") — itu akan terbaca sebagai data usang/kadaluarsa oleh pembaca
+meski artikelnya baru terbit. Kalau mau menyampaikan bahwa harga cenderung naik dari waktu ke waktu,
+pakai bahasa relatif tanpa tahun eksplisit (misal "harga material cenderung naik setiap tahun karena
+inflasi dan biaya distribusi"), BUKAN daftar tahun-per-tahun. Boleh sebut tahun HANYA kalau relevan
+sebagai konteks historis eksplisit dan tidak menyesatkan (misal "SNI yang berlaku sejak 2021",
+"regulasi tahun 2019") — bukan sebagai bagian dari daftar harga/data yang seolah masih berlaku sekarang.
 
 VARIASIKAN PANJANG KALIMAT — campur kalimat pendek (5-8 kata) dengan kalimat panjang, jangan seragam
 sedang-panjang terus-menerus. Ini penting supaya ritme baca terasa manusiawi, bukan seperti draft AI.
@@ -1146,6 +1157,16 @@ function validateArticle(filePath) {
   const hasDisclaimer = /(estimasi|dapat berubah|bisa berubah|sewaktu-waktu)/i.test(bodyOnly);
   if (mentionsPrice && !hasDisclaimer) {
     issues.push('⚠️  Artikel menyebut harga (Rp) tapi tidak ada kalimat disclaimer estimasi — cek manual.');
+  }
+
+  // Stale-year check (soft warning): catches years the AI wrote that are already outdated
+  // relative to actual publish time (e.g. leftover "harga 2018/2019/2020" style examples).
+  const currentYear = new Date().getFullYear();
+  const staleYears = [...new Set((bodyOnly.match(/\b(19|20)\d{2}\b/g) || [])
+    .map(Number)
+    .filter(y => y >= 2000 && y < currentYear))];
+  if (staleYears.length) {
+    issues.push(`⚠️  Tahun usang terdeteksi di isi artikel: ${staleYears.join(', ')} — cek manual (lihat ATURAN TAHUN di prompt).`);
   }
 
   if (issues.length === 0) {
