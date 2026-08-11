@@ -1,6 +1,6 @@
 ---
 title: "Layanan Cor Jayamix Mini /Minimix di Kembangan Barat Jakarta"
-date: "2023-02-18"
+date: "2026-08-11"
 categories:
  - "cor"
 type: "service"

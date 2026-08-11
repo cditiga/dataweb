@@ -1,6 +1,6 @@
 ---
 title: "Harga Custom Lemari Bawah Tangga Di Banyusari Karawang"
-date: "2024-05-25"
+date: "2026-08-11"
 categories:
  - "lemari"
 type: "service"

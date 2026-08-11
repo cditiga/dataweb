@@ -1,6 +1,6 @@
 ---
 title: "Jasa Sewa Bull Dozer di Meruya Jakarta [Harian]"
-date: "2023-09-27"
+date: "2026-08-11"
 categories:
  - "bull-dozer"
 type: "service"

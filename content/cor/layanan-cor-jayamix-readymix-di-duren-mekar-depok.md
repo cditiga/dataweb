@@ -1,6 +1,6 @@
 ---
 title: "Layanan Cor Jayamix /Readymix di Duren Mekar Depok"
-date: "2023-02-06"
+date: "2026-08-11"
 categories:
  - "cor"
 type: "service"

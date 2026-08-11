@@ -1,6 +1,6 @@
 ---
 title: "Jual Batako Press di Batutulis Bogor Gratis Ongkir"
-date: "2023-02-27"
+date: "2026-08-11"
 categories:
  - "batako"
 type: "product"

@@ -1,6 +1,6 @@
 ---
 title: "Kalkulator untuk Menghitung Bahan Bangunan"
-date: "2014-11-04"
+date: "2026-08-11"
 description: "Kalkulator untuk Menghitung Bahan Bangunan. Silahkan klik Daftar [**Harga Beton Ready Mix**](/daftar-harga-rental-pompa..."
 ---
 

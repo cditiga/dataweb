@@ -1,6 +1,6 @@
 ---
 title: "Jual Panel Lantai Beton di Sukaresmi Bogor"
-date: "2023-03-15"
+date: "2026-08-11"
 categories:
  - "dak-panel"
 type: "product"

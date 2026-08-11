@@ -1,6 +1,6 @@
 ---
 title: "Metode Pengecoran Yang Baik Dan Benar"
-date: "2024-10-12"
+date: "2026-08-11"
 categories:
  - "blog"
 type: "service"

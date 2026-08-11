@@ -1,6 +1,6 @@
 ---
 title: "Jasa Uji Beton di Jakarta Bogor Depok Tangerang Bekasi"
-date: "2024-10-13"
+date: "2026-08-11"
 categories:
  - "blog"
 type: "service"

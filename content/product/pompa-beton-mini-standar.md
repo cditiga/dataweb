@@ -1,6 +1,6 @@
 ---
 title: "Menyewakan Pompa Beton Mini & Standar"
-date: "2021-09-18"
+date: "2026-08-11"
 categories:
  - "cor"
 type: "product"

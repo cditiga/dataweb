@@ -1,6 +1,6 @@
 ---
 title: "Dalam Pengecoran Haruskah Pakai Pompa Beton ?"
-date: "2024-10-05"
+date: "2026-08-11"
 categories:
  - "blog"
 type: "service"

@@ -1,6 +1,6 @@
 ---
 title: "Tempat Sewa Excavator di Cibuaya Karawang Terdekat"
-date: "2023-01-07"
+date: "2026-08-11"
 categories:
  - "excavator"
 type: "service"

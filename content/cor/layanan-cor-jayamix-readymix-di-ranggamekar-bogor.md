@@ -1,6 +1,6 @@
 ---
 title: "Layanan Cor Jayamix /Readymix di Ranggamekar Bogor"
-date: "2023-06-23"
+date: "2026-08-11"
 categories:
  - "cor"
 type: "service"

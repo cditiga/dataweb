@@ -1,6 +1,6 @@
 ---
 title: "Jual Pagar Panel Beton di Jatiluhur Purwakarta"
-date: "2023-11-21"
+date: "2026-08-11"
 categories:
  - "pagar-panel"
 type: "product"

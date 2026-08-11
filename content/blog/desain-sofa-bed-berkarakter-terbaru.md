@@ -1,6 +1,6 @@
 ---
 title: "Desain Sofa Bed Berkarakter [Terbaru]"
-date: "2024-08-19"
+date: "2026-08-11"
 categories:
  - "blog"
 type: "service"

@@ -1,6 +1,6 @@
 ---
 title: "Tempat Sewa Excavator di Kedung Waringin Bogor Terdekat"
-date: "2023-09-10"
+date: "2026-08-11"
 categories:
  - "excavator"
 type: "service"

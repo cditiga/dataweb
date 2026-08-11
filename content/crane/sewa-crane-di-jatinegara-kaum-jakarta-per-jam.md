@@ -1,6 +1,6 @@
 ---
 title: "Sewa Crane di Jatinegara Kaum Jakarta Per Jam"
-date: "2023-05-18"
+date: "2026-08-11"
 categories:
  - "crane"
 type: "service"

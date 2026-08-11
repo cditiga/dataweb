@@ -1,6 +1,6 @@
 ---
 title: "Jual Batako Press di Maniis Purwakarta Gratis Ongkir"
-date: "2023-06-20"
+date: "2026-08-11"
 categories:
  - "batako"
 type: "product"

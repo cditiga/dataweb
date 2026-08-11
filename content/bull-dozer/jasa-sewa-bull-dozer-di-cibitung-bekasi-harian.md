@@ -1,6 +1,6 @@
 ---
 title: "Jasa Sewa Bull Dozer di Cibitung Bekasi [Harian]"
-date: "2023-10-24"
+date: "2026-08-11"
 categories:
  - "bull-dozer"
 type: "service"

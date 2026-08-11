@@ -1,6 +1,6 @@
 ---
 title: "Rumah Tipe 36 Yang Tampak Mewah Dengan Desain Seperti Ini"
-date: "2024-09-02"
+date: "2026-08-11"
 categories:
  - "blog"
 type: "service"

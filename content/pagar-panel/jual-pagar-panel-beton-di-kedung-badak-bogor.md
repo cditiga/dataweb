@@ -1,6 +1,6 @@
 ---
 title: "Jual Pagar Panel Beton di Kedung Badak Bogor"
-date: "2023-01-30"
+date: "2026-08-11"
 categories:
  - "pagar-panel"
 type: "product"

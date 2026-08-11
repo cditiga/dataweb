@@ -1,6 +1,6 @@
 ---
 title: "Jenis Wiremesh Pada Konstruksi Bangunan"
-date: "2024-10-20"
+date: "2026-08-11"
 categories:
  - "blog"
 type: "service"

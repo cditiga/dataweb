@@ -1,6 +1,6 @@
 ---
 title: "Harga Custom Meja Makan Di Paledang Bogor"
-date: "2024-09-20"
+date: "2026-08-11"
 categories:
  - "meja"
 type: "service"

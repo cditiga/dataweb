@@ -1,6 +1,6 @@
 ---
 title: "Tempat Sewa Excavator di Majalengka Terdekat"
-date: "2023-10-01"
+date: "2026-08-11"
 categories:
  - "excavator"
 type: "service"

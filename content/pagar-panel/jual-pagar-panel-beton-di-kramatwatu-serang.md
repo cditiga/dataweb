@@ -1,6 +1,6 @@
 ---
 title: "Jual Pagar Panel Beton di Kramatwatu Serang"
-date: "2023-02-04"
+date: "2026-08-11"
 categories:
  - "pagar-panel"
 type: "product"

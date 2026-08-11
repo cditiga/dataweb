@@ -1,6 +1,6 @@
 ---
 title: "Jasa Custom Dipan Laci Minimalis Di Cilebar Karawang"
-date: "2024-09-04"
+date: "2026-08-11"
 categories:
  - "dipan"
 type: "service"

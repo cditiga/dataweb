@@ -1,6 +1,6 @@
 ---
 title: "Jual Panel Lantai Beton di Pamoyanan Bogor"
-date: "2023-06-27"
+date: "2026-08-11"
 categories:
  - "dak-panel"
 type: "product"

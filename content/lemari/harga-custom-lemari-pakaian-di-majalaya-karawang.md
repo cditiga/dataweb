@@ -1,6 +1,6 @@
 ---
 title: "Harga Custom Lemari Pakaian Di Majalaya Karawang"
-date: "2024-08-31"
+date: "2026-08-11"
 categories:
  - "lemari"
 type: "service"

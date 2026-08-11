@@ -1,6 +1,6 @@
 ---
 title: "Jual Material Bata Merah di Guntur Jakarta Gratis Ongkir"
-date: "2023-05-25"
+date: "2026-08-11"
 categories:
  - "bata"
 type: "product"

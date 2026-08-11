@@ -1,6 +1,6 @@
 ---
 title: "Sewa Crane di Parung Kuda Sukabumi Per Jam"
-date: "2023-04-10"
+date: "2026-08-11"
 categories:
  - "crane"
 type: "service"

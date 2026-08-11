@@ -1,6 +1,6 @@
 ---
 title: "Layanan Cor Jayamix Mini /Minimix di Ulujami Jakarta"
-date: "2023-01-24"
+date: "2026-08-11"
 categories:
  - "cor"
 type: "service"

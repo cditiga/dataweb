@@ -1,6 +1,6 @@
 ---
 title: "Jasa Sewa Bull Dozer di Petojoselatan Jakarta [Harian]"
-date: "2023-05-17"
+date: "2026-08-11"
 categories:
  - "bull-dozer"
 type: "service"

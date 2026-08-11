@@ -1,6 +1,6 @@
 ---
 title: "Layanan Cor Jayamix /Readymix di Mekarbaru Tangerang"
-date: "2023-12-27"
+date: "2026-08-11"
 categories:
  - "cor"
 type: "service"

@@ -1,6 +1,6 @@
 ---
 title: "Jual Panel Lantai Beton di Kampung Tengah Jakarta"
-date: "2023-02-23"
+date: "2026-08-11"
 categories:
  - "dak-panel"
 type: "product"

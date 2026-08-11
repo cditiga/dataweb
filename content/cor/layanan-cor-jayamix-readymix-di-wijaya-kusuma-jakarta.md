@@ -1,6 +1,6 @@
 ---
 title: "Layanan Cor Jayamix /Readymix di Wijaya Kusuma Jakarta"
-date: "2023-05-28"
+date: "2026-08-11"
 categories:
  - "cor"
 type: "service"

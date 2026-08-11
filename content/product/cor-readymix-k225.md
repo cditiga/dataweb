@@ -1,6 +1,6 @@
 ---
 title: "Beton Cor Readymix K225 Standar & Minimix"
-date: "2021-09-27"
+date: "2026-08-11"
 categories:
  - "cor"
 type: "product"

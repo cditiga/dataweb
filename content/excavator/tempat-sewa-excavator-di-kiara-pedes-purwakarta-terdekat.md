@@ -1,6 +1,6 @@
 ---
 title: "Tempat Sewa Excavator di Kiara Pedes Purwakarta Terdekat"
-date: "2023-04-12"
+date: "2026-08-11"
 categories:
  - "excavator"
 type: "service"

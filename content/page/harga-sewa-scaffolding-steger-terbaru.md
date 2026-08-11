@@ -1,6 +1,6 @@
 ---
 title: "Harga Sewa Scaffolding Steger Terbaru"
-date: "2015-12-23"
+date: "2026-08-11"
 categories:
  - "steger"
 type: "service"

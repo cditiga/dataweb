@@ -1,6 +1,6 @@
 ---
 title: "Sewa Crane di Rengasdengklok Karawang Per Jam"
-date: "2023-10-15"
+date: "2026-08-11"
 categories:
  - "crane"
 type: "service"

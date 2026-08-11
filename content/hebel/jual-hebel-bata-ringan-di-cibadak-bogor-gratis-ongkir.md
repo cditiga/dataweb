@@ -1,6 +1,6 @@
 ---
 title: "Jual Hebel Bata Ringan di Cibadak Bogor Gratis Ongkir"
-date: "2023-09-01"
+date: "2026-08-11"
 categories:
  - "hebel"
 type: "product"

@@ -1,6 +1,6 @@
 ---
 title: "Jasa Sewa Bull Dozer di Jayakerta Karawang [Harian]"
-date: "2023-09-30"
+date: "2026-08-11"
 categories:
  - "bull-dozer"
 type: "service"

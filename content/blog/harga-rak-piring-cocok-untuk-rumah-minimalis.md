@@ -1,6 +1,6 @@
 ---
 title: "Harga Rak Piring Cocok Untuk Rumah Minimalis"
-date: "2024-09-10"
+date: "2026-08-11"
 categories:
  - "blog"
 type: "service"

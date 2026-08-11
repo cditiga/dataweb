@@ -1,6 +1,6 @@
 ---
 title: "Jual Batako Press di Panaragan Bogor Gratis Ongkir"
-date: "2023-11-20"
+date: "2026-08-11"
 categories:
  - "batako"
 type: "product"

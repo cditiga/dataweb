@@ -1,6 +1,6 @@
 ---
 title: "Layanan Cor Jayamix Mini /Minimix di Balumbang Jaya Bogor"
-date: "2023-12-04"
+date: "2026-08-11"
 categories:
  - "cor"
 type: "service"

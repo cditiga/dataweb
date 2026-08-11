@@ -1,6 +1,6 @@
 ---
 title: "Jual Pagar Panel Beton di Pegadungan Jakarta"
-date: "2023-10-18"
+date: "2026-08-11"
 categories:
  - "pagar-panel"
 type: "product"

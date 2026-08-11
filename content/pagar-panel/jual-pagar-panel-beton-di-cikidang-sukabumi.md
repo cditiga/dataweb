@@ -1,6 +1,6 @@
 ---
 title: "Jual Pagar Panel Beton di Cikidang Sukabumi"
-date: "2023-03-27"
+date: "2026-08-11"
 categories:
  - "pagar-panel"
 type: "product"

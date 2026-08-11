@@ -1,6 +1,6 @@
 ---
 title: "Jual Material Baja Ringan SNI Anti Karat"
-date: "2021-10-01"
+date: "2026-08-11"
 categories:
  - "besi"
 type: "product"

@@ -1,6 +1,6 @@
 ---
 title: "Jual Panel Lantai Beton di Bantar Gebang Bekasi"
-date: "2023-06-17"
+date: "2026-08-11"
 categories:
  - "dak-panel"
 type: "product"

@@ -1,6 +1,6 @@
 ---
 title: "Jual Batako Press di Kramat Jati Jakarta Gratis Ongkir"
-date: "2023-07-25"
+date: "2026-08-11"
 categories:
  - "batako"
 type: "product"

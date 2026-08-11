@@ -1,6 +1,6 @@
 ---
 title: "Jual Batako Press di Rawajati Jakarta Gratis Ongkir"
-date: "2023-06-25"
+date: "2026-08-11"
 categories:
  - "batako"
 type: "product"

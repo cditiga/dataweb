@@ -1,6 +1,6 @@
 ---
 title: "Model Sofa Bed Lipat Yang Banyak Dicari"
-date: "2024-09-07"
+date: "2026-08-11"
 categories:
  - "blog"
 type: "service"

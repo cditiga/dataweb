@@ -1,6 +1,6 @@
 ---
 title: "Sewa Crane di Jampang Tengah Sukabumi Per Jam"
-date: "2023-04-09"
+date: "2026-08-11"
 categories:
  - "crane"
 type: "service"

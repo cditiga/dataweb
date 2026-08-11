@@ -1,6 +1,6 @@
 ---
 title: "Jual Pagar Panel Beton di Rengasdengklok Karawang"
-date: "2023-08-23"
+date: "2026-08-11"
 categories:
  - "pagar-panel"
 type: "product"

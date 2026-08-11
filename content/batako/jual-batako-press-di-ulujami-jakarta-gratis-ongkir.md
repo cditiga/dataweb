@@ -1,6 +1,6 @@
 ---
 title: "Jual Batako Press di Ulujami Jakarta Gratis Ongkir"
-date: "2023-06-15"
+date: "2026-08-11"
 categories:
  - "batako"
 type: "product"

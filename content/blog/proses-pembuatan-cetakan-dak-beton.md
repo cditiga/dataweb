@@ -1,6 +1,6 @@
 ---
 title: "Proses Pembuatan Cetakan Dak Beton (bekisting)"
-date: "2024-09-29"
+date: "2026-08-11"
 categories:
  - "blog"
 type: "service"

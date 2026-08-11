@@ -1,6 +1,6 @@
 ---
 title: "Layanan Cor Jayamix /Readymix di Slipi Jakarta"
-date: "2023-07-07"
+date: "2026-08-11"
 categories:
  - "cor"
 type: "service"

@@ -1,6 +1,6 @@
 ---
 title: "Sewa Crane di Gunung Guruh Sukabumi Per Jam"
-date: "2023-09-30"
+date: "2026-08-11"
 categories:
  - "crane"
 type: "service"

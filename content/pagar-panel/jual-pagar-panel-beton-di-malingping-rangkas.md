@@ -1,6 +1,6 @@
 ---
 title: "Jual Pagar Panel Beton di Malingping Rangkas"
-date: "2023-07-11"
+date: "2026-08-11"
 categories:
  - "pagar-panel"
 type: "product"

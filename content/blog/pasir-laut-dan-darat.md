@@ -1,6 +1,6 @@
 ---
 title: "Inilah yang Dimaksud dengan Pasir Laut dan Darat"
-date: "2024-09-19"
+date: "2026-08-11"
 categories:
  - "blog"
 type: "service"

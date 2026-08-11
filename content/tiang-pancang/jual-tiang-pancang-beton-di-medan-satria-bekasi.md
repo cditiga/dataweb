@@ -1,6 +1,6 @@
 ---
 title: "Jual Tiang Pancang Beton di Medan Satria Bekasi"
-date: "2023-01-25"
+date: "2026-08-11"
 categories:
  - "tiang-pancang"
 type: "product"

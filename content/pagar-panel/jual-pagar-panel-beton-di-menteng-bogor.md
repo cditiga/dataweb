@@ -1,6 +1,6 @@
 ---
 title: "Jual Pagar Panel Beton di Menteng Bogor"
-date: "2023-04-10"
+date: "2026-08-11"
 categories:
  - "pagar-panel"
 type: "product"

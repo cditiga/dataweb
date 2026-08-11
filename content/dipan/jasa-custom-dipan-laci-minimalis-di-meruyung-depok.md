@@ -1,6 +1,6 @@
 ---
 title: "Jasa Custom Dipan Laci Minimalis Di Meruyung Depok"
-date: "2024-07-08"
+date: "2026-08-11"
 categories:
  - "dipan"
 type: "service"

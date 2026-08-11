@@ -1,6 +1,6 @@
 ---
 title: "Harga Custom Lemari Pakaian Di Bojongmangu Bekasi"
-date: "2024-06-24"
+date: "2026-08-11"
 categories:
  - "lemari"
 type: "service"

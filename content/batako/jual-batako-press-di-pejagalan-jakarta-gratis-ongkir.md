@@ -1,6 +1,6 @@
 ---
 title: "Jual Batako Press di Pejagalan Jakarta Gratis Ongkir"
-date: "2023-01-10"
+date: "2026-08-11"
 categories:
  - "batako"
 type: "product"

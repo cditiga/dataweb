@@ -1,6 +1,6 @@
 ---
 title: "Jual Panel Lantai Beton di Lebakwangi Serang"
-date: "2023-07-27"
+date: "2026-08-11"
 categories:
  - "dak-panel"
 type: "product"

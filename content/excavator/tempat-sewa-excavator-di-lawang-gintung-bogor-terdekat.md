@@ -1,6 +1,6 @@
 ---
 title: "Tempat Sewa Excavator di Lawang Gintung Bogor Terdekat"
-date: "2023-08-05"
+date: "2026-08-11"
 categories:
  - "excavator"
 type: "service"

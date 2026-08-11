@@ -1,6 +1,6 @@
 ---
 title: "Jual Pagar Panel Beton di Babakan Bogor"
-date: "2023-11-23"
+date: "2026-08-11"
 categories:
  - "pagar-panel"
 type: "product"

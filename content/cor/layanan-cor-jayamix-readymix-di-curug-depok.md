@@ -1,6 +1,6 @@
 ---
 title: "Layanan Cor Jayamix /Readymix di Curug Depok"
-date: "2023-09-17"
+date: "2026-08-11"
 categories:
  - "cor"
 type: "service"

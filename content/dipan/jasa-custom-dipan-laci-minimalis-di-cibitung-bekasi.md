@@ -1,6 +1,6 @@
 ---
 title: "Jasa Custom Dipan Laci Minimalis Di Cibitung Bekasi"
-date: "2024-07-22"
+date: "2026-08-11"
 categories:
  - "dipan"
 type: "service"

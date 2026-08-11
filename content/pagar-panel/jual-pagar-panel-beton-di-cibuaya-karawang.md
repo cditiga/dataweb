@@ -1,6 +1,6 @@
 ---
 title: "Jual Pagar Panel Beton di Cibuaya Karawang"
-date: "2023-06-25"
+date: "2026-08-11"
 categories:
  - "pagar-panel"
 type: "product"

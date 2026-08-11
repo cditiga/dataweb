@@ -1,6 +1,6 @@
 ---
 title: "Bahaya Pengaplikasian Mutu Beton Ready Mix tidak Tepat Guna"
-date: "2024-10-03"
+date: "2026-08-11"
 categories:
  - "blog"
 type: "service"

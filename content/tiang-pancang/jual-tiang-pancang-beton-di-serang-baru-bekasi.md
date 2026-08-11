@@ -1,6 +1,6 @@
 ---
 title: "Jual Tiang Pancang Beton di Serang Baru Bekasi"
-date: "2023-10-19"
+date: "2026-08-11"
 categories:
  - "tiang-pancang"
 type: "product"

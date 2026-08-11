@@ -1,6 +1,6 @@
 ---
 title: "Jual Pagar Panel Beton di Kedung Jaya Bogor"
-date: "2023-09-06"
+date: "2026-08-11"
 categories:
  - "pagar-panel"
 type: "product"

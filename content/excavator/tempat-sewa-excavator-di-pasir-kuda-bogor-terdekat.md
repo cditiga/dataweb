@@ -1,6 +1,6 @@
 ---
 title: "Tempat Sewa Excavator di Pasir Kuda Bogor Terdekat"
-date: "2023-01-22"
+date: "2026-08-11"
 categories:
  - "excavator"
 type: "service"

@@ -1,6 +1,6 @@
 ---
 title: "Layanan Cor Jayamix /Readymix di Harapan Mulya Jakarta"
-date: "2023-06-12"
+date: "2026-08-11"
 categories:
  - "cor"
 type: "service"

@@ -1,6 +1,6 @@
 ---
 title: "Jual Pagar Panel Beton di Pebayuran Bekasi"
-date: "2023-11-28"
+date: "2026-08-11"
 categories:
  - "pagar-panel"
 type: "product"

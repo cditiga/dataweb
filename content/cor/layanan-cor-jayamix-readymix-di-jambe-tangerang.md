@@ -1,6 +1,6 @@
 ---
 title: "Layanan Cor Jayamix /Readymix di Jambe Tangerang"
-date: "2023-04-01"
+date: "2026-08-11"
 categories:
  - "cor"
 type: "service"

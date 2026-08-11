@@ -1,6 +1,6 @@
 ---
 title: "Jasa Sewa Bull Dozer di Jatinegara Kaum Jakarta [Harian]"
-date: "2023-02-26"
+date: "2026-08-11"
 categories:
  - "bull-dozer"
 type: "service"

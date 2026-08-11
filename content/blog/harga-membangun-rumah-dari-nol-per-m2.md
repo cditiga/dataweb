@@ -1,6 +1,6 @@
 ---
 title: "Harga Membangun Rumah dari Nol per M2"
-date: "2024-08-22"
+date: "2026-08-11"
 categories:
  - "blog"
 type: "service"

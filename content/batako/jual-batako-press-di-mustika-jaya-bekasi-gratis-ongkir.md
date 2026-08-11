@@ -1,6 +1,6 @@
 ---
 title: "Jual Batako Press di Mustika Jaya Bekasi Gratis Ongkir"
-date: "2023-08-31"
+date: "2026-08-11"
 categories:
  - "batako"
 type: "product"

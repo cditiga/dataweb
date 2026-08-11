@@ -1,6 +1,6 @@
 ---
 title: "Batu Gajah Sebagai Bagian Dari Batu Belah dan Split"
-date: "2024-09-18"
+date: "2026-08-11"
 categories:
  - "blog"
 type: "service"

@@ -1,6 +1,6 @@
 ---
 title: "Jual Material Bata Merah di Duripulo Jakarta Gratis Ongkir"
-date: "2023-02-19"
+date: "2026-08-11"
 categories:
  - "bata"
 type: "product"

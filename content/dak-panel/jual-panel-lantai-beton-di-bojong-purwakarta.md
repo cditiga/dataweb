@@ -1,6 +1,6 @@
 ---
 title: "Jual Panel Lantai Beton di Bojong Purwakarta"
-date: "2023-02-19"
+date: "2026-08-11"
 categories:
  - "dak-panel"
 type: "product"

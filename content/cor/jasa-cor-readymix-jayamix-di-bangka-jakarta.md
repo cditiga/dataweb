@@ -1,6 +1,6 @@
 ---
 title: "Jasa Cor Readymix /Jayamix di Bangka Jakarta"
-date: "2023-06-10"
+date: "2026-08-11"
 categories:
  - "cor"
 type: "service"

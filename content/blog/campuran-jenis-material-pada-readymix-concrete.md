@@ -1,6 +1,6 @@
 ---
 title: "Kompsisi Jenis Material Pada Beton Readymix"
-date: "2024-09-24"
+date: "2026-08-11"
 categories:
  - "blog"
 type: "service"

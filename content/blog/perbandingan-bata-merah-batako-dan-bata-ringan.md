@@ -1,6 +1,6 @@
 ---
 title: "Perbandingan Bata Merah Batako dan Bata Ringan"
-date: "2024-09-03"
+date: "2026-08-11"
 categories:
  - "blog"
 type: "service"

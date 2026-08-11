@@ -1,6 +1,6 @@
 ---
 title: "Jual Pagar Panel Beton di Tanah Baru Bogor"
-date: "2023-03-15"
+date: "2026-08-11"
 categories:
  - "pagar-panel"
 type: "product"

@@ -1,6 +1,6 @@
 ---
 title: "Harga Jual Truck Mixer Beton Hino Isuzu Mitsubishi"
-date: "2014-08-09"
+date: "2026-08-11"
 categories:
  - "mixer"
 type: "service"

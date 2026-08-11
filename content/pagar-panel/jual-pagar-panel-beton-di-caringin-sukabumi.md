@@ -1,6 +1,6 @@
 ---
 title: "Jual Pagar Panel Beton di Caringin Sukabumi"
-date: "2023-07-04"
+date: "2026-08-11"
 categories:
  - "pagar-panel"
 type: "product"

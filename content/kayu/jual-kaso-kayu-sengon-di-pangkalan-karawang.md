@@ -1,6 +1,6 @@
 ---
 title: "Jual Kaso Kayu Sengon Di Pangkalan Karawang"
-date: "2024-06-30"
+date: "2026-08-11"
 categories:
  - "kayu"
 type: "product"

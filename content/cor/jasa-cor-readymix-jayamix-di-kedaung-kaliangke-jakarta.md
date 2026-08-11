@@ -1,6 +1,6 @@
 ---
 title: "Jasa Cor Readymix /Jayamix di Kedaung Kaliangke Jakarta"
-date: "2023-12-07"
+date: "2026-08-11"
 categories:
  - "cor"
 type: "service"

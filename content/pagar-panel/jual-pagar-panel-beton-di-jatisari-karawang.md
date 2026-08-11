@@ -1,6 +1,6 @@
 ---
 title: "Jual Pagar Panel Beton di Jatisari Karawang"
-date: "2023-04-26"
+date: "2026-08-11"
 categories:
  - "pagar-panel"
 type: "product"

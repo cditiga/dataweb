@@ -1,6 +1,6 @@
 ---
 title: "Tehnik Perawatan /Curing Beton Yang Benar"
-date: "2024-10-07"
+date: "2026-08-11"
 categories:
  - "blog"
 type: "service"

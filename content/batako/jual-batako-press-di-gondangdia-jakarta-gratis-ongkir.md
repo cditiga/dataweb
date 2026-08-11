@@ -1,6 +1,6 @@
 ---
 title: "Jual Batako Press di Gondangdia Jakarta Gratis Ongkir"
-date: "2023-05-21"
+date: "2026-08-11"
 categories:
  - "batako"
 type: "product"

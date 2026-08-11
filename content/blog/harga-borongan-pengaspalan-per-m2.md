@@ -1,6 +1,6 @@
 ---
 title: "Harga Borongan Pengaspalan Per m2"
-date: "2024-08-27"
+date: "2026-08-11"
 categories:
  - "blog"
 type: "service"

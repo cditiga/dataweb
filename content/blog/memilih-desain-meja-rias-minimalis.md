@@ -1,6 +1,6 @@
 ---
 title: "Cara Memilih Desain Meja Rias Minimalis"
-date: "2024-08-12"
+date: "2026-08-11"
 categories:
  - "blog"
 type: "service"

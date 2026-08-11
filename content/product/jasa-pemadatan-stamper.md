@@ -1,6 +1,6 @@
 ---
 title: "Jasa Pemadatan dengan Stamper"
-date: "2021-09-15"
+date: "2026-08-11"
 categories:
  - "jasaurug"
 type: "product"

@@ -1,6 +1,6 @@
 ---
 title: "Jual Material Bata Merah di Jakarta Barat Gratis Ongkir"
-date: "2023-09-15"
+date: "2026-08-11"
 categories:
  - "bata"
 type: "product"

@@ -1,6 +1,6 @@
 ---
 title: "Tips Memilih Desain Sofa Minimalis Terbaik"
-date: "2024-10-17"
+date: "2026-08-11"
 categories:
  - "blog"
 type: "service"

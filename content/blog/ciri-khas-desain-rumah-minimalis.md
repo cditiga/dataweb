@@ -1,6 +1,6 @@
 ---
 title: "Ciri Khas Desain Rumah Minimalis"
-date: "2024-09-06"
+date: "2026-08-11"
 categories:
  - "blog"
 type: "service"

@@ -1,6 +1,6 @@
 ---
 title: "Jenis Kotoran Ayam Untuk Pupuk Tanaman"
-date: "2024-10-15"
+date: "2026-08-11"
 categories:
  - "blog"
 type: "service"

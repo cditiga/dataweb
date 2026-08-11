@@ -1,6 +1,6 @@
 ---
 title: "Layanan Cor Jayamix /Readymix di Pondok Salam Purwakarta"
-date: "2023-12-15"
+date: "2026-08-11"
 categories:
  - "cor"
 type: "service"

@@ -1,6 +1,6 @@
 ---
 title: "Yang Dilakukan Setelah Pengecoran"
-date: "2024-09-30"
+date: "2026-08-11"
 categories:
  - "blog"
 type: "service"

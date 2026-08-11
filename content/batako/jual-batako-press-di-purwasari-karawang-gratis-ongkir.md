@@ -1,6 +1,6 @@
 ---
 title: "Jual Batako Press di Purwasari Karawang Gratis Ongkir"
-date: "2023-11-26"
+date: "2026-08-11"
 categories:
  - "batako"
 type: "product"

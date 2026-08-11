@@ -1,6 +1,6 @@
 ---
 title: "Jual Pagar Panel Beton di Bojongmangu Bekasi"
-date: "2023-12-21"
+date: "2026-08-11"
 categories:
  - "pagar-panel"
 type: "product"

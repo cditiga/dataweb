@@ -1,6 +1,6 @@
 ---
 title: "Jual Pagar Panel Beton di Sukasari Purwakarta"
-date: "2023-05-27"
+date: "2026-08-11"
 categories:
  - "pagar-panel"
 type: "product"

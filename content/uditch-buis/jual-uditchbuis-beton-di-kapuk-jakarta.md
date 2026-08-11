@@ -1,6 +1,6 @@
 ---
 title: "Jual Uditch/Buis Beton di Kapuk Jakarta"
-date: "2023-02-26"
+date: "2026-08-11"
 categories:
  - "uditch-buis"
 type: "product"

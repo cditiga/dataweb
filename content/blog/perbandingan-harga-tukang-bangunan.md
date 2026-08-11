@@ -1,6 +1,6 @@
 ---
 title: "Perbandingan Harga Tukang Bangunan Borongan Dan Harian"
-date: "2024-08-15"
+date: "2026-08-11"
 categories:
  - "blog"
 type: "service"

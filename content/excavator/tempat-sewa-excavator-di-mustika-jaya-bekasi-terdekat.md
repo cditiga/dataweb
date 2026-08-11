@@ -1,6 +1,6 @@
 ---
 title: "Tempat Sewa Excavator di Mustika Jaya Bekasi Terdekat"
-date: "2023-11-29"
+date: "2026-08-11"
 categories:
  - "excavator"
 type: "service"

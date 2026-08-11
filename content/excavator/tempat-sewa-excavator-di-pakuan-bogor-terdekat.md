@@ -1,6 +1,6 @@
 ---
 title: "Tempat Sewa Excavator di Pakuan Bogor Terdekat"
-date: "2023-06-24"
+date: "2026-08-11"
 categories:
  - "excavator"
 type: "service"

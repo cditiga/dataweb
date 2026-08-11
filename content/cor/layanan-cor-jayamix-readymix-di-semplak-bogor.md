@@ -1,6 +1,6 @@
 ---
 title: "Layanan Cor Jayamix /Readymix di Semplak Bogor"
-date: "2023-11-11"
+date: "2026-08-11"
 categories:
  - "cor"
 type: "service"

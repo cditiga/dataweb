@@ -1,6 +1,6 @@
 ---
 title: "Sewa Crane di Glodok Jakarta Per Jam"
-date: "2023-06-29"
+date: "2026-08-11"
 categories:
  - "crane"
 type: "service"

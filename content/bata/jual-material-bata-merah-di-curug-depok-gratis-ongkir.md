@@ -1,6 +1,6 @@
 ---
 title: "Jual Material Bata Merah di Curug Depok Gratis Ongkir"
-date: "2023-11-06"
+date: "2026-08-11"
 categories:
  - "bata"
 type: "product"

@@ -1,6 +1,6 @@
 ---
 title: "Jual Batako Press di Harjamukti Depok Gratis Ongkir"
-date: "2023-07-09"
+date: "2026-08-11"
 categories:
  - "batako"
 type: "product"

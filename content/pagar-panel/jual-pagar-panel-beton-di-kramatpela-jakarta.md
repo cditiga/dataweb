@@ -1,6 +1,6 @@
 ---
 title: "Jual Pagar Panel Beton di Kramatpela Jakarta"
-date: "2023-06-02"
+date: "2026-08-11"
 categories:
  - "pagar-panel"
 type: "product"

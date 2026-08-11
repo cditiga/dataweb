@@ -1,6 +1,6 @@
 ---
 title: "Jasa Custom Dipan Laci Minimalis Di Ciparigi Bogor"
-date: "2024-10-03"
+date: "2026-08-11"
 categories:
  - "dipan"
 type: "service"

@@ -1,6 +1,6 @@
 ---
 title: "Jual Pagar Panel Beton di Serengseng Jakarta"
-date: "2023-01-14"
+date: "2026-08-11"
 categories:
  - "pagar-panel"
 type: "product"

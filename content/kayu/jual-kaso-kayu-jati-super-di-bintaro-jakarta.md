@@ -1,6 +1,6 @@
 ---
 title: "Jual Kaso Kayu Jati Super Di Bintaro Jakarta"
-date: "2024-04-25"
+date: "2026-08-11"
 categories:
  - "kayu"
 type: "product"

@@ -1,6 +1,6 @@
 ---
 title: "Layanan Cor Jayamix /Readymix di Kebon Kalapa Bogor"
-date: "2023-11-25"
+date: "2026-08-11"
 categories:
  - "cor"
 type: "service"

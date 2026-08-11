@@ -1,6 +1,6 @@
 ---
 title: "Jual Hebel Bata Ringan di Glodok Jakarta Gratis Ongkir"
-date: "2023-11-05"
+date: "2026-08-11"
 categories:
  - "hebel"
 type: "product"

@@ -1,6 +1,6 @@
 ---
 title: "Jual Panel Lantai Beton di Cipocok Jaya Serang"
-date: "2023-04-28"
+date: "2026-08-11"
 categories:
  - "dak-panel"
 type: "product"

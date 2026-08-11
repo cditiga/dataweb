@@ -1,6 +1,6 @@
 ---
 title: "Jasa Cor Readymix /Jayamix di Bojongkerta Bogor"
-date: "2023-12-15"
+date: "2026-08-11"
 categories:
  - "cor"
 type: "service"

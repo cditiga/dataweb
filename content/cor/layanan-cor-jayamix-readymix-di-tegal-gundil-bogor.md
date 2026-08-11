@@ -1,6 +1,6 @@
 ---
 title: "Layanan Cor Jayamix /Readymix di Tegal Gundil Bogor"
-date: "2023-01-08"
+date: "2026-08-11"
 categories:
  - "cor"
 type: "service"

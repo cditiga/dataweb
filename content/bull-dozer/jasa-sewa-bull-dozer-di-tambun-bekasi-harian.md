@@ -1,6 +1,6 @@
 ---
 title: "Jasa Sewa Bull Dozer di Tambun Bekasi [Harian]"
-date: "2023-07-13"
+date: "2026-08-11"
 categories:
  - "bull-dozer"
 type: "service"

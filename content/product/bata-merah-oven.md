@@ -1,6 +1,6 @@
 ---
 title: "Jual Bata Merah Oven"
-date: "2021-09-09"
+date: "2026-08-11"
 categories:
  - "bata"
 type: "product"

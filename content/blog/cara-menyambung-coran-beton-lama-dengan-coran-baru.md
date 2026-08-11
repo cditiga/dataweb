@@ -1,6 +1,6 @@
 ---
 title: "Cara Menyambung Coran Beton Lama dengan Coran Baru"
-date: "2024-09-27"
+date: "2026-08-11"
 categories:
  - "blog"
 type: "service"

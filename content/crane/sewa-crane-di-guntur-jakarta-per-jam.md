@@ -1,6 +1,6 @@
 ---
 title: "Sewa Crane di Guntur Jakarta Per Jam"
-date: "2023-05-27"
+date: "2026-08-11"
 categories:
  - "crane"
 type: "service"

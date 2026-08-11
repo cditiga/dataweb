@@ -1,6 +1,6 @@
 ---
 title: "Jual Pagar Panel Beton di Pancoran Mas Depok"
-date: "2023-02-27"
+date: "2026-08-11"
 categories:
  - "pagar-panel"
 type: "product"

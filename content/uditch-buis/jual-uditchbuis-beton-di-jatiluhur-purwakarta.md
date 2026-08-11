@@ -1,6 +1,6 @@
 ---
 title: "Jual Uditch/Buis Beton di Jatiluhur Purwakarta"
-date: "2023-06-04"
+date: "2026-08-11"
 categories:
  - "uditch-buis"
 type: "product"

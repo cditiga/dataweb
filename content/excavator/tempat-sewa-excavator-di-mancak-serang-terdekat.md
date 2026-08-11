@@ -1,6 +1,6 @@
 ---
 title: "Tempat Sewa Excavator di Mancak Serang Terdekat"
-date: "2023-05-30"
+date: "2026-08-11"
 categories:
  - "excavator"
 type: "service"

@@ -1,6 +1,6 @@
 ---
 title: "10 Cara Menata Kamar Anak Agar Terlihat Menarik"
-date: "2024-10-17"
+date: "2026-08-11"
 categories:
  - "blog"
 type: "service"

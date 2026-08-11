@@ -1,6 +1,6 @@
 ---
 title: "Inilah Penyebab Beton Cor Lambat Mengering"
-date: "2024-10-12"
+date: "2026-08-11"
 categories:
  - "blog"
 type: "service"

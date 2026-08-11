@@ -1,6 +1,6 @@
 ---
 title: "Tempat Sewa Excavator di Telukjambe Karawang Terdekat"
-date: "2023-02-25"
+date: "2026-08-11"
 categories:
  - "excavator"
 type: "service"

@@ -1,6 +1,6 @@
 ---
 title: "Jasa Sewa Bull Dozer di Pakisjaya Karawang [Harian]"
-date: "2023-10-13"
+date: "2026-08-11"
 categories:
  - "bull-dozer"
 type: "service"

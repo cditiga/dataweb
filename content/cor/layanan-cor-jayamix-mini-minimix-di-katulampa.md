@@ -1,6 +1,6 @@
 ---
 title: "Layanan Cor Jayamix Mini /Minimix di Katulampa"
-date: "2023-07-20"
+date: "2026-08-11"
 categories:
  - "cor"
 type: "service"

@@ -1,6 +1,6 @@
 ---
 title: "Mengetahui Kualitas Material Cor Beton"
-date: "2024-09-28"
+date: "2026-08-11"
 categories:
  - "blog"
 type: "service"

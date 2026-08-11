@@ -1,6 +1,6 @@
 ---
 title: "Tempat Sewa Excavator di Purwasari Karawang Terdekat"
-date: "2023-12-03"
+date: "2026-08-11"
 categories:
  - "excavator"
 type: "service"

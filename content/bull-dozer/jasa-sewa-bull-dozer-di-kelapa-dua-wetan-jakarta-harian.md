@@ -1,6 +1,6 @@
 ---
 title: "Jasa Sewa Bull Dozer di Kelapa Dua Wetan Jakarta [Harian]"
-date: "2023-06-10"
+date: "2026-08-11"
 categories:
  - "bull-dozer"
 type: "service"

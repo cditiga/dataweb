@@ -1,6 +1,6 @@
 ---
 title: "Jual Material Bata Merah di Slipi Jakarta Gratis Ongkir"
-date: "2023-12-12"
+date: "2026-08-11"
 categories:
  - "bata"
 type: "product"

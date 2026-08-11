@@ -1,6 +1,6 @@
 ---
 title: "Tips Memilih Bufet Minimalis untuk Ruang Keluarga"
-date: "2024-08-17"
+date: "2026-08-11"
 categories:
  - "blog"
 type: "service"

@@ -1,6 +1,6 @@
 ---
 title: "Jual Batako Press di Kemayoran Jakarta Gratis Ongkir"
-date: "2023-07-22"
+date: "2026-08-11"
 categories:
  - "batako"
 type: "product"

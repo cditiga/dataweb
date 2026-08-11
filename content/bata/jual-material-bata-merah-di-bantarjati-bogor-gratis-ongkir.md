@@ -1,6 +1,6 @@
 ---
 title: "Jual Material Bata Merah di Bantarjati Bogor Gratis Ongkir"
-date: "2023-06-14"
+date: "2026-08-11"
 categories:
  - "bata"
 type: "product"

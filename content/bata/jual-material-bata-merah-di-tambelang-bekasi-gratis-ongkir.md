@@ -1,6 +1,6 @@
 ---
 title: "Jual Material Bata Merah di Tambelang Bekasi Gratis Ongkir"
-date: "2023-03-22"
+date: "2026-08-11"
 categories:
  - "bata"
 type: "product"

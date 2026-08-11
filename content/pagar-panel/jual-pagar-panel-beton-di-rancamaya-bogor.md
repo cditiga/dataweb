@@ -1,6 +1,6 @@
 ---
 title: "Jual Pagar Panel Beton di Rancamaya Bogor"
-date: "2023-05-06"
+date: "2026-08-11"
 categories:
  - "pagar-panel"
 type: "product"

@@ -1,6 +1,6 @@
 ---
 title: "Jual Pagar Panel Beton di Warung Kiara Sukabumi"
-date: "2023-11-15"
+date: "2026-08-11"
 categories:
  - "pagar-panel"
 type: "product"

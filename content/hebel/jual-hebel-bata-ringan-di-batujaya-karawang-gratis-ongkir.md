@@ -1,6 +1,6 @@
 ---
 title: "Jual Hebel Bata Ringan di Batujaya Karawang Gratis Ongkir"
-date: "2023-09-05"
+date: "2026-08-11"
 categories:
  - "hebel"
 type: "product"

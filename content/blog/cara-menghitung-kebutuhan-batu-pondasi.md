@@ -1,6 +1,6 @@
 ---
 title: "Cara Menghitung Kebutuhan Batu Pondasi"
-date: "2024-09-21"
+date: "2026-08-11"
 categories:
  - "blog"
 type: "service"

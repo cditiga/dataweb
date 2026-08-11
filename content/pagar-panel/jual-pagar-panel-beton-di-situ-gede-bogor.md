@@ -1,6 +1,6 @@
 ---
 title: "Jual Pagar Panel Beton di Situ Gede Bogor"
-date: "2023-11-07"
+date: "2026-08-11"
 categories:
  - "pagar-panel"
 type: "product"

@@ -1,6 +1,6 @@
 ---
 title: "Jual Pagar Panel Beton di Kampung Tengah Jakarta"
-date: "2023-10-01"
+date: "2026-08-11"
 categories:
  - "pagar-panel"
 type: "product"

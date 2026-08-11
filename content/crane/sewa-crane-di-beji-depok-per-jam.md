@@ -1,6 +1,6 @@
 ---
 title: "Sewa Crane di Beji Depok Per Jam"
-date: "2023-01-17"
+date: "2026-08-11"
 categories:
  - "crane"
 type: "service"

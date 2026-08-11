@@ -1,6 +1,6 @@
 ---
 title: "Sewa Crane di Karangbahagia Bekasi Per Jam"
-date: "2023-10-16"
+date: "2026-08-11"
 categories:
  - "crane"
 type: "service"

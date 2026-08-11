@@ -1,6 +1,6 @@
 ---
 title: "Jasa Cor Readymix /Jayamix di Telukjambe Barat Karawang"
-date: "2023-11-14"
+date: "2026-08-11"
 categories:
  - "cor"
 type: "service"

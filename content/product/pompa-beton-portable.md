@@ -1,6 +1,6 @@
 ---
 title: "Menyewakan Pompa Beton Portable atau Pompa Kodok"
-date: "2021-09-04"
+date: "2026-08-11"
 categories:
  - "cor"
 type: "product"

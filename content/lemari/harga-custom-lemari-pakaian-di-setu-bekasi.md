@@ -1,6 +1,6 @@
 ---
 title: "Harga Custom Lemari Pakaian Di Setu Bekasi"
-date: "2024-06-13"
+date: "2026-08-11"
 categories:
  - "lemari"
 type: "service"

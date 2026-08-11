@@ -1,6 +1,6 @@
 ---
 title: "Keunggulan Beton Instan VS Beton Konvensional"
-date: "2024-08-30"
+date: "2026-08-11"
 categories:
  - "blog"
 type: "service"

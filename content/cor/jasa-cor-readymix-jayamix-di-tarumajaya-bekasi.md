@@ -1,6 +1,6 @@
 ---
 title: "Jasa Cor Readymix /Jayamix di Tarumajaya Bekasi"
-date: "2023-05-29"
+date: "2026-08-11"
 categories:
  - "cor"
 type: "service"

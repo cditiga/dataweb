@@ -1,6 +1,6 @@
 ---
 title: "Layanan Cor Jayamix /Readymix di Cipayung Depok"
-date: "2023-08-02"
+date: "2026-08-11"
 categories:
  - "cor"
 type: "service"

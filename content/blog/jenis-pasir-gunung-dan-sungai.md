@@ -1,6 +1,6 @@
 ---
 title: "Macam macam Pasir Gunung dan Sungai"
-date: "2024-09-19"
+date: "2026-08-11"
 categories:
  - "blog"
 type: "service"

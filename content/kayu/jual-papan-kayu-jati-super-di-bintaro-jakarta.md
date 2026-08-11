@@ -1,6 +1,6 @@
 ---
 title: "Jual Papan Kayu Jati Super Di Bintaro Jakarta"
-date: "2024-07-05"
+date: "2026-08-11"
 categories:
  - "kayu"
 type: "product"

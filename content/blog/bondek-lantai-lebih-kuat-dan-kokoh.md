@@ -1,6 +1,6 @@
 ---
 title: "Bondek Material Untuk Lantai Lebih Kuat dan Kokoh"
-date: "2024-10-19"
+date: "2026-08-11"
 categories:
  - "blog"
 type: "service"

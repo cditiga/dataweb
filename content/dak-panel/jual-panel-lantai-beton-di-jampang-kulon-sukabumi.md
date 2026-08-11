@@ -1,6 +1,6 @@
 ---
 title: "Jual Panel Lantai Beton di Jampang Kulon Sukabumi"
-date: "2023-07-14"
+date: "2026-08-11"
 categories:
  - "dak-panel"
 type: "product"

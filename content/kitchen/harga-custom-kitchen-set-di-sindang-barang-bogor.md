@@ -1,6 +1,6 @@
 ---
 title: "Harga Custom Kitchen Set Di Sindang Barang Bogor"
-date: "2024-10-22"
+date: "2026-08-11"
 categories:
  - "kitchen"
 type: "service"

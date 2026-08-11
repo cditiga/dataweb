@@ -1,6 +1,6 @@
 ---
 title: "Jual Pagar Panel Beton di Pangkalan Jati Depok"
-date: "2023-04-11"
+date: "2026-08-11"
 categories:
  - "pagar-panel"
 type: "product"

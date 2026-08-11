@@ -1,6 +1,6 @@
 ---
 title: "Jual Pagar Panel Beton di Bondongan Bogor"
-date: "2023-08-10"
+date: "2026-08-11"
 categories:
  - "pagar-panel"
 type: "product"

@@ -1,6 +1,6 @@
 ---
 title: "Inilah 10 Jenis Batu Alam dan Kegunaannya"
-date: "2024-10-19"
+date: "2026-08-11"
 categories:
  - "blog"
 type: "service"

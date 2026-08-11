@@ -1,6 +1,6 @@
 ---
 title: "Jual Panel Lantai Beton di Nyalindung Sukabumi"
-date: "2023-02-03"
+date: "2026-08-11"
 categories:
  - "dak-panel"
 type: "product"

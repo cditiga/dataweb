@@ -1,6 +1,6 @@
 ---
 title: "Jual Kaso Kayu Meranti Super Di Pasir Jaya Bogor"
-date: "2024-05-15"
+date: "2026-08-11"
 categories:
  - "kayu"
 type: "product"

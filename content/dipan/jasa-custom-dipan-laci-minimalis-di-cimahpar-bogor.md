@@ -1,6 +1,6 @@
 ---
 title: "Jasa Custom Dipan Laci Minimalis Di Cimahpar Bogor"
-date: "2024-06-28"
+date: "2026-08-11"
 categories:
  - "dipan"
 type: "service"

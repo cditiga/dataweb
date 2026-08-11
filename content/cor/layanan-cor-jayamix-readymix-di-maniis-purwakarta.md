@@ -1,6 +1,6 @@
 ---
 title: "Layanan Cor Jayamix /Readymix di Maniis Purwakarta"
-date: "2023-09-05"
+date: "2026-08-11"
 categories:
  - "cor"
 type: "service"

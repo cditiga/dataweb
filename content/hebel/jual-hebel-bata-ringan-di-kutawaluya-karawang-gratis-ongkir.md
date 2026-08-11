@@ -1,6 +1,6 @@
 ---
 title: "Jual Hebel Bata Ringan di Kutawaluya Karawang Gratis Ongkir"
-date: "2023-01-02"
+date: "2026-08-11"
 categories:
  - "hebel"
 type: "product"

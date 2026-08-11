@@ -1,6 +1,6 @@
 ---
 title: "Kebijakan Privasi"
-date: "2019-03-11"
+date: "2026-08-11"
 description: "Kebijakan Privasi. Email: customercdi@gmail.com..."
 ---
 

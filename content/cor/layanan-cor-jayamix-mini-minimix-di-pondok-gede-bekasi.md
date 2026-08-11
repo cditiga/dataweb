@@ -1,6 +1,6 @@
 ---
 title: "Layanan Cor Jayamix Mini /Minimix di Pondok Gede Bekasi"
-date: "2023-05-10"
+date: "2026-08-11"
 categories:
  - "cor"
 type: "service"

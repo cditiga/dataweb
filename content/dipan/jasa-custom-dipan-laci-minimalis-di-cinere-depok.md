@@ -1,6 +1,6 @@
 ---
 title: "Jasa Custom Dipan Laci Minimalis Di Cinere Depok"
-date: "2024-08-04"
+date: "2026-08-11"
 categories:
  - "dipan"
 type: "service"

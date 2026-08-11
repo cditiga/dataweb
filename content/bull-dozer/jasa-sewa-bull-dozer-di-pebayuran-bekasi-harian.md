@@ -1,6 +1,6 @@
 ---
 title: "Jasa Sewa Bull Dozer di Pebayuran Bekasi [Harian]"
-date: "2023-10-14"
+date: "2026-08-11"
 categories:
  - "bull-dozer"
 type: "service"

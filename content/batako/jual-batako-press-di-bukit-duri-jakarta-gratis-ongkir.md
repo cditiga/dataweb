@@ -1,6 +1,6 @@
 ---
 title: "Jual Batako Press di Bukit Duri Jakarta Gratis Ongkir"
-date: "2023-08-27"
+date: "2026-08-11"
 categories:
  - "batako"
 type: "product"

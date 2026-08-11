@@ -1,6 +1,6 @@
 ---
 title: "Tempat Sewa Excavator di Babelan Bekasi Terdekat"
-date: "2023-01-05"
+date: "2026-08-11"
 categories:
  - "excavator"
 type: "service"

@@ -1,6 +1,6 @@
 ---
 title: "Jual Panel Lantai Beton di Karang Anyar Jakarta"
-date: "2023-01-03"
+date: "2026-08-11"
 categories:
  - "dak-panel"
 type: "product"

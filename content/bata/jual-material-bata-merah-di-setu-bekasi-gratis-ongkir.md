@@ -1,6 +1,6 @@
 ---
 title: "Jual Material Bata Merah di Setu Bekasi Gratis Ongkir"
-date: "2023-02-27"
+date: "2026-08-11"
 categories:
  - "bata"
 type: "product"

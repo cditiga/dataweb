@@ -1,6 +1,6 @@
 ---
 title: "Jual Tiang Pancang Beton di Parung Kuda Sukabumi"
-date: "2023-09-27"
+date: "2026-08-11"
 categories:
  - "tiang-pancang"
 type: "product"

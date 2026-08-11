@@ -1,6 +1,6 @@
 ---
 title: "Layanan Cor Jayamix /Readymix di Gandaria Utara Jakarta"
-date: "2023-10-01"
+date: "2026-08-11"
 categories:
  - "cor"
 type: "service"

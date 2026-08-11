@@ -1,6 +1,6 @@
 ---
 title: "Jasa Sewa Bull Dozer di Petogogan Jakarta [Harian]"
-date: "2023-06-06"
+date: "2026-08-11"
 categories:
  - "bull-dozer"
 type: "service"

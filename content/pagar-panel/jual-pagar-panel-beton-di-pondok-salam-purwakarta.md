@@ -1,6 +1,6 @@
 ---
 title: "Jual Pagar Panel Beton di Pondok Salam Purwakarta"
-date: "2023-02-28"
+date: "2026-08-11"
 categories:
  - "pagar-panel"
 type: "product"

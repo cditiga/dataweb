@@ -1,6 +1,6 @@
 ---
 title: "Waktu yang Tepat Bongkar Bekisting"
-date: "2024-10-03"
+date: "2026-08-11"
 categories:
  - "blog"
 type: "service"

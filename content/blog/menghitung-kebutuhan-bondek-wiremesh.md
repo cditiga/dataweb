@@ -1,6 +1,6 @@
 ---
 title: "Cara Menghitung Kebutuhan Bondek & Wiremesh"
-date: "2024-10-21"
+date: "2026-08-11"
 categories:
  - "blog"
 type: "service"

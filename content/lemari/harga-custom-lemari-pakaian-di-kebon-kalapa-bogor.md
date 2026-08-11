@@ -1,6 +1,6 @@
 ---
 title: "Harga Custom Lemari Pakaian Di Kebon Kalapa Bogor"
-date: "2024-06-20"
+date: "2026-08-11"
 categories:
  - "lemari"
 type: "service"

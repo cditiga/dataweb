@@ -1,6 +1,6 @@
 ---
 title: "Jual Material Bata Merah di Wanayasa Purwakarta Gratis Ongkir"
-date: "2023-06-12"
+date: "2026-08-11"
 categories:
  - "bata"
 type: "product"

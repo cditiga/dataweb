@@ -1,6 +1,6 @@
 ---
 title: "Jual Pagar Panel Beton di Cipanas Rangkas"
-date: "2023-07-12"
+date: "2026-08-11"
 categories:
  - "pagar-panel"
 type: "product"

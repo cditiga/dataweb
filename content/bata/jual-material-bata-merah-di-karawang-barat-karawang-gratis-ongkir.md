@@ -1,6 +1,6 @@
 ---
 title: "Jual Material Bata Merah di Karawang Barat Karawang Gratis Ongkir"
-date: "2023-01-20"
+date: "2026-08-11"
 categories:
  - "bata"
 type: "product"

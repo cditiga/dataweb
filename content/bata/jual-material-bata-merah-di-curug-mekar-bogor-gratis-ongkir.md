@@ -1,6 +1,6 @@
 ---
 title: "Jual Material Bata Merah di Curug Mekar Bogor Gratis Ongkir"
-date: "2023-06-27"
+date: "2026-08-11"
 categories:
  - "bata"
 type: "product"

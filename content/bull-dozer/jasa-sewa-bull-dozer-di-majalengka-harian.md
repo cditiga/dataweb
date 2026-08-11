@@ -1,6 +1,6 @@
 ---
 title: "Jasa Sewa Bull Dozer di Majalengka [Harian]"
-date: "2023-11-24"
+date: "2026-08-11"
 categories:
  - "bull-dozer"
 type: "service"

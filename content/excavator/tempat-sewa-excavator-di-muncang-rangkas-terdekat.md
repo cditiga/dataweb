@@ -1,6 +1,6 @@
 ---
 title: "Tempat Sewa Excavator di Muncang Rangkas Terdekat"
-date: "2023-02-20"
+date: "2026-08-11"
 categories:
  - "excavator"
 type: "service"

@@ -1,6 +1,6 @@
 ---
 title: "Jual Hebel Bata Ringan di Jati Padang Jakarta Gratis Ongkir"
-date: "2023-06-08"
+date: "2026-08-11"
 categories:
  - "hebel"
 type: "product"

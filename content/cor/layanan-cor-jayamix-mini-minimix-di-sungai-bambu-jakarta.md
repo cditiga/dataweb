@@ -1,6 +1,6 @@
 ---
 title: "Layanan Cor Jayamix Mini /Minimix di Sungai Bambu Jakarta"
-date: "2023-10-04"
+date: "2026-08-11"
 categories:
  - "cor"
 type: "service"

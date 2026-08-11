@@ -1,6 +1,6 @@
 ---
 title: "Harga Custom Kitchen Set Di Cabangbungin Bekasi"
-date: "2024-07-18"
+date: "2026-08-11"
 categories:
  - "kitchen"
 type: "service"

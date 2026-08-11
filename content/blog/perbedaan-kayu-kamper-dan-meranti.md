@@ -1,6 +1,6 @@
 ---
 title: "Perbedaan Kayu Kamper dan Meranti"
-date: "2024-08-23"
+date: "2026-08-11"
 categories:
  - "blog"
 type: "service"

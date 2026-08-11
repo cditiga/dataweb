@@ -1,6 +1,6 @@
 ---
 title: "Kelas Beton Cor Yang Cocok Untuk Rumah Tinggal"
-date: "2024-10-07"
+date: "2026-08-11"
 categories:
  - "blog"
 type: "service"

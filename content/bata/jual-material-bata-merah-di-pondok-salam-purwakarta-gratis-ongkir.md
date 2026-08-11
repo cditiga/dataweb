@@ -1,6 +1,6 @@
 ---
 title: "Jual Material Bata Merah di Pondok Salam Purwakarta Gratis Ongkir"
-date: "2023-02-15"
+date: "2026-08-11"
 categories:
  - "bata"
 type: "product"

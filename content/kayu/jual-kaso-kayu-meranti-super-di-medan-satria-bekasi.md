@@ -1,6 +1,6 @@
 ---
 title: "Jual Kaso Kayu Meranti Super Di Medan Satria Bekasi"
-date: "2024-08-22"
+date: "2026-08-11"
 categories:
  - "kayu"
 type: "product"

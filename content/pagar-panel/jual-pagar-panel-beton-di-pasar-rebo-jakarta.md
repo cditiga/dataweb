@@ -1,6 +1,6 @@
 ---
 title: "Jual Pagar Panel Beton di Pasar Rebo Jakarta"
-date: "2023-02-02"
+date: "2026-08-11"
 categories:
  - "pagar-panel"
 type: "product"

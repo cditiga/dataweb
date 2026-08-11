@@ -1,6 +1,6 @@
 ---
 title: "Jasa Sewa Bull Dozer di Muaragembong Bekasi [Harian]"
-date: "2023-07-09"
+date: "2026-08-11"
 categories:
  - "bull-dozer"
 type: "service"

@@ -1,6 +1,6 @@
 ---
 title: "Jual Pagar Panel Beton di Majalaya Karawang"
-date: "2023-05-07"
+date: "2026-08-11"
 categories:
  - "pagar-panel"
 type: "product"

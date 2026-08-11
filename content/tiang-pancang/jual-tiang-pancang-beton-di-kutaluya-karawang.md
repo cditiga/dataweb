@@ -1,6 +1,6 @@
 ---
 title: "Jual Tiang Pancang Beton di Kutaluya Karawang"
-date: "2023-06-10"
+date: "2026-08-11"
 categories:
  - "tiang-pancang"
 type: "product"

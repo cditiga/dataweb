@@ -1,6 +1,6 @@
 ---
 title: "Jual Bufet Minimalis Untuk Ruang Tamu & Kelaurga"
-date: "2021-09-11"
+date: "2026-08-11"
 categories:
  - "lemari"
 type: "product"

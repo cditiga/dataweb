@@ -1,6 +1,6 @@
 ---
 title: "Jual Pagar Panel Beton di Mustika Jaya Bekasi"
-date: "2023-07-10"
+date: "2026-08-11"
 categories:
  - "pagar-panel"
 type: "product"

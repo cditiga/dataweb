@@ -1,6 +1,6 @@
 ---
 title: "Jual Batako Press di Duren Mekar Depok Gratis Ongkir"
-date: "2023-02-02"
+date: "2026-08-11"
 categories:
  - "batako"
 type: "product"

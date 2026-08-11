@@ -1,6 +1,6 @@
 ---
 title: "Inilah Model Lemari Plus Laci [Terbaru]"
-date: "2024-08-25"
+date: "2026-08-11"
 categories:
  - "blog"
 type: "service"

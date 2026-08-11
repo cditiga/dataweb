@@ -1,6 +1,6 @@
 ---
 title: "Tentang Kami"
-date: "2013-04-23"
+date: "2026-08-11"
 description: "Tentang Kami. - Jasa Supplier Material Bangunan, Pembuatan Furniture Interior, Penjualan Beton Ready Mix  dan Sewa Concrete Pump atau Mesin Pompa Beton serta alat lainnya..."
 ---
 

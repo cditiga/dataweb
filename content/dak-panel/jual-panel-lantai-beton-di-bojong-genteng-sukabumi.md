@@ -1,6 +1,6 @@
 ---
 title: "Jual Panel Lantai Beton di Bojong Genteng Sukabumi"
-date: "2023-09-30"
+date: "2026-08-11"
 categories:
  - "dak-panel"
 type: "product"

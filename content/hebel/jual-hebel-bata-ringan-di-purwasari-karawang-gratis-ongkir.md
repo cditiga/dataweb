@@ -1,6 +1,6 @@
 ---
 title: "Jual Hebel Bata Ringan di Purwasari Karawang Gratis Ongkir"
-date: "2023-07-11"
+date: "2026-08-11"
 categories:
  - "hebel"
 type: "product"

@@ -1,6 +1,6 @@
 ---
 title: "Menjadikan Arang Sekam Sebagai Bahan Campuran Cor"
-date: "2024-09-02"
+date: "2026-08-11"
 categories:
  - "blog"
 type: "service"

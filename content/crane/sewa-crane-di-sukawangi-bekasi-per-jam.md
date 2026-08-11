@@ -1,6 +1,6 @@
 ---
 title: "Sewa Crane di Sukawangi Bekasi Per Jam"
-date: "2023-02-05"
+date: "2026-08-11"
 categories:
  - "crane"
 type: "service"

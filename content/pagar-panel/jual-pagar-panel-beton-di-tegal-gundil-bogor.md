@@ -1,6 +1,6 @@
 ---
 title: "Jual Pagar Panel Beton di Tegal Gundil Bogor"
-date: "2023-02-26"
+date: "2026-08-11"
 categories:
  - "pagar-panel"
 type: "product"

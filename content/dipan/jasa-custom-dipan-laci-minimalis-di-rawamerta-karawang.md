@@ -1,6 +1,6 @@
 ---
 title: "Jasa Custom Dipan Laci Minimalis Di Rawamerta Karawang"
-date: "2024-07-15"
+date: "2026-08-11"
 categories:
  - "dipan"
 type: "service"

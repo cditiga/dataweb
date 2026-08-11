@@ -1,6 +1,6 @@
 ---
 title: "Jual Pagar Panel Beton di Kadudampit Sukabumi"
-date: "2023-05-20"
+date: "2026-08-11"
 categories:
  - "pagar-panel"
 type: "product"

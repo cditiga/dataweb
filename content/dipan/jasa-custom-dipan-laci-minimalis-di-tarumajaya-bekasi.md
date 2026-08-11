@@ -1,6 +1,6 @@
 ---
 title: "Jasa Custom Dipan Laci Minimalis Di Tarumajaya Bekasi"
-date: "2024-09-17"
+date: "2026-08-11"
 categories:
  - "dipan"
 type: "service"

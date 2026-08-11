@@ -1,6 +1,6 @@
 ---
 title: "Sewa Crane di Banjar Per Jam"
-date: "2023-07-14"
+date: "2026-08-11"
 categories:
  - "crane"
 type: "service"

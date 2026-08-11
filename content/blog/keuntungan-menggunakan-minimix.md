@@ -1,6 +1,6 @@
 ---
 title: "Keuntungan Menggunakan Minimix"
-date: "2024-09-25"
+date: "2026-08-11"
 categories:
  - "blog"
 type: "service"

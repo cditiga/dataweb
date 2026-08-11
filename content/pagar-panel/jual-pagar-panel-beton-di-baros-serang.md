@@ -1,6 +1,6 @@
 ---
 title: "Jual Pagar Panel Beton di Baros Serang"
-date: "2023-06-08"
+date: "2026-08-11"
 categories:
  - "pagar-panel"
 type: "product"

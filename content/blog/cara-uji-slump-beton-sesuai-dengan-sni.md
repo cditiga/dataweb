@@ -1,6 +1,6 @@
 ---
 title: "Cara Uji Slump Beton Sesuai dengan SNI"
-date: "2024-10-01"
+date: "2026-08-11"
 categories:
  - "blog"
 type: "service"

@@ -1,6 +1,6 @@
 ---
 title: "Jual Pagar Panel Beton di Serang Baru Bekasi"
-date: "2023-03-22"
+date: "2026-08-11"
 categories:
  - "pagar-panel"
 type: "product"

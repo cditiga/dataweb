@@ -1,6 +1,6 @@
 ---
 title: "Jual Tiang Pancang Beton di Galaxi Jakarta"
-date: "2023-12-05"
+date: "2026-08-11"
 categories:
  - "tiang-pancang"
 type: "product"

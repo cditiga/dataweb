@@ -1,6 +1,6 @@
 ---
 title: "Jual Material Bata Merah di Matraman Jakarta Gratis Ongkir"
-date: "2023-03-29"
+date: "2026-08-11"
 categories:
  - "bata"
 type: "product"

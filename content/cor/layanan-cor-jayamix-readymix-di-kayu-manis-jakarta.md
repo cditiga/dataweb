@@ -1,6 +1,6 @@
 ---
 title: "Layanan Cor Jayamix /Readymix di Kayu Manis Jakarta"
-date: "2023-05-09"
+date: "2026-08-11"
 categories:
  - "cor"
 type: "service"

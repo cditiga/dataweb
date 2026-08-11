@@ -1,6 +1,6 @@
 ---
 title: "Jual Hebel Bata Ringan di Tegalwaru Purwakarta Gratis Ongkir"
-date: "2023-12-02"
+date: "2026-08-11"
 categories:
  - "hebel"
 type: "product"

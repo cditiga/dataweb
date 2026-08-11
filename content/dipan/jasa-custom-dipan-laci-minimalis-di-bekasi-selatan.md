@@ -1,6 +1,6 @@
 ---
 title: "Jasa Custom Dipan Laci Minimalis Di Bekasi Selatan"
-date: "2024-09-16"
+date: "2026-08-11"
 categories:
  - "dipan"
 type: "service"

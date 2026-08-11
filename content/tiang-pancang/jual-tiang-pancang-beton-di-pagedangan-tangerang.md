@@ -1,6 +1,6 @@
 ---
 title: "Jual Tiang Pancang Beton di Pagedangan Tangerang"
-date: "2023-02-23"
+date: "2026-08-11"
 categories:
  - "tiang-pancang"
 type: "product"

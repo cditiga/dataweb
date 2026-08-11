@@ -1,6 +1,6 @@
 ---
 title: "Jual Batako Press di Cisoka Tangerang Gratis Ongkir"
-date: "2023-05-29"
+date: "2026-08-11"
 categories:
  - "batako"
 type: "product"

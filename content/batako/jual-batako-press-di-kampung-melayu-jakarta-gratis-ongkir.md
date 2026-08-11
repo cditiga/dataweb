@@ -1,6 +1,6 @@
 ---
 title: "Jual Batako Press di Kampung Melayu Jakarta Gratis Ongkir"
-date: "2023-04-27"
+date: "2026-08-11"
 categories:
  - "batako"
 type: "product"

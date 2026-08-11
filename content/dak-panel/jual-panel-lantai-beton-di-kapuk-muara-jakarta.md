@@ -1,6 +1,6 @@
 ---
 title: "Jual Panel Lantai Beton di Kapuk Muara Jakarta"
-date: "2023-12-21"
+date: "2026-08-11"
 categories:
  - "dak-panel"
 type: "product"

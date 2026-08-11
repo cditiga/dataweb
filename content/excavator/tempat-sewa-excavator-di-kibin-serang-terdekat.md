@@ -1,6 +1,6 @@
 ---
 title: "Tempat Sewa Excavator di Kibin Serang Terdekat"
-date: "2023-11-03"
+date: "2026-08-11"
 categories:
  - "excavator"
 type: "service"

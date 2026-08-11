@@ -1,6 +1,6 @@
 ---
 title: "Layanan Cor Jayamix /Readymix di Jatisari Karawang"
-date: "2023-09-14"
+date: "2026-08-11"
 categories:
  - "cor"
 type: "service"

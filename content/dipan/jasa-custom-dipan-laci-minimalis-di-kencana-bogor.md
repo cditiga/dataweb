@@ -1,6 +1,6 @@
 ---
 title: "Jasa Custom Dipan Laci Minimalis Di Kencana Bogor"
-date: "2024-09-28"
+date: "2026-08-11"
 categories:
  - "dipan"
 type: "service"

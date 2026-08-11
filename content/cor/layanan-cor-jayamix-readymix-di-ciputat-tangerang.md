@@ -1,6 +1,6 @@
 ---
 title: "Layanan Cor Jayamix /Readymix di Ciputat Tangerang"
-date: "2023-06-25"
+date: "2026-08-11"
 categories:
  - "cor"
 type: "service"

@@ -1,6 +1,6 @@
 ---
 title: "Kelebihan Dak Bondek Vs Konvensional"
-date: "2024-08-18"
+date: "2026-08-11"
 categories:
  - "blog"
 type: "service"

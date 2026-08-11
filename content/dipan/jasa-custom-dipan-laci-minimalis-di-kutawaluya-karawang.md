@@ -1,6 +1,6 @@
 ---
 title: "Jasa Custom Dipan Laci Minimalis Di Kutawaluya Karawang"
-date: "2024-08-05"
+date: "2026-08-11"
 categories:
  - "dipan"
 type: "service"

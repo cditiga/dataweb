@@ -1,6 +1,6 @@
 ---
 title: "Jasa Custom Dipan Laci Minimalis Di Kecamatan Bogor Timur"
-date: "2024-09-14"
+date: "2026-08-11"
 categories:
  - "dipan"
 type: "service"

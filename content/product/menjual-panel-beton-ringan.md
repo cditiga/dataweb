@@ -1,6 +1,6 @@
 ---
 title: "Menjual Panel Beton Ringan Lantai & Dinding"
-date: "2021-09-03"
+date: "2026-08-11"
 categories:
  - "dak-panel"
 type: "product"

@@ -1,6 +1,6 @@
 ---
 title: "Lokasi Jasa Cor Readymix Beton/ Sewa Concrete Pump"
-date: "2013-01-19"
+date: "2026-08-11"
 categories:
  - "cor"
 type: "service"

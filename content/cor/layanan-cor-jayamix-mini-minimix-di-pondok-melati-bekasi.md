@@ -1,6 +1,6 @@
 ---
 title: "Layanan Cor Jayamix Mini /Minimix di Pondok Melati Bekasi"
-date: "2023-11-23"
+date: "2026-08-11"
 categories:
  - "cor"
 type: "service"

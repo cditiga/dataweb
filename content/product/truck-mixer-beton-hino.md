@@ -1,6 +1,6 @@
 ---
 title: "Jual Truck Mixer Beton Hino Baru/ Bekas"
-date: "2021-09-05"
+date: "2026-08-11"
 categories:
  - "mixer"
 type: "product"

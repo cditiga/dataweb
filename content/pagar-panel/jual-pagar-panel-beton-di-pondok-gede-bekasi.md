@@ -1,6 +1,6 @@
 ---
 title: "Jual Pagar Panel Beton di Pondok Gede Bekasi"
-date: "2023-08-26"
+date: "2026-08-11"
 categories:
  - "pagar-panel"
 type: "product"

@@ -1,6 +1,6 @@
 ---
 title: "Inilah Jenis Bahan Bangunan Yang Wajib Dibeli"
-date: "2024-08-14"
+date: "2026-08-11"
 categories:
  - "blog"
 type: "service"

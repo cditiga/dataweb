@@ -1,6 +1,6 @@
 ---
 title: "Jual Panel Lantai Beton di Cibatu Purwakarta"
-date: "2023-03-30"
+date: "2026-08-11"
 categories:
  - "dak-panel"
 type: "product"

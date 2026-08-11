@@ -1,6 +1,6 @@
 ---
 title: "Jual Pagar Panel Beton di Sukaraja Sukabumi"
-date: "2023-12-01"
+date: "2026-08-11"
 categories:
  - "pagar-panel"
 type: "product"

@@ -1,6 +1,6 @@
 ---
 title: "Inspirasi Terbaru Desain Kursi Besi Minimalis"
-date: "2024-08-24"
+date: "2026-08-11"
 categories:
  - "blog"
 type: "service"

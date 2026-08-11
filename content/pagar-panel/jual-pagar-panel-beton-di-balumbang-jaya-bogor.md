@@ -1,6 +1,6 @@
 ---
 title: "Jual Pagar Panel Beton di Balumbang Jaya Bogor"
-date: "2023-04-24"
+date: "2026-08-11"
 categories:
  - "pagar-panel"
 type: "product"

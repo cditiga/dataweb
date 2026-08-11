@@ -1,6 +1,6 @@
 ---
 title: "Jual Panel Lantai Beton di Setu Bekasi"
-date: "2023-09-27"
+date: "2026-08-11"
 categories:
  - "dak-panel"
 type: "product"

@@ -1,6 +1,6 @@
 ---
 title: "Jual Balok Kayu Meranti Super Di Plered Purwakarta"
-date: "2024-02-05"
+date: "2026-08-11"
 categories:
  - "kayu"
 type: "product"

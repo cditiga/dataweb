@@ -1,6 +1,6 @@
 ---
 title: "Jual Pagar Panel Beton di Kebonpedes Sukabumi"
-date: "2023-10-09"
+date: "2026-08-11"
 categories:
  - "pagar-panel"
 type: "product"

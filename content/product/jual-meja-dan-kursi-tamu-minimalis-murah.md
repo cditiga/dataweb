@@ -1,6 +1,6 @@
 ---
 title: "Jual Meja dan Kursi Tamu Minimalis [Murah]"
-date: "2021-09-12"
+date: "2026-08-11"
 categories:
  - "meja"
 type: "product"

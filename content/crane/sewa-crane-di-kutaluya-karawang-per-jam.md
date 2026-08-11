@@ -1,6 +1,6 @@
 ---
 title: "Sewa Crane di Kutaluya Karawang Per Jam"
-date: "2023-03-11"
+date: "2026-08-11"
 categories:
  - "crane"
 type: "service"

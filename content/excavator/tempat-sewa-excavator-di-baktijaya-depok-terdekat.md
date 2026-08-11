@@ -1,6 +1,6 @@
 ---
 title: "Tempat Sewa Excavator di Baktijaya Depok Terdekat"
-date: "2023-10-15"
+date: "2026-08-11"
 categories:
  - "excavator"
 type: "service"

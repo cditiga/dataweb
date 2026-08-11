@@ -1,6 +1,6 @@
 ---
 title: "Jasa Sewa Bull Dozer di Cipinang Cempedak Jakarta [Harian]"
-date: "2023-01-07"
+date: "2026-08-11"
 categories:
  - "bull-dozer"
 type: "service"

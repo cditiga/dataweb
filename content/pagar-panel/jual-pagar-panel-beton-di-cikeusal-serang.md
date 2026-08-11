@@ -1,6 +1,6 @@
 ---
 title: "Jual Pagar Panel Beton di Cikeusal Serang"
-date: "2023-01-27"
+date: "2026-08-11"
 categories:
  - "pagar-panel"
 type: "product"

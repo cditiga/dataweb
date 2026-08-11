@@ -1,6 +1,6 @@
 ---
 title: "Jual Pagar Panel Beton di Cabangbungin Bekasi"
-date: "2023-02-22"
+date: "2026-08-11"
 categories:
  - "pagar-panel"
 type: "product"

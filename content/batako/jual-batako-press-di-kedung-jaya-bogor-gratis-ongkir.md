@@ -1,6 +1,6 @@
 ---
 title: "Jual Batako Press di Kedung Jaya Bogor Gratis Ongkir"
-date: "2023-05-08"
+date: "2026-08-11"
 categories:
  - "batako"
 type: "product"

@@ -1,6 +1,6 @@
 ---
 title: "Jual Panel Lantai Beton di Kebayoran Baru Jakarta"
-date: "2023-02-06"
+date: "2026-08-11"
 categories:
  - "dak-panel"
 type: "product"

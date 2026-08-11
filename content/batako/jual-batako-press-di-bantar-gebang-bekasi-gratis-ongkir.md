@@ -1,6 +1,6 @@
 ---
 title: "Jual Batako Press di Bantar Gebang Bekasi Gratis Ongkir"
-date: "2023-06-24"
+date: "2026-08-11"
 categories:
  - "batako"
 type: "product"

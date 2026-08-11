@@ -1,6 +1,6 @@
 ---
 title: "Jual Pagar Panel Beton di Lawang Gintung Bogor"
-date: "2023-12-25"
+date: "2026-08-11"
 categories:
  - "pagar-panel"
 type: "product"

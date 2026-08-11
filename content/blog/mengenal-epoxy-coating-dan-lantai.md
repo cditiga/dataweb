@@ -1,6 +1,6 @@
 ---
 title: "Mengenal Epoxy Coating Dan Lantai"
-date: "2024-10-09"
+date: "2026-08-11"
 categories:
  - "blog"
 type: "service"

@@ -1,6 +1,6 @@
 ---
 title: "Harga Custom Kitchen Set Di Bantar Gebang Bekasi"
-date: "2024-08-22"
+date: "2026-08-11"
 categories:
  - "kitchen"
 type: "service"

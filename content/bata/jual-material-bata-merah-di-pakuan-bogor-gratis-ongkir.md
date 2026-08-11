@@ -1,6 +1,6 @@
 ---
 title: "Jual Material Bata Merah di Pakuan Bogor Gratis Ongkir"
-date: "2023-10-18"
+date: "2026-08-11"
 categories:
  - "bata"
 type: "product"

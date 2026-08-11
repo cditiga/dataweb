@@ -1,6 +1,6 @@
 ---
 title: "Jual Tiang Pancang Beton di Kiara Pedes Purwakarta"
-date: "2023-10-09"
+date: "2026-08-11"
 categories:
  - "tiang-pancang"
 type: "product"

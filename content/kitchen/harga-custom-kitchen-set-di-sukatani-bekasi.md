@@ -1,6 +1,6 @@
 ---
 title: "Harga Custom Kitchen Set Di Sukatani Bekasi"
-date: "2024-09-09"
+date: "2026-08-11"
 categories:
  - "kitchen"
 type: "service"

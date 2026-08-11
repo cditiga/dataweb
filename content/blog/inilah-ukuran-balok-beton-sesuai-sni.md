@@ -1,6 +1,6 @@
 ---
 title: "Inilah Ukuran Balok Beton Sesuai SNI"
-date: "2024-10-13"
+date: "2026-08-11"
 categories:
  - "blog"
 type: "service"

@@ -1,6 +1,6 @@
 ---
 title: "Layanan Cor Jayamix /Readymix di Pedes Karawang"
-date: "2023-11-22"
+date: "2026-08-11"
 categories:
  - "cor"
 type: "service"

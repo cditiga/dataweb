@@ -1,6 +1,6 @@
 ---
 title: "Sewa Crane di Bandung Per Jam"
-date: "2023-08-09"
+date: "2026-08-11"
 categories:
  - "crane"
 type: "service"

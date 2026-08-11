@@ -1,6 +1,6 @@
 ---
 title: "Sewa Crane di Sukatani Purwakarta Per Jam"
-date: "2023-11-10"
+date: "2026-08-11"
 categories:
  - "crane"
 type: "service"

@@ -1,6 +1,6 @@
 ---
 title: "Jual Pagar Panel Beton di Cilamaya Wetan Karawang"
-date: "2023-10-25"
+date: "2026-08-11"
 categories:
  - "pagar-panel"
 type: "product"

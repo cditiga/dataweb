@@ -1,6 +1,6 @@
 ---
 title: "Jual Pagar Panel Beton di Bale Kambang Jakarta"
-date: "2023-06-30"
+date: "2026-08-11"
 categories:
  - "pagar-panel"
 type: "product"

@@ -1,6 +1,6 @@
 ---
 title: "Layanan Cor Jayamix /Readymix di Pakuhaji Tangerang"
-date: "2023-01-21"
+date: "2026-08-11"
 categories:
  - "cor"
 type: "service"

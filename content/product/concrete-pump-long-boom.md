@@ -1,6 +1,6 @@
 ---
 title: "Menyewakan Concrete Pump Long Boom"
-date: "2021-09-25"
+date: "2026-08-11"
 categories:
  - "cor"
 type: "product"

@@ -1,6 +1,6 @@
 ---
 title: "Jual Tiang Pancang Beton di Tempuran Karawang"
-date: "2023-03-12"
+date: "2026-08-11"
 categories:
  - "tiang-pancang"
 type: "product"

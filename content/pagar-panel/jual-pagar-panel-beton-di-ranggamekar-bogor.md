@@ -1,6 +1,6 @@
 ---
 title: "Jual Pagar Panel Beton di Ranggamekar Bogor"
-date: "2023-11-18"
+date: "2026-08-11"
 categories:
  - "pagar-panel"
 type: "product"

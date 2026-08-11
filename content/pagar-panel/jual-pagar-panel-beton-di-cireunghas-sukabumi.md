@@ -1,6 +1,6 @@
 ---
 title: "Jual Pagar Panel Beton di Cireunghas Sukabumi"
-date: "2023-01-23"
+date: "2026-08-11"
 categories:
  - "pagar-panel"
 type: "product"

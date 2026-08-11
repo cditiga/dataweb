@@ -1,6 +1,6 @@
 ---
 title: "Harga Custom Lemari Pakaian Di Medan Satria Bekasi"
-date: "2024-10-04"
+date: "2026-08-11"
 categories:
  - "lemari"
 type: "service"

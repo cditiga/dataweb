@@ -1,6 +1,6 @@
 ---
 title: "Tempat Sewa Excavator di Cibadak Rangkas Terdekat"
-date: "2023-06-13"
+date: "2026-08-11"
 categories:
  - "excavator"
 type: "service"

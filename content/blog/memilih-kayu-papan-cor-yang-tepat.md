@@ -1,6 +1,6 @@
 ---
 title: "Cara Memilih Kayu Papan Cor Yang Tepat"
-date: "2024-09-05"
+date: "2026-08-11"
 categories:
  - "blog"
 type: "service"

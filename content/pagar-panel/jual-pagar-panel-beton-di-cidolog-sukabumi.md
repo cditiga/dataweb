@@ -1,6 +1,6 @@
 ---
 title: "Jual Pagar Panel Beton di Cidolog Sukabumi"
-date: "2023-12-20"
+date: "2026-08-11"
 categories:
  - "pagar-panel"
 type: "product"

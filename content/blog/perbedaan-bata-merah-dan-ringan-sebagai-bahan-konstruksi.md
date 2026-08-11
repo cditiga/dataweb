@@ -1,6 +1,6 @@
 ---
 title: "Perbedaan Bata Merah dan Ringan yg Wajib Anda Tahu"
-date: "2024-09-18"
+date: "2026-08-11"
 categories:
  - "blog"
 type: "service"

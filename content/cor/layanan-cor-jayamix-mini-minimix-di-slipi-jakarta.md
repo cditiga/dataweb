@@ -1,6 +1,6 @@
 ---
 title: "Layanan Cor Jayamix Mini /Minimix di Slipi Jakarta"
-date: "2023-11-15"
+date: "2026-08-11"
 categories:
  - "cor"
 type: "service"

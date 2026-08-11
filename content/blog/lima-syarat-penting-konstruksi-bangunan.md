@@ -1,6 +1,6 @@
 ---
 title: "5 Syarat Penting Konstruksi Bangunan"
-date: "2024-09-17"
+date: "2026-08-11"
 categories:
  - "blog"
 type: "service"

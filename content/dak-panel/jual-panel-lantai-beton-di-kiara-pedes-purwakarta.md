@@ -1,6 +1,6 @@
 ---
 title: "Jual Panel Lantai Beton di Kiara Pedes Purwakarta"
-date: "2023-05-07"
+date: "2026-08-11"
 categories:
  - "dak-panel"
 type: "product"

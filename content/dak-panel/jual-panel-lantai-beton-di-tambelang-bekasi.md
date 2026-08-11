@@ -1,6 +1,6 @@
 ---
 title: "Jual Panel Lantai Beton di Tambelang Bekasi"
-date: "2023-01-13"
+date: "2026-08-11"
 categories:
  - "dak-panel"
 type: "product"

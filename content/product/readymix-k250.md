@@ -1,6 +1,6 @@
 ---
 title: "Jual Beton Cor Readymix K250 Standar & Minimix"
-date: "2021-09-18"
+date: "2026-08-11"
 categories:
  - "cor"
 type: "product"

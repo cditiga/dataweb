@@ -1,6 +1,6 @@
 ---
 title: "Jasa Custom Dipan Laci Minimalis Di Beji Depok"
-date: "2024-10-20"
+date: "2026-08-11"
 categories:
  - "dipan"
 type: "service"

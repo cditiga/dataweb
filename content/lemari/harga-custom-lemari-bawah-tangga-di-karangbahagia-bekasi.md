@@ -1,6 +1,6 @@
 ---
 title: "Harga Custom Lemari Bawah Tangga Di Karangbahagia Bekasi"
-date: "2024-07-21"
+date: "2026-08-11"
 categories:
  - "lemari"
 type: "service"

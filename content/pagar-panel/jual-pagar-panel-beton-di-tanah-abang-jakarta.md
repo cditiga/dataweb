@@ -1,6 +1,6 @@
 ---
 title: "Jual Pagar Panel Beton di Tanah Abang Jakarta"
-date: "2023-04-15"
+date: "2026-08-11"
 categories:
  - "pagar-panel"
 type: "product"

@@ -1,6 +1,6 @@
 ---
 title: "Jual Batako Press di Baktijaya Depok Gratis Ongkir"
-date: "2023-01-03"
+date: "2026-08-11"
 categories:
  - "batako"
 type: "product"

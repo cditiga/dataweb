@@ -1,6 +1,6 @@
 ---
 title: "Jual Panel Lantai Beton di Jampang Tengah Sukabumi"
-date: "2023-04-10"
+date: "2026-08-11"
 categories:
  - "dak-panel"
 type: "product"

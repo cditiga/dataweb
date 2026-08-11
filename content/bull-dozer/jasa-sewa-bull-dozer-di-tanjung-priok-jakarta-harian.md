@@ -1,6 +1,6 @@
 ---
 title: "Jasa Sewa Bull Dozer di Tanjung Priok Jakarta [Harian]"
-date: "2023-03-20"
+date: "2026-08-11"
 categories:
  - "bull-dozer"
 type: "service"

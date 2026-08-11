@@ -1,6 +1,6 @@
 ---
 title: "Jual Pagar Panel Beton di Pabaton Bogor"
-date: "2023-01-16"
+date: "2026-08-11"
 categories:
  - "pagar-panel"
 type: "product"

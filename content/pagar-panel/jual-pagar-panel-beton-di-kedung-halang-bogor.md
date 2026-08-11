@@ -1,6 +1,6 @@
 ---
 title: "Jual Pagar Panel Beton di Kedung Halang Bogor"
-date: "2023-06-22"
+date: "2026-08-11"
 categories:
  - "pagar-panel"
 type: "product"

@@ -1,6 +1,6 @@
 ---
 title: "Tempat Sewa Excavator di Kedungwaringin Bekasi Terdekat"
-date: "2023-06-10"
+date: "2026-08-11"
 categories:
  - "excavator"
 type: "service"

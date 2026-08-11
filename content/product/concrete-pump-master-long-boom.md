@@ -1,6 +1,6 @@
 ---
 title: "Harga Sewa Concrete Pump Master Long Boom"
-date: "2021-09-19"
+date: "2026-08-11"
 categories:
  - "cor"
 type: "product"
