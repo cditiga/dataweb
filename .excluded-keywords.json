@@ -1153,5 +1153,19 @@
     "matchedTitle": "Sewa Crane Sukabumi: Solusi Efisien untuk Proyek Konstruksi Anda",
     "taggedAt": "2026-08-10T08:26:15.803Z",
     "algoVersion": 2
+  },
+  "jenis jenis batako": {
+    "reason": "similar to existing article",
+    "matchedFile": "macam-macam-batako.md",
+    "matchedTitle": "Macam Macam Batako: Ukuran, Jenis, Harga, dan Pilihan Terbaik untuk Bangunan Anda",
+    "taggedAt": "2026-08-11T07:47:34.835Z",
+    "algoVersion": 2
+  },
+  "kayu penyangga cor": {
+    "reason": "similar to existing article",
+    "matchedFile": "kayu-untuk-cor.md",
+    "matchedTitle": "Kayu untuk Cor: Panduan Lengkap Pemilihan, Fungsi, dan Biaya",
+    "taggedAt": "2026-08-11T07:47:34.837Z",
+    "algoVersion": 2
   }
 }
