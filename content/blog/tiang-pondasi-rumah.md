@@ -1,5 +1,5 @@
 ---
-title: "**Tiang Pondasi Rumah: Panduan Lengkap Material, Ukuran, dan Biaya Pemasangan**"
+title: "Tiang Pondasi Rumah: Panduan Lengkap Material, Ukuran, dan Biaya Pemasangan"
 date: "2026-08-07"
 categories:
  - "blog"
