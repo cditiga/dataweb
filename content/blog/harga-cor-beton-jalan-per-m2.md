@@ -5,7 +5,7 @@ categories:
  - "blog"
 type: "service"
 description: "Harga cor beton jalan per m2 bervariasi tergantung mutu, ketebalan, dan lokasi. Pelajari panduan lengkap estimasi biaya cor jalan di Jabodetabek tahun 2026."
-featured_image: "/images/blog/Perbandingan-Jalan-Beton-dan-Jalan-Aspal.jpg"
+featured_image: "/images/cor/cor-jalan-readymix-77.jpg"
 tags: ["harga cor beton jalan", "biaya cor beton", "cor jalan per m2", "jasa cor beton jalan", "harga material cor beton"]
 keywords: "harga cor beton jalan per m2"
 author: "Ibnu Koesnady"
@@ -27,7 +27,7 @@ Terdapat beberapa faktor yang secara signifikan memengaruhi harga cor beton jala
 
 Lokasi proyek juga memainkan peran penting. Harga material dan upah tenaga kerja di daerah perkotaan biasanya lebih tinggi dibandingkan di daerah pedesaan. Aksesibilitas lokasi juga perlu dipertimbangkan. Jika lokasi sulit dijangkau, biaya transportasi material akan meningkat. Selain itu, volume pekerjaan juga dapat memengaruhi harga. Semakin besar volume pekerjaan, kemungkinan Anda mendapatkan diskon dari penyedia jasa cor beton.
 
-![Proses Pengecoran Beton Jalan](/images/blog/Perbandingan-Jalan-Beton-dan-Jalan-Aspal.jpg)
+![Proses Pengecoran Beton Jalan](/images/cor/cor-jalan-readymix-77.jpg)
 
 ## Estimasi Harga Cor Beton Jalan Per M2 di Jabodetabek (2026)
 

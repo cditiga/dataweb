@@ -15,8 +15,6 @@ draft: false
 
 **Epoxy Lantai dan Epoxy Coating: Panduan Lengkap Sebelum Aplikasi** - Mitra CDI, bingung menentukan jenis lapisan lantai yang tepat untuk bangunan komersial atau industri Anda? Epoxy lantai hadir sebagai solusi serbaguna yang semakin populer karena daya tahan dan fleksibilitas aplikasinya. Namun, sebelum memutuskan menggunakan epoxy lantai atau epoxy coating, ada beberapa hal penting yang perlu Mitra CDI pahami terlebih dahulu agar hasil akhirnya maksimal dan tahan lama.
 
-{{< toc >}}
-
 ![Aplikasi epoxy lantai pada bangunan komersial](/images/blog/epoxy-lantai-dan-epoxy-coating.jpg)
 
 ## Apa Itu Epoxy Lantai dan Epoxy Coating?
