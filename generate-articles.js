@@ -1,10 +1,19 @@
 /**
  * generate-articles.js
  *
+ * Keyword source priority: GSC → Serper.dev research → keywords.txt (last resort).
+ *
  * Mode:
  *   node generate-articles.js            → production (requires GSC_CREDENTIALS + CLOUDFLARE_ACCOUNT_ID + CLOUDFLARE_API_TOKEN)
  *   node generate-articles.js --dry-run  → local test (use dummy keywords, skip API calls)
  *   node generate-articles.js --dry-run --keyword="harga kitchen set minimalis"
+ *   node generate-articles.js --research-only
+ *       → Only runs Serper.dev keyword research (Related Searches + People Also Ask, and
+ *         optionally Autocomplete), seeded from top GSC keywords — or seed-keywords.txt if
+ *         GSC has no data at all — then appends new ideas to keywords.txt. Does NOT generate
+ *         any articles. Requires SERPER_API_KEY. Use this to test seeds and check credit
+ *         usage before trusting the automatic fallback tier (see "Serper.dev keyword research"
+ *         section below).
  */
 
 const fs     = require('fs');
@@ -27,8 +36,9 @@ function getSharp() {
 }
 
 // ─── Mode ────────────────────────────────────────────────────────────
-const IS_DRY_RUN   = process.argv.includes('--dry-run');
-const CUSTOM_KW    = (process.argv.find(a => a.startsWith('--keyword=')) || '').replace('--keyword=', '');
+const IS_DRY_RUN     = process.argv.includes('--dry-run');
+const CUSTOM_KW      = (process.argv.find(a => a.startsWith('--keyword=')) || '').replace('--keyword=', '');
+const RESEARCH_ONLY  = process.argv.includes('--research-only');
 
 // ─── Configuration ───────────────────────────────────────────────────
 const CONFIG = {
@@ -48,6 +58,38 @@ const CONFIG = {
   MODELS_API_HOST : 'api.cloudflare.com',
   MODELS_API_PATH : '', // built at runtime from CF_ACCOUNT_ID, see buildModelsApiPath()
   AI_MODEL        : '@cf/aisingapore/gemma-sea-lion-v4-27b-it',
+
+  // ── Serper.dev keyword research (2nd-tier: after GSC, before keywords.txt) ───────────
+  // Discovers NEW keyword ideas via Google Related Searches + People Also Ask (and
+  // optionally Autocomplete). Seed priority: top-impression GSC keywords first; only falls
+  // back to seed-keywords.txt (manual list) when GSC has no data at all this run.
+  //
+  // Switched from SerpApi to Serper.dev: SerpApi's free plan turned out to require a
+  // credit card at signup AND is restricted to non-commercial use — neither works for a
+  // production/business site. Serper.dev needs no card and is fine for commercial use.
+  //
+  // COST NOTE (serper.dev, checked 2026): new accounts get 2,500 free queries, ONE-TIME
+  // (not a monthly reset) — they never expire, but once spent you top up (from $50/50,000,
+  // pay-as-you-go, no subscription). At ~5 keywords/day this comfortably lasts well over a
+  // year before needing a single dollar.
+  //   - Related Searches + People Also Ask come bundled in ONE `/search` call → 1 credit
+  //     per seed keyword.
+  //   - Autocomplete is a SEPARATE call → +1 credit per seed if SERPER_USE_AUTOCOMPLETE is
+  //     enabled. NOTE: its exact response shape isn't clearly documented publicly — this is
+  //     best-effort parsing, see fetchKeywordIdeasFromSerper() below. Test with
+  //     --research-only before relying on it.
+  // Default SERPER_DAILY_BUDGET=8 credits/run is just a safety guard against a runaway
+  // seed list burning through your one-time free balance in a single run — raise it freely,
+  // there's no monthly reset to protect here like there was with SerpApi.
+  SERPER_API_KEY           : process.env.SERPER_API_KEY || '',
+  SERPER_HOST              : 'google.serper.dev',
+  SERPER_COUNTRY           : 'id', // `gl` param
+  SERPER_LANG              : 'id', // `hl` param
+  SERPER_USE_AUTOCOMPLETE  : (process.env.SERPER_USE_AUTOCOMPLETE || 'false') === 'true',
+  SERPER_DAILY_BUDGET      : parseInt(process.env.SERPER_DAILY_BUDGET || '8', 10), // credits per run
+  SERPER_MANUAL_SEEDS_FILE : path.join(__dirname, 'seed-keywords.txt'), // fallback seeds, used only if GSC has none
+  SERPER_AUTO_SEED_COUNT   : 3, // how many top-impression GSC keywords to use as seeds (primary source)
+
 
   CONTENT_DIR     : path.join(__dirname, 'content', 'blog'),
   IMAGES_DIR      : path.join(__dirname, 'static', 'images'),
@@ -402,6 +444,139 @@ function removeProcessedKeywordsFromFile(processedKeywords) {
     .filter(l => l && !usedSet.has(l.toLowerCase()));
   fs.writeFileSync(KEYWORDS_FILE, remaining.join('\n') + (remaining.length ? '\n' : ''));
 }
+
+// ─── Serper.dev keyword research ───────────────────────────────────────────────
+// 2nd-tier keyword source: used only when GSC has nothing new left to process this run.
+// See CONFIG.SERPER_* above for cost/budget notes.
+
+function serperSearch(endpoint, body) {
+  if (!CONFIG.SERPER_API_KEY) throw new Error('SERPER_API_KEY not found.');
+  return httpRequest(CONFIG.SERPER_HOST, `/${endpoint}`, {
+    method: 'POST',
+    headers: {
+      'X-API-KEY': CONFIG.SERPER_API_KEY,
+      'Content-Type': 'application/json',
+    },
+  }, body);
+}
+
+function getManualSeedKeywords() {
+  const file = CONFIG.SERPER_MANUAL_SEEDS_FILE;
+  if (!fs.existsSync(file)) return [];
+  return fs.readFileSync(file, 'utf8').split('\n').map(l => l.trim()).filter(Boolean);
+}
+
+// Picks the highest-impression keywords from THIS RUN's GSC results as seeds, so
+// Autocomplete/Related Searches/PAA expand around queries already proven to attract real
+// searches, instead of guessing blindly. Falls back to [] (manual seeds only) if GSC has
+// nothing to offer this run.
+function getAutoSeedKeywords(gscKeywordsThisRun, n) {
+  if (!gscKeywordsThisRun || !gscKeywordsThisRun.length) return [];
+  return [...gscKeywordsThisRun]
+    .sort((a, b) => b.impressions - a.impressions)
+    .slice(0, n)
+    .map(k => k.keyword);
+}
+
+async function fetchKeywordIdeasFromSerper(seedKeywords) {
+  if (IS_DRY_RUN) {
+    console.log('   🧪 DRY-RUN: skipping real Serper.dev calls (no credits used).');
+    return [];
+  }
+  if (!CONFIG.SERPER_API_KEY) {
+    console.log('   ⚠️  SERPER_API_KEY not set — skipping Serper.dev keyword research.');
+    return [];
+  }
+  if (!seedKeywords.length) {
+    console.log('   ⚠️  No seed keywords available (fill seed-keywords.txt, or wait for GSC data).');
+    return [];
+  }
+
+  console.log(`\n🔬 Researching keyword ideas from Serper.dev for ${seedKeywords.length} seed(s) (budget: ${CONFIG.SERPER_DAILY_BUDGET} credits)...`);
+
+  const ideas = new Set();
+  let creditsUsed = 0;
+
+  for (const seed of seedKeywords) {
+    if (creditsUsed >= CONFIG.SERPER_DAILY_BUDGET) {
+      console.log(`   🛑 Serper.dev budget reached (${CONFIG.SERPER_DAILY_BUDGET} credits) — stopping early this run.`);
+      break;
+    }
+    try {
+      // 1 credit: a regular /search call already includes BOTH `relatedSearches` and
+      // `peopleAlsoAsk` in the same response (confirmed from serper.dev's own docs/examples).
+      const serp = await serperSearch('search', { q: seed, gl: CONFIG.SERPER_COUNTRY, hl: CONFIG.SERPER_LANG });
+      creditsUsed++;
+
+      (serp.relatedSearches || []).forEach(r => r.query    && ideas.add(r.query.trim()));
+      (serp.peopleAlsoAsk   || []).forEach(r => r.question && ideas.add(r.question.trim()));
+
+      if (CONFIG.SERPER_USE_AUTOCOMPLETE && creditsUsed < CONFIG.SERPER_DAILY_BUDGET) {
+        // BEST-EFFORT: Serper.dev lists "Autocomplete" as a supported search type, but its
+        // exact response field names aren't clearly published. We try a few plausible
+        // shapes; if none match, we log the raw response so it can be fixed once instead of
+        // silently returning nothing.
+        const ac = await serperSearch('autocomplete', { q: seed, gl: CONFIG.SERPER_COUNTRY, hl: CONFIG.SERPER_LANG });
+        creditsUsed++;
+        const before = ideas.size;
+        (ac.suggestions || ac.autocomplete || []).forEach(s => {
+          const val = typeof s === 'string' ? s : (s.value || s.query || s.suggestion);
+          if (val) ideas.add(val.trim());
+        });
+        if (ideas.size === before) {
+          console.log(`   ⚠️  Autocomplete for "${seed}" returned 0 parsed suggestions — raw response: ${JSON.stringify(ac).slice(0, 300)}`);
+        }
+      }
+
+      console.log(`   ✓ "${seed}" → ${ideas.size} unique idea(s) so far (${creditsUsed} credit(s) used)`);
+    } catch (err) {
+      console.error(`   ❌ Serper.dev failed for "${seed}": ${err.message}`);
+    }
+  }
+
+  const results = [...ideas]
+    .filter(kw => kw.split(/\s+/).length >= 3) // same rule as GSC: drop overly short/generic keywords
+    .map(kw => ({ keyword: kw, impressions: 0, clicks: 0, ctr: 0, position: 0 }));
+
+  console.log(`✅ ${results.length} new keyword idea(s) from Serper.dev (${creditsUsed} credit(s) used this run).`);
+  return results;
+}
+
+// Picks seed keywords with GSC as the primary source and seed-keywords.txt as the
+// alternative — NOT merged together. GSC seeds are proven to attract real searches, so
+// they're always preferred; seed-keywords.txt only kicks in when GSC has no data this run
+// (e.g. a brand-new site, or a GSC fetch returning nothing).
+function getSeedKeywords(gscKeywordsThisRun) {
+  const autoSeeds = getAutoSeedKeywords(gscKeywordsThisRun, CONFIG.SERPER_AUTO_SEED_COUNT);
+  if (autoSeeds.length) {
+    console.log(`   🌱 Seeds from GSC (top ${autoSeeds.length} by impressions): ${autoSeeds.join(', ')}`);
+    return autoSeeds;
+  }
+  const manualSeeds = getManualSeedKeywords();
+  if (manualSeeds.length) {
+    console.log(`   🌱 GSC has no data this run — using seed-keywords.txt instead (${manualSeeds.length} seed(s)).`);
+    return manualSeeds;
+  }
+  return [];
+}
+
+// Gathers seeds (GSC-primary, seed-keywords.txt-alternative) and runs the research. Shared
+// by --research-only mode and the automatic 2nd-tier fallback in main().
+async function runSerperResearch(gscKeywordsThisRun) {
+  const seeds = getSeedKeywords(gscKeywordsThisRun);
+  return fetchKeywordIdeasFromSerper(seeds);
+}
+
+// Appends new keywords to keywords.txt, skipping ones already present (case-insensitive).
+// Used to persist Serper.dev ideas that weren't processed this run so they aren't lost.
+function appendKeywordsToFile(newKeywords) {
+  if (!newKeywords.length) return;
+  const existing = new Set(getKeywordsFromFile().map(k => k.keyword.toLowerCase()));
+  const toAdd = newKeywords.filter(kw => !existing.has(kw.toLowerCase()));
+  if (!toAdd.length) return;
+  fs.appendFileSync(KEYWORDS_FILE, toAdd.join('\n') + '\n');
+}
+// ─────────────────────────────────────────────────────────────────────────────
 
 function findSimilarExisting(keyword, existingItems) {
   const kwIntent = detectIntent(keyword);
@@ -1181,6 +1356,21 @@ function validateArticle(filePath) {
 
 // ─── Main ─────────────────────────────────────────────────────────────────────
 async function main() {
+  if (RESEARCH_ONLY) {
+    console.log(`\n🔬 Serper.dev Keyword Research ${IS_DRY_RUN ? '[DRY-RUN MODE]' : ''}`);
+    console.log(`${'─'.repeat(55)}\n`);
+    const gscKeywords = await fetchKeywordsFromGSC();
+    const ideas = await runSerperResearch(gscKeywords);
+    if (!ideas.length) {
+      console.log('\nNo new keyword ideas found.');
+      return;
+    }
+    appendKeywordsToFile(ideas.map(k => k.keyword));
+    console.log(`\n✅ ${ideas.length} new idea(s) appended to keywords.txt:`);
+    ideas.forEach(k => console.log(`   • ${k.keyword}`));
+    return;
+  }
+
   console.log(`\n🚀 Generate Articles ${IS_DRY_RUN ? '[DRY-RUN MODE]' : '[PRODUCTION]'}`);
   console.log(`${'─'.repeat(55)}\n`);
 
@@ -1210,7 +1400,8 @@ async function main() {
   }
 
   let uniqueKeywords = [];
-  let usingFallback  = false;
+  let usingFallback  = false;   // true whenever NOT using fresh GSC data (skips "oldest first" sort below)
+  let sourceLabel    = 'GSC';
 
   if (keywords.length) {
     uniqueKeywords = selectFromSource(keywords, 'GSC');
@@ -1218,30 +1409,58 @@ async function main() {
     console.log('⚠️  No keywords from GSC (empty/exhausted).');
   }
 
+  // 2nd tier: GSC is dry — research fresh keyword ideas via Serper.dev (Related Searches +
+  // People Also Ask), seeded primarily from GSC's own top keywords, falling back to
+  // seed-keywords.txt only if GSC has no data at all.
   if (!uniqueKeywords.length) {
-    console.log(`\n📄 No new keywords from GSC — falling back to keywords.txt...`);
+    console.log(`\n🔬 No new keywords from GSC — trying Serper.dev keyword research...`);
+    const serperKeywords = await runSerperResearch(keywords);
+
+    if (serperKeywords.length) {
+      uniqueKeywords = selectFromSource(serperKeywords, 'Serper');
+      usingFallback = true;
+      sourceLabel = 'Serper';
+
+      // Anything beyond what this run will actually process gets saved to keywords.txt
+      // so it isn't lost — the keywords.txt tier will pick it up on a future run.
+      if (uniqueKeywords.length > CONFIG.MAX_ARTICLES) {
+        const leftover = uniqueKeywords.slice(CONFIG.MAX_ARTICLES).map(k => k.keyword);
+        appendKeywordsToFile(leftover);
+        console.log(`   💾 ${leftover.length} unused idea(s) saved to keywords.txt for a future run.`);
+      }
+    }
+  }
+
+  // 3rd tier (last resort): GSC and Serper.dev both came up empty — fall back to the
+  // manually-curated queue in keywords.txt (this also includes any leftover Serper.dev
+  // ideas saved there by a previous run).
+  if (!uniqueKeywords.length) {
+    console.log(`\n📄 No new keywords from GSC or Serper.dev — falling back to keywords.txt...`);
     const fileKeywords = getKeywordsFromFile();
-    if (!fileKeywords.length) {
-      console.log('   keywords.txt not found or empty. Done — nothing to generate.');
-      return;
+    if (fileKeywords.length) {
+      console.log(`   📄 ${fileKeywords.length} keywords found in keywords.txt.`);
+      uniqueKeywords = selectFromSource(fileKeywords, 'keywords.txt');
+      usingFallback = true;
+      sourceLabel = 'keywords.txt';
+    } else {
+      console.log('   keywords.txt not found or empty.');
     }
-    console.log(`   📄 ${fileKeywords.length} keywords found in keywords.txt.`);
-    uniqueKeywords = selectFromSource(fileKeywords, 'keywords.txt');
-    usingFallback = true;
-    if (!uniqueKeywords.length) {
-      console.log('   All keywords in keywords.txt already have articles or are similar to existing ones. Done.');
-      return;
-    }
+  }
+
+  if (!uniqueKeywords.length) {
+    console.log('   No new keywords from GSC, Serper.dev, or keywords.txt. Done — nothing to generate.');
+    return;
   }
 
   // Process OLDEST keywords first, not highest-impression first — there are far more
   // keywords sitting in the backlog than MAX_ARTICLES processes per run, so always picking
   // by impression score means low-traffic/long-tail keywords could wait indefinitely.
   if (usingFallback) {
-    // keywords.txt is a plain list; getKeywordsFromFile() already returns it top-to-bottom,
-    // and Array.filter()/sort() preserve that order for entries with no distinguishing
-    // score (all keywords.txt items carry impressions:0). So the first line in the file —
-    // i.e. the oldest-added keyword — is naturally processed first. No re-sort needed.
+    // keywords.txt and Serper.dev ideas both carry impressions:0 (no real GSC score to rank
+    // by). keywords.txt's getKeywordsFromFile() already returns entries top-to-bottom, and
+    // Array.filter()/sort() preserve that order, so the oldest-added line is naturally
+    // processed first. Serper.dev ideas have no meaningful order to preserve either — no
+    // re-sort needed for either source.
   } else {
     const firstSeenMap = loadFirstSeenMap();
     uniqueKeywords.sort((a, b) => {
@@ -1253,7 +1472,7 @@ async function main() {
   }
 
   const toProcess = uniqueKeywords.slice(0, IS_DRY_RUN ? uniqueKeywords.length : CONFIG.MAX_ARTICLES);
-  console.log(`\n📝 Will generate ${toProcess.length} articles${usingFallback ? ' (from keywords.txt)' : ''}:\n`);
+  console.log(`\n📝 Will generate ${toProcess.length} articles (source: ${sourceLabel}):\n`);
 
   const results = [];
 
@@ -1285,10 +1504,13 @@ async function main() {
     console.log(`  ${status} ${r.filePath}`);
   });
 
-  if (usingFallback) {
+  if (sourceLabel === 'keywords.txt') {
     removeProcessedKeywordsFromFile(toProcess.map(k => k.keyword));
     console.log(`\n📄 ${toProcess.length} keywords removed from keywords.txt (processed).`);
   }
+  // Note: sourceLabel === 'Serper' doesn't need a removal step — those keywords were
+  // never written to keywords.txt in the first place (only the *leftover*, unprocessed
+  // ideas were saved there, a few steps above).
 
   if (!IS_DRY_RUN) {
     const logPath = path.join(__dirname, 'generated-articles.log');

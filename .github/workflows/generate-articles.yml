@@ -64,6 +64,16 @@ jobs:
           GSC_SITE_URL: ${{ secrets.GSC_SITE_URL }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          # Serper.dev keyword research (2nd-tier fallback — Related Searches + People Also
+          # Ask, seeded from top GSC keywords, falling back to seed-keywords.txt only if GSC
+          # has no data). Only kicks in when GSC has nothing new to process. Without this
+          # secret set, the script just skips that tier (logs a warning, no crash) — nothing
+          # breaks, the tier just never fires.
+          SERPER_API_KEY: ${{ secrets.SERPER_API_KEY }}
+          # Optional overrides — safe defaults (false / 8) are already baked into the script,
+          # only set these secrets if you want to change them:
+          # SERPER_USE_AUTOCOMPLETE: ${{ secrets.SERPER_USE_AUTOCOMPLETE }}
+          # SERPER_DAILY_BUDGET: ${{ secrets.SERPER_DAILY_BUDGET }}
         run: node generate-articles.js
 
       - name: Configure Git
