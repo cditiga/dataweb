@@ -59,14 +59,29 @@ const CONFIG = {
   // GitHub Models was fully retired on 2026-07-30 — replaced with Cloudflare Workers AI
   // (OpenAI-compatible endpoint). Requires CLOUDFLARE_ACCOUNT_ID + CLOUDFLARE_API_TOKEN.
   //
-  // CLOUDFLARE_API_TOKEN can hold MULTIPLE tokens — one per line, or comma-separated — to
-  // enable key rotation. When one token gets rate-limited, the script automatically rotates
-  // to the next one instead of stopping. Useful if you have several Cloudflare accounts/API
-  // tokens and want to pool their free-tier quotas together.
-  CF_ACCOUNT_ID   : process.env.CLOUDFLARE_ACCOUNT_ID || '',
+  // Both CLOUDFLARE_ACCOUNT_ID and CLOUDFLARE_API_TOKEN can hold MULTIPLE values — one per
+  // line, or comma-separated — to pool quota across several Cloudflare accounts:
+  //   - N account IDs + N tokens (same count): PAIRED 1:1 BY LINE ORDER — line 1 of one
+  //     goes with line 1 of the other (same account), line 2 with line 2, etc. Get this
+  //     order wrong and you'll pair an account ID with the wrong account's token, which
+  //     fails auth. See validation warning below if the counts don't match.
+  //   - 1 account ID + N tokens: all N tokens rotate against that SAME single account
+  //     (original behavior — multiple tokens for one account).
+  // On rate-limit/failure, rotateCfToken() advances to the next pair automatically.
+  //
+  // CLOUDFLARE_ACCOUNT_ID is embedded directly into the URL PATH (not a header) by
+  // buildModelsApiPath()/buildImageApiPath() below — a stray trailing newline/space on a
+  // single-line value used to get baked raw into the URL path (an easy copy-paste mistake),
+  // and Node's https module rejects that with the cryptic, hard-to-diagnose "Request path
+  // contains unescaped characters" (ERR_UNESCAPED_CHARACTERS) — identically across ALL
+  // THREE Cloudflare call sites (article text, image prompt, image generation), since they
+  // all build their path from this same value. Splitting + trimming each line here (same
+  // pattern as CF_API_TOKENS) fixes that at the source, whether it's stray whitespace on a
+  // single ID or multiple IDs pasted across several lines.
+  CF_ACCOUNT_IDS  : (process.env.CLOUDFLARE_ACCOUNT_ID || '').split(/[\n,]+/).map(s => s.trim()).filter(Boolean),
   CF_API_TOKENS   : (process.env.CLOUDFLARE_API_TOKEN || '').split(/[\n,]+/).map(s => s.trim()).filter(Boolean),
   MODELS_API_HOST : 'api.cloudflare.com',
-  MODELS_API_PATH : '', // built at runtime from CF_ACCOUNT_ID, see buildModelsApiPath()
+  MODELS_API_PATH : '', // built at runtime from CF_ACCOUNT_IDS, see buildModelsApiPath()
   AI_MODEL        : '@cf/aisingapore/gemma-sea-lion-v4-27b-it',
 
   // ── Serper.dev keyword research (2nd-tier: after GSC, before keywords.txt) ───────────
@@ -150,20 +165,51 @@ const CONFIG = {
   ],
 };
 
+// Cloudflare account IDs are 32-char lowercase hex. Splitting+trimming above fixes plain
+// whitespace issues, but this catches anything else malformed (wrong value pasted, stray
+// quotes, etc.) per entry and fails LOUD with a clear message at startup — instead of the
+// opaque "Request path contains unescaped characters" that would otherwise only surface
+// deep inside a retry loop, identically on every single Cloudflare call, which is exactly
+// what happened on 2026-08-18 and took real effort to trace back to this value.
+CONFIG.CF_ACCOUNT_IDS.forEach((id, i) => {
+  if (!/^[a-f0-9]{32}$/i.test(id)) {
+    console.warn(`⚠️  CLOUDFLARE_ACCOUNT_ID line ${i + 1} doesn't look like a valid Cloudflare account ID ` +
+      `(expected 32 hex characters, got ${id.length} chars: "${id}"). ` +
+      `If Cloudflare calls fail with "unescaped characters" or similar, re-check this secret for stray whitespace/quotes.`);
+  }
+});
+
+// Multi-account pairing sanity check: with >1 account ID, each line is expected to pair
+// 1:1 with the SAME line number in CLOUDFLARE_API_TOKEN (that account's own token). A count
+// mismatch usually means lines got added/removed from one secret but not the other, which
+// silently pairs an account ID with a different account's token and fails auth — not a
+// crash, just quietly-wrong requests, so this is worth flagging loudly even though the
+// script still runs (falling back to index 0 for any account ID beyond the token count).
+if (CONFIG.CF_ACCOUNT_IDS.length > 1 && CONFIG.CF_ACCOUNT_IDS.length !== CONFIG.CF_API_TOKENS.length) {
+  console.warn(`⚠️  CLOUDFLARE_ACCOUNT_ID has ${CONFIG.CF_ACCOUNT_IDS.length} line(s) but CLOUDFLARE_API_TOKEN has ` +
+    `${CONFIG.CF_API_TOKENS.length} line(s). For multi-account rotation these must match 1:1, same order ` +
+    `(line N of one = line N of the other, same account) — otherwise an account ID may get paired with ` +
+    `the wrong account's token and fail auth. Fix: make both secrets have the same number of lines.`);
+}
+
 let cfTokenIdx = 0;
 function currentCfToken() { return CONFIG.CF_API_TOKENS[cfTokenIdx] || ''; }
+// Paired with currentCfToken() via the SAME index, so rotateCfToken() advances both
+// together. With only 1 account ID (the "multiple tokens, one account" case), every index
+// falls back to that single account — see comment on CF_ACCOUNT_IDS above.
+function currentCfAccountId() { return CONFIG.CF_ACCOUNT_IDS[cfTokenIdx] || CONFIG.CF_ACCOUNT_IDS[0] || ''; }
 function rotateCfToken() { cfTokenIdx = (cfTokenIdx + 1) % CONFIG.CF_API_TOKENS.length; }
 
 // Cloudflare Workers AI OpenAI-compatible chat completions path (account-scoped).
 function buildModelsApiPath() {
-  if (!CONFIG.CF_ACCOUNT_ID) throw new Error('CLOUDFLARE_ACCOUNT_ID not found.');
-  return `/client/v4/accounts/${CONFIG.CF_ACCOUNT_ID}/ai/v1/chat/completions`;
+  if (!currentCfAccountId()) throw new Error('CLOUDFLARE_ACCOUNT_ID not found.');
+  return `/client/v4/accounts/${currentCfAccountId()}/ai/v1/chat/completions`;
 }
 
 // Cloudflare Workers AI native "run" path for the image model (multipart, not OpenAI-compatible).
 function buildImageApiPath() {
-  if (!CONFIG.CF_ACCOUNT_ID) throw new Error('CLOUDFLARE_ACCOUNT_ID not found.');
-  return `/client/v4/accounts/${CONFIG.CF_ACCOUNT_ID}/ai/run/${CONFIG.CF_IMAGE_MODEL}`;
+  if (!currentCfAccountId()) throw new Error('CLOUDFLARE_ACCOUNT_ID not found.');
+  return `/client/v4/accounts/${currentCfAccountId()}/ai/run/${CONFIG.CF_IMAGE_MODEL}`;
 }
 
 // FLUX.2 [klein] 9B on Workers AI requires multipart/form-data even for text-only fields.
@@ -681,7 +727,7 @@ async function pickImage(keyword, slug) {
 
 async function useGenericOrAIImage(keyword, slug) {
   const GENERIC = '/images/admin/featured-image.png';
-  if (CONFIG.CF_API_TOKENS.length === 0 || !CONFIG.CF_ACCOUNT_ID) {
+  if (CONFIG.CF_API_TOKENS.length === 0 || CONFIG.CF_ACCOUNT_IDS.length === 0) {
     console.log(`   🖼️  CLOUDFLARE_API_TOKEN/CLOUDFLARE_ACCOUNT_ID not set → using generic image.`);
     return GENERIC;
   }
@@ -1256,10 +1302,13 @@ async function main() {
 
   if (!IS_DRY_RUN) {
     if (CONFIG.CF_API_TOKENS.length === 0) throw new Error('CLOUDFLARE_API_TOKEN not found.');
-    if (!CONFIG.CF_ACCOUNT_ID) throw new Error('CLOUDFLARE_ACCOUNT_ID not found.');
+    if (CONFIG.CF_ACCOUNT_IDS.length === 0) throw new Error('CLOUDFLARE_ACCOUNT_ID not found.');
     if (!CONFIG.GSC_CREDENTIALS.client_email) throw new Error('Invalid GSC_CREDENTIALS.');
     if (CONFIG.CF_API_TOKENS.length > 1) {
-      console.log(`🔑 ${CONFIG.CF_API_TOKENS.length} Cloudflare API keys loaded (rolling on rate limit)\n`);
+      const rotationKind = CONFIG.CF_ACCOUNT_IDS.length > 1
+        ? `${CONFIG.CF_API_TOKENS.length} account+token pairs`
+        : `${CONFIG.CF_API_TOKENS.length} tokens on 1 account`;
+      console.log(`🔑 Rolling across ${rotationKind} (rolling on rate limit)\n`);
     }
   }
 
