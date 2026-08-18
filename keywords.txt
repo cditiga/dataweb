@@ -10,9 +10,6 @@ adhimix casablanca
 adhimix precast karawang
 adhimix rmc indonesia
 alas cor beton
-alat belalai gajah
-alat cor manual
-alat grooving beton
 alat ngecor
 alat pemadat cor beton
 analisa beton k 175
