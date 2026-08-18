@@ -1,22 +1,24 @@
-name: Recycle Posts and Deploy
+name: Recycle Old Posts
 
 on:
   schedule:
-    - cron: '0 0 */2 * *'
-  push:
-    branches: [ master ]
+    # Weekly (Sunday 00:00 UTC = 07:00 WIB). Recycling only touches articles ≥12 months old —
+    # the pool of newly-eligible articles per day/week is naturally tiny (a slow, gradual
+    # threshold), so there's no real freshness benefit to checking more often than this, only
+    # extra CI minutes and repo-checkout overhead (this repo's checkout alone can take
+    # 30-90 minutes). If you'd rather check every 2 days instead, change the cron below to
+    # '0 0 */2 * *' — either is fine, weekly just costs less for the same practical result.
+    - cron: '0 0 * * 0'
   workflow_dispatch:
 
-# Serialize with generate-articles.yml and revise-articles.yml — they all commit/push to
-# `master`. This workflow also triggers on every push from those two, so without this it
-# could race against the very push that triggered it. cancel-in-progress: false means it
-# waits its turn rather than fighting for the git ref.
+# Serialize with deploy.yml — both can build/deploy to gh-pages, and this workflow also
+# commits to master, so running in parallel risks a messy deploy or a push race.
 concurrency:
   group: dataweb-repo-write
   cancel-in-progress: false
 
 jobs:
-  recycle-and-deploy:
+  recycle:
     runs-on: ubuntu-latest
 
     steps:
@@ -76,9 +78,6 @@ jobs:
           npm --version
           hugo version
 
-      - name: Debug - List Content Directory
-        run: find content -name "*.md" | sort | head -20
-
       - name: Run Recycle and Build
         run: npm run build:recycle
 
@@ -97,7 +96,7 @@ jobs:
           git add content/ data/
 
           if git diff --staged --quiet; then
-            echo "ℹ️  Tidak ada perubahan untuk di-commit — selesai."
+            echo "ℹ️  Tidak ada artikel yang perlu di-recycle minggu ini — selesai."
             exit 0
           fi
 
@@ -141,7 +140,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
           publish_branch: gh-pages
-          full_commit_message: ${{ github.event.head_commit.message || format('Recycle & deploy — {0}', github.run_id) }}
+          full_commit_message: ${{ format('Recycle & deploy — {0}', github.run_id) }}
 
       - name: Verify Deployment
         run: |

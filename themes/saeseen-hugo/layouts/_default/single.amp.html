@@ -993,7 +993,7 @@ caption {
     {{ end }}
     <span>{{ .Title }}</span>
     </nav>
-    <p class="post-meta">Dibuat pada {{ .Date.Format "2 January 2006" }} Oleh {{ .Site.Params.author }}</p>
+    <p class="post-meta"><time datetime="{{ .Date.Format "2006-01-02" }}">Dibuat pada {{ .Date.Format "2 January 2006" }}</time>{{ if ne .Lastmod .Date }} — <time datetime="{{ .Lastmod.Format "2006-01-02" }}">Diperbarui pada {{ .Lastmod.Format "2 January 2006" }}</time>{{ end }} Oleh {{ .Site.Params.author }}</p>
     {{ if and (.Params.toc) (gt .WordCount .Site.Params.tocMinWordCount) }}
     {{ .TableOfContents }}
     {{ end }}

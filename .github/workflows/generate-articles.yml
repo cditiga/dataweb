@@ -18,6 +18,11 @@ concurrency:
 
 permissions:
   contents: write
+  # Needed to explicitly trigger recycle-and-deploy.yml at the end of this run (see last
+  # step below). Pushes made with GITHUB_TOKEN do NOT fire other workflows' `push` triggers
+  # (GitHub's anti-recursion safeguard) — an explicit workflow_dispatch call is the
+  # GitHub-sanctioned way around that, and it needs this permission.
+  actions: write
 
 jobs:
   generate:
@@ -74,7 +79,7 @@ jobs:
           # only set these secrets if you want to change them:
           # SERPER_USE_AUTOCOMPLETE: ${{ secrets.SERPER_USE_AUTOCOMPLETE }}
           # SERPER_DAILY_BUDGET: ${{ secrets.SERPER_DAILY_BUDGET }}
-        run: node generate-articles.js
+        run: node tools/generate-articles.js
 
       - name: Configure Git
         run: |
@@ -82,6 +87,7 @@ jobs:
           git config --local user.name "GitHub Action"
 
       - name: Commit and Push Articles
+        id: commit_push
         run: |
           git add content/blog/ generated-articles.log static/images/blog/
           [ -f keywords.txt ] && git add keywords.txt
@@ -91,6 +97,7 @@ jobs:
 
           if git diff --staged --quiet; then
             echo "ℹ️  Nothing to commit (0 articles generated this session) — done."
+            echo "published=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
 
@@ -98,6 +105,7 @@ jobs:
           for i in 1 2 3 4 5; do
             if git push origin master; then
               echo "✅ Push succeeded (attempt $i)."
+              echo "published=true" >> "$GITHUB_OUTPUT"
               exit 0
             fi
             if [ "$i" -eq 5 ]; then
@@ -116,3 +124,16 @@ jobs:
           done
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # Pushes made with GITHUB_TOKEN above do NOT trigger recycle-and-deploy.yml's `push`
+      # trigger (GitHub's built-in anti-recursion safeguard — see permissions comment at the
+      # top). Without this step, today's new articles would just sit committed on `master`
+      # until recycle-and-deploy.yml's own cron happens to fire (up to ~2 days later). This
+      # explicitly dispatches it now, so today's articles go live today.
+      - name: Trigger Recycle & Deploy (publish today's articles now)
+        if: steps.commit_push.outputs.published == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "🚀 New articles pushed — triggering recycle-and-deploy.yml so they go live now..."
+          gh workflow run deploy.yml --ref master

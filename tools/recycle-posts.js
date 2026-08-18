@@ -4,7 +4,7 @@ const matter = require('gray-matter');
 const { execSync } = require('child_process');
 const axios = require('axios');
 
-const contentDir = path.join(__dirname, 'content');
+const contentDir = path.join(__dirname, '..', 'content');
 const now = new Date();
 
 // Articles live nested under content/blog/, content/bata/, etc. (29+ category sub-folders),
@@ -45,6 +45,24 @@ async function pingSearchEngines(sitemapUrl) {
   }
 }
 
+// Surgically insert/update a `lastmod:` field within the RAW frontmatter text (the string
+// between the --- delimiters, as returned by gray-matter's .matter property) — never a full
+// YAML re-serialize, which would reformat quote styles/key order/array layout on every field
+// and cause noisy, unrelated-looking git diffs. `date:` (original publish date) is left
+// untouched; `lastmod:` is Hugo's standard "last modified" field, used for sitemap <lastmod>
+// and freshness signals without misrepresenting the true original publish date.
+// (Same implementation as revise-articles.js's setLastmod() — kept in sync intentionally.)
+function setLastmod(rawMatter, newDate) {
+  const line = `lastmod: "${newDate}"`;
+  if (/^lastmod:\s*.*$/m.test(rawMatter)) {
+    return rawMatter.replace(/^lastmod:\s*.*$/m, line);
+  }
+  if (/^date:\s*.*$/m.test(rawMatter)) {
+    return rawMatter.replace(/^(date:\s*.*)$/m, `$1\n${line}`);
+  }
+  return `${rawMatter}\n${line}`;
+}
+
 function recyclePost(filePath) {
   const fileContent = fs.readFileSync(filePath, 'utf8');
   const parsed = matter(fileContent);
@@ -59,11 +77,12 @@ function recyclePost(filePath) {
 
   if (monthsDiff >= 12) {
     const newDate = now.toISOString().split('T')[0];
-    // Surgical replace of just the date: line within the ORIGINAL frontmatter text (byte-
-    // identical otherwise), instead of matter.stringify()-ing the whole frontmatter — avoids
-    // reformatting quote styles/key order/array layout on every field, which would otherwise
-    // cause noisy, unrelated-looking git diffs on every recycled file.
-    const newRawMatter = parsed.matter.replace(/^date:\s*.*$/m, `date: "${newDate}"`);
+    // NOTE: this used to overwrite `date:` directly, which destroyed the true original
+    // publish date and made every recycled article look freshly-published despite no
+    // content actually changing — Google explicitly discourages that pattern. Now it adds/
+    // updates `lastmod:` instead (identical mechanism to revise-articles.js's
+    // setLastmod()), which preserves `date` and signals "last touched" honestly.
+    const newRawMatter = setLastmod(parsed.matter, newDate);
     const updatedContent = `---${newRawMatter}\n---\n${content}`;
     fs.writeFileSync(filePath, updatedContent);
     return true;

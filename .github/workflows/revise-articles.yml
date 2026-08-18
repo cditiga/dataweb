@@ -14,6 +14,9 @@ concurrency:
 
 permissions:
   contents: write
+  # Needed to explicitly trigger recycle-and-deploy.yml at the end of this run — see comment
+  # on the "Trigger Recycle & Deploy" step below.
+  actions: write
 
 jobs:
   revise:
@@ -53,13 +56,13 @@ jobs:
         run: npm install gray-matter
 
       - name: Analyze Duplicate Candidates (Layer 1 — fast, offline, results NOT committed)
-        run: node dedup-lapis1.js
+        run: node tools/dedup-lapis1.js
 
       - name: Revise Articles (staged, max 20/day)
         env:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-        run: node revise-articles.js --apply --limit=20
+        run: node tools/revise-articles.js --apply --limit=20
 
       - name: Configure Git
         run: |
@@ -67,11 +70,13 @@ jobs:
           git config --local user.name "GitHub Action"
 
       - name: Commit and Push Revisions
+        id: commit_push
         run: |
           git add content/ .revise-progress.json revised-articles.log
 
           if git diff --staged --quiet; then
             echo "ℹ️  Nothing to commit (0 articles revised this session) — done."
+            echo "published=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
 
@@ -80,6 +85,7 @@ jobs:
           for i in 1 2 3 4 5; do
             if git push origin master; then
               echo "✅ Push succeeded (attempt $i)."
+              echo "published=true" >> "$GITHUB_OUTPUT"
               exit 0
             fi
             if [ "$i" -eq 5 ]; then
@@ -98,3 +104,17 @@ jobs:
           done
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # Pushes made with GITHUB_TOKEN above do NOT trigger recycle-and-deploy.yml's `push`
+      # trigger — that's a GitHub anti-recursion safeguard (see docs.github.com/en/actions/
+      # concepts/security/github_token), not a bug in our workflow. Without this step,
+      # today's revised articles would just sit committed on `master` until
+      # recycle-and-deploy.yml's own cron happens to fire (up to ~2 days later). This
+      # explicitly dispatches it now, so today's revisions go live today.
+      - name: Trigger Recycle & Deploy (publish today's revisions now)
+        if: steps.commit_push.outputs.published == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "🚀 Revisions pushed — triggering recycle-and-deploy.yml so they go live now..."
+          gh workflow run deploy.yml --ref master

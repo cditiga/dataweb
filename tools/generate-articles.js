@@ -21,6 +21,16 @@ const path   = require('path');
 const https  = require('https');
 const crypto = require('crypto');
 
+// All AI prompt text (system/user templates, style-variation banks) lives in
+// prompts/generate-articles.json — kept separate from this file so prompt wording can be
+// edited without touching code. Variables are injected via {{placeholder}} tokens, filled
+// in by renderTemplate() below.
+const PROMPTS = require('./prompts/generate-articles.json');
+
+function renderTemplate(str, vars) {
+  return str.replace(/\{\{(\w+)\}\}/g, (_, key) => (key in vars ? vars[key] : `{{${key}}}`));
+}
+
 // `sharp` is only required lazily inside resizeAndWatermark() — see getSharp() below.
 // It used to be require()'d here at the top, which meant a missing/not-yet-installed
 // `sharp` package crashed the ENTIRE script before anything ran — including keyword
@@ -87,13 +97,13 @@ const CONFIG = {
   SERPER_LANG              : 'id', // `hl` param
   SERPER_USE_AUTOCOMPLETE  : (process.env.SERPER_USE_AUTOCOMPLETE || 'false') === 'true',
   SERPER_DAILY_BUDGET      : parseInt(process.env.SERPER_DAILY_BUDGET || '8', 10), // credits per run
-  SERPER_MANUAL_SEEDS_FILE : path.join(__dirname, 'seed-keywords.txt'), // fallback seeds, used only if GSC has none
+  SERPER_MANUAL_SEEDS_FILE : path.join(__dirname, '..', 'seed-keywords.txt'), // fallback seeds, used only if GSC has none
   SERPER_AUTO_SEED_COUNT   : 3, // how many top-impression GSC keywords to use as seeds (primary source)
 
 
-  CONTENT_DIR     : path.join(__dirname, 'content', 'blog'),
-  IMAGES_DIR      : path.join(__dirname, 'static', 'images'),
-  BLOG_IMAGES_DIR : path.join(__dirname, 'static', 'images', 'blog'),
+  CONTENT_DIR     : path.join(__dirname, '..', 'content', 'blog'),
+  IMAGES_DIR      : path.join(__dirname, '..', 'static', 'images'),
+  BLOG_IMAGES_DIR : path.join(__dirname, '..', 'static', 'images', 'blog'),
 
   // Image generation now via Cloudflare Workers AI (FLUX.2 [klein] 9B) — replaced Gemini
   // (Gemini kept hitting rate limits / quota issues). Uses CF_ACCOUNT_ID + CF_API_TOKEN,
@@ -105,7 +115,7 @@ const CONFIG = {
   // REQUIRED size for AI-generated images + watermark
   AI_IMAGE_WIDTH   : 600,
   AI_IMAGE_HEIGHT  : 400,
-  WATERMARK_PATH   : path.join(__dirname, 'static', 'images', 'logo', 'watermark-cdi.png'),
+  WATERMARK_PATH   : path.join(__dirname, '..', 'static', 'images', 'logo', 'watermark-cdi.png'),
   WATERMARK_OPACITY: 0.4,
   WATERMARK_WIDTH_RATIO: 0.30,
 
@@ -261,7 +271,7 @@ async function fetchAllGSCRows(token, startDate, endDate) {
 // Tracks the date each GSC keyword was first observed by this script (GSC's API itself
 // has no "first seen" field — it only reports aggregate performance over a date range).
 // Persisted to disk so "oldest keyword first" ordering is stable across daily runs.
-const KEYWORD_FIRST_SEEN_FILE = path.join(__dirname, '.gsc-keyword-first-seen.json');
+const KEYWORD_FIRST_SEEN_FILE = path.join(__dirname, '..', '.gsc-keyword-first-seen.json');
 
 function loadFirstSeenMap() {
   try { return JSON.parse(fs.readFileSync(KEYWORD_FIRST_SEEN_FILE, 'utf8')); } catch { return {}; }
@@ -332,7 +342,7 @@ function getExistingSlugs() {
   return slugs;
 }
 
-const EXCLUDED_KEYWORDS_FILE = path.join(__dirname, '.excluded-keywords.json');
+const EXCLUDED_KEYWORDS_FILE = path.join(__dirname, '..', '.excluded-keywords.json');
 
 const SIMILARITY_ALGO_VERSION = 2;
 
@@ -427,7 +437,7 @@ function saveExcludedKeywords(obj) {
   fs.writeFileSync(EXCLUDED_KEYWORDS_FILE, JSON.stringify(obj, null, 2));
 }
 
-const KEYWORDS_FILE = path.join(__dirname, 'keywords.txt');
+const KEYWORDS_FILE = path.join(__dirname, '..', 'keywords.txt');
 
 function getKeywordsFromFile() {
   if (!fs.existsSync(KEYWORDS_FILE)) return [];
@@ -662,7 +672,7 @@ async function pickImage(keyword, slug) {
     const best = good.filter(s => s.matchCount === maxMatch);
     const chosen = best[Math.floor(Math.random() * best.length)].img;
     console.log(`   🖼️  Matching image (${maxMatch} words): ${path.basename(chosen)}`);
-    return chosen.replace(path.join(__dirname, 'static'), '').replace(/\\/g, '/');
+    return chosen.replace(path.join(__dirname, '..', 'static'), '').replace(/\\/g, '/');
   }
 
   console.log(`   🖼️  No image with ≥2 matching words for "${keyword}" → attempting AI image generation...`);
@@ -694,29 +704,13 @@ async function useGenericOrAIImage(keyword, slug) {
 // through hardcoded if/else rules. Instead we give the model context about CDI's business and
 // let it use its own knowledge of the actual keyword to decide what the image should show.
 async function generateImagePromptViaAI(keyword) {
-  const systemPrompt =
-    `You are an experienced art director for ${CONFIG.SITE_NAME}, an Indonesian company ` +
-    'operating across many construction & interior niches — e.g. building materials (pasir, ' +
-    'batu split, bata, batako, hebel, semen), ready-mix concrete & mixer trucks (Adhimix, ' +
-    'Jayamix, Holcim, molen, etc.), scaffolding rental, heavy-equipment rental (sewa alat ' +
-    'berat), and interior/furniture (kitchen set, lemari, meja, desain interior) — among ' +
-    'others. This list is illustrative, not exhaustive: the keyword you receive could be from ' +
-    'any niche the company touches, including ones not listed here. Given a short Indonesian ' +
-    'keyword — a raw material, a brand/product name, a service, a furniture/interior item, or ' +
-    'anything else from the construction & interior industry — use your own knowledge to work ' +
-    'out precisely and literally what that keyword refers to, then write ONE precise English ' +
-    'prompt (2-3 sentences, under 55 words) for a photorealistic AI image generator, describing ' +
-    'a stock photo that accurately depicts THAT specific thing in a real-world Indonesian ' +
-    'construction/interior setting. Never default to a generic or unrelated scene (e.g. an ' +
-    'empty room) just because the exact term is unfamiliar — reason about what it most likely ' +
-    'means first. Output ONLY the image prompt itself in English — no preamble, no quotes, no ' +
-    'explanation.';
+  const systemPrompt = renderTemplate(PROMPTS.imagePrompt.system, { siteName: CONFIG.SITE_NAME });
 
   const body = JSON.stringify({
     model      : CONFIG.AI_MODEL,
     messages   : [
       { role: 'system', content: systemPrompt },
-      { role: 'user',   content: `Keyword: "${keyword}"` },
+      { role: 'user',   content: renderTemplate(PROMPTS.imagePrompt.userTemplate, { keyword }) },
     ],
     temperature: 0.4,
     max_tokens : 200,
@@ -759,34 +753,26 @@ async function generateImagePromptViaAI(keyword) {
 // Rule-based fallback used ONLY if the AI prompt-generation call itself fails (network/API
 // error) — a last-resort safety net, not the primary logic. Broadened to cover CDI's main
 // niches so the fallback doesn't collapse everything into one generic bucket.
-function buildFallbackImagePrompt(keyword) {
+// Only the MATCHING LOGIC (which scene-hint key applies to this keyword) lives here — the
+// actual scene-hint text and template wording live in prompts/generate-articles.json.
+function pickSceneHintKey(keyword) {
   const kl = keyword.toLowerCase();
-  let sceneHint;
-  if (/adhimix|readymix|ready\s?mix|jayamix|holcim|\bscg\b|molen|mixer/.test(kl)) {
-    sceneHint = 'a concrete mixer truck ("truk molen") pouring or delivering ready-mix concrete at an active construction site';
-  } else if (/scaffolding|steger|perancah/.test(kl)) {
-    sceneHint = 'stacked or assembled steel scaffolding at a construction site';
-  } else if (/sewa|rental|alat berat|excavator|crane|forklift|pompa|pump/.test(kl)) {
-    sceneHint = 'heavy construction equipment on an active job site';
-  } else if (/kitchen|dapur|lemari|furniture|mebel|meja|kursi|tempat tidur|interior|desain/.test(kl)) {
-    sceneHint = 'a modern, well-lit interior or furniture product setting';
-  } else if (/cor|pengecoran|beton|pondasi|lantai/.test(kl)) {
-    sceneHint = 'workers actively pouring or finishing concrete at a construction site';
-  } else {
-    sceneHint = 'the construction material itself, neatly arranged in a stockyard or construction-site setting';
-  }
-  return `A photorealistic, high-resolution professional stock photograph depicting ${sceneHint}, ` +
-    `related to the term "${keyword}" for a company called ${CONFIG.SITE_NAME}. Clean commercial ` +
-    `photography style, natural lighting, realistic textures and materials. No text, no logos, ` +
-    `no watermarks, no close-up human faces. Aspect ratio 3:2.`;
+  if (/adhimix|readymix|ready\s?mix|jayamix|holcim|\bscg\b|molen|mixer/.test(kl)) return 'readymix';
+  if (/scaffolding|steger|perancah/.test(kl)) return 'scaffolding';
+  if (/sewa|rental|alat berat|excavator|crane|forklift|pompa|pump/.test(kl)) return 'heavyEquipment';
+  if (/kitchen|dapur|lemari|furniture|mebel|meja|kursi|tempat tidur|interior|desain/.test(kl)) return 'interior';
+  if (/cor|pengecoran|beton|pondasi|lantai/.test(kl)) return 'concrete';
+  return 'default';
+}
+function buildFallbackImagePrompt(keyword) {
+  const sceneHint = PROMPTS.fallbackImagePrompt.sceneHints[pickSceneHintKey(keyword)];
+  return renderTemplate(PROMPTS.fallbackImagePrompt.template, { sceneHint, keyword, siteName: CONFIG.SITE_NAME });
 }
 
 async function buildImagePrompt(keyword) {
   try {
     const aiPrompt = await generateImagePromptViaAI(keyword);
-    return `${aiPrompt} Photorealistic, high-resolution, professional commercial stock ` +
-      `photography style, natural lighting, realistic textures. No text, no logos, no ` +
-      `watermarks, no close-up human faces.`;
+    return aiPrompt + PROMPTS.imagePrompt.styleSuffix;
   } catch (err) {
     console.log(`   ⚠️  AI image-prompt generation failed (${err.message}) → using fallback template.`);
     return buildFallbackImagePrompt(keyword);
@@ -905,37 +891,11 @@ function detectCategories(keyword) {
   return ['Tips & Informasi'];
 }
 
-const GREETING_STYLES = [
-  'Mitra CDI dimana saja berada',
-  'Mitra CDI yang kami hormati',
-  'Mitra CDI yang berbahagia',
-  'Mitra CDI yang terhormat',
-  'Mitra CDI yang budiman',
-  'Mitra CDI di mana pun berada',
-  'Mitra CDI',
-];
-
-const OPENING_STYLES = [
-  `Mulai dengan pertanyaan retoris singkat (bukan "pernah nggak sih" atau "pernahkah") yang langsung berhubungan dengan masalah di keyword ini.`,
-  `Mulai LANGSUNG dengan menjawab inti pertanyaan di keyword dalam 1-2 kalimat singkat dan tegas, baru kembangkan penjelasannya setelah itu. Jangan basa-basi di awal.`,
-  `Mulai dengan menyebutkan situasi/skenario nyata yang sering dialami terkait topik ini (2-3 kalimat cerita singkat), baru masuk ke pembahasan.`,
-  `Mulai dengan 1 fakta atau angka menarik terkait topik ini, baru jelaskan kenapa itu penting untuk pembaca.`,
-  `Mulai dengan menyebutkan kesalahan umum yang sering terjadi terkait topik ini, tanpa memakai kalimat tanya sama sekali.`,
-  `Mulai dengan kalimat pendek dan langsung (maksimal 8 kata) sebagai pembuka paragraf pertama, baru diikuti kalimat yang lebih panjang untuk menjelaskan.`,
-];
-
-const CLOSING_STYLES = [
-  `Apabila terdapat pertanyaan lain seputar topik ini, tombol **Telepon** dan **WhatsApp** di bawah halaman ini siap Kami jawab.`,
-  `Membutuhkan bantuan langsung untuk kebutuhan proyek {ADDR}? Silakan klik tombol **WhatsApp** atau **Telepon** di bawah untuk berkonsultasi dengan tim Kami.`,
-  `Apabila masih terdapat hal yang ingin ditanyakan, jangan ragu menghubungi Kami melalui tombol **WhatsApp** atau **Telepon** pada halaman ini.`,
-  `Tim Kami siap membantu mewujudkan proyek {ADDR} — silakan hubungi melalui tombol **Telepon** atau **WhatsApp** yang tersedia di bawah.`,
-  `Untuk konsultasi lebih lanjut, tombol **Telepon** dan **WhatsApp** di bawah halaman ini dapat langsung digunakan untuk menghubungi Kami.`,
-];
-
-const ADDRESS_STYLES = [
-  { name: 'Mitra CDI', instruction: 'Setelah kalimat pembuka, lanjutkan memakai sapaan "Mitra CDI" atau "Mitra" secara konsisten di seluruh isi artikel (bukan "Anda").' },
-  { name: 'Anda',      instruction: 'Setelah kalimat pembuka (yang tetap wajib memakai "Mitra CDI"), lanjutkan SISA artikel memakai sapaan "Anda" secara konsisten (JANGAN pakai "Mitra CDI" lagi setelah kalimat pembuka).' },
-];
+// Style-variation banks — text lives in prompts/generate-articles.json, see PROMPTS above.
+const GREETING_STYLES = PROMPTS.greetingStyles;
+const OPENING_STYLES  = PROMPTS.openingStyles;
+const CLOSING_STYLES  = PROMPTS.closingStyles;
+const ADDRESS_STYLES  = PROMPTS.addressStyles;
 
 function pickRandom(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
 // ─────────────────────────────────────────────────────────────────
@@ -945,98 +905,18 @@ async function generateArticle(keyword) {
   const openingStyle = pickRandom(OPENING_STYLES);
   const addressStyle  = pickRandom(ADDRESS_STYLES);
   const greeting      = pickRandom(GREETING_STYLES);
-  const closingStyle = pickRandom(CLOSING_STYLES).replace('{ADDR}', addressStyle.name);
+  const closingStyle = renderTemplate(pickRandom(CLOSING_STYLES), { addr: addressStyle.name });
   const currentYear   = new Date().getFullYear();
 
-  const prompt = `Kamu adalah penulis konten blog untuk website "${CONFIG.SITE_NAME}" — perusahaan jasa desain interior, furniture custom, material bangunan, dan jasa pengecoran di wilayah Jabodetabek.
-
-Kamu menulis dengan GAYA KHAS blog ini:
-- Sapaan audiens untuk artikel ini: ${addressStyle.instruction}
-- Penulis menyebut diri sebagai "Kami" (bukan "Saya" atau "Saya pribadi")
-- Gaya bahasa: BAKU dan formal, tapi tetap hangat dan tidak kaku — seperti konsultan profesional yang ramah.
-- JANGAN gunakan kata tidak baku/gaul seperti "nggak", "gimana", "yuk", "nah", "lho", "nih", "banget",
-  "kayak", "gitu", "aja". Gunakan padanan baku: "tidak", "bagaimana", "mari", "cukup"/"sangat", dst.
-- Kalimat boleh tetap mengalir natural dan tidak monoton, tapi struktur dan pilihan katanya harus
-  mengikuti kaidah Bahasa Indonesia baku (setara artikel di media berita atau majalah profesional).
-
-FORMAT PEMBUKA — WAJIB, ini ciri khas/identitas tetap ${CONFIG.SITE_NAME} di setiap artikel:
-Kalimat PERTAMA artikel ini WAJIB persis berpola:
-"**[Judul Artikel]** - ${greeting}, [lanjutan kalimat pembuka]"
-(judul artikel dalam format tebal, lalu tanda hubung " - ", lalu salam "${greeting}", lalu koma,
-baru lanjutan kalimat). JANGAN ubah, singkat, atau hilangkan bagian "${greeting}" ini.
-
-Setelah salam pembuka wajib itu, lanjutan kalimat & paragraf pertama mengikuti gaya berikut:
-${openingStyle}
-
-GAYA PENUTUP/CTA untuk artikel ini (WAJIB pakai kalimat ini persis, di paragraf terakhir):
-"${closingStyle}"
-
-JANGAN tulis nomor telepon dalam bentuk digit apapun di mana pun dalam artikel — cukup arahkan ke
-tombol Telepon/WhatsApp seperti instruksi CTA di atas.
-
-KETENTUAN ARTIKEL:
-- Keyword utama: "${keyword}"
-- Panjang: 900–1100 kata
-- Struktur: pembuka conversational → 3-4 H2 (masing-masing ada 2-3 paragraf) → penutup
-- Setiap H2 mengandung variasi keyword atau kata kunci turunan
-- Sisipkan 1 gambar inline di tengah artikel dengan format: ![deskripsi gambar](IMAGE_PLACEHOLDER)
-  (IMAGE_PLACEHOLDER akan diganti otomatis oleh sistem)
-
-WAJIB SUBSTANTIF — bukan cuma basa-basi umum. Sertakan MINIMAL SATU dari ini yang relevan dengan topik:
-- Angka/ukuran/standar konkret (contoh: rasio campuran, diameter, ketebalan, mutu beton K-xxx, SNI)
-- Contoh perhitungan nyata dengan angka (bukan cuma rumus tanpa contoh)
-- Rentang harga atau estimasi biaya yang realistis
-- Perbandingan konkret antar-pilihan (bukan cuma daftar kelebihan/kekurangan generik)
-Kalau keyword-nya tidak memungkinkan angka teknis (misal topik desain/inspirasi), ganti dengan detail
-konkret lain: nama material spesifik, dimensi umum, atau contoh kasus nyata.
-
-ATURAN HARGA/BIAYA — WAJIB DIIKUTI kalau artikel menyebut rentang harga atau contoh perhitungan biaya
-(Rp berapa pun, termasuk contoh kalkulasi seperti "10 titik x 5 meter x Rp 400.000 = Rp 20.000.000"):
-- Boleh pakai rentang harga umum/estimasi yang masuk akal (tidak perlu presisi ke rupiah terdekat).
-- WAJIB sertakan kalimat disclaimer eksplisit persis di dekat penyebutan harga tersebut, contoh:
-  "Harga ini bersifat estimasi dan dapat berubah sewaktu-waktu — hubungi Kami untuk penawaran
-  terbaru dan paling akurat sesuai kebutuhan proyek Mitra CDI." (boleh diparafrase, tapi maknanya
-  harus tetap: ini estimasi, bisa berubah, arahkan ke kontak untuk angka pasti).
-- JANGAN tulis rentang harga atau contoh biaya di lebih dari satu bagian artikel tanpa disclaimer.
-
-ATURAN KONSISTENSI ANGKA — WAJIB DIIKUTI untuk contoh perhitungan teknis (diameter, ukuran, rasio,
-kekuatan, dll): kalau artikel menyebutkan rentang/nilai tipikal untuk suatu ukuran di satu bagian
-(misal "diameter tiang pondasi berkisar 30–60 cm"), maka SEMUA contoh perhitungan lain di artikel yang
-sama TIDAK BOLEH menghasilkan angka yang bertentangan dengan rentang itu (misal jangan sampai contoh
-perhitungan menghasilkan diameter 3,57 meter kalau di bagian lain sudah bilang tipikalnya 30–60 cm).
-Sebelum menulis contoh perhitungan, pastikan angka input yang dipakai (beban, luas, dst.) akan
-menghasilkan output yang REALISTIS dan konsisten dengan angka tipikal yang sudah/akan disebutkan di
-artikel yang sama. Kalau tidak yakin bisa membuat contoh yang konsisten dan masuk akal secara teknik,
-lebih baik pakai perbandingan konkret antar-pilihan sebagai pengganti (opsi ketiga di daftar atas)
-daripada memaksakan contoh perhitungan yang berisiko keliru.
-
-ATURAN TAHUN — WAJIB DIIKUTI: artikel ini ditulis dan dipublikasikan pada tahun ${currentYear}.
-JANGAN sebutkan tahun spesifik yang lebih tua dari ${currentYear} di isi artikel (contoh yang DILARANG:
-"harga tahun 2018", "update 2020", "per 2022/2023", tabel/daftar harga multi-tahun seperti
-"2018: Rp X, 2019: Rp Y, 2020: Rp Z") — itu akan terbaca sebagai data usang/kadaluarsa oleh pembaca
-meski artikelnya baru terbit. Kalau mau menyampaikan bahwa harga cenderung naik dari waktu ke waktu,
-pakai bahasa relatif tanpa tahun eksplisit (misal "harga material cenderung naik setiap tahun karena
-inflasi dan biaya distribusi"), BUKAN daftar tahun-per-tahun. Boleh sebut tahun HANYA kalau relevan
-sebagai konteks historis eksplisit dan tidak menyesatkan (misal "SNI yang berlaku sejak 2021",
-"regulasi tahun 2019") — bukan sebagai bagian dari daftar harga/data yang seolah masih berlaku sekarang.
-
-VARIASIKAN PANJANG KALIMAT — campur kalimat pendek (5-8 kata) dengan kalimat panjang, jangan seragam
-sedang-panjang terus-menerus. Ini penting supaya ritme baca terasa manusiawi, bukan seperti draft AI.
-
-VARIASIKAN HEADING H2 — jangan selalu pakai judul heading generik seperti "Kesimpulan", "Penutup",
-"Faktor yang Mempengaruhi..." kalau artikel lain kemungkinan besar pakai judul H2 yang sama. Buat
-heading yang spesifik ke topik ini.
-
-Output HARUS dalam format berikut (tanpa teks tambahan apapun):
-JUDUL: [judul artikel menarik, mengandung keyword, tanpa tanda #]
-DESCRIPTION: [meta description 120–155 karakter, mengandung keyword, diawali keyword]
-TAGS: [3–5 tag relevan, pisah koma]
-ARTIKEL_MULAI
-[isi artikel dalam Markdown, gunakan ## H2 dan ### H3]
-
-PENTING: JANGAN tambahkan penanda, kata, atau baris apapun setelah artikel selesai
-(misalnya jangan tulis "ARTIKEL_SELESAI", "SELESAI", "[END]", "---", atau sejenisnya).
-Artikel berakhir begitu saja setelah kalimat penutup/CTA, tanpa penanda tambahan.`;
+  const prompt = renderTemplate(PROMPTS.article.userTemplate, {
+    siteName: CONFIG.SITE_NAME,
+    addressInstruction: addressStyle.instruction,
+    greeting,
+    openingStyle,
+    closingStyle,
+    keyword,
+    currentYear,
+  });
 
   if (IS_DRY_RUN) {
     console.log(`   🧪 DRY-RUN: Simulating article generation for "${keyword}"...`);
@@ -1085,7 +965,7 @@ Kalau Mitra masih ada pertanyaan atau ingin konsultasi lebih lanjut, silakan hub
   const body = JSON.stringify({
     model      : CONFIG.AI_MODEL,
     messages   : [
-      { role: 'system', content: 'Kamu adalah penulis artikel SEO profesional berbahasa Indonesia.' },
+      { role: 'system', content: PROMPTS.article.systemMessage },
       { role: 'user',   content: prompt },
     ],
     temperature: 0.72,
@@ -1257,7 +1137,7 @@ draft: false
   return filePath;
 }
 
-const RECENT_OPENINGS_FILE = path.join(__dirname, '.recent-openings.json');
+const RECENT_OPENINGS_FILE = path.join(__dirname, '..', '.recent-openings.json');
 const OPENING_SIMILARITY_WARN = 0.6;
 
 function loadRecentOpenings() {
@@ -1513,7 +1393,7 @@ async function main() {
   // ideas were saved there, a few steps above).
 
   if (!IS_DRY_RUN) {
-    const logPath = path.join(__dirname, 'generated-articles.log');
+    const logPath = path.join(__dirname, '..', 'generated-articles.log');
     const entry   = results.map(r =>
       `${new Date().toISOString()} | ${r.keyword} | ${r.slug} | ${r.imgPath}`
     ).join('\n');

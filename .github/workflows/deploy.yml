@@ -1,0 +1,88 @@
+name: Deploy Site
+
+on:
+  workflow_dispatch:
+  # Kept as a fallback for manual pushes by a human maintainer (a real user push DOES fire
+  # this trigger normally — only GITHUB_TOKEN-authored pushes are exempted by GitHub). The
+  # automated pipeline (generate-articles.yml / revise-articles.yml) never relies on this;
+  # it calls `gh workflow run deploy.yml` explicitly instead, since GITHUB_TOKEN pushes don't
+  # fire push-triggered workflows (GitHub's anti-recursion safeguard).
+  push:
+    branches: [ master ]
+
+# Serialize with recycle.yml — both can build/deploy to gh-pages, and recycle.yml also
+# commits to master, so running in parallel risks a messy deploy or a push race.
+concurrency:
+  group: dataweb-repo-write
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Cleanup Disk Space
+        run: |
+          echo "Disk space sebelum cleanup:"
+          df -h
+          sudo rm -rf /usr/local/lib/android
+          sudo rm -rf /usr/share/dotnet
+          sudo rm -rf /opt/ghc
+          sudo rm -rf /opt/hostedtoolcache
+          echo "Disk space sesudah cleanup:"
+          df -h
+
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          fetch-tags: false
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: '0.124.0'
+          extended: true
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.14.0'
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      # No recycle logic here on purpose — this workflow only builds & publishes whatever is
+      # already committed on master (by generate-articles.yml / revise-articles.yml / a human
+      # push). Date-recycling for old posts lives in recycle.yml on its own low-frequency
+      # schedule, so this deploy path (called daily, sometimes more) stays fast and doesn't
+      # re-scan 8000+ articles every time.
+      - name: Build Site
+        run: hugo
+
+      - name: Prepare GitHub Pages
+        run: |
+          mkdir -p public
+          echo "creativedesigninterior.com" > public/CNAME
+
+      - name: Cleanup node_modules
+        if: always()
+        run: |
+          rm -rf node_modules .npm
+          npm cache clean --force
+          echo "Disk space setelah cleanup node_modules:"
+          df -h
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+          publish_branch: gh-pages
+          full_commit_message: ${{ github.event.head_commit.message || format('Deploy — {0}', github.run_id) }}
+
+      - name: Verify Deployment
+        run: |
+          echo "Deployment selesai!"
+          ls -l public

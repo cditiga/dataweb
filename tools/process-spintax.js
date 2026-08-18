@@ -56,7 +56,7 @@ try {
 
   const yamlData = yaml.dump(data);
 
-  const yamlPath = path.join(__dirname, 'data', 'testimonials.yaml');
+  const yamlPath = path.join(path.dirname(configPath), 'data', 'testimonials.yaml');
   fs.writeFileSync(yamlPath, yamlData);
 
   console.log('Testimonials processed and YAML file created successfully!');
