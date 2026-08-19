@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html ⚡ lang="id">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="{{ .Site.Params.favicon | relURL }}">
+  <!-- AMP requires a canonical link on every page. This 404 has no non-AMP counterpart of
+       its own (GitHub Pages serves ONE global 404.html for every not-found path — see note
+       in config.toml/deploy docs), so it points to the site's own plain HTML 404 instead. -->
+  <link rel="canonical" href="{{ "404.html" | absURL }}">
+  <script async src="https://cdn.ampproject.org/v0.js"></script>
+  <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+  <title>Halaman Tidak Ditemukan - {{ .Site.Title }}</title>
+  <meta name="robots" content="noindex, follow">
+  <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+  <style amp-custom>
+    :root {
+      --primary-color: #91008a;
+      --secondary-color: #1c1c1c;
+      --text-color: #333333;
+      --white: #FFFFFF;
+      --text-blur: #a7a1a1;
+    }
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      color: var(--text-color);
+      background-color: var(--white);
+    }
+    header {
+      padding: 1.5rem 0;
+      background: var(--secondary-color);
+      text-align: center;
+    }
+    .not-found {
+      max-width: 600px;
+      margin: 4rem auto;
+      padding: 0 1.5rem;
+      text-align: center;
+    }
+    .not-found .code {
+      font-size: 5rem;
+      font-weight: bold;
+      color: var(--primary-color);
+      margin: 0;
+      line-height: 1;
+    }
+    .not-found h1 {
+      font-size: 1.5rem;
+      color: var(--secondary-color);
+      margin: 1rem 0;
+    }
+    .not-found p {
+      color: var(--text-blur);
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+    .not-found a.home-link {
+      display: inline-block;
+      margin-top: 1.5rem;
+      padding: 0.75rem 2rem;
+      background: var(--primary-color);
+      color: var(--white);
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <amp-img src="{{ .Site.Params.logo_amp }}" width="40" height="40" layout="fixed" alt="{{ .Site.Title }}"></amp-img>
+  </header>
+  <main class="not-found">
+    <p class="code">404</p>
+    <h1>Halaman Tidak Ditemukan</h1>
+    <p>Maaf, halaman yang Mitra CDI cari tidak tersedia atau sudah dipindahkan. Silakan kembali ke beranda untuk menemukan informasi yang Mitra butuhkan.</p>
+    <a class="home-link" href="{{ .Site.BaseURL }}">Kembali ke Beranda</a>
+  </main>
+</body>
+</html>

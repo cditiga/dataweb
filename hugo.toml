@@ -861,6 +861,7 @@ price = "3.100.000"
 [outputs]
   home = ["HTML", "RSS"]
   page = ["HTML", "AMP"]
+  "404" = ["HTML", "AMP"]
 
 [outputFormats]
   [outputFormats.AMP]
