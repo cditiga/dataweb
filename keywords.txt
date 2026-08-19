@@ -10,9 +10,6 @@ adhimix casablanca
 adhimix precast karawang
 adhimix rmc indonesia
 alas cor beton
-alat ngecor
-alat pemadat cor beton
-analisa beton k 175
 analisa beton k 250 ready mix
 analisa beton k 300
 analisa campuran beton 1 3 5
