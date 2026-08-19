@@ -1,6 +1,7 @@
 ---
 title: "Jual Pagar Panel Beton di Kapuk Muara Jakarta"
 date: "2023-12-12"
+lastmod: "2026-08-19"
 categories:
  - "pagar-panel"
 type: "product"

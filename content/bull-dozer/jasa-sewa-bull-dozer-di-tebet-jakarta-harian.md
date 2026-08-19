@@ -1,6 +1,7 @@
 ---
 title: "Jasa Sewa Bull Dozer di Tebet Jakarta [Harian]"
 date: "2023-03-10"
+lastmod: "2026-08-19"
 categories:
  - "bull-dozer"
 type: "service"

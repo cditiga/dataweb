@@ -1,6 +1,7 @@
 ---
 title: "Tempat Sewa Excavator di Ratu Jaya Depok Terdekat"
 date: "2023-06-01"
+lastmod: "2026-08-19"
 categories:
  - "excavator"
 type: "service"

@@ -1,6 +1,7 @@
 ---
 title: "Jual Pagar Panel Beton di Cisalak Pasar Depok"
 date: "2023-06-03"
+lastmod: "2026-08-19"
 categories:
  - "pagar-panel"
 type: "product"

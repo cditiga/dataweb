@@ -1,6 +1,7 @@
 ---
 title: "Jasa Cor Lantai di Cilendek Barat Bogor"
 date: "2023-08-28"
+lastmod: "2026-08-19"
 categories:
  - "cor"
 type: "service"

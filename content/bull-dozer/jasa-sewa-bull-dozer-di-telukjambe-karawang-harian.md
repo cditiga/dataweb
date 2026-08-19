@@ -1,6 +1,7 @@
 ---
 title: "Jasa Sewa Bull Dozer di Telukjambe Karawang [Harian]"
 date: "2023-09-08"
+lastmod: "2026-08-19"
 categories:
  - "bull-dozer"
 type: "service"

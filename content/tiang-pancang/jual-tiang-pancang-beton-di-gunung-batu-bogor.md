@@ -1,6 +1,7 @@
 ---
 title: "Jual Tiang Pancang Beton di Gunung Batu Bogor"
 date: "2023-08-11"
+lastmod: "2026-08-19"
 categories:
  - "tiang-pancang"
 type: "product"

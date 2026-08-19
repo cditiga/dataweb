@@ -1,6 +1,7 @@
 ---
 title: "Jasa Cor Readymix /Jayamix di Sumedang"
 date: "2023-01-15"
+lastmod: "2026-08-19"
 categories:
  - "cor"
 type: "service"

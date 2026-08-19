@@ -1,6 +1,7 @@
 ---
 title: "Layanan Cor Jayamix /Readymix di Palmerah Jakarta"
 date: "2023-01-13"
+lastmod: "2026-08-19"
 categories:
  - "cor"
 type: "service"

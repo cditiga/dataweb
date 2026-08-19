@@ -1,6 +1,7 @@
 ---
 title: "Jual Hebel Bata Ringan di Duri Selatan Jakarta Gratis Ongkir"
 date: "2023-08-05"
+lastmod: "2026-08-19"
 categories:
  - "hebel"
 type: "product"

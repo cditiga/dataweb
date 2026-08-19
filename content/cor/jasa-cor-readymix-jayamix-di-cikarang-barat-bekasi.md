@@ -1,6 +1,7 @@
 ---
 title: "Jasa Cor Readymix /Jayamix di Cikarang Barat Bekasi"
 date: "2023-06-11"
+lastmod: "2026-08-19"
 categories:
  - "cor"
 type: "service"

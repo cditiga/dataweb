@@ -1,6 +1,7 @@
 ---
 title: "Sewa Crane di Bojongsari Baru Depok Per Jam"
 date: "2023-11-07"
+lastmod: "2026-08-19"
 categories:
  - "crane"
 type: "service"

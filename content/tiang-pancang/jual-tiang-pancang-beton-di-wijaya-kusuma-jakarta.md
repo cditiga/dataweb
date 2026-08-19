@@ -1,6 +1,7 @@
 ---
 title: "Jual Tiang Pancang Beton di Wijaya Kusuma Jakarta"
 date: "2023-11-16"
+lastmod: "2026-08-19"
 categories:
  - "tiang-pancang"
 type: "product"

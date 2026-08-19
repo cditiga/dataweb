@@ -1,6 +1,7 @@
 ---
 title: "Jual Balok Kayu Borneo Di Rangkapan Jaya Depok"
 date: "2024-03-28"
+lastmod: "2026-08-19"
 categories:
  - "kayu"
 type: "product"

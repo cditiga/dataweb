@@ -1,6 +1,7 @@
 ---
 title: "Jual Pagar Panel Beton di Pela Mampang Jakarta"
 date: "2023-02-12"
+lastmod: "2026-08-19"
 categories:
  - "pagar-panel"
 type: "product"

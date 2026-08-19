@@ -1,6 +1,7 @@
 ---
 title: "Jual Hebel Bata Ringan di Kapuk Jakarta Gratis Ongkir"
 date: "2023-02-24"
+lastmod: "2026-08-19"
 categories:
  - "hebel"
 type: "product"

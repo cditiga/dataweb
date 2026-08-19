@@ -1,6 +1,7 @@
 ---
 title: "Jual Pagar Panel Beton di Roa Malaka Jakarta"
 date: "2023-06-19"
+lastmod: "2026-08-19"
 categories:
  - "pagar-panel"
 type: "product"

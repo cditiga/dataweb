@@ -1,6 +1,7 @@
 ---
 title: "Jual Pagar Panel Beton di Bambu Apus Jakarta"
 date: "2023-04-30"
+lastmod: "2026-08-19"
 categories:
  - "pagar-panel"
 type: "product"

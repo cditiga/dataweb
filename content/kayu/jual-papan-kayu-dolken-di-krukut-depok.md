@@ -1,6 +1,7 @@
 ---
 title: "Jual Papan Kayu Dolken Di Krukut Depok"
 date: "2024-05-19"
+lastmod: "2026-08-19"
 categories:
  - "kayu"
 type: "product"

@@ -1,6 +1,7 @@
 ---
 title: "Harga Custom Kitchen Set Di Gudang Bogor"
 date: "2024-07-09"
+lastmod: "2026-08-19"
 categories:
  - "kitchen"
 type: "service"

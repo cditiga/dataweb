@@ -1,6 +1,7 @@
 ---
 title: "Jasa Cor Lantai di Manggarai Jakarta"
 date: "2023-10-06"
+lastmod: "2026-08-19"
 categories:
  - "cor"
 type: "service"

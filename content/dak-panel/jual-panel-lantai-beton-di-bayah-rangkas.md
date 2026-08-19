@@ -1,6 +1,7 @@
 ---
 title: "Jual Panel Lantai Beton di Bayah Rangkas"
 date: "2023-08-21"
+lastmod: "2026-08-19"
 categories:
  - "dak-panel"
 type: "product"

@@ -1,6 +1,7 @@
 ---
 title: "Jual Reng Kayu Jati Belanda Di Cikampek Karawang"
 date: "2024-07-19"
+lastmod: "2026-08-19"
 categories:
  - "kayu"
 type: "product"

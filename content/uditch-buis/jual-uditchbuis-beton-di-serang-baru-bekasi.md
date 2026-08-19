@@ -1,6 +1,7 @@
 ---
 title: "Jual Uditch/Buis Beton di Serang Baru Bekasi"
 date: "2023-08-06"
+lastmod: "2026-08-19"
 categories:
  - "uditch-buis"
 type: "product"

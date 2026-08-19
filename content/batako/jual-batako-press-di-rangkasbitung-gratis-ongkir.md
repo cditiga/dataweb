@@ -1,6 +1,7 @@
 ---
 title: "Jual Batako Press di Rangkasbitung Gratis Ongkir"
 date: "2023-07-21"
+lastmod: "2026-08-19"
 categories:
  - "batako"
 type: "product"

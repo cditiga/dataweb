@@ -1,6 +1,7 @@
 ---
 title: "Sewa Crane di Maphar Jakarta Per Jam"
 date: "2023-03-14"
+lastmod: "2026-08-19"
 categories:
  - "crane"
 type: "service"

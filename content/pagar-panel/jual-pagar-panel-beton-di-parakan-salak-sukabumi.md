@@ -1,6 +1,7 @@
 ---
 title: "Jual Pagar Panel Beton di Parakan Salak Sukabumi"
 date: "2023-05-07"
+lastmod: "2026-08-19"
 categories:
  - "pagar-panel"
 type: "product"

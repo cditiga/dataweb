@@ -1,6 +1,7 @@
 ---
 title: "Jual Papan Kayu Duren Di Batu Ampar Jakarta"
 date: "2024-02-03"
+lastmod: "2026-08-19"
 categories:
  - "kayu"
 type: "product"

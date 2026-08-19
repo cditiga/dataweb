@@ -1,6 +1,7 @@
 ---
 title: "Jual Tiang Pancang Beton di Larangan Tangerang"
 date: "2023-07-13"
+lastmod: "2026-08-19"
 categories:
  - "tiang-pancang"
 type: "product"

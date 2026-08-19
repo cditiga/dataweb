@@ -1,6 +1,7 @@
 ---
 title: "Jual Panel Lantai Beton di Curug Mekar Bogor"
 date: "2023-07-31"
+lastmod: "2026-08-19"
 categories:
  - "dak-panel"
 type: "product"

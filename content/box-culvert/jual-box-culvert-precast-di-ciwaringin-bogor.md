@@ -1,6 +1,7 @@
 ---
 title: "Jual Box Culvert Precast di Ciwaringin Bogor"
 date: "2023-06-10"
+lastmod: "2026-08-19"
 categories:
  - "box-culvert"
 type: "product"

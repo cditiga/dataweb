@@ -1,6 +1,7 @@
 ---
 title: "Jual Pagar Panel Beton di Tigaraksa Tangerang"
 date: "2023-04-19"
+lastmod: "2026-08-19"
 categories:
  - "pagar-panel"
 type: "product"

@@ -1,6 +1,7 @@
 ---
 title: "Jual Panel Lantai Beton di Kebon Pedes Bogor"
 date: "2023-04-11"
+lastmod: "2026-08-19"
 categories:
  - "dak-panel"
 type: "product"

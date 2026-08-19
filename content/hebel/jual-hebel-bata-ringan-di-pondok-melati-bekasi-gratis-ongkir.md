@@ -1,6 +1,7 @@
 ---
 title: "Jual Hebel Bata Ringan di Pondok Melati Bekasi Gratis Ongkir"
 date: "2023-02-15"
+lastmod: "2026-08-19"
 categories:
  - "hebel"
 type: "product"

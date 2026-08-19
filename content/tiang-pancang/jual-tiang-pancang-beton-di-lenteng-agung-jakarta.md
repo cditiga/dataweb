@@ -1,6 +1,7 @@
 ---
 title: "Jual Tiang Pancang Beton di Lenteng Agung Jakarta"
 date: "2023-10-06"
+lastmod: "2026-08-19"
 categories:
  - "tiang-pancang"
 type: "product"

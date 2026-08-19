@@ -1,6 +1,7 @@
 ---
 title: "Jual Pagar Panel Beton di Mampang Depok"
 date: "2023-01-10"
+lastmod: "2026-08-19"
 categories:
  - "pagar-panel"
 type: "product"

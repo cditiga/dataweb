@@ -1,6 +1,7 @@
 ---
 title: "Jual Material Sirtu/Brangkal di Tegalwaru Karawang Gratis Ongkir"
 date: "2023-05-31"
+lastmod: "2026-08-19"
 categories:
  - "urugan"
 type: "product"

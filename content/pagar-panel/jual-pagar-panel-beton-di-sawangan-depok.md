@@ -1,6 +1,7 @@
 ---
 title: "Jual Pagar Panel Beton di Sawangan Depok"
 date: "2023-01-08"
+lastmod: "2026-08-19"
 categories:
  - "pagar-panel"
 type: "product"

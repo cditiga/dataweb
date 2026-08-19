@@ -1,6 +1,7 @@
 ---
 title: "Tempat Sewa Excavator di Babakan Bogor Terdekat"
 date: "2023-01-23"
+lastmod: "2026-08-19"
 categories:
  - "excavator"
 type: "service"

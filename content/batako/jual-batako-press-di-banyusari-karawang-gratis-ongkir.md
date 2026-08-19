@@ -1,6 +1,7 @@
 ---
 title: "Jual Batako Press di Banyusari Karawang Gratis Ongkir"
 date: "2023-12-06"
+lastmod: "2026-08-19"
 categories:
  - "batako"
 type: "product"

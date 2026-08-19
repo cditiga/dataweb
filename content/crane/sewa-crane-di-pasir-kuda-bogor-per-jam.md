@@ -1,6 +1,7 @@
 ---
 title: "Sewa Crane di Pasir Kuda Bogor Per Jam"
 date: "2023-06-13"
+lastmod: "2026-08-19"
 categories:
  - "crane"
 type: "service"

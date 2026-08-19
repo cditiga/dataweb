@@ -1,6 +1,7 @@
 ---
 title: "Jual Pagar Panel Beton di Bangka Jakarta"
 date: "2023-10-12"
+lastmod: "2026-08-19"
 categories:
  - "pagar-panel"
 type: "product"

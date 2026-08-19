@@ -1,6 +1,7 @@
 ---
 title: "Jual Box Culvert Precast di Cibatu Purwakarta"
 date: "2023-02-05"
+lastmod: "2026-08-19"
 categories:
  - "box-culvert"
 type: "product"

@@ -1,6 +1,7 @@
 ---
 title: "Harga Custom Lemari Bawah Tangga Di Ratu Jaya Depok"
 date: "2024-05-26"
+lastmod: "2026-08-19"
 categories:
  - "lemari"
 type: "service"

@@ -1,6 +1,7 @@
 ---
 title: "Tempat Sewa Excavator di Mangga Dua Jakarta Terdekat"
 date: "2023-02-24"
+lastmod: "2026-08-19"
 categories:
  - "excavator"
 type: "service"

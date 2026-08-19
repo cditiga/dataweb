@@ -1,6 +1,7 @@
 ---
 title: "Jual Pagar Panel Beton di Ciwandan Cilegon"
 date: "2023-07-22"
+lastmod: "2026-08-19"
 categories:
  - "pagar-panel"
 type: "product"

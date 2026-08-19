@@ -1,6 +1,7 @@
 ---
 title: "Sewa Crane di Cipinang Besar Jakarta Per Jam"
 date: "2023-01-18"
+lastmod: "2026-08-19"
 categories:
  - "crane"
 type: "service"

@@ -1,6 +1,7 @@
 ---
 title: "Jual Balok Kayu Sengon Di Kecamatan Bogor Tengah"
 date: "2024-02-22"
+lastmod: "2026-08-19"
 categories:
  - "kayu"
 type: "product"

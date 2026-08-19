@@ -1,6 +1,7 @@
 ---
 title: "Layanan Cor Jayamix /Readymix di Sukawangi Bekasi"
 date: "2023-02-02"
+lastmod: "2026-08-19"
 categories:
  - "cor"
 type: "service"

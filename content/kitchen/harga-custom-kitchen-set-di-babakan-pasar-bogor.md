@@ -1,6 +1,7 @@
 ---
 title: "Harga Custom Kitchen Set Di Babakan Pasar Bogor"
 date: "2024-09-18"
+lastmod: "2026-08-19"
 categories:
  - "kitchen"
 type: "service"

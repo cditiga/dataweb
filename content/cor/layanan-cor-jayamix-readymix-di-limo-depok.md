@@ -1,6 +1,7 @@
 ---
 title: "Layanan Cor Jayamix /Readymix di Limo Depok"
 date: "2023-06-22"
+lastmod: "2026-08-19"
 categories:
  - "cor"
 type: "service"

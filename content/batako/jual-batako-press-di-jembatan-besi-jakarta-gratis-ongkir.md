@@ -1,6 +1,7 @@
 ---
 title: "Jual Batako Press di Jembatan Besi Jakarta Gratis Ongkir"
 date: "2023-01-22"
+lastmod: "2026-08-19"
 categories:
  - "batako"
 type: "product"

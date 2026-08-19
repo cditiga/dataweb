@@ -1,6 +1,7 @@
 ---
 title: "Jasa Cor Lantai di Kebonsirih Jakarta"
 date: "2023-05-11"
+lastmod: "2026-08-19"
 categories:
  - "cor"
 type: "service"

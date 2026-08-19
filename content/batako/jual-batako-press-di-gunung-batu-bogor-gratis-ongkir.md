@@ -1,6 +1,7 @@
 ---
 title: "Jual Batako Press di Gunung Batu Bogor Gratis Ongkir"
 date: "2023-06-14"
+lastmod: "2026-08-19"
 categories:
  - "batako"
 type: "product"

@@ -1,6 +1,7 @@
 ---
 title: "Jual Uditch/Buis Beton di Karet Semanggi Jakarta"
 date: "2023-05-15"
+lastmod: "2026-08-19"
 categories:
  - "uditch-buis"
 type: "product"

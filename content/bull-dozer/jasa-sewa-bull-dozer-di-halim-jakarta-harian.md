@@ -1,6 +1,7 @@
 ---
 title: "Jasa Sewa Bull Dozer di Halim Jakarta [Harian]"
 date: "2023-01-29"
+lastmod: "2026-08-19"
 categories:
  - "bull-dozer"
 type: "service"

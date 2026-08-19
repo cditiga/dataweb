@@ -1,6 +1,7 @@
 ---
 title: "Jual Kaso Kayu Jati Super Di Tirtajaya Depok"
 date: "2024-07-04"
+lastmod: "2026-08-19"
 categories:
  - "kayu"
 type: "product"

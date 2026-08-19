@@ -1,6 +1,7 @@
 ---
 title: "Jasa Pembuatan Taman Minimalis Di Bantarjati Bogor"
 date: "2024-07-06"
+lastmod: "2026-08-19"
 categories:
  - "taman"
 type: "service"

@@ -1,6 +1,7 @@
 ---
 title: "Jual Batako Press di Cakung Barat Jakarta Gratis Ongkir"
 date: "2023-10-22"
+lastmod: "2026-08-19"
 categories:
  - "batako"
 type: "product"

@@ -1,6 +1,7 @@
 ---
 title: "Jual Pagar Panel Beton di Bojong Genteng Sukabumi"
 date: "2023-07-20"
+lastmod: "2026-08-19"
 categories:
  - "pagar-panel"
 type: "product"

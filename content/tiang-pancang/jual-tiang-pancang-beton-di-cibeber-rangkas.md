@@ -1,6 +1,7 @@
 ---
 title: "Jual Tiang Pancang Beton di Cibeber Rangkas"
 date: "2023-12-26"
+lastmod: "2026-08-19"
 categories:
  - "tiang-pancang"
 type: "product"

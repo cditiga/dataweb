@@ -1,6 +1,7 @@
 ---
 title: "Tempat Sewa Excavator di Pancoran Mas Depok Terdekat"
 date: "2023-02-14"
+lastmod: "2026-08-19"
 categories:
  - "excavator"
 type: "service"

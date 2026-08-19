@@ -1,6 +1,7 @@
 ---
 title: "Jual Batako Press di Palmerah Jakarta Gratis Ongkir"
 date: "2023-03-18"
+lastmod: "2026-08-19"
 categories:
  - "batako"
 type: "product"

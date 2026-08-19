@@ -1,6 +1,7 @@
 ---
 title: "Jual Pagar Panel Beton di Cipulir Jakarta"
 date: "2023-07-09"
+lastmod: "2026-08-19"
 categories:
  - "pagar-panel"
 type: "product"

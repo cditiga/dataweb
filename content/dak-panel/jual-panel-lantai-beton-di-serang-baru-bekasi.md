@@ -1,6 +1,7 @@
 ---
 title: "Jual Panel Lantai Beton di Serang Baru Bekasi"
 date: "2023-07-19"
+lastmod: "2026-08-19"
 categories:
  - "dak-panel"
 type: "product"

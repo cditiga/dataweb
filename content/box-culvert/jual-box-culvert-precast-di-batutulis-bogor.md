@@ -1,6 +1,7 @@
 ---
 title: "Jual Box Culvert Precast di Batutulis Bogor"
 date: "2023-11-14"
+lastmod: "2026-08-19"
 categories:
  - "box-culvert"
 type: "product"

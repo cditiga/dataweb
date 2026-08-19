@@ -1,6 +1,7 @@
 ---
 title: "Tempat Sewa Excavator di Karet Kuningan Jakarta Terdekat"
 date: "2023-06-09"
+lastmod: "2026-08-19"
 categories:
  - "excavator"
 type: "service"

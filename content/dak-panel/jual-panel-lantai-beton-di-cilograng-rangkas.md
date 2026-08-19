@@ -1,6 +1,7 @@
 ---
 title: "Jual Panel Lantai Beton di Cilograng Rangkas"
 date: "2023-06-04"
+lastmod: "2026-08-19"
 categories:
  - "dak-panel"
 type: "product"

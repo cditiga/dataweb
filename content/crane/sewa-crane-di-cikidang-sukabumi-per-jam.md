@@ -1,6 +1,7 @@
 ---
 title: "Sewa Crane di Cikidang Sukabumi Per Jam"
 date: "2023-12-08"
+lastmod: "2026-08-19"
 categories:
  - "crane"
 type: "service"

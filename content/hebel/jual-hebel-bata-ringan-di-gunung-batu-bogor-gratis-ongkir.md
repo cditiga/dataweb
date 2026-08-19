@@ -1,6 +1,7 @@
 ---
 title: "Jual Hebel Bata Ringan di Gunung Batu Bogor Gratis Ongkir"
 date: "2023-05-19"
+lastmod: "2026-08-19"
 categories:
  - "hebel"
 type: "product"

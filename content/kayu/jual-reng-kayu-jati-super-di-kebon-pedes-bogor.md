@@ -1,6 +1,7 @@
 ---
 title: "Jual Reng Kayu Jati Super Di Kebon Pedes Bogor"
 date: "2024-01-31"
+lastmod: "2026-08-19"
 categories:
  - "kayu"
 type: "product"

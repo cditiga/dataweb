@@ -1,6 +1,7 @@
 ---
 title: "Sewa Crane di Jatisampurna Bekasi Per Jam"
 date: "2023-02-28"
+lastmod: "2026-08-19"
 categories:
  - "crane"
 type: "service"

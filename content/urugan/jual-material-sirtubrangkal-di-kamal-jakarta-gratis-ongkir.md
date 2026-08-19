@@ -1,6 +1,7 @@
 ---
 title: "Jual Material Sirtu/Brangkal di Kamal Jakarta Gratis Ongkir"
 date: "2023-02-23"
+lastmod: "2026-08-19"
 categories:
  - "urugan"
 type: "product"

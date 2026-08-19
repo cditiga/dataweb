@@ -1,6 +1,7 @@
 ---
 title: "Jual Uditch/Buis Beton di Kutavaluya Karawang"
 date: "2023-06-22"
+lastmod: "2026-08-19"
 categories:
  - "uditch-buis"
 type: "product"

@@ -1,6 +1,7 @@
 ---
 title: "Jual Pagar Panel Beton di Sukmajaya Depok"
 date: "2023-05-02"
+lastmod: "2026-08-19"
 categories:
  - "pagar-panel"
 type: "product"

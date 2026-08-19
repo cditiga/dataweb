@@ -1,6 +1,7 @@
 ---
 title: "Jual Batako Press di Cabangbungin Bekasi Gratis Ongkir"
 date: "2023-04-05"
+lastmod: "2026-08-19"
 categories:
  - "batako"
 type: "product"

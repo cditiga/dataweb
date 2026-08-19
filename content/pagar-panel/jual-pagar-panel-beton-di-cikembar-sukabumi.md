@@ -1,6 +1,7 @@
 ---
 title: "Jual Pagar Panel Beton di Cikembar Sukabumi"
 date: "2023-06-15"
+lastmod: "2026-08-19"
 categories:
  - "pagar-panel"
 type: "product"

@@ -1,6 +1,7 @@
 ---
 title: "Tempat Sewa Excavator di Tegalwaru Karawang Terdekat"
 date: "2023-04-08"
+lastmod: "2026-08-19"
 categories:
  - "excavator"
 type: "service"

@@ -1,6 +1,7 @@
 ---
 title: "Jasa Cor Readymix /Jayamix di Mustika Jaya Bekasi"
 date: "2023-02-08"
+lastmod: "2026-08-19"
 categories:
  - "cor"
 type: "service"

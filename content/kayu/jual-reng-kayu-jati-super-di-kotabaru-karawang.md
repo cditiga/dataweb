@@ -1,6 +1,7 @@
 ---
 title: "Jual Reng Kayu Jati Super Di Kotabaru Karawang"
 date: "2024-05-15"
+lastmod: "2026-08-19"
 categories:
  - "kayu"
 type: "product"

@@ -1,6 +1,7 @@
 ---
 title: "Jual Batako Press di Petojo Utara Jakarta Gratis Ongkir"
 date: "2023-09-29"
+lastmod: "2026-08-19"
 categories:
  - "batako"
 type: "product"

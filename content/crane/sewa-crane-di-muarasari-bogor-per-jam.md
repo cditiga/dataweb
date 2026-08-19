@@ -1,6 +1,7 @@
 ---
 title: "Sewa Crane di Muarasari Bogor Per Jam"
 date: "2023-09-03"
+lastmod: "2026-08-19"
 categories:
  - "crane"
 type: "service"

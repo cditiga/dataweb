@@ -1,6 +1,7 @@
 ---
 title: "Jasa Pengaspalan Jalan Di Kampung Bali Jakarta"
 date: "2024-08-09"
+lastmod: "2026-08-19"
 categories:
  - "hotmix"
 type: "service"

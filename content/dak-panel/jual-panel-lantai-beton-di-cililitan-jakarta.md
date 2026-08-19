@@ -1,6 +1,7 @@
 ---
 title: "Jual Panel Lantai Beton di Cililitan Jakarta"
 date: "2023-03-31"
+lastmod: "2026-08-19"
 categories:
  - "dak-panel"
 type: "product"

@@ -1,6 +1,7 @@
 ---
 title: "Layanan Cor Jayamix /Readymix di Cimpaeun Depok"
 date: "2023-03-09"
+lastmod: "2026-08-19"
 categories:
  - "cor"
 type: "service"

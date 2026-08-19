@@ -1,6 +1,7 @@
 ---
 title: "Jual Pagar Panel Beton di Kronjo Tangerang"
 date: "2023-05-04"
+lastmod: "2026-08-19"
 categories:
  - "pagar-panel"
 type: "product"

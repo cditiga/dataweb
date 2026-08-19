@@ -1,6 +1,7 @@
 ---
 title: "Layanan Cor Jayamix Mini /Minimix di Utan Kayu Jakarta"
 date: "2023-02-20"
+lastmod: "2026-08-19"
 categories:
  - "cor"
 type: "service"

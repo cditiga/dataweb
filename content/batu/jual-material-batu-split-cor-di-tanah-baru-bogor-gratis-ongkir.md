@@ -1,6 +1,7 @@
 ---
 title: "Jual Material Batu Split Cor di Tanah Baru Bogor Gratis Ongkir"
 date: "2023-06-26"
+lastmod: "2026-08-19"
 categories:
  - "batu"
 type: "product"

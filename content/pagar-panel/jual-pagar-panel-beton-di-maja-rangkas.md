@@ -1,6 +1,7 @@
 ---
 title: "Jual Pagar Panel Beton di Maja Rangkas"
 date: "2023-10-29"
+lastmod: "2026-08-19"
 categories:
  - "pagar-panel"
 type: "product"

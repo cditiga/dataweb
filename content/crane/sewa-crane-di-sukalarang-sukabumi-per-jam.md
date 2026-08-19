@@ -1,6 +1,7 @@
 ---
 title: "Sewa Crane di Sukalarang Sukabumi Per Jam"
 date: "2023-11-16"
+lastmod: "2026-08-19"
 categories:
  - "crane"
 type: "service"

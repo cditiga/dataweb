@@ -1,6 +1,7 @@
 ---
 title: "Jual Batako Press di Darangdan Purwakarta Gratis Ongkir"
 date: "2023-03-12"
+lastmod: "2026-08-19"
 categories:
  - "batako"
 type: "product"

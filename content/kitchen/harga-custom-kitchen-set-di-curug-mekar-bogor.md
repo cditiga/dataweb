@@ -1,6 +1,7 @@
 ---
 title: "Harga Custom Kitchen Set Di Curug Mekar Bogor"
 date: "2024-06-21"
+lastmod: "2026-08-19"
 categories:
  - "kitchen"
 type: "service"

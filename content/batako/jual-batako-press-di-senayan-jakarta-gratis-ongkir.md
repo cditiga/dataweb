@@ -1,6 +1,7 @@
 ---
 title: "Jual Batako Press di Senayan Jakarta Gratis Ongkir"
 date: "2023-02-07"
+lastmod: "2026-08-19"
 categories:
  - "batako"
 type: "product"

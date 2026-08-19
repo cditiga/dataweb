@@ -1,6 +1,7 @@
 ---
 title: "Jual Balok Kayu Jati Super Di Pancoran Mas Depok"
 date: "2024-10-19"
+lastmod: "2026-08-19"
 categories:
  - "kayu"
 type: "product"

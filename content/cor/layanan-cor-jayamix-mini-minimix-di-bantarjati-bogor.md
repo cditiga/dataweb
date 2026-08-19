@@ -1,6 +1,7 @@
 ---
 title: "Layanan Cor Jayamix Mini /Minimix di Bantarjati Bogor"
 date: "2023-10-27"
+lastmod: "2026-08-19"
 categories:
  - "cor"
 type: "service"

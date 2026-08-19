@@ -1,6 +1,7 @@
 ---
 title: "Jual Pasir Cor di Pakisjaya Karawang Gratis Ongkir"
 date: "2023-01-29"
+lastmod: "2026-08-19"
 categories:
  - "pasir"
 type: "product"

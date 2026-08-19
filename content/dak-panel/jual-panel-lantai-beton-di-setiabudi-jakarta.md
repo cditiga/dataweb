@@ -1,6 +1,7 @@
 ---
 title: "Jual Panel Lantai Beton di Setiabudi Jakarta"
 date: "2023-08-24"
+lastmod: "2026-08-19"
 categories:
  - "dak-panel"
 type: "product"

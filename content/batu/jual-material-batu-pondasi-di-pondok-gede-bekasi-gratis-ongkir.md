@@ -1,6 +1,7 @@
 ---
 title: "Jual Material Batu Pondasi di Pondok Gede Bekasi Gratis Ongkir"
 date: "2023-07-26"
+lastmod: "2026-08-19"
 categories:
  - "batu"
 type: "product"

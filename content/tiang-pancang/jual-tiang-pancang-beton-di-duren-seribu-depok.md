@@ -1,6 +1,7 @@
 ---
 title: "Jual Tiang Pancang Beton di Duren Seribu Depok"
 date: "2023-09-05"
+lastmod: "2026-08-19"
 categories:
  - "tiang-pancang"
 type: "product"

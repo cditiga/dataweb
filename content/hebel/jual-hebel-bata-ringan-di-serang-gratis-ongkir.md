@@ -1,6 +1,7 @@
 ---
 title: "Jual Hebel Bata Ringan di Serang Gratis Ongkir"
 date: "2023-12-01"
+lastmod: "2026-08-19"
 categories:
  - "hebel"
 type: "product"

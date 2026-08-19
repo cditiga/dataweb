@@ -1,6 +1,7 @@
 ---
 title: "Sewa Crane di Warung Kiara Sukabumi Per Jam"
 date: "2023-01-03"
+lastmod: "2026-08-19"
 categories:
  - "crane"
 type: "service"

@@ -1,6 +1,7 @@
 ---
 title: "Jual Pagar Panel Beton di Duren Sawit Jakarta"
 date: "2023-09-22"
+lastmod: "2026-08-19"
 categories:
  - "pagar-panel"
 type: "product"

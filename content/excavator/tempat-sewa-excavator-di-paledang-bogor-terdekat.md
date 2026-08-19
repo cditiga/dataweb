@@ -1,6 +1,7 @@
 ---
 title: "Tempat Sewa Excavator di Paledang Bogor Terdekat"
 date: "2023-08-12"
+lastmod: "2026-08-19"
 categories:
  - "excavator"
 type: "service"

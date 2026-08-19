@@ -1,6 +1,7 @@
 ---
 title: "Jual Pagar Panel Beton di Kalibaru Jakarta"
 date: "2023-12-06"
+lastmod: "2026-08-19"
 categories:
  - "pagar-panel"
 type: "product"

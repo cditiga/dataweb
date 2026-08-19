@@ -1,6 +1,7 @@
 ---
 title: "Jual Batako Press di Krendang Jakarta Gratis Ongkir"
 date: "2023-09-15"
+lastmod: "2026-08-19"
 categories:
  - "batako"
 type: "product"

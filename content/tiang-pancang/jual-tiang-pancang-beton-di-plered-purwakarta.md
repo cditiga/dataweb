@@ -1,6 +1,7 @@
 ---
 title: "Jual Tiang Pancang Beton di Plered Purwakarta"
 date: "2023-01-09"
+lastmod: "2026-08-19"
 categories:
  - "tiang-pancang"
 type: "product"

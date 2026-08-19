@@ -1,6 +1,7 @@
 ---
 title: "Jual Batako Press di Kertamaya Bogor Gratis Ongkir"
 date: "2023-10-20"
+lastmod: "2026-08-19"
 categories:
  - "batako"
 type: "product"

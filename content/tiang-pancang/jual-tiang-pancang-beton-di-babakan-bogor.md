@@ -1,6 +1,7 @@
 ---
 title: "Jual Tiang Pancang Beton di Babakan Bogor"
 date: "2023-03-17"
+lastmod: "2026-08-19"
 categories:
  - "tiang-pancang"
 type: "product"

@@ -1,6 +1,7 @@
 ---
 title: "Jasa Cor Readymix /Jayamix di Duripulo Jakarta"
 date: "2023-05-07"
+lastmod: "2026-08-19"
 categories:
  - "cor"
 type: "service"

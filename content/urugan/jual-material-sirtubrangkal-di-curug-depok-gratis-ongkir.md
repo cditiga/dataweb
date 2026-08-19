@@ -1,6 +1,7 @@
 ---
 title: "Jual Material Sirtu/Brangkal di Curug Depok Gratis Ongkir"
 date: "2023-09-11"
+lastmod: "2026-08-19"
 categories:
  - "urugan"
 type: "product"

@@ -1,6 +1,7 @@
 ---
 title: "Sewa Crane di Kebon Manggis Jakarta Per Jam"
 date: "2023-03-01"
+lastmod: "2026-08-19"
 categories:
  - "crane"
 type: "service"

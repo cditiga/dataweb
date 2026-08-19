@@ -1,6 +1,7 @@
 ---
 title: "Jual Panel Lantai Beton di Kedungwaringin Bekasi"
 date: "2023-01-15"
+lastmod: "2026-08-19"
 categories:
  - "dak-panel"
 type: "product"

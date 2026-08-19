@@ -1,6 +1,7 @@
 ---
 title: "Jual Pagar Panel Beton di Bintaro Jakarta"
 date: "2023-05-25"
+lastmod: "2026-08-19"
 categories:
  - "pagar-panel"
 type: "product"

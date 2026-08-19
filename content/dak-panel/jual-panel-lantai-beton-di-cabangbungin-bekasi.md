@@ -1,6 +1,7 @@
 ---
 title: "Jual Panel Lantai Beton di Cabangbungin Bekasi"
 date: "2023-12-26"
+lastmod: "2026-08-19"
 categories:
  - "dak-panel"
 type: "product"

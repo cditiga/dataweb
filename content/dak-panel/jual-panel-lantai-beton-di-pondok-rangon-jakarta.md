@@ -1,6 +1,7 @@
 ---
 title: "Jual Panel Lantai Beton di Pondok Rangon Jakarta"
 date: "2023-01-06"
+lastmod: "2026-08-19"
 categories:
  - "dak-panel"
 type: "product"

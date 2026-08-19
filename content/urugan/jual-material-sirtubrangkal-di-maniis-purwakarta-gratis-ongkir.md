@@ -1,6 +1,7 @@
 ---
 title: "Jual Material Sirtu/Brangkal di Maniis Purwakarta Gratis Ongkir"
 date: "2023-01-05"
+lastmod: "2026-08-19"
 categories:
  - "urugan"
 type: "product"

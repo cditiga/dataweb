@@ -1,6 +1,7 @@
 ---
 title: "Jual Panel Lantai Beton di Cilamaya Kulon Karawang"
 date: "2023-08-19"
+lastmod: "2026-08-19"
 categories:
  - "dak-panel"
 type: "product"

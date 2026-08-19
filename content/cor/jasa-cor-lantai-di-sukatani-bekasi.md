@@ -1,6 +1,7 @@
 ---
 title: "Jasa Cor Lantai di Sukatani Bekasi"
 date: "2023-09-13"
+lastmod: "2026-08-19"
 categories:
  - "cor"
 type: "service"

@@ -1,6 +1,7 @@
 ---
 title: "Sewa Crane di Kedungwaringin Bekasi Per Jam"
 date: "2023-08-24"
+lastmod: "2026-08-19"
 categories:
  - "crane"
 type: "service"

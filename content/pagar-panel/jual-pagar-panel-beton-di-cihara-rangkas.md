@@ -1,6 +1,7 @@
 ---
 title: "Jual Pagar Panel Beton di Cihara Rangkas"
 date: "2023-04-01"
+lastmod: "2026-08-19"
 categories:
  - "pagar-panel"
 type: "product"

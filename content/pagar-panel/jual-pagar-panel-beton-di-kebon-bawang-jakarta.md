@@ -1,6 +1,7 @@
 ---
 title: "Jual Pagar Panel Beton di Kebon Bawang Jakarta"
 date: "2023-07-31"
+lastmod: "2026-08-19"
 categories:
  - "pagar-panel"
 type: "product"

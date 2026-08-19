@@ -1,6 +1,7 @@
 ---
 title: "Jual Batako Press di Kresek Tangerang Gratis Ongkir"
 date: "2023-09-02"
+lastmod: "2026-08-19"
 categories:
  - "batako"
 type: "product"

@@ -1,6 +1,7 @@
 ---
 title: "Jual Material Sirtu/Brangkal di Pasar Manggis Jakarta Gratis Ongkir"
 date: "2023-09-20"
+lastmod: "2026-08-19"
 categories:
  - "urugan"
 type: "product"

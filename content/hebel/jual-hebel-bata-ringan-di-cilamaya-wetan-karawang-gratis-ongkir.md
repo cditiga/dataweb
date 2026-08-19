@@ -1,6 +1,7 @@
 ---
 title: "Jual Hebel Bata Ringan di Cilamaya Wetan Karawang Gratis Ongkir"
 date: "2023-05-31"
+lastmod: "2026-08-19"
 categories:
  - "hebel"
 type: "product"

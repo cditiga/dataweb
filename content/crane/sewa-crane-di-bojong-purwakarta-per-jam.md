@@ -1,6 +1,7 @@
 ---
 title: "Sewa Crane di Bojong Purwakarta Per Jam"
 date: "2023-11-23"
+lastmod: "2026-08-19"
 categories:
  - "crane"
 type: "service"

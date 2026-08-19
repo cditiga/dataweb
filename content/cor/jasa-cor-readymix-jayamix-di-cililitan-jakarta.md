@@ -1,6 +1,7 @@
 ---
 title: "Jasa Cor Readymix /Jayamix di Cililitan Jakarta"
 date: "2023-06-24"
+lastmod: "2026-08-19"
 categories:
  - "cor"
 type: "service"

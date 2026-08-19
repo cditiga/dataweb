@@ -1,6 +1,7 @@
 ---
 title: "Jual Material Sirtu/Brangkal di Lawang Gintung Bogor Gratis Ongkir"
 date: "2023-04-19"
+lastmod: "2026-08-19"
 categories:
  - "urugan"
 type: "product"

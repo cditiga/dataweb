@@ -1,6 +1,7 @@
 ---
 title: "Jual Pagar Panel Beton di Genteng Bogor"
 date: "2023-08-24"
+lastmod: "2026-08-19"
 categories:
  - "pagar-panel"
 type: "product"

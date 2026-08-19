@@ -1,6 +1,7 @@
 ---
 title: "Sewa Crane di Pasar Manggis Jakarta Per Jam"
 date: "2023-06-08"
+lastmod: "2026-08-19"
 categories:
  - "crane"
 type: "service"

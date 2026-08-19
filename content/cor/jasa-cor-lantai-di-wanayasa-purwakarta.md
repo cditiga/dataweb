@@ -1,6 +1,7 @@
 ---
 title: "Jasa Cor Lantai di Wanayasa Purwakarta"
 date: "2023-03-31"
+lastmod: "2026-08-19"
 categories:
  - "cor"
 type: "service"

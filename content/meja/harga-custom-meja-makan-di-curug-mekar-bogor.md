@@ -1,6 +1,7 @@
 ---
 title: "Harga Custom Meja Makan Di Curug Mekar Bogor"
 date: "2024-08-08"
+lastmod: "2026-08-19"
 categories:
  - "meja"
 type: "service"

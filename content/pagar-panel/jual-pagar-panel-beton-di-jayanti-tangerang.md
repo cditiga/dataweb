@@ -1,6 +1,7 @@
 ---
 title: "Jual Pagar Panel Beton di Jayanti Tangerang"
 date: "2023-07-16"
+lastmod: "2026-08-19"
 categories:
  - "pagar-panel"
 type: "product"

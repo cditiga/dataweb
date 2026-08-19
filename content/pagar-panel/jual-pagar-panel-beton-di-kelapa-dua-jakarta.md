@@ -1,6 +1,7 @@
 ---
 title: "Jual Pagar Panel Beton di Kelapa Dua Jakarta"
 date: "2023-01-24"
+lastmod: "2026-08-19"
 categories:
  - "pagar-panel"
 type: "product"

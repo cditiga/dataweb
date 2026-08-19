@@ -1,6 +1,7 @@
 ---
 title: "Jasa Cor Readymix /Jayamix di Bintaro Jakarta"
 date: "2023-02-05"
+lastmod: "2026-08-19"
 categories:
  - "cor"
 type: "service"

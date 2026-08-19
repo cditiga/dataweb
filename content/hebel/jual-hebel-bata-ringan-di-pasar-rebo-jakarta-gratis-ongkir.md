@@ -1,6 +1,7 @@
 ---
 title: "Jual Hebel Bata Ringan di Pasar Rebo Jakarta Gratis Ongkir"
 date: "2023-03-30"
+lastmod: "2026-08-19"
 categories:
  - "hebel"
 type: "product"

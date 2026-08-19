@@ -1,6 +1,7 @@
 ---
 title: "Layanan Cor Jayamix Mini /Minimix di Cimanggis Depok"
 date: "2023-11-07"
+lastmod: "2026-08-19"
 categories:
  - "cor"
 type: "service"

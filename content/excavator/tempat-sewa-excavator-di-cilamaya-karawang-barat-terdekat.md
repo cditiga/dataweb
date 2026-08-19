@@ -1,6 +1,7 @@
 ---
 title: "Tempat Sewa Excavator di Cilamaya Karawang Barat Terdekat"
 date: "2023-08-07"
+lastmod: "2026-08-19"
 categories:
  - "excavator"
 type: "service"

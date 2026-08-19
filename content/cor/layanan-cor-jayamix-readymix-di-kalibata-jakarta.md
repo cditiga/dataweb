@@ -1,6 +1,7 @@
 ---
 title: "Layanan Cor Jayamix /Readymix di Kalibata Jakarta"
 date: "2023-01-12"
+lastmod: "2026-08-19"
 categories:
  - "cor"
 type: "service"

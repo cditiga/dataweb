@@ -1,6 +1,7 @@
 ---
 title: "Jasa Custom Dipan Laci Minimalis Di Situ Gede Bogor"
 date: "2024-10-13"
+lastmod: "2026-08-19"
 categories:
  - "dipan"
 type: "service"

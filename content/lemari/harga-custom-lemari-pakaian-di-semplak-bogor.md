@@ -1,6 +1,7 @@
 ---
 title: "Harga Custom Lemari Pakaian Di Semplak Bogor"
 date: "2024-10-21"
+lastmod: "2026-08-19"
 categories:
  - "lemari"
 type: "service"

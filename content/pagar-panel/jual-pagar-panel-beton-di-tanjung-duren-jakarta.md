@@ -1,6 +1,7 @@
 ---
 title: "Jual Pagar Panel Beton di Tanjung Duren Jakarta"
 date: "2023-08-01"
+lastmod: "2026-08-19"
 categories:
  - "pagar-panel"
 type: "product"

@@ -1,6 +1,7 @@
 ---
 title: "Jual Tiang Pancang Beton di Batu Ampar Jakarta"
 date: "2023-04-23"
+lastmod: "2026-08-19"
 categories:
  - "tiang-pancang"
 type: "product"

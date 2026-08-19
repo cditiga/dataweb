@@ -1,6 +1,7 @@
 ---
 title: "Tempat Sewa Excavator di Kampung Bali Jakarta Terdekat"
 date: "2023-07-20"
+lastmod: "2026-08-19"
 categories:
  - "excavator"
 type: "service"

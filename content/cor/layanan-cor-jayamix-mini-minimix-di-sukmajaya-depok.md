@@ -1,6 +1,7 @@
 ---
 title: "Layanan Cor Jayamix Mini /Minimix di Sukmajaya Depok"
 date: "2023-05-18"
+lastmod: "2026-08-19"
 categories:
  - "cor"
 type: "service"

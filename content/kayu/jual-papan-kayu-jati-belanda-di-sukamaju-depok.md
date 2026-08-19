@@ -1,6 +1,7 @@
 ---
 title: "Jual Papan Kayu Jati Belanda Di Sukamaju Depok"
 date: "2024-08-09"
+lastmod: "2026-08-19"
 categories:
  - "kayu"
 type: "product"

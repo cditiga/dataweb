@@ -1,6 +1,7 @@
 ---
 title: "Sewa Crane di Gunung Batu Bogor Per Jam"
 date: "2023-03-24"
+lastmod: "2026-08-19"
 categories:
  - "crane"
 type: "service"

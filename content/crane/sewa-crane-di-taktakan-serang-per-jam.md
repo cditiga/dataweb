@@ -1,6 +1,7 @@
 ---
 title: "Sewa Crane di Taktakan Serang Per Jam"
 date: "2023-05-06"
+lastmod: "2026-08-19"
 categories:
  - "crane"
 type: "service"

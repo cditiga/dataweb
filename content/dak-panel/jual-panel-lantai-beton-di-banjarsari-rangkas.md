@@ -1,6 +1,7 @@
 ---
 title: "Jual Panel Lantai Beton di Banjarsari Rangkas"
 date: "2023-07-20"
+lastmod: "2026-08-19"
 categories:
  - "dak-panel"
 type: "product"

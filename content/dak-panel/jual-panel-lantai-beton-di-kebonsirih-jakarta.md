@@ -1,6 +1,7 @@
 ---
 title: "Jual Panel Lantai Beton di Kebonsirih Jakarta"
 date: "2023-10-16"
+lastmod: "2026-08-19"
 categories:
  - "dak-panel"
 type: "product"

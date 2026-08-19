@@ -1,6 +1,7 @@
 ---
 title: "Jual Hebel Bata Ringan di Cikaret Bogor Gratis Ongkir"
 date: "2023-10-26"
+lastmod: "2026-08-19"
 categories:
  - "hebel"
 type: "product"

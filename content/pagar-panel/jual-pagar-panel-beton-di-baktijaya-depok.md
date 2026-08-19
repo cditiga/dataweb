@@ -1,6 +1,7 @@
 ---
 title: "Jual Pagar Panel Beton di Baktijaya Depok"
 date: "2023-06-09"
+lastmod: "2026-08-19"
 categories:
  - "pagar-panel"
 type: "product"

@@ -1,6 +1,7 @@
 ---
 title: "Sewa Crane di Setu Bekasi Per Jam"
 date: "2023-05-04"
+lastmod: "2026-08-19"
 categories:
  - "crane"
 type: "service"

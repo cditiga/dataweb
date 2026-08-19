@@ -1,6 +1,7 @@
 ---
 title: "Layanan Cor Jayamix /Readymix di Ancol Jakarta"
 date: "2023-07-02"
+lastmod: "2026-08-19"
 categories:
  - "cor"
 type: "service"

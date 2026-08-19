@@ -1,6 +1,7 @@
 ---
 title: "Jual Tiang Pancang Beton di Tanah Sareal Jakarta"
 date: "2023-10-04"
+lastmod: "2026-08-19"
 categories:
  - "tiang-pancang"
 type: "product"

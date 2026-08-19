@@ -1,6 +1,7 @@
 ---
 title: "Layanan Cor Jayamix Mini /Minimix di Koja Jakarta"
 date: "2023-07-02"
+lastmod: "2026-08-19"
 categories:
  - "cor"
 type: "service"

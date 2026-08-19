@@ -1,6 +1,7 @@
 ---
 title: "Jual Material Batu Makadam/Basecose di Klari Karawang Gratis Ongkir"
 date: "2023-04-03"
+lastmod: "2026-08-19"
 categories:
  - "urugan"
 type: "product"

@@ -1,6 +1,7 @@
 ---
 title: "Jasa Cor Lantai di Babakan Cikao Purwakarta"
 date: "2023-05-24"
+lastmod: "2026-08-19"
 categories:
  - "cor"
 type: "service"

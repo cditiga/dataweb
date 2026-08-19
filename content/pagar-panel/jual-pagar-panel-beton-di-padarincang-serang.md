@@ -1,6 +1,7 @@
 ---
 title: "Jual Pagar Panel Beton di Padarincang Serang"
 date: "2023-06-10"
+lastmod: "2026-08-19"
 categories:
  - "pagar-panel"
 type: "product"

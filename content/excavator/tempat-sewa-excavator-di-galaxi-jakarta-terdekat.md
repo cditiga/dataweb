@@ -1,6 +1,7 @@
 ---
 title: "Tempat Sewa Excavator di Galaxi Jakarta Terdekat"
 date: "2023-08-21"
+lastmod: "2026-08-19"
 categories:
  - "excavator"
 type: "service"

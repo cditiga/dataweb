@@ -1,6 +1,7 @@
 ---
 title: "Jual Papan Kayu Jati Super Di Setu Bekasi"
 date: "2024-01-07"
+lastmod: "2026-08-19"
 categories:
  - "kayu"
 type: "product"

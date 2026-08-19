@@ -1,6 +1,7 @@
 ---
 title: "Jual Pagar Panel Beton di Pasar Manggis Jakarta"
 date: "2023-11-16"
+lastmod: "2026-08-19"
 categories:
  - "pagar-panel"
 type: "product"

@@ -1,6 +1,7 @@
 ---
 title: "Jual Tiang Pancang Beton di Semplak Bogor"
 date: "2023-12-13"
+lastmod: "2026-08-19"
 categories:
  - "tiang-pancang"
 type: "product"

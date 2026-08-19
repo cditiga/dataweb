@@ -1,6 +1,7 @@
 ---
 title: "Jasa Sewa Bull Dozer di Jatisari Karawang [Harian]"
 date: "2023-06-03"
+lastmod: "2026-08-19"
 categories:
  - "bull-dozer"
 type: "service"

@@ -1,6 +1,7 @@
 ---
 title: "Jual Uditch/Buis Beton di Malaka Sari Jakarta"
 date: "2023-03-14"
+lastmod: "2026-08-19"
 categories:
  - "uditch-buis"
 type: "product"

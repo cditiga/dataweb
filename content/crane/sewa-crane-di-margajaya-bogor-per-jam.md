@@ -1,6 +1,7 @@
 ---
 title: "Sewa Crane di Margajaya Bogor Per Jam"
 date: "2023-07-25"
+lastmod: "2026-08-19"
 categories:
  - "crane"
 type: "service"

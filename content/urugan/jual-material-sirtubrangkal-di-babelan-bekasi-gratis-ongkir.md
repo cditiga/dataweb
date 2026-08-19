@@ -1,6 +1,7 @@
 ---
 title: "Jual Material Sirtu/Brangkal di Babelan Bekasi Gratis Ongkir"
 date: "2023-05-01"
+lastmod: "2026-08-19"
 categories:
  - "urugan"
 type: "product"

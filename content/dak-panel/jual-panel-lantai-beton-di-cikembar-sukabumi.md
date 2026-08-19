@@ -1,6 +1,7 @@
 ---
 title: "Jual Panel Lantai Beton di Cikembar Sukabumi"
 date: "2023-03-24"
+lastmod: "2026-08-19"
 categories:
  - "dak-panel"
 type: "product"

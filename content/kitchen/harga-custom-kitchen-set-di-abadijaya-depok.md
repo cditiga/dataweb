@@ -1,6 +1,7 @@
 ---
 title: "Harga Custom Kitchen Set Di Abadijaya Depok"
 date: "2024-05-23"
+lastmod: "2026-08-19"
 categories:
  - "kitchen"
 type: "service"

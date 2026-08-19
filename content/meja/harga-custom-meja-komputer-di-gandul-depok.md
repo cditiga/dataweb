@@ -1,6 +1,7 @@
 ---
 title: "Harga Custom Meja Komputer Di Gandul Depok"
 date: "2024-08-04"
+lastmod: "2026-08-19"
 categories:
  - "meja"
 type: "service"

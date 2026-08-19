@@ -1,6 +1,7 @@
 ---
 title: "Jual Papan Kayu Borneo Di Curug Depok"
 date: "2024-08-16"
+lastmod: "2026-08-19"
 categories:
  - "kayu"
 type: "product"

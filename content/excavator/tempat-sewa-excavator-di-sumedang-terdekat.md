@@ -1,6 +1,7 @@
 ---
 title: "Tempat Sewa Excavator di Sumedang Terdekat"
 date: "2023-07-30"
+lastmod: "2026-08-19"
 categories:
  - "excavator"
 type: "service"

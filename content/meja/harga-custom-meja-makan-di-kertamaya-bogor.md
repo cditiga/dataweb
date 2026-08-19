@@ -1,6 +1,7 @@
 ---
 title: "Harga Custom Meja Makan Di Kertamaya Bogor"
 date: "2024-07-21"
+lastmod: "2026-08-19"
 categories:
  - "meja"
 type: "service"

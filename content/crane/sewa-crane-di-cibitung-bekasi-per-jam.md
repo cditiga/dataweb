@@ -1,6 +1,7 @@
 ---
 title: "Sewa Crane di Cibitung Bekasi Per Jam"
 date: "2023-04-26"
+lastmod: "2026-08-19"
 categories:
  - "crane"
 type: "service"

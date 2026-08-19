@@ -1,6 +1,7 @@
 ---
 title: "Jual Pagar Panel Beton di Tanjung Priok Jakarta"
 date: "2023-09-13"
+lastmod: "2026-08-19"
 categories:
  - "pagar-panel"
 type: "product"

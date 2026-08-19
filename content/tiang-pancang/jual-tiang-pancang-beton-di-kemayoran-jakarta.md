@@ -1,6 +1,7 @@
 ---
 title: "Jual Tiang Pancang Beton di Kemayoran Jakarta"
 date: "2023-06-29"
+lastmod: "2026-08-19"
 categories:
  - "tiang-pancang"
 type: "product"

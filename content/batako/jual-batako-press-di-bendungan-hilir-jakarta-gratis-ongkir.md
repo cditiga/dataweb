@@ -1,6 +1,7 @@
 ---
 title: "Jual Batako Press di Bendungan Hilir Jakarta Gratis Ongkir"
 date: "2023-06-13"
+lastmod: "2026-08-19"
 categories:
  - "batako"
 type: "product"

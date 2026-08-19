@@ -1,6 +1,7 @@
 ---
 title: "Jual Hebel Bata Ringan di Curug Bogor Gratis Ongkir"
 date: "2023-01-21"
+lastmod: "2026-08-19"
 categories:
  - "hebel"
 type: "product"

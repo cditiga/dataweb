@@ -1,6 +1,7 @@
 ---
 title: "Jasa Pengaspalan Jalan Di Mulyaharja Bogor"
 date: "2024-02-17"
+lastmod: "2026-08-19"
 categories:
  - "hotmix"
 type: "service"

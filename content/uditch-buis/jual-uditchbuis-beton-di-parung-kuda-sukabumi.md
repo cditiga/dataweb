@@ -1,6 +1,7 @@
 ---
 title: "Jual Uditch/Buis Beton di Parung Kuda Sukabumi"
 date: "2023-01-10"
+lastmod: "2026-08-19"
 categories:
  - "uditch-buis"
 type: "product"

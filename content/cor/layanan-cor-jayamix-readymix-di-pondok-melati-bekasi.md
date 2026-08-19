@@ -1,6 +1,7 @@
 ---
 title: "Layanan Cor Jayamix /Readymix di Pondok Melati Bekasi"
 date: "2023-09-11"
+lastmod: "2026-08-19"
 categories:
  - "cor"
 type: "service"

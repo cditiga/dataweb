@@ -1,6 +1,7 @@
 ---
 title: "Jasa Cor Readymix /Jayamix di Rawajati Jakarta"
 date: "2023-12-15"
+lastmod: "2026-08-19"
 categories:
  - "cor"
 type: "service"

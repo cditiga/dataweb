@@ -1,6 +1,7 @@
 ---
 title: "Harga Custom Lemari Pakaian Di Meruyung Depok"
 date: "2024-07-06"
+lastmod: "2026-08-19"
 categories:
  - "lemari"
 type: "service"

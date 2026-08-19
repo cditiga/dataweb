@@ -1,6 +1,7 @@
 ---
 title: "Jual Balok Kayu Borneo Di Ciparigi Bogor"
 date: "2024-08-04"
+lastmod: "2026-08-19"
 categories:
  - "kayu"
 type: "product"

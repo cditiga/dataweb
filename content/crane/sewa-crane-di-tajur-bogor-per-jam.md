@@ -1,6 +1,7 @@
 ---
 title: "Sewa Crane di Tajur Bogor Per Jam"
 date: "2023-10-08"
+lastmod: "2026-08-19"
 categories:
  - "crane"
 type: "service"

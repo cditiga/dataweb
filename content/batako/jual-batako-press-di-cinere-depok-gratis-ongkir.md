@@ -1,6 +1,7 @@
 ---
 title: "Jual Batako Press di Cinere Depok Gratis Ongkir"
 date: "2023-09-10"
+lastmod: "2026-08-19"
 categories:
  - "batako"
 type: "product"

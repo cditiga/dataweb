@@ -1,6 +1,7 @@
 ---
 title: "Jual Uditch/Buis Beton di Pasawahan Purwakarta"
 date: "2023-06-09"
+lastmod: "2026-08-19"
 categories:
  - "uditch-buis"
 type: "product"

@@ -1,6 +1,7 @@
 ---
 title: "Jual Batako Press di Kelapa Gading Jakarta Gratis Ongkir"
 date: "2023-11-18"
+lastmod: "2026-08-19"
 categories:
  - "batako"
 type: "product"

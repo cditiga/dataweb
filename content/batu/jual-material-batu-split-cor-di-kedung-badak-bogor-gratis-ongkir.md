@@ -1,6 +1,7 @@
 ---
 title: "Jual Material Batu Split Cor di Kedung Badak Bogor Gratis Ongkir"
 date: "2023-01-23"
+lastmod: "2026-08-19"
 categories:
  - "batu"
 type: "product"

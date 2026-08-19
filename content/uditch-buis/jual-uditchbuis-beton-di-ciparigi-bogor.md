@@ -1,6 +1,7 @@
 ---
 title: "Jual Uditch/Buis Beton di Ciparigi Bogor"
 date: "2023-02-23"
+lastmod: "2026-08-19"
 categories:
  - "uditch-buis"
 type: "product"

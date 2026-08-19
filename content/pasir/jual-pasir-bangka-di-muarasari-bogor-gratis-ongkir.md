@@ -1,6 +1,7 @@
 ---
 title: "Jual Pasir Bangka di Muarasari Bogor Gratis Ongkir"
 date: "2023-08-05"
+lastmod: "2026-08-19"
 categories:
  - "pasir"
 type: "product"

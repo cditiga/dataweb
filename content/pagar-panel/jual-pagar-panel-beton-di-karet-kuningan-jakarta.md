@@ -1,6 +1,7 @@
 ---
 title: "Jual Pagar Panel Beton di Karet Kuningan Jakarta"
 date: "2023-06-29"
+lastmod: "2026-08-19"
 categories:
  - "pagar-panel"
 type: "product"

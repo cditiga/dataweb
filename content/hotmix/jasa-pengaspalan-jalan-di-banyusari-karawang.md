@@ -1,6 +1,7 @@
 ---
 title: "Jasa Pengaspalan Jalan Di Banyusari Karawang"
 date: "2024-04-01"
+lastmod: "2026-08-19"
 categories:
  - "hotmix"
 type: "service"

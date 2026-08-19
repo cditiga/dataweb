@@ -1,6 +1,7 @@
 ---
 title: "Jual Tiang Pancang Beton di Tegalwaru Karawang"
 date: "2023-10-23"
+lastmod: "2026-08-19"
 categories:
  - "tiang-pancang"
 type: "product"

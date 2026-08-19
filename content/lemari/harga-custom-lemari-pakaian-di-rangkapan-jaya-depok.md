@@ -1,6 +1,7 @@
 ---
 title: "Harga Custom Lemari Pakaian Di Rangkapan Jaya Depok"
 date: "2024-08-12"
+lastmod: "2026-08-19"
 categories:
  - "lemari"
 type: "service"

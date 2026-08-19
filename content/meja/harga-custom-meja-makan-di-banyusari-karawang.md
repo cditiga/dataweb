@@ -1,6 +1,7 @@
 ---
 title: "Harga Custom Meja Makan Di Banyusari Karawang"
 date: "2024-06-23"
+lastmod: "2026-08-19"
 categories:
  - "meja"
 type: "service"

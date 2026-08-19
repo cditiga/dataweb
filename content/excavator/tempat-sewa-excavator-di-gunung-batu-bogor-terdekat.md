@@ -1,6 +1,7 @@
 ---
 title: "Tempat Sewa Excavator di Gunung Batu Bogor Terdekat"
 date: "2023-10-01"
+lastmod: "2026-08-19"
 categories:
  - "excavator"
 type: "service"

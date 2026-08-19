@@ -1,6 +1,7 @@
 ---
 title: "Jual Tiang Pancang Beton di Gudang Bogor"
 date: "2023-01-21"
+lastmod: "2026-08-19"
 categories:
  - "tiang-pancang"
 type: "product"

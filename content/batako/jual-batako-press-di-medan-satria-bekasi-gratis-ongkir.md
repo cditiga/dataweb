@@ -1,6 +1,7 @@
 ---
 title: "Jual Batako Press di Medan Satria Bekasi Gratis Ongkir"
 date: "2023-04-12"
+lastmod: "2026-08-19"
 categories:
  - "batako"
 type: "product"

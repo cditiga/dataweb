@@ -1,6 +1,7 @@
 ---
 title: "Jual Hebel Bata Ringan di Sukapura Jakarta Gratis Ongkir"
 date: "2023-02-19"
+lastmod: "2026-08-19"
 categories:
  - "hebel"
 type: "product"

@@ -1,6 +1,7 @@
 ---
 title: "Jasa Cor Jalan di Wanayasa Purwakarta"
 date: "2023-11-13"
+lastmod: "2026-08-19"
 categories:
  - "cor"
 type: "service"

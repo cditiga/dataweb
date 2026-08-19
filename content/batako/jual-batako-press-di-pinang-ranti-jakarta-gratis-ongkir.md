@@ -1,6 +1,7 @@
 ---
 title: "Jual Batako Press di Pinang Ranti Jakarta Gratis Ongkir"
 date: "2023-07-03"
+lastmod: "2026-08-19"
 categories:
  - "batako"
 type: "product"

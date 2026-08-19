@@ -1,6 +1,7 @@
 ---
 title: "Jual Material Sirtu/Brangkal di Krendang Jakarta Gratis Ongkir"
 date: "2023-11-22"
+lastmod: "2026-08-19"
 categories:
  - "urugan"
 type: "product"

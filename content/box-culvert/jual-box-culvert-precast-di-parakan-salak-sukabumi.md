@@ -1,6 +1,7 @@
 ---
 title: "Jual Box Culvert Precast di Parakan Salak Sukabumi"
 date: "2023-02-17"
+lastmod: "2026-08-19"
 categories:
  - "box-culvert"
 type: "product"

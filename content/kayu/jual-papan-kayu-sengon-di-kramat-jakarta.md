@@ -1,6 +1,7 @@
 ---
 title: "Jual Papan Kayu Sengon Di Kramat Jakarta"
 date: "2024-03-28"
+lastmod: "2026-08-19"
 categories:
  - "kayu"
 type: "product"

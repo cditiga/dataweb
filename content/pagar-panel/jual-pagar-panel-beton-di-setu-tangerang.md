@@ -1,6 +1,7 @@
 ---
 title: "Jual Pagar Panel Beton di Setu Tangerang"
 date: "2023-01-05"
+lastmod: "2026-08-19"
 categories:
  - "pagar-panel"
 type: "product"

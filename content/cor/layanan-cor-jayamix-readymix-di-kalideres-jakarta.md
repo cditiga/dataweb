@@ -1,6 +1,7 @@
 ---
 title: "Layanan Cor Jayamix /Readymix di Kalideres Jakarta"
 date: "2023-11-14"
+lastmod: "2026-08-19"
 categories:
  - "cor"
 type: "service"

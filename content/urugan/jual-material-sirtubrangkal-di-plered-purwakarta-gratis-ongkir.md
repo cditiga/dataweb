@@ -1,6 +1,7 @@
 ---
 title: "Jual Material Sirtu/Brangkal di Plered Purwakarta Gratis Ongkir"
 date: "2023-07-25"
+lastmod: "2026-08-19"
 categories:
  - "urugan"
 type: "product"

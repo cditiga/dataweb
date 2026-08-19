@@ -1,6 +1,7 @@
 ---
 title: "Sewa Crane di Wanasalam Rangkas Per Jam"
 date: "2023-07-09"
+lastmod: "2026-08-19"
 categories:
  - "crane"
 type: "service"

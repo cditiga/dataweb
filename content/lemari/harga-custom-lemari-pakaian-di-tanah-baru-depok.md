@@ -1,6 +1,7 @@
 ---
 title: "Harga Custom Lemari Pakaian Di Tanah Baru Depok"
 date: "2024-08-02"
+lastmod: "2026-08-19"
 categories:
  - "lemari"
 type: "service"

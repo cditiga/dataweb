@@ -1,6 +1,7 @@
 ---
 title: "Layanan Cor Jayamix /Readymix di Bale Kambang Jakarta"
 date: "2023-09-28"
+lastmod: "2026-08-19"
 categories:
  - "cor"
 type: "service"

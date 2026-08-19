@@ -1,6 +1,7 @@
 ---
 title: "Jasa Sewa Bull Dozer di Cikarang Bekasi [Harian]"
 date: "2023-04-23"
+lastmod: "2026-08-19"
 categories:
  - "bull-dozer"
 type: "service"

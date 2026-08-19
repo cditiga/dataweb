@@ -1,6 +1,7 @@
 ---
 title: "Jual Hebel Bata Ringan di Rawalumbu Bekasi Gratis Ongkir"
 date: "2023-12-03"
+lastmod: "2026-08-19"
 categories:
  - "hebel"
 type: "product"

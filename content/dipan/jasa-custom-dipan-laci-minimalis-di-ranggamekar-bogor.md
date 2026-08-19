@@ -1,6 +1,7 @@
 ---
 title: "Jasa Custom Dipan Laci Minimalis Di Ranggamekar Bogor"
 date: "2024-07-11"
+lastmod: "2026-08-19"
 categories:
  - "dipan"
 type: "service"

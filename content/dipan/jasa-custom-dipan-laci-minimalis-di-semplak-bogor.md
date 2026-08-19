@@ -1,6 +1,7 @@
 ---
 title: "Jasa Custom Dipan Laci Minimalis Di Semplak Bogor"
 date: "2024-08-03"
+lastmod: "2026-08-19"
 categories:
  - "dipan"
 type: "service"

@@ -1,6 +1,7 @@
 ---
 title: "Layanan Cor Jayamix Mini /Minimix di Cideng Jakarta"
 date: "2023-06-13"
+lastmod: "2026-08-19"
 categories:
  - "cor"
 type: "service"

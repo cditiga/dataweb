@@ -1,6 +1,7 @@
 ---
 title: "Jual Pagar Panel Beton di Mauk Tangerang"
 date: "2023-08-19"
+lastmod: "2026-08-19"
 categories:
  - "pagar-panel"
 type: "product"

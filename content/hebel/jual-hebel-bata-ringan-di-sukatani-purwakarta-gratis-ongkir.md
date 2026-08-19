@@ -1,6 +1,7 @@
 ---
 title: "Jual Hebel Bata Ringan di Sukatani Purwakarta Gratis Ongkir"
 date: "2023-04-12"
+lastmod: "2026-08-19"
 categories:
  - "hebel"
 type: "product"

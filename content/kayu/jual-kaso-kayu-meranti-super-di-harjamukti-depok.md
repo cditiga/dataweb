@@ -1,6 +1,7 @@
 ---
 title: "Jual Kaso Kayu Meranti Super Di Harjamukti Depok"
 date: "2024-07-05"
+lastmod: "2026-08-19"
 categories:
  - "kayu"
 type: "product"

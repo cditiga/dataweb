@@ -1,6 +1,7 @@
 ---
 title: "Jual Tiang Pancang Beton di Tunjung Teja Serang"
 date: "2023-09-28"
+lastmod: "2026-08-19"
 categories:
  - "tiang-pancang"
 type: "product"

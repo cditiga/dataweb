@@ -1,6 +1,7 @@
 ---
 title: "Sewa Crane di Jatisari Karawang Per Jam"
 date: "2023-02-04"
+lastmod: "2026-08-19"
 categories:
  - "crane"
 type: "service"

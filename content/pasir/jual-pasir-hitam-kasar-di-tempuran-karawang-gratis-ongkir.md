@@ -1,6 +1,7 @@
 ---
 title: "Jual Pasir Hitam Kasar di Tempuran Karawang Gratis Ongkir"
 date: "2023-01-17"
+lastmod: "2026-08-19"
 categories:
  - "pasir"
 type: "product"

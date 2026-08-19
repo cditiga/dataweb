@@ -1,6 +1,7 @@
 ---
 title: "Harga Custom Kitchen Set Di Curug Depok"
 date: "2024-08-17"
+lastmod: "2026-08-19"
 categories:
  - "kitchen"
 type: "service"

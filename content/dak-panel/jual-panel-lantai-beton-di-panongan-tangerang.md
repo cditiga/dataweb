@@ -1,6 +1,7 @@
 ---
 title: "Jual Panel Lantai Beton di Panongan Tangerang"
 date: "2023-08-01"
+lastmod: "2026-08-19"
 categories:
  - "dak-panel"
 type: "product"

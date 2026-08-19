@@ -1,6 +1,7 @@
 ---
 title: "Jual Pasir Pasang di Jatisari Karawang Gratis Ongkir"
 date: "2023-11-12"
+lastmod: "2026-08-19"
 categories:
  - "pasir"
 type: "product"

@@ -1,6 +1,7 @@
 ---
 title: "Jual Balok Kayu Sengon Di Semplak Bogor"
 date: "2024-08-12"
+lastmod: "2026-08-19"
 categories:
  - "kayu"
 type: "product"

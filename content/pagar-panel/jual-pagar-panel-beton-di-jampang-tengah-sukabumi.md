@@ -1,6 +1,7 @@
 ---
 title: "Jual Pagar Panel Beton di Jampang Tengah Sukabumi"
 date: "2023-09-26"
+lastmod: "2026-08-19"
 categories:
  - "pagar-panel"
 type: "product"

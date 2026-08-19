@@ -1,6 +1,7 @@
 ---
 title: "Jual Pagar Panel Beton di Tegal Alur Jakarta"
 date: "2023-10-13"
+lastmod: "2026-08-19"
 categories:
  - "pagar-panel"
 type: "product"

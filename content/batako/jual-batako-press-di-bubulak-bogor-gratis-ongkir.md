@@ -1,6 +1,7 @@
 ---
 title: "Jual Batako Press di Bubulak Bogor Gratis Ongkir"
 date: "2023-05-25"
+lastmod: "2026-08-19"
 categories:
  - "batako"
 type: "product"

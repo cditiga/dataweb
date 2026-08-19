@@ -1,6 +1,7 @@
 ---
 title: "Jasa Cor Readymix /Jayamix di Pasar Minggu Jakarta"
 date: "2023-12-13"
+lastmod: "2026-08-19"
 categories:
  - "cor"
 type: "service"

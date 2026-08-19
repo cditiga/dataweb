@@ -1,6 +1,7 @@
 ---
 title: "Jual Box Culvert Precast di Sukaresmi Bogor"
 date: "2023-01-26"
+lastmod: "2026-08-19"
 categories:
  - "box-culvert"
 type: "product"

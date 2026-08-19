@@ -1,6 +1,7 @@
 ---
 title: "Jasa Cor Lantai di Sumur Batu Jakarta"
 date: "2023-12-29"
+lastmod: "2026-08-19"
 categories:
  - "cor"
 type: "service"

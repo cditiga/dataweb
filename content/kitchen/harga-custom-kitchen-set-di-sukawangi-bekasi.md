@@ -1,6 +1,7 @@
 ---
 title: "Harga Custom Kitchen Set Di Sukawangi Bekasi"
 date: "2024-07-19"
+lastmod: "2026-08-19"
 categories:
  - "kitchen"
 type: "service"

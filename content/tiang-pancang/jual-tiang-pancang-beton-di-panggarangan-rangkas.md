@@ -1,6 +1,7 @@
 ---
 title: "Jual Tiang Pancang Beton di Panggarangan Rangkas"
 date: "2023-11-10"
+lastmod: "2026-08-19"
 categories:
  - "tiang-pancang"
 type: "product"

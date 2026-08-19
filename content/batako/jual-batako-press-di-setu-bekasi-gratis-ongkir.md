@@ -1,6 +1,7 @@
 ---
 title: "Jual Batako Press di Setu Bekasi Gratis Ongkir"
 date: "2023-02-20"
+lastmod: "2026-08-19"
 categories:
  - "batako"
 type: "product"

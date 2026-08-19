@@ -1,6 +1,7 @@
 ---
 title: "Jual Panel Lantai Beton di Anyar Serang"
 date: "2023-12-11"
+lastmod: "2026-08-19"
 categories:
  - "dak-panel"
 type: "product"

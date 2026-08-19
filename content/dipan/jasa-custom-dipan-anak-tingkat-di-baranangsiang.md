@@ -1,6 +1,7 @@
 ---
 title: "Jasa Custom Dipan Anak Tingkat Di Baranangsiang"
 date: "2024-09-30"
+lastmod: "2026-08-19"
 categories:
  - "dipan"
 type: "service"

@@ -1,6 +1,7 @@
 ---
 title: "Jual Pagar Panel Beton di Tebet Jakarta"
 date: "2023-12-08"
+lastmod: "2026-08-19"
 categories:
  - "pagar-panel"
 type: "product"

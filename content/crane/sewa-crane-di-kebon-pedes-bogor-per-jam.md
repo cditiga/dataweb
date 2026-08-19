@@ -1,6 +1,7 @@
 ---
 title: "Sewa Crane di Kebon Pedes Bogor Per Jam"
 date: "2023-11-01"
+lastmod: "2026-08-19"
 categories:
  - "crane"
 type: "service"

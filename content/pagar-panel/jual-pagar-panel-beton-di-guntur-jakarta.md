@@ -1,6 +1,7 @@
 ---
 title: "Jual Pagar Panel Beton di Guntur Jakarta"
 date: "2023-10-10"
+lastmod: "2026-08-19"
 categories:
  - "pagar-panel"
 type: "product"

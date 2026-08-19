@@ -1,6 +1,7 @@
 ---
 title: "Jual Tiang Pancang Beton di Pangandaran"
 date: "2023-04-20"
+lastmod: "2026-08-19"
 categories:
  - "tiang-pancang"
 type: "product"

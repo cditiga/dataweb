@@ -1,6 +1,7 @@
 ---
 title: "Layanan Cor Jayamix /Readymix di Kamal Jakarta"
 date: "2023-12-10"
+lastmod: "2026-08-19"
 categories:
  - "cor"
 type: "service"

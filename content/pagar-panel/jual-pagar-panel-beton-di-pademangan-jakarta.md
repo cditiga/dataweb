@@ -1,6 +1,7 @@
 ---
 title: "Jual Pagar Panel Beton di Pademangan Jakarta"
 date: "2023-06-12"
+lastmod: "2026-08-19"
 categories:
  - "pagar-panel"
 type: "product"

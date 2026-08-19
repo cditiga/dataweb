@@ -1,6 +1,7 @@
 ---
 title: "Jual Tiang Pancang Beton di Bale Kambang Jakarta"
 date: "2023-03-31"
+lastmod: "2026-08-19"
 categories:
  - "tiang-pancang"
 type: "product"

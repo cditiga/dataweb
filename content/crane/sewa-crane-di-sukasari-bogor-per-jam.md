@@ -1,6 +1,7 @@
 ---
 title: "Sewa Crane di Sukasari Bogor Per Jam"
 date: "2023-06-27"
+lastmod: "2026-08-19"
 categories:
  - "crane"
 type: "service"

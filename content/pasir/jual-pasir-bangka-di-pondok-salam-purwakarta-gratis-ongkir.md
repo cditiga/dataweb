@@ -1,6 +1,7 @@
 ---
 title: "Jual Pasir Bangka di Pondok Salam Purwakarta Gratis Ongkir"
 date: "2023-07-04"
+lastmod: "2026-08-19"
 categories:
  - "pasir"
 type: "product"

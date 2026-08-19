@@ -1,6 +1,7 @@
 ---
 title: "Jual Tiang Pancang Beton di Rawa Badak Jakarta"
 date: "2023-08-02"
+lastmod: "2026-08-19"
 categories:
  - "tiang-pancang"
 type: "product"

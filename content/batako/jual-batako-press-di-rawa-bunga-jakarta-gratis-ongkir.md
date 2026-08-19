@@ -1,6 +1,7 @@
 ---
 title: "Jual Batako Press di Rawa Bunga Jakarta Gratis Ongkir"
 date: "2023-05-07"
+lastmod: "2026-08-19"
 categories:
  - "batako"
 type: "product"

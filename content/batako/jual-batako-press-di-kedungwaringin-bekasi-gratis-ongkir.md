@@ -1,6 +1,7 @@
 ---
 title: "Jual Batako Press di Kedungwaringin Bekasi Gratis Ongkir"
 date: "2023-06-29"
+lastmod: "2026-08-19"
 categories:
  - "batako"
 type: "product"

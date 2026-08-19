@@ -1,6 +1,7 @@
 ---
 title: "Jual Tiang Pancang Beton di Pabuaran Sukabumi"
 date: "2023-04-22"
+lastmod: "2026-08-19"
 categories:
  - "tiang-pancang"
 type: "product"

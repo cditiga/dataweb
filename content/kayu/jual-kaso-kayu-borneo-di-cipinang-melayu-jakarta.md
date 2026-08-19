@@ -1,6 +1,7 @@
 ---
 title: "Jual Kaso Kayu Borneo Di Cipinang Melayu Jakarta"
 date: "2024-02-24"
+lastmod: "2026-08-19"
 categories:
  - "kayu"
 type: "product"

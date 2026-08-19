@@ -1,6 +1,7 @@
 ---
 title: "Jual Tiang Pancang Beton di Rancamaya Bogor"
 date: "2023-02-18"
+lastmod: "2026-08-19"
 categories:
  - "tiang-pancang"
 type: "product"

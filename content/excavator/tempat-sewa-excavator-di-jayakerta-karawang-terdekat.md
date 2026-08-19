@@ -1,6 +1,7 @@
 ---
 title: "Tempat Sewa Excavator di Jayakerta Karawang Terdekat"
 date: "2023-11-18"
+lastmod: "2026-08-19"
 categories:
  - "excavator"
 type: "service"

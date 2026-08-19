@@ -1,6 +1,7 @@
 ---
 title: "Jasa Pengaspalan Area Parkir Di Bantar Gebang Bekasi"
 date: "2024-05-18"
+lastmod: "2026-08-19"
 categories:
  - "hotmix"
 type: "service"

@@ -1,6 +1,7 @@
 ---
 title: "Sewa Crane di Medan Satria Bekasi Per Jam"
 date: "2023-11-30"
+lastmod: "2026-08-19"
 categories:
  - "crane"
 type: "service"

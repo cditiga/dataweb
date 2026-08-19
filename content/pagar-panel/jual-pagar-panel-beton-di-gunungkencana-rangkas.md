@@ -1,6 +1,7 @@
 ---
 title: "Jual Pagar Panel Beton di Gunungkencana Rangkas"
 date: "2023-05-09"
+lastmod: "2026-08-19"
 categories:
  - "pagar-panel"
 type: "product"

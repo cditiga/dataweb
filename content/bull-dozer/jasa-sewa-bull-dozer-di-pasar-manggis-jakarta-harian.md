@@ -1,6 +1,7 @@
 ---
 title: "Jasa Sewa Bull Dozer di Pasar Manggis Jakarta [Harian]"
 date: "2023-08-30"
+lastmod: "2026-08-19"
 categories:
  - "bull-dozer"
 type: "service"

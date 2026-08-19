@@ -1,6 +1,7 @@
 ---
 title: "Jual Uditch/Buis Beton di Maniis Purwakarta"
 date: "2023-03-22"
+lastmod: "2026-08-19"
 categories:
  - "uditch-buis"
 type: "product"

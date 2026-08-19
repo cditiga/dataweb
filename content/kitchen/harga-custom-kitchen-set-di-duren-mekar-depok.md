@@ -1,6 +1,7 @@
 ---
 title: "Harga Custom Kitchen Set Di Duren Mekar Depok"
 date: "2024-10-01"
+lastmod: "2026-08-19"
 categories:
  - "kitchen"
 type: "service"

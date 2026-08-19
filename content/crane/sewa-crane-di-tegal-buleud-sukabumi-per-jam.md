@@ -1,6 +1,7 @@
 ---
 title: "Sewa Crane di Tegal Buleud Sukabumi Per Jam"
 date: "2023-08-22"
+lastmod: "2026-08-19"
 categories:
  - "crane"
 type: "service"

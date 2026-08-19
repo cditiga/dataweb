@@ -1,6 +1,7 @@
 ---
 title: "Jual Tiang Pancang Beton di Kebon Pedes Bogor"
 date: "2023-10-18"
+lastmod: "2026-08-19"
 categories:
  - "tiang-pancang"
 type: "product"

@@ -1,6 +1,7 @@
 ---
 title: "Jual Batako Press di Kedung Badak Bogor Gratis Ongkir"
 date: "2023-12-12"
+lastmod: "2026-08-19"
 categories:
  - "batako"
 type: "product"

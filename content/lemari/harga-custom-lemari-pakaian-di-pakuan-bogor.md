@@ -1,6 +1,7 @@
 ---
 title: "Harga Custom Lemari Pakaian Di Pakuan Bogor"
 date: "2024-09-14"
+lastmod: "2026-08-19"
 categories:
  - "lemari"
 type: "service"

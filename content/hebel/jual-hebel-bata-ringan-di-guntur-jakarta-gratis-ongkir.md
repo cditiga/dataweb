@@ -1,6 +1,7 @@
 ---
 title: "Jual Hebel Bata Ringan di Guntur Jakarta Gratis Ongkir"
 date: "2023-12-30"
+lastmod: "2026-08-19"
 categories:
  - "hebel"
 type: "product"

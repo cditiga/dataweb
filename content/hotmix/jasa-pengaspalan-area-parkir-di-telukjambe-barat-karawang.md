@@ -1,6 +1,7 @@
 ---
 title: "Jasa Pengaspalan Area Parkir Di Telukjambe Barat Karawang"
 date: "2024-06-11"
+lastmod: "2026-08-19"
 categories:
  - "hotmix"
 type: "service"

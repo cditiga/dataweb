@@ -1,6 +1,7 @@
 ---
 title: "Jual Hebel Bata Ringan di Tanjung Barat Jakarta Gratis Ongkir"
 date: "2023-03-28"
+lastmod: "2026-08-19"
 categories:
  - "hebel"
 type: "product"

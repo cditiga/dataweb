@@ -1,6 +1,7 @@
 ---
 title: "Harga Custom Meja Makan Di Jayakerta Karawang"
 date: "2024-06-18"
+lastmod: "2026-08-19"
 categories:
  - "meja"
 type: "service"

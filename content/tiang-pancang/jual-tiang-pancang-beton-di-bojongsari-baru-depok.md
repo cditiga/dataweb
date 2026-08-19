@@ -1,6 +1,7 @@
 ---
 title: "Jual Tiang Pancang Beton di Bojongsari Baru Depok"
 date: "2023-09-06"
+lastmod: "2026-08-19"
 categories:
  - "tiang-pancang"
 type: "product"

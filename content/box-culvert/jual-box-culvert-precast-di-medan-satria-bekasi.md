@@ -1,6 +1,7 @@
 ---
 title: "Jual Box Culvert Precast di Medan Satria Bekasi"
 date: "2023-12-23"
+lastmod: "2026-08-19"
 categories:
  - "box-culvert"
 type: "product"

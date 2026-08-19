@@ -1,6 +1,7 @@
 ---
 title: "Tempat Sewa Excavator di Serang Baru Bekasi Terdekat"
 date: "2023-10-01"
+lastmod: "2026-08-19"
 categories:
  - "excavator"
 type: "service"

@@ -1,6 +1,7 @@
 ---
 title: "Tempat Sewa Excavator di Tanjung Jakarta Terdekat"
 date: "2023-06-05"
+lastmod: "2026-08-19"
 categories:
  - "excavator"
 type: "service"

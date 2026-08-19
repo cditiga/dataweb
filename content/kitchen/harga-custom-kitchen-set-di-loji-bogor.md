@@ -1,6 +1,7 @@
 ---
 title: "Harga Custom Kitchen Set Di Loji Bogor"
 date: "2024-08-04"
+lastmod: "2026-08-19"
 categories:
  - "kitchen"
 type: "service"

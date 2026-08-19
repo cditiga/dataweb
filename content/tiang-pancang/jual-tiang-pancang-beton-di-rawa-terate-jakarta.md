@@ -1,6 +1,7 @@
 ---
 title: "Jual Tiang Pancang Beton di Rawa Terate Jakarta"
 date: "2023-06-12"
+lastmod: "2026-08-19"
 categories:
  - "tiang-pancang"
 type: "product"

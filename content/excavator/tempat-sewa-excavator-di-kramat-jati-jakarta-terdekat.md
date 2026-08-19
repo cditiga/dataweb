@@ -1,6 +1,7 @@
 ---
 title: "Tempat Sewa Excavator di Kramat Jati Jakarta Terdekat"
 date: "2023-05-04"
+lastmod: "2026-08-19"
 categories:
  - "excavator"
 type: "service"

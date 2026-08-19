@@ -1,6 +1,7 @@
 ---
 title: "Jual Panel Lantai Beton di Bungursari Purwakarta"
 date: "2023-05-13"
+lastmod: "2026-08-19"
 categories:
  - "dak-panel"
 type: "product"

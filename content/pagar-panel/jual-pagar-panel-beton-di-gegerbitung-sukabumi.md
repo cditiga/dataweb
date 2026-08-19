@@ -1,6 +1,7 @@
 ---
 title: "Jual Pagar Panel Beton di Gegerbitung Sukabumi"
 date: "2023-09-09"
+lastmod: "2026-08-19"
 categories:
  - "pagar-panel"
 type: "product"

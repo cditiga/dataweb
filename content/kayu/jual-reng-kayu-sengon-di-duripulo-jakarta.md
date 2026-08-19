@@ -1,6 +1,7 @@
 ---
 title: "Jual Reng Kayu Sengon Di DuriPulo Jakarta"
 date: "2024-10-09"
+lastmod: "2026-08-19"
 categories:
  - "kayu"
 type: "product"

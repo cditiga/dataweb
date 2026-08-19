@@ -1,6 +1,7 @@
 ---
 title: "Layanan Cor Jayamix Mini /Minimix di Cibogor Bogor"
 date: "2023-04-18"
+lastmod: "2026-08-19"
 categories:
  - "cor"
 type: "service"

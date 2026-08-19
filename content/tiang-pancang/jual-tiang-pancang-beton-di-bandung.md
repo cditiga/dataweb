@@ -1,6 +1,7 @@
 ---
 title: "Jual Tiang Pancang Beton di Bandung"
 date: "2023-10-21"
+lastmod: "2026-08-19"
 categories:
  - "tiang-pancang"
 type: "product"

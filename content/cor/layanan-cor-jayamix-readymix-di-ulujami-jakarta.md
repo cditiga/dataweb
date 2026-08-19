@@ -1,6 +1,7 @@
 ---
 title: "Layanan Cor Jayamix /Readymix di Ulujami Jakarta"
 date: "2023-09-20"
+lastmod: "2026-08-19"
 categories:
  - "cor"
 type: "service"

@@ -1,6 +1,7 @@
 ---
 title: "Jual Pagar Panel Beton di Parung Kuda Sukabumi"
 date: "2023-07-30"
+lastmod: "2026-08-19"
 categories:
  - "pagar-panel"
 type: "product"

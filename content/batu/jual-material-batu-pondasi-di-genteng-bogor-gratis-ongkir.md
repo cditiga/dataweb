@@ -1,6 +1,7 @@
 ---
 title: "Jual Material Batu Pondasi di Genteng Bogor Gratis Ongkir"
 date: "2023-03-02"
+lastmod: "2026-08-19"
 categories:
  - "batu"
 type: "product"

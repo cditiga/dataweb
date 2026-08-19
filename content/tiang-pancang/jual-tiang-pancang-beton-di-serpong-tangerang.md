@@ -1,6 +1,7 @@
 ---
 title: "Jual Tiang Pancang Beton di Serpong Tangerang"
 date: "2023-05-03"
+lastmod: "2026-08-19"
 categories:
  - "tiang-pancang"
 type: "product"

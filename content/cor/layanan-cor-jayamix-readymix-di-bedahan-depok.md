@@ -1,6 +1,7 @@
 ---
 title: "Layanan Cor Jayamix /Readymix di Bedahan Depok"
 date: "2023-01-15"
+lastmod: "2026-08-19"
 categories:
  - "cor"
 type: "service"

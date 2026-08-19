@@ -1,6 +1,7 @@
 ---
 title: "Jual Tiang Pancang Beton di Caringin Sukabumi"
 date: "2023-05-12"
+lastmod: "2026-08-19"
 categories:
  - "tiang-pancang"
 type: "product"

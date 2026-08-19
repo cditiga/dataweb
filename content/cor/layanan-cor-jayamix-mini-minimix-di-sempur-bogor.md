@@ -1,6 +1,7 @@
 ---
 title: "Layanan Cor Jayamix Mini /Minimix di Sempur Bogor"
 date: "2023-08-23"
+lastmod: "2026-08-19"
 categories:
  - "cor"
 type: "service"

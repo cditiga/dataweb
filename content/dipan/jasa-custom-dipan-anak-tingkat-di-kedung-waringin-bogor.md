@@ -1,6 +1,7 @@
 ---
 title: "Jasa Custom Dipan Anak Tingkat Di Kedung Waringin Bogor"
 date: "2024-07-10"
+lastmod: "2026-08-19"
 categories:
  - "dipan"
 type: "service"

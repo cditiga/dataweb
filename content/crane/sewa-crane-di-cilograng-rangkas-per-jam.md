@@ -1,6 +1,7 @@
 ---
 title: "Sewa Crane di Cilograng Rangkas Per Jam"
 date: "2023-09-04"
+lastmod: "2026-08-19"
 categories:
  - "crane"
 type: "service"

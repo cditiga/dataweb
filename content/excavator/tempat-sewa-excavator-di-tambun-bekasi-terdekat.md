@@ -1,6 +1,7 @@
 ---
 title: "Tempat Sewa Excavator di Tambun Bekasi Terdekat"
 date: "2023-09-10"
+lastmod: "2026-08-19"
 categories:
  - "excavator"
 type: "service"

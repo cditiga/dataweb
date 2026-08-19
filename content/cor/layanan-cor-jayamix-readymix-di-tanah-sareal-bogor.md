@@ -1,6 +1,7 @@
 ---
 title: "Layanan Cor Jayamix /Readymix di Tanah Sareal Bogor"
 date: "2023-08-02"
+lastmod: "2026-08-19"
 categories:
  - "cor"
 type: "service"

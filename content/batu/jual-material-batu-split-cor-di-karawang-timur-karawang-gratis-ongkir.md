@@ -1,6 +1,7 @@
 ---
 title: "Jual Material Batu Split Cor di Karawang Timur Karawang Gratis Ongkir"
 date: "2023-04-01"
+lastmod: "2026-08-19"
 categories:
  - "batu"
 type: "product"

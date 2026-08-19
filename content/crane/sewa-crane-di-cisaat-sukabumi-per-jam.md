@@ -1,6 +1,7 @@
 ---
 title: "Sewa Crane di Cisaat Sukabumi Per Jam"
 date: "2023-06-23"
+lastmod: "2026-08-19"
 categories:
  - "crane"
 type: "service"

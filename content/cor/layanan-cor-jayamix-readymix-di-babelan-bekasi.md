@@ -1,6 +1,7 @@
 ---
 title: "Layanan Cor Jayamix /Readymix di Babelan Bekasi"
 date: "2023-02-13"
+lastmod: "2026-08-19"
 categories:
  - "cor"
 type: "service"

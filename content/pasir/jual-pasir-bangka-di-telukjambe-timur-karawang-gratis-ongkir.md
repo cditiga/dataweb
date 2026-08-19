@@ -1,6 +1,7 @@
 ---
 title: "Jual Pasir Bangka di Telukjambe Timur Karawang Gratis Ongkir"
 date: "2023-07-23"
+lastmod: "2026-08-19"
 categories:
  - "pasir"
 type: "product"

@@ -1,6 +1,7 @@
 ---
 title: "Layanan Cor Jayamix /Readymix di Sukamulya Tangerang"
 date: "2023-06-18"
+lastmod: "2026-08-19"
 categories:
  - "cor"
 type: "service"

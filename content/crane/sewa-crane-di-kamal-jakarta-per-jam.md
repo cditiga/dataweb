@@ -1,6 +1,7 @@
 ---
 title: "Sewa Crane di Kamal Jakarta Per Jam"
 date: "2023-08-15"
+lastmod: "2026-08-19"
 categories:
  - "crane"
 type: "service"

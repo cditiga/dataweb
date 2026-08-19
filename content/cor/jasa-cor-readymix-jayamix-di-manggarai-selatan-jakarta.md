@@ -1,6 +1,7 @@
 ---
 title: "Jasa Cor Readymix /Jayamix di Manggarai Selatan Jakarta"
 date: "2023-02-09"
+lastmod: "2026-08-19"
 categories:
  - "cor"
 type: "service"

@@ -1,6 +1,7 @@
 ---
 title: "Jual Tiang Pancang Beton di Galur Jakarta"
 date: "2023-06-01"
+lastmod: "2026-08-19"
 categories:
  - "tiang-pancang"
 type: "product"

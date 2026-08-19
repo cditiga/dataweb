@@ -1,6 +1,7 @@
 ---
 title: "Jual Panel Lantai Beton di Nagrak Sukabumi"
 date: "2023-10-06"
+lastmod: "2026-08-19"
 categories:
  - "dak-panel"
 type: "product"

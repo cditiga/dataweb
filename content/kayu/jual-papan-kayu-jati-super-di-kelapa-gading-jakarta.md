@@ -1,6 +1,7 @@
 ---
 title: "Jual Papan Kayu Jati Super Di Kelapa Gading Jakarta"
 date: "2024-02-25"
+lastmod: "2026-08-19"
 categories:
  - "kayu"
 type: "product"

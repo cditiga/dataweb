@@ -1,6 +1,7 @@
 ---
 title: "Jual Tiang Pancang Beton di Banjar"
 date: "2023-05-22"
+lastmod: "2026-08-19"
 categories:
  - "tiang-pancang"
 type: "product"

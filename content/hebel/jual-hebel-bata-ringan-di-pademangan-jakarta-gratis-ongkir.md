@@ -1,6 +1,7 @@
 ---
 title: "Jual Hebel Bata Ringan di Pademangan Jakarta Gratis Ongkir"
 date: "2023-10-11"
+lastmod: "2026-08-19"
 categories:
  - "hebel"
 type: "product"

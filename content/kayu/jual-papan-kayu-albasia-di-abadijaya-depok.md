@@ -1,6 +1,7 @@
 ---
 title: "Jual Papan Kayu Albasia Di Abadijaya Depok"
 date: "2024-04-10"
+lastmod: "2026-08-19"
 categories:
  - "kayu"
 type: "product"

@@ -1,6 +1,7 @@
 ---
 title: "Jual Batako Press di Kebon Kelapa Jakarta Gratis Ongkir"
 date: "2023-10-06"
+lastmod: "2026-08-19"
 categories:
  - "batako"
 type: "product"

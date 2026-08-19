@@ -1,6 +1,7 @@
 ---
 title: "Tempat Sewa Excavator di Ciluar Bogor Terdekat"
 date: "2023-03-31"
+lastmod: "2026-08-19"
 categories:
  - "excavator"
 type: "service"

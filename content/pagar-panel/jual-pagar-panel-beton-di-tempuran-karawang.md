@@ -1,6 +1,7 @@
 ---
 title: "Jual Pagar Panel Beton di Tempuran Karawang"
 date: "2023-09-30"
+lastmod: "2026-08-19"
 categories:
  - "pagar-panel"
 type: "product"

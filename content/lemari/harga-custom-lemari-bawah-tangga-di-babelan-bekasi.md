@@ -1,6 +1,7 @@
 ---
 title: "Harga Custom Lemari Bawah Tangga Di Babelan Bekasi"
 date: "2024-06-27"
+lastmod: "2026-08-19"
 categories:
  - "lemari"
 type: "service"

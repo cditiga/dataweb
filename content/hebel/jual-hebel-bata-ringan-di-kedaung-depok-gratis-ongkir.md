@@ -1,6 +1,7 @@
 ---
 title: "Jual Hebel Bata Ringan di Kedaung Depok Gratis Ongkir"
 date: "2023-04-22"
+lastmod: "2026-08-19"
 categories:
  - "hebel"
 type: "product"

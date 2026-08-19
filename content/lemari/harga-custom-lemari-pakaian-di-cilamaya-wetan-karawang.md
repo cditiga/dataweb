@@ -1,6 +1,7 @@
 ---
 title: "Harga Custom Lemari Pakaian Di Cilamaya Wetan Karawang"
 date: "2024-06-19"
+lastmod: "2026-08-19"
 categories:
  - "lemari"
 type: "service"

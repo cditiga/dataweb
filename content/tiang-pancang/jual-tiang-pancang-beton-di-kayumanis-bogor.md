@@ -1,6 +1,7 @@
 ---
 title: "Jual Tiang Pancang Beton di Kayumanis Bogor"
 date: "2023-06-26"
+lastmod: "2026-08-19"
 categories:
  - "tiang-pancang"
 type: "product"

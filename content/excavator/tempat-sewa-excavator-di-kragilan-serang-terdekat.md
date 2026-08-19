@@ -1,6 +1,7 @@
 ---
 title: "Tempat Sewa Excavator di Kragilan Serang Terdekat"
 date: "2023-09-16"
+lastmod: "2026-08-19"
 categories:
  - "excavator"
 type: "service"

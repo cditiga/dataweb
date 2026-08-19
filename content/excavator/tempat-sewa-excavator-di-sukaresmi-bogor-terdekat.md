@@ -1,6 +1,7 @@
 ---
 title: "Tempat Sewa Excavator di Sukaresmi Bogor Terdekat"
 date: "2023-02-06"
+lastmod: "2026-08-19"
 categories:
  - "excavator"
 type: "service"

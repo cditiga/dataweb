@@ -1,6 +1,7 @@
 ---
 title: "Layanan Cor Jayamix /Readymix di Babakan Cikao Purwakarta"
 date: "2023-11-09"
+lastmod: "2026-08-19"
 categories:
  - "cor"
 type: "service"

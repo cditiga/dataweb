@@ -1,6 +1,7 @@
 ---
 title: "Jual Batako Press di Kebon Pedes Bogor Gratis Ongkir"
 date: "2023-09-21"
+lastmod: "2026-08-19"
 categories:
  - "batako"
 type: "product"

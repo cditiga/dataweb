@@ -1,6 +1,7 @@
 ---
 title: "Sewa Crane di Sobang Rangkas Per Jam"
 date: "2023-02-23"
+lastmod: "2026-08-19"
 categories:
  - "crane"
 type: "service"

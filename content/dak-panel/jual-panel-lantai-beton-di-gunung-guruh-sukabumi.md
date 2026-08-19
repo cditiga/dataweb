@@ -1,6 +1,7 @@
 ---
 title: "Jual Panel Lantai Beton di Gunung Guruh Sukabumi"
 date: "2023-07-03"
+lastmod: "2026-08-19"
 categories:
  - "dak-panel"
 type: "product"

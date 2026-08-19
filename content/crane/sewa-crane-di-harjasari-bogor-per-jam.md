@@ -1,6 +1,7 @@
 ---
 title: "Sewa Crane di Harjasari Bogor Per Jam"
 date: "2023-10-30"
+lastmod: "2026-08-19"
 categories:
  - "crane"
 type: "service"

@@ -1,6 +1,7 @@
 ---
 title: "Jasa Sewa Bull Dozer di Cibatu Purwakarta [Harian]"
 date: "2023-04-01"
+lastmod: "2026-08-19"
 categories:
  - "bull-dozer"
 type: "service"

@@ -1,6 +1,7 @@
 ---
 title: "Layanan Cor Jayamix /Readymix di Bojongsari Baru Depok"
 date: "2023-08-09"
+lastmod: "2026-08-19"
 categories:
  - "cor"
 type: "service"

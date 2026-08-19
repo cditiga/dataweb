@@ -1,6 +1,7 @@
 ---
 title: "Layanan Cor Jayamix /Readymix di Cikarang Barat Bekasi"
 date: "2023-04-06"
+lastmod: "2026-08-19"
 categories:
  - "cor"
 type: "service"

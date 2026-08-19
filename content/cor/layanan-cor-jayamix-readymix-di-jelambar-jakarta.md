@@ -1,6 +1,7 @@
 ---
 title: "Layanan Cor Jayamix /Readymix di Jelambar Jakarta"
 date: "2023-03-25"
+lastmod: "2026-08-19"
 categories:
  - "cor"
 type: "service"

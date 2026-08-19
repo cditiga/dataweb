@@ -1,6 +1,7 @@
 ---
 title: "Tempat Sewa Excavator di Bogor Terdekat"
 date: "2023-01-12"
+lastmod: "2026-08-19"
 categories:
  - "excavator"
 type: "service"

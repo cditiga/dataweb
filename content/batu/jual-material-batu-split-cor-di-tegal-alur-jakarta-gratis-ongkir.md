@@ -1,6 +1,7 @@
 ---
 title: "Jual Material Batu Split Cor di Tegal Alur Jakarta Gratis Ongkir"
 date: "2023-03-10"
+lastmod: "2026-08-19"
 categories:
  - "batu"
 type: "product"

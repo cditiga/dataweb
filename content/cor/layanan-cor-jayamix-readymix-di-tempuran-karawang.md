@@ -1,6 +1,7 @@
 ---
 title: "Layanan Cor Jayamix /Readymix di Tempuran Karawang"
 date: "2023-11-24"
+lastmod: "2026-08-19"
 categories:
  - "cor"
 type: "service"

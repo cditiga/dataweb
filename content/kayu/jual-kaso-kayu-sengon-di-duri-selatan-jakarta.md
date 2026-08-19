@@ -1,6 +1,7 @@
 ---
 title: "Jual Kaso Kayu Sengon Di Duri Selatan Jakarta"
 date: "2024-10-05"
+lastmod: "2026-08-19"
 categories:
  - "kayu"
 type: "product"

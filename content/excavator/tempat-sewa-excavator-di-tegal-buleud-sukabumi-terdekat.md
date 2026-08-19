@@ -1,6 +1,7 @@
 ---
 title: "Tempat Sewa Excavator di Tegal Buleud Sukabumi Terdekat"
 date: "2023-12-09"
+lastmod: "2026-08-19"
 categories:
  - "excavator"
 type: "service"

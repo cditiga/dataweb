@@ -1,6 +1,7 @@
 ---
 title: "Jual Batako Press di Kalideres Jakarta Gratis Ongkir"
 date: "2023-04-25"
+lastmod: "2026-08-19"
 categories:
  - "batako"
 type: "product"

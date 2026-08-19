@@ -1,6 +1,7 @@
 ---
 title: "Jual Balok Kayu Jati Belanda Di Curug Mekar Bogor"
 date: "2024-06-11"
+lastmod: "2026-08-19"
 categories:
  - "kayu"
 type: "product"

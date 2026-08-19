@@ -1,6 +1,7 @@
 ---
 title: "Layanan Cor Jayamix /Readymix di Kampung Bali Jakarta"
 date: "2023-05-03"
+lastmod: "2026-08-19"
 categories:
  - "cor"
 type: "service"

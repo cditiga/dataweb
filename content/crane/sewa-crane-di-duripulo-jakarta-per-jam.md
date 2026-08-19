@@ -1,6 +1,7 @@
 ---
 title: "Sewa Crane di Duripulo Jakarta Per Jam"
 date: "2023-03-29"
+lastmod: "2026-08-19"
 categories:
  - "crane"
 type: "service"

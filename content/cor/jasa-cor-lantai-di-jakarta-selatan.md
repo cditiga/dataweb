@@ -1,6 +1,7 @@
 ---
 title: "Jasa Cor Lantai di Jakarta Selatan"
 date: "2023-06-08"
+lastmod: "2026-08-19"
 categories:
  - "cor"
 type: "service"

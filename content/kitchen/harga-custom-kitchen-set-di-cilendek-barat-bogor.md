@@ -1,6 +1,7 @@
 ---
 title: "Harga Custom Kitchen Set Di Cilendek Barat Bogor"
 date: "2024-08-06"
+lastmod: "2026-08-19"
 categories:
  - "kitchen"
 type: "service"

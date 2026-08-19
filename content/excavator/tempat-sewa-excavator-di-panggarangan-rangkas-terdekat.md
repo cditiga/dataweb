@@ -1,6 +1,7 @@
 ---
 title: "Tempat Sewa Excavator di Panggarangan Rangkas Terdekat"
 date: "2023-12-03"
+lastmod: "2026-08-19"
 categories:
  - "excavator"
 type: "service"

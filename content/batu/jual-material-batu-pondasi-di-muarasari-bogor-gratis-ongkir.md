@@ -1,6 +1,7 @@
 ---
 title: "Jual Material Batu Pondasi di Muarasari Bogor Gratis Ongkir"
 date: "2023-11-13"
+lastmod: "2026-08-19"
 categories:
  - "batu"
 type: "product"

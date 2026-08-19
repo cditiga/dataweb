@@ -1,6 +1,7 @@
 ---
 title: "Jasa Pengaspalan Jalan Di Cipaku Bogor"
 date: "2023-12-10"
+lastmod: "2026-08-19"
 categories:
  - "hotmix"
 type: "service"

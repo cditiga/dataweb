@@ -1,6 +1,7 @@
 ---
 title: "Jasa Cor Lantai di Pancoran Jakarta"
 date: "2023-07-25"
+lastmod: "2026-08-19"
 categories:
  - "cor"
 type: "service"

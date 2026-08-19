@@ -1,6 +1,7 @@
 ---
 title: "Jual Papan Kayu Duren Di Rangkapan Jaya Depok"
 date: "2024-03-19"
+lastmod: "2026-08-19"
 categories:
  - "kayu"
 type: "product"

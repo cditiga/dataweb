@@ -1,6 +1,7 @@
 ---
 title: "Jual Pasir Ekstra Beton di Darangdan Purwakarta Gratis Ongkir"
 date: "2023-02-23"
+lastmod: "2026-08-19"
 categories:
  - "pasir"
 type: "product"

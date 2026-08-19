@@ -1,6 +1,7 @@
 ---
 title: "Jual Batako Press di Rawamangun Jakarta Gratis Ongkir"
 date: "2023-08-17"
+lastmod: "2026-08-19"
 categories:
  - "batako"
 type: "product"

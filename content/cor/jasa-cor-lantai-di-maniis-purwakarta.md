@@ -1,6 +1,7 @@
 ---
 title: "Jasa Cor Lantai di Maniis Purwakarta"
 date: "2023-05-25"
+lastmod: "2026-08-19"
 categories:
  - "cor"
 type: "service"

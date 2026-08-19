@@ -1,6 +1,7 @@
 ---
 title: "Jual Pagar Panel Beton di Bojonegara Serang"
 date: "2023-05-19"
+lastmod: "2026-08-19"
 categories:
  - "pagar-panel"
 type: "product"

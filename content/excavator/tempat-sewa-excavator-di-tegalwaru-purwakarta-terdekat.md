@@ -1,6 +1,7 @@
 ---
 title: "Tempat Sewa Excavator di Tegalwaru Purwakarta Terdekat"
 date: "2023-12-02"
+lastmod: "2026-08-19"
 categories:
  - "excavator"
 type: "service"

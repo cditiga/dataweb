@@ -1,6 +1,7 @@
 ---
 title: "Jual Pagar Panel Beton di Kebayoran Baru Jakarta"
 date: "2023-10-16"
+lastmod: "2026-08-19"
 categories:
  - "pagar-panel"
 type: "product"

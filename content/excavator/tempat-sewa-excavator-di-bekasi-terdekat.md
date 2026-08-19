@@ -1,6 +1,7 @@
 ---
 title: "Tempat Sewa Excavator di Bekasi Terdekat"
 date: "2023-05-04"
+lastmod: "2026-08-19"
 categories:
  - "excavator"
 type: "service"

@@ -1,6 +1,7 @@
 ---
 title: "Jual Pagar Panel Beton di Bojongkerta Bogor"
 date: "2023-09-17"
+lastmod: "2026-08-19"
 categories:
  - "pagar-panel"
 type: "product"

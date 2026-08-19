@@ -1,6 +1,7 @@
 ---
 title: "Layanan Cor Jayamix /Readymix di Bekasi Selatan"
 date: "2023-08-31"
+lastmod: "2026-08-19"
 categories:
  - "cor"
 type: "service"

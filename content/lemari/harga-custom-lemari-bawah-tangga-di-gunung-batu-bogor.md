@@ -1,6 +1,7 @@
 ---
 title: "Harga Custom Lemari Bawah Tangga Di Gunung Batu Bogor"
 date: "2024-06-28"
+lastmod: "2026-08-19"
 categories:
  - "lemari"
 type: "service"

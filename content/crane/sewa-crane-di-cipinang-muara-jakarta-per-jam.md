@@ -1,6 +1,7 @@
 ---
 title: "Sewa Crane di Cipinang Muara Jakarta Per Jam"
 date: "2023-03-08"
+lastmod: "2026-08-19"
 categories:
  - "crane"
 type: "service"

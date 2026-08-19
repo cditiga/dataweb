@@ -1,6 +1,7 @@
 ---
 title: "Harga Custom Lemari Bawah Tangga Di Tambelang Bekasi"
 date: "2024-07-14"
+lastmod: "2026-08-19"
 categories:
  - "lemari"
 type: "service"

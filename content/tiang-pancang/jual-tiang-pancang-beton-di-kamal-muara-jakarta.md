@@ -1,6 +1,7 @@
 ---
 title: "Jual Tiang Pancang Beton di Kamal Muara Jakarta"
 date: "2023-11-15"
+lastmod: "2026-08-19"
 categories:
  - "tiang-pancang"
 type: "product"

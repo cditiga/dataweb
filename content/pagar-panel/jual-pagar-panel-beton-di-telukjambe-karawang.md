@@ -1,6 +1,7 @@
 ---
 title: "Jual Pagar Panel Beton di Telukjambe Karawang"
 date: "2023-07-06"
+lastmod: "2026-08-19"
 categories:
  - "pagar-panel"
 type: "product"

@@ -1,6 +1,7 @@
 ---
 title: "Jual Batako Press di Sukadamai Bogor Gratis Ongkir"
 date: "2023-08-28"
+lastmod: "2026-08-19"
 categories:
  - "batako"
 type: "product"

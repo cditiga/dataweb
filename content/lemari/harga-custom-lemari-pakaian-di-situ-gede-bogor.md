@@ -1,6 +1,7 @@
 ---
 title: "Harga Custom Lemari Pakaian Di Situ Gede Bogor"
 date: "2024-09-02"
+lastmod: "2026-08-19"
 categories:
  - "lemari"
 type: "service"

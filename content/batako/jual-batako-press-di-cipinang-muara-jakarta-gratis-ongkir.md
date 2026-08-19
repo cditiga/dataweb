@@ -1,6 +1,7 @@
 ---
 title: "Jual Batako Press di Cipinang Muara Jakarta Gratis Ongkir"
 date: "2023-04-07"
+lastmod: "2026-08-19"
 categories:
  - "batako"
 type: "product"

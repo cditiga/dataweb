@@ -1,6 +1,7 @@
 ---
 title: "Layanan Cor Jayamix /Readymix di Serengseng Jakarta"
 date: "2023-02-21"
+lastmod: "2026-08-19"
 categories:
  - "cor"
 type: "service"

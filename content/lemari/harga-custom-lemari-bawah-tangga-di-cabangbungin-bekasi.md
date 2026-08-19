@@ -1,6 +1,7 @@
 ---
 title: "Harga Custom Lemari Bawah Tangga Di Cabangbungin Bekasi"
 date: "2024-07-04"
+lastmod: "2026-08-19"
 categories:
  - "lemari"
 type: "service"

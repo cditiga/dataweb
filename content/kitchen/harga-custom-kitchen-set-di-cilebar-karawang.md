@@ -1,6 +1,7 @@
 ---
 title: "Harga Custom Kitchen Set Di Cilebar Karawang"
 date: "2024-08-25"
+lastmod: "2026-08-19"
 categories:
  - "kitchen"
 type: "service"

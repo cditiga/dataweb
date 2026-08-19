@@ -1,6 +1,7 @@
 ---
 title: "Jual Pasir Ekstra Beton di Jayakerta Karawang Gratis Ongkir"
 date: "2023-10-23"
+lastmod: "2026-08-19"
 categories:
  - "pasir"
 type: "product"

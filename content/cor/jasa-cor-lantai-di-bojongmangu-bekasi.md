@@ -1,6 +1,7 @@
 ---
 title: "Jasa Cor Lantai di Bojongmangu Bekasi"
 date: "2023-01-09"
+lastmod: "2026-08-19"
 categories:
  - "cor"
 type: "service"

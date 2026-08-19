@@ -1,6 +1,7 @@
 ---
 title: "Jual Kaso Kayu Merbau Di Tajur"
 date: "2024-08-02"
+lastmod: "2026-08-19"
 categories:
  - "kayu"
 type: "product"

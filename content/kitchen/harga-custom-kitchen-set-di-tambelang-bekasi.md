@@ -1,6 +1,7 @@
 ---
 title: "Harga Custom Kitchen Set Di Tambelang Bekasi"
 date: "2024-08-18"
+lastmod: "2026-08-19"
 categories:
  - "kitchen"
 type: "service"

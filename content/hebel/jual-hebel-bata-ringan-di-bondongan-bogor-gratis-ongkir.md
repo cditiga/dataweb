@@ -1,6 +1,7 @@
 ---
 title: "Jual Hebel Bata Ringan di Bondongan Bogor Gratis Ongkir"
 date: "2023-01-23"
+lastmod: "2026-08-19"
 categories:
  - "hebel"
 type: "product"

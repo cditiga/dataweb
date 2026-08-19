@@ -1,6 +1,7 @@
 ---
 title: "Sewa Crane di Krendang Jakarta Per Jam"
 date: "2023-09-08"
+lastmod: "2026-08-19"
 categories:
  - "crane"
 type: "service"

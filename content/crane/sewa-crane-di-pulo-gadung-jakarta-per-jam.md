@@ -1,6 +1,7 @@
 ---
 title: "Sewa Crane di Pulo Gadung Jakarta Per Jam"
 date: "2023-04-03"
+lastmod: "2026-08-19"
 categories:
  - "crane"
 type: "service"

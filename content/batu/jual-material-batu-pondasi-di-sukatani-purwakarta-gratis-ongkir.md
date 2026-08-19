@@ -1,6 +1,7 @@
 ---
 title: "Jual Material Batu Pondasi di Sukatani Purwakarta Gratis Ongkir"
 date: "2023-09-08"
+lastmod: "2026-08-19"
 categories:
  - "batu"
 type: "product"

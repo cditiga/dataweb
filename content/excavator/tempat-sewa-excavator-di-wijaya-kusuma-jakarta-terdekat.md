@@ -1,6 +1,7 @@
 ---
 title: "Tempat Sewa Excavator di Wijaya Kusuma Jakarta Terdekat"
 date: "2023-11-02"
+lastmod: "2026-08-19"
 categories:
  - "excavator"
 type: "service"

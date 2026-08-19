@@ -1,6 +1,7 @@
 ---
 title: "Jual Pagar Panel Beton di Teluknaga Tangerang"
 date: "2023-11-17"
+lastmod: "2026-08-19"
 categories:
  - "pagar-panel"
 type: "product"

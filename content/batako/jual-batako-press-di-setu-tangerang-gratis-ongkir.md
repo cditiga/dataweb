@@ -1,6 +1,7 @@
 ---
 title: "Jual Batako Press di Setu Tangerang Gratis Ongkir"
 date: "2023-06-16"
+lastmod: "2026-08-19"
 categories:
  - "batako"
 type: "product"

@@ -1,6 +1,7 @@
 ---
 title: "Jual Pagar Panel Beton di Pagedangan Tangerang"
 date: "2023-02-16"
+lastmod: "2026-08-19"
 categories:
  - "pagar-panel"
 type: "product"

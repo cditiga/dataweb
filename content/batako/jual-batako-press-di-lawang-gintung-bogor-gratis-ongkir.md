@@ -1,6 +1,7 @@
 ---
 title: "Jual Batako Press di Lawang Gintung Bogor Gratis Ongkir"
 date: "2023-09-13"
+lastmod: "2026-08-19"
 categories:
  - "batako"
 type: "product"

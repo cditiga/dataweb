@@ -1,6 +1,7 @@
 ---
 title: "Harga Custom Meja Rias Di Semplak Bogor"
 date: "2024-08-06"
+lastmod: "2026-08-19"
 categories:
  - "meja"
 type: "service"

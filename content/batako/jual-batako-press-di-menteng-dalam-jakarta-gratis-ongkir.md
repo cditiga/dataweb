@@ -1,6 +1,7 @@
 ---
 title: "Jual Batako Press di Menteng Dalam Jakarta Gratis Ongkir"
 date: "2023-11-24"
+lastmod: "2026-08-19"
 categories:
  - "batako"
 type: "product"

@@ -1,6 +1,7 @@
 ---
 title: "Jual Hebel Bata Ringan di Krendang Jakarta Gratis Ongkir"
 date: "2023-12-05"
+lastmod: "2026-08-19"
 categories:
  - "hebel"
 type: "product"

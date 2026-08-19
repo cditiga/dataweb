@@ -1,6 +1,7 @@
 ---
 title: "Layanan Cor Jayamix Mini /Minimix di Tanah Sareal Bogor"
 date: "2023-09-22"
+lastmod: "2026-08-19"
 categories:
  - "cor"
 type: "service"

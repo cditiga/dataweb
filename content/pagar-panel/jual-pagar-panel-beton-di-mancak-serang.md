@@ -1,6 +1,7 @@
 ---
 title: "Jual Pagar Panel Beton di Mancak Serang"
 date: "2023-04-27"
+lastmod: "2026-08-19"
 categories:
  - "pagar-panel"
 type: "product"

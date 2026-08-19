@@ -1,6 +1,7 @@
 ---
 title: "Jasa Custom Dipan Laci Minimalis Di Kebon Pedes Bogor"
 date: "2024-06-29"
+lastmod: "2026-08-19"
 categories:
  - "dipan"
 type: "service"

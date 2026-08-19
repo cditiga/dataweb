@@ -1,6 +1,7 @@
 ---
 title: "Sewa Crane di Serangan Cikeusal Per Jam"
 date: "2023-01-15"
+lastmod: "2026-08-19"
 categories:
  - "crane"
 type: "service"

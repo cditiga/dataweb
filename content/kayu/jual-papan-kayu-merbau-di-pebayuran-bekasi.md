@@ -1,6 +1,7 @@
 ---
 title: "Jual Papan Kayu Merbau Di Pebayuran Bekasi"
 date: "2024-09-29"
+lastmod: "2026-08-19"
 categories:
  - "kayu"
 type: "product"

@@ -1,6 +1,7 @@
 ---
 title: "Jual Pasir Bangka di Bondongan Bogor Gratis Ongkir"
 date: "2023-12-09"
+lastmod: "2026-08-19"
 categories:
  - "pasir"
 type: "product"

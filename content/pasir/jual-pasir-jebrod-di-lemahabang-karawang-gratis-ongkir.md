@@ -1,6 +1,7 @@
 ---
 title: "Jual Pasir Jebrod di Lemahabang Karawang Gratis Ongkir"
 date: "2023-01-02"
+lastmod: "2026-08-19"
 categories:
  - "pasir"
 type: "product"

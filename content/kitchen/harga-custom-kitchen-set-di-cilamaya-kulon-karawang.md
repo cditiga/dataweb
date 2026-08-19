@@ -1,6 +1,7 @@
 ---
 title: "Harga Custom Kitchen Set Di Cilamaya Kulon Karawang"
 date: "2024-10-11"
+lastmod: "2026-08-19"
 categories:
  - "kitchen"
 type: "service"

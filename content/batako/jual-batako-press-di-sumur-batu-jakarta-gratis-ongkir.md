@@ -1,6 +1,7 @@
 ---
 title: "Jual Batako Press di Sumur Batu Jakarta Gratis Ongkir"
 date: "2023-10-21"
+lastmod: "2026-08-19"
 categories:
  - "batako"
 type: "product"

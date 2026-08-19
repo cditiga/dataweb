@@ -1,6 +1,7 @@
 ---
 title: "Jual Pagar Panel Beton di Batutulis Bogor"
 date: "2023-06-25"
+lastmod: "2026-08-19"
 categories:
  - "pagar-panel"
 type: "product"

@@ -1,6 +1,7 @@
 ---
 title: "Jual Uditch/Buis Beton di Baranangsiang Bogor"
 date: "2023-11-06"
+lastmod: "2026-08-19"
 categories:
  - "uditch-buis"
 type: "product"

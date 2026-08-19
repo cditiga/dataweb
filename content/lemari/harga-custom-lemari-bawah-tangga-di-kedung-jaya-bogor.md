@@ -1,6 +1,7 @@
 ---
 title: "Harga Custom Lemari Bawah Tangga Di Kedung Jaya Bogor"
 date: "2024-07-10"
+lastmod: "2026-08-19"
 categories:
  - "lemari"
 type: "service"

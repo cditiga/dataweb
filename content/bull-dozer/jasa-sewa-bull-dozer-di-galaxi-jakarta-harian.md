@@ -1,6 +1,7 @@
 ---
 title: "Jasa Sewa Bull Dozer di Galaxi Jakarta [Harian]"
 date: "2023-06-07"
+lastmod: "2026-08-19"
 categories:
  - "bull-dozer"
 type: "service"

@@ -1,6 +1,7 @@
 ---
 title: "Jual Kaso Kayu Sengon Di Sukmajaya Depok"
 date: "2024-04-26"
+lastmod: "2026-08-19"
 categories:
  - "kayu"
 type: "product"

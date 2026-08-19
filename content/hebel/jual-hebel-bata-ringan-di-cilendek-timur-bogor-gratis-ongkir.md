@@ -1,6 +1,7 @@
 ---
 title: "Jual Hebel Bata Ringan di Cilendek Timur Bogor Gratis Ongkir"
 date: "2023-01-03"
+lastmod: "2026-08-19"
 categories:
  - "hebel"
 type: "product"

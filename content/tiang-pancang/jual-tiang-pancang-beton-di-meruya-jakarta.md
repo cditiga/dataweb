@@ -1,6 +1,7 @@
 ---
 title: "Jual Tiang Pancang Beton di Meruya Jakarta"
 date: "2023-07-26"
+lastmod: "2026-08-19"
 categories:
  - "tiang-pancang"
 type: "product"

@@ -1,6 +1,7 @@
 ---
 title: "Jual Panel Lantai Beton di Bukit Duri Jakarta"
 date: "2023-08-28"
+lastmod: "2026-08-19"
 categories:
  - "dak-panel"
 type: "product"

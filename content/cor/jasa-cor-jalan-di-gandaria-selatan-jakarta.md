@@ -1,6 +1,7 @@
 ---
 title: "Jasa Cor Jalan di Gandaria Selatan Jakarta"
 date: "2023-02-16"
+lastmod: "2026-08-19"
 categories:
  - "cor"
 type: "service"

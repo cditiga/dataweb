@@ -1,6 +1,7 @@
 ---
 title: "Jual Material Batu Pondasi di Kecamatan Bogor Timur Gratis Ongkir"
 date: "2023-05-01"
+lastmod: "2026-08-19"
 categories:
  - "batu"
 type: "product"

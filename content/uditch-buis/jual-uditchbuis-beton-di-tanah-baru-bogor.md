@@ -1,6 +1,7 @@
 ---
 title: "Jual Uditch/Buis Beton di Tanah Baru Bogor"
 date: "2023-10-07"
+lastmod: "2026-08-19"
 categories:
  - "uditch-buis"
 type: "product"

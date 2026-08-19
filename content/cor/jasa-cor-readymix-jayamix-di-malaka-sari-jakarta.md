@@ -1,6 +1,7 @@
 ---
 title: "Jasa Cor Readymix /Jayamix di Malaka Sari Jakarta"
 date: "2023-09-23"
+lastmod: "2026-08-19"
 categories:
  - "cor"
 type: "service"

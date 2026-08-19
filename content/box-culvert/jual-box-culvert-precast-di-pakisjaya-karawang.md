@@ -1,6 +1,7 @@
 ---
 title: "Jual Box Culvert Precast di Pakisjaya Karawang"
 date: "2023-06-07"
+lastmod: "2026-08-19"
 categories:
  - "box-culvert"
 type: "product"

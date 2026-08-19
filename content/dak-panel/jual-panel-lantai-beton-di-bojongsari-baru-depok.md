@@ -1,6 +1,7 @@
 ---
 title: "Jual Panel Lantai Beton di Bojongsari Baru Depok"
 date: "2023-05-05"
+lastmod: "2026-08-19"
 categories:
  - "dak-panel"
 type: "product"

@@ -1,6 +1,7 @@
 ---
 title: "Jual Tiang Pancang Beton di Serengseng Jakarta"
 date: "2023-05-14"
+lastmod: "2026-08-19"
 categories:
  - "tiang-pancang"
 type: "product"

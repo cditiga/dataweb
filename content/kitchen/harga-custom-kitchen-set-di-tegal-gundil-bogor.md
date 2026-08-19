@@ -1,6 +1,7 @@
 ---
 title: "Harga Custom Kitchen Set Di Tegal Gundil Bogor"
 date: "2024-08-29"
+lastmod: "2026-08-19"
 categories:
  - "kitchen"
 type: "service"

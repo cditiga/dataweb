@@ -1,6 +1,7 @@
 ---
 title: "Jual Papan Kayu Meranti Super Di Cikaret Bogor"
 date: "2024-05-03"
+lastmod: "2026-08-19"
 categories:
  - "kayu"
 type: "product"

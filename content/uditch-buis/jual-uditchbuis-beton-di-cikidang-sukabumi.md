@@ -1,6 +1,7 @@
 ---
 title: "Jual Uditch/Buis Beton di Cikidang Sukabumi"
 date: "2023-08-26"
+lastmod: "2026-08-19"
 categories:
  - "uditch-buis"
 type: "product"

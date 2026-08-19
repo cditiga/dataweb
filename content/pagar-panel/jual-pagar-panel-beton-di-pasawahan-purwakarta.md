@@ -1,6 +1,7 @@
 ---
 title: "Jual Pagar Panel Beton di Pasawahan Purwakarta"
 date: "2023-06-27"
+lastmod: "2026-08-19"
 categories:
  - "pagar-panel"
 type: "product"

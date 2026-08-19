@@ -1,6 +1,7 @@
 ---
 title: "Jual Hebel Bata Ringan di Bojongmangu Bekasi Gratis Ongkir"
 date: "2023-06-06"
+lastmod: "2026-08-19"
 categories:
  - "hebel"
 type: "product"

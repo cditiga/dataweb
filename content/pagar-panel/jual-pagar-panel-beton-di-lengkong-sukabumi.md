@@ -1,6 +1,7 @@
 ---
 title: "Jual Pagar Panel Beton di Lengkong Sukabumi"
 date: "2023-06-06"
+lastmod: "2026-08-19"
 categories:
  - "pagar-panel"
 type: "product"

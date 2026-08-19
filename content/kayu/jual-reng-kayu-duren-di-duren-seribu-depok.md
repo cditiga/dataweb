@@ -1,6 +1,7 @@
 ---
 title: "Jual Reng Kayu Duren Di Duren Seribu Depok"
 date: "2024-04-05"
+lastmod: "2026-08-19"
 categories:
  - "kayu"
 type: "product"

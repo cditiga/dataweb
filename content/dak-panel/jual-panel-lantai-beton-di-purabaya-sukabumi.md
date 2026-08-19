@@ -1,6 +1,7 @@
 ---
 title: "Jual Panel Lantai Beton di Purabaya Sukabumi"
 date: "2023-09-01"
+lastmod: "2026-08-19"
 categories:
  - "dak-panel"
 type: "product"

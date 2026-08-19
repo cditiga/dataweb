@@ -1,6 +1,7 @@
 ---
 title: "Jual Pagar Panel Beton di Pinang Ranti Jakarta"
 date: "2023-04-23"
+lastmod: "2026-08-19"
 categories:
  - "pagar-panel"
 type: "product"

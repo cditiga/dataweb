@@ -1,6 +1,7 @@
 ---
 title: "Jual Tiang Pancang Beton di Tirtajaya Karawang"
 date: "2023-03-04"
+lastmod: "2026-08-19"
 categories:
  - "tiang-pancang"
 type: "product"

@@ -1,6 +1,7 @@
 ---
 title: "Jual Uditch/Buis Beton di Lawang Gintung Bogor"
 date: "2023-05-26"
+lastmod: "2026-08-19"
 categories:
  - "uditch-buis"
 type: "product"

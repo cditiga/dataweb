@@ -1,6 +1,7 @@
 ---
 title: "Jual Tiang Pancang Beton di Sunter Jaya Jakarta"
 date: "2023-03-27"
+lastmod: "2026-08-19"
 categories:
  - "tiang-pancang"
 type: "product"

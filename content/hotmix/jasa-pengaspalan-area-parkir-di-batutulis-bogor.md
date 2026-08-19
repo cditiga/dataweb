@@ -1,6 +1,7 @@
 ---
 title: "Jasa Pengaspalan Area Parkir Di Batutulis Bogor"
 date: "2024-07-08"
+lastmod: "2026-08-19"
 categories:
  - "hotmix"
 type: "service"

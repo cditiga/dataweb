@@ -1,6 +1,7 @@
 ---
 title: "Jual Tiang Pancang Beton di Kalibunder Sukabumi"
 date: "2023-06-16"
+lastmod: "2026-08-19"
 categories:
  - "tiang-pancang"
 type: "product"

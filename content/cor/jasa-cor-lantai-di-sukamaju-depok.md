@@ -1,6 +1,7 @@
 ---
 title: "Jasa Cor Lantai di Sukamaju Depok"
 date: "2023-02-14"
+lastmod: "2026-08-19"
 categories:
  - "cor"
 type: "service"

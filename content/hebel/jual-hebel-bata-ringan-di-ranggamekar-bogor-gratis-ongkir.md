@@ -1,6 +1,7 @@
 ---
 title: "Jual Hebel Bata Ringan di Ranggamekar Bogor Gratis Ongkir"
 date: "2023-02-18"
+lastmod: "2026-08-19"
 categories:
  - "hebel"
 type: "product"

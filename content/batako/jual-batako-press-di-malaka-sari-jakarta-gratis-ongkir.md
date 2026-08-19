@@ -1,6 +1,7 @@
 ---
 title: "Jual Batako Press di Malaka Sari Jakarta Gratis Ongkir"
 date: "2023-06-23"
+lastmod: "2026-08-19"
 categories:
  - "batako"
 type: "product"

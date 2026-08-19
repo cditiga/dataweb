@@ -1,6 +1,7 @@
 ---
 title: "Tempat Sewa Excavator di Baranangsiang Bogor Terdekat"
 date: "2023-12-15"
+lastmod: "2026-08-19"
 categories:
  - "excavator"
 type: "service"

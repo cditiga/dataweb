@@ -1,6 +1,7 @@
 ---
 title: "Sewa Crane di Tegal Gundil Bogor Per Jam"
 date: "2023-03-21"
+lastmod: "2026-08-19"
 categories:
  - "crane"
 type: "service"

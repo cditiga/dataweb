@@ -1,6 +1,7 @@
 ---
 title: "Jual Tiang Pancang Beton di Pulo Merak Cilegon"
 date: "2023-07-03"
+lastmod: "2026-08-19"
 categories:
  - "tiang-pancang"
 type: "product"

@@ -1,6 +1,7 @@
 ---
 title: "Jasa Cor Readymix /Jayamix di Sukasari Purwakarta"
 date: "2023-11-30"
+lastmod: "2026-08-19"
 categories:
  - "cor"
 type: "service"

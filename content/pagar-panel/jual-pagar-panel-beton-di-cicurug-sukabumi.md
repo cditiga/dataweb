@@ -1,6 +1,7 @@
 ---
 title: "Jual Pagar Panel Beton di Cicurug Sukabumi"
 date: "2023-04-14"
+lastmod: "2026-08-19"
 categories:
  - "pagar-panel"
 type: "product"

@@ -1,6 +1,7 @@
 ---
 title: "Tempat Sewa Excavator di Panaragan Bogor Terdekat"
 date: "2023-05-09"
+lastmod: "2026-08-19"
 categories:
  - "excavator"
 type: "service"

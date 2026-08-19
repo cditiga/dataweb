@@ -1,6 +1,7 @@
 ---
 title: "Jual Hebel Bata Ringan di Cikarang Timur Bekasi Gratis Ongkir"
 date: "2023-03-31"
+lastmod: "2026-08-19"
 categories:
  - "hebel"
 type: "product"

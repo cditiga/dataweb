@@ -1,6 +1,7 @@
 ---
 title: "Jasa Custom Dipan Laci Minimalis Di Serua Depok"
 date: "2024-09-03"
+lastmod: "2026-08-19"
 categories:
  - "dipan"
 type: "service"

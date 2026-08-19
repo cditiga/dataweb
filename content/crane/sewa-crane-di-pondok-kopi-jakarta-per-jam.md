@@ -1,6 +1,7 @@
 ---
 title: "Sewa Crane di Pondok Kopi Jakarta Per Jam"
 date: "2023-10-16"
+lastmod: "2026-08-19"
 categories:
  - "crane"
 type: "service"

@@ -1,6 +1,7 @@
 ---
 title: "Jual Pagar Panel Beton di Sepatan Tangerang"
 date: "2023-12-17"
+lastmod: "2026-08-19"
 categories:
  - "pagar-panel"
 type: "product"

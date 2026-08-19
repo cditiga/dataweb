@@ -1,6 +1,7 @@
 ---
 title: "Jual Kaso Kayu Jati Super Di Panongan Tangerang"
 date: "2024-07-23"
+lastmod: "2026-08-19"
 categories:
  - "kayu"
 type: "product"

@@ -1,6 +1,7 @@
 ---
 title: "Jual Hebel Bata Ringan di Tegal Alur Jakarta Gratis Ongkir"
 date: "2023-06-12"
+lastmod: "2026-08-19"
 categories:
  - "hebel"
 type: "product"

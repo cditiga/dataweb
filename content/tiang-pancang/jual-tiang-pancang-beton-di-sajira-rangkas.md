@@ -1,6 +1,7 @@
 ---
 title: "Jual Tiang Pancang Beton di Sajira Rangkas"
 date: "2023-05-05"
+lastmod: "2026-08-19"
 categories:
  - "tiang-pancang"
 type: "product"

@@ -1,6 +1,7 @@
 ---
 title: "Jual Material Batu Split Cor di Kiara Pedes Purwakarta Gratis Ongkir"
 date: "2023-04-29"
+lastmod: "2026-08-19"
 categories:
  - "batu"
 type: "product"

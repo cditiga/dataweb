@@ -1,6 +1,7 @@
 ---
 title: "Jual Batako Press di Pangkalan Karawang Gratis Ongkir"
 date: "2023-08-26"
+lastmod: "2026-08-19"
 categories:
  - "batako"
 type: "product"

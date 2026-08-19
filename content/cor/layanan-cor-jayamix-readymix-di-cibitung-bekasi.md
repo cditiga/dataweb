@@ -1,6 +1,7 @@
 ---
 title: "Layanan Cor Jayamix /Readymix di Cibitung Bekasi"
 date: "2023-10-02"
+lastmod: "2026-08-19"
 categories:
  - "cor"
 type: "service"

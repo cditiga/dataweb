@@ -1,6 +1,7 @@
 ---
 title: "Jual Tiang Pancang Beton di Pisangan Baru Jakarta"
 date: "2023-11-27"
+lastmod: "2026-08-19"
 categories:
  - "tiang-pancang"
 type: "product"

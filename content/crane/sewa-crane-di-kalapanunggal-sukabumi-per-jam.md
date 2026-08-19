@@ -1,6 +1,7 @@
 ---
 title: "Sewa Crane di Kalapanunggal Sukabumi Per Jam"
 date: "2023-05-29"
+lastmod: "2026-08-19"
 categories:
  - "crane"
 type: "service"

@@ -1,6 +1,7 @@
 ---
 title: "Sewa Crane di Kelapa Gading Jakarta Per Jam"
 date: "2023-05-24"
+lastmod: "2026-08-19"
 categories:
  - "crane"
 type: "service"

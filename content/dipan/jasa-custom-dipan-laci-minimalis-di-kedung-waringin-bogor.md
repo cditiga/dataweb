@@ -1,6 +1,7 @@
 ---
 title: "Jasa Custom Dipan Laci Minimalis Di Kedung Waringin Bogor"
 date: "2024-09-12"
+lastmod: "2026-08-19"
 categories:
  - "dipan"
 type: "service"

@@ -1,6 +1,7 @@
 ---
 title: "Jasa Cor Parkiran di Kelapa Gading Jakarta"
 date: "2023-08-02"
+lastmod: "2026-08-19"
 categories:
  - "cor"
 type: "service"

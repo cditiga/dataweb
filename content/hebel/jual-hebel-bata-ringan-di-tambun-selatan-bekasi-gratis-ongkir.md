@@ -1,6 +1,7 @@
 ---
 title: "Jual Hebel Bata Ringan di Tambun Selatan Bekasi Gratis Ongkir"
 date: "2023-02-17"
+lastmod: "2026-08-19"
 categories:
  - "hebel"
 type: "product"

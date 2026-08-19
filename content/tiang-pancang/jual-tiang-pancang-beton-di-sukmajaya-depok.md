@@ -1,6 +1,7 @@
 ---
 title: "Jual Tiang Pancang Beton di Sukmajaya Depok"
 date: "2023-11-20"
+lastmod: "2026-08-19"
 categories:
  - "tiang-pancang"
 type: "product"

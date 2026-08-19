@@ -1,6 +1,7 @@
 ---
 title: "Jual Uditch/Buis Beton di Kedung Waringin Bogor"
 date: "2023-05-02"
+lastmod: "2026-08-19"
 categories:
  - "uditch-buis"
 type: "product"

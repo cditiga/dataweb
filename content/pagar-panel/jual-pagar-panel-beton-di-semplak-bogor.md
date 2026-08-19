@@ -1,6 +1,7 @@
 ---
 title: "Jual Pagar Panel Beton di Semplak Bogor"
 date: "2023-02-18"
+lastmod: "2026-08-19"
 categories:
  - "pagar-panel"
 type: "product"

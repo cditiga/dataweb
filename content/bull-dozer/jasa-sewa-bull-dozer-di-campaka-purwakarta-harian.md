@@ -1,6 +1,7 @@
 ---
 title: "Jasa Sewa Bull Dozer di Campaka Purwakarta [Harian]"
 date: "2023-01-01"
+lastmod: "2026-08-19"
 categories:
  - "bull-dozer"
 type: "service"

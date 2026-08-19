@@ -1,6 +1,7 @@
 ---
 title: "Jual Material Sirtu/Brangkal di Pancoran Mas Depok Gratis Ongkir"
 date: "2023-02-12"
+lastmod: "2026-08-19"
 categories:
  - "urugan"
 type: "product"

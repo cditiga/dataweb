@@ -1,6 +1,7 @@
 ---
 title: "Harga Custom Lemari Pakaian Di BSD"
 date: "2024-08-13"
+lastmod: "2026-08-19"
 categories:
  - "lemari"
 type: "service"

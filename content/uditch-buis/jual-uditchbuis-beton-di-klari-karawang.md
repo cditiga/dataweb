@@ -1,6 +1,7 @@
 ---
 title: "Jual Uditch/Buis Beton di Klari Karawang"
 date: "2023-02-05"
+lastmod: "2026-08-19"
 categories:
  - "uditch-buis"
 type: "product"

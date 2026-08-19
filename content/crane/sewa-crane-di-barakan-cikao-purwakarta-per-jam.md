@@ -1,6 +1,7 @@
 ---
 title: "Sewa Crane di Barakan Cikao Purwakarta Per Jam"
 date: "2023-03-20"
+lastmod: "2026-08-19"
 categories:
  - "crane"
 type: "service"

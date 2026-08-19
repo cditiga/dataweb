@@ -1,6 +1,7 @@
 ---
 title: "Jual Pagar Panel Beton di Cibogor Bogor"
 date: "2023-02-05"
+lastmod: "2026-08-19"
 categories:
  - "pagar-panel"
 type: "product"

@@ -1,6 +1,7 @@
 ---
 title: "Jual Hebel Bata Ringan di Pasar Manggis Jakarta Gratis Ongkir"
 date: "2023-07-01"
+lastmod: "2026-08-19"
 categories:
  - "hebel"
 type: "product"

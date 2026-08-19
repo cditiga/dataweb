@@ -1,6 +1,7 @@
 ---
 title: "Jual Reng Kayu Duren Di Kukusan Depok"
 date: "2024-07-07"
+lastmod: "2026-08-19"
 categories:
  - "kayu"
 type: "product"

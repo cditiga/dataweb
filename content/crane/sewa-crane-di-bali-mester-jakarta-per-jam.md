@@ -1,6 +1,7 @@
 ---
 title: "Sewa Crane di Bali Mester Jakarta Per Jam"
 date: "2023-01-13"
+lastmod: "2026-08-19"
 categories:
  - "crane"
 type: "service"

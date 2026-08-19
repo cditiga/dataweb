@@ -1,6 +1,7 @@
 ---
 title: "Harga Custom Meja Makan Di Kedung Halang Bogor"
 date: "2024-08-15"
+lastmod: "2026-08-19"
 categories:
  - "meja"
 type: "service"

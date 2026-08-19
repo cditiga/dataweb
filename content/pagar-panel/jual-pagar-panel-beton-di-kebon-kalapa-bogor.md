@@ -1,6 +1,7 @@
 ---
 title: "Jual Pagar Panel Beton di Kebon Kalapa Bogor"
 date: "2023-03-21"
+lastmod: "2026-08-19"
 categories:
  - "pagar-panel"
 type: "product"

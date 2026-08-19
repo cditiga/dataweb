@@ -1,6 +1,7 @@
 ---
 title: "Jasa Pengaspalan Jalan Di Kertamaya Bogor"
 date: "2024-03-24"
+lastmod: "2026-08-19"
 categories:
  - "hotmix"
 type: "service"

@@ -1,6 +1,7 @@
 ---
 title: "Jual Box Culvert Precast di Sukaraja Sukabumi"
 date: "2023-07-05"
+lastmod: "2026-08-19"
 categories:
  - "box-culvert"
 type: "product"

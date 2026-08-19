@@ -1,6 +1,7 @@
 ---
 title: "Layanan Cor Jayamix /Readymix di Empang Bogor"
 date: "2023-09-09"
+lastmod: "2026-08-19"
 categories:
  - "cor"
 type: "service"

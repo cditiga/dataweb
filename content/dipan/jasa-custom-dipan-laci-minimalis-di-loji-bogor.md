@@ -1,6 +1,7 @@
 ---
 title: "Jasa Custom Dipan Laci Minimalis Di Loji Bogor"
 date: "2024-06-25"
+lastmod: "2026-08-19"
 categories:
  - "dipan"
 type: "service"

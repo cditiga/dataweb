@@ -1,6 +1,7 @@
 ---
 title: "Jual Box Culvert Precast di Kotabaru Karawang"
 date: "2023-05-05"
+lastmod: "2026-08-19"
 categories:
  - "box-culvert"
 type: "product"

@@ -1,6 +1,7 @@
 ---
 title: "Jual Uditch/Buis Beton di Kebon Manggis Jakarta"
 date: "2023-07-09"
+lastmod: "2026-08-19"
 categories:
  - "uditch-buis"
 type: "product"

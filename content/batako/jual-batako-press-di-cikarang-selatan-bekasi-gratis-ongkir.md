@@ -1,6 +1,7 @@
 ---
 title: "Jual Batako Press di Cikarang Selatan Bekasi Gratis Ongkir"
 date: "2023-11-17"
+lastmod: "2026-08-19"
 categories:
  - "batako"
 type: "product"

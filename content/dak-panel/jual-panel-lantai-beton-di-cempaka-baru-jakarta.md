@@ -1,6 +1,7 @@
 ---
 title: "Jual Panel Lantai Beton di Cempaka Baru Jakarta"
 date: "2023-10-22"
+lastmod: "2026-08-19"
 categories:
  - "dak-panel"
 type: "product"

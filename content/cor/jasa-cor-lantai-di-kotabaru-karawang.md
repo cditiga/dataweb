@@ -1,6 +1,7 @@
 ---
 title: "Jasa Cor Lantai di Kotabaru Karawang"
 date: "2023-08-01"
+lastmod: "2026-08-19"
 categories:
  - "cor"
 type: "service"

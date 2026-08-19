@@ -1,6 +1,7 @@
 ---
 title: "Jasa Cor Lantai di Cilebar Karawang"
 date: "2023-01-12"
+lastmod: "2026-08-19"
 categories:
  - "cor"
 type: "service"

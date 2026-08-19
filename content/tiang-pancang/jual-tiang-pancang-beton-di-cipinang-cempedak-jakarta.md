@@ -1,6 +1,7 @@
 ---
 title: "Jual Tiang Pancang Beton di Cipinang Cempedak Jakarta"
 date: "2023-08-06"
+lastmod: "2026-08-19"
 categories:
  - "tiang-pancang"
 type: "product"

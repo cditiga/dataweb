@@ -1,6 +1,7 @@
 ---
 title: "Jual Reng Kayu Jati Super Di Ciputat Timur Tangerang"
 date: "2024-02-05"
+lastmod: "2026-08-19"
 categories:
  - "kayu"
 type: "product"

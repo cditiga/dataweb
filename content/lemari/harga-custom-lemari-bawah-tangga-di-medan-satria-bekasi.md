@@ -1,6 +1,7 @@
 ---
 title: "Harga Custom Lemari Bawah Tangga Di Medan Satria Bekasi"
 date: "2024-09-06"
+lastmod: "2026-08-19"
 categories:
  - "lemari"
 type: "service"

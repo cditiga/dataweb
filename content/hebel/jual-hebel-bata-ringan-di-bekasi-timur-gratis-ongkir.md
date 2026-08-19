@@ -1,6 +1,7 @@
 ---
 title: "Jual Hebel Bata Ringan di Bekasi Timur Gratis Ongkir"
 date: "2023-08-09"
+lastmod: "2026-08-19"
 categories:
  - "hebel"
 type: "product"

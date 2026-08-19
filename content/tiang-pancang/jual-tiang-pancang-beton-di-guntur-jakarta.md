@@ -1,6 +1,7 @@
 ---
 title: "Jual Tiang Pancang Beton di Guntur Jakarta"
 date: "2023-11-19"
+lastmod: "2026-08-19"
 categories:
  - "tiang-pancang"
 type: "product"

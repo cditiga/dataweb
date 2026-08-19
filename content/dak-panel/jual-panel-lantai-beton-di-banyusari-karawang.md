@@ -1,6 +1,7 @@
 ---
 title: "Jual Panel Lantai Beton di Banyusari Karawang"
 date: "2023-06-16"
+lastmod: "2026-08-19"
 categories:
  - "dak-panel"
 type: "product"

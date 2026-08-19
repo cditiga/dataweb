@@ -1,6 +1,7 @@
 ---
 title: "Sewa Crane di Karet Semanggi Jakarta Per Jam"
 date: "2023-12-27"
+lastmod: "2026-08-19"
 categories:
  - "crane"
 type: "service"

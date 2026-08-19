@@ -1,6 +1,7 @@
 ---
 title: "Jual Panel Lantai Beton di Meruyung Depok"
 date: "2023-01-25"
+lastmod: "2026-08-19"
 categories:
  - "dak-panel"
 type: "product"

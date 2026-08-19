@@ -1,6 +1,7 @@
 ---
 title: "Tempat Sewa Excavator di Baros Serang Terdekat"
 date: "2023-09-30"
+lastmod: "2026-08-19"
 categories:
  - "excavator"
 type: "service"

@@ -1,6 +1,7 @@
 ---
 title: "Jual Panel Lantai Beton di Cipinang Jakarta"
 date: "2023-02-01"
+lastmod: "2026-08-19"
 categories:
  - "dak-panel"
 type: "product"

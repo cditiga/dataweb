@@ -1,6 +1,7 @@
 ---
 title: "Jual Panel Lantai Beton di Tegal Parang Jakarta"
 date: "2023-09-22"
+lastmod: "2026-08-19"
 categories:
  - "dak-panel"
 type: "product"

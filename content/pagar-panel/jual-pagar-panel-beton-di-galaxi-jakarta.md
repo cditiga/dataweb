@@ -1,6 +1,7 @@
 ---
 title: "Jual Pagar Panel Beton di Galaxi Jakarta"
 date: "2023-03-08"
+lastmod: "2026-08-19"
 categories:
  - "pagar-panel"
 type: "product"

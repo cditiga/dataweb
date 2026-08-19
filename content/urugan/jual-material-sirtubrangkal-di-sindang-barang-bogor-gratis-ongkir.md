@@ -1,6 +1,7 @@
 ---
 title: "Jual Material Sirtu/Brangkal di Sindang Barang Bogor Gratis Ongkir"
 date: "2023-07-15"
+lastmod: "2026-08-19"
 categories:
  - "urugan"
 type: "product"

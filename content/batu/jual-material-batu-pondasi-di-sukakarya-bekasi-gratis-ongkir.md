@@ -1,6 +1,7 @@
 ---
 title: "Jual Material Batu Pondasi di Sukakarya Bekasi Gratis Ongkir"
 date: "2023-12-16"
+lastmod: "2026-08-19"
 categories:
  - "batu"
 type: "product"

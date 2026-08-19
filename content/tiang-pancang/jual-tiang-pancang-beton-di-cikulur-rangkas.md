@@ -1,6 +1,7 @@
 ---
 title: "Jual Tiang Pancang Beton di Cikulur Rangkas"
 date: "2023-10-26"
+lastmod: "2026-08-19"
 categories:
  - "tiang-pancang"
 type: "product"

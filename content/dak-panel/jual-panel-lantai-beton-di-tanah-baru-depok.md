@@ -1,6 +1,7 @@
 ---
 title: "Jual Panel Lantai Beton di Tanah Baru Depok"
 date: "2023-08-10"
+lastmod: "2026-08-19"
 categories:
  - "dak-panel"
 type: "product"

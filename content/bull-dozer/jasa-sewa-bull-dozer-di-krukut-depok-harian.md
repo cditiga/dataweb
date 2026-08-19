@@ -1,6 +1,7 @@
 ---
 title: "Jasa Sewa Bull Dozer di Krukut Depok [Harian]"
 date: "2023-03-09"
+lastmod: "2026-08-19"
 categories:
  - "bull-dozer"
 type: "service"

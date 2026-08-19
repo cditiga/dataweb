@@ -1,6 +1,7 @@
 ---
 title: "Jual Panel Lantai Beton di Muaragembong Bekasi"
 date: "2023-01-08"
+lastmod: "2026-08-19"
 categories:
  - "dak-panel"
 type: "product"

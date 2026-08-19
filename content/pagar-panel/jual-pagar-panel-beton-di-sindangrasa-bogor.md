@@ -1,6 +1,7 @@
 ---
 title: "Jual Pagar Panel Beton di Sindangrasa Bogor"
 date: "2023-08-07"
+lastmod: "2026-08-19"
 categories:
  - "pagar-panel"
 type: "product"

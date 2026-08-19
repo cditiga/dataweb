@@ -1,6 +1,7 @@
 ---
 title: "Jual Balok Kayu Jati Belanda Di Leuwinanggung Depok"
 date: "2024-06-14"
+lastmod: "2026-08-19"
 categories:
  - "kayu"
 type: "product"

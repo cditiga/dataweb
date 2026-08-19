@@ -1,6 +1,7 @@
 ---
 title: "Jual Panel Lantai Beton di Katulampa Bogor"
 date: "2023-12-16"
+lastmod: "2026-08-19"
 categories:
  - "dak-panel"
 type: "product"

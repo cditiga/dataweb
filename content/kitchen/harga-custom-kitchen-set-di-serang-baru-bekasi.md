@@ -1,6 +1,7 @@
 ---
 title: "Harga Custom Kitchen Set Di Serang Baru Bekasi"
 date: "2024-09-17"
+lastmod: "2026-08-19"
 categories:
  - "kitchen"
 type: "service"

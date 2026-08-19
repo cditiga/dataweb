@@ -1,6 +1,7 @@
 ---
 title: "Jasa Cor Readymix /Jayamix di Pondok Salam Purwakarta"
 date: "2023-11-20"
+lastmod: "2026-08-19"
 categories:
  - "cor"
 type: "service"

@@ -1,6 +1,7 @@
 ---
 title: "Harga Custom Lemari Pakaian Di Serang Baru Bekasi"
 date: "2024-10-22"
+lastmod: "2026-08-19"
 categories:
  - "lemari"
 type: "service"

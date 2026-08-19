@@ -1,6 +1,7 @@
 ---
 title: "Jasa Custom Dipan Laci Minimalis Di Jayakerta Karawang"
 date: "2024-10-10"
+lastmod: "2026-08-19"
 categories:
  - "dipan"
 type: "service"

@@ -1,6 +1,7 @@
 ---
 title: "Jual Pagar Panel Beton di Kencana Bogor"
 date: "2023-05-13"
+lastmod: "2026-08-19"
 categories:
  - "pagar-panel"
 type: "product"

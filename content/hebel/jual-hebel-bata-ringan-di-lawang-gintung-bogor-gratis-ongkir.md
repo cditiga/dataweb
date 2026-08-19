@@ -1,6 +1,7 @@
 ---
 title: "Jual Hebel Bata Ringan di Lawang Gintung Bogor Gratis Ongkir"
 date: "2023-09-08"
+lastmod: "2026-08-19"
 categories:
  - "hebel"
 type: "product"

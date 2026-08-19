@@ -1,6 +1,7 @@
 ---
 title: "Tempat Sewa Excavator di Tempuran Karawang Terdekat"
 date: "2023-02-20"
+lastmod: "2026-08-19"
 categories:
  - "excavator"
 type: "service"

@@ -1,6 +1,7 @@
 ---
 title: "Jual Tiang Pancang Beton di Wanayasa Purwakarta"
 date: "2023-08-26"
+lastmod: "2026-08-19"
 categories:
  - "tiang-pancang"
 type: "product"

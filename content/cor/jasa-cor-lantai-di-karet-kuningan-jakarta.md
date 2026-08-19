@@ -1,6 +1,7 @@
 ---
 title: "Jasa Cor Lantai di Karet Kuningan Jakarta"
 date: "2023-01-28"
+lastmod: "2026-08-19"
 categories:
  - "cor"
 type: "service"

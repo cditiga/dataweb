@@ -1,6 +1,7 @@
 ---
 title: "Jual Kaso Kayu Kamper Di Pengadegan Jakarta"
 date: "2024-08-21"
+lastmod: "2026-08-19"
 categories:
  - "kayu"
 type: "product"

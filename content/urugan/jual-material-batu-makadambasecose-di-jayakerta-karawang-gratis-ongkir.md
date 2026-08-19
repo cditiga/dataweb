@@ -1,6 +1,7 @@
 ---
 title: "Jual Material Batu Makadam/Basecose di Jayakerta Karawang Gratis Ongkir"
 date: "2023-09-14"
+lastmod: "2026-08-19"
 categories:
  - "urugan"
 type: "product"

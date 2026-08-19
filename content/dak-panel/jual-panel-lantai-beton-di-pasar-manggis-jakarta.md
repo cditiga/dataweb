@@ -1,6 +1,7 @@
 ---
 title: "Jual Panel Lantai Beton di Pasar Manggis Jakarta"
 date: "2023-03-25"
+lastmod: "2026-08-19"
 categories:
  - "dak-panel"
 type: "product"

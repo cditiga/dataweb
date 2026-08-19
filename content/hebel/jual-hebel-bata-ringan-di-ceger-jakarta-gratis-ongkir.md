@@ -1,6 +1,7 @@
 ---
 title: "Jual Hebel Bata Ringan di Ceger Jakarta Gratis Ongkir"
 date: "2023-01-24"
+lastmod: "2026-08-19"
 categories:
  - "hebel"
 type: "product"

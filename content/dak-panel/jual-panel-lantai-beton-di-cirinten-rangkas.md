@@ -1,6 +1,7 @@
 ---
 title: "Jual Panel Lantai Beton di Cirinten Rangkas"
 date: "2023-02-10"
+lastmod: "2026-08-19"
 categories:
  - "dak-panel"
 type: "product"

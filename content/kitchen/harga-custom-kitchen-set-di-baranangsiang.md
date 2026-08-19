@@ -1,6 +1,7 @@
 ---
 title: "Harga Custom Kitchen Set Di Baranangsiang"
 date: "2024-08-19"
+lastmod: "2026-08-19"
 categories:
  - "kitchen"
 type: "service"

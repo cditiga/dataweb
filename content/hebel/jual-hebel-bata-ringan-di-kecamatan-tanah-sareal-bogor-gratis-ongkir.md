@@ -1,6 +1,7 @@
 ---
 title: "Jual Hebel Bata Ringan di Kecamatan Tanah Sareal Bogor Gratis Ongkir"
 date: "2023-05-12"
+lastmod: "2026-08-19"
 categories:
  - "hebel"
 type: "product"

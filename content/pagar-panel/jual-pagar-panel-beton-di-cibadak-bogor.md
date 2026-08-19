@@ -1,6 +1,7 @@
 ---
 title: "Jual Pagar Panel Beton di Cibadak Bogor"
 date: "2023-12-04"
+lastmod: "2026-08-19"
 categories:
  - "pagar-panel"
 type: "product"

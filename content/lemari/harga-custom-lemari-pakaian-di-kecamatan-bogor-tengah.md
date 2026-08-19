@@ -1,6 +1,7 @@
 ---
 title: "Harga Custom Lemari Pakaian Di Kecamatan Bogor Tengah"
 date: "2024-08-21"
+lastmod: "2026-08-19"
 categories:
  - "lemari"
 type: "service"

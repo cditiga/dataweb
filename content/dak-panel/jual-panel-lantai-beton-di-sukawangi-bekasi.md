@@ -1,6 +1,7 @@
 ---
 title: "Jual Panel Lantai Beton di Sukawangi Bekasi"
 date: "2023-11-11"
+lastmod: "2026-08-19"
 categories:
  - "dak-panel"
 type: "product"

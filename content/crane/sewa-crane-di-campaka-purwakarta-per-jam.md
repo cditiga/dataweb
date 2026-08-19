@@ -1,6 +1,7 @@
 ---
 title: "Sewa Crane di Campaka Purwakarta Per Jam"
 date: "2023-06-07"
+lastmod: "2026-08-19"
 categories:
  - "crane"
 type: "service"

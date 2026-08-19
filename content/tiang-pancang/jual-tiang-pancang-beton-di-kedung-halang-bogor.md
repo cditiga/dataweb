@@ -1,6 +1,7 @@
 ---
 title: "Jual Tiang Pancang Beton di Kedung Halang Bogor"
 date: "2023-12-11"
+lastmod: "2026-08-19"
 categories:
  - "tiang-pancang"
 type: "product"

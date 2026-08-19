@@ -1,6 +1,7 @@
 ---
 title: "Jual Pasir Jalupang di Cilamaya Kulon Karawang Gratis Ongkir"
 date: "2023-07-20"
+lastmod: "2026-08-19"
 categories:
  - "pasir"
 type: "product"

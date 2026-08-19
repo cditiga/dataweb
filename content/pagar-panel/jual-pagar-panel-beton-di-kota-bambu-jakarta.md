@@ -1,6 +1,7 @@
 ---
 title: "Jual Pagar Panel Beton di Kota Bambu Jakarta"
 date: "2023-11-24"
+lastmod: "2026-08-19"
 categories:
  - "pagar-panel"
 type: "product"

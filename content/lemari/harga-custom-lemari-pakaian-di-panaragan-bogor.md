@@ -1,6 +1,7 @@
 ---
 title: "Harga Custom Lemari Pakaian Di Panaragan Bogor"
 date: "2024-09-20"
+lastmod: "2026-08-19"
 categories:
  - "lemari"
 type: "service"

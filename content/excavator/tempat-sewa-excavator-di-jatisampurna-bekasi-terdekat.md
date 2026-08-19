@@ -1,6 +1,7 @@
 ---
 title: "Tempat Sewa Excavator di Jatisampurna Bekasi Terdekat"
 date: "2023-04-24"
+lastmod: "2026-08-19"
 categories:
  - "excavator"
 type: "service"

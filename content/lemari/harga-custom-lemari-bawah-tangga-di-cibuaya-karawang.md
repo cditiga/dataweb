@@ -1,6 +1,7 @@
 ---
 title: "Harga Custom Lemari Bawah Tangga Di Cibuaya Karawang"
 date: "2024-08-18"
+lastmod: "2026-08-19"
 categories:
  - "lemari"
 type: "service"

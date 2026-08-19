@@ -1,6 +1,7 @@
 ---
 title: "Jual Uditch/Buis Beton di Sukakarya Bekasi"
 date: "2023-12-12"
+lastmod: "2026-08-19"
 categories:
  - "uditch-buis"
 type: "product"

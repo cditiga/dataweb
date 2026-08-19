@@ -1,6 +1,7 @@
 ---
 title: "Jual Material Batu Pondasi di Jakarta Timur Gratis Ongkir"
 date: "2023-11-23"
+lastmod: "2026-08-19"
 categories:
  - "batu"
 type: "product"

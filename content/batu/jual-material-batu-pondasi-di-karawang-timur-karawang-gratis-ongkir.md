@@ -1,6 +1,7 @@
 ---
 title: "Jual Material Batu Pondasi di Karawang Timur Karawang Gratis Ongkir"
 date: "2023-01-15"
+lastmod: "2026-08-19"
 categories:
  - "batu"
 type: "product"

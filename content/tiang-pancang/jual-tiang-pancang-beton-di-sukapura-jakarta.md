@@ -1,6 +1,7 @@
 ---
 title: "Jual Tiang Pancang Beton di Sukapura Jakarta"
 date: "2023-07-02"
+lastmod: "2026-08-19"
 categories:
  - "tiang-pancang"
 type: "product"

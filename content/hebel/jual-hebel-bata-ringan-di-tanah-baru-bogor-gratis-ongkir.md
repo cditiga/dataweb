@@ -1,6 +1,7 @@
 ---
 title: "Jual Hebel Bata Ringan di Tanah Baru Bogor Gratis Ongkir"
 date: "2023-10-24"
+lastmod: "2026-08-19"
 categories:
  - "hebel"
 type: "product"

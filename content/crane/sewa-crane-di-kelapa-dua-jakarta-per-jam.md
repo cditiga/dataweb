@@ -1,6 +1,7 @@
 ---
 title: "Sewa Crane di Kelapa Dua Jakarta Per Jam"
 date: "2023-02-06"
+lastmod: "2026-08-19"
 categories:
  - "crane"
 type: "service"

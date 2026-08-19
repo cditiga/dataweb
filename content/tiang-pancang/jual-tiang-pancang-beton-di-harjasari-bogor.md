@@ -1,6 +1,7 @@
 ---
 title: "Jual Tiang Pancang Beton di Harjasari Bogor"
 date: "2023-12-18"
+lastmod: "2026-08-19"
 categories:
  - "tiang-pancang"
 type: "product"

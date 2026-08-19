@@ -1,6 +1,7 @@
 ---
 title: "Jasa Cor Readymix /Jayamix di Tanjung Barat Jakarta"
 date: "2023-05-09"
+lastmod: "2026-08-19"
 categories:
  - "cor"
 type: "service"

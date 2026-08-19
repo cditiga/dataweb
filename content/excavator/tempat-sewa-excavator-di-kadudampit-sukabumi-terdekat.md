@@ -1,6 +1,7 @@
 ---
 title: "Tempat Sewa Excavator di Kadudampit Sukabumi Terdekat"
 date: "2023-11-12"
+lastmod: "2026-08-19"
 categories:
  - "excavator"
 type: "service"

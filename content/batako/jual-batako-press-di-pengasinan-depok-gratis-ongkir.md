@@ -1,6 +1,7 @@
 ---
 title: "Jual Batako Press di Pengasinan Depok Gratis Ongkir"
 date: "2023-11-15"
+lastmod: "2026-08-19"
 categories:
  - "batako"
 type: "product"

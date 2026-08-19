@@ -1,6 +1,7 @@
 ---
 title: "Jual Panel Lantai Beton di Cilodong Depok"
 date: "2023-03-30"
+lastmod: "2026-08-19"
 categories:
  - "dak-panel"
 type: "product"

@@ -1,6 +1,7 @@
 ---
 title: "Harga Custom Kitchen Set Di Rangkapan Jaya Depok"
 date: "2024-07-24"
+lastmod: "2026-08-19"
 categories:
  - "kitchen"
 type: "service"

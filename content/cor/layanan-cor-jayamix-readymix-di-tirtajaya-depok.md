@@ -1,6 +1,7 @@
 ---
 title: "Layanan Cor Jayamix /Readymix di Tirtajaya Depok"
 date: "2023-08-29"
+lastmod: "2026-08-19"
 categories:
  - "cor"
 type: "service"

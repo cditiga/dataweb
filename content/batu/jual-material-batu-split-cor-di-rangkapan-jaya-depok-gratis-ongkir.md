@@ -1,6 +1,7 @@
 ---
 title: "Jual Material Batu Split Cor di Rangkapan Jaya Depok Gratis Ongkir"
 date: "2023-04-06"
+lastmod: "2026-08-19"
 categories:
  - "batu"
 type: "product"

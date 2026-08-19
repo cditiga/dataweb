@@ -1,6 +1,7 @@
 ---
 title: "Jual Pagar Panel Beton di Lenteng Agung Jakarta"
 date: "2023-07-23"
+lastmod: "2026-08-19"
 categories:
  - "pagar-panel"
 type: "product"

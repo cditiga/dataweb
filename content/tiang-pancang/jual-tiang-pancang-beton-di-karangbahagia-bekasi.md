@@ -1,6 +1,7 @@
 ---
 title: "Jual Tiang Pancang Beton di Karangbahagia Bekasi"
 date: "2023-11-17"
+lastmod: "2026-08-19"
 categories:
  - "tiang-pancang"
 type: "product"

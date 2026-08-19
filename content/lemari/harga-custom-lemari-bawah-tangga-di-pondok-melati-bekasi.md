@@ -1,6 +1,7 @@
 ---
 title: "Harga Custom Lemari Bawah Tangga Di Pondok Melati Bekasi"
 date: "2024-08-01"
+lastmod: "2026-08-19"
 categories:
  - "lemari"
 type: "service"
