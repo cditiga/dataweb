@@ -1,6 +1,6 @@
 ---
 title: "Jual Panel Lantai Beton di Warung Kiara Sukabumi"
-date: "2026-08-11"
+date: "2023-04-18"
 categories:
  - "dak-panel"
 type: "product"

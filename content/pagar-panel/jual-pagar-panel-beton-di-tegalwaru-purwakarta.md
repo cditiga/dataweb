@@ -1,6 +1,6 @@
 ---
 title: "Jual Pagar Panel Beton di Tegalwaru Purwakarta"
-date: "2026-08-11"
+date: "2023-09-05"
 categories:
  - "pagar-panel"
 type: "product"

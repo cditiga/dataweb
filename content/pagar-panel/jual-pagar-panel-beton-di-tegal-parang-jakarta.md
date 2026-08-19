@@ -1,6 +1,6 @@
 ---
 title: "Jual Pagar Panel Beton di Tegal Parang Jakarta"
-date: "2026-08-11"
+date: "2023-12-15"
 categories:
  - "pagar-panel"
 type: "product"

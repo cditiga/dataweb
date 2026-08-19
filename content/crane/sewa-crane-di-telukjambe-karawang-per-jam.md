@@ -1,6 +1,6 @@
 ---
 title: "Sewa Crane di Telukjambe Karawang Per Jam"
-date: "2026-08-11"
+date: "2023-10-01"
 categories:
  - "crane"
 type: "service"

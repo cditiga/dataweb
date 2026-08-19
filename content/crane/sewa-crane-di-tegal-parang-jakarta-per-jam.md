@@ -1,6 +1,6 @@
 ---
 title: "Sewa Crane di Tegal Parang Jakarta Per Jam"
-date: "2026-08-11"
+date: "2023-06-01"
 categories:
  - "crane"
 type: "service"

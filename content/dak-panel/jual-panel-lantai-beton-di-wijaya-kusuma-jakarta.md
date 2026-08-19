@@ -1,6 +1,6 @@
 ---
 title: "Jual Panel Lantai Beton di Wijaya Kusuma Jakarta"
-date: "2026-08-11"
+date: "2023-06-24"
 categories:
  - "dak-panel"
 type: "product"

@@ -1,6 +1,6 @@
 ---
 title: "Jual Pagar Panel Beton di Wanayasa Purwakarta"
-date: "2026-08-11"
+date: "2023-08-27"
 categories:
  - "pagar-panel"
 type: "product"

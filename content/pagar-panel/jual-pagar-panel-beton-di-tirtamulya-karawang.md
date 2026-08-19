@@ -1,6 +1,6 @@
 ---
 title: "Jual Pagar Panel Beton di Tirtamulya Karawang"
-date: "2026-08-11"
+date: "2023-10-04"
 categories:
  - "pagar-panel"
 type: "product"

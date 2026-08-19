@@ -1,6 +1,6 @@
 ---
 title: "Jual Pagar Panel Beton di Wijaya Kusuma Jakarta"
-date: "2026-08-11"
+date: "2023-05-30"
 categories:
  - "pagar-panel"
 type: "product"

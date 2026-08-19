@@ -1,6 +1,6 @@
 ---
 title: "Jual Pagar Panel Beton di Tirtajaya Karawang"
-date: "2026-08-11"
+date: "2023-12-10"
 categories:
  - "pagar-panel"
 type: "product"
