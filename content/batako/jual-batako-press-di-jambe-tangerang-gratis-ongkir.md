@@ -1,6 +1,6 @@
 ---
 title: "Jual Batako Press di Jambe Tangerang Gratis Ongkir"
-date: "2026-08-11"
+date: "2023-05-01"
 categories:
  - "batako"
 type: "product"

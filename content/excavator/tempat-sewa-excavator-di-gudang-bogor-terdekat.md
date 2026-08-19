@@ -1,6 +1,6 @@
 ---
 title: "Tempat Sewa Excavator di Gudang Bogor Terdekat"
-date: "2026-08-11"
+date: "2023-10-19"
 categories:
  - "excavator"
 type: "service"

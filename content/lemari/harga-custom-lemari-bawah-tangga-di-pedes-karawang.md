@@ -1,6 +1,6 @@
 ---
 title: "Harga Custom Lemari Bawah Tangga Di Pedes Karawang"
-date: "2026-08-11"
+date: "2024-09-18"
 categories:
  - "lemari"
 type: "service"

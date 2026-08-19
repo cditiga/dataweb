@@ -1,6 +1,6 @@
 ---
 title: "Tempat Sewa Excavator di Cikampek Karawang Terdekat"
-date: "2026-08-11"
+date: "2023-08-16"
 categories:
  - "excavator"
 type: "service"

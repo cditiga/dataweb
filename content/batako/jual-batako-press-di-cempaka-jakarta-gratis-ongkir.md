@@ -1,6 +1,6 @@
 ---
 title: "Jual Batako Press di Cempaka Jakarta Gratis Ongkir"
-date: "2026-08-11"
+date: "2023-10-24"
 categories:
  - "batako"
 type: "product"

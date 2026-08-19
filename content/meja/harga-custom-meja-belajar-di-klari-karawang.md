@@ -1,6 +1,6 @@
 ---
 title: "Harga Custom Meja Belajar Di Klari Karawang"
-date: "2026-08-11"
+date: "2024-10-04"
 categories:
  - "meja"
 type: "service"

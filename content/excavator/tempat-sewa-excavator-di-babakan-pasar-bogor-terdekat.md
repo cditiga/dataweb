@@ -1,6 +1,6 @@
 ---
 title: "Tempat Sewa Excavator di Babakan Pasar Bogor Terdekat"
-date: "2026-08-11"
+date: "2023-05-30"
 categories:
  - "excavator"
 type: "service"

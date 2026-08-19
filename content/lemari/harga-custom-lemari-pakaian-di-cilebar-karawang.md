@@ -1,6 +1,6 @@
 ---
 title: "Harga Custom Lemari Pakaian Di Cilebar Karawang"
-date: "2026-08-11"
+date: "2024-06-29"
 categories:
  - "lemari"
 type: "service"

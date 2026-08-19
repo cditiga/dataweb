@@ -1,6 +1,6 @@
 ---
 title: "Jasa Custom Dipan Laci Minimalis Di Bojongmangu Bekasi"
-date: "2026-08-11"
+date: "2024-08-16"
 categories:
  - "dipan"
 type: "service"

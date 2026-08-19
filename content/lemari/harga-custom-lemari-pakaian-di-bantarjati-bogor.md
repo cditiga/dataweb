@@ -1,6 +1,6 @@
 ---
 title: "Harga Custom Lemari Pakaian Di Bantarjati Bogor"
-date: "2026-08-11"
+date: "2024-09-29"
 categories:
  - "lemari"
 type: "service"

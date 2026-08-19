@@ -1,6 +1,6 @@
 ---
 title: "Tempat Sewa Excavator di Cibarusah Bekasi Terdekat"
-date: "2026-08-11"
+date: "2023-07-10"
 categories:
  - "excavator"
 type: "service"

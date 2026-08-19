@@ -1,6 +1,6 @@
 ---
 title: "Jasa Custom Dipan Laci Minimalis Di Serang Baru Bekasi"
-date: "2026-08-11"
+date: "2024-07-20"
 categories:
  - "dipan"
 type: "service"

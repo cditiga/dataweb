@@ -1,6 +1,6 @@
 ---
 title: "Jual Uditch/Buis Beton di Darangdan Purwakarta"
-date: "2026-08-11"
+date: "2023-11-16"
 categories:
  - "uditch-buis"
 type: "product"

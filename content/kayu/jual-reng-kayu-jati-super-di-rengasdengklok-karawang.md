@@ -1,6 +1,6 @@
 ---
 title: "Jual Reng Kayu Jati Super Di Rengasdengklok Karawang"
-date: "2026-08-11"
+date: "2024-05-23"
 categories:
  - "kayu"
 type: "product"

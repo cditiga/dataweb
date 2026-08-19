@@ -1,6 +1,6 @@
 ---
 title: "Jual Uditch/Buis Beton di Kampung Melayu Jakarta"
-date: "2026-08-11"
+date: "2023-10-02"
 categories:
  - "uditch-buis"
 type: "product"

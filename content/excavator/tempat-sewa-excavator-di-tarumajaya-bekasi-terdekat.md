@@ -1,6 +1,6 @@
 ---
 title: "Tempat Sewa Excavator di Tarumajaya Bekasi Terdekat"
-date: "2026-08-11"
+date: "2023-09-04"
 categories:
  - "excavator"
 type: "service"

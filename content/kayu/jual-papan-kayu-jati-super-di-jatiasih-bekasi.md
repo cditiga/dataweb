@@ -1,6 +1,6 @@
 ---
 title: "Jual Papan Kayu Jati Super Di Jatiasih Bekasi"
-date: "2026-08-11"
+date: "2024-08-20"
 categories:
  - "kayu"
 type: "product"

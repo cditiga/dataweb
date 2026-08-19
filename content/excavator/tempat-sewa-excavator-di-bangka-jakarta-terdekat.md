@@ -1,6 +1,6 @@
 ---
 title: "Tempat Sewa Excavator di Bangka Jakarta Terdekat"
-date: "2026-08-11"
+date: "2023-05-17"
 categories:
  - "excavator"
 type: "service"

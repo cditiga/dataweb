@@ -1,6 +1,6 @@
 ---
 title: "Harga Custom Kitchen Set Di Kedungwaringin Bekasi"
-date: "2026-08-11"
+date: "2024-09-26"
 categories:
  - "kitchen"
 type: "service"

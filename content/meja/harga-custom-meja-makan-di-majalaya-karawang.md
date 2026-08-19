@@ -1,6 +1,6 @@
 ---
 title: "Harga Custom Meja Makan Di Majalaya Karawang"
-date: "2026-08-11"
+date: "2024-09-11"
 categories:
  - "meja"
 type: "service"

@@ -1,6 +1,6 @@
 ---
 title: "Jual Batako Press di Curug Mekar Bogor Gratis Ongkir"
-date: "2026-08-11"
+date: "2023-07-20"
 categories:
  - "batako"
 type: "product"

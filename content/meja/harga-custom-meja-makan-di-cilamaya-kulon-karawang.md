@@ -1,6 +1,6 @@
 ---
 title: "Harga Custom Meja Makan Di Cilamaya Kulon Karawang"
-date: "2026-08-11"
+date: "2024-06-20"
 categories:
  - "meja"
 type: "service"

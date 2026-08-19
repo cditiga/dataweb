@@ -1,6 +1,6 @@
 ---
 title: "Harga Custom Lemari Pakaian Di Mustika Jaya Bekasi"
-date: "2026-08-11"
+date: "2024-10-19"
 categories:
  - "lemari"
 type: "service"

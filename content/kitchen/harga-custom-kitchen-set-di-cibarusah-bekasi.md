@@ -1,6 +1,6 @@
 ---
 title: "Harga Custom Kitchen Set Di Cibarusah Bekasi"
-date: "2026-08-11"
+date: "2024-07-26"
 categories:
  - "kitchen"
 type: "service"

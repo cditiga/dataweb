@@ -1,6 +1,6 @@
 ---
 title: "Harga Custom Kitchen Set Di Jatisari Karawang"
-date: "2026-08-11"
+date: "2024-05-24"
 categories:
  - "kitchen"
 type: "service"

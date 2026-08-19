@@ -1,6 +1,6 @@
 ---
 title: "Harga Custom Meja Makan Di Kotabaru Karawang"
-date: "2026-08-11"
+date: "2024-08-23"
 categories:
  - "meja"
 type: "service"

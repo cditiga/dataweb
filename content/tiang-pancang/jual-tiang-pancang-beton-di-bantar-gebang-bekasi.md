@@ -1,6 +1,6 @@
 ---
 title: "Jual Tiang Pancang Beton di Bantar Gebang Bekasi"
-date: "2026-08-11"
+date: "2023-03-01"
 categories:
  - "tiang-pancang"
 type: "product"

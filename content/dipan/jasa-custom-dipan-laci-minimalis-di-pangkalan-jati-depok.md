@@ -1,6 +1,6 @@
 ---
 title: "Jasa Custom Dipan Laci Minimalis Di Pangkalan Jati Depok"
-date: "2026-08-11"
+date: "2024-08-19"
 categories:
  - "dipan"
 type: "service"

@@ -1,6 +1,6 @@
 ---
 title: "Tempat Sewa Excavator di Balumbang Jaya Bogor Terdekat"
-date: "2026-08-11"
+date: "2023-05-24"
 categories:
  - "excavator"
 type: "service"

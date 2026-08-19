@@ -1,6 +1,6 @@
 ---
 title: "Jual Batako Press di Manggarai Jakarta Gratis Ongkir"
-date: "2026-08-11"
+date: "2023-09-10"
 categories:
  - "batako"
 type: "product"

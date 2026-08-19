@@ -1,6 +1,6 @@
 ---
 title: "Jual Batako Press di Sukasari Purwakarta Gratis Ongkir"
-date: "2026-08-11"
+date: "2023-05-15"
 categories:
  - "batako"
 type: "product"

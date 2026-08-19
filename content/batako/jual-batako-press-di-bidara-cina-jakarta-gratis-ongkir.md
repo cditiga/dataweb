@@ -1,6 +1,6 @@
 ---
 title: "Jual Batako Press di Bidara Cina Jakarta Gratis Ongkir"
-date: "2026-08-11"
+date: "2023-01-02"
 categories:
  - "batako"
 type: "product"

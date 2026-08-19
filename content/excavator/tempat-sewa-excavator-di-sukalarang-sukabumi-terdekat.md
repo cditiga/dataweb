@@ -1,6 +1,6 @@
 ---
 title: "Tempat Sewa Excavator di Sukalarang Sukabumi Terdekat"
-date: "2026-08-11"
+date: "2023-01-19"
 categories:
  - "excavator"
 type: "service"

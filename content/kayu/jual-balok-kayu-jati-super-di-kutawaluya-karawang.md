@@ -1,6 +1,6 @@
 ---
 title: "Jual Balok Kayu Jati Super Di Kutawaluya Karawang"
-date: "2026-08-11"
+date: "2024-09-30"
 categories:
  - "kayu"
 type: "product"

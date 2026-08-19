@@ -1,6 +1,6 @@
 ---
 title: "Jual Hebel Bata Ringan di Bandung Gratis Ongkir"
-date: "2026-08-11"
+date: "2023-08-23"
 categories:
  - "hebel"
 type: "product"

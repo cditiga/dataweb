@@ -1,6 +1,6 @@
 ---
 title: "Harga Custom Meja Belajar Di Bantar Gebang Bekasi"
-date: "2026-08-11"
+date: "2024-10-06"
 categories:
  - "meja"
 type: "service"

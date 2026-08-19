@@ -1,6 +1,6 @@
 ---
 title: "Tempat Sewa Excavator di Cibadak Sukabumi Terdekat"
-date: "2026-08-11"
+date: "2023-06-17"
 categories:
  - "excavator"
 type: "service"

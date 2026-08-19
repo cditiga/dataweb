@@ -1,6 +1,6 @@
 ---
 title: "Jual Reng Kayu Merbau Di Kedungwaringin Bekasi"
-date: "2026-08-11"
+date: "2024-06-19"
 categories:
  - "kayu"
 type: "product"

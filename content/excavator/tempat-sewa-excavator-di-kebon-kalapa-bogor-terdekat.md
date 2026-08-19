@@ -1,6 +1,6 @@
 ---
 title: "Tempat Sewa Excavator di Kebon Kalapa Bogor Terdekat"
-date: "2026-08-11"
+date: "2023-01-25"
 categories:
  - "excavator"
 type: "service"

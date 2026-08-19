@@ -1,6 +1,6 @@
 ---
 title: "Jual Batako Press di Setu Jakarta Gratis Ongkir"
-date: "2026-08-11"
+date: "2023-10-31"
 categories:
  - "batako"
 type: "product"

@@ -1,6 +1,6 @@
 ---
 title: "Jual Batako Press di Cibarusah Bekasi Gratis Ongkir"
-date: "2026-08-11"
+date: "2023-12-28"
 categories:
  - "batako"
 type: "product"

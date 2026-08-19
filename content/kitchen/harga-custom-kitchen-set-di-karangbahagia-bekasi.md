@@ -1,6 +1,6 @@
 ---
 title: "Harga Custom Kitchen Set Di Karangbahagia Bekasi"
-date: "2026-08-11"
+date: "2024-07-13"
 categories:
  - "kitchen"
 type: "service"

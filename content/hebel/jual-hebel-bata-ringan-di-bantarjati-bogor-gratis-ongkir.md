@@ -1,6 +1,6 @@
 ---
 title: "Jual Hebel Bata Ringan di Bantarjati Bogor Gratis Ongkir"
-date: "2026-08-11"
+date: "2023-08-28"
 categories:
  - "hebel"
 type: "product"

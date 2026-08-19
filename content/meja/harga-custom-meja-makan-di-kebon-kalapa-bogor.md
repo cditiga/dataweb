@@ -1,6 +1,6 @@
 ---
 title: "Harga Custom Meja Makan Di Kebon Kalapa Bogor"
-date: "2026-08-11"
+date: "2024-10-19"
 categories:
  - "meja"
 type: "service"

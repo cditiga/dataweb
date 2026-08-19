@@ -1,6 +1,6 @@
 ---
 title: "Jual Batako Press di Sukmajaya Depok Gratis Ongkir"
-date: "2026-08-11"
+date: "2023-03-05"
 categories:
  - "batako"
 type: "product"

@@ -1,6 +1,6 @@
 ---
 title: "Jual Batako Press di Sempur Bogor Gratis Ongkir"
-date: "2026-08-11"
+date: "2023-12-06"
 categories:
  - "batako"
 type: "product"

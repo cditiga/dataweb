@@ -1,6 +1,6 @@
 ---
 title: "Jual Batako Press di Utan Panjang Jakarta Gratis Ongkir"
-date: "2026-08-11"
+date: "2023-01-22"
 categories:
  - "batako"
 type: "product"

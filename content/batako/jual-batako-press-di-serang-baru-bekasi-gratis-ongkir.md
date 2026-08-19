@@ -1,6 +1,6 @@
 ---
 title: "Jual Batako Press di Serang Baru Bekasi Gratis Ongkir"
-date: "2026-08-11"
+date: "2023-04-16"
 categories:
  - "batako"
 type: "product"

@@ -1,6 +1,6 @@
 ---
 title: "Tempat Sewa Excavator di Kedung Jaya Bogor Terdekat"
-date: "2026-08-11"
+date: "2023-04-15"
 categories:
  - "excavator"
 type: "service"

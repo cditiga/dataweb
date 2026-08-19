@@ -1,6 +1,6 @@
 ---
 title: "Jasa Custom Dipan Laci Minimalis Di Duren Seribu Depok"
-date: "2026-08-11"
+date: "2024-07-25"
 categories:
  - "dipan"
 type: "service"

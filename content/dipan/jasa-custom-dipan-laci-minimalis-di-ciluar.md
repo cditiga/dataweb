@@ -1,6 +1,6 @@
 ---
 title: "Jasa Custom Dipan Laci Minimalis Di Ciluar"
-date: "2026-08-11"
+date: "2024-09-24"
 categories:
  - "dipan"
 type: "service"

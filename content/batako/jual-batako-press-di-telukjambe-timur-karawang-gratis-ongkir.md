@@ -1,6 +1,6 @@
 ---
 title: "Jual Batako Press di Telukjambe Timur Karawang Gratis Ongkir"
-date: "2026-08-11"
+date: "2023-09-18"
 categories:
  - "batako"
 type: "product"

@@ -1,6 +1,6 @@
 ---
 title: "Jasa Custom Dipan Laci Minimalis Di Karawang Timur Karawang"
-date: "2026-08-11"
+date: "2024-09-15"
 categories:
  - "dipan"
 type: "service"

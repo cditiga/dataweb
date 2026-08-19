@@ -1,6 +1,6 @@
 ---
 title: "Jual Batako Press di Plered Purwakarta Gratis Ongkir"
-date: "2026-08-11"
+date: "2023-08-22"
 categories:
  - "batako"
 type: "product"

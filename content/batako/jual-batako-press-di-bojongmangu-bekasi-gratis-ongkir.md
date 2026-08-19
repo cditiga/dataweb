@@ -1,6 +1,6 @@
 ---
 title: "Jual Batako Press di Bojongmangu Bekasi Gratis Ongkir"
-date: "2026-08-11"
+date: "2023-01-13"
 categories:
  - "batako"
 type: "product"

@@ -1,6 +1,6 @@
 ---
 title: "Jual Batako Press di Duri Kepa Jakarta Gratis Ongkir"
-date: "2026-08-11"
+date: "2023-02-16"
 categories:
  - "batako"
 type: "product"

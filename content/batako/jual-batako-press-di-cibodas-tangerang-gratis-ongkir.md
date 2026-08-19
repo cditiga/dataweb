@@ -1,6 +1,6 @@
 ---
 title: "Jual Batako Press di Cibodas Tangerang Gratis Ongkir"
-date: "2026-08-11"
+date: "2023-02-23"
 categories:
  - "batako"
 type: "product"

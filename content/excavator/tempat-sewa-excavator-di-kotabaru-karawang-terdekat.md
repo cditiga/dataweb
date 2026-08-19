@@ -1,6 +1,6 @@
 ---
 title: "Tempat Sewa Excavator di Kotabaru Karawang Terdekat"
-date: "2026-08-11"
+date: "2023-02-23"
 categories:
  - "excavator"
 type: "service"

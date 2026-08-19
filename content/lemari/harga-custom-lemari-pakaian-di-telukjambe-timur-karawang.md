@@ -1,6 +1,6 @@
 ---
 title: "Harga Custom Lemari Pakaian Di Telukjambe Timur Karawang"
-date: "2026-08-11"
+date: "2024-07-28"
 categories:
  - "lemari"
 type: "service"

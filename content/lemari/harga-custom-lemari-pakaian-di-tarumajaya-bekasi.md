@@ -1,6 +1,6 @@
 ---
 title: "Harga Custom Lemari Pakaian Di Tarumajaya Bekasi"
-date: "2026-08-11"
+date: "2024-07-07"
 categories:
  - "lemari"
 type: "service"

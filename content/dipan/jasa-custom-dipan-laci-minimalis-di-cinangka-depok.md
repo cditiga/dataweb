@@ -1,6 +1,6 @@
 ---
 title: "Jasa Custom Dipan Laci Minimalis Di Cinangka Depok"
-date: "2026-08-11"
+date: "2024-10-14"
 categories:
  - "dipan"
 type: "service"

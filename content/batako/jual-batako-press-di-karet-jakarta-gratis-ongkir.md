@@ -1,6 +1,6 @@
 ---
 title: "Jual Batako Press di Karet Jakarta Gratis Ongkir"
-date: "2026-08-11"
+date: "2023-12-02"
 categories:
  - "batako"
 type: "product"

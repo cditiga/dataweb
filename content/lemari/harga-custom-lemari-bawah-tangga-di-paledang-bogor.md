@@ -1,6 +1,6 @@
 ---
 title: "Harga Custom Lemari Bawah Tangga Di Paledang Bogor"
-date: "2026-08-11"
+date: "2024-10-10"
 categories:
  - "lemari"
 type: "service"

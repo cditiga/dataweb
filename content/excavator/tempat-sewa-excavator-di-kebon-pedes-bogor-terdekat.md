@@ -1,6 +1,6 @@
 ---
 title: "Tempat Sewa Excavator di Kebon Pedes Bogor Terdekat"
-date: "2026-08-11"
+date: "2023-08-10"
 categories:
  - "excavator"
 type: "service"

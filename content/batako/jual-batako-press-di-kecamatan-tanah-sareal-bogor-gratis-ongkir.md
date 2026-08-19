@@ -1,6 +1,6 @@
 ---
 title: "Jual Batako Press di Kecamatan Tanah Sareal Bogor Gratis Ongkir"
-date: "2026-08-11"
+date: "2023-05-18"
 categories:
  - "batako"
 type: "product"

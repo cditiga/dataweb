@@ -1,6 +1,6 @@
 ---
 title: "Tempat Sewa Excavator di Bojong Genteng Sukabumi Terdekat"
-date: "2026-08-11"
+date: "2023-08-12"
 categories:
  - "excavator"
 type: "service"

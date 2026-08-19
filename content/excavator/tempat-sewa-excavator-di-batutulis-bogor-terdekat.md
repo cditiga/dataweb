@@ -1,6 +1,6 @@
 ---
 title: "Tempat Sewa Excavator di Batutulis Bogor Terdekat"
-date: "2026-08-11"
+date: "2023-08-09"
 categories:
  - "excavator"
 type: "service"

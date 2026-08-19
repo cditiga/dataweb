@@ -1,6 +1,6 @@
 ---
 title: "Jual Batako Press di Campaka Purwakarta Gratis Ongkir"
-date: "2026-08-11"
+date: "2023-01-04"
 categories:
  - "batako"
 type: "product"

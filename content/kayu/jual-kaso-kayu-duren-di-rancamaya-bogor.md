@@ -1,6 +1,6 @@
 ---
 title: "Jual Kaso Kayu Duren Di Rancamaya Bogor"
-date: "2026-08-11"
+date: "2024-10-23"
 categories:
  - "kayu"
 type: "product"

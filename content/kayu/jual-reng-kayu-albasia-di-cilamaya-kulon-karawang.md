@@ -1,6 +1,6 @@
 ---
 title: "Jual Reng Kayu Albasia Di Cilamaya Kulon Karawang"
-date: "2026-08-11"
+date: "2024-02-09"
 categories:
  - "kayu"
 type: "product"

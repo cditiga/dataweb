@@ -1,6 +1,6 @@
 ---
 title: "Harga Custom Lemari Bawah Tangga Di Mustika Jaya Bekasi"
-date: "2026-08-11"
+date: "2024-07-14"
 categories:
  - "lemari"
 type: "service"

@@ -1,6 +1,6 @@
 ---
 title: "Jual Batako Press di Loji Bogor Gratis Ongkir"
-date: "2026-08-11"
+date: "2023-04-10"
 categories:
  - "batako"
 type: "product"

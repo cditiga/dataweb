@@ -1,6 +1,6 @@
 ---
 title: "Jual Batako Press di Cengkareng Jakarta Gratis Ongkir"
-date: "2026-08-11"
+date: "2023-02-03"
 categories:
  - "batako"
 type: "product"

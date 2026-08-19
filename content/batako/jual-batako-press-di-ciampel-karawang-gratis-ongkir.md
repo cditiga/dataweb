@@ -1,6 +1,6 @@
 ---
 title: "Jual Batako Press di Ciampel Karawang Gratis Ongkir"
-date: "2026-08-11"
+date: "2023-01-30"
 categories:
  - "batako"
 type: "product"

@@ -1,6 +1,6 @@
 ---
 title: "Jual Tiang Pancang Beton di Lawang Gintung Bogor"
-date: "2026-08-11"
+date: "2023-01-02"
 categories:
  - "tiang-pancang"
 type: "product"

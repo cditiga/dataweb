@@ -1,6 +1,6 @@
 ---
 title: "Jual Batako Press di Beji Depok Gratis Ongkir"
-date: "2026-08-11"
+date: "2023-06-25"
 categories:
  - "batako"
 type: "product"

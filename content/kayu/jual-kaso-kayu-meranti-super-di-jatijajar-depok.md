@@ -1,6 +1,6 @@
 ---
 title: "Jual Kaso Kayu Meranti Super Di Jatijajar Depok"
-date: "2026-08-11"
+date: "2024-06-28"
 categories:
  - "kayu"
 type: "product"

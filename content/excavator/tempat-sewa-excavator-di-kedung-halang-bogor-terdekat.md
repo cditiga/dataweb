@@ -1,6 +1,6 @@
 ---
 title: "Tempat Sewa Excavator di Kedung Halang Bogor Terdekat"
-date: "2026-08-11"
+date: "2023-09-08"
 categories:
  - "excavator"
 type: "service"

@@ -1,6 +1,6 @@
 ---
 title: "Jual Batako Press di Muaragembong Bekasi Gratis Ongkir"
-date: "2026-08-11"
+date: "2023-06-19"
 categories:
  - "batako"
 type: "product"

@@ -1,6 +1,6 @@
 ---
 title: "Harga Custom Lemari Bawah Tangga Di Telukjambe Timur Karawang"
-date: "2026-08-11"
+date: "2024-07-31"
 categories:
  - "lemari"
 type: "service"

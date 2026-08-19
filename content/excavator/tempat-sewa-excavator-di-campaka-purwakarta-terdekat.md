@@ -1,6 +1,6 @@
 ---
 title: "Tempat Sewa Excavator di Campaka Purwakarta Terdekat"
-date: "2026-08-11"
+date: "2023-07-04"
 categories:
  - "excavator"
 type: "service"

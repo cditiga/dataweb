@@ -1,6 +1,6 @@
 ---
 title: "Jual Batako Press di Angke Jakarta Gratis Ongkir"
-date: "2026-08-11"
+date: "2023-06-10"
 categories:
  - "batako"
 type: "product"

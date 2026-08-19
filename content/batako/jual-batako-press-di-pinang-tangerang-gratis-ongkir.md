@@ -1,6 +1,6 @@
 ---
 title: "Jual Batako Press di Pinang Tangerang Gratis Ongkir"
-date: "2026-08-11"
+date: "2023-04-06"
 categories:
  - "batako"
 type: "product"

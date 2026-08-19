@@ -1,6 +1,6 @@
 ---
 title: "Jual Batako Press di Srengseng Sawah Jakarta Gratis Ongkir"
-date: "2026-08-11"
+date: "2023-07-10"
 categories:
  - "batako"
 type: "product"

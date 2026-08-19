@@ -1,6 +1,6 @@
 ---
 title: "Harga Custom Kitchen Set Di Bojongmangu Bekasi"
-date: "2026-08-11"
+date: "2024-07-22"
 categories:
  - "kitchen"
 type: "service"

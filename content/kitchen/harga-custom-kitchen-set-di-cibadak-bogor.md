@@ -1,6 +1,6 @@
 ---
 title: "Harga Custom Kitchen Set Di Cibadak Bogor"
-date: "2026-08-11"
+date: "2024-09-01"
 categories:
  - "kitchen"
 type: "service"
