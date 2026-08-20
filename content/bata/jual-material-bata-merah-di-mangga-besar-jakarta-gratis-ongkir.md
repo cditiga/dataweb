@@ -1,7 +1,8 @@
 ---
 title: "Jual Material Bata Merah di Mangga Besar Jakarta Gratis Ongkir"
-date: "2026-08-11"
+date: "2023-08-11"
 lastmod: "2026-08-11"
+lastmod: "2026-08-19"
 categories:
  - "bata"
 type: "product"

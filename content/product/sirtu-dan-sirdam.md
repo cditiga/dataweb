@@ -1,6 +1,7 @@
 ---
 title: "Jual Urugan Sirtu Dan Sirdam Per Kubik"
-date: "2026-08-11"
+date: "2023-08-11"
+lastmod: "2026-08-19"
 categories:
  - "urugan"
 type: "product"

@@ -1,6 +1,7 @@
 ---
 title: "Jual Pasir Silika atau Pasir Kuarsa Per Kg"
-date: "2026-08-11"
+date: "2023-08-11"
+lastmod: "2026-08-19"
 categories:
  - "pasir"
 type: "product"

@@ -1,6 +1,7 @@
 ---
 title: "Jasa Sewa Vibrator Cor Beton"
-date: "2026-08-11"
+date: "2023-08-11"
+lastmod: "2026-08-19"
 categories:
  - "cor"
 type: "product"
