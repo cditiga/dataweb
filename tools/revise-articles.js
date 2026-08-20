@@ -25,6 +25,9 @@
  * USAGE:
  *   node revise-articles.js --dry-run                  → preview without modifying files
  *   node revise-articles.js --apply --limit=20        → revise up to 20 articles this session
+ *   node revise-articles.js --verify-cf                 → test each CLOUDFLARE_ACCOUNT_ID +
+ *       CLOUDFLARE_API_TOKEN pair independently, reporting ✅/❌ per pair. Use this whenever
+ *       Cloudflare calls fail with "unescaped characters" or "Authentication error".
  *
  * REQUIRES: CLOUDFLARE_ACCOUNT_ID + CLOUDFLARE_API_TOKEN (Workers AI), candidates.json, npm install gray-matter
  */
@@ -45,6 +48,7 @@ function renderTemplate(str, vars) {
 
 const ARGS  = process.argv.slice(2);
 const APPLY = ARGS.includes('--apply');
+const VERIFY_CF = ARGS.includes('--verify-cf');
 const LIMIT_ARG = (ARGS.find(a => a.startsWith('--limit=')) || '').replace('--limit=', '');
 const LIMIT = LIMIT_ARG ? parseInt(LIMIT_ARG, 10) : 20;
 const DIR_ARG = (ARGS.find(a => a.startsWith('--dir=')) || '--dir=content').replace('--dir=', '');
@@ -57,29 +61,90 @@ const LOG_FILE        = path.join(process.cwd(), 'revised-articles.log');
 // GitHub Models was fully retired on 2026-07-30 — replaced with Cloudflare Workers AI
 // (OpenAI-compatible endpoint). Requires CLOUDFLARE_ACCOUNT_ID + CLOUDFLARE_API_TOKEN.
 //
-// CLOUDFLARE_API_TOKEN can hold MULTIPLE tokens — one per line, or comma-separated — to
-// enable key rotation. When one token gets rate-limited, the script automatically rotates
-// to the next one instead of stopping. Useful if you have several Cloudflare accounts/API
-// tokens and want to pool their free-tier quotas together.
+// Both CLOUDFLARE_ACCOUNT_ID and CLOUDFLARE_API_TOKEN can hold MULTIPLE values — one per
+// line, or comma-separated — to pool quota across several Cloudflare accounts:
+//   - N account IDs + N tokens (same count): PAIRED 1:1 BY LINE ORDER — line 1 of one goes
+//     with line 1 of the other (same account), line 2 with line 2, etc.
+//   - 1 account ID + N tokens: all N tokens rotate against that SAME single account.
+// (Kept in sync with generate-articles.js's identical CF_ACCOUNT_IDS/CF_API_TOKENS logic —
+// this file has its OWN separate copy since it doesn't share code with generate-articles.js,
+// so a fix made in one does NOT automatically apply to the other. On 2026-08-19 this exact
+// file was still running the old single-CF_ACCOUNT_ID code after generate-articles.js had
+// already been fixed, causing the same "Request path contains unescaped characters" bug to
+// resurface here once CLOUDFLARE_ACCOUNT_ID became multi-line.)
 function parseTokens(raw) {
   return (raw || '').split(/[\n,]+/).map(s => s.trim()).filter(Boolean);
 }
 
 const CONFIG = {
-  CF_ACCOUNT_ID: process.env.CLOUDFLARE_ACCOUNT_ID || '',
-  CF_API_TOKENS: parseTokens(process.env.CLOUDFLARE_API_TOKEN),
+  CF_ACCOUNT_IDS: parseTokens(process.env.CLOUDFLARE_ACCOUNT_ID),
+  CF_API_TOKENS : parseTokens(process.env.CLOUDFLARE_API_TOKEN),
   HOST        : 'api.cloudflare.com',
-  get PATH()  { return `/client/v4/accounts/${this.CF_ACCOUNT_ID}/ai/v1/chat/completions`; },
   MODEL       : '@cf/aisingapore/gemma-sea-lion-v4-27b-it',
   TIMEOUT_MS  : 60000,
   MAX_RETRIES_PER_ARTICLE: 2,
 };
 
+// Cloudflare account IDs are 32-char lowercase hex — flag anything else immediately at
+// startup instead of letting it surface later as a cryptic low-level HTTP error.
+CONFIG.CF_ACCOUNT_IDS.forEach((id, i) => {
+  if (!/^[a-f0-9]{32}$/i.test(id)) {
+    console.warn(`⚠️  CLOUDFLARE_ACCOUNT_ID line ${i + 1} doesn't look like a valid Cloudflare account ID ` +
+      `(expected 32 hex characters, got ${id.length} chars: "${id}").`);
+  }
+});
+if (CONFIG.CF_ACCOUNT_IDS.length > 1 && CONFIG.CF_ACCOUNT_IDS.length !== CONFIG.CF_API_TOKENS.length) {
+  console.warn(`⚠️  CLOUDFLARE_ACCOUNT_ID has ${CONFIG.CF_ACCOUNT_IDS.length} line(s) but CLOUDFLARE_API_TOKEN has ` +
+    `${CONFIG.CF_API_TOKENS.length} line(s). For multi-account rotation these must match 1:1, same order ` +
+    `(line N of one = line N of the other, same account) — otherwise an account ID may get paired with ` +
+    `the wrong account's token and fail auth. Fix: make both secrets have the same number of lines.`);
+}
+
 let tokenIdx = 0;
 function currentToken() { return CONFIG.CF_API_TOKENS[tokenIdx] || ''; }
+// Paired with currentToken() via the SAME index, so rotateToken() advances both together.
+function currentAccountId() { return CONFIG.CF_ACCOUNT_IDS[tokenIdx] || CONFIG.CF_ACCOUNT_IDS[0] || ''; }
+function currentPath() { return `/client/v4/accounts/${currentAccountId()}/ai/v1/chat/completions`; }
 function rotateToken() { tokenIdx = (tokenIdx + 1) % CONFIG.CF_API_TOKENS.length; }
 
 function log(msg) { console.log(msg); }
+
+// Tests each CLOUDFLARE_ACCOUNT_ID + CLOUDFLARE_API_TOKEN pair independently with a minimal
+// real call against the exact same endpoint used in callAI() — run with --verify-cf.
+async function verifyCfPairs() {
+  log(`\n🔍 Verifying CLOUDFLARE_ACCOUNT_ID + CLOUDFLARE_API_TOKEN pair(s)`);
+  log(`${'─'.repeat(60)}\n`);
+
+  if (CONFIG.CF_API_TOKENS.length === 0) { log('❌ CLOUDFLARE_API_TOKEN not found.'); return; }
+  if (CONFIG.CF_ACCOUNT_IDS.length === 0) { log('❌ CLOUDFLARE_ACCOUNT_ID not found.'); return; }
+
+  let anyFailed = false;
+  for (let i = 0; i < CONFIG.CF_API_TOKENS.length; i++) {
+    const token = CONFIG.CF_API_TOKENS[i];
+    const accountId = CONFIG.CF_ACCOUNT_IDS[i] || CONFIG.CF_ACCOUNT_IDS[0];
+    const label = `Pair ${i + 1} (account ...${accountId.slice(-6)})`;
+    try {
+      const body = JSON.stringify({ model: CONFIG.MODEL, messages: [{ role: 'user', content: 'hi' }], max_tokens: 1 });
+      await httpRequest(CONFIG.HOST, `/client/v4/accounts/${accountId}/ai/v1/chat/completions`, {
+        method: 'POST',
+        headers: {
+          'Authorization'  : `Bearer ${token}`,
+          'Content-Type'   : 'application/json',
+          'Content-Length' : Buffer.byteLength(body),
+        },
+      }, body, 20000);
+      log(`   ✅ ${label}: OK`);
+    } catch (err) {
+      anyFailed = true;
+      log(`   ❌ ${label}: ${err.message}`);
+    }
+  }
+
+  log(anyFailed
+    ? '\n⚠️  One or more pairs failed — check the ❌ ones above: verify the token is valid, has ' +
+      'Workers AI permission, and is PAIRED with the correct account (same line number in both secrets).'
+    : '\n✅ All pairs authenticated successfully.');
+}
 
 // Surgically insert/update a `lastmod:` field within the RAW frontmatter text (the string
 // between the --- delimiters, as returned by gray-matter's .matter property) — never a full
@@ -120,6 +185,10 @@ function httpRequest(hostname, reqPath, options, body, timeoutMs = CONFIG.TIMEOU
         } else {
           const err = new Error(`HTTP ${res.statusCode}: ${data.slice(0, 300)}`);
           err.statusCode = res.statusCode;
+          // 401/403 means THIS SPECIFIC key/account pair is bad — not a rate limit. Tag it
+          // so callAI() can rotate to the next pair immediately instead of burning the full
+          // retry budget hammering the same broken pair.
+          err.isAuthError = (res.statusCode === 401 || res.statusCode === 403);
           reject(err);
         }
       });
@@ -136,7 +205,7 @@ async function callAI(messages, retries = 3) {
   let keysTriedThisCall = 0;
   for (let attempt = 1; attempt <= retries; attempt++) {
     try {
-      const result = await httpRequest(CONFIG.HOST, CONFIG.PATH, {
+      const result = await httpRequest(CONFIG.HOST, currentPath(), {
         method: 'POST',
         headers: {
           'Authorization'  : `Bearer ${currentToken()}`,
@@ -154,17 +223,18 @@ async function callAI(messages, retries = 3) {
       }
       return content;
     } catch (err) {
-      if (err.isRateLimit) {
-        // Rolling key: if we have other tokens we haven't tried yet this call, rotate and
-        // retry immediately (no wait — a different token has its own separate quota).
+      if (err.isRateLimit || err.isAuthError) {
+        // Rolling key: if we have other pairs we haven't tried yet this call, rotate and
+        // retry immediately (no wait — a different pair has its own separate quota/account).
         if (CONFIG.CF_API_TOKENS.length > 1 && keysTriedThisCall < CONFIG.CF_API_TOKENS.length - 1) {
           keysTriedThisCall++;
-          log(`   🔁 Key #${tokenIdx + 1} rate-limited — rotating to key #${((tokenIdx + 1) % CONFIG.CF_API_TOKENS.length) + 1}/${CONFIG.CF_API_TOKENS.length}...`);
+          const reason = err.isRateLimit ? 'rate-limited' : 'auth error';
+          log(`   🔁 Key #${tokenIdx + 1} ${reason} — rotating to key #${((tokenIdx + 1) % CONFIG.CF_API_TOKENS.length) + 1}/${CONFIG.CF_API_TOKENS.length}...`);
           rotateToken();
           attempt--; // don't burn a retry budget on a key rotation
           continue;
         }
-        if (err.retryAfterSec && err.retryAfterSec <= 90 && attempt < retries) {
+        if (err.isRateLimit && err.retryAfterSec && err.retryAfterSec <= 90 && attempt < retries) {
           log(`   ⏳ Rate limit, waiting ${err.retryAfterSec}s...`);
           await new Promise(r => setTimeout(r, err.retryAfterSec * 1000 + 500));
           continue;
@@ -318,6 +388,11 @@ function validateFinalContent(original, revisedContent, location) {
 
 // ─── Main ────────────────────────────────────────────────────────────
 async function main() {
+  if (VERIFY_CF) {
+    await verifyCfPairs();
+    return;
+  }
+
   const t0 = Date.now();
   log(`\n✍️  ARTICLE REVISION — reducing cross-city templated similarity`);
   log(`   Mode  : ${APPLY ? 'APPLY' : 'DRY-RUN'}  (limit ${LIMIT} per session)`);
@@ -329,11 +404,14 @@ async function main() {
   if (APPLY && CONFIG.CF_API_TOKENS.length === 0) {
     throw new Error('CLOUDFLARE_API_TOKEN not found.');
   }
-  if (APPLY && !CONFIG.CF_ACCOUNT_ID) {
+  if (APPLY && CONFIG.CF_ACCOUNT_IDS.length === 0) {
     throw new Error('CLOUDFLARE_ACCOUNT_ID not found.');
   }
   if (APPLY && CONFIG.CF_API_TOKENS.length > 1) {
-    log(`   🔑 ${CONFIG.CF_API_TOKENS.length} Cloudflare API keys loaded (rolling on rate limit)\n`);
+    const rotationKind = CONFIG.CF_ACCOUNT_IDS.length > 1
+      ? `${CONFIG.CF_API_TOKENS.length} account+token pairs`
+      : `${CONFIG.CF_API_TOKENS.length} tokens on 1 account`;
+    log(`   🔑 Rolling across ${rotationKind} (rolling on rate limit)\n`);
   }
 
   const candData = JSON.parse(fs.readFileSync(CANDIDATES_FILE, 'utf8'));
@@ -418,6 +496,19 @@ async function main() {
         const keyNote = CONFIG.CF_API_TOKENS.length > 1 ? ` (all ${CONFIG.CF_API_TOKENS.length} keys exhausted)` : '';
         log(`\n🛑 Rate limited${keyNote}. Progress safely saved (${success} successful this session).`);
         log(`   Run again later/tomorrow to continue.`);
+        break;
+      }
+      if (err.isAuthError) {
+        // If ALL pairs just failed auth, every remaining article this session would fail
+        // identically — stop now instead of burning the whole --limit budget on guaranteed
+        // failures (this is exactly what happened on 2026-08-19: 20/20 articles failed the
+        // same way before this check existed).
+        const keyNote = CONFIG.CF_API_TOKENS.length > 1 ? ` (all ${CONFIG.CF_API_TOKENS.length} pairs failed auth)` : '';
+        log(`\n🛑 Authentication error${keyNote}. Progress safely saved (${success} successful this session).`);
+        log(`   Run "node tools/revise-articles.js --verify-cf" to see which pair(s) are misconfigured.`);
+        progress.failed[url] = (progress.failed[url] || 0) + 1;
+        failedThisSession++;
+        logLines.push(`ERROR,${url},"${err.message}"`);
         break;
       }
       log(`   ❌ Error: ${err.message}`);

@@ -7,6 +7,12 @@
  *   node generate-articles.js            → production (requires GSC_CREDENTIALS + CLOUDFLARE_ACCOUNT_ID + CLOUDFLARE_API_TOKEN)
  *   node generate-articles.js --dry-run  → local test (use dummy keywords, skip API calls)
  *   node generate-articles.js --dry-run --keyword="harga kitchen set minimalis"
+ *   node generate-articles.js --verify-cf
+ *       → Tests EACH CLOUDFLARE_ACCOUNT_ID + CLOUDFLARE_API_TOKEN pair independently with a
+ *         minimal real call, reporting ✅/❌ per pair. Does NOT touch GSC or generate any
+ *         articles. Use this whenever Cloudflare calls start failing with "unescaped
+ *         characters" or "Authentication error" — pinpoints exactly which pair (if any) is
+ *         misconfigured instead of guessing from a retry log.
  *   node generate-articles.js --research-only
  *       → Only runs Serper.dev keyword research (Related Searches + People Also Ask, and
  *         optionally Autocomplete), seeded from top GSC keywords — or seed-keywords.txt if
@@ -49,6 +55,7 @@ function getSharp() {
 const IS_DRY_RUN     = process.argv.includes('--dry-run');
 const CUSTOM_KW      = (process.argv.find(a => a.startsWith('--keyword=')) || '').replace('--keyword=', '');
 const RESEARCH_ONLY  = process.argv.includes('--research-only');
+const VERIFY_CF      = process.argv.includes('--verify-cf');
 
 // ─── Configuration ───────────────────────────────────────────────────
 const CONFIG = {
@@ -241,10 +248,21 @@ function httpRequest(hostname, path, options, body = null, timeoutMs = 60000) {
         } else if (res.statusCode === 429) {
           const err = new Error(`Rate limited (429) ${hostname}${path}: ${data.slice(0, 200)}`);
           err.isRateLimit = true;
+          err.statusCode = 429;
           err.retryAfterSec = res.headers['retry-after'] ? parseInt(res.headers['retry-after'], 10) : null;
           reject(err);
         } else {
-          reject(new Error(`HTTP ${res.statusCode} ${hostname}${path}: ${data.slice(0, 200)}`));
+          const err = new Error(`HTTP ${res.statusCode} ${hostname}${path}: ${data.slice(0, 200)}`);
+          err.statusCode = res.statusCode;
+          // 401/403 almost always means THIS SPECIFIC key/account pair is bad (wrong
+          // token, expired, wrong permissions, or paired with the wrong account) — not that
+          // the whole Cloudflare account is rate-limited or down. Tagging it lets retry
+          // loops rotate to the NEXT pair immediately instead of burning the full retry
+          // budget hammering the same broken pair 3x, which is what happened on
+          // 2026-08-19: a bad pair 1 was retried 3 times per article while pair 2 (which
+          // may well have been fine) was never even tried.
+          err.isAuthError = (res.statusCode === 401 || res.statusCode === 403);
+          reject(err);
         }
       });
     });
@@ -785,8 +803,9 @@ async function generateImagePromptViaAI(keyword) {
       return text;
     } catch (err) {
       lastErr = err;
-      if (err.isRateLimit && attempt < maxAttempts) {
-        console.log(`   🔁 Key #${cfTokenIdx + 1} rate-limited (image prompt) — rotating to next key...`);
+      if ((err.isRateLimit || err.isAuthError) && attempt < maxAttempts) {
+        const reason = err.isRateLimit ? 'rate-limited' : 'auth error';
+        console.log(`   🔁 Key #${cfTokenIdx + 1} ${reason} (image prompt) — rotating to next key...`);
         rotateCfToken();
         continue;
       }
@@ -852,8 +871,9 @@ async function callCloudflareImageAPI(prompt) {
       );
       break;
     } catch (err) {
-      if (err.isRateLimit && CONFIG.CF_API_TOKENS.length > 1 && attempt < maxRetries) {
-        console.log(`   🔁 Key #${cfTokenIdx + 1} rate-limited (image gen) — rotating to next key...`);
+      if ((err.isRateLimit || err.isAuthError) && CONFIG.CF_API_TOKENS.length > 1 && attempt < maxRetries) {
+        const reason = err.isRateLimit ? 'rate-limited' : 'auth error';
+        console.log(`   🔁 Key #${cfTokenIdx + 1} ${reason} (image gen) — rotating to next key...`);
         rotateCfToken();
         continue;
       }
@@ -1038,15 +1058,16 @@ Kalau Mitra masih ada pertanyaan atau ingin konsultasi lebih lanjut, silakan hub
       );
       break;
     } catch (err) {
-      if (err.isRateLimit) {
+      if (err.isRateLimit || err.isAuthError) {
         if (CONFIG.CF_API_TOKENS.length > 1 && keysTriedThisCall < CONFIG.CF_API_TOKENS.length - 1) {
           keysTriedThisCall++;
-          console.log(`   🔁 Key #${cfTokenIdx + 1} rate-limited — rotating to next key...`);
+          const reason = err.isRateLimit ? 'rate-limited' : 'auth error';
+          console.log(`   🔁 Key #${cfTokenIdx + 1} ${reason} — rotating to next key...`);
           rotateCfToken();
           attempt--; // don't burn a retry budget on a key rotation
           continue;
         }
-        if (err.retryAfterSec && err.retryAfterSec <= 90 && attempt < maxRetries) {
+        if (err.isRateLimit && err.retryAfterSec && err.retryAfterSec <= 90 && attempt < maxRetries) {
           console.log(`   ⏳ Rate limit, waiting ${err.retryAfterSec}s...`);
           await new Promise(r => setTimeout(r, err.retryAfterSec * 1000 + 500));
           continue;
@@ -1280,8 +1301,63 @@ function validateArticle(filePath) {
 }
 // ─────────────────────────────────────────────────────────────────────────────
 
+// ─── Diagnostic: verify each CLOUDFLARE_ACCOUNT_ID + CLOUDFLARE_API_TOKEN pair ────────────
+// Makes one minimal (max_tokens=1) real call per pair against the EXACT SAME endpoint used
+// in production, so a ✅/❌ here means exactly what it says — no guessing via some other
+// Cloudflare verification endpoint that might behave differently. Run with --verify-cf.
+async function verifyCfPairs() {
+  console.log(`\n🔍 Verifying CLOUDFLARE_ACCOUNT_ID + CLOUDFLARE_API_TOKEN pair(s)`);
+  console.log(`${'─'.repeat(55)}\n`);
+
+  if (CONFIG.CF_API_TOKENS.length === 0) { console.log('❌ CLOUDFLARE_API_TOKEN not found.'); return; }
+  if (CONFIG.CF_ACCOUNT_IDS.length === 0) { console.log('❌ CLOUDFLARE_ACCOUNT_ID not found.'); return; }
+
+  let anyFailed = false;
+  for (let i = 0; i < CONFIG.CF_API_TOKENS.length; i++) {
+    const token = CONFIG.CF_API_TOKENS[i];
+    const accountId = CONFIG.CF_ACCOUNT_IDS[i] || CONFIG.CF_ACCOUNT_IDS[0];
+    const label = `Pair ${i + 1} (account ...${accountId.slice(-6)})`;
+    try {
+      const body = JSON.stringify({
+        model: CONFIG.AI_MODEL,
+        messages: [{ role: 'user', content: 'hi' }],
+        max_tokens: 1,
+      });
+      await httpRequest(
+        CONFIG.MODELS_API_HOST,
+        `/client/v4/accounts/${accountId}/ai/v1/chat/completions`,
+        {
+          method: 'POST',
+          headers: {
+            'Authorization'  : `Bearer ${token}`,
+            'Content-Type'   : 'application/json',
+            'Content-Length' : Buffer.byteLength(body),
+          },
+        },
+        body,
+        20000
+      );
+      console.log(`   ✅ ${label}: OK`);
+    } catch (err) {
+      anyFailed = true;
+      console.log(`   ❌ ${label}: ${err.message}`);
+    }
+  }
+
+  console.log(anyFailed
+    ? '\n⚠️  One or more pairs failed — check the ❌ ones above: verify the token is valid, has ' +
+      'Workers AI permission, and is PAIRED with the correct account (same line number in both secrets).'
+    : '\n✅ All pairs authenticated successfully.');
+}
+// ─────────────────────────────────────────────────────────────────────────────
+
 // ─── Main ─────────────────────────────────────────────────────────────────────
 async function main() {
+  if (VERIFY_CF) {
+    await verifyCfPairs();
+    return;
+  }
+
   if (RESEARCH_ONLY) {
     console.log(`\n🔬 Serper.dev Keyword Research ${IS_DRY_RUN ? '[DRY-RUN MODE]' : ''}`);
     console.log(`${'─'.repeat(55)}\n`);
