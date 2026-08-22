@@ -139,7 +139,7 @@ const CONFIG = {
   AI_IMAGE_HEIGHT  : 400,
   WATERMARK_PATH   : path.join(__dirname, '..', 'static', 'images', 'logo', 'watermark-cdi.png'),
   WATERMARK_OPACITY: 0.4,
-  WATERMARK_WIDTH_RATIO: 0.30,
+  WATERMARK_WIDTH_RATIO: 0.22,
 
   // GSC filters
   MIN_IMPRESSIONS : 5,
@@ -719,8 +719,11 @@ async function pickImage(keyword, slug) {
   const allImages = getImages(imgDir);
   if (!allImages.length) return useGenericOrAIImage(keyword, slug);
 
-  const stopWords = new Set(['yang', 'untuk', 'dari', 'dengan', 'pada', 'dalam', 'atau', 'juga', 'adalah', 'cara', 'harga', 'ukuran', 'jenis']);
-  const words = keyword.toLowerCase().split(/\s+/).filter(w => w.length > 2 && !stopWords.has(w));
+  // Reuses the same comprehensive stopword filter as duplicate-title detection above
+  // (significantWordsForSimilarity/SIMILARITY_STOPWORDS) so "2 words match" means 2 core/
+  // content words — conjunctions and particles like "itu", "yang", "apa", "dan", "dari" never
+  // count toward the match.
+  const words = significantWordsForSimilarity(keyword);
 
   const scored = allImages.map(img => {
     const name = path.basename(img).toLowerCase().replace(/[-_]/g, ' ');
