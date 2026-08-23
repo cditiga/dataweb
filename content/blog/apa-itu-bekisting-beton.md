@@ -5,7 +5,7 @@ categories:
  - "blog"
 type: "product"
 description: "Apa itu bekisting beton? Pelajari fungsi, jenis, material, hingga estimasi biaya bekisting beton untuk fondasi bangunan Anda. Dapatkan informasi terpercaya dari ahli desain interior."
-featured_image: "/images/blog/apa-itu-batching-plant.jpg"
+featured_image: "/images/blog/apa-itu-bekisting-beton.jpg"
 tags: ["bekisting beton", "cetakan beton", "fondasi bangunan", "konstruksi beton", "biaya bekisting beton"]
 keywords: "apa itu bekisting beton"
 author: "Ibnu Koesnady"
@@ -28,7 +28,7 @@ Ada beberapa jenis bekisting beton yang umum digunakan, masing-masing dengan kel
 *   **Bekisting Plastik (Fiberglass/Polypropylene):** Semakin populer karena ringan, mudah dipasang, dan memiliki permukaan yang halus sehingga menghasilkan hasil akhir beton yang lebih baik. Bekisting plastik cocok untuk proyek-proyek perumahan atau komersial yang membutuhkan efisiensi waktu dan kualitas tinggi.
 *   **Bekisting Prefabrikasi:** Sistem bekisting modular yang dirancang khusus untuk proyek-proyek dengan bentuk yang repetitif. Bekisting prefabrikasi mempercepat proses konstruksi dan mengurangi pemborosan material.
 
-![Contoh Bekisting Kayu untuk Pengecoran Kolom](/images/blog/apa-itu-batching-plant.jpg)
+![Contoh Bekisting Kayu untuk Pengecoran Kolom](/images/blog/apa-itu-bekisting-beton.jpg)
 
 ### Material dan Perencanaan Bekisting Beton yang Tepat
 

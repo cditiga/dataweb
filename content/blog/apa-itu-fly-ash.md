@@ -5,7 +5,7 @@ categories:
  - "blog"
 type: "product"
 description: "Apa itu fly ash? Pelajari manfaat fly ash dalam meningkatkan kualitas beton, mengurangi biaya konstruksi, dan mendukung praktik bangunan berkelanjutan."
-featured_image: "/images/blog/apa-itu-batching-plant.jpg"
+featured_image: "/images/blog/apa-itu-fly-ash.jpg"
 tags: ["fly ash", "abu terbang", "beton fly ash", "material konstruksi", "konstruksi berkelanjutan"]
 keywords: "apa itu fly ash"
 author: "Ibnu Koesnady"
@@ -38,7 +38,7 @@ Berikut adalah perbandingan singkat antara keduanya:
 
 Pemilihan jenis fly ash bergantung pada kebutuhan spesifik proyek konstruksi. Kami di Creative Design Interior akan membantu Mitra CDI memilih jenis yang paling sesuai untuk proyek Anda.
 
-![Gambar ilustrasi campuran beton dengan fly ash](/images/blog/apa-itu-batching-plant.jpg)
+![Gambar ilustrasi campuran beton dengan fly ash](/images/blog/apa-itu-fly-ash.jpg)
 
 ## Penerapan Fly Ash dalam Berbagai Proyek Konstruksi
 

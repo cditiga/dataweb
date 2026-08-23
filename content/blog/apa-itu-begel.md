@@ -5,7 +5,7 @@ categories:
  - "blog"
 type: "product"
 description: "Apa itu begel? Pelajari fungsi begel beton, jenis-jenisnya, standar ukuran SNI, perhitungan kebutuhan, hingga estimasi biaya pemasangan dari Creative Design Interior."
-featured_image: "/images/blog/apa-itu-batching-plant.jpg"
+featured_image: "/images/blog/apa-itu-begel.jpg"
 tags: ["begel", "begel beton", "fungsi begel", "ukuran begel", "harga begel"]
 keywords: "apa itu begel"
 author: "Ibnu Koesnady"
@@ -45,7 +45,7 @@ Sebagai ilustrasi, misalkan sebuah kolom memiliki tinggi 4 meter dan menggunakan
 
 Harga begel beton bervariasi tergantung pada diameter, jenis, dan lokasi pembelian. Secara umum, harga begel polos berkisar antara Rp 15.000 hingga Rp 25.000 per kilogram, sedangkan begel ulir atau sengkang dapat mencapai Rp 30.000 hingga Rp 40.000 per kilogram. Harga ini bersifat estimasi dan dapat berubah sewaktu-waktu — hubungi Kami untuk penawaran terbaru dan paling akurat sesuai kebutuhan proyek Mitra CDI.
 
-![Ilustrasi berbagai jenis begel beton yang umum digunakan dalam konstruksi](/images/blog/apa-itu-batching-plant.jpg)
+![Ilustrasi berbagai jenis begel beton yang umum digunakan dalam konstruksi](/images/blog/apa-itu-begel.jpg)
 
 ## Mengoptimalkan Pemasangan Begel untuk Konstruksi yang Kokoh
 

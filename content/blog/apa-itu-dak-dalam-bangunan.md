@@ -5,7 +5,7 @@ categories:
  - "blog"
 type: "service"
 description: "Apa itu dak dalam bangunan? Pelajari fungsi, jenis-jenisnya (dak beton, dak baja ringan), standar SNI, serta estimasi biaya pemasangan dak terbaru 2026."
-featured_image: "/images/blog/apa-itu-batching-plant.jpg"
+featured_image: "/images/blog/apa-itu-dak-dalam-bangunan.jpg"
 tags: ["dak bangunan", "dak beton", "dak baja ringan", "biaya dak", "konstruksi bangunan"]
 keywords: "apa itu dak dalam bangunan"
 author: "Ibnu Koesnady"
@@ -15,7 +15,7 @@ draft: false
 
 **Apa Itu Dak Dalam Bangunan?** - Mitra CDI, pernahkah Anda memperhatikan area datar di atas bangunan yang sering digunakan sebagai tempat jemur pakaian, taman atap, atau bahkan kolam renang? Area tersebut umumnya merupakan dak. Banyak pemilik rumah atau pengembang proyek bertanya-tanya mengenai fungsi, jenis, dan biaya pemasangan dak. Artikel ini akan membahas secara komprehensif mengenai apa itu dak dalam bangunan, jenis-jenisnya, standar yang berlaku, serta perkiraan biaya yang perlu Anda ketahui.
 
-![Apa Itu Dak Dalam Bangunan? Fungsi, Jenis, dan Biaya Pemasangan 2026](/images/blog/apa-itu-batching-plant.jpg)
+![Apa Itu Dak Dalam Bangunan? Fungsi, Jenis, dan Biaya Pemasangan 2026](/images/blog/apa-itu-dak-dalam-bangunan.jpg)
 
 
 ## Memahami Fungsi Penting Dak Bangunan

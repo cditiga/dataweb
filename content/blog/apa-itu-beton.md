@@ -5,7 +5,7 @@ categories:
  - "blog"
 type: "product"
 description: "Apa itu beton? Pelajari komposisi, jenis, kelebihan, kekurangan, hingga estimasi biaya beton per meter kubik untuk proyek konstruksi Mitra CDI."
-featured_image: "/images/blog/apa-itu-batching-plant.jpg"
+featured_image: "/images/blog/apa-itu-beton.jpg"
 tags: ["beton", "material bangunan", "campuran beton", "harga beton", "konstruksi bangunan"]
 keywords: "apa itu beton"
 author: "Ibnu Koesnady"
@@ -31,7 +31,7 @@ Namun, beton juga memiliki kelemahan. Kekuatan tarik beton relatif rendah, sehin
 
 Untuk mengatasi kelemahan tersebut, teknologi beton terus berkembang. Saat ini, terdapat beton *fiber reinforced concrete* yang memiliki kekuatan tarik lebih tinggi, beton *self-healing concrete* yang mampu memperbaiki retakan secara otomatis, dan beton ramah lingkungan yang menggunakan material daur ulang.
 
-![Contoh pengecoran beton untuk fondasi rumah](/images/blog/apa-itu-batching-plant.jpg)
+![Contoh pengecoran beton untuk fondasi rumah](/images/blog/apa-itu-beton.jpg)
 
 ## Estimasi Biaya dan Perbandingan Harga Beton Per Meter Kubik di Tahun 2026
 
