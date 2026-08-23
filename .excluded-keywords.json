@@ -1545,5 +1545,33 @@
     "matchedTitle": "Beton: Panduan Lengkap Mengenal Material Fondasi dan Struktur Bangunan",
     "taggedAt": "2026-08-22T07:21:18.335Z",
     "algoVersion": 2
+  },
+  "dak bangunan": {
+    "reason": "similar to existing article",
+    "matchedFile": "apa-itu-dak-dalam-bangunan.md",
+    "matchedTitle": "Apa Itu Dak Dalam Bangunan? Fungsi, Jenis, dan Biaya Pemasangan 2026",
+    "taggedAt": "2026-08-23T07:29:29.359Z",
+    "algoVersion": 2
+  },
+  "dak bangunan adalah": {
+    "reason": "similar to existing article",
+    "matchedFile": "apa-itu-dak-dalam-bangunan.md",
+    "matchedTitle": "Apa Itu Dak Dalam Bangunan? Fungsi, Jenis, dan Biaya Pemasangan 2026",
+    "taggedAt": "2026-08-23T07:29:29.359Z",
+    "algoVersion": 2
+  },
+  "dak minimalis": {
+    "reason": "similar to existing article",
+    "matchedFile": "apa-itu-dak-dalam-bangunan.md",
+    "matchedTitle": "Apa Itu Dak Dalam Bangunan? Fungsi, Jenis, dan Biaya Pemasangan 2026",
+    "taggedAt": "2026-08-23T07:29:29.369Z",
+    "algoVersion": 2
+  },
+  "fly ash beton": {
+    "reason": "similar to existing article",
+    "matchedFile": "apa-itu-fly-ash.md",
+    "matchedTitle": "Fly Ash: Pengertian, Manfaat, dan Penerapannya dalam Konstruksi Modern",
+    "taggedAt": "2026-08-23T07:29:29.414Z",
+    "algoVersion": 2
   }
 }
