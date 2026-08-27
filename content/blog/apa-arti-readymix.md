@@ -5,7 +5,7 @@ categories:
  - "blog"
 type: "product"
 description: "Apa arti ready mix? Pelajari komposisi, keunggulan, harga, dan cara memilih penyedia ready mix terbaik untuk fondasi bangunan Anda."
-featured_image: "/images/blog/apa-arti-ready.jpg"
+featured_image: "/images/blog/apa-arti-readymix.jpg"
 tags: ["ready mix", "beton ready mix", "harga ready mix", "kualitas beton", "fondasi bangunan"]
 keywords: "apa arti ready"
 author: "Ibnu Koesnady"
@@ -29,7 +29,7 @@ Penggunaan *ready mix* menawarkan sejumlah keunggulan dibandingkan dengan metode
 
 Selain itu, *ready mix* juga menghemat waktu dan biaya. Anda tidak perlu lagi menyediakan lahan untuk penyimpanan material, tenaga kerja untuk pencampuran, dan peralatan seperti mesin molen. Waktu yang tersimpan dapat dialokasikan untuk pekerjaan konstruksi lainnya, sehingga mempercepat penyelesaian proyek.  Estimasi biaya penghematan tenaga kerja dan waktu dapat mencapai 15-20% dibandingkan metode konvensional.
 
-![Pengecoran ready mix di lokasi proyek perumahan](/images/blog/apa-arti-ready.jpg)
+![Pengecoran ready mix di lokasi proyek perumahan](/images/blog/apa-arti-readymix.jpg)
 
 ## Faktor-Faktor yang Mempengaruhi Harga Ready Mix
 
