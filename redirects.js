@@ -1,5 +1,12 @@
 // Redirect Map
 const redirectMap = {
+    "/blog/ash-adalah/": "/blog/apa-itu-fly-ash/",
+    "/blog/arti-fly/": "/blog/apa-itu-fly-ash/",
+    "/blog/apa-arti-ready/": "/blog/apa-arti-readymix/",
+    "/blog/apa-itu-beton/": "/blog/arti-beton/",
+    "/blog/arti-plant/": "/blog/apa-itu-batching-plant/",
+    "/blog/cor-artinya/": "/blog/arti-beton/",
+    "/blog/atap-cor/": "/blog/atap-dak/",
     "/alat-berat/jasa-sewa-bull-dozer-di-cikini-jakarta-harian.html?amp": "/bull-dozer/jasa-sewa-bull-dozer-di-cilincing-jakarta-harian/amp/",
     "/alat-berat/jasa-sewa-bull-dozer-di-cikini-jakarta-harian.html": "/bull-dozer/jasa-sewa-bull-dozer-di-cilincing-jakarta-harian/",
     "/alat-berat/jasa-sewa-bull-dozer-di-ciledug-tangerang-harian.html": "/bull-dozer/jasa-sewa-bull-dozer-di-ciledug-tangerang-harian/",
