@@ -39,12 +39,12 @@ jobs:
           fetch-depth: 1
           fetch-tags: false
 
-      # Idempotent — lihat penjelasan lengkap di generate-articles.yml. Cukup dilakukan
-      # sekali oleh workflow mana pun yang jalan duluan; workflow lain akan skip otomatis.
-      - name: Untrack node_modules (sekali jalan, idempotent)
+      # Idempotent — see the full explanation in generate-articles.yml. It simply needs to be executed.
+      # ...once by whichever workflow runs first; the other workflow will automatically skip.
+      - name: Untrack node_modules (one-way, idempotent)
         run: |
           if [ -n "$(git ls-files node_modules/ | head -n1)" ]; then
-            echo "📦 node_modules masih ter-track di git — untrack sekarang..."
+            echo "📦 node_modules is still being tracked in Git — untrack it now..."
             git config --local user.email "action@github.com"
             git config --local user.name "GitHub Action"
             grep -qxF 'node_modules/' .gitignore 2>/dev/null || echo "node_modules/" >> .gitignore
@@ -52,9 +52,9 @@ jobs:
             git add .gitignore
             git commit -m "chore: untrack node_modules [skip ci]"
             git push origin master
-            echo "✅ node_modules berhasil di-untrack dan di-push."
+            echo "✅ node_modules has been successfully untracked and pushed."
           else
-            echo "✅ node_modules sudah tidak ter-track — tidak ada yang perlu dilakukan."
+            echo "✅ node_modules is no longer tracked — nothing needs to be done."
           fi
 
       - name: Setup Hugo
@@ -93,10 +93,18 @@ jobs:
 
       - name: Commit Changes
         run: |
-          git add content/ data/
+          # static/ added alongside content/ and data/: recycle-posts.js's IndexNow
+          # integration (tools/lib/index-ping.js) creates a one-time verification file at
+          # static/<key>.txt the first time it ever runs. Without committing static/ here,
+          # that file would never make it to the deployed site, and every IndexNow
+          # submission would keep failing key verification.
+          git add content/ data/ static/
+          # .indexnow-key.json (repo root) is the small state file that remembers the same
+          # key across runs — same pattern as .revise-progress.json elsewhere in this repo.
+          [ -f .indexnow-key.json ] && git add .indexnow-key.json
 
           if git diff --staged --quiet; then
-            echo "ℹ️  Tidak ada artikel yang perlu di-recycle minggu ini — selesai."
+            echo "ℹ️  No articles to recycle this week — done."
             exit 0
           fi
 
@@ -106,19 +114,19 @@ jobs:
         run: |
           for i in 1 2 3 4 5; do
             if git push origin master; then
-              echo "✅ Push berhasil (percobaan $i)."
+              echo "✅ Push successful (attempt $i)."
               exit 0
             fi
             if [ "$i" -eq 5 ]; then
-              echo "❌ Push tetap gagal setelah 5 percobaan — kemungkinan ada conflict nyata, cek manual." >&2
+              echo "❌ The push still fails after 5 attempts—there is likely a genuine conflict; please check manually." >&2
               exit 1
             fi
             wait_s=$(( (RANDOM % 10) + 5 ))
-            echo "⏳ Push ditolak (kemungkinan race dengan workflow lain), rebase & coba lagi dalam ${wait_s}s... (percobaan $i/5)"
+            echo "⏳ Push rejected (possible race with another workflow), rebasing & retrying in ${wait_s}s... (attempt $i/5)"
             sleep "$wait_s"
             git fetch origin master
-            # Stash perubahan working-tree yang tidak relevan (mis. drift node_modules/
-            # package-lock.json dari npm ci) supaya tidak menghalangi rebase di bawah.
+            # Stash irrelevant working-tree changes (mis. drift node_modules/
+            # package-lock.json from npm ci) so that it does not interfere with the rebase below.
             git stash push -u -m "pre-rebase-autostash" || true
             git rebase origin/master
             git stash drop || true
@@ -131,7 +139,7 @@ jobs:
         run: |
           rm -rf node_modules .npm
           npm cache clean --force
-          echo "Disk space setelah cleanup node_modules:"
+          echo "Disk space after cleanup node_modules:"
           df -h
 
       - name: Deploy to GitHub Pages
@@ -144,5 +152,5 @@ jobs:
 
       - name: Verify Deployment
         run: |
-          echo "Deployment selesai!"
+          echo "Deployment complete!"
           ls -l public

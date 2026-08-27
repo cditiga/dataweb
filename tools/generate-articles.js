@@ -33,6 +33,22 @@ const crypto = require('crypto');
 // in by renderTemplate() below.
 const PROMPTS = require('./prompts/generate-articles.json');
 
+// NON-AI internal-link candidate selection (buildArticleIndex/findRelatedCandidates) and the
+// post-generation internal-link safety net (enforceInternalLinks) — see file header comments
+// in lib/related-articles.js for the full design.
+const {
+  buildArticleIndex,
+  guessCategoryHint,
+  findRelatedCandidates,
+  formatCandidatesForPrompt,
+  enforceInternalLinks,
+} = require('./lib/related-articles.js');
+
+// Deterministic, crash-proof Markdown table rendering from AI-provided structured data — see
+// file header comments in lib/safe-table.js for why raw AI-written Markdown tables are never
+// trusted directly.
+const { renderSafeTables, hasLeftoverTableMarkers } = require('./lib/safe-table.js');
+
 function renderTemplate(str, vars) {
   return str.replace(/\{\{(\w+)\}\}/g, (_, key) => (key in vars ? vars[key] : `{{${key}}}`));
 }
@@ -124,6 +140,10 @@ const CONFIG = {
 
 
   CONTENT_DIR     : path.join(__dirname, '..', 'content', 'blog'),
+  // Full content/ root (ALL category folders: bata, batu, kitchen, blog, dll — not just
+  // blog/) used ONLY for building the internal-link candidate index below. New articles are
+  // still always saved under CONTENT_DIR (content/blog/) as before.
+  CONTENT_ROOT_DIR: path.join(__dirname, '..', 'content'),
   IMAGES_DIR      : path.join(__dirname, '..', 'static', 'images'),
   BLOG_IMAGES_DIR : path.join(__dirname, '..', 'static', 'images', 'blog'),
 
@@ -355,6 +375,9 @@ function updateFirstSeenMap(keywordItems) {
 
 async function fetchKeywordsFromGSC() {
   if (IS_DRY_RUN) {
+    if (CUSTOM_KW && !hasMinKeywordWords(CUSTOM_KW, 3)) {
+      console.log(`   ⚠️  --keyword="${CUSTOM_KW}" has < 3 significant words — normally skipped, proceeding anyway since this is an explicit manual --dry-run override.`);
+    }
     const kws = CUSTOM_KW
       ? [{ keyword: CUSTOM_KW, impressions: 50, clicks: 1, ctr: 0.02, position: 9 }]
       : CONFIG.DRY_RUN_KEYWORDS;
@@ -373,10 +396,22 @@ async function fetchKeywordsFromGSC() {
 
   if (!rows.length) { console.log('⚠️  No keyword data.'); return []; }
 
+  const droppedShort = [];
   const filtered = rows
     .filter(r => r.impressions >= CONFIG.MIN_IMPRESSIONS && r.position <= CONFIG.MAX_POSITION)
-    .filter(r => r.keys[0].trim().split(/\s+/).length >= 3) // at least 3 words — very short keywords are too generic/prone to overlap
+    // At least 3 SIGNIFICANT words (conjunctions/prepositions like "dan", "dengan", "pada",
+    // "itu" don't count — see CONJUNCTION_STOPWORDS above) — very short/generic keywords are
+    // too broad and prone to overlapping with other articles.
+    .filter(r => {
+      const ok = hasMinKeywordWords(r.keys[0], 3);
+      if (!ok) droppedShort.push(r.keys[0]);
+      return ok;
+    })
     .map(r => ({ keyword: r.keys[0], impressions: r.impressions, clicks: r.clicks, ctr: r.ctr, position: r.position }));
+
+  if (droppedShort.length) {
+    console.log(`   ⏭️  ${droppedShort.length} GSC keyword(s) skipped (< 3 significant words): ${droppedShort.slice(0, 5).join(', ')}${droppedShort.length > 5 ? ', ...' : ''}`);
+  }
 
   // Record first-seen dates for anything new, so "oldest keyword first" ordering below
   // (in main()) has data to work with even for keywords discovered just now.
@@ -407,6 +442,42 @@ function getExistingSlugs() {
 }
 
 const EXCLUDED_KEYWORDS_FILE = path.join(__dirname, '..', '.excluded-keywords.json');
+
+// ─── Minimum keyword length (≥3 SIGNIFICANT words) ─────────────────────────────
+// General Indonesian conjunctions/prepositions/particles/copulas — words that carry no
+// topical meaning on their own and therefore must NOT count toward the "at least 3 words"
+// keyword-length requirement below. e.g. "cor jalan dan" is 3 raw words but only 2
+// significant ones ("cor", "jalan") — "dan" doesn't count, so this keyword is (correctly)
+// treated as too short and skipped.
+//
+// Deliberately separate from SIMILARITY_STOPWORDS further below: that list ALSO strips
+// meaningful business/marketing words (e.g. "jasa", "harga") for a different purpose
+// (duplicate-similarity detection) — those words DO carry real SEO intent and must still
+// count as significant words here.
+const CONJUNCTION_STOPWORDS = new Set([
+  'dan', 'atau', 'serta', 'maupun', 'namun', 'tetapi', 'tapi', 'melainkan',
+  'adalah', 'yaitu', 'ialah', 'yakni', 'merupakan',
+  'ini', 'itu', 'tersebut', 'begini', 'begitu',
+  'dengan', 'pada', 'di', 'ke', 'dari', 'untuk', 'oleh', 'akan', 'karena', 'sebab',
+  'agar', 'supaya', 'jika', 'kalau', 'apabila', 'meski', 'meskipun', 'walau', 'walaupun',
+  'hingga', 'sampai', 'sejak', 'tanpa', 'bagi', 'terhadap', 'antara', 'sebagai', 'seperti',
+  'yang', 'para', 'si', 'sang', 'per', 'apa', 'apakah', 'dalam', 'juga', 'bisa', 'dapat', 'pun',
+]);
+
+function countSignificantWords(text) {
+  return (text || '')
+    .toLowerCase()
+    .replace(/[^a-z0-9\s-]/g, ' ')
+    .split(/\s+/)
+    .filter(Boolean)
+    .filter(w => !CONJUNCTION_STOPWORDS.has(w))
+    .length;
+}
+
+function hasMinKeywordWords(text, min = 3) {
+  return countSignificantWords(text) >= min;
+}
+// ─────────────────────────────────────────────────────────────────────────────
 
 const SIMILARITY_ALGO_VERSION = 2;
 
@@ -505,8 +576,19 @@ const KEYWORDS_FILE = path.join(__dirname, '..', 'keywords.txt');
 
 function getKeywordsFromFile() {
   if (!fs.existsSync(KEYWORDS_FILE)) return [];
-  return fs.readFileSync(KEYWORDS_FILE, 'utf8').split('\n')
-    .map(l => l.trim()).filter(Boolean)
+  const allLines = fs.readFileSync(KEYWORDS_FILE, 'utf8').split('\n').map(l => l.trim()).filter(Boolean);
+
+  // Same ≥3-significant-words rule as GSC/Serper (see CONJUNCTION_STOPWORDS above) — this
+  // file previously had NO length check at all, so a manually-added short keyword slipped
+  // straight through to article generation. Short entries are left in the file (not
+  // removed) so a human can see and fix them; they're just skipped for now.
+  const tooShort = allLines.filter(kw => !hasMinKeywordWords(kw, 3));
+  if (tooShort.length) {
+    console.log(`   ⏭️  ${tooShort.length} keyword(s) in keywords.txt skipped (< 3 significant words, left in file for review): ${tooShort.slice(0, 5).join(', ')}${tooShort.length > 5 ? ', ...' : ''}`);
+  }
+
+  return allLines
+    .filter(kw => hasMinKeywordWords(kw, 3))
     .map(kw => ({ keyword: kw, impressions: 0, clicks: 0, ctr: 0, position: 0 }));
 }
 
@@ -609,7 +691,7 @@ async function fetchKeywordIdeasFromSerper(seedKeywords) {
   }
 
   const results = [...ideas]
-    .filter(kw => kw.split(/\s+/).length >= 3) // same rule as GSC: drop overly short/generic keywords
+    .filter(kw => hasMinKeywordWords(kw, 3)) // same rule as GSC: ≥3 significant words, conjunctions excluded
     .map(kw => ({ keyword: kw, impressions: 0, clicks: 0, ctr: 0, position: 0 }));
 
   console.log(`✅ ${results.length} new keyword idea(s) from Serper.dev (${creditsUsed} credit(s) used this run).`);
@@ -969,7 +1051,7 @@ const ADDRESS_STYLES  = PROMPTS.addressStyles;
 function pickRandom(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
 // ─────────────────────────────────────────────────────────────────
 
-async function generateArticle(keyword) {
+async function generateArticle(keyword, relatedCandidates = []) {
   const type = detectType(keyword);
   const openingStyle = pickRandom(OPENING_STYLES);
   const addressStyle  = pickRandom(ADDRESS_STYLES);
@@ -985,6 +1067,7 @@ async function generateArticle(keyword) {
     closingStyle,
     keyword,
     currentYear,
+    relatedArticles: formatCandidatesForPrompt(relatedCandidates),
   });
 
   if (IS_DRY_RUN) {
@@ -1135,7 +1218,7 @@ function ensureCdiOpening(body, title, greeting) {
   return `**${title}** - ${greeting}, ${rest}`;
 }
 
-function parseAndSave(raw, keyword, slug, imagePath, greeting) {
+function parseAndSave(raw, keyword, slug, imagePath, greeting, relatedCandidates = []) {
   const lines  = raw.split('\n');
   let title    = keyword.split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
   let desc     = '';
@@ -1169,6 +1252,17 @@ function parseAndSave(raw, keyword, slug, imagePath, greeting) {
       body = body.slice(0, paraEnd) + imgMarkdown + body.slice(paraEnd);
     }
   }
+
+  // Turn any [[TABEL_MULAI]]...[[TABEL_SELESAI]] block the AI wrote into a guaranteed-valid
+  // Markdown table (see lib/safe-table.js) — never trust raw AI-written "|" table syntax.
+  body = renderSafeTables(body);
+  if (hasLeftoverTableMarkers(body)) {
+    console.log('   ⚠️  Leftover [[TABEL_...]] marker found after table rendering — check article manually.');
+  }
+
+  // Safety net: only keep internal links that point to one of the offered candidate URLs,
+  // and never more than 2 total — regardless of what the AI actually did.
+  body = enforceInternalLinks(body, relatedCandidates.map(c => c.url), 2);
 
   const today   = new Date().toISOString().split('T')[0];
   const type    = detectType(keyword);
@@ -1272,6 +1366,11 @@ function validateArticle(filePath) {
 
   const openingIssues = checkOpeningVariety(bodyOnly);
   issues.push(...openingIssues);
+
+  // Internal links are already hard-capped at 2 by enforceInternalLinks() before this file
+  // was written — this is just a visibility check in case that logic is ever bypassed.
+  const internalLinkCount = (bodyOnly.match(/(?<!!)\[[^\]]+\]\(\/[^)\s]+\/\)/g) || []).length;
+  if (internalLinkCount > 2) issues.push(`❌ ${internalLinkCount} internal link ditemukan (maksimal 2) — periksa enforceInternalLinks()`);
 
   const INFORMAL_WORDS = ['nggak', 'ngga', 'gimana', 'yuk', 'nah', 'lho', 'nih', 'banget', 'kayak', 'gitu', 'aja'];
   const foundInformal = INFORMAL_WORDS.filter(w => new RegExp(`\\b${w}\\b`, 'i').test(bodyOnly));
@@ -1482,6 +1581,14 @@ async function main() {
   const toProcess = uniqueKeywords.slice(0, IS_DRY_RUN ? uniqueKeywords.length : CONFIG.MAX_ARTICLES);
   console.log(`\n📝 Will generate ${toProcess.length} articles (source: ${sourceLabel}):\n`);
 
+  // Built ONCE per run and reused for every keyword below — scans content/{category}/*.md
+  // (all niches, not just blog/) so new articles can link to genuinely related existing
+  // articles anywhere on the site, not just other blog/ posts.
+  console.log(`🔗 Indexing existing articles for internal-link candidates...`);
+  const articleIndex   = buildArticleIndex(CONFIG.CONTENT_ROOT_DIR);
+  const knownCategories = [...new Set(articleIndex.map(a => a.category))];
+  console.log(`   ${articleIndex.length} articles indexed across ${knownCategories.length} categories.\n`);
+
   const results = [];
 
   for (const item of toProcess) {
@@ -1491,9 +1598,17 @@ async function main() {
     console.log(`   🔑 Slug: ${slug} | Type: ${detectType(item.keyword)}`);
 
     try {
+      const categoryHint = guessCategoryHint(item.keyword, knownCategories);
+      const relatedCandidates = findRelatedCandidates(
+        { text: item.keyword, excludeUrl: `/blog/${slug}/`, categoryHint },
+        articleIndex,
+        { max: 6 }
+      );
+      console.log(`   🔗 ${relatedCandidates.length} related article candidate(s) found for internal linking.`);
+
       const imgPath  = await pickImage(item.keyword, slug);
-      const { raw, greeting } = await generateArticle(item.keyword);
-      const filePath = parseAndSave(raw, item.keyword, slug, imgPath, greeting);
+      const { raw, greeting } = await generateArticle(item.keyword, relatedCandidates);
+      const filePath = parseAndSave(raw, item.keyword, slug, imgPath, greeting, relatedCandidates);
       const issues   = validateArticle(filePath);
       results.push({ keyword: item.keyword, slug, filePath, imgPath, issues });
     } catch (err) {

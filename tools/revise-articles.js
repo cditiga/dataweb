@@ -42,6 +42,19 @@ const matter = require('gray-matter');
 // Variables are injected via {{placeholder}} tokens, filled in by renderTemplate() below.
 const PROMPTS = require('./prompts/revise-articles.json');
 
+// NON-AI internal-link candidate selection + post-revision safety net — shared with
+// generate-articles.js, see lib/related-articles.js for the full design.
+const {
+  buildArticleIndex,
+  guessCategoryHint,
+  findRelatedCandidates,
+  formatCandidatesForPrompt,
+  enforceInternalLinks,
+} = require('./lib/related-articles.js');
+
+// Deterministic, crash-proof Markdown table rendering — see lib/safe-table.js.
+const { renderSafeTables, hasLeftoverTableMarkers } = require('./lib/safe-table.js');
+
 function renderTemplate(str, vars) {
   return str.replace(/\{\{(\w+)\}\}/g, (_, key) => (key in vars ? vars[key] : `{{${key}}}`));
 }
@@ -302,7 +315,7 @@ function stripTrailingMarker(content) {
 }
 
 // ─── Prompt ────────────────────────────────────────────────────────────
-function buildPrompt(title, location, category, protectedContent) {
+function buildPrompt(title, location, category, protectedContent, relatedArticlesBlock) {
   return [
     {
       role: 'system',
@@ -317,6 +330,7 @@ function buildPrompt(title, location, category, protectedContent) {
         length: protectedContent.length,
         wordCount: protectedContent.split(/\s+/).length,
         protectedContent,
+        relatedArticles: relatedArticlesBlock,
       }),
     }
   ];
@@ -418,6 +432,15 @@ async function main() {
   const allUrls = Object.keys(candData.titles);
   log(`📄 ${allUrls.length} articles flagged as templated/similar (from candidates.json).\n`);
 
+  // Built ONCE and reused for every article below — scans content/{category}/*.md (all
+  // niches) so revisions can link to genuinely related existing articles anywhere on the
+  // site. Independent of candidates.json (which only tracks near-duplicate/templated
+  // articles, a different and narrower purpose).
+  log(`🔗 Indexing existing articles for internal-link candidates...`);
+  const articleIndex    = buildArticleIndex(CONTENT_DIR);
+  const knownCategories = [...new Set(articleIndex.map(a => a.category))];
+  log(`   ${articleIndex.length} articles indexed across ${knownCategories.length} categories.\n`);
+
   const progress = fs.existsSync(PROGRESS_FILE)
     ? JSON.parse(fs.readFileSync(PROGRESS_FILE, 'utf8'))
     : { revised: [], failed: {} };
@@ -452,8 +475,16 @@ async function main() {
     const { protectedContent, placeholders } = protectStructure(parsed.content);
     const tArticle = Date.now();
 
+    const categoryHint = guessCategoryHint(title, knownCategories);
+    const relatedCandidates = findRelatedCandidates(
+      { text: title, excludeUrl: url, categoryHint },
+      articleIndex,
+      { max: 6 }
+    );
+    log(`   🔗 ${relatedCandidates.length} related article candidate(s) found for internal linking.`);
+
     try {
-      const messages = buildPrompt(title, location || '(not detected)', category, protectedContent);
+      const messages = buildPrompt(title, location || '(not detected)', category, protectedContent, formatCandidatesForPrompt(relatedCandidates));
       let revisedProtected = await callAI(messages); // always call AI, including dry-run, to preview
       revisedProtected = cleanupAIChatter(revisedProtected);
 
@@ -466,7 +497,17 @@ async function main() {
         continue;
       }
 
-      const revisedContent = stripTrailingMarker(restoreStructure(revisedProtected, placeholders));
+      let revisedContent = stripTrailingMarker(restoreStructure(revisedProtected, placeholders));
+
+      // Turn any [[TABEL_MULAI]]...[[TABEL_SELESAI]] block into a guaranteed-valid Markdown
+      // table (lib/safe-table.js), then keep only internal links pointing at an offered
+      // candidate URL, capped at 2 (lib/related-articles.js) — same safety net as generate.
+      revisedContent = renderSafeTables(revisedContent);
+      if (hasLeftoverTableMarkers(revisedContent)) {
+        log('   ⚠️  Leftover [[TABEL_...]] marker found after table rendering — check article manually.');
+      }
+      revisedContent = enforceInternalLinks(revisedContent, relatedCandidates.map(c => c.url), 2);
+
       const issues = validateFinalContent(parsed.content, revisedContent, location);
 
       if (issues.length > 0) {
