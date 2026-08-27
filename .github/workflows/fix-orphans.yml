@@ -1,0 +1,126 @@
+name: Fix Orphan Articles (AI)
+
+on:
+  schedule:
+    # Weekly, Wednesday 12:00 UTC — deliberately far from the other three scheduled workflows
+    # (generate-articles.yml 06:00 UTC daily, revise-articles.yml 18:00 UTC daily,
+    # recycle.yml Sunday 00:00 UTC) so their runtimes don't overlap, and mid-week/mid-day so
+    # it doesn't queue behind either daily job's typical run window. Orphan-fixing is a slow,
+    # low-frequency cleanup task (same reasoning recycle.yml gives for going weekly instead of
+    # daily) — the pool of newly-orphaned articles per week is naturally small.
+    - cron: '0 12 * * 3'
+  workflow_dispatch:
+
+# Serialize with generate-articles.yml / revise-articles.yml / recycle.yml — all four commit
+# and push to `master`, so running in parallel risks a messy deploy or a push race. Same group
+# name across every workflow file makes GitHub Actions queue them instead of racing.
+concurrency:
+  group: dataweb-repo-write
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  # Needed to explicitly trigger deploy.yml at the end of this run — see the "Trigger Deploy"
+  # step below for why (GITHUB_TOKEN pushes don't fire other workflows' `push` triggers).
+  actions: write
+
+jobs:
+  fix-orphans:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # Idempotent — see the same step in generate-articles.yml/revise-articles.yml for full
+      # context. Included here too since this workflow can run independently of those.
+      - name: Untrack node_modules (one-time, idempotent)
+        run: |
+          if [ -n "$(git ls-files node_modules/ | head -n1)" ]; then
+            echo "📦 node_modules is tracked in git — untracking it now..."
+            git config --local user.email "action@github.com"
+            git config --local user.name "GitHub Action"
+            grep -qxF 'node_modules/' .gitignore 2>/dev/null || echo "node_modules/" >> .gitignore
+            git rm -r --cached node_modules >/dev/null
+            git add .gitignore
+            git commit -m "chore: untrack node_modules [skip ci]"
+            git push origin master
+            echo "✅ node_modules untracked and pushed."
+          else
+            echo "✅ node_modules already untracked — nothing to do."
+          fi
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      # No `npm ci`/`npm install` step here on purpose: find-orphans.js and fix-orphans.js
+      # deliberately depend on nothing outside Node's own built-ins (fs, path, https) — see
+      # tools/lib/related-articles.js and tools/lib/orphan-link.js's own file-header comments
+      # on why they avoid gray-matter. One less thing that can break this specific workflow.
+
+      - name: Find Orphan Articles (Layer 1 — fast, offline, no AI)
+        run: node tools/find-orphans.js
+
+      - name: Fix Orphans (Layer 2 — AI-assisted, staged, max 10/run)
+        env:
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: node tools/fix-orphans.js --apply --limit=10
+
+      - name: Configure Git
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+
+      - name: Commit and Push Fixes
+        id: commit_push
+        run: |
+          # orphans.json is NOT committed — it's a transient artifact regenerated fresh by
+          # Layer 1 every run (same treatment as dedup-lapis1.js's candidates.json in
+          # revise-articles.yml, which also stays uncommitted).
+          git add content/ .orphan-fix-progress.json orphan-fixes.log
+
+          if git diff --staged --quiet; then
+            echo "ℹ️  Nothing to commit (0 orphans fixed this session) — done."
+            echo "published=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          git commit -m "Sisipkan internal link untuk artikel yang belum ter-link (orphan fix)"
+
+          for i in 1 2 3 4 5; do
+            if git push origin master; then
+              echo "✅ Push succeeded (attempt $i)."
+              echo "published=true" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+            if [ "$i" -eq 5 ]; then
+              echo "❌ Push still failed after 5 attempts — there may be a real conflict; check manually." >&2
+              exit 1
+            fi
+            wait_s=$(( (RANDOM % 10) + 5 ))
+            echo "⏳ Push rejected (possible race with another workflow), rebasing & trying again in ${wait_s}s... (attempt $i/5)"
+            sleep "$wait_s"
+            git fetch origin master
+            git stash push -u -m "pre-rebase-autostash" || true
+            git rebase origin/master
+            git stash drop || true
+          done
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # Pushes made with GITHUB_TOKEN above do NOT trigger deploy.yml's `push` trigger
+      # (GitHub's anti-recursion safeguard — see the identical step/comment in
+      # generate-articles.yml and revise-articles.yml). Without this, a fixed orphan's new
+      # link would sit committed on `master` until deploy.yml's next unrelated trigger.
+      - name: Trigger Deploy (publish today's link fixes now)
+        if: steps.commit_push.outputs.published == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "🚀 Orphan fixes pushed — triggering deploy.yml so they go live now..."
+          gh workflow run deploy.yml --ref master

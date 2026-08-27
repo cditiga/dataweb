@@ -54,6 +54,22 @@ function significantWords(text) {
     .filter(w => w.length > 2 && !RELATED_STOPWORDS.has(w));
 }
 
+// This site's titles consistently follow "[Product/Service] di [Location][optional suffix]"
+// (see revise-articles.json's own example: "Jual Material Batu Pondasi di Abadijaya Depok
+// Gratis Ongkir" — same "di <location>" convention extractLocation() in revise-articles.js
+// already relies on). Stripping everything from the first standalone "di" onward before
+// computing significant words means two DIFFERENT products that happen to be offered in the
+// SAME city (e.g. "Kitchen Set di Abadijaya Depok" vs "Hebel di Abadijaya Depok") no longer
+// score as "related" purely because of the shared place name — matching is driven by topic,
+// not incidental co-location. Falls back to the full text unchanged if "di" never appears.
+function stripLocationForMatching(text) {
+  return (text || '').replace(/\bdi\b[\s\S]*$/i, '').trim() || text || '';
+}
+
+function significantWordsForMatching(text) {
+  return significantWords(stripLocationForMatching(text));
+}
+
 // Lightweight frontmatter split — regex-based on purpose (see file header), not a full YAML
 // parse. Only the two fields we actually need (title, draft) are extracted.
 function splitFrontMatter(raw) {
@@ -97,8 +113,13 @@ function extractExcerpt(body, maxChars = 220) {
  * Scans content/{category}/*.md (recursively, all categories except `page`), skipping
  * _index.md and draft:true articles. Run ONCE per script execution and reused — do not call
  * this inside a per-article loop.
+ *
+ * opts.includeBody (default false): also keep the full raw body text on each entry (as
+ * `.body`). Off by default to keep memory light for generate/revise (which only need the
+ * short excerpt across possibly thousands of articles); find-orphans.js turns it on since it
+ * needs full bodies to extract every outbound link, not just a 220-char snippet.
  */
-function buildArticleIndex(contentRoot) {
+function buildArticleIndex(contentRoot, opts = {}) {
   const index = [];
   if (!fs.existsSync(contentRoot)) return index;
 
@@ -120,8 +141,9 @@ function buildArticleIndex(contentRoot) {
         url: toUrl(full, contentRoot),
         title,
         category: toCategory(full, contentRoot),
-        words: significantWords(title),
+        words: significantWordsForMatching(title),
         excerpt: extractExcerpt(content),
+        ...(opts.includeBody ? { body: content } : {}),
       });
     }
   }
@@ -169,7 +191,7 @@ function findRelatedCandidates({ text, excludeUrl, categoryHint }, index, opts =
   const max = opts.max || 6;
   const minShared = opts.minShared != null ? opts.minShared : 1;
 
-  const queryWords = significantWords(text);
+  const queryWords = significantWordsForMatching(text);
   if (!queryWords.length) return [];
 
   const scored = index
@@ -212,11 +234,27 @@ function enforceInternalLinks(body, candidateUrls, maxLinks = 2) {
   });
 }
 
+/**
+ * Extracts every internal-looking link target from a body of Markdown — same URL shape
+ * enforceInternalLinks() enforces (starts with "/", ends with "/", not an image). Used by
+ * find-orphans.js to build the site's inbound-link graph. Returns unique URLs only.
+ */
+function extractOutboundUrls(body) {
+  const urls = new Set();
+  const re = /(?<!!)\[[^\]]+\]\((\/[^)\s]+\/)\)/g;
+  let m;
+  while ((m = re.exec(body || ''))) urls.add(m[1]);
+  return [...urls];
+}
+
 module.exports = {
   buildArticleIndex,
   guessCategoryHint,
   findRelatedCandidates,
   formatCandidatesForPrompt,
   enforceInternalLinks,
+  extractOutboundUrls,
   significantWords, // exported for reuse/testing
+  significantWordsForMatching,
+  stripLocationForMatching,
 };
