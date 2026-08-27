@@ -1601,5 +1601,40 @@
     "matchedTitle": "Atap Cor: Panduan Lengkap Material, Pengerjaan, dan Estimasi Biaya 2026",
     "taggedAt": "2026-08-26T07:30:50.172Z",
     "algoVersion": 2
+  },
+  "dak atap rumah": {
+    "reason": "similar to existing article",
+    "matchedFile": "atap-dak.md",
+    "matchedTitle": "Atap Dak: Panduan Lengkap Material, Biaya, dan Pemasangan di Jabodetabek",
+    "taggedAt": "2026-08-27T18:01:13.387Z",
+    "algoVersion": 2
+  },
+  "harga concrete pump": {
+    "reason": "similar to existing article",
+    "matchedFile": "bagian-bagian-concrete-pump.md",
+    "matchedTitle": "Mengenal Bagian-Bagian Concrete Pump: Panduan Lengkap untuk Proyek Konstruksi Anda",
+    "taggedAt": "2026-08-27T18:01:13.582Z",
+    "algoVersion": 2
+  },
+  "harga sewa concrete pump": {
+    "reason": "similar to existing article",
+    "matchedFile": "bagian-bagian-concrete-pump.md",
+    "matchedTitle": "Mengenal Bagian-Bagian Concrete Pump: Panduan Lengkap untuk Proyek Konstruksi Anda",
+    "taggedAt": "2026-08-27T18:01:13.761Z",
+    "algoVersion": 2
+  },
+  "jasa sewa concrete pump": {
+    "reason": "similar to existing article",
+    "matchedFile": "bagian-bagian-concrete-pump.md",
+    "matchedTitle": "Mengenal Bagian-Bagian Concrete Pump: Panduan Lengkap untuk Proyek Konstruksi Anda",
+    "taggedAt": "2026-08-27T18:01:13.851Z",
+    "algoVersion": 2
+  },
+  "sewa concrete pump": {
+    "reason": "similar to existing article",
+    "matchedFile": "bagian-bagian-concrete-pump.md",
+    "matchedTitle": "Mengenal Bagian-Bagian Concrete Pump: Panduan Lengkap untuk Proyek Konstruksi Anda",
+    "taggedAt": "2026-08-27T18:01:14.157Z",
+    "algoVersion": 2
   }
 }
