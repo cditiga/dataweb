@@ -1,0 +1,83 @@
+name: Cleanup Old GitHub Pages Deployments
+
+on:
+  schedule:
+    # Monthly, 1st at 03:00 UTC. Deployment records accumulate roughly once per
+    # generate/revise/recycle/fix-orphans run that actually publishes something — monthly is
+    # frequent enough to keep the list from growing unbounded without running every week.
+    - cron: '0 3 1 * *'
+  workflow_dispatch:
+    inputs:
+      keep_count:
+        description: 'How many of the newest deployments to keep untouched (the active one + a small buffer)'
+        required: false
+        default: '5'
+
+# Only guards against two runs of THIS workflow overlapping (e.g. a manual dispatch firing
+# while the monthly schedule is also running) — no git commit/push happens here, so no need
+# to share the `dataweb-repo-write` group used by the content workflows.
+concurrency:
+  group: cleanup-deployments
+  cancel-in-progress: false
+
+permissions:
+  deployments: write
+  # `deployments: write` alone is sufficient for the list/inactivate/delete calls below — no
+  # `contents` permission needed since this workflow never checks out or touches repo files.
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      # No "Checkout Repository" step — this workflow only calls the GitHub API, never reads
+      # or writes any file in the repo, so a checkout would just waste CI minutes.
+      - name: Delete old github-pages deployments (keep newest N)
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          KEEP_COUNT: ${{ github.event.inputs.keep_count || '5' }}
+        run: |
+          echo "🔍 Fetching all deployment IDs for $REPO (environment: github-pages)..."
+          # --paginate follows every page automatically; -q '.[].id' extracts just the IDs.
+          # The API returns newest-first, so the array order below is newest → oldest.
+          mapfile -t ALL_IDS < <(gh api --paginate \
+            "/repos/$REPO/deployments?environment=github-pages&per_page=100" \
+            -q '.[].id')
+
+          TOTAL=${#ALL_IDS[@]}
+          echo "📊 Total deployments found: $TOTAL"
+          echo "🔒 Keeping newest: $KEEP_COUNT"
+
+          if [ "$TOTAL" -le "$KEEP_COUNT" ]; then
+            echo "✅ Nothing to delete ($TOTAL ≤ $KEEP_COUNT)."
+            exit 0
+          fi
+
+          TO_DELETE=("${ALL_IDS[@]:$KEEP_COUNT}")
+          echo "🗑️  Deleting ${#TO_DELETE[@]} older deployment(s)..."
+
+          DELETED=0
+          FAILED=0
+          for id in "${TO_DELETE[@]}"; do
+            # Step 1: mark inactive. GitHub already auto-inactivates all but the newest
+            # successful deployment per environment, so this is usually a harmless no-op —
+            # but it's required by the API for any deployment that's somehow still active,
+            # and cheap enough to just always attempt.
+            gh api --method POST "/repos/$REPO/deployments/$id/statuses" \
+              -f "state=inactive" >/dev/null 2>&1 || true
+
+            # Step 2: delete. Only succeeds once the deployment is inactive (or it's the
+            # repo's only deployment, which can't happen here since we always keep KEEP_COUNT).
+            if gh api --method DELETE "/repos/$REPO/deployments/$id" >/dev/null 2>&1; then
+              DELETED=$((DELETED + 1))
+            else
+              FAILED=$((FAILED + 1))
+              echo "   ⚠️  Failed to delete deployment $id"
+            fi
+          done
+
+          echo ""
+          echo "✅ Deleted: $DELETED"
+          echo "❌ Failed : $FAILED"
+          echo "ℹ️  This only removes deployment history entries — it does not touch the"
+          echo "   gh-pages branch or affect the live site in any way."
