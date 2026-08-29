@@ -1643,5 +1643,19 @@
     "matchedTitle": "Bahan untuk Mengatasi Dak Bocor: Panduan Lengkap dan Solusi Terbaik",
     "taggedAt": "2026-08-28T18:58:23.565Z",
     "algoVersion": 2
+  },
+  "biaya membuat lantai 2": {
+    "reason": "similar to existing article",
+    "matchedFile": "bangunan-3-lantai.md",
+    "matchedTitle": "Bangunan 3 Lantai: Perencanaan, Biaya, dan Tips Penting dari Creative Design Interior",
+    "taggedAt": "2026-08-29T13:46:54.493Z",
+    "algoVersion": 2
+  },
+  "konstruksi bangunan 2 lantai": {
+    "reason": "similar to existing article",
+    "matchedFile": "bangunan-3-lantai.md",
+    "matchedTitle": "Bangunan 3 Lantai: Perencanaan, Biaya, dan Tips Penting dari Creative Design Interior",
+    "taggedAt": "2026-08-29T13:46:54.959Z",
+    "algoVersion": 2
   }
 }
