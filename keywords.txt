@@ -33,12 +33,9 @@ bekisting beton
 bekisting bondek
 bekisting cor
 bekisting footplat
-bekisting jalan rigid
 bekisting kayu
-bekisting knock down
 bekisting lantai
 bekisting plat
-bekisting plat besi
 bekisting plat lantai
 bekisting triplek
 benerin tembok retak
