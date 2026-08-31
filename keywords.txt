@@ -36,10 +36,7 @@ bekisting footplat
 bekisting kayu
 bekisting lantai
 bekisting plat
-bekisting plat lantai
 bekisting triplek
-benerin tembok retak
-berapa besi yang dibutuhkan untuk membangun rumah
 berapa biaya ngecor rumah
 berapa jam cor boleh kena air
 berapa lama acian kering
