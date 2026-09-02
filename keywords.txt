@@ -37,9 +37,6 @@ bekisting kayu
 bekisting lantai
 bekisting plat
 bekisting triplek
-berapa lama coran kering
-berapa lama semen kering
-berat beton per m3
 berat molen cor
 besi angker
 besi anyaman
