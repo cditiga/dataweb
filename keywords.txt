@@ -37,14 +37,11 @@ bekisting kayu
 bekisting lantai
 bekisting plat
 bekisting triplek
-berat molen cor
 besi angker
 besi anyaman
 besi balok
 besi bangunan
 besi begel adalah
-besi beton 10mm
-besi buat cor
 besi buat ngecor
 besi cor 10
 besi cor 8mm
