@@ -42,12 +42,9 @@ besi anyaman
 besi balok
 besi bangunan
 besi begel adalah
-besi buat ngecor
 besi cor 10
-besi cor 8mm
 besi cor ukuran 8
 besi d10
-besi diameter 10
 besi diameter 8
 besi foot plat
 besi kolom
