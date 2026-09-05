@@ -46,10 +46,7 @@ besi cor 10
 besi cor ukuran 8
 besi d10
 besi diameter 8
-besi foot plat
 besi kolom
-besi penyangga bangunan
-besi plat lantai
 besi pondasi
 besi rangka
 besi rangka bangunan
