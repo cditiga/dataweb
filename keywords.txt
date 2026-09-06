@@ -49,15 +49,12 @@ besi diameter 8
 besi kolom
 besi pondasi
 besi rangka
-besi rangka bangunan
 besi rumah
-besi sloof jadi
 besi tiang
 besi ukuran 6
 besi untuk
 besi untuk bangunan 3 lantai
 besi untuk cor
-besi untuk pondasi rumah
 beton 20 mpa
 beton b0
 beton berpori
