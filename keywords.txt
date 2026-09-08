@@ -63,9 +63,6 @@ beton eser adalah
 beton fc 25
 beton fc 30
 beton instan
-beton instan k250
-beton instan k300
-beton instan k350
 beton integral
 beton jalan
 beton jalan tol
