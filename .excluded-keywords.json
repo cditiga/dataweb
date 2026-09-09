@@ -1734,5 +1734,33 @@
     "matchedTitle": "Besi Rangka Bangunan: Panduan Lengkap Pemilihan, Fungsi, dan Estimasi Biaya 2026",
     "taggedAt": "2026-09-07T12:46:19.251Z",
     "algoVersion": 2
+  },
+  "harga beton instan": {
+    "reason": "similar to existing article",
+    "matchedFile": "beton-instan-k250.md",
+    "matchedTitle": "Beton Instan K250: Panduan Lengkap Penggunaan, Keunggulan, dan Estimasi Biaya",
+    "taggedAt": "2026-09-09T11:38:52.168Z",
+    "algoVersion": 2
+  },
+  "harga beton k300": {
+    "reason": "similar to existing article",
+    "matchedFile": "beton-instan-k300.md",
+    "matchedTitle": "Beton Instan K300: Panduan Lengkap untuk Konstruksi Kuat dan Efisien",
+    "taggedAt": "2026-09-09T11:38:52.188Z",
+    "algoVersion": 2
+  },
+  "harga beton k300 per m3": {
+    "reason": "similar to existing article",
+    "matchedFile": "beton-instan-k300.md",
+    "matchedTitle": "Beton Instan K300: Panduan Lengkap untuk Konstruksi Kuat dan Efisien",
+    "taggedAt": "2026-09-09T11:38:52.189Z",
+    "algoVersion": 2
+  },
+  "harga beton k350": {
+    "reason": "similar to existing article",
+    "matchedFile": "beton-instan-k350.md",
+    "matchedTitle": "Beton Instan K350: Panduan Lengkap Kekuatan, Aplikasi, dan Harga Terbaru",
+    "taggedAt": "2026-09-09T11:38:52.190Z",
+    "algoVersion": 2
   }
 }
