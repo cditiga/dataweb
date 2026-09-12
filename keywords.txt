@@ -83,10 +83,7 @@ beton rumah
 biaya cor beton jalan per meter
 biaya cor beton per m3
 biaya cor dak
-biaya cor dak manual
 biaya cor dak per m2
-biaya cor lantai per m2
-biaya cor lantai per meter
 biaya cor per m2
 biaya cor per m3
 biaya cor per meter
