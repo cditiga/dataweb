@@ -84,10 +84,7 @@ biaya cor beton jalan per meter
 biaya cor beton per m3
 biaya cor dak
 biaya cor dak per m2
-biaya cor per m2
-biaya cor per m3
 biaya cor per meter
-biaya cor rumah
 biaya cor rumah bandung
 biaya dak beton
 biaya dak beton bondek

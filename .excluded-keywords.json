@@ -1797,5 +1797,33 @@
     "matchedTitle": "Biaya Bekisting Per M2: Panduan Lengkap & Estimasi 2026",
     "taggedAt": "2026-09-12T11:05:00.071Z",
     "algoVersion": 2
+  },
+  "harga cor lantai gudang": {
+    "reason": "similar to existing article",
+    "matchedFile": "biaya-cor-lantai-per-m2.md",
+    "matchedTitle": "Biaya Cor Lantai Per M2: Estimasi Terbaru dan Faktor Penentu",
+    "taggedAt": "2026-09-14T13:03:28.531Z",
+    "algoVersion": 2
+  },
+  "harga lantai 3d per meter": {
+    "reason": "similar to existing article",
+    "matchedFile": "biaya-cor-lantai-per-meter.md",
+    "matchedTitle": "Biaya Cor Lantai Per Meter: Estimasi, Faktor, & Tips Hemat 2026",
+    "taggedAt": "2026-09-14T13:03:28.592Z",
+    "algoVersion": 2
+  },
+  "jasa cor lantai": {
+    "reason": "similar to existing article",
+    "matchedFile": "biaya-cor-lantai-per-m2.md",
+    "matchedTitle": "Biaya Cor Lantai Per M2: Estimasi Terbaru dan Faktor Penentu",
+    "taggedAt": "2026-09-14T13:03:28.821Z",
+    "algoVersion": 2
+  },
+  "tebal cor lantai 2": {
+    "reason": "similar to existing article",
+    "matchedFile": "biaya-cor-lantai-per-m2.md",
+    "matchedTitle": "Biaya Cor Lantai Per M2: Estimasi Terbaru dan Faktor Penentu",
+    "taggedAt": "2026-09-14T13:03:29.252Z",
+    "algoVersion": 2
   }
 }
