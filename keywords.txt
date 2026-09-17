@@ -92,10 +92,7 @@ biaya dak cor
 biaya dak rumah per meter
 biaya epoxy lantai
 biaya membuat lantai 2
-biaya ngecor jalan
-biaya ngecor per meter
 biaya ngecor rumah
-biaya ngedak 3x3
 biaya ngedak rumah
 biaya ngedak rumah dengan bondek
 biaya ngedak rumah per meter persegi
