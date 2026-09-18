@@ -93,9 +93,6 @@ biaya dak rumah per meter
 biaya epoxy lantai
 biaya membuat lantai 2
 biaya ngecor rumah
-biaya ngedak rumah
-biaya ngedak rumah dengan bondek
-biaya ngedak rumah per meter persegi
 biaya pembuatan kolam beton per meter
 biaya pondasi rumah ukuran 6x12
 biaya rabat lantai per meter
