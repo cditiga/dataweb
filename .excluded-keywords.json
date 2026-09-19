@@ -1993,5 +1993,19 @@
     "matchedTitle": "Biaya Ngecor Per Meter: Panduan Lengkap & Estimasi Terbaru 2026",
     "taggedAt": "2026-09-18T11:32:25.751Z",
     "algoVersion": 2
+  },
+  "biaya untuk ngedak rumah": {
+    "reason": "similar to existing article",
+    "matchedFile": "biaya-ngedak-rumah-dengan-bondek.md",
+    "matchedTitle": "Biaya Ngedak Rumah dengan Bondek: Estimasi 2026 & Perbandingan Material",
+    "taggedAt": "2026-09-19T11:55:02.329Z",
+    "algoVersion": 2
+  },
+  "pengalaman biaya ngedak rumah": {
+    "reason": "similar to existing article",
+    "matchedFile": "biaya-ngedak-rumah.md",
+    "matchedTitle": "Biaya Ngedak Rumah: Rincian Lengkap dan Estimasi Tahun 2026",
+    "taggedAt": "2026-09-19T11:55:02.945Z",
+    "algoVersion": 2
   }
 }
