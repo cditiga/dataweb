@@ -96,9 +96,7 @@ biaya ngecor rumah
 biaya pondasi rumah ukuran 6x12
 biaya untuk ngedak rumah
 biaya waterproofing
-bikin pondasi rumah 2 lantai
 bocor bocor
-bondek 0.75
 bondek bangunan
 bondek cor
 bondek cor beton
@@ -107,7 +105,6 @@ bondek galvalum
 bondek harga
 bondek tebal
 bondek ukuran
-borongan pasang wiremesh
 bosowa beton
 brosur bondek
 buis beton u 30
