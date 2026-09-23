@@ -111,9 +111,6 @@ calbond adalah
 calbond sika
 calflash
 campuran beton 1 2 3
-campuran beton k125 manual
-campuran beton k150
-campuran beton k175 manual
 campuran beton k200 manual
 campuran beton k225
 campuran beton k250
