@@ -112,9 +112,6 @@ calbond sika
 calflash
 campuran beton 1 2 3
 campuran beton k200 manual
-campuran beton k225
-campuran beton k250
-campuran beton k300
 campuran beton sni
 campuran k175
 campuran k250
