@@ -2112,5 +2112,19 @@
     "matchedTitle": "Campuran Beton K225: Panduan Lengkap Kekuatan, Aplikasi, dan Biaya",
     "taggedAt": "2026-09-25T12:11:04.656Z",
     "algoVersion": 2
+  },
+  "harga beton molen": {
+    "reason": "similar to existing article",
+    "matchedFile": "campuran-molen-beton.md",
+    "matchedTitle": "Campuran Molen Beton Ideal: Rasio, Aplikasi, dan Biaya di Jabodetabek",
+    "taggedAt": "2026-09-26T11:44:01.606Z",
+    "algoVersion": 2
+  },
+  "sni beton terbaru": {
+    "reason": "similar to existing article",
+    "matchedFile": "campuran-beton-sni.md",
+    "matchedTitle": "Campuran Beton SNI: Panduan Lengkap untuk Konstruksi Berkualitas di Jabodetabek",
+    "taggedAt": "2026-09-26T11:44:02.439Z",
+    "algoVersion": 2
   }
 }
