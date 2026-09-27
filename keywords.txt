@@ -114,9 +114,6 @@ campuran beton 1 2 3
 campuran beton k200 manual
 campuran k175
 campuran k250
-cara hitung material cor dak
-cara memasang bondek
-cara membuat adukan acian
 cara membuat behel besi
 cara membuat bekisting dak teras
 cara membuat bekisting jalan beton
