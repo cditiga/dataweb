@@ -114,9 +114,6 @@ campuran beton 1 2 3
 campuran beton k200 manual
 campuran k175
 campuran k250
-cara membuat behel besi
-cara membuat bekisting dak teras
-cara membuat bekisting jalan beton
 cara membuat besi cor
 cara membuat beton penyerap air
 cara membuat cor beton yang benar
