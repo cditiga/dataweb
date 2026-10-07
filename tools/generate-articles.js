@@ -49,6 +49,11 @@ const {
 // trusted directly.
 const { renderSafeTables, hasLeftoverTableMarkers } = require('./lib/safe-table.js');
 
+// Duplicate/similar-topic detection (stemming, spelling canonicalisation, weighted tokens,
+// overlap coefficient, multi-intent, grade/number guard). Replaces the old
+// overlapSimilarity/isSimilarPair/detectIntent logic — see lib/keyword-similarity.js.
+const KS = require('./lib/keyword-similarity.js');
+
 function renderTemplate(str, vars) {
   return str.replace(/\{\{(\w+)\}\}/g, (_, key) => (key in vars ? vars[key] : `{{${key}}}`));
 }
@@ -479,8 +484,14 @@ function hasMinKeywordWords(text, min = 3) {
 }
 // ─────────────────────────────────────────────────────────────────────────────
 
-const SIMILARITY_ALGO_VERSION = 2;
+// v3: duplicate detection moved to lib/keyword-similarity.js (stemming, weighted tokens,
+// overlap coefficient, multi-intent, grade guard). Bumping this releases every cached entry
+// in .excluded-keywords.json so they are re-evaluated with the new algorithm.
+// NOTE: tools/dedupe-articles.js writes entries with the same version number — keep in sync.
+const SIMILARITY_ALGO_VERSION = 3;
 
+// Still used by pickImage() below (image-filename matching) — NOT used for duplicate detection
+// anymore (that is lib/keyword-similarity.js).
 const SIMILARITY_STOPWORDS = new Set([
   'jual', 'jasa', 'harga', 'sewa', 'beli', 'biaya', 'tukang', 'pasang',
   'di', 'ke', 'dari', 'untuk', 'dan', 'yang', 'dengan', 'atau', 'per', 'apa', 'itu', 'ini',
@@ -496,40 +507,6 @@ const SIMILARITY_STOPWORDS = new Set([
 function significantWordsForSimilarity(text) {
   return text.toLowerCase().replace(/[^a-z0-9\s]/g, '').split(/\s+/)
     .filter(w => w.length > 2 && !SIMILARITY_STOPWORDS.has(w)); // length > 2 so short but important niche words like "cor" remain
-}
-
-function overlapSimilarity(a, b) {
-  const wa = new Set(significantWordsForSimilarity(a));
-  const wb = new Set(significantWordsForSimilarity(b));
-  if (!wa.size || !wb.size) return { sharedCount: 0, jaccard: 0, minWords: 0 };
-  const shared = [...wa].filter(w => wb.has(w));
-  const union  = wa.size + wb.size - shared.length;
-  return { sharedCount: shared.length, jaccard: shared.length / union, minWords: Math.min(wa.size, wb.size) };
-}
-
-function isSimilarPair(sharedCount, jaccard, minWords) {
-  if (minWords === 0) return false;
-  if (minWords <= 2) return sharedCount >= minWords && jaccard >= 0.55;
-  return sharedCount >= 3 && jaccard >= 0.42;
-}
-
-const INTENT_PATTERNS = [
-  ['harga',       /\b(harga|biaya|ongkos|tarif|upah|borongan)\b/i],
-  ['definisi',    /\b(apa\s*itu|apakah|pengertian|maksud\s+dari|arti\s+dari)\b/i],
-  ['hitung',      /\b(menghitung|hitungan|cara\s+hitung|rumus|kalkulasi)\b/i],
-  ['carabuat',    /\b(cara\s+(membuat|memasang|mengatasi|memperbaiki|merawat|menyambung)|pemasangan|pembuatan)\b/i],
-  ['jenis',       /\b(jenis|macam|tipe|ragam|perbedaan|dibanding(kan)?|vs)\b/i],
-  ['ukuran',      /\b(ukuran|dimensi|kapasitas)\b/i],
-  ['masalah',     /\b(penyebab|bocor|retak|rusak|solusi)\b/i],
-  ['rekomendasi', /\b(terbaik|rekomendasi|pilihan|cara\s+memilih)\b/i],
-];
-
-function detectIntent(text) {
-  const tl = text.toLowerCase();
-  for (const [name, pattern] of INTENT_PATTERNS) {
-    if (pattern.test(tl)) return name;
-  }
-  return null;
 }
 
 function getExistingArticleTexts() {
@@ -734,34 +711,23 @@ function appendKeywordsToFile(newKeywords) {
 }
 // ─────────────────────────────────────────────────────────────────────────────
 
-function findSimilarExisting(keyword, existingItems) {
-  const kwIntent = detectIntent(keyword);
-  for (const item of existingItems) {
-    const itemIntent = detectIntent(item.keyword || '') || detectIntent(item.title || '');
-    const candidates = [item.keyword, item.title].filter(Boolean);
-    for (const candidate of candidates) {
-      const { sharedCount, jaccard, minWords } = overlapSimilarity(keyword, candidate);
-      if (!isSimilarPair(sharedCount, jaccard, minWords)) continue;
-
-      if (kwIntent && itemIntent && kwIntent !== itemIntent) continue;
-
-      return item;
-    }
-  }
-  return null;
-}
-
+// Two-stage duplicate filter (algorithm lives in lib/keyword-similarity.js):
+//   (a) similar to an article that ALREADY EXISTS  → excluded permanently (cached in
+//       .excluded-keywords.json, keyed by the algorithm version).
+//   (b) similar to ANOTHER keyword that already passed in this same batch → deferred for this
+//       run only (not cached). On the next run it is compared against the article that was
+//       generated from its sibling, and handled by (a).
 function filterOutSimilarKeywords(keywords) {
   const excluded = loadExcludedKeywords();
-  const existingItems = getExistingArticleTexts();
+  const pool     = KS.buildPool(getExistingArticleTexts()); // analysed ONCE per run
   const kept = [];
-  let newlyExcluded = 0;
+  let newlyExcluded = 0, deferred = 0;
 
   for (const item of keywords) {
     const key = item.keyword.toLowerCase().trim();
     if (excluded[key]) continue;
 
-    const similar = findSimilarExisting(item.keyword, existingItems);
+    const similar = KS.findSimilar(item.keyword, pool);
     if (similar) {
       excluded[key] = {
         reason: 'similar to existing article',
@@ -774,11 +740,19 @@ function filterOutSimilarKeywords(keywords) {
       console.log(`   ⏭️  Skipping "${item.keyword}" — similar to existing article: "${similar.title}"`);
       continue;
     }
+
+    const sibling = kept.find(k => KS.compareKeywords(item.keyword, k.keyword));
+    if (sibling) {
+      deferred++;
+      console.log(`   ⏸️  Deferred "${item.keyword}" — same topic as "${sibling.keyword}" (this batch)`);
+      continue;
+    }
+
     kept.push(item);
   }
 
   if (newlyExcluded > 0) saveExcludedKeywords(excluded);
-  console.log(`   🔎 ${newlyExcluded} new keywords marked excluded (similar to existing articles), ${Object.keys(excluded).length} total excluded so far.`);
+  console.log(`   🔎 ${newlyExcluded} excluded (similar to existing articles), ${deferred} deferred (same-topic twin in this batch), ${Object.keys(excluded).length} total excluded so far.`);
   return kept;
 }
 

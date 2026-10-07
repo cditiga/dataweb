@@ -1,0 +1,108 @@
+name: Dedupe Similar Articles (one-time)
+
+on:
+  workflow_dispatch:
+    inputs:
+      apply:
+        description: 'true = hapus artikel + tulis redirect. false = DRY-RUN (hanya laporan, tidak ada yang berubah)'
+        type: boolean
+        default: false
+      section:
+        description: 'Folder di content/ yang diperiksa'
+        type: string
+        default: 'blog'
+      max_delete:
+        description: 'Batas pengaman: batalkan jika artikel yang akan dihapus lebih dari ini'
+        type: string
+        default: '40'
+
+# Serialize dengan workflow lain yang commit ke master.
+concurrency:
+  group: dataweb-repo-write
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  actions: write   # untuk memicu deploy.yml
+
+jobs:
+  dedupe:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          fetch-tags: false
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      # Tanpa npm install: script hanya memakai fs/path bawaan Node.
+      - name: Run dedupe (dry-run atau apply)
+        env:
+          IN_APPLY: ${{ inputs.apply }}
+          IN_SECTION: ${{ inputs.section }}
+          IN_MAX: ${{ inputs.max_delete }}
+        run: |
+          ARGS="--section=$IN_SECTION --max-delete=$IN_MAX"
+          if [ "$IN_APPLY" = "true" ]; then ARGS="$ARGS --apply"; fi
+          node tools/dedupe-articles.js $ARGS
+
+      - name: Upload report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dedupe-report
+          path: dedupe-report.json
+          if-no-files-found: ignore
+
+      - name: Configure Git
+        if: ${{ inputs.apply }}
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+
+      - name: Commit and Push
+        id: commit_push
+        if: ${{ inputs.apply }}
+        run: |
+          git add -A content/
+          [ -f static/redirects.js ] && git add static/redirects.js
+          [ -f .excluded-keywords.json ] && git add .excluded-keywords.json
+          [ -f dedupe-report.json ] && git add dedupe-report.json
+
+          if git diff --staged --quiet; then
+            echo "ℹ️  Tidak ada perubahan."
+            echo "published=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          git commit -m "Dedupe: gabungkan artikel mirip + tambah redirect"
+
+          for i in 1 2 3 4 5; do
+            if git push origin master; then
+              echo "✅ Push berhasil (percobaan $i)."
+              echo "published=true" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+            if [ "$i" -eq 5 ]; then
+              echo "❌ Push gagal 5x — cek manual." >&2
+              exit 1
+            fi
+            sleep $(( (RANDOM % 10) + 5 ))
+            git fetch origin master
+            git stash push -u -m "pre-rebase-autostash" || true
+            git rebase origin/master
+            git stash drop || true
+          done
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Trigger Deploy
+        if: steps.commit_push.outputs.published == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh workflow run deploy.yml --ref master
