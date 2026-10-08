@@ -1,20 +1,37 @@
-name: Dedupe Similar Articles (one-time)
+name: Dedupe Similar Articles (AI-judged, one-time)
 
 on:
   workflow_dispatch:
     inputs:
-      apply:
-        description: 'true = hapus artikel + tulis redirect. false = DRY-RUN (hanya laporan, tidak ada yang berubah)'
-        type: boolean
-        default: false
+      phase:
+        description: 'judge = AI menilai (bisa diulang, hasil disimpan) | report = lihat rencana tanpa AI | apply = EKSEKUSI hapus + redirect'
+        type: choice
+        options: [judge, report, apply]
+        default: judge
+      limit:
+        description: '(judge) Maks. jumlah penilaian AI per run'
+        type: string
+        default: '40'
       section:
         description: 'Folder di content/ yang diperiksa'
         type: string
         default: 'blog'
       max_delete:
-        description: 'Batas pengaman: batalkan jika artikel yang akan dihapus lebih dari ini'
+        description: '(apply) Batalkan jika artikel yang akan dihapus lebih dari ini'
         type: string
         default: '40'
+      max_cluster:
+        description: 'Kelompok dengan lebih dari N artikel yang dihapus dilewati (tinjau manual)'
+        type: string
+        default: '8'
+      retry_errors:
+        description: '(judge) Ulangi penilaian yang sebelumnya gagal diparse'
+        type: boolean
+        default: false
+      allow_partial:
+        description: '(apply) Tetap eksekusi walau masih ada artikel yang belum dinilai AI'
+        type: boolean
+        default: false
 
 # Serialize dengan workflow lain yang commit ke master.
 concurrency:
@@ -40,15 +57,28 @@ jobs:
         with:
           node-version: '20'
 
-      # Tanpa npm install: script hanya memakai fs/path bawaan Node.
-      - name: Run dedupe (dry-run atau apply)
+      # Tanpa npm install: script hanya memakai fs/path/https bawaan Node.
+      - name: Run dedupe
         env:
-          IN_APPLY: ${{ inputs.apply }}
+          IN_PHASE: ${{ inputs.phase }}
+          IN_LIMIT: ${{ inputs.limit }}
           IN_SECTION: ${{ inputs.section }}
-          IN_MAX: ${{ inputs.max_delete }}
+          IN_MAX_DELETE: ${{ inputs.max_delete }}
+          IN_MAX_CLUSTER: ${{ inputs.max_cluster }}
+          IN_RETRY: ${{ inputs.retry_errors }}
+          IN_PARTIAL: ${{ inputs.allow_partial }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
         run: |
-          ARGS="--section=$IN_SECTION --max-delete=$IN_MAX"
-          if [ "$IN_APPLY" = "true" ]; then ARGS="$ARGS --apply"; fi
+          ARGS="--section=$IN_SECTION --max-delete=$IN_MAX_DELETE --max-cluster=$IN_MAX_CLUSTER"
+          case "$IN_PHASE" in
+            judge)
+              ARGS="$ARGS --judge --limit=$IN_LIMIT"
+              if [ "$IN_RETRY" = "true" ]; then ARGS="$ARGS --retry-errors"; fi ;;
+            apply)
+              ARGS="$ARGS --apply"
+              if [ "$IN_PARTIAL" = "true" ]; then ARGS="$ARGS --allow-partial"; fi ;;
+          esac
           node tools/dedupe-articles.js $ARGS
 
       - name: Upload report
@@ -60,18 +90,21 @@ jobs:
           if-no-files-found: ignore
 
       - name: Configure Git
-        if: ${{ inputs.apply }}
+        if: ${{ inputs.phase != 'report' }}
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
 
+      # judge  -> hanya menyimpan keputusan AI (.dedupe-decisions.json) agar bisa dilanjutkan run berikutnya
+      # apply  -> juga menyimpan penghapusan, redirects.js, dan exclude-list
       - name: Commit and Push
         id: commit_push
-        if: ${{ inputs.apply }}
+        if: ${{ inputs.phase != 'report' }}
         run: |
           git add -A content/
           [ -f static/redirects.js ] && git add static/redirects.js
           [ -f .excluded-keywords.json ] && git add .excluded-keywords.json
+          [ -f .dedupe-decisions.json ] && git add .dedupe-decisions.json
           [ -f dedupe-report.json ] && git add dedupe-report.json
 
           if git diff --staged --quiet; then
@@ -80,7 +113,7 @@ jobs:
             exit 0
           fi
 
-          git commit -m "Dedupe: gabungkan artikel mirip + tambah redirect"
+          git commit -m "Dedupe (${{ inputs.phase }}): keputusan AI / gabungkan artikel mirip + redirect"
 
           for i in 1 2 3 4 5; do
             if git push origin master; then
@@ -102,7 +135,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Trigger Deploy
-        if: steps.commit_push.outputs.published == 'true'
+        if: ${{ inputs.phase == 'apply' && steps.commit_push.outputs.published == 'true' }}
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: gh workflow run deploy.yml --ref master

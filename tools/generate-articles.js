@@ -484,11 +484,11 @@ function hasMinKeywordWords(text, min = 3) {
 }
 // ─────────────────────────────────────────────────────────────────────────────
 
-// v3: duplicate detection moved to lib/keyword-similarity.js (stemming, weighted tokens,
-// overlap coefficient, multi-intent, grade guard). Bumping this releases every cached entry
+// v4 (v3: duplicate detection moved to lib/keyword-similarity.js (stemming, weighted tokens,
+// overlap coefficient, multi-intent, grade guard; v4 fixes mass false-positives). Bumping this releases every cached entry
 // in .excluded-keywords.json so they are re-evaluated with the new algorithm.
 // NOTE: tools/dedupe-articles.js writes entries with the same version number — keep in sync.
-const SIMILARITY_ALGO_VERSION = 3;
+const SIMILARITY_ALGO_VERSION = 4;
 
 // Still used by pickImage() below (image-filename matching) — NOT used for duplicate detection
 // anymore (that is lib/keyword-similarity.js).
