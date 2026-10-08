@@ -9,8 +9,6 @@
 adhimix casablanca
 adhimix precast karawang
 adhimix rmc indonesia
-alas cor beton
-analisa beton k 250 ready mix
 analisa harga satuan pekerjaan beton bertulang k 225
 arti dari ready
 atap beton cor
@@ -45,7 +43,6 @@ besi begel adalah
 besi cor 10
 besi cor ukuran 8
 besi d10
-besi diameter 8
 besi kolom
 besi pondasi
 besi rangka
