@@ -1,0 +1,564 @@
+{
+ "version": 1,
+ "updatedAt": "2026-10-08T05:43:32.203Z",
+ "decisions": {
+  "/blog/berapa-lapis-besi-untuk-cor-dak/": {
+   "candidates": [
+    "/blog/cara-menghitung-besi-untuk-cor-dak/",
+    "/blog/besi-dak-cor/",
+    "/blog/cara-menghitung-besi-untuk-cor-dak-lantai/",
+    "/blog/cor-dak-lantai-2-pakai-besi-berapa/"
+   ],
+   "duplicates": [
+    "/blog/cor-dak-lantai-2-pakai-besi-berapa/"
+   ],
+   "reason": "Artikel utama dan kandidat 4 sama-sama membahas jumlah besi yang dibutuhkan untuk cor dak, menjawab maksud pencarian yang sama.",
+   "judgedAt": "2026-10-08T05:42:45.628Z"
+  },
+  "/blog/cor-dak-bondek-vs-konvensional/": {
+   "candidates": [
+    "/blog/biaya-cor-dak-bondek-per-m2/",
+    "/blog/biaya-dak-beton-bondek/",
+    "/blog/begini-cara-memasang-bondek-yang-benar/",
+    "/blog/cara-menghitung-dak-bondek/",
+    "/blog/cara-pasang-bondek/",
+    "/blog/cara-pemasangan-bondex/",
+    "/blog/bondek-075/"
+   ],
+   "duplicates": [
+    "/blog/biaya-cor-dak-bondek-per-m2/",
+    "/blog/biaya-dak-beton-bondek/"
+   ],
+   "reason": "Kandidat 1 dan 2 membahas biaya cor dak bondek, yang merupakan bagian dari topik utama artikel utama (cor dak bondek vs konvensional) dan menjawab maksud pencarian yang serupa.",
+   "judgedAt": "2026-10-08T05:42:47.695Z"
+  },
+  "/blog/analisa-campuran-beton-1-3-5/": {
+   "candidates": [
+    "/blog/campuran-semen-beton/",
+    "/blog/ukuran-cor-beton/",
+    "/blog/rahasia-campuran-beton-readymix/",
+    "/blog/campuran-beton-sni/",
+    "/blog/arang-sekam-untuk-campuran-cor/",
+    "/blog/campuran-molen-beton/",
+    "/blog/campuran-semen-untuk-pondasi/"
+   ],
+   "duplicates": [
+    "/blog/campuran-semen-beton/",
+    "/blog/rahasia-campuran-beton-readymix/",
+    "/blog/campuran-beton-sni/",
+    "/blog/campuran-molen-beton/",
+    "/blog/campuran-semen-untuk-pondasi/"
+   ],
+   "reason": "Semua kandidat membahas topik campuran beton untuk fondasi, menjawab maksud pencarian yang sama dengan artikel utama, meskipun dengan variasi fokus (semen, readymix, SNI, molen).",
+   "judgedAt": "2026-10-08T05:42:49.651Z"
+  },
+  "/blog/batu-cor-pondasi/": {
+   "candidates": [
+    "/blog/tahapan-membuat-pondasi-rumah-dengan-cor-beton/",
+    "/blog/material-bangunan-berkualitas-kokoh/",
+    "/blog/campuran-pondasi-rumah/",
+    "/blog/model-struktur-pondasi-yang-kokoh/",
+    "/blog/pondasi-dari-batu-belah-dan-split/",
+    "/blog/apa-itu-bekisting-beton/",
+    "/blog/besi-dak-cor/"
+   ],
+   "duplicates": [
+    "/blog/pondasi-dari-batu-belah-dan-split/"
+   ],
+   "reason": "Kandidat 5 membahas pondasi dari batu belah dan beton cor, yang merupakan bagian dari pembahasan batu cor pondasi pada artikel utama.",
+   "judgedAt": "2026-10-08T05:42:50.611Z"
+  },
+  "/blog/atap-dak/": {
+   "candidates": [
+    "/blog/atap-bondek-cor/",
+    "/blog/daftar-harga-terbaru-atap-baja-ringan/",
+    "/blog/cara-mengatasi-atap-beton-rembes/",
+    "/blog/atap-plat-beton/",
+    "/blog/inilah-macam-macam-model-atap-rumah/",
+    "/blog/perbandingan-kelebihan-dan-kekurangan-rangka-atap-baja-ringan/"
+   ],
+   "duplicates": [
+    "/blog/atap-bondek-cor/",
+    "/blog/atap-plat-beton/"
+   ],
+   "reason": "Keduanya membahas jenis atap (dak/bondek cor dan plat beton) dengan fokus pada material, pemasangan, dan biaya, menjawab maksud pencarian yang sama.",
+   "judgedAt": "2026-10-08T05:42:51.764Z"
+  },
+  "/blog/biaya-cor-lantai-per-m2/": {
+   "candidates": [
+    "/blog/biaya-ngecor-jalan/",
+    "/blog/biaya-dak-per-meter/",
+    "/blog/biaya-cor-lantai-per-meter/",
+    "/blog/biaya-cor-rumah/",
+    "/blog/biaya-dak-beton/",
+    "/blog/biaya-dak-rumah/",
+    "/blog/cara-menentukan-derajat-tinggi-bangunan/"
+   ],
+   "duplicates": [
+    "/blog/biaya-cor-lantai-per-meter/"
+   ],
+   "reason": "Kandidat 3 membahas topik yang sama (biaya cor lantai) dengan maksud pencarian yang sama (estimasi biaya) dan menggunakan keyword yang sangat mirip (\"cor lantai per meter\" vs \"cor lantai per m2\").",
+   "judgedAt": "2026-10-08T05:42:53.564Z"
+  },
+  "/blog/1-sak-beton-instan-berapa-m3/": {
+   "candidates": [
+    "/blog/adhimix-karawang/",
+    "/blog/keunggulan-beton-instan-vs-beton-konvensional/"
+   ],
+   "duplicates": [
+    "/blog/adhimix-karawang/"
+   ],
+   "reason": "Kandidat 1 membahas beton instan dan volume/kuantitasnya, sama dengan artikel utama yang membahas volume 1 sak beton instan.",
+   "judgedAt": "2026-10-08T05:42:54.621Z"
+  },
+  "/blog/besi-buat-cor/": {
+   "candidates": [
+    "/blog/besi-diameter-10/",
+    "/blog/bahaya-pengaplikasian-mutu-beton-ready-mix-tidak-tepat-guna/",
+    "/blog/tanah-merah-cikarang/",
+    "/blog/pasir-warna-hitam/",
+    "/blog/kegunaan-pasir-silika-silica/",
+    "/blog/penggunaan-cakar-ayam-yang-tepat/",
+    "/blog/keunggulan-menggunakan-bondek/"
+   ],
+   "duplicates": [
+    "/blog/besi-diameter-10/"
+   ],
+   "reason": "Kandidat 1 membahas penggunaan besi (diameter 10mm) dalam konstruksi, sama dengan topik utama artikel tentang besi untuk cor.",
+   "judgedAt": "2026-10-08T05:42:56.385Z"
+  },
+  "/blog/berapa-besi-yang-dibutuhkan-untuk-membangun-rumah/": {
+   "candidates": [
+    "/blog/jenis-furniture-yang-paling-dibutuhkan-dirumah/"
+   ],
+   "duplicates": [],
+   "reason": "Kandidat 1 membahas furnitur, berbeda topik dari perhitungan kebutuhan besi beton pada artikel utama.",
+   "judgedAt": "2026-10-08T05:42:57.135Z"
+  },
+  "/blog/biaya-cor-dak-lantai-beton-per-m2/": {
+   "candidates": [
+    "/blog/cara-menghitung-besi-untuk-cor-dak-lantai/"
+   ],
+   "duplicates": [],
+   "reason": "Kandidat 1 membahas cara menghitung besi, berbeda dengan artikel utama yang membahas biaya cor dak lantai beton.",
+   "judgedAt": "2026-10-08T05:42:57.820Z"
+  },
+  "/blog/biaya-beton-jalan-per-meter/": {
+   "candidates": [
+    "/blog/5-tahapan-kontruksi-dasar-jalan-beton/",
+    "/blog/jenis-besi-beton-untuk-cor-rumah-dan-jalan/",
+    "/blog/bekisting-cor-jalan/",
+    "/blog/biaya-ngecor-jalan/",
+    "/blog/biaya-cor-jalan-per-meter-persegi/",
+    "/blog/beton-jalan-tol/",
+    "/blog/tahapan-finishing-pengecoran-jalan-beton/"
+   ],
+   "duplicates": [
+    "/blog/biaya-ngecor-jalan/",
+    "/blog/biaya-cor-jalan-per-meter-persegi/"
+   ],
+   "reason": "Kandidat 4 dan 5 membahas topik biaya pengecoran jalan dengan maksud pencarian yang sama (estimasi biaya), meskipun menggunakan istilah berbeda (\"ngecor\" vs \"cor\").",
+   "judgedAt": "2026-10-08T05:42:59.651Z"
+  },
+  "/blog/analisa-cor-beton-k-225/": {
+   "candidates": [
+    "/blog/campuran-beton-k225/"
+   ],
+   "duplicates": [
+    "/blog/campuran-beton-k225/"
+   ],
+   "reason": "Kedua artikel membahas analisa/campuran beton K225 dengan maksud pencarian yang sama (informasi lengkap tentang beton K225 untuk konstruksi).",
+   "judgedAt": "2026-10-08T05:43:00.584Z"
+  },
+  "/blog/bekisting-balok-dan-plat/": {
+   "candidates": [
+    "/blog/bekisting-plat-besi/",
+    "/blog/bekisting-plat-lantai/",
+    "/blog/besi-foot-plat/",
+    "/blog/besi-plat-lantai/",
+    "/blog/menghemat-besi-plat-beton-dengan-wiremesh/"
+   ],
+   "duplicates": [
+    "/blog/bekisting-plat-besi/",
+    "/blog/bekisting-plat-lantai/"
+   ],
+   "reason": "Kandidat 1 dan 2 membahas topik bekisting plat dengan maksud pencarian yang sama (panduan lengkap, biaya) seperti artikel utama, meskipun fokusnya sedikit berbeda (plat besi vs plat lantai).",
+   "judgedAt": "2026-10-08T05:43:01.775Z"
+  },
+  "/blog/5-tahapan-kontruksi-dasar-jalan-beton/": {
+   "candidates": [
+    "/blog/jalan-cor-coran/",
+    "/blog/biaya-cor-jalan-per-meter/",
+    "/blog/cara-membuat-bekisting-jalan-beton/",
+    "/blog/bekisting-cor-jalan/",
+    "/blog/jenis-besi-beton-untuk-cor-rumah-dan-jalan/",
+    "/blog/beton-jalan-tol/",
+    "/blog/tahapan-finishing-pengecoran-jalan-beton/"
+   ],
+   "duplicates": [
+    "/blog/jalan-cor-coran/",
+    "/blog/tahapan-finishing-pengecoran-jalan-beton/"
+   ],
+   "reason": "Kedua kandidat membahas proses pembuatan jalan beton (cor coran/pengecoran), menjawab maksud pencarian yang sama dengan artikel utama tentang tahapan konstruksi jalan beton.",
+   "judgedAt": "2026-10-08T05:43:02.980Z"
+  },
+  "/blog/jenis-besi-beton-untuk-cor-rumah-dan-jalan/": {
+   "candidates": [
+    "/blog/biaya-pengecoran-jalan-per-m2/",
+    "/blog/biaya-cor-jalan-per-meter/",
+    "/blog/harga-cor-beton-jalan-per-m2/",
+    "/blog/cara-membuat-bekisting-jalan-beton/",
+    "/blog/bekisting-cor-jalan/",
+    "/blog/beton-jalan-tol/",
+    "/blog/perbandingan-jalan-beton-dan-jalan-aspal/"
+   ],
+   "duplicates": [],
+   "reason": "Artikel utama membahas jenis besi beton, sedangkan kandidat membahas biaya, cara membuat bekisting, atau perbandingan material jalan, yang berbeda maksud pencariannya.",
+   "judgedAt": "2026-10-08T05:43:04.653Z"
+  },
+  "/blog/lokasi-plant-ready-mix-beton-jayamix-holcim-adhimix-merah-putih/": {
+   "candidates": [
+    "/blog/adhimix-beton/",
+    "/blog/batching-plant-merah-putih/",
+    "/blog/cara-menghitung-kebutuhan-bata-merah/",
+    "/blog/adhimix-plant-bandung/",
+    "/blog/batching-plant-ready-mix/",
+    "/blog/campuran-jenis-material-pada-readymix-concrete/",
+    "/blog/produsen-beton-cor-ready-mix-terbaik/"
+   ],
+   "duplicates": [
+    "/blog/batching-plant-merah-putih/",
+    "/blog/batching-plant-ready-mix/"
+   ],
+   "reason": "Keduanya membahas tentang batching plant dan ready mix beton, menjawab maksud pencarian yang sama dengan artikel utama mengenai lokasi plant beton.",
+   "judgedAt": "2026-10-08T05:43:05.635Z"
+  },
+  "/blog/cairan-perekat-cor-beton/": {
+   "candidates": [
+    "/blog/cairan-perekat-beton-retak/",
+    "/blog/cairan-pengeras-beton/",
+    "/blog/cairan-penguat-beton/",
+    "/blog/cara-menghitung-kebutuhan-perekat-hebel/",
+    "/blog/harga-semen-perekat-hebel-2/",
+    "/blog/mempercepat-pengeringan-beton/",
+    "/blog/garukan-cor-beton/"
+   ],
+   "duplicates": [
+    "/blog/cairan-perekat-beton-retak/"
+   ],
+   "reason": "Kandidat 1 membahas cairan perekat beton, meskipun fokusnya pada beton retak, tetap membahas produk yang sama dan menjawab maksud pencarian serupa dengan artikel utama.",
+   "judgedAt": "2026-10-08T05:43:07.089Z"
+  },
+  "/blog/mempercepat-pengeringan-beton/": {
+   "candidates": [
+    "/blog/inilah-penyebab-beton-cor-lambat-mengering/",
+    "/blog/cairan-pengeras-beton/",
+    "/blog/cairan-penguat-beton/"
+   ],
+   "duplicates": [
+    "/blog/cairan-pengeras-beton/",
+    "/blog/cairan-penguat-beton/"
+   ],
+   "reason": "Kedua kandidat membahas produk yang sama (cairan untuk beton) dengan maksud pencarian yang serupa (fungsi dan aplikasi), meskipun menggunakan istilah berbeda (pengeras vs penguat).",
+   "judgedAt": "2026-10-08T05:43:08.162Z"
+  },
+  "/blog/tanah-merah-cikarang/": {
+   "candidates": [
+    "/blog/cara-menghitung-kebutuhan-bata-merah/",
+    "/blog/ukuran-cor-beton/",
+    "/blog/jasa-stamper-tanah/",
+    "/blog/tips-membeli-tanah-yang-strategis-dan-murah/",
+    "/blog/keunggulan-menggunakan-bondek/",
+    "/blog/model-struktur-pondasi-yang-kokoh/",
+    "/blog/apa-itu-bekisting-beton/"
+   ],
+   "duplicates": [
+    "/blog/model-struktur-pondasi-yang-kokoh/"
+   ],
+   "reason": "Artikel utama dan kandidat 6 sama-sama membahas tentang fondasi bangunan, meskipun dengan fokus yang sedikit berbeda (tanah merah vs model struktur pondasi).",
+   "judgedAt": "2026-10-08T05:43:09.360Z"
+  },
+  "/blog/bekisting-jalan-rigid/": {
+   "candidates": [
+    "/blog/cara-membuat-bekisting-jalan-beton/",
+    "/blog/bekisting-cor-jalan/",
+    "/blog/biaya-pengecoran-jalan-per-m2/",
+    "/blog/biaya-cor-jalan-per-meter/",
+    "/blog/harga-cor-beton-jalan-per-m2/",
+    "/blog/jasa-pengaspalan-jalan-di-jabodetabek/",
+    "/blog/beton-jalan-tol/"
+   ],
+   "duplicates": [
+    "/blog/cara-membuat-bekisting-jalan-beton/",
+    "/blog/bekisting-cor-jalan/"
+   ],
+   "reason": "Kandidat 1 dan 2 membahas topik yang sama (bekisting jalan beton/rigid) dan menjawab maksud pencarian yang sama (panduan lengkap dan biaya), meskipun dengan sudut pandang sedikit berbeda.",
+   "judgedAt": "2026-10-08T05:43:10.583Z"
+  },
+  "/blog/besi-untuk-pondasi-rumah/": {
+   "candidates": [
+    "/blog/ukuran-besi-cor/",
+    "/blog/tiang-pondasi-rumah/"
+   ],
+   "duplicates": [
+    "/blog/ukuran-besi-cor/"
+   ],
+   "reason": "Keduanya membahas jenis, ukuran, dan estimasi biaya besi untuk pondasi rumah, menjawab maksud pencarian yang sama.",
+   "judgedAt": "2026-10-08T05:43:11.306Z"
+  },
+  "/blog/bak-penampungan-air-beton/": {
+   "candidates": [
+    "/blog/cara-membuat-beton-penyerap-air/",
+    "/blog/1-kubik-air-berapa-kg/",
+    "/blog/bahan-bangunan-pelapis-beton-kedap-air/",
+    "/blog/berapa-jam-cor-boleh-kena-air/"
+   ],
+   "duplicates": [
+    "/blog/bahan-bangunan-pelapis-beton-kedap-air/"
+   ],
+   "reason": "Kandidat 3 membahas tentang pelapis beton kedap air yang berkaitan langsung dengan fungsi bak penampungan air beton untuk menampung air.",
+   "judgedAt": "2026-10-08T05:43:12.100Z"
+  },
+  "/blog/10-jenis-batu-alam/": {
+   "candidates": [
+    "/blog/10-jenis-batu-alam-dan-kegunaannya/",
+    "/blog/batu-belah-hitam/"
+   ],
+   "duplicates": [
+    "/blog/10-jenis-batu-alam-dan-kegunaannya/"
+   ],
+   "reason": "Kandidat 1 membahas topik yang sama (10 jenis batu alam) dan maksud pencarian yang sama (informasi tentang batu alam) dengan artikel utama.",
+   "judgedAt": "2026-10-08T05:43:13.044Z"
+  },
+  "/blog/cara-menyambung-cor-beton-lama-dengan-yang-baru/": {
+   "candidates": [
+    "/blog/inilah-penyebab-cor-beton-bisa-retak/",
+    "/blog/cara-menyambung-coran-beton-lama-dengan-coran-baru/",
+    "/blog/cara-melapisi-beton-lama-dg-beton-baru/",
+    "/blog/cara-memperbaiki-dak-beton-yang-retak/",
+    "/blog/penyambungan-wiremesh-dilas-atau-diikat/"
+   ],
+   "duplicates": [
+    "/blog/cara-menyambung-coran-beton-lama-dengan-coran-baru/"
+   ],
+   "reason": "Kandidat 2 membahas topik yang sama (cara menyambung cor beton lama dengan yang baru) dan menjawab maksud pencarian yang sama dengan artikel utama.",
+   "judgedAt": "2026-10-08T05:43:13.872Z"
+  },
+  "/blog/arti-molen/": {
+   "candidates": [
+    "/blog/mobil-molen-cor/",
+    "/blog/1-mobil-molen-berapa-kubik/",
+    "/blog/berat-molen-cor/",
+    "/blog/truk-mixer-pengangkut-beton-cor-atau-truk-molen/",
+    "/blog/1-molen-manual-berapa-m3/",
+    "/blog/rabat-beton-lantai/",
+    "/blog/arti-beton/"
+   ],
+   "duplicates": [
+    "/blog/arti-beton/"
+   ],
+   "reason": "Keduanya membahas arti/definisi material konstruksi (molen vs beton) dan fungsi umumnya dalam proyek konstruksi.",
+   "judgedAt": "2026-10-08T05:43:14.822Z"
+  },
+  "/blog/bahan-untuk-mengatasi-dak-bocor/": {
+   "candidates": [
+    "/blog/penyebab-dak-beton-bocor/",
+    "/blog/jenis-jenis-pasir-untuk-bahan-bangunan/",
+    "/blog/cara-menambal-dak-cor-yang-bocor/",
+    "/blog/cara-membuat-dak-beton-tidak-bocor/",
+    "/blog/tips-menghemat-biaya-bahan-bangunan/",
+    "/blog/memilih-supplier-bahan-bangunan-terpercaya/",
+    "/blog/inilah-contoh-bahan-bangunan-struktural/"
+   ],
+   "duplicates": [
+    "/blog/cara-menambal-dak-cor-yang-bocor/",
+    "/blog/cara-membuat-dak-beton-tidak-bocor/"
+   ],
+   "reason": "Kandidat 3 dan 4 membahas topik yang sama yaitu mengatasi dak bocor, meskipun dengan sudut pandang yang sedikit berbeda (menambal vs membuat tidak bocor), keduanya menjawab maksud pencarian yang sama.",
+   "judgedAt": "2026-10-08T05:43:16.203Z"
+  },
+  "/blog/cara-menghitung-kebutuhan-besi-untuk-cor-lantai/": {
+   "candidates": [
+    "/blog/cara-menghitung-besi-untuk-cor-dak-lantai/"
+   ],
+   "duplicates": [
+    "/blog/cara-menghitung-besi-untuk-cor-dak-lantai/"
+   ],
+   "reason": "Kedua artikel membahas cara menghitung kebutuhan besi untuk cor lantai/dak lantai dengan maksud pencarian yang sama.",
+   "judgedAt": "2026-10-08T05:43:17.119Z"
+  },
+  "/blog/mobil-molen-cor/": {
+   "candidates": [
+    "/blog/1-mobil-molen-berapa-kubik/",
+    "/blog/berat-molen-cor/",
+    "/blog/truk-mixer-pengangkut-beton-cor-atau-truk-molen/",
+    "/blog/rabat-beton-lantai/",
+    "/blog/1-molen-manual-berapa-m3/",
+    "/blog/tehnik-perawatan-curing-beton-yang-benar/"
+   ],
+   "duplicates": [
+    "/blog/truk-mixer-pengangkut-beton-cor-atau-truk-molen/"
+   ],
+   "reason": "Artikel utama dan kandidat 3 sama-sama membahas tentang mobil molen/truk molen dan penggunaannya dalam pengangkutan beton cor.",
+   "judgedAt": "2026-10-08T05:43:18.606Z"
+  },
+  "/blog/berapa-lama-cor-lantai-2-kering/": {
+   "candidates": [
+    "/blog/berapa-lama-coran-kering/",
+    "/blog/berapa-lama-semen-kering/",
+    "/blog/berapa-lama-acian-kering/"
+   ],
+   "duplicates": [
+    "/blog/berapa-lama-coran-kering/"
+   ],
+   "reason": "Kandidat 1 membahas topik yang sama (waktu kering coran) dan menjawab maksud pencarian yang sama dengan artikel utama, meskipun menggunakan kata \"coran\" dan \"cor\" yang sinonim.",
+   "judgedAt": "2026-10-08T05:43:19.587Z"
+  },
+  "/blog/adhimix-beton/": {
+   "candidates": [
+    "/blog/adhimix-rmc/",
+    "/blog/adhimix-plant-bandung/",
+    "/blog/adhimix-lenteng-agung/",
+    "/blog/adhimix-casablanca/",
+    "/blog/adhimix-cibitung/",
+    "/blog/adhimix-precast-cikarang/",
+    "/blog/adhimix-precast-indonesia-pt-plant-kebon-jeruk/"
+   ],
+   "duplicates": [
+    "/blog/adhimix-rmc/",
+    "/blog/adhimix-lenteng-agung/",
+    "/blog/adhimix-cibitung/"
+   ],
+   "reason": "Kandidat 1, 3, dan 5 membahas solusi beton Adhimix untuk konstruksi di Jabodetabek dengan maksud pencarian yang sama, meskipun lokasi spesifiknya berbeda.",
+   "judgedAt": "2026-10-08T05:43:20.945Z"
+  },
+  "/blog/apa-itu-batching-plant/": {
+   "candidates": [
+    "/blog/jenis-pasir-untuk-produksi-batching-plant/",
+    "/blog/beton-jalan-tol/",
+    "/blog/adhimix-plant-bandung/",
+    "/blog/adhimix-precast-indonesia-pt-plant-kebon-jeruk/",
+    "/blog/kenapa-cor-beton-perlu-di-siram/"
+   ],
+   "duplicates": [],
+   "reason": "Kandidat membahas topik yang berbeda, yaitu jenis pasir, beton jalan tol, adhimix plant, dan perawatan cor beton, tidak membahas definisi, jenis, manfaat, dan biaya batching plant.",
+   "judgedAt": "2026-10-08T05:43:22.069Z"
+  },
+  "/blog/1-kubik-air-berapa-kg/": {
+   "candidates": [
+    "/blog/1-kubik-berapa-kilo/",
+    "/blog/1-meter-kubik-pasir-berapa-kg/",
+    "/blog/1-engkel-berapa-kubik/",
+    "/blog/1-mobil-molen-berapa-kubik/",
+    "/blog/berapa-jam-cor-boleh-kena-air/",
+    "/blog/cara-membuat-beton-penyerap-air/",
+    "/blog/membuat-resapan-air-batu-kali/"
+   ],
+   "duplicates": [
+    "/blog/1-kubik-berapa-kilo/"
+   ],
+   "reason": "Kandidat 1 membahas topik yang sama (hubungan antara kubik dan kilogram) dan menjawab maksud pencarian yang sama dengan artikel utama, meskipun dengan sedikit variasi judul.",
+   "judgedAt": "2026-10-08T05:43:23.225Z"
+  },
+  "/blog/begini-cara-memasang-bondek-yang-benar/": {
+   "candidates": [
+    "/blog/bondek-lantai-lebih-kuat-dan-kokoh/",
+    "/blog/cara-menghitung-dak-bondek/",
+    "/blog/cara-pemasangan-bondek-dan-wiremesh-yang-benar/",
+    "/blog/cara-pasang-bondek/",
+    "/blog/cara-pemasangan-bondek-pada-balok-beton/",
+    "/blog/cara-pemasangan-bondex/",
+    "/blog/bondek-075/"
+   ],
+   "duplicates": [
+    "/blog/cara-pemasangan-bondek-dan-wiremesh-yang-benar/",
+    "/blog/cara-pasang-bondek/",
+    "/blog/cara-pemasangan-bondex/"
+   ],
+   "reason": "Kandidat 3, 4, dan 6 membahas topik utama yang sama yaitu cara memasang bondek (atau bondex) dengan maksud pencarian yang sama, yaitu memberikan panduan pemasangan.",
+   "judgedAt": "2026-10-08T05:43:25.302Z"
+  },
+  "/blog/campuran-jenis-material-pada-readymix-concrete/": {
+   "candidates": [
+    "/blog/bahan-tambahan-pada-ready-mix-concrete/",
+    "/blog/ready-mix-concrete-atau-cor-beton-curah-siap-pakai/",
+    "/blog/bagaimana-proses-produksi-readymix-concrete/",
+    "/blog/daftar-harga-beton-cor-ready-mix-non-fly-ash-dan-fly-ash/",
+    "/blog/produsen-beton-cor-ready-mix-terbaik/",
+    "/blog/beton-readymix-bogor/",
+    "/blog/beton-readymix-surabaya/"
+   ],
+   "duplicates": [
+    "/blog/bahan-tambahan-pada-ready-mix-concrete/",
+    "/blog/ready-mix-concrete-atau-cor-beton-curah-siap-pakai/"
+   ],
+   "reason": "Kandidat 1 dan 2 membahas komposisi dan bahan readymix concrete, menjawab maksud pencarian yang sama dengan artikel utama.",
+   "judgedAt": "2026-10-08T05:43:26.242Z"
+  },
+  "/blog/apakah-bagian-dasar-dari-rumah/": {
+   "candidates": [
+    "/blog/mempelajari-dasar-konstruksi-bangunan/",
+    "/blog/bagian-bagian-concrete-pump/",
+    "/blog/batu-gajah-sebagai-bagian-dari-batu-belah-dan-split/",
+    "/blog/kenapa-cor-beton-perlu-di-siram/"
+   ],
+   "duplicates": [
+    "/blog/mempelajari-dasar-konstruksi-bangunan/"
+   ],
+   "reason": "Kandidat 1 membahas topik dasar konstruksi bangunan yang serupa dengan artikel utama tentang bagian dasar rumah, keduanya bertujuan memberikan pemahaman umum tentang fondasi konstruksi.",
+   "judgedAt": "2026-10-08T05:43:27.479Z"
+  },
+  "/blog/berapa-lama-acian-kering/": {
+   "candidates": [
+    "/blog/berapa-lama-semen-kering/",
+    "/blog/cara-membuat-adukan-acian/"
+   ],
+   "duplicates": [
+    "/blog/berapa-lama-semen-kering/"
+   ],
+   "reason": "Keduanya membahas waktu pengeringan material konstruksi (acian vs semen) dan menjawab maksud pencarian yang sama tentang durasi pengeringan.",
+   "judgedAt": "2026-10-08T05:43:28.280Z"
+  },
+  "/blog/kelas-beton-cor-yang-cocok-untuk-rumah-tinggal/": {
+   "candidates": [
+    "/blog/merencanakan-pembangunan-rumah-tinggal/",
+    "/blog/harga-rak-piring-cocok-untuk-rumah-minimalis/"
+   ],
+   "duplicates": [],
+   "reason": "Kandidat 1 membahas perencanaan pembangunan rumah secara umum, sedangkan kandidat 2 membahas harga rak piring, keduanya berbeda topik dari kelas beton cor.",
+   "judgedAt": "2026-10-08T05:43:29.196Z"
+  },
+  "/blog/apa-itu-bekisting-beton/": {
+   "candidates": [
+    "/blog/material-bangunan-berkualitas-kokoh/",
+    "/blog/ukuran-cor-beton/",
+    "/blog/tes-silinder-beton/",
+    "/blog/besi-dak-cor/",
+    "/blog/bondek-lantai-lebih-kuat-dan-kokoh/",
+    "/blog/takaran-adukan-pasang-bata/",
+    "/blog/campuran-pondasi-rumah/"
+   ],
+   "duplicates": [],
+   "reason": "Kandidat membahas topik berbeda terkait material bangunan dan konstruksi, tidak membahas definisi atau fungsi bekisting beton seperti artikel utama.",
+   "judgedAt": "2026-10-08T05:43:30.339Z"
+  },
+  "/blog/cara-bikin-bekisting-dak/": {
+   "candidates": [
+    "/blog/bikin-pondasi-rumah-2-lantai/"
+   ],
+   "duplicates": [],
+   "reason": "Artikel utama membahas bekisting dak beton, sedangkan kandidat membahas pondasi rumah 2 lantai yang merupakan objek berbeda.",
+   "judgedAt": "2026-10-08T05:43:31.039Z"
+  },
+  "/blog/cara-menghitung-besi-untuk-cor-dak/": {
+   "candidates": [
+    "/blog/besi-dak-cor/"
+   ],
+   "duplicates": [
+    "/blog/besi-dak-cor/"
+   ],
+   "reason": "Kandidat 1 membahas topik yang sama (besi dak cor) dan menjawab maksud pencarian yang serupa dengan artikel utama (pentingnya besi untuk cor dak).",
+   "judgedAt": "2026-10-08T05:43:32.130Z"
+  }
+ }
+}
