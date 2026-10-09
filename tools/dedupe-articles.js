@@ -194,6 +194,11 @@ async function main() {
 
   const used = new Set(), allClusters = [], undecided = [], vetoed = [], disputed = [];
   const approved = readList(APPROVE_FILE), protectedUrls = readList(PROTECT_FILE);
+  // Konfirmasi file manual terbaca (nama file harus persis .dedupe-approve.txt / .dedupe-protect.txt di root repo)
+  const known = u => (byUrl.has(u) ? '' : ' (tidak ditemukan di content!)');
+  console.log(`🛡️  ${protectedUrls.size} URL dilindungi (${path.basename(PROTECT_FILE)}${fs.existsSync(PROTECT_FILE) ? '' : ' — file TIDAK ada'}), ✅ ${approved.size} URL disetujui manual (${path.basename(APPROVE_FILE)}${fs.existsSync(APPROVE_FILE) ? '' : ' — file TIDAK ada'})`);
+  for (const u of [...protectedUrls, ...approved]) if (!byUrl.has(u)) console.log(`   ⚠️  ${u}${known(u)}`);
+  for (const u of protectedUrls) if (approved.has(u)) console.log(`   ⚠️  ${u} ada di KEDUA daftar — protect menang (tidak akan dihapus)`);
   let judged = 0, stop = false, stopReason = '';
 
   for (const seed of ranked) {
