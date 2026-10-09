@@ -57,8 +57,6 @@ beton berpori
 beton cor bogor
 beton eser
 beton eser adalah
-beton fc 25
-beton fc 30
 beton instan
 beton integral
 beton jalan
@@ -88,7 +86,6 @@ biaya dak bondek per m2
 biaya dak cor
 biaya dak rumah per meter
 biaya epoxy lantai
-biaya membuat lantai 2
 biaya ngecor rumah
 biaya pondasi rumah ukuran 6x12
 biaya untuk ngedak rumah
