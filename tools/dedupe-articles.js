@@ -19,6 +19,9 @@
  *   node tools/dedupe-articles.js                        → LAPORAN dari keputusan yang ada (tanpa AI)
  *   node tools/dedupe-articles.js --apply                → eksekusi
  *   opsi: --section=blog --max-delete=40 --max-cluster=8 --retry-errors --allow-partial
+ *         --ai-only  (percaya AI saja; DEFAULT = konsensus: AI dan aturan kata harus sama-sama setuju)
+ *   file manual (opsional, satu slug/URL per baris): .dedupe-approve.txt (setujui usulan AI yg disengketakan),
+ *                                                    .dedupe-protect.txt (JANGAN pernah hapus)
  *         --mock-ai  (uji offline TANPA AI: memakai aturan kata sebagai "juri"; hanya untuk pengujian)
  *
  * REQUIRES (hanya --judge): CLOUDFLARE_ACCOUNT_ID + CLOUDFLARE_API_TOKEN (boleh multi-baris, berpasangan 1:1).
@@ -36,6 +39,7 @@ const has  = f => ARGS.includes(f);
 const arg  = (n, d) => { const a = ARGS.find(x => x.startsWith(`--${n}=`)); return a ? a.slice(n.length + 3) : d; };
 const JUDGE = has('--judge'), APPLY = has('--apply'), MOCK = has('--mock-ai');
 const RETRY = has('--retry-errors'), ALLOW_PARTIAL = has('--allow-partial');
+const AI_ONLY = has('--ai-only'); // default: KONSENSUS (AI DAN aturan kata harus sama-sama setuju)
 const SECTION = arg('section', 'blog');
 const LIMIT = parseInt(arg('limit', '40'), 10);
 const MAX_DELETE = parseInt(arg('max-delete', '40'), 10);
@@ -51,6 +55,8 @@ const REDIRECTS = path.join(ROOT, 'static', 'redirects.js');
 const EXCLUDED = path.join(ROOT, '.excluded-keywords.json');
 const DECISIONS = path.join(ROOT, '.dedupe-decisions.json');
 const REPORT = path.join(ROOT, 'dedupe-report.json');
+const APPROVE_FILE = path.join(ROOT, '.dedupe-approve.txt'); // slug/URL korban yang disetujui manual walau aturan kata tidak setuju
+const PROTECT_FILE = path.join(ROOT, '.dedupe-protect.txt'); // slug/URL yang TIDAK BOLEH dihapus
 
 if (JUDGE && APPLY) { console.error('Pilih salah satu: --judge ATAU --apply.'); process.exit(1); }
 
@@ -85,7 +91,7 @@ function httpPost(pathname, token, body, timeoutMs = 60000) {
 }
 
 async function callAI(messages, retries = 3) {
-  const body = JSON.stringify({ model: CF.MODEL, messages, temperature: 0.1, max_tokens: 300 });
+  const body = JSON.stringify({ model: CF.MODEL, messages, temperature: 0.1, max_tokens: 600 });
   let rotated = 0;
   for (let attempt = 1; attempt <= retries; attempt++) {
     try {
@@ -153,8 +159,16 @@ for (const a of articles) {
 const ranked = [...articles].sort((a, b) => b.inbound - a.inbound || b.words - a.words || (a.date < b.date ? -1 : a.date > b.date ? 1 : 0));
 
 // ── Keputusan (cache lintas-run) ─────────────────────────────────────────────
-function loadDecisions() { try { return JSON.parse(fs.readFileSync(DECISIONS, 'utf8')).decisions || {}; } catch { return {}; } }
-function saveDecisions(d) { fs.writeFileSync(DECISIONS, JSON.stringify({ version: 1, updatedAt: new Date().toISOString(), decisions: d }, null, 1)); }
+const DECISIONS_VERSION = 2; // v2 = format penilaian per-kandidat (OBJEK/MAKSUD/VONIS); keputusan v1 (prompt lama, terlalu longgar) dibuang
+function loadDecisions() {
+  try {
+    const j = JSON.parse(fs.readFileSync(DECISIONS, 'utf8'));
+    if (j.version !== DECISIONS_VERSION) { console.log('♻️  .dedupe-decisions.json versi lama dibuang (prompt penilaian diperbarui) — semua dinilai ulang.'); return {}; }
+    return j.decisions || {};
+  } catch { return {}; }
+}
+const readList = f => { try { return new Set(fs.readFileSync(f, 'utf8').split('\n').map(l => l.trim()).filter(l => l && !l.startsWith('#')).map(l => l.startsWith('/') ? l : `/${SECTION}/${l.replace(/\.md$/, '')}/`)); } catch { return new Set(); } };
+function saveDecisions(d) { fs.writeFileSync(DECISIONS, JSON.stringify({ version: DECISIONS_VERSION, updatedAt: new Date().toISOString(), decisions: d }, null, 1)); }
 const decisions = loadDecisions();
 
 function candidatesFor(seed, pool) {
@@ -178,7 +192,8 @@ async function main() {
     if (CF.IDS.length > 1 && CF.IDS.length !== CF.TOKENS.length) console.warn('⚠️  Jumlah baris CLOUDFLARE_ACCOUNT_ID dan CLOUDFLARE_API_TOKEN tidak sama — pasangan bisa salah.');
   }
 
-  const used = new Set(), allClusters = [], undecided = [], vetoed = [];
+  const used = new Set(), allClusters = [], undecided = [], vetoed = [], disputed = [];
+  const approved = readList(APPROVE_FILE), protectedUrls = readList(PROTECT_FILE);
   let judged = 0, stop = false, stopReason = '';
 
   for (const seed of ranked) {
@@ -212,7 +227,11 @@ async function main() {
     for (const u of d.duplicates || []) {
       const o = byUrl.get(u);
       if (!o || used.has(o.url)) continue;
+      if (protectedUrls.has(o.url)) continue;                                                                    // dilindungi manual
       if (KS.hardConflict(seed.info.kw, o.info.kw)) { vetoed.push({ keep: seed.url, drop: o.url }); continue; } // veto script
+      if (!AI_ONLY && !approved.has(o.url) && !KS.articlesDuplicate(seed.info, o.info)) {                         // konsensus
+        disputed.push({ keep: seed.url, drop: o.url, aiReason: d.reason || '' }); continue;
+      }
       losers.push({ ...o, reason: d.reason || '' }); used.add(o.url);
     }
     if (losers.length) allClusters.push({ winner: seed, losers, reason: d.reason || '' });
@@ -226,6 +245,7 @@ async function main() {
 
   console.log(`\n🔗 ${clusters.length} kelompok duplikat, ${totalLosers} artikel akan dihapus.`);
   if (reviewClusters.length) console.log(`⚠️  ${reviewClusters.length} kelompok dilewati (> ${MAX_CLUSTER} artikel) — tinjau manual.`);
+  if (disputed.length) console.log(`🤝 ${disputed.length} usulan AI TIDAK dieksekusi karena aturan kata tidak setuju (konsensus) — lihat "disputedAiOnly" di laporan; setujui manual lewat .dedupe-approve.txt bila memang benar.`);
   if (vetoed.length) console.log(`🛑 ${vetoed.length} keputusan AI dibatalkan script (konflik satuan/mutu/ukuran).`);
   if (errors.length) console.log(`⚠️  ${errors.length} penilaian gagal diparse (dianggap BUKAN duplikat). Ulangi dengan --judge --retry-errors.`);
   if (undecided.length) console.log(`⏳ ${undecided.length} artikel utama belum dinilai AI${stopReason ? ` (berhenti: ${stopReason})` : ''}. Jalankan --judge lagi.`);
@@ -243,6 +263,7 @@ async function main() {
     clusters: clusters.map(c => ({ keep: brief(c.winner), reason: c.reason, remove: c.losers.map(brief) })),
     skippedForManualReview: reviewClusters.map(c => ({ keep: brief(c.winner), reason: c.reason, remove: c.losers.map(brief) })),
     vetoedByScript: vetoed,
+    disputedAiOnly: disputed,
   }, null, 2));
   console.log('📝 Laporan: dedupe-report.json');
 

@@ -30,20 +30,31 @@ function buildMessages(PROMPTS, seed, cands) {
 }
 
 /**
- * Parse jawaban AI. Mengembalikan { ids:[1-based], reason } atau { error }.
- * Ketat: nomor di luar 1..n dibuang; kalau "DUPLIKAT:" ada tapi tidak ada nomor valid dan bukan
- * TIDAK_ADA, dianggap error (bukan "tidak ada duplikat"), supaya jawaban rusak tidak dianggap keputusan.
+ * Parse jawaban AI format per-kandidat:
+ *   N: OBJEK=SAMA; MAKSUD=SAMA; VONIS=DUPLIKAT; ALASAN=...
+ * DUPLIKAT hanya jika OBJEK=SAMA && MAKSUD=SAMA && VONIS=DUPLIKAT (ketiganya harus konsisten).
+ * Baris yang hilang / tidak terbaca dianggap BUKAN. Jika SATU baris pun tidak terbaca => error
+ * (jawaban rusak tidak boleh dianggap keputusan "tidak ada duplikat").
  */
 function parseVerdict(text, n) {
-  const t = String(text || '');
-  const m = t.match(/DUPLIKAT\s*:\s*([^\n\r]*)/i);
-  if (!m) return { error: 'format tidak sesuai (baris DUPLIKAT: tidak ditemukan)' };
-  const reason = ((t.match(/ALASAN\s*:\s*([^\n\r]*)/i) || [])[1] || '').trim();
-  const v = m[1].trim();
-  if (/TIDAK[_\s-]?ADA/i.test(v)) return { ids: [], reason };
-  const ids = [...new Set([...v.matchAll(/\d+/g)].map(x => parseInt(x[0], 10)).filter(i => i >= 1 && i <= n))];
-  if (!ids.length) return { error: `tidak ada nomor kandidat valid pada "${v.slice(0, 40)}"` };
-  return { ids, reason };
+  const lines = String(text || '').split(/\r?\n/);
+  const detail = [];
+  for (const line of lines) {
+    const m = line.match(/^\s*(\d+)\s*[:.)\-]\s*(.+)$/);
+    if (!m) continue;
+    const num = parseInt(m[1], 10);
+    if (num < 1 || num > n) continue;
+    const g = k => ((m[2].match(new RegExp(k + '\\s*=\\s*([A-Za-z_]+)', 'i')) || [])[1] || '').toUpperCase();
+    const reason = ((m[2].match(/ALASAN\s*=\s*(.*)$/i) || [])[1] || '').trim();
+    const objek = g('OBJEK'), maksud = g('MAKSUD'), vonis = g('VONIS');
+    if (!objek && !maksud && !vonis) continue;
+    detail.push({ n: num, objek, maksud, vonis, reason });
+  }
+  if (!detail.length) return { error: 'format tidak sesuai (tidak ada baris "N: OBJEK=..; MAKSUD=..; VONIS=.." yang terbaca)' };
+  const byN = new Map();
+  for (const d of detail) if (!byN.has(d.n)) byN.set(d.n, d);
+  const dups = [...byN.values()].filter(d => d.objek === 'SAMA' && d.maksud === 'SAMA' && d.vonis === 'DUPLIKAT');
+  return { ids: dups.map(d => d.n), reason: dups.map(d => `#${d.n}: ${d.reason}`).join(' | '), detail: [...byN.values()] };
 }
 
 module.exports = { renderTemplate, excerptOf, candidatesBlock, buildMessages, parseVerdict };
