@@ -1,6 +1,6 @@
 {
  "version": 2,
- "updatedAt": "2026-10-09T05:44:52.229Z",
+ "updatedAt": "2026-10-10T02:32:14.138Z",
  "decisions": {
   "/blog/berapa-lapis-besi-untuk-cor-dak/": {
    "candidates": [
@@ -1103,6 +1103,519 @@
    "duplicates": [],
    "reason": "",
    "judgedAt": "2026-10-09T05:44:52.131Z"
+  },
+  "/blog/adhimix-lenteng-agung/": {
+   "candidates": [
+    "/blog/sitewwwcreativedesigninteriorcom/",
+    "/blog/ukuran-cor-beton/",
+    "/blog/cara-hitung-kebutuhan-scaffolding/",
+    "/blog/adhimix-karawang/",
+    "/blog/adhimix-casablanca/",
+    "/blog/apa-arti-readymix/",
+    "/blog/adhimix-cibitung/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-10T02:29:49.942Z"
+  },
+  "/blog/cara-menambal-dak-beton-dari-bawah/": {
+   "candidates": [
+    "/blog/cairan-perekat-beton-retak/",
+    "/blog/cara-mengatasi-atap-beton-rembes/",
+    "/blog/desain-terbaru-lemari-bawah-tangga/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-10T02:29:52.499Z"
+  },
+  "/blog/bongkar-bekisting-kolom-berapa-hari/": {
+   "candidates": [
+    "/blog/berapa-hari-bekisting-kolom-bisa-dilepas/",
+    "/blog/buka-bekisting-kolom-berapa-hari/",
+    "/blog/perbandingan-harga-tukang-bangunan/",
+    "/blog/berapa-lama-bekisting-kolom-bisa-dibuka/",
+    "/blog/waktu-yang-tepat-bongkar-bekisting/",
+    "/blog/berapa-lama-papan-penahan-coran-dibuka/"
+   ],
+   "duplicates": [
+    "/blog/berapa-hari-bekisting-kolom-bisa-dilepas/",
+    "/blog/buka-bekisting-kolom-berapa-hari/",
+    "/blog/berapa-lama-bekisting-kolom-bisa-dibuka/",
+    "/blog/waktu-yang-tepat-bongkar-bekisting/"
+   ],
+   "reason": "#1: Judul & ringkasan membahas waktu ideal lepas bekisting kolom. | #2: Judul & ringkasan membahas waktu ideal lepas bekisting kolom. | #4: Judul & ringkasan membahas waktu ideal lepas bekisting kolom. | #5: Judul & ringkasan membahas waktu ideal bongkar bekisting.",
+   "judgedAt": "2026-10-10T02:29:57.833Z"
+  },
+  "/blog/inilah-keunggulan-kusen-bahan-alumunium/": {
+   "candidates": [
+    "/blog/jenis-jenis-pasir-untuk-bahan-bangunan/",
+    "/blog/tips-menghemat-biaya-bahan-bangunan/",
+    "/blog/memilih-supplier-bahan-bangunan-terpercaya/",
+    "/blog/inilah-contoh-bahan-bangunan-struktural/",
+    "/blog/supplier-bahan-bangunan-terlengkap/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-10T02:30:03.274Z"
+  },
+  "/blog/besi-rangka-bangunan/": {
+   "candidates": [
+    "/blog/perbandingan-kelebihan-dan-kekurangan-rangka-atap-baja-ringan/",
+    "/blog/cara-memasang-rangka-baja-ringan-sendiri/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-10T02:30:06.123Z"
+  },
+  "/blog/besi-foot-plat/": {
+   "candidates": [
+    "/blog/besi-plat-lantai/",
+    "/blog/menghemat-besi-plat-beton-dengan-wiremesh/",
+    "/blog/bekisting-plat-lantai/",
+    "/blog/atap-plat-beton/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-10T02:30:09.348Z"
+  },
+  "/blog/batu-belah-dan-batu-kali-apakah-sama/": {
+   "candidates": [
+    "/blog/batu-belah/",
+    "/blog/perbedaan-batu-kali-dan-batu-belah/",
+    "/blog/sitewwwcreativedesigninteriorcom/",
+    "/blog/pondasi-dari-batu-belah-dan-split/",
+    "/blog/mengenal-batu-belah-dan-split/",
+    "/blog/batu-belah-hitam/",
+    "/blog/cara-hitung-kebutuhan-scaffolding/"
+   ],
+   "duplicates": [
+    "/blog/perbedaan-batu-kali-dan-batu-belah/"
+   ],
+   "reason": "#2: Perbandingan batu kali vs batu belah, sama persis.",
+   "judgedAt": "2026-10-10T02:30:15.281Z"
+  },
+  "/blog/beton-instan-k250/": {
+   "candidates": [
+    "/blog/analisa-beton-k-250-ready-mix/",
+    "/blog/beton-k250-berapa-mpa/",
+    "/blog/campuran-beton-k250/"
+   ],
+   "duplicates": [
+    "/blog/analisa-beton-k-250-ready-mix/"
+   ],
+   "reason": "#1: Topik dan informasi yang dicari pembaca identik.",
+   "judgedAt": "2026-10-10T02:30:18.046Z"
+  },
+  "/blog/harga-rabatan-lantai-per-m2/": {
+   "candidates": [
+    "/blog/rabat-beton-lantai/",
+    "/blog/biaya-rabat-lantai-per-meter/",
+    "/blog/harga-borongan-rabatan-lantai-per-m2/",
+    "/blog/mengenal-rabat-beton-dan-fungsinya/"
+   ],
+   "duplicates": [
+    "/blog/rabat-beton-lantai/",
+    "/blog/biaya-rabat-lantai-per-meter/",
+    "/blog/harga-borongan-rabatan-lantai-per-m2/"
+   ],
+   "reason": "#1: Objek sama (rabat lantai), maksud sama (harga & panduan). | #2: Objek sama (rabat lantai), maksud sama (harga & estimasi). | #3: Objek sama (rabat lantai), maksud sama (harga & estimasi).",
+   "judgedAt": "2026-10-10T02:30:21.273Z"
+  },
+  "/blog/cara-pasang-baja-ringan-sendiri/": {
+   "candidates": [
+    "/blog/daftar-harga-terbaru-atap-baja-ringan/",
+    "/blog/cara-simpel-menghitung-kebutuhan-baja-ringan/",
+    "/blog/cara-membuat-canopy-dari-baja-ringan/",
+    "/blog/perbandingan-kelebihan-dan-kekurangan-rangka-atap-baja-ringan/",
+    "/blog/ciri-ciri-baja-ringan-berkualitas-baik/",
+    "/blog/cara-memasang-rangka-baja-ringan-sendiri/",
+    "/blog/membuat-pagar-kuat-dan-murah-baja-ringan/"
+   ],
+   "duplicates": [
+    "/blog/cara-memasang-rangka-baja-ringan-sendiri/"
+   ],
+   "reason": "#6: Objek & maksud sama: cara pasang baja ringan.",
+   "judgedAt": "2026-10-10T02:30:26.957Z"
+  },
+  "/blog/sewa-crane-cipulir/": {
+   "candidates": [
+    "/blog/sitewwwcreativedesigninteriorcom/",
+    "/blog/sewa-crane-sukabumi/",
+    "/blog/cara-hitung-kebutuhan-scaffolding/",
+    "/blog/apa-arti-readymix/",
+    "/blog/cara-membuat-behel-besi/",
+    "/blog/harga-semen-herbel/",
+    "/blog/berapa-lama-semen-kering/"
+   ],
+   "duplicates": [
+    "/blog/sewa-crane-sukabumi/"
+   ],
+   "reason": "#2: Sewa crane, solusi efisien proyek konstruksi.",
+   "judgedAt": "2026-10-10T02:30:32.890Z"
+  },
+  "/blog/kelebihan-dan-kekurangan-membeli-furniture-online/": {
+   "candidates": [
+    "/blog/jenis-furniture-yang-paling-dibutuhkan-dirumah/",
+    "/blog/begini-cara-merawat-furniture-yang-benar/",
+    "/blog/cara-membeli-pasir-batu-bata-online/",
+    "/blog/jenis-kayu-yang-bagus-untuk-furniture/",
+    "/blog/manfaat-supplier-bahan-bangunan-online/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-10T02:30:36.864Z"
+  },
+  "/blog/cara-hitung-kebutuhan-scaffolding/": {
+   "candidates": [
+    "/blog/scaffolding-untuk-cor-dak/",
+    "/blog/cara-pasang-scaffolding/",
+    "/blog/menghitung-kebutuhan-pemakaian-scaffolding/",
+    "/blog/sitewwwcreativedesigninteriorcom/",
+    "/blog/cara-membuat-behel-besi/",
+    "/blog/adhimix-karawang/",
+    "/blog/sewa-crane-sukabumi/"
+   ],
+   "duplicates": [
+    "/blog/menghitung-kebutuhan-pemakaian-scaffolding/"
+   ],
+   "reason": "#3: Menghitung kebutuhan scaffolding, sama persis.",
+   "judgedAt": "2026-10-10T02:30:41.814Z"
+  },
+  "/blog/tiang-pondasi-rumah/": {
+   "candidates": [
+    "/blog/struktur-tiang-beton-rumah-dua-lantai/",
+    "/blog/jarak-ideal-tiang-beton-rumah/",
+    "/blog/cara-buat-dak-teras-tanpa-tiang/"
+   ],
+   "duplicates": [
+    "/blog/struktur-tiang-beton-rumah-dua-lantai/"
+   ],
+   "reason": "#1: Material tiang pondasi rumah, membahas struktur beton.",
+   "judgedAt": "2026-10-10T02:30:44.151Z"
+  },
+  "/blog/memilih-bufet-minimalis-untuk-ruang-keluarga/": {
+   "candidates": [
+    "/blog/bufet-tv-kaca-desain-minimalis/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-10T02:30:45.061Z"
+  },
+  "/blog/garukan-cor-beton/": {
+   "candidates": [
+    "/blog/cara-menghitung-kebutuhan-cor-kolom/",
+    "/blog/cairan-perekat-beton-retak/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-10T02:30:46.955Z"
+  },
+  "/blog/1-engkel-berapa-kubik/": {
+   "candidates": [
+    "/blog/1-mobil-molen-berapa-kubik/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-10T02:30:48.136Z"
+  },
+  "/blog/mengenal-epoxy-coating-dan-lantai/": {
+   "candidates": [
+    "/blog/bekisting-plat-lantai/",
+    "/blog/besi-plat-lantai/",
+    "/blog/besi-diameter-8/",
+    "/blog/beton-20-mpa/",
+    "/blog/buis-beton-u-30/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-10T02:30:51.689Z"
+  },
+  "/blog/cara-menghitung-dak-bondek/": {
+   "candidates": [
+    "/blog/bondek-075/",
+    "/blog/kelebihan-dak-bondek-vs-konvensional/",
+    "/blog/wiremesh-yang-ideal-untuk-dak-rumah/",
+    "/blog/cara-pemasangan-bondek-pada-balok-beton/",
+    "/blog/biaya-ngedak-rumah-dengan-bondek/",
+    "/blog/alasan-kenapa-bondek-jauh-lebih-murah/",
+    "/blog/menghitung-kebutuhan-bondek-wiremesh/"
+   ],
+   "duplicates": [
+    "/blog/biaya-ngedak-rumah-dengan-bondek/",
+    "/blog/menghitung-kebutuhan-bondek-wiremesh/"
+   ],
+   "reason": "#5: Estimasi biaya dak bondek, fokus sama. | #7: Menghitung kebutuhan bondek, fokus sama.",
+   "judgedAt": "2026-10-10T02:30:56.808Z"
+  },
+  "/blog/tips-memilih-jasa-supplier-beton-cor-yang-terpercaya/": {
+   "candidates": [
+    "/blog/memilih-supplier-bahan-bangunan-terpercaya/",
+    "/blog/manfaat-supplier-bahan-bangunan-online/",
+    "/blog/supplier-bahan-bangunan-terlengkap/"
+   ],
+   "duplicates": [
+    "/blog/memilih-supplier-bahan-bangunan-terpercaya/",
+    "/blog/supplier-bahan-bangunan-terlengkap/"
+   ],
+   "reason": "#1: Supplier bahan bangunan = supplier beton cor, memilih supplier. | #3: Supplier bahan bangunan = supplier beton cor, memilih supplier.",
+   "judgedAt": "2026-10-10T02:30:58.979Z"
+  },
+  "/blog/balok-gantung-rumah/": {
+   "candidates": [
+    "/blog/balok-gantung-teras/",
+    "/blog/harga-lemari-pakaian-gantung-terbaru/",
+    "/blog/beberapa-model-rak-tv-minimalis-modern/",
+    "/blog/bata-merah-expose-dinding-rumah-modern/",
+    "/blog/batako-hitam/",
+    "/blog/apa-itu-fly-ash/",
+    "/blog/beton-readymix-surabaya/"
+   ],
+   "duplicates": [
+    "/blog/balok-gantung-teras/"
+   ],
+   "reason": "#1: Balok gantung, fokus pemasangan dan biaya.",
+   "judgedAt": "2026-10-10T02:31:05.329Z"
+  },
+  "/blog/scaffolding-untuk-cor-dak/": {
+   "candidates": [
+    "/blog/cara-pasang-scaffolding/"
+   ],
+   "duplicates": [
+    "/blog/cara-pasang-scaffolding/"
+   ],
+   "reason": "#1: Scaffolding, fokus pemasangan, target audiens sama.",
+   "judgedAt": "2026-10-10T02:31:06.285Z"
+  },
+  "/blog/campuran-beton-sni/": {
+   "candidates": [
+    "/blog/campuran-semen-beton/",
+    "/blog/inilah-ukuran-balok-beton-sesuai-sni/",
+    "/blog/arang-sekam-untuk-campuran-cor/",
+    "/blog/ukuran-benda-uji-beton-silinder/",
+    "/blog/campuran-molen-beton/"
+   ],
+   "duplicates": [
+    "/blog/campuran-semen-beton/"
+   ],
+   "reason": "#1: Sinonim \"semen beton\" dan \"beton\" serta panduan lengkap.",
+   "judgedAt": "2026-10-10T02:31:09.867Z"
+  },
+  "/blog/harga-semen-buat-hebel/": {
+   "candidates": [
+    "/blog/harga-semen-herbel/",
+    "/blog/cara-tepat-menghitung-kebutuhan-hebel/",
+    "/blog/cara-pemasangan-hebel-benar/",
+    "/blog/harga-semen-perekat-hebel-2/",
+    "/blog/pasir-untuk-plester-hebel/",
+    "/blog/cara-terbaik-plester-dinding-hebel/",
+    "/blog/cara-menghitung-kebutuhan-perekat-hebel/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-10T02:31:15.486Z"
+  },
+  "/blog/arang-sekam-untuk-campuran-cor/": {
+   "candidates": [
+    "/blog/campuran-semen-beton/",
+    "/blog/jenis-jenis-pasir-untuk-bahan-bangunan/",
+    "/blog/campuran-molen-beton/",
+    "/blog/tips-menghemat-biaya-bahan-bangunan/",
+    "/blog/inilah-contoh-bahan-bangunan-struktural/",
+    "/blog/besi-sloof-jadi/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-10T02:31:20.000Z"
+  },
+  "/blog/pasir-untuk-plester-hebel/": {
+   "candidates": [
+    "/blog/cara-tepat-menghitung-kebutuhan-hebel/",
+    "/blog/cara-pemasangan-hebel-benar/",
+    "/blog/cara-terbaik-plester-dinding-hebel/",
+    "/blog/harga-semen-herbel/",
+    "/blog/pasir-untuk-plester-tembok/",
+    "/blog/membuat-adukan-plesteran-sendiri/",
+    "/blog/cara-menghitung-kebutuhan-perekat-hebel/"
+   ],
+   "duplicates": [
+    "/blog/pasir-untuk-plester-tembok/"
+   ],
+   "reason": "#5: Pasir plester hebel/tembok, jenis, harga, tips aplikasi.",
+   "judgedAt": "2026-10-10T02:31:26.121Z"
+  },
+  "/blog/batako-hitam/": {
+   "candidates": [
+    "/blog/batako-hitam-terbuat-dari-apa/",
+    "/blog/macam-macam-batako/",
+    "/blog/macam-macam-jenis-batako-dan-harganya/",
+    "/blog/tangga-beton/",
+    "/blog/batako-putih/",
+    "/blog/beberapa-model-rak-tv-minimalis-modern/",
+    "/blog/pasir-warna-hitam/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-10T02:31:31.398Z"
+  },
+  "/blog/cara-membuat-cor-halaman-rumah/": {
+   "candidates": [
+    "/blog/cara-mengecor-halaman-rumah/"
+   ],
+   "duplicates": [
+    "/blog/cara-mengecor-halaman-rumah/"
+   ],
+   "reason": "#1: Sinonim \"membuat\" dan \"mengecor\", maksud sama: panduan.",
+   "judgedAt": "2026-10-10T02:31:32.495Z"
+  },
+  "/blog/batako-hitam-terbuat-dari-apa/": {
+   "candidates": [
+    "/blog/macam-macam-batako/",
+    "/blog/macam-macam-jenis-batako-dan-harganya/",
+    "/blog/jenis-jenis-pasir-untuk-bahan-bangunan/",
+    "/blog/pasir-warna-hitam/",
+    "/blog/tips-menghemat-biaya-bahan-bangunan/",
+    "/blog/batako-putih/",
+    "/blog/batu-belah-hitam/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-10T02:31:38.228Z"
+  },
+  "/blog/1-mobil-molen-berapa-kubik/": {
+   "candidates": [
+    "/blog/berat-molen-cor/",
+    "/blog/1-molen-manual-berapa-m3/",
+    "/blog/campuran-molen-beton/"
+   ],
+   "duplicates": [
+    "/blog/berat-molen-cor/",
+    "/blog/1-molen-manual-berapa-m3/"
+   ],
+   "reason": "#1: Keduanya membahas kapasitas molen dan biaya terkait. | #2: Keduanya membahas kapasitas molen (m3) untuk proyek.",
+   "judgedAt": "2026-10-10T02:31:40.694Z"
+  },
+  "/blog/cor-dak-lantai-2-pakai-besi-berapa/": {
+   "candidates": [
+    "/blog/besi-dak-cor/",
+    "/blog/pentingnya-penggunaan-beton-tepat-mutu/",
+    "/blog/pompa-beton-proses-pengecoran/",
+    "/blog/harga-lemari-pakaian-sliding-terbaru/",
+    "/blog/harga-lemari-pakaian-anak-terbaru/",
+    "/blog/harga-lemari-pakaian-gantung-terbaru/",
+    "/blog/model-lemari-pakaian-anak-yang-unik/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-10T02:31:45.837Z"
+  },
+  "/blog/analisa-beton-k-300/": {
+   "candidates": [
+    "/blog/beton-instan-drymix-k-300/",
+    "/blog/campuran-beton-k300/",
+    "/blog/beton-instan-k300/"
+   ],
+   "duplicates": [
+    "/blog/beton-instan-drymix-k-300/",
+    "/blog/campuran-beton-k300/",
+    "/blog/beton-instan-k300/"
+   ],
+   "reason": "#1: Beton K300, panduan lengkap, aplikasi, dan keunggulan. | #2: Beton K300, panduan lengkap, kekuatan, penggunaan, aplikasi. | #3: Beton K300, panduan lengkap, konstruksi kuat dan efisien.",
+   "judgedAt": "2026-10-10T02:31:48.405Z"
+  },
+  "/blog/beberapa-model-rak-tv-minimalis-modern/": {
+   "candidates": [
+    "/blog/desain-rak-sepatu-untuk-toko/",
+    "/blog/apa-itu-fly-ash/",
+    "/blog/harga-rak-piring-cocok-untuk-rumah-minimalis/",
+    "/blog/inspirasi-rak-buku-untuk-perpustakaan-pribadi/",
+    "/blog/inspirasi-desain-rak-sepatu-minimalis/",
+    "/blog/beton-readymix-surabaya/",
+    "/blog/memilih-desain-rak-sepatu-kekinian/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-10T02:31:53.190Z"
+  },
+  "/blog/rental-pompa-beton-atau-concrete-pump/": {
+   "candidates": [
+    "/blog/pompa-beton-proses-pengecoran/",
+    "/blog/bagian-bagian-concrete-pump/",
+    "/blog/penyebab-pompa-beton-trouble/",
+    "/blog/cara-kerja-pompa-beton-ready-mix/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-10T02:31:56.930Z"
+  },
+  "/blog/biaya-cor-rumah/": {
+   "candidates": [
+    "/blog/biaya-cor-per-m3/",
+    "/blog/biaya-dak-rumah/",
+    "/blog/biaya-dak-beton/",
+    "/blog/berat-beton-per-m3/",
+    "/blog/berat-molen-cor/"
+   ],
+   "duplicates": [
+    "/blog/biaya-cor-per-m3/"
+   ],
+   "reason": "#1: Objek & maksud sama: estimasi biaya cor.",
+   "judgedAt": "2026-10-10T02:32:00.435Z"
+  },
+  "/blog/berat-molen-cor/": {
+   "candidates": [
+    "/blog/berat-beton-per-m3/",
+    "/blog/truk-mixer-pengangkut-beton-cor-atau-truk-molen/",
+    "/blog/campuran-molen-beton/",
+    "/blog/1-molen-manual-berapa-m3/",
+    "/blog/biaya-dak-rumah/"
+   ],
+   "duplicates": [
+    "/blog/truk-mixer-pengangkut-beton-cor-atau-truk-molen/",
+    "/blog/1-molen-manual-berapa-m3/"
+   ],
+   "reason": "#2: Molen/truk mixer = alat, membahas kapasitas/pengaruh biaya. | #4: Molen, membahas kapasitas dan hubungannya dengan proyek.",
+   "judgedAt": "2026-10-10T02:32:04.551Z"
+  },
+  "/blog/cor-pondasi/": {
+   "candidates": [
+    "/blog/tangga-beton/",
+    "/blog/adukan/",
+    "/blog/batako-putih/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-10T02:32:06.608Z"
+  },
+  "/blog/truk-mixer-pengangkut-beton-cor-atau-truk-molen/": {
+   "candidates": [
+    "/blog/campuran-molen-beton/",
+    "/blog/1-molen-manual-berapa-m3/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-10T02:32:08.119Z"
+  },
+  "/blog/sitewwwcreativedesigninteriorcom/": {
+   "candidates": [
+    "/blog/adhimix-karawang/",
+    "/blog/arti-beton/",
+    "/blog/cara-membuat-tutup-got-beton/",
+    "/blog/beton-readymix-surabaya/",
+    "/blog/cara-membuat-behel-besi/",
+    "/blog/sewa-crane-sukabumi/",
+    "/blog/harga-semen-herbel/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-10T02:32:13.201Z"
+  },
+  "/blog/berapa-jam-cor-boleh-kena-air/": {
+   "candidates": [
+    "/blog/cara-membuat-beton-penyerap-air/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-10T02:32:14.066Z"
   }
  }
 }

@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-10-09T05:44:52.231Z",
+  "generatedAt": "2026-10-10T02:32:14.140Z",
   "mode": "judge",
   "section": "blog",
-  "clusterCount": 17,
-  "deleteCount": 22,
-  "undecidedSeeds": 276,
+  "clusterCount": 25,
+  "deleteCount": 34,
+  "undecidedSeeds": 225,
   "judgeErrors": 0,
   "clusters": [
     {
@@ -137,6 +137,25 @@
     },
     {
       "keep": {
+        "url": "/blog/adhimix-beton/",
+        "title": "Adhimix Beton: Solusi Praktis untuk Konstruksi Berkualitas di Jabodetabek",
+        "keyword": "adhimix beton",
+        "words": 652,
+        "inbound": 2
+      },
+      "reason": "#1: Adhimix beton siap pakai, solusi konstruksi Jabodetabek.",
+      "remove": [
+        {
+          "url": "/blog/adhimix-rmc/",
+          "title": "Adhimix RMC: Solusi Beton Siap Pakai untuk Proyek Konstruksi Jabodetabek",
+          "keyword": "adhimix rmc",
+          "words": 698,
+          "inbound": 0
+        }
+      ]
+    },
+    {
+      "keep": {
         "url": "/blog/bekisting-jalan-rigid/",
         "title": "Bekisting Jalan Rigid: Panduan Lengkap Material, Aplikasi, dan Estimasi Biaya 2026",
         "keyword": "bekisting jalan rigid",
@@ -226,25 +245,6 @@
           "title": "Berapa Lama Coran Kering? Panduan Lengkap untuk Proyek Konstruksi Anda",
           "keyword": "berapa lama coran kering",
           "words": 643,
-          "inbound": 0
-        }
-      ]
-    },
-    {
-      "keep": {
-        "url": "/blog/adhimix-beton/",
-        "title": "Adhimix Beton: Solusi Praktis untuk Konstruksi Berkualitas di Jabodetabek",
-        "keyword": "adhimix beton",
-        "words": 652,
-        "inbound": 1
-      },
-      "reason": "#1: Adhimix beton siap pakai, solusi konstruksi Jabodetabek.",
-      "remove": [
-        {
-          "url": "/blog/adhimix-rmc/",
-          "title": "Adhimix RMC: Solusi Beton Siap Pakai untuk Proyek Konstruksi Jabodetabek",
-          "keyword": "adhimix rmc",
-          "words": 698,
           "inbound": 0
         }
       ]
@@ -361,6 +361,186 @@
           "title": "Besi Buat Ngecor: Panduan Lengkap Memilih Jenis dan Ukuran Terbaik",
           "keyword": "besi buat ngecor",
           "words": 699,
+          "inbound": 0
+        }
+      ]
+    },
+    {
+      "keep": {
+        "url": "/blog/bongkar-bekisting-kolom-berapa-hari/",
+        "title": "Bongkar Bekisting Kolom Berapa Hari? Tips dan Penjelasan Lengkap",
+        "keyword": "bongkar bekisting kolom berapa hari",
+        "words": 759,
+        "inbound": 0
+      },
+      "reason": "#1: Judul & ringkasan membahas waktu ideal lepas bekisting kolom. | #2: Judul & ringkasan membahas waktu ideal lepas bekisting kolom. | #4: Judul & ringkasan membahas waktu ideal lepas bekisting kolom. | #5: Judul & ringkasan membahas waktu ideal bongkar bekisting.",
+      "remove": [
+        {
+          "url": "/blog/berapa-hari-bekisting-kolom-bisa-dilepas/",
+          "title": "Berapa Hari Bekisting Kolom Bisa Dilepas? Ini Penjelasannya",
+          "keyword": "berapa hari bekisting kolom bisa dilepas",
+          "words": 642,
+          "inbound": 0
+        },
+        {
+          "url": "/blog/buka-bekisting-kolom-berapa-hari/",
+          "title": "Buka Bekisting Kolom Berapa Hari? Yuk Cari Tahu Waktu Optimalnya",
+          "keyword": "buka bekisting kolom berapa hari",
+          "words": 626,
+          "inbound": 0
+        },
+        {
+          "url": "/blog/berapa-lama-bekisting-kolom-bisa-dibuka/",
+          "title": "Berapa Lama Bekisting Kolom Bisa Dibuka? Panduan Praktis untuk Proyek Anda",
+          "keyword": "berapa lama bekisting kolom bisa dibuka",
+          "words": 665,
+          "inbound": 0
+        }
+      ]
+    },
+    {
+      "keep": {
+        "url": "/blog/harga-rabatan-lantai-per-m2/",
+        "title": "Harga Rabatan Lantai Per M2: Panduan Lengkap & Estimasi Biaya 2026",
+        "keyword": "harga rabatan lantai per m2",
+        "words": 745,
+        "inbound": 0
+      },
+      "reason": "#1: Objek sama (rabat lantai), maksud sama (harga & panduan). | #2: Objek sama (rabat lantai), maksud sama (harga & estimasi). | #3: Objek sama (rabat lantai), maksud sama (harga & estimasi).",
+      "remove": [
+        {
+          "url": "/blog/rabat-beton-lantai/",
+          "title": "Rabat Beton Lantai: Panduan Lengkap Pemasangan, Biaya, dan Perawatan",
+          "keyword": "rabat beton lantai",
+          "words": 713,
+          "inbound": 0
+        },
+        {
+          "url": "/blog/biaya-rabat-lantai-per-meter/",
+          "title": "Biaya Rabat Lantai Per Meter: Panduan Lengkap & Estimasi 2026",
+          "keyword": "biaya rabat lantai per meter",
+          "words": 692,
+          "inbound": 0
+        },
+        {
+          "url": "/blog/harga-borongan-rabatan-lantai-per-m2/",
+          "title": "Harga Borongan Rabatan Lantai Per M2: Estimasi & Tips Akurat 2026",
+          "keyword": "harga borongan rabatan lantai per m2",
+          "words": 637,
+          "inbound": 0
+        }
+      ]
+    },
+    {
+      "keep": {
+        "url": "/blog/cara-pasang-baja-ringan-sendiri/",
+        "title": "Tips dan Cara Pasang Baja Ringan Sendiri di Rumah, Mudah dan Aman!",
+        "keyword": "cara pasang baja ringan sendiri",
+        "words": 742,
+        "inbound": 0
+      },
+      "reason": "#6: Objek & maksud sama: cara pasang baja ringan.",
+      "remove": [
+        {
+          "url": "/blog/cara-memasang-rangka-baja-ringan-sendiri/",
+          "title": "Cara Memasang Rangka Baja Ringan Sendiri",
+          "keyword": "",
+          "words": 444,
+          "inbound": 0
+        }
+      ]
+    },
+    {
+      "keep": {
+        "url": "/blog/cara-hitung-kebutuhan-scaffolding/",
+        "title": "Cara Hitung Kebutuhan Scaffolding untuk Proyek Konstruksi Anda",
+        "keyword": "cara hitung kebutuhan scaffolding",
+        "words": 736,
+        "inbound": 0
+      },
+      "reason": "#3: Menghitung kebutuhan scaffolding, sama persis.",
+      "remove": [
+        {
+          "url": "/blog/menghitung-kebutuhan-pemakaian-scaffolding/",
+          "title": "Menghitung Kebutuhan Pemakaian Scaffolding",
+          "keyword": "",
+          "words": 558,
+          "inbound": 0
+        }
+      ]
+    },
+    {
+      "keep": {
+        "url": "/blog/cara-menghitung-dak-bondek/",
+        "title": "Cara Menghitung Dak Bondek: Panduan Lengkap & Estimasi Biaya 2026",
+        "keyword": "cara menghitung dak bondek",
+        "words": 727,
+        "inbound": 0
+      },
+      "reason": "#5: Estimasi biaya dak bondek, fokus sama. | #7: Menghitung kebutuhan bondek, fokus sama.",
+      "remove": [
+        {
+          "url": "/blog/menghitung-kebutuhan-bondek-wiremesh/",
+          "title": "Cara Menghitung Kebutuhan Bondek & Wiremesh",
+          "keyword": "",
+          "words": 468,
+          "inbound": 0
+        }
+      ]
+    },
+    {
+      "keep": {
+        "url": "/blog/tips-memilih-jasa-supplier-beton-cor-yang-terpercaya/",
+        "title": "Tips Memilih Jasa Supplier Beton Cor yang Terpercaya",
+        "keyword": "",
+        "words": 726,
+        "inbound": 0
+      },
+      "reason": "#1: Supplier bahan bangunan = supplier beton cor, memilih supplier. | #3: Supplier bahan bangunan = supplier beton cor, memilih supplier.",
+      "remove": [
+        {
+          "url": "/blog/memilih-supplier-bahan-bangunan-terpercaya/",
+          "title": "Memilih Supplier Bahan Bangunan Terpercaya",
+          "keyword": "",
+          "words": 538,
+          "inbound": 0
+        }
+      ]
+    },
+    {
+      "keep": {
+        "url": "/blog/cara-membuat-cor-halaman-rumah/",
+        "title": "Cara Membuat Cor Halaman Rumah: Panduan Lengkap dari Awal Hingga Selesai",
+        "keyword": "cara membuat cor halaman rumah",
+        "words": 718,
+        "inbound": 0
+      },
+      "reason": "#1: Sinonim \"membuat\" dan \"mengecor\", maksud sama: panduan.",
+      "remove": [
+        {
+          "url": "/blog/cara-mengecor-halaman-rumah/",
+          "title": "Cara Mengecor Halaman Rumah: Panduan Praktis untuk Hasil Kuat dan Tahan Lama",
+          "keyword": "cara mengecor halaman rumah",
+          "words": 666,
+          "inbound": 0
+        }
+      ]
+    },
+    {
+      "keep": {
+        "url": "/blog/biaya-cor-rumah/",
+        "title": "Biaya Cor Rumah: Estimasi, Faktor Pengaruh, dan Tips Menekan Biaya",
+        "keyword": "biaya cor rumah",
+        "words": 704,
+        "inbound": 0
+      },
+      "reason": "#1: Objek & maksud sama: estimasi biaya cor.",
+      "remove": [
+        {
+          "url": "/blog/biaya-cor-per-m3/",
+          "title": "Biaya Cor Per M3: Estimasi, Faktor Pengaruh, dan Tips Efisien di Jabodetabek",
+          "keyword": "biaya cor per m3",
+          "words": 659,
           "inbound": 0
         }
       ]
@@ -633,6 +813,96 @@
       "keep": "/blog/campuran-pondasi-rumah/",
       "drop": "/blog/campuran-semen-beton/",
       "aiReason": "#3: Campuran pondasi/beton, fokus kualitas/ketahanan. | #5: Campuran semen beton = campuran pondasi, kualitas."
+    },
+    {
+      "keep": "/blog/bongkar-bekisting-kolom-berapa-hari/",
+      "drop": "/blog/waktu-yang-tepat-bongkar-bekisting/",
+      "aiReason": "#1: Judul & ringkasan membahas waktu ideal lepas bekisting kolom. | #2: Judul & ringkasan membahas waktu ideal lepas bekisting kolom. | #4: Judul & ringkasan membahas waktu ideal lepas bekisting kolom. | #5: Judul & ringkasan membahas waktu ideal bongkar bekisting."
+    },
+    {
+      "keep": "/blog/batu-belah-dan-batu-kali-apakah-sama/",
+      "drop": "/blog/perbedaan-batu-kali-dan-batu-belah/",
+      "aiReason": "#2: Perbandingan batu kali vs batu belah, sama persis."
+    },
+    {
+      "keep": "/blog/beton-instan-k250/",
+      "drop": "/blog/analisa-beton-k-250-ready-mix/",
+      "aiReason": "#1: Topik dan informasi yang dicari pembaca identik."
+    },
+    {
+      "keep": "/blog/sewa-crane-cipulir/",
+      "drop": "/blog/sewa-crane-sukabumi/",
+      "aiReason": "#2: Sewa crane, solusi efisien proyek konstruksi."
+    },
+    {
+      "keep": "/blog/tiang-pondasi-rumah/",
+      "drop": "/blog/struktur-tiang-beton-rumah-dua-lantai/",
+      "aiReason": "#1: Material tiang pondasi rumah, membahas struktur beton."
+    },
+    {
+      "keep": "/blog/cara-menghitung-dak-bondek/",
+      "drop": "/blog/biaya-ngedak-rumah-dengan-bondek/",
+      "aiReason": "#5: Estimasi biaya dak bondek, fokus sama. | #7: Menghitung kebutuhan bondek, fokus sama."
+    },
+    {
+      "keep": "/blog/tips-memilih-jasa-supplier-beton-cor-yang-terpercaya/",
+      "drop": "/blog/supplier-bahan-bangunan-terlengkap/",
+      "aiReason": "#1: Supplier bahan bangunan = supplier beton cor, memilih supplier. | #3: Supplier bahan bangunan = supplier beton cor, memilih supplier."
+    },
+    {
+      "keep": "/blog/balok-gantung-rumah/",
+      "drop": "/blog/balok-gantung-teras/",
+      "aiReason": "#1: Balok gantung, fokus pemasangan dan biaya."
+    },
+    {
+      "keep": "/blog/scaffolding-untuk-cor-dak/",
+      "drop": "/blog/cara-pasang-scaffolding/",
+      "aiReason": "#1: Scaffolding, fokus pemasangan, target audiens sama."
+    },
+    {
+      "keep": "/blog/campuran-beton-sni/",
+      "drop": "/blog/campuran-semen-beton/",
+      "aiReason": "#1: Sinonim \"semen beton\" dan \"beton\" serta panduan lengkap."
+    },
+    {
+      "keep": "/blog/pasir-untuk-plester-hebel/",
+      "drop": "/blog/pasir-untuk-plester-tembok/",
+      "aiReason": "#5: Pasir plester hebel/tembok, jenis, harga, tips aplikasi."
+    },
+    {
+      "keep": "/blog/1-mobil-molen-berapa-kubik/",
+      "drop": "/blog/berat-molen-cor/",
+      "aiReason": "#1: Keduanya membahas kapasitas molen dan biaya terkait. | #2: Keduanya membahas kapasitas molen (m3) untuk proyek."
+    },
+    {
+      "keep": "/blog/1-mobil-molen-berapa-kubik/",
+      "drop": "/blog/1-molen-manual-berapa-m3/",
+      "aiReason": "#1: Keduanya membahas kapasitas molen dan biaya terkait. | #2: Keduanya membahas kapasitas molen (m3) untuk proyek."
+    },
+    {
+      "keep": "/blog/analisa-beton-k-300/",
+      "drop": "/blog/beton-instan-drymix-k-300/",
+      "aiReason": "#1: Beton K300, panduan lengkap, aplikasi, dan keunggulan. | #2: Beton K300, panduan lengkap, kekuatan, penggunaan, aplikasi. | #3: Beton K300, panduan lengkap, konstruksi kuat dan efisien."
+    },
+    {
+      "keep": "/blog/analisa-beton-k-300/",
+      "drop": "/blog/campuran-beton-k300/",
+      "aiReason": "#1: Beton K300, panduan lengkap, aplikasi, dan keunggulan. | #2: Beton K300, panduan lengkap, kekuatan, penggunaan, aplikasi. | #3: Beton K300, panduan lengkap, konstruksi kuat dan efisien."
+    },
+    {
+      "keep": "/blog/analisa-beton-k-300/",
+      "drop": "/blog/beton-instan-k300/",
+      "aiReason": "#1: Beton K300, panduan lengkap, aplikasi, dan keunggulan. | #2: Beton K300, panduan lengkap, kekuatan, penggunaan, aplikasi. | #3: Beton K300, panduan lengkap, konstruksi kuat dan efisien."
+    },
+    {
+      "keep": "/blog/berat-molen-cor/",
+      "drop": "/blog/truk-mixer-pengangkut-beton-cor-atau-truk-molen/",
+      "aiReason": "#2: Molen/truk mixer = alat, membahas kapasitas/pengaruh biaya. | #4: Molen, membahas kapasitas dan hubungannya dengan proyek."
+    },
+    {
+      "keep": "/blog/berat-molen-cor/",
+      "drop": "/blog/1-molen-manual-berapa-m3/",
+      "aiReason": "#2: Molen/truk mixer = alat, membahas kapasitas/pengaruh biaya. | #4: Molen, membahas kapasitas dan hubungannya dengan proyek."
     }
   ]
 }
