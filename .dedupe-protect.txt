@@ -1,15 +1,21 @@
+# .dedupe-protect.txt — artikel yang TIDAK BOLEH dihapus (protect selalu menang atas approve).
+# Satu URL per baris. Baris diawali # = komentar. Taruh di ROOT repo.
+
+# --- pemenang / artikel yang dipertahankan ---
 /blog/biaya-cor-lantai-per-m2/
 /blog/biaya-cor-dak-bondek-per-m2/
-/blog/atap-bondek-cor/
-/blog/cara-pemasangan-bondek-pada-balok-beton/
-/blog/begini-cara-memasang-bondek-yang-benar/
 /blog/biaya-beton-jalan-per-meter/
 /blog/bekisting-jalan-rigid/
 /blog/10-jenis-batu-alam/
 /blog/cara-menyambung-cor-beton-lama-dengan-yang-baru/
 /blog/cara-menghitung-kebutuhan-besi-untuk-cor-lantai/
-/blog/cor-dak-lantai-2-pakai-besi-berapa/
 /blog/berapa-lama-cor-lantai-2-kering/
 /blog/adhimix-beton/
 /blog/apa-itu-batching-plant/
 /blog/1-kubik-air-berapa-kg/
+/blog/begini-cara-memasang-bondek-yang-benar/
+
+# --- artikel yang berdiri sendiri (beda topik, jangan digabung) ---
+/blog/atap-bondek-cor/
+/blog/cara-pemasangan-bondek-pada-balok-beton/
+/blog/cor-dak-lantai-2-pakai-besi-berapa/
