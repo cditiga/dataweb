@@ -2546,5 +2546,26 @@
     "matchedTitle": "Biaya Membuat Lantai 2: Perencanaan Anggaran dan Estimasi 2026",
     "taggedAt": "2026-10-10T12:52:13.561Z",
     "algoVersion": 4
+  },
+  "harga cat per m2": {
+    "reason": "similar to existing article",
+    "matchedFile": "cat-tembok-teras-depan.md",
+    "matchedTitle": "Cat Tembok Teras Depan: Panduan Memilih Warna, Jenis, dan Estimasi Biaya 2026",
+    "taggedAt": "2026-10-12T15:43:18.626Z",
+    "algoVersion": 4
+  },
+  "harga cat per meter": {
+    "reason": "similar to existing article",
+    "matchedFile": "cat-tembok-teras-depan.md",
+    "matchedTitle": "Cat Tembok Teras Depan: Panduan Memilih Warna, Jenis, dan Estimasi Biaya 2026",
+    "taggedAt": "2026-10-12T15:43:18.627Z",
+    "algoVersion": 4
+  },
+  "warna cat teras depan": {
+    "reason": "similar to existing article",
+    "matchedFile": "cat-tembok-teras-depan.md",
+    "matchedTitle": "Cat Tembok Teras Depan: Panduan Memilih Warna, Jenis, dan Estimasi Biaya 2026",
+    "taggedAt": "2026-10-12T15:43:19.321Z",
+    "algoVersion": 4
   }
 }
