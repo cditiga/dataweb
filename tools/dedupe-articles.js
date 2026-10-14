@@ -15,12 +15,14 @@
  * dibatalkan; --apply menolak jika masih ada artikel yang belum dinilai (kecuali --allow-partial).
  *
  * USAGE:
+ *   node tools/dedupe-articles.js --auto                 → SEKALI JALAN: nilai semua artikel lalu eksekusi (tanpa file manual)
  *   node tools/dedupe-articles.js --judge --limit=40     → AI menilai (dilanjutkan di run berikutnya)
  *   node tools/dedupe-articles.js                        → LAPORAN dari keputusan yang ada (tanpa AI)
  *   node tools/dedupe-articles.js --apply                → eksekusi
  *   opsi: --section=blog --max-delete=40 --max-cluster=8 --retry-errors --allow-partial
  *         --ai-only  (percaya AI saja; DEFAULT = konsensus: AI dan aturan kata harus sama-sama setuju)
- *   file manual (opsional, satu slug/URL per baris): .dedupe-approve.txt (setujui usulan AI yg disengketakan),
+ *   file manual (opsional, satu slug/URL per baris): .dedupe-approve.txt (setujui usulan AI yg disengketakan;
+ *                                                      baris "korban > pemenang" = penggabungan manual ke pemenang tertentu),
  *                                                    .dedupe-protect.txt (JANGAN pernah hapus)
  *         --mock-ai  (uji offline TANPA AI: memakai aturan kata sebagai "juri"; hanya untuk pengujian)
  *
@@ -37,11 +39,12 @@ const PROMPTS = require('./prompts/dedupe-articles.json');
 const ARGS = process.argv.slice(2);
 const has  = f => ARGS.includes(f);
 const arg  = (n, d) => { const a = ARGS.find(x => x.startsWith(`--${n}=`)); return a ? a.slice(n.length + 3) : d; };
-const JUDGE = has('--judge'), APPLY = has('--apply'), MOCK = has('--mock-ai');
-const RETRY = has('--retry-errors'), ALLOW_PARTIAL = has('--allow-partial');
+const AUTO = has('--auto'); // SEKALI JALAN: nilai semua -> eksekusi; tanpa file approve/protect (diabaikan)
+const JUDGE = has('--judge') || AUTO, APPLY = has('--apply'), MOCK = has('--mock-ai');
+const RETRY = has('--retry-errors') || AUTO, ALLOW_PARTIAL = has('--allow-partial');
 const AI_ONLY = has('--ai-only'); // default: KONSENSUS (AI DAN aturan kata harus sama-sama setuju)
 const SECTION = arg('section', 'blog');
-const LIMIT = parseInt(arg('limit', '40'), 10);
+const LIMIT = AUTO ? Infinity : parseInt(arg('limit', '40'), 10);
 const MAX_DELETE = parseInt(arg('max-delete', '40'), 10);
 const MAX_CLUSTER = parseInt(arg('max-cluster', '8'), 10);
 const MAX_CANDIDATES = 7;
@@ -58,7 +61,7 @@ const REPORT = path.join(ROOT, 'dedupe-report.json');
 const APPROVE_FILE = path.join(ROOT, '.dedupe-approve.txt'); // slug/URL korban yang disetujui manual walau aturan kata tidak setuju
 const PROTECT_FILE = path.join(ROOT, '.dedupe-protect.txt'); // slug/URL yang TIDAK BOLEH dihapus
 
-if (JUDGE && APPLY) { console.error('Pilih salah satu: --judge ATAU --apply.'); process.exit(1); }
+if ((has('--judge') || AUTO) && APPLY) { console.error('Pilih salah satu: --auto / --judge ATAU --apply.'); process.exit(1); }
 
 // ── Cloudflare Workers AI (salinan sendiri, pola sama dgn revise/fix-orphans) ─────────────
 const parseTokens = raw => (raw || '').split(/[\n,]+/).map(s => s.trim()).filter(Boolean);
@@ -167,6 +170,16 @@ function loadDecisions() {
     return j.decisions || {};
   } catch { return {}; }
 }
+const readApprove = () => { // baris biasa = setujui korban (pemenang bebas); "korban > pemenang" = PENGGABUNGAN MANUAL ke pemenang itu
+  const any = new Set(), forced = new Map();
+  const norm = x => { x = x.trim(); return x.startsWith('/') ? x : `/${SECTION}/${x.replace(/\.md$/, '')}/`; };
+  try {
+    for (const l of fs.readFileSync(APPROVE_FILE, 'utf8').split('\n').map(x => x.trim()).filter(x => x && !x.startsWith('#'))) {
+      if (l.includes('>')) { const [a, b] = l.split('>'); forced.set(norm(a), norm(b)); } else any.add(norm(l));
+    }
+  } catch {}
+  return { any, forced };
+};
 const readList = f => { try { return new Set(fs.readFileSync(f, 'utf8').split('\n').map(l => l.trim()).filter(l => l && !l.startsWith('#')).map(l => l.startsWith('/') ? l : `/${SECTION}/${l.replace(/\.md$/, '')}/`)); } catch { return new Set(); } };
 function saveDecisions(d) { fs.writeFileSync(DECISIONS, JSON.stringify({ version: DECISIONS_VERSION, updatedAt: new Date().toISOString(), decisions: d }, null, 1)); }
 const decisions = loadDecisions();
@@ -179,8 +192,12 @@ function candidatesFor(seed, pool) {
 // juri tiruan untuk pengujian offline
 const mockJudge = (seed, cands) => ({ ids: cands.map((c, i) => KS.articlesDuplicate(seed.info, c.info) ? i + 1 : 0).filter(Boolean), reason: 'mock (aturan kata)' });
 
+let mockCalls = 0; // hanya untuk pengujian: DEDUPE_MOCK_RATELIMIT_AFTER=N mensimulasikan rate limit setelah N panggilan
 async function judgeOne(seed, cands) {
-  if (MOCK) return mockJudge(seed, cands);
+  if (MOCK) {
+    if (process.env.DEDUPE_MOCK_RATELIMIT_AFTER && ++mockCalls > +process.env.DEDUPE_MOCK_RATELIMIT_AFTER) { const e = new Error('rate limit (tiruan)'); e.isRateLimit = true; throw e; }
+    return mockJudge(seed, cands);
+  }
   const raw = await callAI(J.buildMessages(PROMPTS, seed, cands));
   return J.parseVerdict(raw, cands.length);
 }
@@ -192,12 +209,13 @@ async function main() {
     if (CF.IDS.length > 1 && CF.IDS.length !== CF.TOKENS.length) console.warn('⚠️  Jumlah baris CLOUDFLARE_ACCOUNT_ID dan CLOUDFLARE_API_TOKEN tidak sama — pasangan bisa salah.');
   }
 
-  const used = new Set(), allClusters = [], undecided = [], vetoed = [], disputed = [];
-  const approved = readList(APPROVE_FILE), protectedUrls = readList(PROTECT_FILE);
+  const used = new Set(); let allClusters = []; const undecided = [], vetoed = [], disputed = [];
+  const { any: approved, forced } = readApprove(), protectedUrls = readList(PROTECT_FILE);
+  if (AUTO) { approved.clear(); forced.clear(); protectedUrls.clear(); console.log('🤖 MODE OTOMATIS: .dedupe-approve.txt / .dedupe-protect.txt DIABAIKAN; hanya usulan yang disetujui AI DAN aturan kata yang dieksekusi.'); }
   // Konfirmasi file manual terbaca (nama file harus persis .dedupe-approve.txt / .dedupe-protect.txt di root repo)
   const known = u => (byUrl.has(u) ? '' : ' (tidak ditemukan di content!)');
-  console.log(`🛡️  ${protectedUrls.size} URL dilindungi (${path.basename(PROTECT_FILE)}${fs.existsSync(PROTECT_FILE) ? '' : ' — file TIDAK ada'}), ✅ ${approved.size} URL disetujui manual (${path.basename(APPROVE_FILE)}${fs.existsSync(APPROVE_FILE) ? '' : ' — file TIDAK ada'})`);
-  for (const u of [...protectedUrls, ...approved]) if (!byUrl.has(u)) console.log(`   ⚠️  ${u}${known(u)}`);
+  console.log(`🛡️  ${protectedUrls.size} URL dilindungi (${path.basename(PROTECT_FILE)}${fs.existsSync(PROTECT_FILE) ? '' : ' — file TIDAK ada'}), ✅ ${approved.size} URL disetujui manual + ${forced.size} penggabungan manual "a > b" (${path.basename(APPROVE_FILE)}${fs.existsSync(APPROVE_FILE) ? '' : ' — file TIDAK ada'})`);
+  for (const u of [...protectedUrls, ...approved, ...forced.keys(), ...forced.values()]) if (!byUrl.has(u)) console.log(`   ⚠️  ${u}${known(u)}`);
   for (const u of protectedUrls) if (approved.has(u)) console.log(`   ⚠️  ${u} ada di KEDUA daftar — protect menang (tidak akan dihapus)`);
   let judged = 0, stop = false, stopReason = '';
 
@@ -212,7 +230,7 @@ async function main() {
       const cands = candidatesFor(seed, pool);
       if (!cands.length) d = { candidates: [], duplicates: [] };            // tidak perlu AI
       else if (JUDGE && !stop && judged < LIMIT) {
-        process.stdout.write(`\r🤖 AI menilai ${judged + 1}/${LIMIT}: ${seed.slug.slice(0, 50).padEnd(50)}`);
+        process.stdout.write(`\r🤖 AI menilai ${judged + 1}${LIMIT === Infinity ? '' : '/' + LIMIT}: ${seed.slug.slice(0, 50).padEnd(50)}`);
         try {
           const v = await judgeOne(seed, cands);
           judged++;
@@ -233,6 +251,7 @@ async function main() {
       const o = byUrl.get(u);
       if (!o || used.has(o.url)) continue;
       if (protectedUrls.has(o.url)) continue;                                                                    // dilindungi manual
+      if (forced.has(o.url) && forced.get(o.url) !== seed.url) continue;                                         // sudah ditetapkan manual ke pemenang lain
       if (KS.hardConflict(seed.info.kw, o.info.kw)) { vetoed.push({ keep: seed.url, drop: o.url }); continue; } // veto script
       if (!AI_ONLY && !approved.has(o.url) && !KS.articlesDuplicate(seed.info, o.info)) {                         // konsensus
         disputed.push({ keep: seed.url, drop: o.url, aiReason: d.reason || '' }); continue;
@@ -241,6 +260,20 @@ async function main() {
     }
     if (losers.length) allClusters.push({ winner: seed, losers, reason: d.reason || '' });
   }
+  // Penggabungan manual "korban > pemenang": keputusan manusia, tidak bergantung pada AI/aturan kata
+  for (const [lu, wu] of forced) {
+    const L = byUrl.get(lu), W = byUrl.get(wu);
+    const warn = m => console.log(`   ⚠️  penggabungan manual dilewati: ${lu} > ${wu} — ${m}`);
+    if (!L || !W) { warn('salah satu URL tidak ditemukan'); continue; }
+    if (protectedUrls.has(lu)) { warn('korban ada di .dedupe-protect.txt'); continue; }
+    if (allClusters.some(c => c.losers.some(x => x.url === wu))) { warn('pemenang sendiri akan dihapus di kelompok lain'); continue; }
+    if (allClusters.some(c => c.winner.url === lu)) { warn('korban adalah pemenang kelompok lain — selesaikan manual'); continue; }
+    for (const c of allClusters) c.losers = c.losers.filter(x => x.url !== lu);
+    let c = allClusters.find(x => x.winner.url === wu);
+    if (!c) { c = { winner: W, losers: [], reason: 'penggabungan manual' }; allClusters.push(c); }
+    c.losers.push({ ...L, reason: 'penggabungan manual (.dedupe-approve.txt)' });
+  }
+  allClusters = allClusters.filter(c => c.losers.length);
   if (JUDGE) { saveDecisions(decisions); process.stdout.write('\n'); }
 
   const clusters = allClusters.filter(c => c.losers.length <= MAX_CLUSTER);
@@ -263,8 +296,8 @@ async function main() {
 
   const brief = a => ({ url: a.url, title: a.title, keyword: a.keyword, words: a.words, inbound: a.inbound });
   fs.writeFileSync(REPORT, JSON.stringify({
-    generatedAt: new Date().toISOString(), mode: APPLY ? 'apply' : JUDGE ? 'judge' : 'report', section: SECTION,
-    clusterCount: clusters.length, deleteCount: totalLosers, undecidedSeeds: undecided.length, judgeErrors: errors.length,
+    generatedAt: new Date().toISOString(), mode: AUTO ? 'auto' : APPLY ? 'apply' : JUDGE ? 'judge' : 'report', section: SECTION,
+    complete: undecided.length === 0, clusterCount: clusters.length, deleteCount: totalLosers, undecidedSeeds: undecided.length, judgeErrors: errors.length,
     clusters: clusters.map(c => ({ keep: brief(c.winner), reason: c.reason, remove: c.losers.map(brief) })),
     skippedForManualReview: reviewClusters.map(c => ({ keep: brief(c.winner), reason: c.reason, remove: c.losers.map(brief) })),
     vetoedByScript: vetoed,
@@ -272,12 +305,20 @@ async function main() {
   }, null, 2));
   console.log('📝 Laporan: dedupe-report.json');
 
-  if (!APPLY) { console.log(JUDGE ? '\nℹ️  Selesai menilai. Ulangi --judge sampai tidak ada yang tertunda, lalu tinjau laporan, lalu --apply.' : '\nℹ️  LAPORAN saja — tidak ada file diubah.'); return; }
+  if (AUTO && undecided.length) {
+    console.log(`\n⏳ Mode otomatis BELUM selesai: ${undecided.length} artikel utama belum dinilai${stopReason ? ` (berhenti: ${stopReason})` : ''}.`);
+    console.log('   Keputusan sudah disimpan. Jalankan workflow lagi (pengaturan sama) sampai selesai — penghapusan baru dilakukan setelah SEMUA dinilai.');
+    return;
+  }
+  if (!APPLY && !AUTO) { console.log(JUDGE ? '\nℹ️  Selesai menilai. Ulangi --judge sampai tidak ada yang tertunda, lalu tinjau laporan, lalu --apply.' : '\nℹ️  LAPORAN saja — tidak ada file diubah.'); return; }
 
   // ── Guard sebelum eksekusi ──
-  if (undecided.length && !ALLOW_PARTIAL) { console.error(`\n🛑 ${undecided.length} artikel utama belum dinilai AI. Selesaikan --judge dulu (atau pakai --allow-partial).`); process.exit(1); }
+  if (!AUTO && undecided.length && !ALLOW_PARTIAL) { console.error(`\n🛑 ${undecided.length} artikel utama belum dinilai AI. Selesaikan --judge dulu (atau pakai --allow-partial).`); process.exit(1); }
   if (!totalLosers) { console.log('\n✅ Tidak ada yang perlu dihapus.'); return; }
-  if (totalLosers > MAX_DELETE) { console.error(`\n🛑 ${totalLosers} artikel akan dihapus, melebihi --max-delete=${MAX_DELETE}. Dibatalkan.`); process.exit(1); }
+  if (AUTO) { // pengaman skala-bebas: lebih dari 35% artikel hampir pasti salah
+    const cap = Math.floor(articles.length * 0.35);
+    if (totalLosers > cap) { console.error(`\n🛑 Mode otomatis: ${totalLosers} dari ${articles.length} artikel akan dihapus (> 35%). Dibatalkan demi keamanan; tidak ada artikel yang diubah. Periksa dedupe-report.json.`); return; }
+  } else if (totalLosers > MAX_DELETE) { console.error(`\n🛑 ${totalLosers} artikel akan dihapus, melebihi --max-delete=${MAX_DELETE}. Dibatalkan.`); process.exit(1); }
   execute(clusters, totalLosers);
 }
 

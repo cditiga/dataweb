@@ -4,10 +4,14 @@ on:
   workflow_dispatch:
     inputs:
       phase:
-        description: 'judge = AI menilai (bisa diulang, hasil disimpan) | report = lihat rencana tanpa AI | apply = EKSEKUSI hapus + redirect'
+        description: 'auto = SEKALI JALAN (nilai semua lalu eksekusi) | judge/report/apply = mode bertahap (manual)'
         type: choice
-        options: [judge, report, apply]
-        default: judge
+        options: [auto, judge, report, apply]
+        default: auto
+      cleanup:
+        description: '(auto/apply) Setelah SELESAI, hapus script dedupe dari repo (workflow ini dihapus manual)'
+        type: boolean
+        default: false
       limit:
         description: '(judge) Maks. jumlah penilaian AI per run'
         type: string
@@ -45,6 +49,7 @@ permissions:
 jobs:
   dedupe:
     runs-on: ubuntu-latest
+    timeout-minutes: 120
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -72,6 +77,8 @@ jobs:
         run: |
           ARGS="--section=$IN_SECTION --max-delete=$IN_MAX_DELETE --max-cluster=$IN_MAX_CLUSTER"
           case "$IN_PHASE" in
+            auto)
+              ARGS="$ARGS --auto" ;;
             judge)
               ARGS="$ARGS --judge --limit=$IN_LIMIT"
               if [ "$IN_RETRY" = "true" ]; then ARGS="$ARGS --retry-errors"; fi ;;
@@ -89,23 +96,32 @@ jobs:
           path: dedupe-report.json
           if-no-files-found: ignore
 
+      # Hanya jika diminta DAN semua artikel sudah dinilai (laporan: undecidedSeeds = 0).
+      # File workflow ini sendiri tidak bisa dihapus oleh GITHUB_TOKEN — hapus manual lewat GitHub.
+      - name: Cleanup (hapus script dedupe setelah selesai)
+        if: ${{ inputs.cleanup && (inputs.phase == 'auto' || inputs.phase == 'apply') }}
+        run: |
+          COMPLETE=$(node -e "try{const r=require('./dedupe-report.json');console.log(r.undecidedSeeds===0?'yes':'no')}catch{console.log('no')}")
+          if [ "$COMPLETE" = "yes" ]; then
+            git rm -rq --ignore-unmatch tools/dedupe-articles.js tools/lib/dedupe-judge.js tools/prompts/dedupe-articles.json .dedupe-approve.txt .dedupe-protect.txt
+            rm -f .dedupe-decisions.json dedupe-report.json
+            echo "🧹 Script dedupe dihapus (tools/lib/keyword-similarity.js, static/redirects.js, .excluded-keywords.json SENGAJA dipertahankan)."
+          else
+            echo "ℹ️  Belum semua dinilai — cleanup dilewati. Jalankan workflow lagi."
+          fi
+
       - name: Configure Git
         if: ${{ inputs.phase != 'report' }}
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
 
-      # judge  -> hanya menyimpan keputusan AI (.dedupe-decisions.json) agar bisa dilanjutkan run berikutnya
-      # apply  -> juga menyimpan penghapusan, redirects.js, dan exclude-list
+      # Worktree hanya berisi perubahan dari script (tanpa npm install), jadi git add -A aman.
       - name: Commit and Push
         id: commit_push
         if: ${{ inputs.phase != 'report' }}
         run: |
-          git add -A content/
-          [ -f static/redirects.js ] && git add static/redirects.js
-          [ -f .excluded-keywords.json ] && git add .excluded-keywords.json
-          [ -f .dedupe-decisions.json ] && git add .dedupe-decisions.json
-          [ -f dedupe-report.json ] && git add dedupe-report.json
+          git add -A
 
           if git diff --staged --quiet; then
             echo "ℹ️  Tidak ada perubahan."
@@ -113,7 +129,11 @@ jobs:
             exit 0
           fi
 
-          git commit -m "Dedupe (${{ inputs.phase }}): keputusan AI / gabungkan artikel mirip + redirect"
+          if git diff --staged --name-only | grep -qE '^(content/|static/redirects\.js)'; then
+            echo "site_changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+          git commit -m "Dedupe (${{ inputs.phase }}): gabungkan artikel mirip + redirect"
 
           for i in 1 2 3 4 5; do
             if git push origin master; then
@@ -135,7 +155,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Trigger Deploy
-        if: ${{ inputs.phase == 'apply' && steps.commit_push.outputs.published == 'true' }}
+        if: ${{ steps.commit_push.outputs.published == 'true' && steps.commit_push.outputs.site_changed == 'true' }}
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: gh workflow run deploy.yml --ref master
