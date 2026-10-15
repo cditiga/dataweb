@@ -1,0 +1,153 @@
+name: Dedupe Harian (sementara, s/d 2026-11-15)
+
+# Menyelesaikan dedupe artikel BERTAHAP: tiap hari menilai sebagian artikel dengan AI dan menghapus yang
+# disetujui AI + aturan kata (maks. DAILY_MAX_DELETE per hari). Berhenti sendiri bila:
+#   (a) semua artikel sudah dinilai & tidak ada yang tersisa, atau
+#   (b) tanggal melewati END_DATE.
+# Pada kedua kasus workflow ini menonaktifkan dirinya sendiri (aktifkan lagi lewat tab Actions bila perlu).
+on:
+  schedule:
+    # 10:00 UTC = 17:00 WIB — jauh dari generate (06:00), revise (18:00), fix-orphans (Rabu 12:00), recycle (Minggu 00:00)
+    - cron: '0 10 * * *'
+  workflow_dispatch:
+
+concurrency:
+  group: dataweb-repo-write
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  actions: write   # memicu deploy.yml / fix-orphans.yml dan menonaktifkan workflow ini
+
+env:
+  END_DATE: '2026-11-15'        # run setelah tanggal ini langsung menonaktifkan workflow
+  DAILY_LIMIT: '40'             # jumlah penilaian AI per hari
+  DAILY_MAX_DELETE: '25'        # jumlah artikel dihapus per hari
+  CLEANUP_ON_COMPLETE: 'false'  # 'true' = hapus script dedupe dari repo setelah semuanya selesai
+  GH_REPO: ${{ github.repository }}
+
+jobs:
+  dedupe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - name: Cek masa berlaku
+        id: guard
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          TODAY=$(date -u +%F)
+          if [[ "$TODAY" > "$END_DATE" ]]; then
+            echo "⏹️  Masa berlaku berakhir ($END_DATE) — menonaktifkan workflow ini."
+            echo "expired=true" >> "$GITHUB_OUTPUT"
+            gh workflow disable dedupe-daily.yml || true
+          else
+            echo "expired=false" >> "$GITHUB_OUTPUT"
+            echo "✅ Masih berlaku (hari ini $TODAY, berakhir $END_DATE)."
+          fi
+
+      - name: Checkout Repository
+        if: steps.guard.outputs.expired == 'false'
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          fetch-tags: false
+
+      - name: Setup Node.js
+        if: steps.guard.outputs.expired == 'false'
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run dedupe (harian)
+        if: steps.guard.outputs.expired == 'false'
+        env:
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: node tools/dedupe-articles.js --daily --limit=$DAILY_LIMIT --max-delete=$DAILY_MAX_DELETE
+
+      - name: Upload report
+        if: always() && steps.guard.outputs.expired == 'false'
+        uses: actions/upload-artifact@v4
+        with:
+          name: dedupe-report
+          path: dedupe-report.json
+          if-no-files-found: ignore
+
+      - name: Baca status (selesai? artikel yatim baru?)
+        id: status
+        if: steps.guard.outputs.expired == 'false'
+        run: |
+          node -e "
+            let r={}; try{r=require('./dedupe-report.json')}catch{}
+            console.log('complete='+(r.complete===true?'yes':'no'));
+            console.log('orphans='+(r.newOrphanCount||0));
+          " >> "$GITHUB_OUTPUT"
+          cat "$GITHUB_OUTPUT" | grep -E "complete|orphans" || true
+
+      - name: Cleanup script (opsional, hanya jika SELESAI)
+        if: steps.guard.outputs.expired == 'false' && steps.status.outputs.complete == 'yes' && env.CLEANUP_ON_COMPLETE == 'true'
+        run: |
+          git rm -rq --ignore-unmatch tools/dedupe-articles.js tools/lib/dedupe-judge.js tools/prompts/dedupe-articles.json .dedupe-approve.txt .dedupe-protect.txt
+          rm -f .dedupe-decisions.json dedupe-report.json
+          echo "🧹 Script dedupe dihapus (keyword-similarity.js, redirects.js, .excluded-keywords.json dipertahankan)."
+
+      - name: Configure Git
+        if: steps.guard.outputs.expired == 'false'
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+
+      - name: Commit and Push
+        id: commit_push
+        if: steps.guard.outputs.expired == 'false'
+        run: |
+          git add -A
+          if git diff --staged --quiet; then
+            echo "ℹ️  Tidak ada perubahan."
+            echo "published=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          if git diff --staged --name-only | grep -qE '^(content/|static/redirects\.js)'; then
+            echo "site_changed=true" >> "$GITHUB_OUTPUT"
+          fi
+          git commit -m "Dedupe harian: gabungkan artikel mirip + redirect"
+          for i in 1 2 3 4 5; do
+            if git push origin master; then
+              echo "✅ Push berhasil (percobaan $i)."
+              echo "published=true" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+            if [ "$i" -eq 5 ]; then
+              echo "❌ Push gagal 5x — cek manual." >&2
+              exit 1
+            fi
+            sleep $(( (RANDOM % 10) + 5 ))
+            git fetch origin master
+            git stash push -u -m "pre-rebase-autostash" || true
+            git rebase origin/master
+            git stash drop || true
+          done
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Trigger Deploy
+        if: steps.commit_push.outputs.published == 'true' && steps.commit_push.outputs.site_changed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh workflow run deploy.yml --ref master
+
+      - name: Trigger Fix Orphans
+        if: steps.commit_push.outputs.published == 'true' && steps.status.outputs.orphans != '' && steps.status.outputs.orphans != '0'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh workflow run fix-orphans.yml --ref master
+
+      # Semua selesai -> matikan jadwal (tidak perlu berjalan lagi).
+      - name: Nonaktifkan workflow setelah selesai
+        if: steps.guard.outputs.expired == 'false' && steps.status.outputs.complete == 'yes'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "🎉 Dedupe selesai — menonaktifkan workflow harian."
+          gh workflow disable dedupe-daily.yml || true
