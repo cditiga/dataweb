@@ -370,7 +370,28 @@ function execute(clusters, totalLosers) {
 
   let rewrittenFiles = 0, rewrittenLinks = 0;
   const loserFiles = new Set(clusters.flatMap(c => c.losers.map(l => path.resolve(l.file))));
-  for (const file of walk(CONTENT)) {
+
+  // Link yang KELUAR dari artikel yang dihapus ikut hilang. Hitung dulu siapa yang kehilangan SEMUA inbound link
+  // (artikel yatim baru) agar bisa dilaporkan & diperbaiki (fix-orphans.yml).
+  const allFiles = walk(CONTENT);
+  const allUrls = new Set(allFiles.map(toUrl));
+  const inboundOf = files => {
+    const m = new Map();
+    for (const f of files) {
+      const self = toUrl(f), raw = fs.readFileSync(f, 'utf8');
+      if (!raw.includes('](/')) continue;
+      for (const mm of raw.matchAll(/(?<!!)\[[^\]]+\]\((\/[^)\s]+\/)\)/g)) {
+        const t = mm[1];
+        if (t === self || !allUrls.has(t)) continue;
+        if (!m.has(t)) m.set(t, new Set());
+        m.get(t).add(self);
+      }
+    }
+    return m;
+  };
+  const inboundBefore = inboundOf(allFiles);
+
+  for (const file of allFiles) {
     if (loserFiles.has(path.resolve(file))) continue;
     const raw = fs.readFileSync(file, 'utf8');
     if (!raw.includes('](/')) continue;
@@ -382,6 +403,12 @@ function execute(clusters, totalLosers) {
       return w === self ? text : `[${text}](${w})`;
     });
     if (changed) { fs.writeFileSync(file, out); rewrittenFiles++; }
+  }
+  const inboundAfter = inboundOf(allFiles.filter(f => !loserFiles.has(path.resolve(f))));
+  const newOrphans = [];
+  for (const [t, srcs] of inboundBefore) {
+    if (loserToWinner.has(t) || inboundAfter.has(t)) continue;
+    newOrphans.push({ url: t, lostFrom: [...srcs].filter(u => loserToWinner.has(u)) });
   }
   for (const f of loserFiles) fs.unlinkSync(f);
 
@@ -399,6 +426,13 @@ function execute(clusters, totalLosers) {
 
   console.log(`\n✅ SELESAI: ${totalLosers} artikel dihapus, ${rewrittenLinks} link internal di ${rewrittenFiles} file dialihkan,`);
   console.log(`   redirects.js sekarang berisi ${Object.keys(map).length} entri.`);
+  try { const r = JSON.parse(fs.readFileSync(REPORT, 'utf8')); r.newOrphanCount = newOrphans.length; r.newOrphans = newOrphans; fs.writeFileSync(REPORT, JSON.stringify(r, null, 2)); } catch {}
+  if (newOrphans.length) {
+    console.log(`\n⚠️  ${newOrphans.length} artikel kehilangan SEMUA link masuk karena artikel penaut-nya dihapus (artikel yatim baru):`);
+    for (const o of newOrphans.slice(0, 15)) console.log(`   • ${o.url}  (dulu ditaut dari: ${o.lostFrom.join(', ')})`);
+    if (newOrphans.length > 15) console.log(`   … dan ${newOrphans.length - 15} lainnya (lihat newOrphans di dedupe-report.json)`);
+    console.log('   → fix-orphans.yml akan menyisipkan link baru (maks. 10 per run; cron mingguan melanjutkan sisanya).');
+  } else console.log('   Tidak ada artikel yatim baru.');
 }
 
 main().catch(err => { console.error('\n💥 Fatal error:', err.message); process.exit(1); });

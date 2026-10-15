@@ -88,6 +88,15 @@ jobs:
           esac
           node tools/dedupe-articles.js $ARGS
 
+      # Hitung artikel yang menjadi yatim karena penaut-nya dihapus (dibaca dari laporan, SEBELUM cleanup).
+      - name: Cek artikel yatim baru
+        id: orph
+        if: ${{ inputs.phase == 'auto' || inputs.phase == 'apply' }}
+        run: |
+          N=$(node -e "try{console.log(require('./dedupe-report.json').newOrphanCount||0)}catch{console.log(0)}")
+          echo "count=$N" >> "$GITHUB_OUTPUT"
+          echo "Artikel yatim baru: $N"
+
       - name: Upload report
         if: always()
         uses: actions/upload-artifact@v4
@@ -159,3 +168,11 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: gh workflow run deploy.yml --ref master
+
+      # Artikel yang kehilangan semua link masuk -> minta fix-orphans.yml menyisipkan link baru.
+      # (Berjalan setelah job ini selesai karena satu concurrency group; maks. 10 per run, cron mingguan melanjutkan.)
+      - name: Trigger Fix Orphans
+        if: ${{ steps.commit_push.outputs.published == 'true' && steps.orph.outputs.count != '' && steps.orph.outputs.count != '0' }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh workflow run fix-orphans.yml --ref master
