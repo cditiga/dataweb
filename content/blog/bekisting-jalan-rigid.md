@@ -26,7 +26,7 @@ Ada beberapa jenis bekisting yang umum digunakan dalam pembangunan jalan rigid, 
 *   **Bekisting Aluminium:** Pilihan yang ringan dan mudah dipasang, namun harganya relatif lebih mahal dibandingkan jenis lainnya.
 *   **Bekisting Plastik:** Semakin populer karena ringan, tahan air, dan tidak memerlukan perawatan khusus. Namun, kekuatannya mungkin tidak sebanding dengan baja untuk proyek-proyek dengan beban berat.
 
-Pemilihan jenis bekisting yang tepat sangat bergantung pada anggaran proyek, skala pembangunan, kondisi lapangan, dan spesifikasi teknis yang dibutuhkan. [Bekisting Cor Jalan: Panduan Lengkap Material, Proses, dan Biaya 2026](/blog/bekisting-cor-jalan/) dapat menjadi referensi tambahan dalam memahami berbagai jenis bekisting yang tersedia.
+Pemilihan jenis bekisting yang tepat sangat bergantung pada anggaran proyek, skala pembangunan, kondisi lapangan, dan spesifikasi teknis yang dibutuhkan. Bekisting Cor Jalan: Panduan Lengkap Material, Proses, dan Biaya 2026 dapat menjadi referensi tambahan dalam memahami berbagai jenis bekisting yang tersedia.
 
 ## Material Pembentuk Bekisting Jalan Rigid yang Umum Digunakan
 

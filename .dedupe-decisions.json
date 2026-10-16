@@ -1,6 +1,6 @@
 {
  "version": 2,
- "updatedAt": "2026-10-10T02:32:14.138Z",
+ "updatedAt": "2026-10-16T14:31:28.809Z",
  "decisions": {
   "/blog/berapa-lapis-besi-untuk-cor-dak/": {
    "candidates": [
@@ -1616,6 +1616,509 @@
    "duplicates": [],
    "reason": "",
    "judgedAt": "2026-10-10T02:32:14.066Z"
+  },
+  "/blog/lemari-pakaian-pintu-geser/": {
+   "candidates": [
+    "/blog/lemari-sliding-2-pintu/",
+    "/blog/lemari-kayu-3-pintu/",
+    "/blog/harga-lemari-pakaian-sliding-terbaru/",
+    "/blog/lemari-sliding-3-pintu/",
+    "/blog/lemari-plastik-3-pintu/",
+    "/blog/lemari-jati-3-pintu/",
+    "/blog/lemari-kayu-2-pintu/"
+   ],
+   "duplicates": [
+    "/blog/lemari-sliding-2-pintu/",
+    "/blog/lemari-sliding-3-pintu/"
+   ],
+   "reason": "#1: Lemari sliding, solusi penyimpanan, ruang minimalis. | #4: Lemari sliding, solusi penyimpanan, hunian modern.",
+   "judgedAt": "2026-10-16T14:29:04.803Z"
+  },
+  "/blog/review-harga-dan-kualitas-lemari-plastik/": {
+   "candidates": [
+    "/blog/lemari-plastik-3-pintu/",
+    "/blog/lemari-plastik-4-susun/",
+    "/blog/cara-memilih-lemari-kabinet-yang-bagus/",
+    "/blog/kelebihan-lemari-plastik-dibanding-yang-lain/",
+    "/blog/harga-lemari-brangkas-besi-terbaru/",
+    "/blog/pionir-beton-cor-kualitas-harga-terbaik/",
+    "/blog/mengetahui-kualitas-material-cor-beton/"
+   ],
+   "duplicates": [
+    "/blog/lemari-plastik-3-pintu/",
+    "/blog/lemari-plastik-4-susun/"
+   ],
+   "reason": "#1: Lemari plastik, fokus review/pilihan, sama-sama Mitra CDI. | #2: Lemari plastik, fokus review/pilihan, sama-sama Mitra CDI.",
+   "judgedAt": "2026-10-16T14:29:10.389Z"
+  },
+  "/blog/biaya-membuat-jembatan-cor-depan-rumah/": {
+   "candidates": [
+    "/blog/tips-pengerjaan-cor-beton-yang-baik/",
+    "/blog/pengerjaan-cor-beton-yang-tepat/",
+    "/blog/sistem-pengerjaan-konstruksi-bangunan/",
+    "/blog/cara-membuat-taman-mini-di-depan-rumah/",
+    "/blog/cat-tembok-teras-depan/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-16T14:29:14.238Z"
+  },
+  "/blog/harga-lemari-pakaian-sliding-terbaru/": {
+   "candidates": [
+    "/blog/lemari-sliding-3-pintu/",
+    "/blog/lemari-sliding-2-pintu/",
+    "/blog/harga-lemari-pakaian-anak-terbaru/",
+    "/blog/harga-lemari-pakaian-gantung-terbaru/",
+    "/blog/model-lemari-pakaian-anak-yang-unik/",
+    "/blog/menghitung-kebutuhan-pemakaian-scaffolding/",
+    "/blog/harga-lemari-brangkas-besi-terbaru/"
+   ],
+   "duplicates": [
+    "/blog/lemari-sliding-3-pintu/",
+    "/blog/lemari-sliding-2-pintu/"
+   ],
+   "reason": "#1: Lemari sliding, fokus harga dan solusi penyimpanan. | #2: Lemari sliding, fokus harga dan solusi penyimpanan.",
+   "judgedAt": "2026-10-16T14:29:20.631Z"
+  },
+  "/blog/kelebihan-wallpaper-dinding-cat-tembok/": {
+   "candidates": [
+    "/blog/cat-tembok-teras-depan/",
+    "/blog/cara-terbaik-cat-ulang-dinding-luar-rumah/",
+    "/blog/pasir-untuk-plester-dinding/",
+    "/blog/jenis-pasir-untuk-plester-dinding/",
+    "/blog/jenis-pasir-yang-baik-untuk-plester-dinding/",
+    "/blog/pasir-untuk-plester-tembok/",
+    "/blog/wiremesh-lantai-dinding/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-16T14:29:26.294Z"
+  },
+  "/blog/harga-kitchen-set-aluminium/": {
+   "candidates": [
+    "/blog/tips-memilih-desain-kitchen-set-minimalis-berkualitas/",
+    "/blog/biaya-bikin-kitchen-set/",
+    "/blog/inspirasi-kitchen-set-mini-yang-cantik/",
+    "/blog/1-set-scaffolding-berapa-m2/"
+   ],
+   "duplicates": [
+    "/blog/biaya-bikin-kitchen-set/"
+   ],
+   "reason": "#2: Biaya kitchen set aluminium, informasi estimasi biaya.",
+   "judgedAt": "2026-10-16T14:29:29.121Z"
+  },
+  "/blog/kelebihan-lemari-plastik-dibanding-yang-lain/": {
+   "candidates": [
+    "/blog/lemari-plastik-3-pintu/",
+    "/blog/lemari-plastik-4-susun/",
+    "/blog/harga-lemari-brangkas-besi-terbaru/"
+   ],
+   "duplicates": [
+    "/blog/lemari-plastik-3-pintu/",
+    "/blog/lemari-plastik-4-susun/"
+   ],
+   "reason": "#1: Lemari plastik, fokus kelebihan/pilihan penyimpanan. | #2: Lemari plastik, fokus kelebihan/pilihan penyimpanan.",
+   "judgedAt": "2026-10-16T14:29:32.898Z"
+  },
+  "/blog/lemari-kayu-3-pintu/": {
+   "candidates": [
+    "/blog/kayu-untuk-cor/",
+    "/blog/lemari-sliding-3-pintu/",
+    "/blog/lemari-plastik-3-pintu/",
+    "/blog/lemari-jati-3-pintu/",
+    "/blog/beberapa-model-rak-tv-minimalis-modern/",
+    "/blog/jenis-kayu-yang-bagus-untuk-furniture/",
+    "/blog/perbandingan-harga-kayu-meranti-jati-kamper-borneo/"
+   ],
+   "duplicates": [
+    "/blog/lemari-sliding-3-pintu/"
+   ],
+   "reason": "#2: Lemari 3 pintu, solusi penyimpanan, target audiens sama.",
+   "judgedAt": "2026-10-16T14:29:38.374Z"
+  },
+  "/blog/lemari-sliding-3-pintu/": {
+   "candidates": [
+    "/blog/lemari-plastik-3-pintu/",
+    "/blog/lemari-jati-3-pintu/",
+    "/blog/beberapa-model-rak-tv-minimalis-modern/",
+    "/blog/tangga-beton/",
+    "/blog/harga-lemari-brangkas-besi-terbaru/",
+    "/blog/cor-pondasi/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-16T14:29:43.926Z"
+  },
+  "/blog/concrete-pump-jakarta/": {
+   "candidates": [
+    "/blog/concrete-pump-kodok/",
+    "/blog/bagian-bagian-concrete-pump/"
+   ],
+   "duplicates": [
+    "/blog/concrete-pump-kodok/"
+   ],
+   "reason": "#1: Objek sama (concrete pump), maksud sama (solusi efisien).",
+   "judgedAt": "2026-10-16T14:29:46.041Z"
+  },
+  "/blog/cat-tembok-teras-depan/": {
+   "candidates": [
+    "/blog/cara-membuat-bekisting-dak-teras/",
+    "/blog/pasir-untuk-plester-tembok/",
+    "/blog/balok-gantung-teras/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-16T14:29:49.133Z"
+  },
+  "/blog/hal-wajib-merencanakan-pembangunan-rumah/": {
+   "candidates": [
+    "/blog/borongan-pasang-wiremesh/",
+    "/blog/merencanakan-pembangunan-rumah-tinggal/",
+    "/blog/bangunan-3-lantai/",
+    "/blog/beberapa-hal-yang-mempengaruhi-kekuatan-cor-beton/"
+   ],
+   "duplicates": [
+    "/blog/merencanakan-pembangunan-rumah-tinggal/"
+   ],
+   "reason": "#2: Topik perencanaan rumah, target audiens sama.",
+   "judgedAt": "2026-10-16T14:29:52.429Z"
+  },
+  "/blog/cara-membuat-bekisting-dak-teras/": {
+   "candidates": [
+    "/blog/cara-buat-dak-teras-tanpa-tiang/",
+    "/blog/balok-gantung-teras/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-16T14:29:54.234Z"
+  },
+  "/blog/desain-rak-sepatu-untuk-toko/": {
+   "candidates": [
+    "/blog/inspirasi-desain-rak-sepatu-minimalis/",
+    "/blog/memilih-desain-rak-sepatu-kekinian/",
+    "/blog/inspirasi-terbaru-desain-kursi-besi-minimalis/",
+    "/blog/inspirasi-rak-buku-untuk-perpustakaan-pribadi/",
+    "/blog/ukuran-balok-tarik/"
+   ],
+   "duplicates": [
+    "/blog/inspirasi-desain-rak-sepatu-minimalis/"
+   ],
+   "reason": "#1: Desain rak sepatu, inspirasi, minimalis, target toko/rumah.",
+   "judgedAt": "2026-10-16T14:29:58.341Z"
+  },
+  "/blog/cairan-pengeras-beton/": {
+   "candidates": [
+    "/blog/cairan-penguat-beton/",
+    "/blog/cairan-perekat-beton-retak/",
+    "/blog/beton-20-mpa/",
+    "/blog/buis-beton-u-30/",
+    "/blog/besi-diameter-8/",
+    "/blog/ukuran-benda-uji-beton-silinder/",
+    "/blog/campuran-molen-beton/"
+   ],
+   "duplicates": [
+    "/blog/cairan-penguat-beton/"
+   ],
+   "reason": "#1: Sinonim \"pengeras\" dan \"penguat\", informasi serupa.",
+   "judgedAt": "2026-10-16T14:30:05.642Z"
+  },
+  "/blog/jenis-furniture-yang-paling-dibutuhkan-dirumah/": {
+   "candidates": [
+    "/blog/begini-cara-merawat-furniture-yang-benar/",
+    "/blog/jenis-kayu-yang-bagus-untuk-furniture/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-16T14:30:07.363Z"
+  },
+  "/blog/cara-membuat-behel-besi/": {
+   "candidates": [
+    "/blog/apa-arti-readymix/",
+    "/blog/adhimix-karawang/",
+    "/blog/concrete-pump-kodok/",
+    "/blog/sewa-crane-sukabumi/",
+    "/blog/harga-semen-herbel/",
+    "/blog/pasir-warna-hitam/",
+    "/blog/jasa-stamper-tanah/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-16T14:30:13.967Z"
+  },
+  "/blog/upah-tukang-bangunan-di-depok/": {
+   "candidates": [
+    "/blog/jasa-uji-beton-di-jakarta-bogor-depok-tangerang-bekasi/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-16T14:30:15.348Z"
+  },
+  "/blog/berat-beton-per-m3/": {
+   "candidates": [
+    "/blog/beberapa-hal-yang-mempengaruhi-kekuatan-cor-beton/",
+    "/blog/biaya-dak-beton/",
+    "/blog/biaya-dak-rumah/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-16T14:30:17.658Z"
+  },
+  "/blog/adhimix-karawang/": {
+   "candidates": [
+    "/blog/keunggulan-beton-instan-vs-beton-konvensional/",
+    "/blog/adhimix-plant-bandung/",
+    "/blog/adhimix-casablanca/",
+    "/blog/apa-arti-readymix/",
+    "/blog/adhimix-cibitung/",
+    "/blog/adhimix-precast-cikarang/",
+    "/blog/adhimix-precast-indonesia-pt-plant-kebon-jeruk/"
+   ],
+   "duplicates": [
+    "/blog/adhimix-casablanca/",
+    "/blog/adhimix-cibitung/"
+   ],
+   "reason": "#3: Adhimix, solusi beton, target audiens sama. | #5: Adhimix, solusi beton, target audiens sama.",
+   "judgedAt": "2026-10-16T14:30:23.529Z"
+  },
+  "/blog/beton-jalan-tol/": {
+   "candidates": [
+    "/blog/biaya-pengecoran-jalan-per-m2/",
+    "/blog/jalan-cor-coran/",
+    "/blog/biaya-cor-jalan-per-meter/",
+    "/blog/harga-cor-beton-jalan-per-m2/",
+    "/blog/cara-membuat-bekisting-jalan-beton/",
+    "/blog/tahapan-finishing-pengecoran-jalan-beton/",
+    "/blog/perbandingan-jalan-beton-dan-jalan-aspal/"
+   ],
+   "duplicates": [
+    "/blog/jalan-cor-coran/",
+    "/blog/biaya-cor-jalan-per-meter/",
+    "/blog/harga-cor-beton-jalan-per-m2/"
+   ],
+   "reason": "#2: Biaya, proses, dan tips pembuatan jalan beton. | #3: Cara hitung biaya cor jalan, fokus pada biaya. | #4: Harga cor beton jalan per m2 dan estimasi biaya.",
+   "judgedAt": "2026-10-16T14:30:29.945Z"
+  },
+  "/blog/biaya-ngedak-rumah-per-meter-persegi/": {
+   "candidates": [
+    "/blog/biaya-ngedak-rumah/",
+    "/blog/biaya-ngedak-rumah-dengan-bondek/"
+   ],
+   "duplicates": [
+    "/blog/biaya-ngedak-rumah/"
+   ],
+   "reason": "#1: Topik dan tujuan artikel sangat mirip.",
+   "judgedAt": "2026-10-16T14:30:31.471Z"
+  },
+  "/blog/besi-diameter-8/": {
+   "candidates": [
+    "/blog/besi-plat-lantai/",
+    "/blog/ukuran-benda-uji-beton-silinder/",
+    "/blog/pasir-untuk-plester-tembok/",
+    "/blog/bekisting-plat-lantai/",
+    "/blog/campuran-molen-beton/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-16T14:30:35.383Z"
+  },
+  "/blog/begini-cara-merawat-furniture-yang-benar/": {
+   "candidates": [
+    "/blog/jenis-kayu-yang-bagus-untuk-furniture/",
+    "/blog/cara-merawat-taman-yang-simpel/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-16T14:30:36.841Z"
+  },
+  "/blog/tahapan-finishing-pengecoran-jalan-beton/": {
+   "candidates": [
+    "/blog/biaya-pengecoran-jalan-per-m2/",
+    "/blog/cara-membuat-bekisting-jalan-beton/",
+    "/blog/tiga-langkah-cara-finishing-cor-beton/",
+    "/blog/perbandingan-jalan-beton-dan-jalan-aspal/",
+    "/blog/pengecoran-jalan-di-ciapus-bogor/",
+    "/blog/jasa-pengaspalan-jalan-di-jabodetabek/"
+   ],
+   "duplicates": [
+    "/blog/tiga-langkah-cara-finishing-cor-beton/"
+   ],
+   "reason": "#3: Finishing cor beton, informasi langkah-langkah serupa.",
+   "judgedAt": "2026-10-16T14:30:42.287Z"
+  },
+  "/blog/ukuran-benda-uji-beton-silinder/": {
+   "candidates": [
+    "/blog/inilah-ukuran-balok-beton-sesuai-sni/",
+    "/blog/buis-beton-u-30/",
+    "/blog/tes-silinder-beton/",
+    "/blog/beton-20-mpa/",
+    "/blog/uji-kubus-beton/",
+    "/blog/besi-plat-lantai/",
+    "/blog/jasa-uji-beton-di-jakarta-bogor-depok-tangerang-bekasi/"
+   ],
+   "duplicates": [
+    "/blog/tes-silinder-beton/",
+    "/blog/jasa-uji-beton-di-jakarta-bogor-depok-tangerang-bekasi/"
+   ],
+   "reason": "#3: Tes silinder beton = ukuran benda uji silinder. | #7: Jasa uji beton = uji benda uji silinder.",
+   "judgedAt": "2026-10-16T14:30:48.256Z"
+  },
+  "/blog/desain-terbaru-lemari-bawah-tangga/": {
+   "candidates": [
+    "/blog/tehnik-pengecoran-tangga-beton/",
+    "/blog/tangga-beton/",
+    "/blog/harga-lemari-brangkas-besi-terbaru/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-16T14:30:50.664Z"
+  },
+  "/blog/analisa-beton-k-250-ready-mix/": {
+   "candidates": [
+    "/blog/campuran-beton-k250/",
+    "/blog/beton-k250-berapa-mpa/"
+   ],
+   "duplicates": [
+    "/blog/campuran-beton-k250/"
+   ],
+   "reason": "#1: Judul & ringkasan sangat mirip, membahas beton K250.",
+   "judgedAt": "2026-10-16T14:30:52.314Z"
+  },
+  "/blog/biaya-membuat-lantai-2/": {
+   "candidates": [
+    "/blog/perencanaan-pembangunan-rumah/",
+    "/blog/perencanaan-kolom-beton-bertulang/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-16T14:30:53.928Z"
+  },
+  "/blog/biaya-bikin-kitchen-set/": {
+   "candidates": [
+    "/blog/tips-memilih-desain-kitchen-set-minimalis-berkualitas/",
+    "/blog/inspirasi-kitchen-set-mini-yang-cantik/",
+    "/blog/ciri-ciri-pasir-yang-hemat-semen/",
+    "/blog/tips-menghemat-biaya-bahan-bangunan/",
+    "/blog/bikin-pondasi-rumah-2-lantai/",
+    "/blog/biaya-dak-beton/",
+    "/blog/menghemat-biaya-cor-dak-dengan-smartdek/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-16T14:30:59.056Z"
+  },
+  "/blog/tips-memilih-desain-kitchen-set-minimalis-berkualitas/": {
+   "candidates": [
+    "/blog/inspirasi-kitchen-set-mini-yang-cantik/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-16T14:31:00.163Z"
+  },
+  "/blog/desain-kamar-anak-yang-paling-banyak-diminati/": {
+   "candidates": [
+    "/blog/model-dipan-minimalis-anak-terbaru/",
+    "/blog/10-cara-menata-kamar-anak-agar-terlihat-menarik/",
+    "/blog/ternyata-besi-beton-polos-lebih-diminati/"
+   ],
+   "duplicates": [
+    "/blog/10-cara-menata-kamar-anak-agar-terlihat-menarik/"
+   ],
+   "reason": "#2: Keduanya membahas penataan/desain kamar anak.",
+   "judgedAt": "2026-10-16T14:31:03.037Z"
+  },
+  "/blog/beton-instan-drymix-k-300/": {
+   "candidates": [
+    "/blog/beton-instan-k300/",
+    "/blog/campuran-beton-k300/"
+   ],
+   "duplicates": [
+    "/blog/beton-instan-k300/",
+    "/blog/campuran-beton-k300/"
+   ],
+   "reason": "#1: Judul, keyword, dan ringkasan sangat mirip, membahas hal sama. | #2: K300 sama, panduan lengkap, membahas kekuatan & aplikasi.",
+   "judgedAt": "2026-10-16T14:31:05.178Z"
+  },
+  "/blog/jenis-jenis-pasir-untuk-bahan-bangunan/": {
+   "candidates": [
+    "/blog/tips-menghemat-biaya-bahan-bangunan/",
+    "/blog/bahan-bangunan-paling-sering-dipakai/",
+    "/blog/bufet-tv-minimalis-dari-bahan-kayu-jati/",
+    "/blog/terlaris-bufet-minimalis-bahan-kayu-jati/",
+    "/blog/inilah-jenis-bahan-bangunan-wajib-dibeli/",
+    "/blog/harga-dipan-bahan-multiplek-murah/",
+    "/blog/perbedaan-bata-merah-dan-ringan-sebagai-bahan-konstruksi/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-16T14:31:11.346Z"
+  },
+  "/blog/10mm-berapa-m/": {
+   "candidates": [
+    "/blog/besi-beton-10mm/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-16T14:31:12.446Z"
+  },
+  "/blog/adukan/": {
+   "candidates": [
+    "/blog/membuat-adukan-plesteran-sendiri/",
+    "/blog/cara-membuat-adukan-acian/",
+    "/blog/takaran-adukan-pondasi/",
+    "/blog/takaran-adukan-pondasi-batu-kali/",
+    "/blog/tips-pengadukan-dan-proses-pengecoran-beton-cor/"
+   ],
+   "duplicates": [
+    "/blog/membuat-adukan-plesteran-sendiri/"
+   ],
+   "reason": "#1: Membuat adukan, fokus pada proses dan bahan yang sama.",
+   "judgedAt": "2026-10-16T14:31:16.528Z"
+  },
+  "/blog/pondasi-dari-batu-belah-dan-split/": {
+   "candidates": [
+    "/blog/batu-belah/",
+    "/blog/mengenal-batu-belah-dan-split/",
+    "/blog/batu-gajah-sebagai-bagian-dari-batu-belah-dan-split/",
+    "/blog/batu-belah-hitam/",
+    "/blog/perbedaan-batu-kali-dan-batu-belah/",
+    "/blog/pangkalan-jual-batu-kali-split-dan-bata-merah/"
+   ],
+   "duplicates": [
+    "/blog/mengenal-batu-belah-dan-split/",
+    "/blog/batu-gajah-sebagai-bagian-dari-batu-belah-dan-split/"
+   ],
+   "reason": "#2: Pembahasan batu belah dan split, definisi/arti. | #3: Pembahasan batu belah dan split, definisi/arti.",
+   "judgedAt": "2026-10-16T14:31:21.386Z"
+  },
+  "/blog/campuran-semen-beton/": {
+   "candidates": [
+    "/blog/campuran-molen-beton/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-16T14:31:22.269Z"
+  },
+  "/blog/apa-itu-begel/": {
+   "candidates": [
+    "/blog/lima-syarat-penting-konstruksi-bangunan/",
+    "/blog/bangunan-3-lantai/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-16T14:31:24.057Z"
+  },
+  "/blog/concrete-pump-kodok/": {
+   "candidates": [
+    "/blog/bagian-bagian-concrete-pump/",
+    "/blog/apa-arti-readymix/",
+    "/blog/harga-semen-herbel/",
+    "/blog/berapa-lama-semen-kering/",
+    "/blog/arti-beton/",
+    "/blog/cara-membuat-tutup-got-beton/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-16T14:31:28.746Z"
   }
  }
 }

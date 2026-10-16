@@ -19,7 +19,7 @@ draft: false
 
 Sebelum memulai perhitungan, penting untuk memahami komponen utama dalam sistem dak bondek. Secara umum, dak bondek terdiri dari beberapa elemen penting. Pertama, terdapat *bondek* itu sendiri, yaitu pelat baja galvanis berprofil yang berfungsi sebagai bekisting permanen dan pengikat beton. Jenis bondek yang umum digunakan antara lain bondek SPBU (Single Plate Bonded Undulation) dan bondek TSP (Two Span Profile). Kemudian, ada *tulangan baja* yang berfungsi sebagai elemen penarik dan penekan untuk menahan beban. Jenis tulangan yang digunakan biasanya adalah besi beton polos atau ulir dengan diameter yang disesuaikan dengan perhitungan beban. Selain itu, dibutuhkan juga *beton* dengan mutu yang sesuai standar, umumnya K-250 hingga K-350 untuk konstruksi rumah tinggal, dan mutu lebih tinggi untuk bangunan komersial.
 
-Memilih material yang tepat akan sangat berpengaruh pada kekuatan dan umur pakai dak. Pastikan material yang Anda gunakan telah memenuhi standar SNI yang berlaku untuk menjamin kualitas dan keamanan bangunan. [Biaya Dak Beton Bondek: Rincian Lengkap & Estimasi 2026](/blog/biaya-dak-beton-bondek/) dapat menjadi referensi tambahan dalam memahami faktor-faktor yang memengaruhi biaya material.
+Memilih material yang tepat akan sangat berpengaruh pada kekuatan dan umur pakai dak. Pastikan material yang Anda gunakan telah memenuhi standar SNI yang berlaku untuk menjamin kualitas dan keamanan bangunan. [Biaya Dak Beton Bondek: Rincian Lengkap & Estimasi 2026](/blog/biaya-cor-dak-bondek-per-m2/) dapat menjadi referensi tambahan dalam memahami faktor-faktor yang memengaruhi biaya material.
 
 ## Langkah-Langkah Menghitung Kebutuhan Material Dak Bondek
 

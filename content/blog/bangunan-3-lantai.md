@@ -63,6 +63,6 @@ Membangun rumah 3 lantai membutuhkan koordinasi yang baik antara berbagai pihak,
 
 Penting untuk melakukan pengawasan yang ketat terhadap setiap tahapan pembangunan. Pastikan material yang digunakan sesuai dengan spesifikasi yang telah disepakati. Kami juga menyarankan untuk melakukan inspeksi berkala oleh pihak ketiga untuk memastikan kualitas pekerjaan sesuai standar.
 
-Jangan ragu untuk berkonsultasi dengan Kami jika Mitra memiliki pertanyaan atau kekhawatiran selama proses pembangunan. Kami siap memberikan solusi terbaik untuk mewujudkan rumah 3 lantai impian Mitra CDI. Kami juga sarankan untuk membaca lebih lanjut mengenai [Cara Menghitung Besi Untuk Cor Lantai](/blog/cara-menghitung-besi-untuk-cor-dak-lantai/) untuk pertimbangan anggaran yang lebih akurat.
+Jangan ragu untuk berkonsultasi dengan Kami jika Mitra memiliki pertanyaan atau kekhawatiran selama proses pembangunan. Kami siap memberikan solusi terbaik untuk mewujudkan rumah 3 lantai impian Mitra CDI. Kami juga sarankan untuk membaca lebih lanjut mengenai [Cara Menghitung Besi Untuk Cor Lantai](/blog/cara-menghitung-kebutuhan-besi-untuk-cor-lantai/) untuk pertimbangan anggaran yang lebih akurat.
 
 Membutuhkan bantuan langsung untuk kebutuhan proyek Mitra CDI? Silakan klik tombol **WhatsApp** atau **Telepon** di bawah untuk berkonsultasi dengan tim Kami.
