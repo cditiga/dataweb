@@ -54,6 +54,10 @@ const { renderSafeTables, hasLeftoverTableMarkers } = require('./lib/safe-table.
 // overlapSimilarity/isSimilarPair/detectIntent logic — see lib/keyword-similarity.js.
 const KS = require('./lib/keyword-similarity.js');
 
+// Judul natural & bervariasi: gaya judul acak per artikel, larangan frasa klise, dan pemeriksaan hasil —
+// lihat lib/title-style.js dan prompts/title-styles.json.
+const TS = require('./lib/title-style.js');
+
 function renderTemplate(str, vars) {
   return str.replace(/\{\{(\w+)\}\}/g, (_, key) => (key in vars ? vars[key] : `{{${key}}}`));
 }
@@ -1033,7 +1037,7 @@ async function generateArticle(keyword, relatedCandidates = []) {
   const closingStyle = renderTemplate(pickRandom(CLOSING_STYLES), { addr: addressStyle.name });
   const currentYear   = new Date().getFullYear();
 
-  const prompt = renderTemplate(PROMPTS.article.userTemplate, {
+  const basePrompt = renderTemplate(PROMPTS.article.userTemplate, {
     siteName: CONFIG.SITE_NAME,
     addressInstruction: addressStyle.instruction,
     greeting,
@@ -1043,11 +1047,14 @@ async function generateArticle(keyword, relatedCandidates = []) {
     currentYear,
     relatedArticles: formatCandidatesForPrompt(relatedCandidates),
   });
+  const titleStyle = TS.pickTitleStyle();
+  const prompt = TS.injectTitleInstruction(basePrompt, keyword, titleStyle);
+  console.log(`   🏷️  Gaya judul: ${titleStyle.name}`);
 
   if (IS_DRY_RUN) {
     console.log(`   🧪 DRY-RUN: Simulating article generation for "${keyword}"...`);
     const kwTitle = keyword.split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
-    const raw = `JUDUL: ${kwTitle} - Panduan Lengkap dari ${CONFIG.SITE_NAME}
+    const raw = `JUDUL: Mengenal ${kwTitle} Lebih Dekat
 DESCRIPTION: ${keyword.charAt(0).toUpperCase() + keyword.slice(1)} terbaik untuk hunian dan proyek konstruksi Anda. Temukan tips, harga, dan solusi dari ${CONFIG.SITE_NAME}.
 TAGS: ${keyword.split(' ').slice(0, 3).join(', ')}, jasa interior bogor, CDI
 ARTIKEL_MULAI
@@ -1214,8 +1221,11 @@ function parseAndSave(raw, keyword, slug, imagePath, greeting, relatedCandidates
   }
 
   if (!body.trim()) body = raw;
+  { const fixed = TS.fixTitle(title, keyword); if (fixed.changed && fixed.reason !== 'dibersihkan') console.log(`   ✏️  Judul diganti (${fixed.reason}): "${fixed.title}"`); title = fixed.title; }
   body = stripTrailingMarkers(body);
   body = ensureCdiOpening(body, title, greeting);
+  // Samakan teks tebal pembuka dengan judul final (judul bisa dibersihkan/diganti di atas).
+  body = body.replace(/^(\s*)\*\*[^*\n]+\*\*(\s*[-–—]\s*Mitra\s*CDI)/i, (m, sp, rest) => `${sp}**${title}**${rest}`);
 
   body = body.replace(/IMAGE_PLACEHOLDER/g, imagePath);
 
@@ -1337,6 +1347,10 @@ function validateArticle(filePath) {
   const bodyOnly = content.replace(/---[\s\S]*?---/, '').trim();
   const wordCount = bodyOnly.split(/\s+/).length;
   if (wordCount < 300) issues.push(`⚠️  Konten terlalu pendek: ${wordCount} kata`);
+
+  const fmTitle = (content.match(/^title:\s*"((?:[^"\\]|\\.)*)"/m) || [])[1] || '';
+  const fmKeyword = (content.match(/^keywords:\s*"((?:[^"\\]|\\.)*)"/m) || [])[1] || '';
+  TS.titleIssues(fmTitle.replace(/\\"/g, '"'), fmKeyword).forEach(i => issues.push(`⚠️  Judul: ${i}`));
 
   const openingIssues = checkOpeningVariety(bodyOnly);
   issues.push(...openingIssues);
