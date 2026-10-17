@@ -8007,7 +8007,32 @@ const redirectMap = {
     "/blog/adukan-pasang-bata-dan-pondasi-tepat/": "/blog/takaran-adukan-pasang-bata/",
     "/blog/besi-buat-ngecor/": "/blog/ukuran-besi-cor/",
     "/blog/cara-memasang-rangka-baja-ringan-sendiri/": "/blog/cara-pasang-baja-ringan-sendiri/",
-    "/blog/menghitung-kebutuhan-pemakaian-scaffolding/": "/blog/cara-hitung-kebutuhan-scaffolding/"
+    "/blog/menghitung-kebutuhan-pemakaian-scaffolding/": "/blog/cara-hitung-kebutuhan-scaffolding/",
+    "/blog/berapa-hari-bekisting-kolom-bisa-dilepas/": "/blog/bongkar-bekisting-kolom-berapa-hari/",
+    "/blog/buka-bekisting-kolom-berapa-hari/": "/blog/bongkar-bekisting-kolom-berapa-hari/",
+    "/blog/berapa-lama-bekisting-kolom-bisa-dibuka/": "/blog/bongkar-bekisting-kolom-berapa-hari/",
+    "/blog/rabat-beton-lantai/": "/blog/harga-rabatan-lantai-per-m2/",
+    "/blog/biaya-rabat-lantai-per-meter/": "/blog/harga-rabatan-lantai-per-m2/",
+    "/blog/harga-borongan-rabatan-lantai-per-m2/": "/blog/harga-rabatan-lantai-per-m2/",
+    "/blog/menghitung-kebutuhan-bondek-wiremesh/": "/blog/cara-menghitung-dak-bondek/",
+    "/blog/memilih-supplier-bahan-bangunan-terpercaya/": "/blog/tips-memilih-jasa-supplier-beton-cor-yang-terpercaya/",
+    "/blog/cara-mengecor-halaman-rumah/": "/blog/cara-membuat-cor-halaman-rumah/",
+    "/blog/biaya-cor-per-m3/": "/blog/biaya-cor-rumah/",
+    "/blog/inspirasi-desain-rak-sepatu-minimalis/": "/blog/desain-rak-sepatu-untuk-toko/",
+    "/blog/jalan-cor-coran/": "/blog/beton-jalan-tol/",
+    "/blog/biaya-cor-jalan-per-meter/": "/blog/beton-jalan-tol/",
+    "/blog/harga-cor-beton-jalan-per-m2/": "/blog/beton-jalan-tol/",
+    "/blog/biaya-ngedak-rumah/": "/blog/biaya-ngedak-rumah-per-meter-persegi/",
+    "/blog/beton-instan-k300/": "/blog/beton-instan-drymix-k-300/",
+    "/blog/mengenal-batu-belah-dan-split/": "/blog/pondasi-dari-batu-belah-dan-split/",
+    "/blog/batu-gajah-sebagai-bagian-dari-batu-belah-dan-split/": "/blog/pondasi-dari-batu-belah-dan-split/",
+    "/blog/cara-pasang-bondek/": "/blog/cara-pemasangan-bondek-dan-wiremesh-yang-benar/",
+    "/blog/batu-belah-hitam/": "/blog/batu-belah/",
+    "/blog/desain-kursi-untuk-anak-anak-lucu/": "/blog/harga-kursi-khusus-anak-desain-lucu/",
+    "/blog/menghemat-biaya-cor-dak-dengan-smartdek/": "/blog/biaya-dak-beton/",
+    "/blog/memilih-kayu-papan-cor-yang-tepat/": "/blog/kayu-untuk-cor/",
+    "/blog/inilah-desain-meja-besi-minimalis-terbaru/": "/blog/harga-meja-besi-minimalis-terbaru/",
+    "/blog/harga-meja-makan-minimalis/": "/blog/harga-meja-besi-minimalis-terbaru/"
 };
 (function () {
     function getCurrentPath() {
