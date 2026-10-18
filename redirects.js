@@ -8032,7 +8032,9 @@ const redirectMap = {
     "/blog/menghemat-biaya-cor-dak-dengan-smartdek/": "/blog/biaya-dak-beton/",
     "/blog/memilih-kayu-papan-cor-yang-tepat/": "/blog/kayu-untuk-cor/",
     "/blog/inilah-desain-meja-besi-minimalis-terbaru/": "/blog/harga-meja-besi-minimalis-terbaru/",
-    "/blog/harga-meja-makan-minimalis/": "/blog/harga-meja-besi-minimalis-terbaru/"
+    "/blog/harga-meja-makan-minimalis/": "/blog/harga-meja-besi-minimalis-terbaru/",
+    "/blog/terlaris-bufet-minimalis-bahan-kayu-jati/": "/blog/bufet-tv-minimalis-dari-bahan-kayu-jati/",
+    "/blog/cara-hitung-volume-ring-balok-dan-kolom-beton/": "/blog/cara-menghitung-ring-balok/"
 };
 (function () {
     function getCurrentPath() {
