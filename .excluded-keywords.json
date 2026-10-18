@@ -5738,5 +5738,19 @@
     "matchedTitle": "5 Pertimbangan Saat Membeli Harga Lemari Pakaian Plastik",
     "taggedAt": "2026-10-18T11:29:43.665Z",
     "algoVersion": 4
+  },
+  "terlaris bufet minimalis bahan kayu jati": {
+    "reason": "merged duplicate (dedupe-articles.js, AI-judged)",
+    "matchedFile": "bufet-tv-minimalis-dari-bahan-kayu-jati.md",
+    "matchedTitle": "Bufet Tv Minimalis dari Bahan Kayu Jati",
+    "taggedAt": "2026-10-18T13:45:46.705Z",
+    "algoVersion": 4
+  },
+  "cara hitung volume ring balok dan kolom beton": {
+    "reason": "merged duplicate (dedupe-articles.js, AI-judged)",
+    "matchedFile": "cara-menghitung-ring-balok.md",
+    "matchedTitle": "Cara Menghitung Ring Balok dengan Tepat untuk Konstruksi Bangunan",
+    "taggedAt": "2026-10-18T13:45:46.705Z",
+    "algoVersion": 4
   }
 }

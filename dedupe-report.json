@@ -1,388 +1,47 @@
 {
-  "generatedAt": "2026-10-17T13:27:28.712Z",
+  "generatedAt": "2026-10-18T13:45:46.093Z",
   "mode": "daily",
   "section": "blog",
   "complete": false,
-  "clusterCount": 17,
-  "deleteCount": 25,
-  "undecidedSeeds": 151,
+  "clusterCount": 2,
+  "deleteCount": 2,
+  "undecidedSeeds": 113,
   "judgeErrors": 0,
   "clusters": [
     {
       "keep": {
-        "url": "/blog/bongkar-bekisting-kolom-berapa-hari/",
-        "title": "Bongkar Bekisting Kolom Berapa Hari? Tips dan Penjelasan Lengkap",
-        "keyword": "bongkar bekisting kolom berapa hari",
-        "words": 759,
-        "inbound": 0
-      },
-      "reason": "#1: Judul & ringkasan membahas waktu ideal lepas bekisting kolom. | #2: Judul & ringkasan membahas waktu ideal lepas bekisting kolom. | #4: Judul & ringkasan membahas waktu ideal lepas bekisting kolom. | #5: Judul & ringkasan membahas waktu ideal bongkar bekisting.",
-      "remove": [
-        {
-          "url": "/blog/berapa-hari-bekisting-kolom-bisa-dilepas/",
-          "title": "Berapa Hari Bekisting Kolom Bisa Dilepas? Ini Penjelasannya",
-          "keyword": "berapa hari bekisting kolom bisa dilepas",
-          "words": 642,
-          "inbound": 0
-        },
-        {
-          "url": "/blog/buka-bekisting-kolom-berapa-hari/",
-          "title": "Buka Bekisting Kolom Berapa Hari? Yuk Cari Tahu Waktu Optimalnya",
-          "keyword": "buka bekisting kolom berapa hari",
-          "words": 626,
-          "inbound": 0
-        },
-        {
-          "url": "/blog/berapa-lama-bekisting-kolom-bisa-dibuka/",
-          "title": "Berapa Lama Bekisting Kolom Bisa Dibuka? Panduan Praktis untuk Proyek Anda",
-          "keyword": "berapa lama bekisting kolom bisa dibuka",
-          "words": 665,
-          "inbound": 0
-        }
-      ]
-    },
-    {
-      "keep": {
-        "url": "/blog/harga-rabatan-lantai-per-m2/",
-        "title": "Harga Rabatan Lantai Per M2: Panduan Lengkap & Estimasi Biaya 2026",
-        "keyword": "harga rabatan lantai per m2",
-        "words": 745,
-        "inbound": 0
-      },
-      "reason": "#1: Objek sama (rabat lantai), maksud sama (harga & panduan). | #2: Objek sama (rabat lantai), maksud sama (harga & estimasi). | #3: Objek sama (rabat lantai), maksud sama (harga & estimasi).",
-      "remove": [
-        {
-          "url": "/blog/rabat-beton-lantai/",
-          "title": "Rabat Beton Lantai: Panduan Lengkap Pemasangan, Biaya, dan Perawatan",
-          "keyword": "rabat beton lantai",
-          "words": 713,
-          "inbound": 0
-        },
-        {
-          "url": "/blog/biaya-rabat-lantai-per-meter/",
-          "title": "Biaya Rabat Lantai Per Meter: Panduan Lengkap & Estimasi 2026",
-          "keyword": "biaya rabat lantai per meter",
-          "words": 692,
-          "inbound": 0
-        },
-        {
-          "url": "/blog/harga-borongan-rabatan-lantai-per-m2/",
-          "title": "Harga Borongan Rabatan Lantai Per M2: Estimasi & Tips Akurat 2026",
-          "keyword": "harga borongan rabatan lantai per m2",
-          "words": 637,
-          "inbound": 0
-        }
-      ]
-    },
-    {
-      "keep": {
-        "url": "/blog/cara-menghitung-dak-bondek/",
-        "title": "Cara Menghitung Dak Bondek: Panduan Lengkap & Estimasi Biaya 2026",
-        "keyword": "cara menghitung dak bondek",
-        "words": 727,
-        "inbound": 0
-      },
-      "reason": "#5: Estimasi biaya dak bondek, fokus sama. | #7: Menghitung kebutuhan bondek, fokus sama.",
-      "remove": [
-        {
-          "url": "/blog/menghitung-kebutuhan-bondek-wiremesh/",
-          "title": "Cara Menghitung Kebutuhan Bondek & Wiremesh",
-          "keyword": "",
-          "words": 468,
-          "inbound": 0
-        }
-      ]
-    },
-    {
-      "keep": {
-        "url": "/blog/tips-memilih-jasa-supplier-beton-cor-yang-terpercaya/",
-        "title": "Tips Memilih Jasa Supplier Beton Cor yang Terpercaya",
+        "url": "/blog/bufet-tv-minimalis-dari-bahan-kayu-jati/",
+        "title": "Bufet Tv Minimalis dari Bahan Kayu Jati",
         "keyword": "",
-        "words": 726,
+        "words": 643,
         "inbound": 0
       },
-      "reason": "#1: Supplier bahan bangunan = supplier beton cor, memilih supplier. | #3: Supplier bahan bangunan = supplier beton cor, memilih supplier.",
+      "reason": "#1: Objek dan maksud sama: bufet tv kayu jati.",
       "remove": [
         {
-          "url": "/blog/memilih-supplier-bahan-bangunan-terpercaya/",
-          "title": "Memilih Supplier Bahan Bangunan Terpercaya",
+          "url": "/blog/terlaris-bufet-minimalis-bahan-kayu-jati/",
+          "title": "[Terlaris] Bufet Minimalis Bahan Kayu Jati",
           "keyword": "",
-          "words": 538,
+          "words": 632,
           "inbound": 0
         }
       ]
     },
     {
       "keep": {
-        "url": "/blog/cara-membuat-cor-halaman-rumah/",
-        "title": "Cara Membuat Cor Halaman Rumah: Panduan Lengkap dari Awal Hingga Selesai",
-        "keyword": "cara membuat cor halaman rumah",
-        "words": 718,
+        "url": "/blog/cara-menghitung-ring-balok/",
+        "title": "Cara Menghitung Ring Balok dengan Tepat untuk Konstruksi Bangunan",
+        "keyword": "cara menghitung ring balok",
+        "words": 632,
         "inbound": 0
       },
-      "reason": "#1: Sinonim \"membuat\" dan \"mengecor\", maksud sama: panduan.",
+      "reason": "#1: Menghitung ring balok, fokus volume vs. cara menghitung.",
       "remove": [
         {
-          "url": "/blog/cara-mengecor-halaman-rumah/",
-          "title": "Cara Mengecor Halaman Rumah: Panduan Praktis untuk Hasil Kuat dan Tahan Lama",
-          "keyword": "cara mengecor halaman rumah",
-          "words": 666,
-          "inbound": 0
-        }
-      ]
-    },
-    {
-      "keep": {
-        "url": "/blog/biaya-cor-rumah/",
-        "title": "Biaya Cor Rumah: Estimasi, Faktor Pengaruh, dan Tips Menekan Biaya",
-        "keyword": "biaya cor rumah",
-        "words": 704,
-        "inbound": 0
-      },
-      "reason": "#1: Objek & maksud sama: estimasi biaya cor.",
-      "remove": [
-        {
-          "url": "/blog/biaya-cor-per-m3/",
-          "title": "Biaya Cor Per M3: Estimasi, Faktor Pengaruh, dan Tips Efisien di Jabodetabek",
-          "keyword": "biaya cor per m3",
-          "words": 659,
-          "inbound": 0
-        }
-      ]
-    },
-    {
-      "keep": {
-        "url": "/blog/desain-rak-sepatu-untuk-toko/",
-        "title": "Inspirasi Desain Rak Sepatu untuk Toko yang Menarik dan Fungsional",
-        "keyword": "desain rak sepatu untuk toko",
-        "words": 696,
-        "inbound": 0
-      },
-      "reason": "#1: Desain rak sepatu, inspirasi, minimalis, target toko/rumah.",
-      "remove": [
-        {
-          "url": "/blog/inspirasi-desain-rak-sepatu-minimalis/",
-          "title": "Inspirasi Desain Rak Sepatu Minimalis",
+          "url": "/blog/cara-hitung-volume-ring-balok-dan-kolom-beton/",
+          "title": "Hitung Volume Kolom Beton & Ring Balok",
           "keyword": "",
-          "words": 638,
-          "inbound": 0
-        }
-      ]
-    },
-    {
-      "keep": {
-        "url": "/blog/beton-jalan-tol/",
-        "title": "Beton Jalan Tol: Ketahanan, Biaya, dan Spesifikasi yang Perlu Anda Ketahui",
-        "keyword": "beton jalan tol",
-        "words": 689,
-        "inbound": 0
-      },
-      "reason": "#2: Biaya, proses, dan tips pembuatan jalan beton. | #3: Cara hitung biaya cor jalan, fokus pada biaya. | #4: Harga cor beton jalan per m2 dan estimasi biaya.",
-      "remove": [
-        {
-          "url": "/blog/jalan-cor-coran/",
-          "title": "Jalan Cor Coran: Panduan Lengkap Biaya, Proses, dan Tips Pembuatan",
-          "keyword": "jalan cor coran",
-          "words": 616,
-          "inbound": 0
-        },
-        {
-          "url": "/blog/biaya-cor-jalan-per-meter/",
-          "title": "Cara Hitung Biaya Cor Jalan Per Meter di Jabodetabek, Lengkap & Praktis",
-          "keyword": "biaya cor jalan per meter",
-          "words": 598,
-          "inbound": 0
-        },
-        {
-          "url": "/blog/harga-cor-beton-jalan-per-m2/",
-          "title": "Harga Cor Beton Jalan Per M2: Panduan Lengkap & Estimasi Biaya 2026",
-          "keyword": "harga cor beton jalan per m2",
-          "words": 591,
-          "inbound": 0
-        }
-      ]
-    },
-    {
-      "keep": {
-        "url": "/blog/biaya-ngedak-rumah-per-meter-persegi/",
-        "title": "Biaya Ngedak Rumah Per Meter Persegi: Estimasi Terbaru 2026",
-        "keyword": "biaya ngedak rumah per meter persegi",
-        "words": 689,
-        "inbound": 0
-      },
-      "reason": "#1: Topik dan tujuan artikel sangat mirip.",
-      "remove": [
-        {
-          "url": "/blog/biaya-ngedak-rumah/",
-          "title": "Biaya Ngedak Rumah: Rincian Lengkap dan Estimasi Tahun 2026",
-          "keyword": "biaya ngedak rumah",
-          "words": 670,
-          "inbound": 0
-        }
-      ]
-    },
-    {
-      "keep": {
-        "url": "/blog/beton-instan-drymix-k-300/",
-        "title": "Beton Instan Drymix K 300: Panduan Lengkap Aplikasi dan Keunggulan di Proyek Anda",
-        "keyword": "beton instan drymix k 300",
-        "words": 683,
-        "inbound": 0
-      },
-      "reason": "#1: Judul, keyword, dan ringkasan sangat mirip, membahas hal sama. | #2: K300 sama, panduan lengkap, membahas kekuatan & aplikasi.",
-      "remove": [
-        {
-          "url": "/blog/beton-instan-k300/",
-          "title": "Beton Instan K300: Panduan Lengkap untuk Konstruksi Kuat dan Efisien",
-          "keyword": "beton instan k300",
-          "words": 635,
-          "inbound": 0
-        }
-      ]
-    },
-    {
-      "keep": {
-        "url": "/blog/pondasi-dari-batu-belah-dan-split/",
-        "title": "Pondasi dari Batu Belah dan Beton Cor",
-        "keyword": "",
-        "words": 680,
-        "inbound": 0
-      },
-      "reason": "#2: Pembahasan batu belah dan split, definisi/arti. | #3: Pembahasan batu belah dan split, definisi/arti.",
-      "remove": [
-        {
-          "url": "/blog/mengenal-batu-belah-dan-split/",
-          "title": "Mengenal Batu Belah dan Split",
-          "keyword": "",
-          "words": 633,
-          "inbound": 0
-        },
-        {
-          "url": "/blog/batu-gajah-sebagai-bagian-dari-batu-belah-dan-split/",
-          "title": "Batu Gajah Sebagai Bagian Dari Batu Belah dan Split",
-          "keyword": "",
-          "words": 527,
-          "inbound": 0
-        }
-      ]
-    },
-    {
-      "keep": {
-        "url": "/blog/cara-pemasangan-bondek-dan-wiremesh-yang-benar/",
-        "title": "Cara Pemasangan Bondek dan Wiremesh yang Benar: Panduan Lengkap 2026",
-        "keyword": "cara pemasangan bondek dan wiremesh yang benar",
-        "words": 674,
-        "inbound": 0
-      },
-      "reason": "#1: Topik dan maksud sama: cara pemasangan bondek.",
-      "remove": [
-        {
-          "url": "/blog/cara-pasang-bondek/",
-          "title": "Cara Pasang Bondek: Panduan Lengkap & Tips Sukses 2026",
-          "keyword": "cara pasang bondek",
-          "words": 637,
-          "inbound": 0
-        }
-      ]
-    },
-    {
-      "keep": {
-        "url": "/blog/batu-belah/",
-        "title": "Batu Belah: Material Kuat untuk Konstruksi dan Desain Interior Anda",
-        "keyword": "batu belah",
-        "words": 670,
-        "inbound": 0
-      },
-      "reason": "#1: Objek dan maksud sama, hanya variasi warna.",
-      "remove": [
-        {
-          "url": "/blog/batu-belah-hitam/",
-          "title": "Batu Belah Hitam: Pilihan Elegan untuk Interior dan Eksterior Rumah Anda",
-          "keyword": "batu belah hitam",
-          "words": 569,
-          "inbound": 0
-        }
-      ]
-    },
-    {
-      "keep": {
-        "url": "/blog/harga-kursi-khusus-anak-desain-lucu/",
-        "title": "Harga Kursi Khusus Anak [Desain Lucu]",
-        "keyword": "",
-        "words": 659,
-        "inbound": 0
-      },
-      "reason": "#1: Judul dan isi membahas kursi anak desain lucu.",
-      "remove": [
-        {
-          "url": "/blog/desain-kursi-untuk-anak-anak-lucu/",
-          "title": "Desain Kursi Untuk Anak-anak [Lucu]",
-          "keyword": "",
-          "words": 630,
-          "inbound": 0
-        }
-      ]
-    },
-    {
-      "keep": {
-        "url": "/blog/biaya-dak-beton/",
-        "title": "Biaya Dak Beton: Panduan Lengkap Estimasi, Faktor, dan Tips Penghematan",
-        "keyword": "biaya dak beton",
-        "words": 654,
-        "inbound": 0
-      },
-      "reason": "#1: Keduanya membahas biaya dak beton & penghematan. | #3: Keduanya membahas biaya dak rumah/beton & estimasi.",
-      "remove": [
-        {
-          "url": "/blog/menghemat-biaya-cor-dak-dengan-smartdek/",
-          "title": "Menghemat Biaya Cor Dak dengan Smartdek",
-          "keyword": "",
-          "words": 453,
-          "inbound": 0
-        }
-      ]
-    },
-    {
-      "keep": {
-        "url": "/blog/kayu-untuk-cor/",
-        "title": "Kayu untuk Cor: Panduan Lengkap Pemilihan, Fungsi, dan Biaya",
-        "keyword": "kayu untuk cor",
-        "words": 653,
-        "inbound": 0
-      },
-      "reason": "#2: Pemilihan kayu untuk cor, informasi sama.",
-      "remove": [
-        {
-          "url": "/blog/memilih-kayu-papan-cor-yang-tepat/",
-          "title": "Cara Memilih Kayu Papan Cor Yang Tepat",
-          "keyword": "",
-          "words": 477,
-          "inbound": 0
-        }
-      ]
-    },
-    {
-      "keep": {
-        "url": "/blog/harga-meja-besi-minimalis-terbaru/",
-        "title": "Harga Meja Besi Minimalis Terbaru",
-        "keyword": "",
-        "words": 652,
-        "inbound": 0
-      },
-      "reason": "#1: Judul dan keyword sangat mirip, membahas meja besi minimalis. | #4: Meja minimalis, fokus pada harga terbaru.",
-      "remove": [
-        {
-          "url": "/blog/inilah-desain-meja-besi-minimalis-terbaru/",
-          "title": "Inilah Desain Meja Besi Minimalis Terbaru",
-          "keyword": "",
-          "words": 599,
-          "inbound": 0
-        },
-        {
-          "url": "/blog/harga-meja-makan-minimalis/",
-          "title": "Harga Meja Makan Minimalis [Terbaru]",
-          "keyword": "",
-          "words": 615,
+          "words": 470,
           "inbound": 0
         }
       ]
@@ -420,11 +79,6 @@
       "keep": "/blog/batu-cor-pondasi/",
       "drop": "/blog/pondasi-dari-batu-belah-dan-split/",
       "aiReason": "#3: Pembahasan pondasi kokoh, fokus pada material/campuran. | #5: Pembahasan pondasi, material batu belah dan cor."
-    },
-    {
-      "keep": "/blog/atap-bondek-cor/",
-      "drop": "/blog/cara-pasang-bondek/",
-      "aiReason": "#1: Cara memasang bondek, fokus utama sama. | #2: Cara pasang bondek, fokus utama sama. | #3: Cara memasang bondek/bondex, fokus utama sama. | #5: Cara memasang bondek, fokus utama sama. | #6: Cara memasang bondek, fokus utama sama."
     },
     {
       "keep": "/blog/bekisting-balok-dan-plat/",
@@ -782,11 +436,6 @@
       "aiReason": "#1: Beton K300, panduan lengkap, aplikasi, dan keunggulan. | #2: Beton K300, panduan lengkap, kekuatan, penggunaan, aplikasi. | #3: Beton K300, panduan lengkap, konstruksi kuat dan efisien."
     },
     {
-      "keep": "/blog/analisa-beton-k-300/",
-      "drop": "/blog/beton-instan-k300/",
-      "aiReason": "#1: Beton K300, panduan lengkap, aplikasi, dan keunggulan. | #2: Beton K300, panduan lengkap, kekuatan, penggunaan, aplikasi. | #3: Beton K300, panduan lengkap, konstruksi kuat dan efisien."
-    },
-    {
       "keep": "/blog/berat-molen-cor/",
       "drop": "/blog/truk-mixer-pengangkut-beton-cor-atau-truk-molen/",
       "aiReason": "#2: Molen/truk mixer = alat, membahas kapasitas/pengaruh biaya. | #4: Molen, membahas kapasitas dan hubungannya dengan proyek."
@@ -905,6 +554,46 @@
       "keep": "/blog/cairan-perekat-beton-retak/",
       "drop": "/blog/sistem-injeksi-pada-beton-keropos-retak/",
       "aiReason": "#1: Keduanya membahas perbaikan beton retak, solusi serupa. | #4: Keduanya membahas beton retak dan metode perbaikan/solusi."
+    },
+    {
+      "keep": "/blog/bahan-bangunan-paling-sering-dipakai/",
+      "drop": "/blog/inilah-contoh-bahan-bangunan-struktural/",
+      "aiReason": "#1: Topik bahan bangunan, fokus pada jenis/definisi."
+    },
+    {
+      "keep": "/blog/beton-readymix-bogor/",
+      "drop": "/blog/beton-ready-mix-mutu-dan-harga/",
+      "aiReason": "#5: Harga dan kualitas beton readymix, sama-sama solusi."
+    },
+    {
+      "keep": "/blog/inspirasi-rak-buku-untuk-perpustakaan-pribadi/",
+      "drop": "/blog/model-rak-buku-kayu-untuk-rumah-minimalis/",
+      "aiReason": "#1: Rak buku, inspirasi desain, target audiens sama."
+    },
+    {
+      "keep": "/blog/beton-k250-berapa-mpa/",
+      "drop": "/blog/campuran-beton-k250/",
+      "aiReason": "#1: Topik dan maksud informasi beton K250 identik."
+    },
+    {
+      "keep": "/blog/cara-memperbaiki-dak-beton-bocor/",
+      "drop": "/blog/cara-memperbaiki-dak-beton-yang-retak/",
+      "aiReason": "#1: Topik dak beton, solusi masalah kebocoran/keretakan."
+    },
+    {
+      "keep": "/blog/lemari-sliding-2-pintu/",
+      "drop": "/blog/lemari-kayu-2-pintu/",
+      "aiReason": "#1: Objek dan maksud sama, hanya variasi material (kayu)."
+    },
+    {
+      "keep": "/blog/arti-curing/",
+      "drop": "/blog/tehnik-perawatan-curing-beton-yang-benar/",
+      "aiReason": "#1: Pembahasan arti dan teknik curing beton yang identik."
+    },
+    {
+      "keep": "/blog/jenis-kayu-yang-bagus-untuk-furniture/",
+      "drop": "/blog/perbandingan-harga-kayu-meranti-jati-kamper-borneo/",
+      "aiReason": "#3: Perbandingan jenis kayu dan harga, sama dengan artikel utama."
     }
   ],
   "pendingClusters": 0,
