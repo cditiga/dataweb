@@ -8034,7 +8034,11 @@ const redirectMap = {
     "/blog/inilah-desain-meja-besi-minimalis-terbaru/": "/blog/harga-meja-besi-minimalis-terbaru/",
     "/blog/harga-meja-makan-minimalis/": "/blog/harga-meja-besi-minimalis-terbaru/",
     "/blog/terlaris-bufet-minimalis-bahan-kayu-jati/": "/blog/bufet-tv-minimalis-dari-bahan-kayu-jati/",
-    "/blog/cara-hitung-volume-ring-balok-dan-kolom-beton/": "/blog/cara-menghitung-ring-balok/"
+    "/blog/cara-hitung-volume-ring-balok-dan-kolom-beton/": "/blog/cara-menghitung-ring-balok/",
+    "/blog/takaran-adukan-pondasi-batu-kali/": "/blog/takaran-adukan-pondasi/",
+    "/blog/macam-macam-jenis-batako-dan-harganya/": "/blog/macam-macam-batako/",
+    "/blog/penggunaan-cakar-ayam-yang-tepat/": "/blog/cakar-ayam-untuk-rumah-2-lantai/",
+    "/blog/beli-beton-cor-berkualitas-pionir-beton/": "/blog/pionir-beton-cor-kualitas-harga-terbaik/"
 };
 (function () {
     function getCurrentPath() {
