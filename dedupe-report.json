@@ -1,47 +1,85 @@
 {
-  "generatedAt": "2026-10-18T13:45:46.093Z",
+  "generatedAt": "2026-10-19T16:47:49.137Z",
   "mode": "daily",
   "section": "blog",
   "complete": false,
-  "clusterCount": 2,
-  "deleteCount": 2,
-  "undecidedSeeds": 113,
+  "clusterCount": 4,
+  "deleteCount": 4,
+  "undecidedSeeds": 73,
   "judgeErrors": 0,
   "clusters": [
     {
       "keep": {
-        "url": "/blog/bufet-tv-minimalis-dari-bahan-kayu-jati/",
-        "title": "Bufet Tv Minimalis dari Bahan Kayu Jati",
-        "keyword": "",
-        "words": 643,
+        "url": "/blog/takaran-adukan-pondasi/",
+        "title": "Takaran Adukan Pondasi",
+        "keyword": "takaran adukan pondasi",
+        "words": 600,
         "inbound": 0
       },
-      "reason": "#1: Objek dan maksud sama: bufet tv kayu jati.",
+      "reason": "#1: Topik dan tujuan artikel sangat mirip, hanya spesifik batu kali.",
       "remove": [
         {
-          "url": "/blog/terlaris-bufet-minimalis-bahan-kayu-jati/",
-          "title": "[Terlaris] Bufet Minimalis Bahan Kayu Jati",
-          "keyword": "",
-          "words": 632,
+          "url": "/blog/takaran-adukan-pondasi-batu-kali/",
+          "title": "Takaran Adukan Pondasi Batu Kali: Panduan Lengkap untuk Kekuatan Optimal",
+          "keyword": "takaran adukan pondasi batu kali",
+          "words": 574,
           "inbound": 0
         }
       ]
     },
     {
       "keep": {
-        "url": "/blog/cara-menghitung-ring-balok/",
-        "title": "Cara Menghitung Ring Balok dengan Tepat untuk Konstruksi Bangunan",
-        "keyword": "cara menghitung ring balok",
-        "words": 632,
+        "url": "/blog/macam-macam-batako/",
+        "title": "Macam Macam Batako: Ukuran, Jenis, Harga, dan Pilihan Terbaik untuk Bangunan Anda",
+        "keyword": "macam macam batako",
+        "words": 575,
         "inbound": 0
       },
-      "reason": "#1: Menghitung ring balok, fokus volume vs. cara menghitung.",
+      "reason": "#1: Topik, informasi, dan keyword utama identik.",
       "remove": [
         {
-          "url": "/blog/cara-hitung-volume-ring-balok-dan-kolom-beton/",
-          "title": "Hitung Volume Kolom Beton & Ring Balok",
+          "url": "/blog/macam-macam-jenis-batako-dan-harganya/",
+          "title": "Macam-Macam Jenis Batako Dan Harganya",
           "keyword": "",
-          "words": 470,
+          "words": 507,
+          "inbound": 0
+        }
+      ]
+    },
+    {
+      "keep": {
+        "url": "/blog/cakar-ayam-untuk-rumah-2-lantai/",
+        "title": "Cakar Ayam untuk Rumah 2 Lantai: Panduan Lengkap, Kelebihan, dan Biaya",
+        "keyword": "cakar ayam untuk rumah 2 lantai",
+        "words": 568,
+        "inbound": 0
+      },
+      "reason": "#1: Objek & maksud sama: panduan cakar ayam.",
+      "remove": [
+        {
+          "url": "/blog/penggunaan-cakar-ayam-yang-tepat/",
+          "title": "Penggunaan Cakar Ayam yang Tepat",
+          "keyword": "",
+          "words": 457,
+          "inbound": 0
+        }
+      ]
+    },
+    {
+      "keep": {
+        "url": "/blog/pionir-beton-cor-kualitas-harga-terbaik/",
+        "title": "Kualitas dan Harga Terbaik Pionir Beton Cor",
+        "keyword": "",
+        "words": 565,
+        "inbound": 0
+      },
+      "reason": "#1: Topik dan maksud sama: kualitas & harga Pionir Beton. | #2: Topik dan maksud sama: kualitas & mutu Pionir Beton. | #4: Topik dan maksud sama: kualitas & harga beton ready mix.",
+      "remove": [
+        {
+          "url": "/blog/beli-beton-cor-berkualitas-pionir-beton/",
+          "title": "Pionir Beton Berkualitas Unggul",
+          "keyword": "",
+          "words": 464,
           "inbound": 0
         }
       ]
@@ -181,6 +219,26 @@
       "aiReason": "#2: Bekisting plat lantai = bekisting plat besi, sama maksud."
     },
     {
+      "keep": "/blog/harga-lemari-kayu-jati/",
+      "drop": "/blog/lemari-jati-3-pintu/",
+      "aiReason": "#1: Lemari jati, investasi furnitur, informasi serupa. | #3: Lemari jati, tips memilih, informasi serupa. | #4: Lemari kayu, solusi penyimpanan, informasi serupa. | #5: Lemari jati, pertimbangan membeli, informasi serupa."
+    },
+    {
+      "keep": "/blog/harga-lemari-kayu-jati/",
+      "drop": "/blog/trik-jitu-memilih-furniture-kayu-jati-asli/",
+      "aiReason": "#1: Lemari jati, investasi furnitur, informasi serupa. | #3: Lemari jati, tips memilih, informasi serupa. | #4: Lemari kayu, solusi penyimpanan, informasi serupa. | #5: Lemari jati, pertimbangan membeli, informasi serupa."
+    },
+    {
+      "keep": "/blog/harga-lemari-kayu-jati/",
+      "drop": "/blog/lemari-kayu-3-pintu/",
+      "aiReason": "#1: Lemari jati, investasi furnitur, informasi serupa. | #3: Lemari jati, tips memilih, informasi serupa. | #4: Lemari kayu, solusi penyimpanan, informasi serupa. | #5: Lemari jati, pertimbangan membeli, informasi serupa."
+    },
+    {
+      "keep": "/blog/harga-lemari-kayu-jati/",
+      "drop": "/blog/lemari-jati-2-pintu/",
+      "aiReason": "#1: Lemari jati, investasi furnitur, informasi serupa. | #3: Lemari jati, tips memilih, informasi serupa. | #4: Lemari kayu, solusi penyimpanan, informasi serupa. | #5: Lemari jati, pertimbangan membeli, informasi serupa."
+    },
+    {
       "keep": "/blog/campuran-jenis-material-pada-readymix-concrete/",
       "drop": "/blog/bahan-tambahan-pada-ready-mix-concrete/",
       "aiReason": "#1: Membahas bahan/campuran readymix concrete secara umum. | #2: Membahas komposisi/campuran readymix concrete."
@@ -243,11 +301,6 @@
     {
       "keep": "/blog/inilah-beberapa-bahan-finishing-kayu-terbaik/",
       "drop": "/blog/bufet-tv-minimalis-dari-bahan-kayu-jati/",
-      "aiReason": "#3: Bahan kayu jati untuk furniture, fokus finishing. | #4: Bufet kayu jati, fokus bahan & finishing. | #6: Jenis kayu untuk furniture, fokus bahan."
-    },
-    {
-      "keep": "/blog/inilah-beberapa-bahan-finishing-kayu-terbaik/",
-      "drop": "/blog/terlaris-bufet-minimalis-bahan-kayu-jati/",
       "aiReason": "#3: Bahan kayu jati untuk furniture, fokus finishing. | #4: Bufet kayu jati, fokus bahan & finishing. | #6: Jenis kayu untuk furniture, fokus bahan."
     },
     {
@@ -581,11 +634,6 @@
       "aiReason": "#1: Topik dak beton, solusi masalah kebocoran/keretakan."
     },
     {
-      "keep": "/blog/lemari-sliding-2-pintu/",
-      "drop": "/blog/lemari-kayu-2-pintu/",
-      "aiReason": "#1: Objek dan maksud sama, hanya variasi material (kayu)."
-    },
-    {
       "keep": "/blog/arti-curing/",
       "drop": "/blog/tehnik-perawatan-curing-beton-yang-benar/",
       "aiReason": "#1: Pembahasan arti dan teknik curing beton yang identik."
@@ -594,6 +642,36 @@
       "keep": "/blog/jenis-kayu-yang-bagus-untuk-furniture/",
       "drop": "/blog/perbandingan-harga-kayu-meranti-jati-kamper-borneo/",
       "aiReason": "#3: Perbandingan jenis kayu dan harga, sama dengan artikel utama."
+    },
+    {
+      "keep": "/blog/cara-membuat-adukan-acian/",
+      "drop": "/blog/berapa-lama-acian-kering/",
+      "aiReason": "#3: Adukan acian, membahas waktu kering/hasil optimal."
+    },
+    {
+      "keep": "/blog/biaya-ngedak-rumah-dengan-bondek/",
+      "drop": "/blog/harga-terbaru-bondek-dan-wiremesh/",
+      "aiReason": "#3: Harga bondek & wiremesh terkait biaya ngedak."
+    },
+    {
+      "keep": "/blog/uji-kubus-beton/",
+      "drop": "/blog/jasa-uji-beton-di-jakarta-bogor-depok-tangerang-bekasi/",
+      "aiReason": "#2: Uji beton, layanan terkait, informasi serupa."
+    },
+    {
+      "keep": "/blog/atap-plat-beton/",
+      "drop": "/blog/carport-plat-dak/",
+      "aiReason": "#4: Plat dak = plat beton, membahas kekuatan, pemasangan, biaya."
+    },
+    {
+      "keep": "/blog/pionir-beton-cor-kualitas-harga-terbaik/",
+      "drop": "/blog/pionir-beton-cor-segala-butuhkan/",
+      "aiReason": "#1: Topik dan maksud sama: kualitas & harga Pionir Beton. | #2: Topik dan maksud sama: kualitas & mutu Pionir Beton. | #4: Topik dan maksud sama: kualitas & harga beton ready mix."
+    },
+    {
+      "keep": "/blog/pionir-beton-cor-kualitas-harga-terbaik/",
+      "drop": "/blog/beton-ready-mix-mutu-dan-harga/",
+      "aiReason": "#1: Topik dan maksud sama: kualitas & harga Pionir Beton. | #2: Topik dan maksud sama: kualitas & mutu Pionir Beton. | #4: Topik dan maksud sama: kualitas & harga beton ready mix."
     }
   ],
   "pendingClusters": 0,

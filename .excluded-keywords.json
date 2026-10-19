@@ -5815,5 +5815,33 @@
     "matchedTitle": "Kenapa Lemari Gantung Baju Gamis Jadi Pilihan Cerdas?",
     "taggedAt": "2026-10-19T13:25:47.917Z",
     "algoVersion": 4
+  },
+  "takaran adukan pondasi batu kali": {
+    "reason": "merged duplicate (dedupe-articles.js, AI-judged)",
+    "matchedFile": "takaran-adukan-pondasi.md",
+    "matchedTitle": "Takaran Adukan Pondasi",
+    "taggedAt": "2026-10-19T16:47:50.061Z",
+    "algoVersion": 4
+  },
+  "macam macam jenis batako dan harganya": {
+    "reason": "merged duplicate (dedupe-articles.js, AI-judged)",
+    "matchedFile": "macam-macam-batako.md",
+    "matchedTitle": "Macam Macam Batako: Ukuran, Jenis, Harga, dan Pilihan Terbaik untuk Bangunan Anda",
+    "taggedAt": "2026-10-19T16:47:50.061Z",
+    "algoVersion": 4
+  },
+  "penggunaan cakar ayam yang tepat": {
+    "reason": "merged duplicate (dedupe-articles.js, AI-judged)",
+    "matchedFile": "cakar-ayam-untuk-rumah-2-lantai.md",
+    "matchedTitle": "Cakar Ayam untuk Rumah 2 Lantai: Panduan Lengkap, Kelebihan, dan Biaya",
+    "taggedAt": "2026-10-19T16:47:50.061Z",
+    "algoVersion": 4
+  },
+  "beli beton cor berkualitas pionir beton": {
+    "reason": "merged duplicate (dedupe-articles.js, AI-judged)",
+    "matchedFile": "pionir-beton-cor-kualitas-harga-terbaik.md",
+    "matchedTitle": "Kualitas dan Harga Terbaik Pionir Beton Cor",
+    "taggedAt": "2026-10-19T16:47:50.061Z",
+    "algoVersion": 4
   }
 }

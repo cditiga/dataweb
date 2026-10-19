@@ -1,6 +1,6 @@
 {
  "version": 2,
- "updatedAt": "2026-10-18T13:45:46.092Z",
+ "updatedAt": "2026-10-19T16:47:49.135Z",
  "decisions": {
   "/blog/berapa-lapis-besi-untuk-cor-dak/": {
    "candidates": [
@@ -3011,6 +3011,432 @@
    "duplicates": [],
    "reason": "",
    "judgedAt": "2026-10-18T13:45:46.073Z"
+  },
+  "/blog/harga-lemari-kayu-jati/": {
+   "candidates": [
+    "/blog/lemari-jati-3-pintu/",
+    "/blog/kayu-untuk-cor/",
+    "/blog/trik-jitu-memilih-furniture-kayu-jati-asli/",
+    "/blog/lemari-kayu-3-pintu/",
+    "/blog/lemari-jati-2-pintu/",
+    "/blog/bufet-tv-minimalis-dari-bahan-kayu-jati/",
+    "/blog/kualitas-meja-kayu-jati-belanda/"
+   ],
+   "duplicates": [
+    "/blog/lemari-jati-3-pintu/",
+    "/blog/trik-jitu-memilih-furniture-kayu-jati-asli/",
+    "/blog/lemari-kayu-3-pintu/",
+    "/blog/lemari-jati-2-pintu/"
+   ],
+   "reason": "#1: Lemari jati, investasi furnitur, informasi serupa. | #3: Lemari jati, tips memilih, informasi serupa. | #4: Lemari kayu, solusi penyimpanan, informasi serupa. | #5: Lemari jati, pertimbangan membeli, informasi serupa.",
+   "judgedAt": "2026-10-19T16:45:50.520Z"
+  },
+  "/blog/lemari-jati-2-pintu/": {
+   "candidates": [
+    "/blog/lemari-sliding-2-pintu/",
+    "/blog/lima-syarat-penting-konstruksi-bangunan/",
+    "/blog/harga-lemari-brangkas-besi-terbaru/",
+    "/blog/harga-lemari-pakaian-plastik/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-19T16:45:53.990Z"
+  },
+  "/blog/harga-kabinet-dapur-aluminium/": {
+   "candidates": [
+    "/blog/jasa-pembuatan-dapur-minimalis/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-19T16:45:55.121Z"
+  },
+  "/blog/harga-dipan-bahan-multiplek-murah/": {
+   "candidates": [
+    "/blog/harga-dipan-besi-minimalis-terbaru/",
+    "/blog/model-dipan-minimalis-anak-terbaru/",
+    "/blog/inilah-contoh-bahan-bangunan-struktural/",
+    "/blog/supplier-bahan-bangunan-terlengkap/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-19T16:45:59.981Z"
+  },
+  "/blog/buis-beton-u-30/": {
+   "candidates": [
+    "/blog/campuran-molen-beton/",
+    "/blog/besi-plat-lantai/",
+    "/blog/bekisting-plat-lantai/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-19T16:46:02.995Z"
+  },
+  "/blog/desain-sofa-bed-berkarakter-terbaru/": {
+   "candidates": [
+    "/blog/harga-sofa-bed-minimalis-terbaru/",
+    "/blog/tips-memilih-desain-sofa-minimalis-terbaik/",
+    "/blog/tips-memilih-sofa-bed-terbaik-untuk-keluarga/",
+    "/blog/model-sofa-bed-lipat-yang-banyak-dicari/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-19T16:46:07.475Z"
+  },
+  "/blog/adhimix-precast-cikarang/": {
+   "candidates": [
+    "/blog/adhimix-precast-indonesia-pt-plant-kebon-jeruk/",
+    "/blog/berapa-lama-semen-kering/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-19T16:46:09.228Z"
+  },
+  "/blog/cara-membuat-adukan-acian/": {
+   "candidates": [
+    "/blog/takaran-adukan-pondasi/",
+    "/blog/tips-pengadukan-dan-proses-pengecoran-beton-cor/",
+    "/blog/berapa-lama-acian-kering/",
+    "/blog/takaran-adukan-pondasi-batu-kali/"
+   ],
+   "duplicates": [
+    "/blog/berapa-lama-acian-kering/"
+   ],
+   "reason": "#3: Adukan acian, membahas waktu kering/hasil optimal.",
+   "judgedAt": "2026-10-19T16:46:12.282Z"
+  },
+  "/blog/harga-lemari-pakaian-anak-terbaru/": {
+   "candidates": [
+    "/blog/model-lemari-pakaian-anak-yang-unik/",
+    "/blog/harga-lemari-pakaian-plastik/",
+    "/blog/model-dipan-minimalis-anak-terbaru/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-19T16:46:15.052Z"
+  },
+  "/blog/kotoran-ayam-pupuk-tanaman/": {
+   "candidates": [
+    "/blog/cakar-ayam-untuk-rumah-2-lantai/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-19T16:46:16.216Z"
+  },
+  "/blog/1-molen-manual-berapa-m3/": {
+   "candidates": [
+    "/blog/campuran-molen-beton/",
+    "/blog/kelebihan-cor-curah-dan-manual/",
+    "/blog/berapa-lama-semen-kering/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-19T16:46:20.496Z"
+  },
+  "/blog/pangkalan-jual-batu-kali-split-dan-bata-merah/": {
+   "candidates": [
+    "/blog/cara-menghitung-kebutuhan-bata-merah/",
+    "/blog/perbedaan-batu-kali-dan-batu-belah/",
+    "/blog/takaran-adukan-pondasi-batu-kali/",
+    "/blog/kelebihan-dan-kelemahan-bata-merah-dan-ringan/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-19T16:46:24.366Z"
+  },
+  "/blog/model-dipan-minimalis-anak-terbaru/": {
+   "candidates": [
+    "/blog/harga-dipan-besi-minimalis-terbaru/",
+    "/blog/harga-dipan-kayu-jati-belanda-terbaru/",
+    "/blog/10-cara-menata-kamar-anak-agar-terlihat-menarik/",
+    "/blog/model-lemari-pakaian-anak-yang-unik/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-19T16:46:31.656Z"
+  },
+  "/blog/pasir-silika-terbaik-untuk-produksi-bata-ringan/": {
+   "candidates": [
+    "/blog/mengenal-apa-itu-bata-ringan/",
+    "/blog/pasir-terbaik-untuk-produksi-mortar/",
+    "/blog/ciri-ciri-baja-ringan-berkualitas-baik/",
+    "/blog/kelebihan-dan-kelemahan-bata-merah-dan-ringan/",
+    "/blog/kegunaan-pasir-silika-silica/",
+    "/blog/perbedaan-bata-merah-dan-ringan-sebagai-bahan-konstruksi/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-19T16:46:35.960Z"
+  },
+  "/blog/memilih-desain-rak-sepatu-kekinian/": {
+   "candidates": [
+    "/blog/model-rak-buku-kayu-untuk-rumah-minimalis/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-19T16:46:37.738Z"
+  },
+  "/blog/tehnik-pengecoran-tangga-beton/": {
+   "candidates": [
+    "/blog/tangga-beton/",
+    "/blog/tehnik-perawatan-curing-beton-yang-benar/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-19T16:46:40.182Z"
+  },
+  "/blog/1-lembar-wiremesh-berapa-m2/": {
+   "candidates": [
+    "/blog/borongan-pasang-wiremesh/",
+    "/blog/menghemat-besi-plat-beton-dengan-wiremesh/",
+    "/blog/harga-terbaru-bondek-dan-wiremesh/",
+    "/blog/penyambungan-wiremesh-dilas-atau-diikat/",
+    "/blog/mengenal-wiremesh-industri-bangunan/",
+    "/blog/wiremesh-yang-ideal-untuk-dak-rumah/",
+    "/blog/wiremesh-lantai-dinding/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-19T16:46:45.012Z"
+  },
+  "/blog/takaran-adukan-pondasi/": {
+   "candidates": [
+    "/blog/takaran-adukan-pondasi-batu-kali/",
+    "/blog/tips-pengadukan-dan-proses-pengecoran-beton-cor/"
+   ],
+   "duplicates": [
+    "/blog/takaran-adukan-pondasi-batu-kali/"
+   ],
+   "reason": "#1: Topik dan tujuan artikel sangat mirip, hanya spesifik batu kali.",
+   "judgedAt": "2026-10-19T16:46:46.702Z"
+  },
+  "/blog/cara-cat-ulang-funiture-ducoan/": {
+   "candidates": [
+    "/blog/cara-terbaik-cat-ulang-dinding-luar-rumah/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-19T16:46:47.660Z"
+  },
+  "/blog/beton-20-mpa/": {
+   "candidates": [
+    "/blog/campuran-molen-beton/",
+    "/blog/bekisting-plat-lantai/",
+    "/blog/besi-plat-lantai/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-19T16:46:51.400Z"
+  },
+  "/blog/bondek-075/": {
+   "candidates": [
+    "/blog/biaya-ngedak-rumah-dengan-bondek/",
+    "/blog/kelebihan-dak-bondek-vs-konvensional/",
+    "/blog/alasan-kenapa-bondek-jauh-lebih-murah/",
+    "/blog/harga-terbaru-bondek-dan-wiremesh/",
+    "/blog/keunggulan-menggunakan-bondek/",
+    "/blog/mengenal-apa-itu-bata-ringan/",
+    "/blog/wiremesh-yang-ideal-untuk-dak-rumah/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-19T16:46:56.296Z"
+  },
+  "/blog/pasir-laut-dan-darat/": {
+   "candidates": [
+    "/blog/apa-itu-beton-normal/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-19T16:46:57.170Z"
+  },
+  "/blog/bagaimana-proses-produksi-readymix-concrete/": {
+   "candidates": [
+    "/blog/pasir-terbaik-untuk-produksi-mortar/",
+    "/blog/beton-ready-mix-mutu-dan-harga/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-19T16:46:58.762Z"
+  },
+  "/blog/bekisting-plat-lantai/": {
+   "candidates": [
+    "/blog/besi-plat-lantai/",
+    "/blog/atap-plat-beton/",
+    "/blog/carport-plat-dak/",
+    "/blog/menghemat-besi-plat-beton-dengan-wiremesh/",
+    "/blog/campuran-molen-beton/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-19T16:47:04.424Z"
+  },
+  "/blog/harga-lemari-pakaian-plastik/": {
+   "candidates": [
+    "/blog/model-lemari-pakaian-anak-yang-unik/",
+    "/blog/beberapa-masalah-saat-pengecoran/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-19T16:47:06.350Z"
+  },
+  "/blog/biaya-ngedak-rumah-dengan-bondek/": {
+   "candidates": [
+    "/blog/wiremesh-yang-ideal-untuk-dak-rumah/",
+    "/blog/alasan-kenapa-bondek-jauh-lebih-murah/",
+    "/blog/harga-terbaru-bondek-dan-wiremesh/",
+    "/blog/keunggulan-menggunakan-bondek/",
+    "/blog/kelebihan-dak-bondek-vs-konvensional/"
+   ],
+   "duplicates": [
+    "/blog/harga-terbaru-bondek-dan-wiremesh/"
+   ],
+   "reason": "#3: Harga bondek & wiremesh terkait biaya ngedak.",
+   "judgedAt": "2026-10-19T16:47:09.905Z"
+  },
+  "/blog/desain-lemari-kaca-masa-kini/": {
+   "candidates": [
+    "/blog/biaya-dak-permeter/",
+    "/blog/tips-membeli-lemari-kaca-agar-tidak-salah-pilih/",
+    "/blog/inspirasi-desain-sofa-untuk-rumah-masa-kini/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-19T16:47:14.052Z"
+  },
+  "/blog/tips-membeli-lemari-kaca-agar-tidak-salah-pilih/": {
+   "candidates": [
+    "/blog/solusi-agar-dak-beton-tidak-melengkung/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-19T16:47:15.309Z"
+  },
+  "/blog/meja-belajar-minimalis-modern/": {
+   "candidates": [
+    "/blog/memilih-desain-meja-rias-minimalis/",
+    "/blog/jual-meja-kantor-terdekat/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-19T16:47:19.670Z"
+  },
+  "/blog/uji-kubus-beton/": {
+   "candidates": [
+    "/blog/pionir-beton-cor-kualitas-harga-terbaik/",
+    "/blog/jasa-uji-beton-di-jakarta-bogor-depok-tangerang-bekasi/",
+    "/blog/mengetahui-kualitas-material-cor-beton/",
+    "/blog/beton-ready-mix-mutu-dan-harga/",
+    "/blog/lima-syarat-penting-konstruksi-bangunan/"
+   ],
+   "duplicates": [
+    "/blog/jasa-uji-beton-di-jakarta-bogor-depok-tangerang-bekasi/"
+   ],
+   "reason": "#2: Uji beton, layanan terkait, informasi serupa.",
+   "judgedAt": "2026-10-19T16:47:25.662Z"
+  },
+  "/blog/atap-plat-beton/": {
+   "candidates": [
+    "/blog/inilah-macam-macam-model-atap-rumah/",
+    "/blog/menghemat-besi-plat-beton-dengan-wiremesh/",
+    "/blog/besi-plat-lantai/",
+    "/blog/carport-plat-dak/",
+    "/blog/perbandingan-kelebihan-dan-kekurangan-rangka-atap-baja-ringan/"
+   ],
+   "duplicates": [
+    "/blog/carport-plat-dak/"
+   ],
+   "reason": "#4: Plat dak = plat beton, membahas kekuatan, pemasangan, biaya.",
+   "judgedAt": "2026-10-19T16:47:30.646Z"
+  },
+  "/blog/perbandingan-harga-kayu-meranti-jati-kamper-borneo/": {
+   "candidates": [
+    "/blog/perbedaan-kayu-kamper-dan-meranti/",
+    "/blog/harga-dipan-kayu-jati-belanda-terbaru/",
+    "/blog/model-rak-buku-kayu-untuk-rumah-minimalis/",
+    "/blog/berapa-lama-papan-penahan-coran-dibuka/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-19T16:47:33.929Z"
+  },
+  "/blog/macam-macam-batako/": {
+   "candidates": [
+    "/blog/macam-macam-jenis-batako-dan-harganya/"
+   ],
+   "duplicates": [
+    "/blog/macam-macam-jenis-batako-dan-harganya/"
+   ],
+   "reason": "#1: Topik, informasi, dan keyword utama identik.",
+   "judgedAt": "2026-10-19T16:47:35.384Z"
+  },
+  "/blog/harga-dipan-kayu-jati-belanda-terbaru/": {
+   "candidates": [
+    "/blog/harga-dipan-besi-minimalis-terbaru/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-19T16:47:36.415Z"
+  },
+  "/blog/pompa-beton-proses-pengecoran/": {
+   "candidates": [
+    "/blog/cara-kerja-pompa-beton-ready-mix/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-19T16:47:37.816Z"
+  },
+  "/blog/berapa-lama-semen-kering/": {
+   "candidates": [
+    "/blog/bagian-bagian-concrete-pump/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-19T16:47:38.648Z"
+  },
+  "/blog/harga-sofa-bed-minimalis-terbaru/": {
+   "candidates": [
+    "/blog/tips-memilih-sofa-bed-terbaik-untuk-keluarga/",
+    "/blog/model-sofa-bed-lipat-yang-banyak-dicari/",
+    "/blog/tips-memilih-desain-sofa-minimalis-terbaik/",
+    "/blog/inspirasi-desain-sofa-untuk-rumah-masa-kini/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-19T16:47:41.467Z"
+  },
+  "/blog/cakar-ayam-untuk-rumah-2-lantai/": {
+   "candidates": [
+    "/blog/penggunaan-cakar-ayam-yang-tepat/"
+   ],
+   "duplicates": [
+    "/blog/penggunaan-cakar-ayam-yang-tepat/"
+   ],
+   "reason": "#1: Objek & maksud sama: panduan cakar ayam.",
+   "judgedAt": "2026-10-19T16:47:42.569Z"
+  },
+  "/blog/inilah-desain-meja-makan-yang-unik/": {
+   "candidates": [
+    "/blog/memilih-desain-meja-rias-minimalis/",
+    "/blog/jual-meja-kantor-terdekat/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-19T16:47:44.460Z"
+  },
+  "/blog/pionir-beton-cor-kualitas-harga-terbaik/": {
+   "candidates": [
+    "/blog/beli-beton-cor-berkualitas-pionir-beton/",
+    "/blog/pionir-beton-cor-segala-butuhkan/",
+    "/blog/mengetahui-kualitas-material-cor-beton/",
+    "/blog/beton-ready-mix-mutu-dan-harga/"
+   ],
+   "duplicates": [
+    "/blog/beli-beton-cor-berkualitas-pionir-beton/",
+    "/blog/pionir-beton-cor-segala-butuhkan/",
+    "/blog/beton-ready-mix-mutu-dan-harga/"
+   ],
+   "reason": "#1: Topik dan maksud sama: kualitas & harga Pionir Beton. | #2: Topik dan maksud sama: kualitas & mutu Pionir Beton. | #4: Topik dan maksud sama: kualitas & harga beton ready mix.",
+   "judgedAt": "2026-10-19T16:47:49.114Z"
   }
  }
 }
