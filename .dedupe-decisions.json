@@ -1,6 +1,6 @@
 {
  "version": 2,
- "updatedAt": "2026-10-19T16:47:49.135Z",
+ "updatedAt": "2026-10-20T14:39:16.134Z",
  "decisions": {
   "/blog/berapa-lapis-besi-untuk-cor-dak/": {
    "candidates": [
@@ -3437,6 +3437,398 @@
    ],
    "reason": "#1: Topik dan maksud sama: kualitas & harga Pionir Beton. | #2: Topik dan maksud sama: kualitas & mutu Pionir Beton. | #4: Topik dan maksud sama: kualitas & harga beton ready mix.",
    "judgedAt": "2026-10-19T16:47:49.114Z"
+  },
+  "/blog/toko-rak-buku-terdekat/": {
+   "candidates": [
+    "/blog/model-rak-buku-kayu-untuk-rumah-minimalis/",
+    "/blog/memilih-desain-rak-sepatu-kekinian/",
+    "/blog/lima-syarat-penting-konstruksi-bangunan/",
+    "/blog/bangunan-3-lantai/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-20T14:37:56.809Z"
+  },
+  "/blog/lemari-kaca-3-pintu/": {
+   "candidates": [
+    "/blog/lemari-plastik-3-pintu/",
+    "/blog/lemari-jati-3-pintu/",
+    "/blog/lemari-aluminium-3-pintu/",
+    "/blog/desain-lemari-kaca-masa-kini/",
+    "/blog/tips-membeli-lemari-kaca-agar-tidak-salah-pilih/",
+    "/blog/bufet-tv-kaca-desain-minimalis/",
+    "/blog/harga-lemari-brangkas-besi-terbaru/"
+   ],
+   "duplicates": [
+    "/blog/tips-membeli-lemari-kaca-agar-tidak-salah-pilih/"
+   ],
+   "reason": "#5: Objek & maksud sama: kesalahan memilih lemari kaca.",
+   "judgedAt": "2026-10-20T14:38:02.293Z"
+  },
+  "/blog/meja-belajar-lipat-dewasa/": {
+   "candidates": [
+    "/blog/memilih-desain-meja-rias-minimalis/",
+    "/blog/jual-meja-kantor-terdekat/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-20T14:38:04.527Z"
+  },
+  "/blog/memilih-desain-meja-rias-minimalis/": {
+   "candidates": [
+    "/blog/inspirasi-desain-meja-komputer-minimalis/",
+    "/blog/jual-meja-kantor-terdekat/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-20T14:38:06.277Z"
+  },
+  "/blog/keunggulan-beton-instan-vs-beton-konvensional/": {
+   "candidates": [
+    "/blog/kelebihan-dak-bondek-vs-konvensional/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-20T14:38:07.166Z"
+  },
+  "/blog/benerin-tembok-retak/": {
+   "candidates": [
+    "/blog/cara-memperbaiki-dak-beton-yang-retak/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-20T14:38:08.628Z"
+  },
+  "/blog/inspirasi-desain-meja-komputer-minimalis/": {
+   "candidates": [
+    "/blog/jual-meja-kantor-terdekat/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-20T14:38:09.644Z"
+  },
+  "/blog/beberapa-hal-yang-mempengaruhi-kekuatan-cor-beton/": {
+   "candidates": [
+    "/blog/borongan-pasang-wiremesh/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-20T14:38:10.777Z"
+  },
+  "/blog/beberapa-jenis-kursi-ruang-tamu-yang-ideal/": {
+   "candidates": [
+    "/blog/wiremesh-yang-ideal-untuk-dak-rumah/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-20T14:38:11.834Z"
+  },
+  "/blog/cara-terbaik-plester-dinding-hebel/": {
+   "candidates": [
+    "/blog/cara-pemasangan-hebel-benar/",
+    "/blog/metode-pengecoran-baik-dan-benar/",
+    "/blog/cara-menghitung-kebutuhan-perekat-hebel/",
+    "/blog/wiremesh-lantai-dinding/",
+    "/blog/harga-semen-perekat-hebel-2/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-20T14:38:15.892Z"
+  },
+  "/blog/besi-plat-lantai/": {
+   "candidates": [
+    "/blog/menghemat-besi-plat-beton-dengan-wiremesh/",
+    "/blog/carport-plat-dak/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-20T14:38:17.518Z"
+  },
+  "/blog/tips-memilih-sofa-bed-terbaik-untuk-keluarga/": {
+   "candidates": [
+    "/blog/tips-memilih-desain-sofa-minimalis-terbaik/",
+    "/blog/model-sofa-bed-lipat-yang-banyak-dicari/"
+   ],
+   "duplicates": [
+    "/blog/model-sofa-bed-lipat-yang-banyak-dicari/"
+   ],
+   "reason": "#2: Sofa bed lipat adalah bagian dari memilih sofa bed.",
+   "judgedAt": "2026-10-20T14:38:19.045Z"
+  },
+  "/blog/jual-meja-kantor-terdekat/": {
+   "candidates": [
+    "/blog/inilah-tips-menjaga-mеја-kantor-selalu-bersih-rарі/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-20T14:38:19.853Z"
+  },
+  "/blog/keuntungan-dan-kerugian-dari-beton-pracetak/": {
+   "candidates": [
+    "/blog/mengenal-beton-rakitan-atau-pracetak/"
+   ],
+   "duplicates": [
+    "/blog/mengenal-beton-rakitan-atau-pracetak/"
+   ],
+   "reason": "#1: Beton pracetak = beton rakitan, membahas keuntungan/pengenalan.",
+   "judgedAt": "2026-10-20T14:38:20.961Z"
+  },
+  "/blog/borongan-pasang-wiremesh/": {
+   "candidates": [
+    "/blog/menghemat-besi-plat-beton-dengan-wiremesh/",
+    "/blog/harga-terbaru-bondek-dan-wiremesh/",
+    "/blog/penyambungan-wiremesh-dilas-atau-diikat/",
+    "/blog/mengenal-wiremesh-industri-bangunan/",
+    "/blog/wiremesh-yang-ideal-untuk-dak-rumah/",
+    "/blog/wiremesh-lantai-dinding/",
+    "/blog/lima-syarat-penting-konstruksi-bangunan/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-20T14:38:29.203Z"
+  },
+  "/blog/cara-memperbaiki-dak-beton-yang-retak/": {
+   "candidates": [
+    "/blog/sistem-injeksi-pada-beton-keropos-retak/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-20T14:38:30.009Z"
+  },
+  "/blog/carport-plat-dak/": {
+   "candidates": [
+    "/blog/menghemat-besi-plat-beton-dengan-wiremesh/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-20T14:38:30.977Z"
+  },
+  "/blog/model-sofa-bed-lipat-yang-banyak-dicari/": {
+   "candidates": [
+    "/blog/tips-memilih-desain-sofa-minimalis-terbaik/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-20T14:38:31.845Z"
+  },
+  "/blog/cara-simpel-menghitung-kebutuhan-baja-ringan/": {
+   "candidates": [
+    "/blog/ciri-ciri-baja-ringan-berkualitas-baik/",
+    "/blog/mengenal-apa-itu-bata-ringan/",
+    "/blog/cara-membuat-canopy-dari-baja-ringan/",
+    "/blog/perbandingan-kelebihan-dan-kekurangan-rangka-atap-baja-ringan/",
+    "/blog/membuat-pagar-kuat-dan-murah-baja-ringan/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-20T14:38:35.879Z"
+  },
+  "/blog/ciri-ciri-pasir-yang-hemat-semen/": {
+   "candidates": [
+    "/blog/menghemat-besi-plat-beton-dengan-wiremesh/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-20T14:38:36.747Z"
+  },
+  "/blog/cara-pemasangan-hebel-benar/": {
+   "candidates": [
+    "/blog/cara-menghitung-kebutuhan-perekat-hebel/",
+    "/blog/harga-semen-perekat-hebel-2/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-20T14:38:38.327Z"
+  },
+  "/blog/inspirasi-desain-sofa-untuk-rumah-masa-kini/": {
+   "candidates": [
+    "/blog/tips-memilih-desain-sofa-minimalis-terbaik/",
+    "/blog/biaya-dak-permeter/"
+   ],
+   "duplicates": [
+    "/blog/tips-memilih-desain-sofa-minimalis-terbaik/"
+   ],
+   "reason": "#1: Desain sofa, fokus memilih/inspirasi, sama-sama membahas sofa.",
+   "judgedAt": "2026-10-20T14:38:40.917Z"
+  },
+  "/blog/jenis-mutu-beton-ready-mix-pratekan/": {
+   "candidates": [
+    "/blog/beton-ready-mix-mutu-dan-harga/",
+    "/blog/pionir-beton-cor-segala-butuhkan/",
+    "/blog/cara-kerja-pompa-beton-ready-mix/",
+    "/blog/tips-menjaga-kesegaran-mutu-beton/"
+   ],
+   "duplicates": [
+    "/blog/pionir-beton-cor-segala-butuhkan/"
+   ],
+   "reason": "#2: Pembahasan mutu beton ready mix, sama-sama dari Mitra CDI.",
+   "judgedAt": "2026-10-20T14:38:43.861Z"
+  },
+  "/blog/perbedaan-bata-merah-dan-ringan-sebagai-bahan-konstruksi/": {
+   "candidates": [
+    "/blog/mengenal-apa-itu-bata-ringan/",
+    "/blog/cara-menghitung-kebutuhan-bata-merah/",
+    "/blog/kelebihan-dan-kelemahan-bata-merah-dan-ringan/",
+    "/blog/inilah-contoh-bahan-bangunan-struktural/",
+    "/blog/ciri-ciri-baja-ringan-berkualitas-baik/",
+    "/blog/supplier-bahan-bangunan-terlengkap/"
+   ],
+   "duplicates": [
+    "/blog/kelebihan-dan-kelemahan-bata-merah-dan-ringan/"
+   ],
+   "reason": "#3: Perbandingan kelebihan/kekurangan bata merah dan ringan.",
+   "judgedAt": "2026-10-20T14:38:48.246Z"
+  },
+  "/blog/yang-dilakukan-setelah-pengecoran/": {
+   "candidates": [
+    "/blog/yang-harus-dilakukan-saat-pengecoran/",
+    "/blog/persiapan-yang-dilakukan-sebelum-pengecoran/"
+   ],
+   "duplicates": [
+    "/blog/yang-harus-dilakukan-saat-pengecoran/"
+   ],
+   "reason": "#1: Topik & maksud sama: tindakan selama pengecoran.",
+   "judgedAt": "2026-10-20T14:38:49.786Z"
+  },
+  "/blog/inilah-contoh-bahan-bangunan-struktural/": {
+   "candidates": [
+    "/blog/material-pengganti-semen-orang-sudan/",
+    "/blog/manfaat-supplier-bahan-bangunan-online/",
+    "/blog/perbedaan-beton-struktural-dan-non-structural/",
+    "/blog/supplier-bahan-bangunan-terlengkap/",
+    "/blog/bahan-bangunan-untuk-rumahtahan-gempa/"
+   ],
+   "duplicates": [
+    "/blog/perbedaan-beton-struktural-dan-non-structural/"
+   ],
+   "reason": "#3: Beton adalah bahan bangunan struktural utama.",
+   "judgedAt": "2026-10-20T14:38:53.467Z"
+  },
+  "/blog/kelebihan-dan-kelemahan-bata-merah-dan-ringan/": {
+   "candidates": [
+    "/blog/mengenal-apa-itu-bata-ringan/",
+    "/blog/cara-menghitung-kebutuhan-bata-merah/",
+    "/blog/ciri-ciri-baja-ringan-berkualitas-baik/",
+    "/blog/bata-merah-expose-dinding-rumah-modern/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-20T14:38:56.734Z"
+  },
+  "/blog/tips-pengerjaan-cor-beton-yang-baik/": {
+   "candidates": [
+    "/blog/pengerjaan-cor-beton-yang-tepat/",
+    "/blog/sistem-pengerjaan-konstruksi-bangunan/",
+    "/blog/persiapan-mengerjakan-sand-blasting/"
+   ],
+   "duplicates": [
+    "/blog/pengerjaan-cor-beton-yang-tepat/"
+   ],
+   "reason": "#1: Topik dan tujuan artikel sangat mirip.",
+   "judgedAt": "2026-10-20T14:38:59.145Z"
+  },
+  "/blog/cara-kerja-pompa-beton-ready-mix/": {
+   "candidates": [
+    "/blog/beton-ready-mix-mutu-dan-harga/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-20T14:39:00.176Z"
+  },
+  "/blog/jasa-uji-beton-di-jakarta-bogor-depok-tangerang-bekasi/": {
+   "candidates": [
+    "/blog/pengecoran-jalan-di-ciapus-bogor/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-20T14:39:01.182Z"
+  },
+  "/blog/menghemat-besi-plat-beton-dengan-wiremesh/": {
+   "candidates": [
+    "/blog/mengenal-wiremesh-industri-bangunan/",
+    "/blog/harga-terbaru-bondek-dan-wiremesh/",
+    "/blog/wiremesh-lantai-dinding/",
+    "/blog/wiremesh-yang-ideal-untuk-dak-rumah/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-20T14:39:04.456Z"
+  },
+  "/blog/kegunaan-pasir-silika-silica/": {
+   "candidates": [
+    "/blog/keunggulan-menggunakan-bondek/",
+    "/blog/kegunaan-beton-screening-untuk-konstruksi/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-20T14:39:06.379Z"
+  },
+  "/blog/daftar-beban-mati-pada-bangunan/": {
+   "candidates": [
+    "/blog/mengenal-beban-hidup-pada-beton/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-20T14:39:07.448Z"
+  },
+  "/blog/pionir-beton-cor-segala-butuhkan/": {
+   "candidates": [
+    "/blog/tips-menjaga-kesegaran-mutu-beton/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-20T14:39:08.432Z"
+  },
+  "/blog/sistem-injeksi-pada-beton-keropos-retak/": {
+   "candidates": [
+    "/blog/sistem-pengerjaan-konstruksi-bangunan/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-20T14:39:09.474Z"
+  },
+  "/blog/tiga-langkah-cara-finishing-cor-beton/": {
+   "candidates": [
+    "/blog/perbandingan-harga-semen-tiga-roda-holcim-gresik-padang/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-20T14:39:10.248Z"
+  },
+  "/blog/agregat-ringan-dan-beragam-jenis-agregat/": {
+   "candidates": [
+    "/blog/mengenal-apa-itu-bata-ringan/",
+    "/blog/ciri-ciri-baja-ringan-berkualitas-baik/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-20T14:39:12.057Z"
+  },
+  "/blog/membuat-taman-di-atas-dak-dengan-rumput-sintetis/": {
+   "candidates": [
+    "/blog/jual-rumput-sintetis-jabodetabek/",
+    "/blog/rumput-sintetis-dan-cara-penggunaannya/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-20T14:39:13.521Z"
+  },
+  "/blog/sistem-pengerjaan-konstruksi-bangunan/": {
+   "candidates": [
+    "/blog/persiapan-mengerjakan-sand-blasting/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-20T14:39:14.442Z"
+  },
+  "/blog/baikkah-melakukan-pengecoran-saat-hujan/": {
+   "candidates": [
+    "/blog/beberapa-masalah-saat-pengecoran/",
+    "/blog/yang-harus-dilakukan-saat-pengecoran/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-20T14:39:16.125Z"
   }
  }
 }

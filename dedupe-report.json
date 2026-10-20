@@ -1,85 +1,28 @@
 {
-  "generatedAt": "2026-10-19T16:47:49.137Z",
+  "generatedAt": "2026-10-20T14:39:16.136Z",
   "mode": "daily",
   "section": "blog",
   "complete": false,
-  "clusterCount": 4,
-  "deleteCount": 4,
-  "undecidedSeeds": 73,
+  "clusterCount": 1,
+  "deleteCount": 1,
+  "undecidedSeeds": 35,
   "judgeErrors": 0,
   "clusters": [
     {
       "keep": {
-        "url": "/blog/takaran-adukan-pondasi/",
-        "title": "Takaran Adukan Pondasi",
-        "keyword": "takaran adukan pondasi",
-        "words": 600,
-        "inbound": 0
-      },
-      "reason": "#1: Topik dan tujuan artikel sangat mirip, hanya spesifik batu kali.",
-      "remove": [
-        {
-          "url": "/blog/takaran-adukan-pondasi-batu-kali/",
-          "title": "Takaran Adukan Pondasi Batu Kali: Panduan Lengkap untuk Kekuatan Optimal",
-          "keyword": "takaran adukan pondasi batu kali",
-          "words": 574,
-          "inbound": 0
-        }
-      ]
-    },
-    {
-      "keep": {
-        "url": "/blog/macam-macam-batako/",
-        "title": "Macam Macam Batako: Ukuran, Jenis, Harga, dan Pilihan Terbaik untuk Bangunan Anda",
-        "keyword": "macam macam batako",
-        "words": 575,
-        "inbound": 0
-      },
-      "reason": "#1: Topik, informasi, dan keyword utama identik.",
-      "remove": [
-        {
-          "url": "/blog/macam-macam-jenis-batako-dan-harganya/",
-          "title": "Macam-Macam Jenis Batako Dan Harganya",
-          "keyword": "",
-          "words": 507,
-          "inbound": 0
-        }
-      ]
-    },
-    {
-      "keep": {
-        "url": "/blog/cakar-ayam-untuk-rumah-2-lantai/",
-        "title": "Cakar Ayam untuk Rumah 2 Lantai: Panduan Lengkap, Kelebihan, dan Biaya",
-        "keyword": "cakar ayam untuk rumah 2 lantai",
-        "words": 568,
-        "inbound": 0
-      },
-      "reason": "#1: Objek & maksud sama: panduan cakar ayam.",
-      "remove": [
-        {
-          "url": "/blog/penggunaan-cakar-ayam-yang-tepat/",
-          "title": "Penggunaan Cakar Ayam yang Tepat",
-          "keyword": "",
-          "words": 457,
-          "inbound": 0
-        }
-      ]
-    },
-    {
-      "keep": {
-        "url": "/blog/pionir-beton-cor-kualitas-harga-terbaik/",
-        "title": "Kualitas dan Harga Terbaik Pionir Beton Cor",
+        "url": "/blog/tips-pengerjaan-cor-beton-yang-baik/",
+        "title": "Tips Pengerjaan Cor Beton Yang Baik",
         "keyword": "",
-        "words": 565,
+        "words": 516,
         "inbound": 0
       },
-      "reason": "#1: Topik dan maksud sama: kualitas & harga Pionir Beton. | #2: Topik dan maksud sama: kualitas & mutu Pionir Beton. | #4: Topik dan maksud sama: kualitas & harga beton ready mix.",
+      "reason": "#1: Topik dan tujuan artikel sangat mirip.",
       "remove": [
         {
-          "url": "/blog/beli-beton-cor-berkualitas-pionir-beton/",
-          "title": "Pionir Beton Berkualitas Unggul",
+          "url": "/blog/pengerjaan-cor-beton-yang-tepat/",
+          "title": "Pengerjaan Cor Beton Yang Tepat",
           "keyword": "",
-          "words": 464,
+          "words": 476,
           "inbound": 0
         }
       ]
@@ -217,6 +160,11 @@
       "keep": "/blog/bekisting-plat-besi/",
       "drop": "/blog/bekisting-plat-lantai/",
       "aiReason": "#2: Bekisting plat lantai = bekisting plat besi, sama maksud."
+    },
+    {
+      "keep": "/blog/inspirasi-rak-buku-untuk-perpustakaan-pribadi/",
+      "drop": "/blog/model-rak-buku-kayu-untuk-rumah-minimalis/",
+      "aiReason": "#1: Rak buku, inspirasi desain, target audiens sama."
     },
     {
       "keep": "/blog/harga-lemari-kayu-jati/",
@@ -554,6 +502,11 @@
       "aiReason": "#1: Membuat adukan, fokus pada proses dan bahan yang sama."
     },
     {
+      "keep": "/blog/lemari-kaca-3-pintu/",
+      "drop": "/blog/tips-membeli-lemari-kaca-agar-tidak-salah-pilih/",
+      "aiReason": "#5: Objek & maksud sama: kesalahan memilih lemari kaca."
+    },
+    {
       "keep": "/blog/cara-mengatasi-lantai-beton-retak/",
       "drop": "/blog/cairan-perekat-beton-retak/",
       "aiReason": "#1: Retak beton, solusi perbaikan, target audiens sama. | #3: Dak beton retak = lantai beton retak, cara perbaikan."
@@ -619,11 +572,6 @@
       "aiReason": "#5: Harga dan kualitas beton readymix, sama-sama solusi."
     },
     {
-      "keep": "/blog/inspirasi-rak-buku-untuk-perpustakaan-pribadi/",
-      "drop": "/blog/model-rak-buku-kayu-untuk-rumah-minimalis/",
-      "aiReason": "#1: Rak buku, inspirasi desain, target audiens sama."
-    },
-    {
       "keep": "/blog/beton-k250-berapa-mpa/",
       "drop": "/blog/campuran-beton-k250/",
       "aiReason": "#1: Topik dan maksud informasi beton K250 identik."
@@ -672,6 +620,41 @@
       "keep": "/blog/pionir-beton-cor-kualitas-harga-terbaik/",
       "drop": "/blog/beton-ready-mix-mutu-dan-harga/",
       "aiReason": "#1: Topik dan maksud sama: kualitas & harga Pionir Beton. | #2: Topik dan maksud sama: kualitas & mutu Pionir Beton. | #4: Topik dan maksud sama: kualitas & harga beton ready mix."
+    },
+    {
+      "keep": "/blog/tips-memilih-sofa-bed-terbaik-untuk-keluarga/",
+      "drop": "/blog/model-sofa-bed-lipat-yang-banyak-dicari/",
+      "aiReason": "#2: Sofa bed lipat adalah bagian dari memilih sofa bed."
+    },
+    {
+      "keep": "/blog/keuntungan-dan-kerugian-dari-beton-pracetak/",
+      "drop": "/blog/mengenal-beton-rakitan-atau-pracetak/",
+      "aiReason": "#1: Beton pracetak = beton rakitan, membahas keuntungan/pengenalan."
+    },
+    {
+      "keep": "/blog/inspirasi-desain-sofa-untuk-rumah-masa-kini/",
+      "drop": "/blog/tips-memilih-desain-sofa-minimalis-terbaik/",
+      "aiReason": "#1: Desain sofa, fokus memilih/inspirasi, sama-sama membahas sofa."
+    },
+    {
+      "keep": "/blog/jenis-mutu-beton-ready-mix-pratekan/",
+      "drop": "/blog/pionir-beton-cor-segala-butuhkan/",
+      "aiReason": "#2: Pembahasan mutu beton ready mix, sama-sama dari Mitra CDI."
+    },
+    {
+      "keep": "/blog/perbedaan-bata-merah-dan-ringan-sebagai-bahan-konstruksi/",
+      "drop": "/blog/kelebihan-dan-kelemahan-bata-merah-dan-ringan/",
+      "aiReason": "#3: Perbandingan kelebihan/kekurangan bata merah dan ringan."
+    },
+    {
+      "keep": "/blog/yang-dilakukan-setelah-pengecoran/",
+      "drop": "/blog/yang-harus-dilakukan-saat-pengecoran/",
+      "aiReason": "#1: Topik & maksud sama: tindakan selama pengecoran."
+    },
+    {
+      "keep": "/blog/inilah-contoh-bahan-bangunan-struktural/",
+      "drop": "/blog/perbedaan-beton-struktural-dan-non-structural/",
+      "aiReason": "#3: Beton adalah bahan bangunan struktural utama."
     }
   ],
   "pendingClusters": 0,
