@@ -8038,7 +8038,8 @@ const redirectMap = {
     "/blog/takaran-adukan-pondasi-batu-kali/": "/blog/takaran-adukan-pondasi/",
     "/blog/macam-macam-jenis-batako-dan-harganya/": "/blog/macam-macam-batako/",
     "/blog/penggunaan-cakar-ayam-yang-tepat/": "/blog/cakar-ayam-untuk-rumah-2-lantai/",
-    "/blog/beli-beton-cor-berkualitas-pionir-beton/": "/blog/pionir-beton-cor-kualitas-harga-terbaik/"
+    "/blog/beli-beton-cor-berkualitas-pionir-beton/": "/blog/pionir-beton-cor-kualitas-harga-terbaik/",
+    "/blog/pengerjaan-cor-beton-yang-tepat/": "/blog/tips-pengerjaan-cor-beton-yang-baik/"
 };
 (function () {
     function getCurrentPath() {
