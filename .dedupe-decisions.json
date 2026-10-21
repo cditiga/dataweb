@@ -1,6 +1,6 @@
 {
  "version": 2,
- "updatedAt": "2026-10-20T14:39:16.134Z",
+ "updatedAt": "2026-10-21T14:51:05.176Z",
  "decisions": {
   "/blog/berapa-lapis-besi-untuk-cor-dak/": {
    "candidates": [
@@ -3829,6 +3829,350 @@
    "duplicates": [],
    "reason": "",
    "judgedAt": "2026-10-20T14:39:16.125Z"
+  },
+  "/blog/lemari-gantung-baju-gamis/": {
+   "candidates": [
+    "/blog/baju-berjamur-di-lemari/",
+    "/blog/cara-pembesian-balok-gantung/",
+    "/blog/balok-gantung-rumah/",
+    "/blog/besi-sloof-jadi/",
+    "/blog/balok-gantung-teras/",
+    "/blog/harga-lemari-brangkas-besi-terbaru/",
+    "/blog/lemari-plastik-3-pintu/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-21T14:49:55.168Z"
+  },
+  "/blog/baju-berjamur-di-lemari/": {
+   "candidates": [
+    "/blog/harga-lemari-brangkas-besi-terbaru/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-21T14:49:56.423Z"
+  },
+  "/blog/anggaran-harga-kabinet-dapur/": {
+   "candidates": [
+    "/blog/jasa-pembuatan-dapur-minimalis/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-21T14:49:57.791Z"
+  },
+  "/blog/bahasa-korea-meja-belajar/": {
+   "candidates": [
+    "/blog/meja-belajar-lipat-dewasa/",
+    "/blog/memilih-desain-meja-rias-minimalis/",
+    "/blog/jual-meja-kantor-terdekat/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-21T14:50:00.196Z"
+  },
+  "/blog/manfaat-supplier-bahan-bangunan-online/": {
+   "candidates": [
+    "/blog/supplier-bahan-bangunan-terlengkap/"
+   ],
+   "duplicates": [
+    "/blog/supplier-bahan-bangunan-terlengkap/"
+   ],
+   "reason": "#1: Supplier bahan bangunan online, fokus manfaat & kelengkapan.",
+   "judgedAt": "2026-10-21T14:50:01.111Z"
+  },
+  "/blog/berapa-lama-papan-penahan-coran-dibuka/": {
+   "candidates": [
+    "/blog/waktu-yang-tepat-bongkar-bekisting/"
+   ],
+   "duplicates": [
+    "/blog/waktu-yang-tepat-bongkar-bekisting/"
+   ],
+   "reason": "#1: Bekisting = papan penahan coran, membahas waktu pembongkaran.",
+   "judgedAt": "2026-10-21T14:50:02.759Z"
+  },
+  "/blog/cara-membuat-canopy-dari-baja-ringan/": {
+   "candidates": [
+    "/blog/ciri-ciri-baja-ringan-berkualitas-baik/",
+    "/blog/mengenal-apa-itu-bata-ringan/",
+    "/blog/perbandingan-kelebihan-dan-kekurangan-rangka-atap-baja-ringan/",
+    "/blog/membuat-pagar-kuat-dan-murah-baja-ringan/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-21T14:50:06.070Z"
+  },
+  "/blog/apa-itu-beton-normal/": {
+   "candidates": [
+    "/blog/mengenal-beban-hidup-pada-beton/",
+    "/blog/apa-itu-sand-blasting/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-21T14:50:07.417Z"
+  },
+  "/blog/jual-rumput-sintetis-jabodetabek/": {
+   "candidates": [
+    "/blog/rumput-sintetis-dan-cara-penggunaannya/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-21T14:50:08.943Z"
+  },
+  "/blog/perencanaan-kolom-beton-bertulang/": {
+   "candidates": [
+    "/blog/perencanaan-pembangunan-rumah/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-21T14:50:09.770Z"
+  },
+  "/blog/tips-menjaga-kesegaran-mutu-beton/": {
+   "candidates": [
+    "/blog/beton-ready-mix-mutu-dan-harga/",
+    "/blog/solusi-agar-dak-beton-tidak-melengkung/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-21T14:50:11.445Z"
+  },
+  "/blog/model-struktur-pondasi-yang-kokoh/": {
+   "candidates": [
+    "/blog/material-bangunan-berkualitas-kokoh/",
+    "/blog/struktur-tiang-beton-rumah-dua-lantai/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-21T14:50:13.010Z"
+  },
+  "/blog/kegunaan-beton-screening-untuk-konstruksi/": {
+   "candidates": [
+    "/blog/keunggulan-menggunakan-bondek/",
+    "/blog/keuntungan-menggunakan-minimix/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-21T14:50:14.517Z"
+  },
+  "/blog/kelebihan-dak-bondek-vs-konvensional/": {
+   "candidates": [
+    "/blog/wiremesh-yang-ideal-untuk-dak-rumah/",
+    "/blog/alasan-kenapa-bondek-jauh-lebih-murah/",
+    "/blog/harga-terbaru-bondek-dan-wiremesh/",
+    "/blog/keunggulan-menggunakan-bondek/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-21T14:50:19.320Z"
+  },
+  "/blog/struktur-tiang-beton-rumah-dua-lantai/": {
+   "candidates": [
+    "/blog/jarak-ideal-tiang-beton-rumah/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-21T14:50:20.229Z"
+  },
+  "/blog/yang-harus-dilakukan-saat-pengecoran/": {
+   "candidates": [
+    "/blog/beberapa-masalah-saat-pengecoran/",
+    "/blog/persiapan-yang-dilakukan-sebelum-pengecoran/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-21T14:50:21.764Z"
+  },
+  "/blog/inilah-macam-macam-model-atap-rumah/": {
+   "candidates": [
+    "/blog/perbandingan-kelebihan-dan-kekurangan-rangka-atap-baja-ringan/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-21T14:50:22.806Z"
+  },
+  "/blog/perbandingan-kelebihan-dan-kekurangan-rangka-atap-baja-ringan/": {
+   "candidates": [
+    "/blog/ciri-ciri-baja-ringan-berkualitas-baik/",
+    "/blog/mengenal-apa-itu-bata-ringan/",
+    "/blog/membuat-pagar-kuat-dan-murah-baja-ringan/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-21T14:50:26.574Z"
+  },
+  "/blog/cara-menghitung-kebutuhan-perekat-hebel/": {
+   "candidates": [
+    "/blog/harga-semen-perekat-hebel-2/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-21T14:50:27.518Z"
+  },
+  "/blog/bata-merah-expose-dinding-rumah-modern/": {
+   "candidates": [
+    "/blog/cara-menghitung-kebutuhan-bata-merah/",
+    "/blog/wiremesh-lantai-dinding/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-21T14:50:29.405Z"
+  },
+  "/blog/alasan-kenapa-bondek-jauh-lebih-murah/": {
+   "candidates": [
+    "/blog/harga-terbaru-bondek-dan-wiremesh/",
+    "/blog/wiremesh-yang-ideal-untuk-dak-rumah/",
+    "/blog/keunggulan-menggunakan-bondek/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-21T14:50:31.909Z"
+  },
+  "/blog/ciri-ciri-baja-ringan-berkualitas-baik/": {
+   "candidates": [
+    "/blog/membuat-pagar-kuat-dan-murah-baja-ringan/",
+    "/blog/mengenal-apa-itu-bata-ringan/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-21T14:50:33.608Z"
+  },
+  "/blog/mengetahui-kualitas-material-cor-beton/": {
+   "candidates": [
+    "/blog/beton-ready-mix-mutu-dan-harga/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-21T14:50:34.605Z"
+  },
+  "/blog/cara-membuat-taman-mini-di-depan-rumah/": {
+   "candidates": [
+    "/blog/rekomendasi-tanaman-hias-untuk-taman-mini/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-21T14:50:37.051Z"
+  },
+  "/blog/jasa-pengaspalan-jalan-di-jabodetabek/": {
+   "candidates": [
+    "/blog/harga-borongan-pengaspalan-per-m2/",
+    "/blog/perbandingan-jalan-beton-dan-jalan-aspal/",
+    "/blog/pengecoran-jalan-di-ciapus-bogor/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-21T14:50:40.847Z"
+  },
+  "/blog/harga-terbaru-bondek-dan-wiremesh/": {
+   "candidates": [
+    "/blog/mengenal-wiremesh-industri-bangunan/",
+    "/blog/wiremesh-yang-ideal-untuk-dak-rumah/",
+    "/blog/penyambungan-wiremesh-dilas-atau-diikat/",
+    "/blog/wiremesh-lantai-dinding/",
+    "/blog/keunggulan-menggunakan-bondek/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-21T14:50:45.426Z"
+  },
+  "/blog/penyambungan-wiremesh-dilas-atau-diikat/": {
+   "candidates": [
+    "/blog/mengenal-wiremesh-industri-bangunan/",
+    "/blog/wiremesh-lantai-dinding/",
+    "/blog/wiremesh-yang-ideal-untuk-dak-rumah/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-21T14:50:47.789Z"
+  },
+  "/blog/mengenal-apa-itu-bata-ringan/": {
+   "candidates": [
+    "/blog/membuat-pagar-kuat-dan-murah-baja-ringan/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-21T14:50:49.931Z"
+  },
+  "/blog/mengenal-wiremesh-industri-bangunan/": {
+   "candidates": [
+    "/blog/wiremesh-yang-ideal-untuk-dak-rumah/",
+    "/blog/wiremesh-lantai-dinding/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-21T14:50:51.867Z"
+  },
+  "/blog/wiremesh-yang-ideal-untuk-dak-rumah/": {
+   "candidates": [
+    "/blog/jarak-ideal-tiang-beton-rumah/",
+    "/blog/keunggulan-menggunakan-bondek/",
+    "/blog/wiremesh-lantai-dinding/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-21T14:50:54.939Z"
+  },
+  "/blog/cara-terbaik-cat-ulang-dinding-luar-rumah/": {
+   "candidates": [
+    "/blog/wiremesh-lantai-dinding/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-21T14:50:56.028Z"
+  },
+  "/blog/rekomendasi-tanaman-hias-untuk-taman-mini/": {
+   "candidates": [
+    "/blog/beberapa-tanaman-hias-yang-cocok-untuk-interior/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-21T14:50:56.908Z"
+  },
+  "/blog/tipe-rumah-tahan-gempa/": {
+   "candidates": [
+    "/blog/bahan-bangunan-untuk-rumahtahan-gempa/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-21T14:50:58.225Z"
+  },
+  "/blog/apa-itu-sand-blasting/": {
+   "candidates": [
+    "/blog/persiapan-mengerjakan-sand-blasting/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-21T14:50:59.619Z"
+  },
+  "/blog/harga-borongan-pengaspalan-per-m2/": {
+   "candidates": [
+    "/blog/perbandingan-jalan-beton-dan-jalan-aspal/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-21T14:51:00.484Z"
+  },
+  "/blog/persiapan-yang-dilakukan-sebelum-pengecoran/": {
+   "candidates": [
+    "/blog/persiapan-mengerjakan-sand-blasting/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-21T14:51:01.746Z"
+  },
+  "/blog/keunggulan-menggunakan-bondek/": {
+   "candidates": [
+    "/blog/keuntungan-menggunakan-minimix/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-21T14:51:03.771Z"
+  },
+  "/blog/perbandingan-jalan-beton-dan-jalan-aspal/": {
+   "candidates": [
+    "/blog/pengecoran-jalan-di-ciapus-bogor/"
+   ],
+   "duplicates": [],
+   "reason": "",
+   "judgedAt": "2026-10-21T14:51:05.175Z"
   }
  }
 }

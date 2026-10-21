@@ -1,28 +1,28 @@
 {
-  "generatedAt": "2026-10-20T14:39:16.136Z",
+  "generatedAt": "2026-10-21T14:51:05.178Z",
   "mode": "daily",
   "section": "blog",
-  "complete": false,
+  "complete": true,
   "clusterCount": 1,
   "deleteCount": 1,
-  "undecidedSeeds": 35,
+  "undecidedSeeds": 0,
   "judgeErrors": 0,
   "clusters": [
     {
       "keep": {
-        "url": "/blog/tips-pengerjaan-cor-beton-yang-baik/",
-        "title": "Tips Pengerjaan Cor Beton Yang Baik",
+        "url": "/blog/manfaat-supplier-bahan-bangunan-online/",
+        "title": "Supplier Bahan Bangunan Online Terbaik",
         "keyword": "",
-        "words": 516,
+        "words": 489,
         "inbound": 0
       },
-      "reason": "#1: Topik dan tujuan artikel sangat mirip.",
+      "reason": "#1: Supplier bahan bangunan online, fokus manfaat & kelengkapan.",
       "remove": [
         {
-          "url": "/blog/pengerjaan-cor-beton-yang-tepat/",
-          "title": "Pengerjaan Cor Beton Yang Tepat",
+          "url": "/blog/supplier-bahan-bangunan-terlengkap/",
+          "title": "Distributor Bahan Bangunan Terlengkap Terpercaya Terjangkau",
           "keyword": "",
-          "words": 476,
+          "words": 428,
           "inbound": 0
         }
       ]
@@ -655,6 +655,11 @@
       "keep": "/blog/inilah-contoh-bahan-bangunan-struktural/",
       "drop": "/blog/perbedaan-beton-struktural-dan-non-structural/",
       "aiReason": "#3: Beton adalah bahan bangunan struktural utama."
+    },
+    {
+      "keep": "/blog/berapa-lama-papan-penahan-coran-dibuka/",
+      "drop": "/blog/waktu-yang-tepat-bongkar-bekisting/",
+      "aiReason": "#1: Bekisting = papan penahan coran, membahas waktu pembongkaran."
     }
   ],
   "pendingClusters": 0,

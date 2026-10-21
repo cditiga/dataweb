@@ -5976,5 +5976,12 @@
     "matchedTitle": "Lemari Kaca 3 Pintu: Hindari 5 Kesalahan Umum Saat Memilih",
     "taggedAt": "2026-10-21T12:11:04.220Z",
     "algoVersion": 4
+  },
+  "supplier bahan bangunan terlengkap": {
+    "reason": "merged duplicate (dedupe-articles.js, AI-judged)",
+    "matchedFile": "manfaat-supplier-bahan-bangunan-online.md",
+    "matchedTitle": "Supplier Bahan Bangunan Online Terbaik",
+    "taggedAt": "2026-10-21T14:51:06.066Z",
+    "algoVersion": 4
   }
 }
