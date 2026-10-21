@@ -8039,7 +8039,8 @@ const redirectMap = {
     "/blog/macam-macam-jenis-batako-dan-harganya/": "/blog/macam-macam-batako/",
     "/blog/penggunaan-cakar-ayam-yang-tepat/": "/blog/cakar-ayam-untuk-rumah-2-lantai/",
     "/blog/beli-beton-cor-berkualitas-pionir-beton/": "/blog/pionir-beton-cor-kualitas-harga-terbaik/",
-    "/blog/pengerjaan-cor-beton-yang-tepat/": "/blog/tips-pengerjaan-cor-beton-yang-baik/"
+    "/blog/pengerjaan-cor-beton-yang-tepat/": "/blog/tips-pengerjaan-cor-beton-yang-baik/",
+    "/blog/supplier-bahan-bangunan-terlengkap/": "/blog/manfaat-supplier-bahan-bangunan-online/"
 };
 (function () {
     function getCurrentPath() {
