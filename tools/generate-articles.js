@@ -58,6 +58,10 @@ const KS = require('./lib/keyword-similarity.js');
 // lihat lib/title-style.js dan prompts/title-styles.json.
 const TS = require('./lib/title-style.js');
 
+// Promosi yang menjembatani: tingkat (PROMO_LEVEL), fakta bisnis terverifikasi, dan pemeriksaan klaim —
+// lihat lib/promo.js dan prompts/promo-profile.json.
+const PM = require('./lib/promo.js');
+
 function renderTemplate(str, vars) {
   return str.replace(/\{\{(\w+)\}\}/g, (_, key) => (key in vars ? vars[key] : `{{${key}}}`));
 }
@@ -1047,9 +1051,9 @@ async function generateArticle(keyword, relatedCandidates = []) {
     currentYear,
     relatedArticles: formatCandidatesForPrompt(relatedCandidates),
   });
-  const titleStyle = TS.pickTitleStyle();
-  const prompt = TS.injectTitleInstruction(basePrompt, keyword, titleStyle);
-  console.log(`   🏷️  Gaya judul: ${titleStyle.name}`);
+  const titleStyle = TS.pickTitleStyle(PM.level);
+  const prompt = PM.injectPromo(TS.injectTitleInstruction(basePrompt, keyword, titleStyle), keyword);
+  console.log(`   🏷️  Gaya judul: ${titleStyle.name} | 📣 Tingkat promosi: ${PM.level}`);
 
   if (IS_DRY_RUN) {
     console.log(`   🧪 DRY-RUN: Simulating article generation for "${keyword}"...`);
@@ -1246,7 +1250,10 @@ function parseAndSave(raw, keyword, slug, imagePath, greeting, relatedCandidates
 
   // Safety net: only keep internal links that point to one of the offered candidate URLs,
   // and never more than 2 total — regardless of what the AI actually did.
-  body = enforceInternalLinks(body, relatedCandidates.map(c => c.url), 2);
+  // Link ke /daftar-harga/ dan /product/ (maks. 2) dilindungi dari penyaringan link internal, karena itu link promosi yang disengaja.
+  const promoGuard = PM.protectPromoLinks(body);
+  body = enforceInternalLinks(promoGuard.body, relatedCandidates.map(c => c.url), 2);
+  body = PM.restorePromoLinks(body, promoGuard.saved);
 
   const today   = new Date().toISOString().split('T')[0];
   const type    = detectType(keyword);
@@ -1352,12 +1359,14 @@ function validateArticle(filePath) {
   const fmKeyword = (content.match(/^keywords:\s*"((?:[^"\\]|\\.)*)"/m) || [])[1] || '';
   TS.titleIssues(fmTitle.replace(/\\"/g, '"'), fmKeyword).forEach(i => issues.push(`⚠️  Judul: ${i}`));
 
+  PM.promoIssues(bodyOnly).forEach(i => issues.push(`⚠️  Promosi: ${i}`));
+
   const openingIssues = checkOpeningVariety(bodyOnly);
   issues.push(...openingIssues);
 
   // Internal links are already hard-capped at 2 by enforceInternalLinks() before this file
   // was written — this is just a visibility check in case that logic is ever bypassed.
-  const internalLinkCount = (bodyOnly.match(/(?<!!)\[[^\]]+\]\(\/[^)\s]+\/\)/g) || []).length;
+  const internalLinkCount = [...bodyOnly.matchAll(/(?<!!)\[[^\]]+\]\((\/[^)\s]+\/)\)/g)].filter(m => !PM.isPromoUrl(m[1])).length;
   if (internalLinkCount > 2) issues.push(`❌ ${internalLinkCount} internal link ditemukan (maksimal 2) — periksa enforceInternalLinks()`);
 
   const INFORMAL_WORDS = ['nggak', 'ngga', 'gimana', 'yuk', 'nah', 'lho', 'nih', 'banget', 'kayak', 'gitu', 'aja'];

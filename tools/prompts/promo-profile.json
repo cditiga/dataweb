@@ -1,0 +1,42 @@
+{
+  "_catatan": "FAKTA BISNIS yang boleh dipakai AI saat menulis promosi. Diambil dari config.toml — PERIKSA dan sesuaikan. AI dilarang memakai klaim di luar daftar ini.",
+  "defaultLevel": "tinggi",
+  "maxPromoLinks": 2,
+  "promoLinks": ["/daftar-harga/", "/product/"],
+  "facts": [
+    "Berpengalaman lebih dari 10 tahun sebagai jasa kitchen set, pembuatan furniture interior, dan pengadaan material bangunan.",
+    "Layanan: furniture custom (kitchen set, lemari, meja, dipan, kursi), bahan bangunan (pasir, split, batu belah, bata merah, batako, hebel, sirtu, dan lainnya), jasa pengecoran, jasa bangun rumah, dan sewa alat (concrete pump, vibrator, stamper, dan lainnya).",
+    "Skema harga all in one: sudah termasuk material, pengiriman, dan bongkar muat.",
+    "Tersedia gratis ongkir (ketentuan mengikuti wilayah layanan).",
+    "Pilihan pembayaran: COD, transfer bank, DP 50%, transfer setelah barang terkirim, bayar bertahap, atau transfer setelah pekerjaan selesai.",
+    "Wilayah layanan: Jakarta, Bogor, Depok, Tangerang, Bekasi, Cikarang, Karawang, Bandung, Serang, Purwakarta, Cilegon, Cikampek, Subang, dan Rangkasbitung.",
+    "Jam operasional Senin sampai Sabtu pukul 08.00 sampai 17.00.",
+    "Tim kerja berpengalaman dengan sistem kerja terjadwal agar pengerjaan tepat waktu dan kualitas terjaga.",
+    "Produk dapat ditukar jika tidak sesuai spesifikasi, selama belum dipakai atau dibongkar dan maksimal 1 hari.",
+    "Daftar harga tersedia di halaman Daftar Harga; konsultasi dan pemesanan lewat tombol WhatsApp atau Telepon di halaman (JANGAN menulis nomor)."
+  ],
+  "levels": {
+    "rendah": "Informasi dominan (kira-kira 85% informasi, 15% promosi). Satu paragraf promosi halus menjelang penutup, lalu CTA penutup.",
+    "sedang": "Seimbang (kira-kira 60% informasi, 40% promosi). Sisipkan dua kalimat ajakan halus di tengah artikel dan SATU subjudul H2 yang menawarkan layanan atau produk Kami yang berkaitan, lalu CTA penutup.",
+    "tinggi": "Promosi dominan (kira-kira 60% promosi, 40% informasi). Pembuka: jawab inti pertanyaan keyword dalam 2 sampai 3 kalimat, lalu langsung hubungkan ke kebutuhan membeli atau memesan. Minimal DUA subjudul H2 bernuansa penawaran (misalnya apa yang Kami siapkan untuk kebutuhan ini, kemudahan memesan dan membayar, atau wilayah layanan). Setiap subjudul informasi diakhiri kalimat jembatan ke layanan Kami. Sisipkan SATU link ke halaman harga dengan format [teks tautan](/daftar-harga/), satu ajakan di tengah artikel, dan CTA penutup. Manfaat disampaikan dengan bahasa membantu pembaca (hemat waktu, tidak salah pilih, praktis), bukan klaim superlatif."
+  },
+  "angles": {
+    "transaksional": "Pembaca sudah dekat dengan keputusan membeli atau memesan: tonjolkan ketersediaan, kemudahan memesan, pilihan pembayaran, dan wilayah layanan.",
+    "harga": "Tonjolkan kejelasan harga: sebut bahwa daftar harga tersedia di halaman Daftar Harga, skema all in one (bila relevan), dan pilihan pembayaran.",
+    "hitung": "Setelah menjelaskan cara menghitung, tawarkan agar kebutuhan itu langsung dipenuhi atau dikerjakan oleh Kami supaya tidak kurang atau berlebih saat membeli.",
+    "carabuat": "Tunjukkan bahwa pekerjaan ini bisa diserahkan kepada tim berpengalaman: menghemat waktu dan mengurangi risiko salah pengerjaan.",
+    "definisi": "Jembatani dari pengertian ke kebutuhan nyata: kapan pembaca butuh barang atau jasa ini, dan layanan Kami yang terkait.",
+    "jenis": "Bantu pembaca memilih, lalu arahkan: jenis mana cocok untuk kebutuhan apa, dan Kami bisa menyediakan atau mengerjakannya.",
+    "masalah": "Posisikan Kami sebagai pihak yang menangani masalah itu, setelah penyebab dan gejalanya dijelaskan.",
+    "manfaat": "Ubah kelebihan dan kekurangan menjadi alasan memilih layanan atau produk Kami yang relevan.",
+    "waktu": "Setelah menjawab durasi, tawarkan pengerjaan terjadwal oleh tim Kami agar proyek berjalan tepat waktu.",
+    "ukuran": "Setelah menjelaskan ukuran atau spesifikasi, tawarkan penyediaan atau pengerjaan sesuai ukuran yang dibutuhkan pembaca.",
+    "rekomendasi": "Beri rekomendasi pertimbangan, lalu arahkan ke produk atau layanan Kami yang paling relevan.",
+    "default": "Jawab pertanyaan pembaca lebih dulu, lalu hubungkan ke produk atau layanan Kami yang paling relevan dengan keyword."
+  },
+  "forbiddenClaims": [
+    "termurah", "paling murah", "nomor\\s*(1|satu)", "no\\.?\\s*1\\b", "terbaik se-?indonesia", "terbaik di (jakarta|bogor|depok|bekasi|tangerang)",
+    "garansi\\s*(seumur|\\d+)", "diskon", "promo\\s*\\d+\\s*%", "potongan harga", "ribuan\\s+(pelanggan|proyek|klien)", "bersertifikat", "\\biso\\s*\\d+", "penghargaan"
+  ],
+  "rules": "ATURAN PROMOSI — WAJIB DIIKUTI (tujuan: menarik calon pembeli tanpa kehilangan kepercayaan pembaca):\n- TINGKAT PROMOSI artikel ini: {{levelInstruction}}\n- SUDUT PROMOSI untuk keyword \"{{keyword}}\": {{angle}}\n- Tetap jawab pertanyaan inti keyword dengan benar dan jelas lebih dulu; promosi adalah jembatan dari jawaban itu, bukan pengganti jawaban.\n- Gunakan HANYA fakta berikut tentang bisnis Kami. DILARANG mengarang klaim, angka, diskon, garansi, penghargaan, sertifikat, jumlah proyek, atau testimoni di luar daftar ini:\n{{facts}}\n- DILARANG superlatif yang tidak bisa dibuktikan (termurah, nomor 1, terbaik se-Indonesia, dan sejenisnya).\n- Harga hanya boleh disebut dengan disclaimer estimasi (aturan harga di atas tetap berlaku). JANGAN menulis nomor telepon dalam bentuk digit apa pun.\n- Subjudul bernuansa penawaran harus SPESIFIK pada topik artikel (bukan judul generik seperti \"Mengapa Memilih Kami\"), dan kalimat ajakan divariasikan: jangan memakai kalimat ajakan yang sama persis di dua tempat.\n- Nada: hangat, membantu, dan meyakinkan seperti konsultan penjualan yang jujur; bukan iklan yang berteriak."
+}

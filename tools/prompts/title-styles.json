@@ -1,33 +1,103 @@
 {
   "styles": [
-    { "name": "awal-mengalir",
-      "instruction": "Keyword di AWAL judul, lalu langsung disambung kata hubung atau frasa (misalnya untuk, yang, sebelum, agar, dan) sehingga judul terbaca sebagai SATU kalimat utuh tanpa tanda baca pemisah." },
-    { "name": "tengah",
-      "instruction": "Keyword di TENGAH judul: diawali satu sampai tiga kata pembuka, lalu keyword, lalu penutup yang menyambung secara alami." },
-    { "name": "akhir",
-      "instruction": "Keyword di AKHIR judul. Bagian depan berupa pembuka yang natural (misalnya Memahami, Seluk-Beluk, Hal-Hal Seputar, Yang Sering Terlewat Soal)." },
-    { "name": "pertanyaan",
-      "instruction": "Berbentuk PERTANYAAN yang memuat keyword, diakhiri tanda tanya, memakai bahasa baku seperti pertanyaan yang benar-benar diajukan pembaca." },
-    { "name": "angka",
-      "instruction": "Diawali ANGKA (3 sampai 7) lalu menyebut hal, pertimbangan, atau kesalahan terkait keyword. Angka harus masuk akal dan sesuai isi artikel, bukan tahun." },
-    { "name": "cara-langkah",
-      "instruction": "Berbentuk Cara, Langkah, atau Tahapan yang memuat keyword. Pakai gaya ini HANYA jika keyword memang menyangkut proses; kalau tidak cocok, pilih gaya mengalir yang paling dekat." },
-    { "name": "pertimbangan",
-      "instruction": "Menekankan hal yang perlu dipertimbangkan sebelum memutuskan atau membeli, dengan keyword di tengah atau akhir judul." },
-    { "name": "kesalahan-umum",
-      "instruction": "Menyoroti kesalahan umum, mitos, atau hal yang sering terlewat terkait keyword. Posisi keyword bebas." },
-    { "name": "singkat",
-      "instruction": "Singkat dan lugas (maksimal 7 kata): keyword ditambah satu atau dua kata penjelas, tanpa tanda baca." },
-    { "name": "koma",
-      "instruction": "Boleh memakai SATU tanda koma untuk memisahkan keterangan. Keyword di awal atau tengah, bagian setelah koma berupa keterangan singkat yang spesifik (bukan slogan)." },
-    { "name": "alasan",
-      "instruction": "Menonjolkan alasan atau penyebab (misalnya Mengapa, Alasan, Kenapa) dengan keyword di tengah judul." },
-    { "name": "konteks-pembaca",
-      "instruction": "Menyebut konteks pembaca (rumah tinggal, proyek kecil, renovasi, pemula, pemilik rumah) bersama keyword di posisi bebas." }
+    {
+      "name": "awal-mengalir",
+      "instruction": "Keyword di AWAL judul, lalu langsung disambung kata hubung atau frasa (misalnya untuk, yang, sebelum, agar, dan) sehingga judul terbaca sebagai SATU kalimat utuh tanpa tanda baca pemisah."
+    },
+    {
+      "name": "tengah",
+      "instruction": "Keyword di TENGAH judul: diawali satu sampai tiga kata pembuka, lalu keyword, lalu penutup yang menyambung secara alami."
+    },
+    {
+      "name": "akhir",
+      "instruction": "Keyword di AKHIR judul. Bagian depan berupa pembuka yang natural (misalnya Memahami, Seluk-Beluk, Hal-Hal Seputar, Yang Sering Terlewat Soal)."
+    },
+    {
+      "name": "pertanyaan",
+      "instruction": "Berbentuk PERTANYAAN yang memuat keyword, diakhiri tanda tanya, memakai bahasa baku seperti pertanyaan yang benar-benar diajukan pembaca."
+    },
+    {
+      "name": "angka",
+      "instruction": "Diawali ANGKA (3 sampai 7) lalu menyebut hal, pertimbangan, atau kesalahan terkait keyword. Angka harus masuk akal dan sesuai isi artikel, bukan tahun."
+    },
+    {
+      "name": "cara-langkah",
+      "instruction": "Berbentuk Cara, Langkah, atau Tahapan yang memuat keyword. Pakai gaya ini HANYA jika keyword memang menyangkut proses; kalau tidak cocok, pilih gaya mengalir yang paling dekat."
+    },
+    {
+      "name": "pertimbangan",
+      "instruction": "Menekankan hal yang perlu dipertimbangkan sebelum memutuskan atau membeli, dengan keyword di tengah atau akhir judul."
+    },
+    {
+      "name": "kesalahan-umum",
+      "instruction": "Menyoroti kesalahan umum, mitos, atau hal yang sering terlewat terkait keyword. Posisi keyword bebas."
+    },
+    {
+      "name": "singkat",
+      "instruction": "Singkat dan lugas (maksimal 7 kata): keyword ditambah satu atau dua kata penjelas, tanpa tanda baca."
+    },
+    {
+      "name": "koma",
+      "instruction": "Boleh memakai SATU tanda koma untuk memisahkan keterangan. Keyword di awal atau tengah, bagian setelah koma berupa keterangan singkat yang spesifik (bukan slogan)."
+    },
+    {
+      "name": "alasan",
+      "instruction": "Menonjolkan alasan atau penyebab (misalnya Mengapa, Alasan, Kenapa) dengan keyword di tengah judul."
+    },
+    {
+      "name": "konteks-pembaca",
+      "instruction": "Menyebut konteks pembaca (rumah tinggal, proyek kecil, renovasi, pemula, pemilik rumah) bersama keyword di posisi bebas."
+    }
   ],
   "banned": [
-    "Panduan Lengkap", "Solusi Lengkap", "Solusi Terbaik", "Solusi Praktis", "Solusi Tepat",
-    "Solusi Efisien", "Solusi Ekonomis", "Terlengkap", "Berkualitas dan Terpercaya", "Tips dan Trik"
+    "Panduan Lengkap",
+    "Solusi Lengkap",
+    "Solusi Terbaik",
+    "Solusi Praktis",
+    "Solusi Tepat",
+    "Solusi Efisien",
+    "Solusi Ekonomis",
+    "Terlengkap",
+    "Berkualitas dan Terpercaya",
+    "Tips dan Trik",
+    "Termurah",
+    "Paling Murah",
+    "No. 1",
+    "Nomor 1"
   ],
-  "rules": "ATURAN JUDUL — WAJIB DIIKUTI (ini menentukan baris \"JUDUL:\" pada output):\n- Keyword utama \"{{keyword}}\" harus muncul UTUH dan berurutan di dalam judul, tetapi POSISINYA fleksibel (awal, tengah, atau akhir) sesuai gaya di bawah.\n- GAYA JUDUL artikel ini: {{titleStyle}}\n- Kalau gaya itu tidak cocok untuk keyword ini (misalnya keyword berupa nama toko atau lokasi), pakai gaya mengalir terdekat — tetap tanpa tanda titik dua.\n- DILARANG memakai tanda titik dua (:), garis tegak (|), atau tanda pisah panjang (—) di judul. Judul harus terbaca sebagai satu kalimat atau frasa utuh, bukan \"keyword + slogan\".\n- DILARANG memakai frasa klise: {{banned}}.\n- Panjang 40 sampai 62 karakter (maksimal 70). Tanpa tahun. Tanpa kata gaul. Nada ramah tetapi baku.\n- Judul harus terdengar seperti ditulis editor manusia untuk pembaca, bukan slogan iklan. Jangan menjiplak contoh pola; buat kalimat yang baru."
+  "rules": "ATURAN JUDUL — WAJIB DIIKUTI (ini menentukan baris \"JUDUL:\" pada output):\n- Keyword utama \"{{keyword}}\" harus muncul UTUH dan berurutan di dalam judul, tetapi POSISINYA fleksibel (awal, tengah, atau akhir) sesuai gaya di bawah.\n- GAYA JUDUL artikel ini: {{titleStyle}}\n- Kalau gaya itu tidak cocok untuk keyword ini (misalnya keyword berupa nama toko atau lokasi), pakai gaya mengalir terdekat — tetap tanpa tanda titik dua.\n- DILARANG memakai tanda titik dua (:), garis tegak (|), atau tanda pisah panjang (—) di judul. Judul harus terbaca sebagai satu kalimat atau frasa utuh, bukan \"keyword + slogan\".\n- DILARANG memakai frasa klise: {{banned}}.\n- Panjang 40 sampai 62 karakter (maksimal 70). Tanpa tahun. Tanpa kata gaul. Nada ramah tetapi baku.\n- Judul harus terdengar seperti ditulis editor manusia untuk pembaca, bukan slogan iklan. Jangan menjiplak contoh pola; buat kalimat yang baru.",
+  "promoStyles": [
+    {
+      "name": "sebelum-membeli",
+      "instruction": "Berorientasi calon pembeli: memuat pengingat seperti \"sebelum memesan\", \"sebelum membeli\", atau \"sebelum memakai jasa\" bersama keyword, agar pembaca tidak salah pilih."
+    },
+    {
+      "name": "hemat-biaya",
+      "instruction": "Menyiratkan manfaat yang masuk akal (hemat biaya atau waktu) terkait keyword, tanpa klaim termurah dan tanpa angka persen."
+    },
+    {
+      "name": "cek-harga-pesan",
+      "instruction": "Mengajak bertindak dengan ringan (cek harga, konsultasikan kebutuhan, pesan) dan memuat keyword; ajakan tidak memaksa dan tidak berupa perintah ketus."
+    },
+    {
+      "name": "kebutuhan-proyek",
+      "instruction": "Menyebut kebutuhan nyata pembaca (rumah, kafe, kantor, renovasi, proyek kecil) bersama keyword, menyiratkan bahwa kebutuhan itu bisa dipenuhi."
+    },
+    {
+      "name": "masalah-ke-jalan-keluar",
+      "instruction": "Mengangkat masalah calon pembeli lalu keyword sebagai jalan keluarnya, tanpa memakai kata Solusi."
+    },
+    {
+      "name": "langsung-tersedia",
+      "instruction": "Menegaskan ketersediaan (Tersedia, Melayani, Siap) bersama keyword. Pakai HANYA jika keyword berupa produk atau jasa yang memang disediakan; kalau tidak, pilih gaya lain."
+    },
+    {
+      "name": "pilih-yang-cocok",
+      "instruction": "Membantu memilih (cocok untuk siapa atau kebutuhan apa) dengan keyword, mengarah ke pemesanan."
+    },
+    {
+      "name": "area-layanan",
+      "instruction": "Menyebut wilayah layanan (misalnya Jabodetabek) bersama keyword bila terdengar wajar; bukan daftar kota."
+    }
+  ]
 }

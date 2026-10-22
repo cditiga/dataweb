@@ -11,12 +11,17 @@
 const T = require('../prompts/title-styles.json');
 const KS = require('./keyword-similarity.js');
 
-let lastIdx = -1;
-function pickTitleStyle() {
-  let i;
-  do { i = Math.floor(Math.random() * T.styles.length); } while (T.styles.length > 1 && i === lastIdx);
-  lastIdx = i;
-  return T.styles[i];
+let lastName = '';
+// level promosi memengaruhi komposisi gaya: tinggi = dominan gaya berorientasi pembeli (+ beberapa gaya netral agar tetap variatif)
+const NEUTRAL_FOR_PROMO = ['pertanyaan', 'cara-langkah', 'pertimbangan', 'koma'];
+function pickTitleStyle(level = 'rendah') {
+  let pool = T.styles;
+  if (level === 'sedang') pool = T.styles.concat(T.promoStyles || []);
+  if (level === 'tinggi') pool = (T.promoStyles || []).concat(T.styles.filter(s => NEUTRAL_FOR_PROMO.includes(s.name)));
+  let st;
+  do { st = pool[Math.floor(Math.random() * pool.length)]; } while (pool.length > 1 && st.name === lastName);
+  lastName = st.name;
+  return st;
 }
 
 function renderTemplate(str, vars) {
@@ -62,4 +67,4 @@ function fixTitle(rawTitle, keyword) {
   return { title, changed: title !== String(rawTitle || '').trim(), reason: 'dibersihkan' };
 }
 
-module.exports = { pickTitleStyle, injectTitleInstruction, fixTitle, titleIssues, toTitleCase, hasKeyword, styles: T.styles, banned: T.banned };
+module.exports = { pickTitleStyle, injectTitleInstruction, fixTitle, titleIssues, toTitleCase, hasKeyword, styles: T.styles, promoStyles: T.promoStyles, banned: T.banned };
