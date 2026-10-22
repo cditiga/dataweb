@@ -5983,5 +5983,19 @@
     "matchedTitle": "Supplier Bahan Bangunan Online Terbaik",
     "taggedAt": "2026-10-21T14:51:06.066Z",
     "algoVersion": 4
+  },
+  "baju di lemari berjamur": {
+    "reason": "similar to existing article",
+    "matchedFile": "baju-berjamur-di-lemari.md",
+    "matchedTitle": "Mengapa Baju Berjamur di Lemari? Penyebab dan Cara Mengatasinya",
+    "taggedAt": "2026-10-22T12:17:16.751Z",
+    "algoVersion": 4
+  },
+  "baju jamuran di lemari": {
+    "reason": "similar to existing article",
+    "matchedFile": "baju-berjamur-di-lemari.md",
+    "matchedTitle": "Mengapa Baju Berjamur di Lemari? Penyebab dan Cara Mengatasinya",
+    "taggedAt": "2026-10-22T12:17:16.751Z",
+    "algoVersion": 4
   }
 }
