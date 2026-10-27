@@ -6200,5 +6200,19 @@
     "matchedTitle": "Cara Menata Meja Belajar Efektif Untuk Produktivitas",
     "taggedAt": "2026-10-26T13:20:31.684Z",
     "algoVersion": 4
+  },
+  "cat upox untuk lantai": {
+    "reason": "similar to existing article",
+    "matchedFile": "cara-menghilangkan-cat-upox.md",
+    "matchedTitle": "Cara Menghilangkan Cat Upox: Solusi Sebelum Memesan Jasa Pengecatan",
+    "taggedAt": "2026-10-27T12:33:56.165Z",
+    "algoVersion": 4
+  },
+  "cara menyusun buku di meja belajar": {
+    "reason": "similar to existing article",
+    "matchedFile": "cara-menyusun-meja-belajar.md",
+    "matchedTitle": "Cara Menyusun Meja Belajar Efektif & Nyaman",
+    "taggedAt": "2026-10-27T12:33:56.701Z",
+    "algoVersion": 4
   }
 }
