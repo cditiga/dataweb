@@ -140,9 +140,6 @@ cat semprot epoxy diton
 cat untuk lantai beton
 cat untuk lantai cor
 cat untuk lantai garasi
-cat untuk lantai outdoor
-cat untuk lantai pabrik
-cat untuk lantai parkir
 cat untuk lantai rumah
 cat upox untuk keramik
 cat upox untuk lantai
