@@ -140,10 +140,7 @@ cat semprot epoxy diton
 cat untuk lantai beton
 cat untuk lantai cor
 cat untuk lantai garasi
-cat untuk lantai rumah
-cat upox untuk keramik
 cat upox untuk lantai
-contoh lemari buku kaca
 contoh lemari buku kayu
 contoh lemari buku minimalis
 contoh lemari buku modern
