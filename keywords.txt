@@ -149,7 +149,6 @@ contoh rak buku perpustakaan
 contoh rak buku sederhana
 daftar harga cat epoxy
 daftar harga cat lantai
-daftar harga furniture kantor
 daftar harga kitchen set
 daftar harga lemari dapur
 daftar harga lemari pakaian
@@ -159,9 +158,7 @@ daftar harga meja kantor
 daftar harga meja kerja
 daftar harga rak buku
 dalam lemari 3 pintu
-dapur dan mini bar
 dapur dengan kitchen set
-dapur kayu jati minimalis
 dapur kitchen set minimalis
 dapur kitchen set modern
 dapur minimalis dari aluminium

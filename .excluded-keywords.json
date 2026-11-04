@@ -6333,5 +6333,26 @@
     "matchedTitle": "Contoh Lemari Buku Kaca: Desain Modern dan Hemat Ruang",
     "taggedAt": "2026-11-02T16:06:42.360Z",
     "algoVersion": 4
+  },
+  "borongan paving per m2": {
+    "reason": "similar to existing article",
+    "matchedFile": "ongkos-borongan-pasang-paving-blok.md",
+    "matchedTitle": "Ongkos Borongan Pasang Paving Blok",
+    "taggedAt": "2026-11-04T14:54:18.928Z",
+    "algoVersion": 4
+  },
+  "harga lemari buku kayu": {
+    "reason": "similar to existing article",
+    "matchedFile": "contoh-lemari-buku-kayu.md",
+    "matchedTitle": "Contoh Lemari Buku Kayu: Ragam Desain untuk Ruang Belajar Nyaman",
+    "taggedAt": "2026-11-04T14:54:22.588Z",
+    "algoVersion": 4
+  },
+  "harga lemari rak buku": {
+    "reason": "similar to existing article",
+    "matchedFile": "contoh-lemari-rak-buku.md",
+    "matchedTitle": "Contoh Lemari Rak Buku: Pilih Desain & Ukuran Ideal Bersama CDI",
+    "taggedAt": "2026-11-04T14:54:22.710Z",
+    "algoVersion": 4
   }
 }
