@@ -6354,5 +6354,19 @@
     "matchedTitle": "Contoh Lemari Rak Buku: Pilih Desain & Ukuran Ideal Bersama CDI",
     "taggedAt": "2026-11-04T14:54:22.710Z",
     "algoVersion": 4
+  },
+  "dapur plus mini bar": {
+    "reason": "similar to existing article",
+    "matchedFile": "dapur-dan-mini-bar.md",
+    "matchedTitle": "Dapur dan Mini Bar: Desain Efisien untuk Ruang Terbatas?",
+    "taggedAt": "2026-11-05T15:02:59.845Z",
+    "algoVersion": 4
+  },
+  "dapur set mini bar": {
+    "reason": "similar to existing article",
+    "matchedFile": "dapur-dan-mini-bar.md",
+    "matchedTitle": "Dapur dan Mini Bar: Desain Efisien untuk Ruang Terbatas?",
+    "taggedAt": "2026-11-05T15:02:59.846Z",
+    "algoVersion": 4
   }
 }
