@@ -6396,5 +6396,19 @@
     "matchedTitle": "Sewa Crane Karawang: Pilihan Tepat untuk Proyek Konstruksi Anda",
     "taggedAt": "2026-11-11T14:42:14.492Z",
     "algoVersion": 4
+  },
+  "harga kitchen set dapur": {
+    "reason": "similar to existing article",
+    "matchedFile": "harga-dapur-kitchen-set.md",
+    "matchedTitle": "Tersedia Harga Dapur Kitchen Set Custom Jabodetabek",
+    "taggedAt": "2026-11-12T15:40:33.108Z",
+    "algoVersion": 4
+  },
+  "harga kitchen set dapur per meter": {
+    "reason": "similar to existing article",
+    "matchedFile": "harga-dapur-kitchen-set.md",
+    "matchedTitle": "Tersedia Harga Dapur Kitchen Set Custom Jabodetabek",
+    "taggedAt": "2026-11-12T15:40:33.455Z",
+    "algoVersion": 4
   }
 }
