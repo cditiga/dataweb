@@ -1,32 +1,44 @@
 ---
 title: "Inilah Ukuran Balok Beton Sesuai SNI"
 date: "2026-08-11"
+lastmod: "2026-11-15"
 categories:
  - "blog"
 type: "service"
 description: "Inilah Ukuran Balok Beton Sesuai SNI. Itulah mitra, penjelasan dari judul artikel Inilah Ukuran Balok Beton Sesuai SNI. Semoga dengan adanya ukuran sta..."
 ---
-
-**Inilah Ukuran Balok Beton Sesuai SNI** - Mitra. Balok juga merupakan elemen dari pekerjaan beton bertulang atau disebut balok beton. Fungsi utamanya adalah sebagai struktur utama atau bagian yang berguna sebagai pengikat kolom lantai bangunan serta dudukan lantai. Dengan demikian balok beton akan menjadi rangka penguat horizontal bangunan dari berbagai beban. Bila suatu gelagar balok bentangan sederhana menjadi penahan beban, maka efek yang terjadi adalah adanya momen lentur serta regangan atau deformasi lentur pada balok tersebut. Regangan-regangan ini menyebabkan timbulnya tegangan yang harus dapat ditahan oleh balok dengan tegangan tekan pada sebelah atas, sementara tegangan tarik pada bagian bawah.
+**Inilah Ukuran Balok Beton Sesuai SNI** - Hai Mitra CDI! Tahukah Anda, balok beton adalah elemen krusial dalam struktur bangunan? Ia berfungsi sebagai pengikat kolom dan lantai, menopang beban secara horizontal, dan memastikan kekuatan bangunan secara keseluruhan. Nah, memahami ukuran balok beton yang sesuai standar sangat penting, lho! Artikel ini akan membahasnya secara detail untuk Anda. Mari kita simak bersama!
 
 ![Ukuran Balok Beton](/images/blog/balok-beton.jpg)
 *Ukuran Balok Beton*
 
- ## Stabilitas Batang Balok Beton
+## Memastikan Stabilitas Balok Beton
 
-Untuk menjamin stabilitas batang balok beton yang merupakan salah satu komponen dari system yang terdampak kelenturan ini harus dapat menahan tegangan tarik dan tekan. Ini karena tegangan baja dipasang pada daerah tegangan tarik terjadi atau pada area di dekat sekat terbawah. Secara teori balok tersebut dinamakan sebagai bertulangan baja tarik. Untuk mengupayakan terjadinya pembagian gaya yang baik pada balok maka pada daerah momen tumpuan maksimum dan momen lapangan disarankan agar antara batang tulangan utama tidak lebih dari 150 mm.
+Stabilitas balok beton sangat penting, terutama karena komponen ini bekerja dengan menahan lenturan. Saat balok menerima beban, akan timbul momen lentur dan deformasi. Ini menciptakan tegangan tarik di bagian bawah dan tegangan tekan di bagian atas balok. Untuk mengatasi ini, baja tulangan dipasang di area tegangan tarik – itulah mengapa sering disebut balok bertulangan baja tarik. 
 
-Jika momen pada suatu tempat menurun maka jarak batas bisa digandakan menjadi 300 mm. Dengan demikian pada suatu penampang balok persegi paling sedikit harus terdapat 4 batang tulangan yang dipasang pada setiap sudut penampang. Pada sudut tersebut harus terdapat batang-batang ini kemudian pada bagian yang membentang sepanjang balok akan dikelilingi oleh sekang-sekang. Untuk memperoleh kekakuan yang memadai. Untuk sekang tulangan maka sebaiknya menggunakan batang-batang dengan diameter mencapai minimal 6 mm.
+Agar gaya terdistribusi dengan baik, jarak antar batang tulangan utama sebaiknya tidak lebih dari 150 mm di area momen maksimum. Jika momennya berkurang, jarak ini bisa dinaikkan hingga 300 mm. Idealnya, penampang balok persegi memiliki minimal 4 batang tulangan di setiap sudut, yang kemudian dikelilingi oleh sengkang untuk menambah kekakuan. Diameter sengkang minimal adalah 6 mm.
 
- ## Persyaratan Ukuran Balok Beton
+## Persyaratan Ukuran Balok Beton Menurut SNI
 
-Sesuai dengan PBBI 1971.N.I – 2 hal 91, yang termasuk dalam persyaratan ukuran balok beton adalah:
+Berdasarkan PBBI 1971.N.I – 2 hal 91, ada beberapa persyaratan ukuran balok beton yang perlu diperhatikan:
 
-- 1\. Lebar badan balok minimal 1/50 kali bentang bersih sementara tinggi balok seharusnya dipilih dengan seksama sehingga ideal dengan lebar badan yang dipilih.
-- 2\. Pada smua jenis baja tulangan, diameter pengenal atau diameter batang tulangan untuk balok minimal mencapai 12 mm. Sebisa mungkin harus diantisipasi pemasangan tulangan balok dalam lebih dari 2 lapis kecual pada kondisi-kondisi terpaksa.
-- 3\. Tulangan tarik seharusnya disebar secara merata pada daerah tarik maksimal dari penampang.
-- 4\. Pada bagian balok-balok yang tingginya lebih dari 90 cm pada bidang-bidang sampingnya seharusnya dipasang tulangan samping yang luasnya paling sedikit mencapai 10% dari luas tulangan tarik pokok. Diameter pada batang tulangan tidak boleh diambil pada nilai kurang dari 8 mm pada jenis baja lunak serta 6 mm pada jenis baja keras.
-- 5\. Pada balok beton harus selalu dipasang sengkang dengan jarak tidak boleh diambil lebih dari 30 cm. Sementara pada bagian balok sengkang-sengkang berfungsi sebagai tulangan geser. Bisa juga jarak sengkang tidak boleh diambil lebih dari 2.3 dari ketinggian balok. Pada diameter batang sengkang tidak boleh diambil kurang dari 6 mm yang berlaku pada jenis baja lunak dan 5 mm pada baja berjenis keras.
+- 1\. Lebar badan balok minimal harus 1/50 dari bentang bersih. Tinggi balok perlu dipilih secara cermat, idealnya sesuai dengan lebar badan yang telah ditentukan.
+- 2\. Diameter tulangan minimum adalah 12 mm untuk semua jenis baja tulangan. Hindari pemasangan tulangan dalam lebih dari 2 lapis, kecuali dalam kondisi khusus.
+- 3\. Tulangan tarik harus menyebar merata pada daerah tarik maksimum penampang.
+- 4\. Untuk balok dengan tinggi lebih dari 90 cm, pasang tulangan samping dengan luas minimal 10% dari luas tulangan tarik utama. Diameter batang tulangan samping minimal 8 mm untuk baja lunak dan 6 mm untuk baja keras.
+- 5\. Sengkang harus selalu dipasang pada balok beton dengan jarak tidak lebih dari 30 cm. Sengkang berfungsi sebagai tulangan geser dan jaraknya tidak boleh lebih dari 2.3 kali tinggi balok. Diameter sengkang minimal 6 mm untuk baja lunak dan 5 mm untuk baja keras.
 
-Itulah mitra, penjelasan dari judul artikel **"Inilah Ukuran Balok Beton Sesuai SNI"**. Semoga dengan adanya ukuran standar balok sesuai SNI ini dapat mempermudah anda dalam menentukan desain bangunan yang ideal dan kokoh. Kami menyadari pasti diantara mitra ada yang belum faham ketika membaca tulisan kami ini, untuk itu kami persilahkan anda konsultasi langsung dengan kami via telepon dan email yang tersedia.
 
+<table class="table">
+  <caption>Ukuran Balok Beton Umum</caption>
+  <thead>
+    <tr><th>Lebar (b)</th><th>Tinggi (h)</th><th>Diameter Tulangan Utama</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>30 cm</td><td>40 cm</td><td>12 mm - 16 mm</td></tr>
+    <tr><td>40 cm</td><td>50 cm</td><td>16 mm - 20 mm</td></tr>
+  </tbody>
+</table>
+
+
+Nah, itulah detail penting mengenai ukuran balok beton sesuai SNI. Semoga informasi ini bermanfaat bagi Mitra CDI dalam merencanakan proyek konstruksi di (not detected)! Kami mengerti bahwa mungkin ada pertanyaan atau kebutuhan konsultasi lebih lanjut. Jangan ragu untuk menghubungi kami untuk mendapatkan informasi harga atau bantuan lebih detail. Kami siap membantu Anda mewujudkan bangunan yang kuat dan berkualitas di (not detected). [Anda dapat menghubungi tim ahli kami disini](URL). [Atau cek juga artikel kami tentang uji slump beton](/blog/cara-uji-slump-beton-sesuai-dengan-sni/) untuk informasi tambahan yang relevan.
