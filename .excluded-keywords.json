@@ -6459,5 +6459,19 @@
     "matchedTitle": "Harga Kaca Lemari Pakaian: Estimasi Biaya & Pilihan Material 2026",
     "taggedAt": "2026-11-15T14:22:16.310Z",
     "algoVersion": 4
+  },
+  "harga kitchen set bawah per meter": {
+    "reason": "similar to existing article",
+    "matchedFile": "harga-kitchen-set-bawah.md",
+    "matchedTitle": "Harga Kitchen Set Bawah: Estimasi Biaya & Tips Pemilihan",
+    "taggedAt": "2026-11-16T16:16:32.876Z",
+    "algoVersion": 4
+  },
+  "harga kitchen set duco per meter": {
+    "reason": "similar to existing article",
+    "matchedFile": "harga-kitchen-set-duco.md",
+    "matchedTitle": "Harga Kitchen Set Duco: Berapa Biaya yang Perlu Anda Siapkan?",
+    "taggedAt": "2026-11-16T16:16:32.879Z",
+    "algoVersion": 4
   }
 }
