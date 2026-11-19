@@ -246,11 +246,8 @@ harga kursi untuk sholat
 harga lantai epoxy 3d
 harga lemari 1 pintu
 harga lemari 2 pintu
-harga lemari 3 susun
 harga lemari 4 pintu
 harga lemari 4 susun
-harga lemari 5 susun
-harga lemari aluminium dapur
 harga lemari atas dapur
 harga lemari baju aluminium
 harga lemari baju gantung
