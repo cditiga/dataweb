@@ -248,10 +248,7 @@ harga lemari 1 pintu
 harga lemari 2 pintu
 harga lemari 4 pintu
 harga lemari 4 susun
-harga lemari atas dapur
-harga lemari baju aluminium
 harga lemari baju gantung
-harga lemari baju kaca
 harga lemari baju kayu
 harga lemari baju minimalis
 harga lemari baju plastik
