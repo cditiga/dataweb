@@ -1,37 +1,36 @@
 ---
 title: "Inilah yang Dimaksud dengan Pasir Laut dan Darat"
 date: "2026-08-11"
+lastmod: "2026-11-20"
 categories:
  - "blog"
 type: "service"
 description: "Inilah yang Dimaksud dengan Pasir Laut dan Darat. Demikian mitra pembahasan kami tentang Pasir Laut dan Darat, semoga dapat memberi pencerahan untuk mitra se..."
 ---
-
-**Inilah yang Dimaksud dengan Pasir Laut dan Darat** - Mitra CDI. Setiap kita yang sedang membangun sebuah bangunan baik rumah, gedung, jembatan dan lainnya sudah pasti membutuhkan material pasir yang berperan sebagai material perekat juga penghalus dalam struktur bangunannya. Selain itu juga material pasir ini tidak hanya memiliki satu macam jenis saja, akan tetapi sangat banyak jenis beserta fungsinya. Secara garis besarnya saja, material alam pasir dapat didefinisikan menjadi dua bagian, yaitu; Pasir Laut dan Darat. Dalam artikel kami kali ini sengaja membahas tentang Pasir Laut dan Darat yang bertujuan agar mitra semua (khususnya yang masih awam) mengetahui betul berbagai macam jenis pasir dan peruntukannya. Berikut bahasannya, silahkan disimak.
+**Inilah yang Dimaksud dengan Pasir Laut dan Darat** - Hai Mitra CDI! Sedang merencanakan proyek konstruksi? Pasti nggak asing lagi dengan pasir, kan? Material satu ini memang krusial dalam berbagai pembangunan, mulai dari rumah, gedung, hingga infrastruktur lainnya. Tapi tahu nggak, ternyata pasir itu punya banyak jenis dengan kegunaan yang berbeda-beda. Nah, kali ini kita bakal membahas tuntas tentang dua jenis pasir yang paling umum ditemui: Pasir Laut dan Pasir Darat. Yuk, kita kupas tuntas perbedaannya, supaya Mitra lebih paham dan bisa memilih yang paling tepat untuk proyek Anda!
 
 ![Pasir Laut dan Pasir Darat](/images/blog/pasir-sedot-hitam.jpg)
 *Pasir Darat*
 
- ## Pengertian Pasir Laut dan Darat
+## Mengenal Lebih Dekat Pasir Laut dan Darat
 
-Secara umum pasir laut adalah pasir yang berasal atau ditambang dari pinggir laut atau pesisir lautan. Sedangkan pasir darat adalah pasir yang diperoleh dari daratan atau diluar area tambang pasir laut. Dan pengertian menurut ilmu geologi pasir laut adalah bebatuan sedimen berukuran 0,55-2,5 mm. Atau partikel-partikel yang dihasilkan dari hancuran batu padat karena pengikisan atau erosi glombang air laut. Sedangkan pasir darat menurut ilmu geologi adalah pecahan bebatuan pegunungan atau sisa endapan abu vulkanik gunung merapi berukuran 0,55-3 mm yang dihasilkan dari gunung dan sungai.
+Secara sederhana, pasir laut adalah pasir yang diambil dari area pantai atau pesisir laut. Sementara itu, pasir darat berasal dari sumber-sumber di daratan, seperti pegunungan, sungai, atau bekas letusan gunung berapi. Kalau dilihat dari segi ilmiah, pasir laut itu adalah sedimen berukuran 0,55-2,5 mm yang terbentuk dari pecahan batu karang atau batuan lainnya akibat erosi gelombang laut. Nah, kalau pasir darat, umumnya berasal dari pecahan batuan pegunungan atau sisa endapan vulkanik yang berukuran 0,55-3 mm. 
 
 ![Pasir Laut dan Pasir Darat](/images/blog/plester-bangka.jpg)
 *Pasir Laut*
 
- ## Kegunaan Pasir Laut dan Darat
+## Apa Saja Kegunaan Pasir Laut dan Darat?
 
-Sebenarnya pasir laut dan darat ini memiliki kegunaan atau manfaat yang sama, yaitu sebagai pelapis atau perekat batu belah, split dan bata yang dicampur dengan semen pengeras. Namun seiring berkembangnya teknologi konstruksi menjadikan kedua jenis pasir ini mempunyai manfaat yang lebih spesifik lagi, yaitu; untuk Pasir Laut atau Pasir Putih lebih direkomendasikan untuk pembuatan /produksi bata ringan (hebel), pelesteran dinding, pemasangan marmer, pabrik genteng, dan lainnya yang memerlukan pasir halus bebas kerikil.
+Meskipun sekilas terlihat sama, sebenarnya pasir laut dan darat punya kegunaan yang sedikit berbeda. Keduanya sama-sama penting sebagai bahan campuran untuk membuat mortar, plesteran, atau sebagai lapisan dasar untuk pemasangan keramik. Tapi seiring perkembangan teknologi konstruksi, fungsi spesifik masing-masing jenis pasir ini semakin jelas. Contohnya, pasir laut atau pasir putih seringkali lebih direkomendasikan untuk pembuatan bata ringan (hebel), pelesteran dinding yang membutuhkan tekstur halus, pemasangan marmer, atau produksi genteng.
 
- ## Penambangan Pasir Laut dan Darat
+## Proses Penambangan Pasir Laut dan Darat di (not detected)
 
-Mungkin sebagian dari anda tidak hanya ingin mengetahui jenis dan manfaat dari kedua pasir ini, melainkan ingin tahu juga tempat penambangan dan prosesnya sendiri. Karena jenisnya berbeda maka lokasi penambangannya pun berbeda pula. Untuk pasir laut di indonesia penambangannya yang paling dikenal ada di bangka belitung, lampung, banten, kalimantan, jawa tengah dan sulawesi. Sedangkan pasir darat lebih banyak jumlah lokasi penambangannya yang berada di jawa barat seperti; tasikmalaya dengan pasir galunggungnya, sukabumi dengan pasir cimangkok dan besinya, cianjur dengan pasir jebrodnya, cimalaka, purwakarta, cilegon, rangkas, bogor dan beberapa tempat lainnya. Dan di luar jawa barat, seperti; lampung dengan putih lampungnya, sungai musi, merapi yogyakarta, pontianak dll.
+Selain memahami jenis dan kegunaannya, penting juga untuk mengetahui dari mana dan bagaimana kedua jenis pasir ini diperoleh. Lokasi penambangannya tentu berbeda, karena sumbernya pun berbeda. Di Indonesia, penambangan pasir laut banyak ditemukan di Bangka Belitung, Lampung, Banten, Kalimantan, Jawa Tengah, dan Sulawesi. Sementara itu, pasir darat banyak ditemukan di Jawa Barat, seperti Tasikmalaya (dengan Pasir Galunggung), Sukabumi (Pasir Cimangkok), Cianjur (Pasir Jebrod), Cimalaka, Purwakarta, Cilegon, Rangkas, dan Bogor. Selain itu, ada juga di luar Jawa Barat, seperti Lampung (Pasir Putih), Sungai Musi, Yogyakarta (endapan Merapi), dan Pontianak.
 
-Untuk cara penambangannya berbeda-beda, namun yang paling umum ada dua cara, yaitu; khusus pasir yang berada di bawah air sepert sungai dan laut ditambang dengan cara di sedot dan di cuci. Sedangkan untuk pasir yang ditambang di pegunungan dengan cara di pugar dan di ayak.
+Proses penambangannya juga berbeda-beda. Untuk pasir yang berada di bawah air (sungai atau laut), biasanya ditambang dengan cara disedot dan dicuci. Sedangkan untuk pasir yang ditambang di pegunungan, biasanya dilakukan dengan metode penggalian dan pengayakan.
 
- ## Penjualan Pasir Laut dan Darat
+## Bagaimana Sistem Penjualan Pasir Laut dan Darat di (not detected)?
 
-Sistem penjualannya sendiri kedua pasir ini memiliki sistem yang sama, yaitu; dari pihak penambang menjualnya langsung per DO ke pendistribusi, nanti dari pihak pendistribusi dijual dan diangkut langsung ke pengepul pasir atau ke pabrik dengan sekala besar. Ada juga pengecer yang membelinya langsung ke tambang dan mengangkutnya ke konsumen perorangan. Biasanya pengecer seperti ini mutannya lebih padat dibanding dengan isi muatan dari pengepul /toko material.
+Sistem penjualannya sendiri kurang lebih sama. Umumnya, penambang menjual pasir langsung ke distributor dalam bentuk *delivery order* (DO). Distributor kemudian menjual dan mengangkutnya ke pengepul pasir atau langsung ke pabrik-pabrik konstruksi dalam skala besar. Ada juga pengecer yang mengambil langsung dari tambang dan menjualnya ke konsumen perorangan. Biasanya, harga yang ditawarkan pengecer sedikit lebih tinggi karena biaya operasional dan transportasi.
 
-Demikian mitra pembahasan kami tentang Pasir Laut dan Darat, semoga dapat memberi pencerahan untuk mitra semua. **_Apabila diantara mitra ada yang membutuhkan kedua jenis pasir diatas, mitra bisa memesannya dari kami dengan sistem pembayaran COD dan free ongkir._** Bagi mitra yang hendak order pasir sekala besar dengan sistem kontrak juga bisa bekerja sama dengan kami, seperti beberapa perusahaan nasional yang telah bermitra dengan kami. Silahkan hubungi kami via email ataupun telepon website ini.
-
+Nah, itu tadi pembahasan lengkap tentang Pasir Laut dan Darat. Semoga informasi ini bermanfaat ya, Mitra! Butuh pasir berkualitas untuk proyek Anda di (not detected)? **Yuk, segera hubungi kami untuk mendapatkan penawaran terbaik!** Kami juga menawarkan layanan pemesanan skala besar dengan sistem kontrak bagi perusahaan konstruksi. Jangan ragu untuk menghubungi tim kami melalui email atau telepon yang tertera di website ini.  [Inilah Yang Dimaksud Dengan Beton Normal](/blog/apa-itu-beton-normal/) dapat menjadi panduan tambahan untuk material pondasi yang kuat.
