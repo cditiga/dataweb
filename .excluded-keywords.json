@@ -6578,5 +6578,12 @@
     "matchedTitle": "Tersedia Harga Lemari Baju Kaca Custom di Jabodetabek",
     "taggedAt": "2026-11-21T15:01:59.741Z",
     "algoVersion": 4
+  },
+  "harga lemari baju plastik 2 pintu": {
+    "reason": "similar to existing article",
+    "matchedFile": "harga-lemari-baju-plastik.md",
+    "matchedTitle": "Harga Lemari Baju Plastik: Pertimbangkan Ini Sebelum Membeli",
+    "taggedAt": "2026-11-22T15:02:17.424Z",
+    "algoVersion": 4
   }
 }
