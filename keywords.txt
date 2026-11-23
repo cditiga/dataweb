@@ -251,9 +251,6 @@ harga lemari 4 susun
 harga lemari baju gantung
 harga lemari baju minimalis
 harga lemari besi pakaian
-harga lemari bongkar pasang
-harga lemari box baju
-harga lemari box plastik
 harga lemari buku aluminium
 harga lemari buku besi
 harga lemari buku jati
