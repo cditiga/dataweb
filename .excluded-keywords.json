@@ -6620,5 +6620,19 @@
     "matchedTitle": "Harga Lemari Besi Bekas: Pilihan Hemat dan Aman",
     "taggedAt": "2026-11-23T18:31:13.689Z",
     "algoVersion": 4
+  },
+  "harga lemari kaca dapur": {
+    "reason": "similar to existing article",
+    "matchedFile": "harga-lemari-dapur-kaca.md",
+    "matchedTitle": "Harga Lemari Dapur Kaca: Estimasi Biaya & Pilihan Terbaik 2026",
+    "taggedAt": "2026-11-27T17:10:31.650Z",
+    "algoVersion": 4
+  },
+  "harga lemari kaca dapur 2 pintu": {
+    "reason": "similar to existing article",
+    "matchedFile": "harga-lemari-dapur-kaca.md",
+    "matchedTitle": "Harga Lemari Dapur Kaca: Estimasi Biaya & Pilihan Terbaik 2026",
+    "taggedAt": "2026-11-27T17:10:31.945Z",
+    "algoVersion": 4
   }
 }
